@@ -1,0 +1,411 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F11EB4601B6A368E000063E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EB45F1B6A368E000063E4 /* AppDelegate.swift */; };
+		F11EB4621B6A368E000063E4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F11EB4611B6A368E000063E4 /* Images.xcassets */; };
+		F11EB4651B6A368E000063E4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11EB4631B6A368E000063E4 /* MainMenu.xib */; };
+		F11EB4711B6A368E000063E4 /* Train12306Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EB4701B6A368E000063E4 /* Train12306Tests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F11EB46B1B6A368E000063E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F11EB4521B6A368E000063E4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F11EB4591B6A368E000063E4;
+			remoteInfo = Train12306;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F11EB45A1B6A368E000063E4 /* Train12306.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Train12306.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F11EB45E1B6A368E000063E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F11EB45F1B6A368E000063E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F11EB4611B6A368E000063E4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F11EB4641B6A368E000063E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		F11EB46A1B6A368E000063E4 /* Train12306Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Train12306Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F11EB46F1B6A368E000063E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F11EB4701B6A368E000063E4 /* Train12306Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Train12306Tests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F11EB4571B6A368E000063E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F11EB4671B6A368E000063E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F11EB4511B6A368E000063E4 = {
+			isa = PBXGroup;
+			children = (
+				F11EB45C1B6A368E000063E4 /* Train12306 */,
+				F11EB46D1B6A368E000063E4 /* Train12306Tests */,
+				F11EB45B1B6A368E000063E4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F11EB45B1B6A368E000063E4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F11EB45A1B6A368E000063E4 /* Train12306.app */,
+				F11EB46A1B6A368E000063E4 /* Train12306Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F11EB45C1B6A368E000063E4 /* Train12306 */ = {
+			isa = PBXGroup;
+			children = (
+				F11EB45F1B6A368E000063E4 /* AppDelegate.swift */,
+				F11EB4611B6A368E000063E4 /* Images.xcassets */,
+				F11EB4631B6A368E000063E4 /* MainMenu.xib */,
+				F11EB45D1B6A368E000063E4 /* Supporting Files */,
+			);
+			path = Train12306;
+			sourceTree = "<group>";
+		};
+		F11EB45D1B6A368E000063E4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F11EB45E1B6A368E000063E4 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F11EB46D1B6A368E000063E4 /* Train12306Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F11EB4701B6A368E000063E4 /* Train12306Tests.swift */,
+				F11EB46E1B6A368E000063E4 /* Supporting Files */,
+			);
+			path = Train12306Tests;
+			sourceTree = "<group>";
+		};
+		F11EB46E1B6A368E000063E4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F11EB46F1B6A368E000063E4 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F11EB4591B6A368E000063E4 /* Train12306 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F11EB4741B6A368E000063E4 /* Build configuration list for PBXNativeTarget "Train12306" */;
+			buildPhases = (
+				F11EB4561B6A368E000063E4 /* Sources */,
+				F11EB4571B6A368E000063E4 /* Frameworks */,
+				F11EB4581B6A368E000063E4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Train12306;
+			productName = Train12306;
+			productReference = F11EB45A1B6A368E000063E4 /* Train12306.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F11EB4691B6A368E000063E4 /* Train12306Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F11EB4771B6A368E000063E4 /* Build configuration list for PBXNativeTarget "Train12306Tests" */;
+			buildPhases = (
+				F11EB4661B6A368E000063E4 /* Sources */,
+				F11EB4671B6A368E000063E4 /* Frameworks */,
+				F11EB4681B6A368E000063E4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F11EB46C1B6A368E000063E4 /* PBXTargetDependency */,
+			);
+			name = Train12306Tests;
+			productName = Train12306Tests;
+			productReference = F11EB46A1B6A368E000063E4 /* Train12306Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F11EB4521B6A368E000063E4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = fancy;
+				TargetAttributes = {
+					F11EB4591B6A368E000063E4 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					F11EB4691B6A368E000063E4 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = F11EB4591B6A368E000063E4;
+					};
+				};
+			};
+			buildConfigurationList = F11EB4551B6A368E000063E4 /* Build configuration list for PBXProject "Train12306" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F11EB4511B6A368E000063E4;
+			productRefGroup = F11EB45B1B6A368E000063E4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F11EB4591B6A368E000063E4 /* Train12306 */,
+				F11EB4691B6A368E000063E4 /* Train12306Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F11EB4581B6A368E000063E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F11EB4621B6A368E000063E4 /* Images.xcassets in Resources */,
+				F11EB4651B6A368E000063E4 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F11EB4681B6A368E000063E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F11EB4561B6A368E000063E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F11EB4601B6A368E000063E4 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F11EB4661B6A368E000063E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F11EB4711B6A368E000063E4 /* Train12306Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F11EB46C1B6A368E000063E4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F11EB4591B6A368E000063E4 /* Train12306 */;
+			targetProxy = F11EB46B1B6A368E000063E4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F11EB4631B6A368E000063E4 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F11EB4641B6A368E000063E4 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F11EB4721B6A368E000063E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F11EB4731B6A368E000063E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F11EB4751B6A368E000063E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Train12306/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F11EB4761B6A368E000063E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Train12306/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F11EB4781B6A368E000063E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Train12306Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Train12306.app/Contents/MacOS/Train12306";
+			};
+			name = Debug;
+		};
+		F11EB4791B6A368E000063E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Train12306Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Train12306.app/Contents/MacOS/Train12306";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F11EB4551B6A368E000063E4 /* Build configuration list for PBXProject "Train12306" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F11EB4721B6A368E000063E4 /* Debug */,
+				F11EB4731B6A368E000063E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F11EB4741B6A368E000063E4 /* Build configuration list for PBXNativeTarget "Train12306" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F11EB4751B6A368E000063E4 /* Debug */,
+				F11EB4761B6A368E000063E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F11EB4771B6A368E000063E4 /* Build configuration list for PBXNativeTarget "Train12306Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F11EB4781B6A368E000063E4 /* Debug */,
+				F11EB4791B6A368E000063E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F11EB4521B6A368E000063E4 /* Project object */;
+}
