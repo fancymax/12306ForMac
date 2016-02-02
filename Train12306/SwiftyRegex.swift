@@ -15,13 +15,18 @@ class Regex {
     init(_ pattern: String) {
         self.pattern = pattern
         var error: NSError?
-        self.internalExpression = NSRegularExpression(pattern: pattern, options: .CaseInsensitive, error: &error)
+        do {
+            self.internalExpression = try NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
+        } catch let error1 as NSError {
+            error = error1
+            self.internalExpression = nil
+        }
     }
     
     func getMatches(input: String) -> [[String]]? {
         var res = [[String]]()
-        let myRange = NSMakeRange(0, count(input))
-        if let matches = self.internalExpression?.matchesInString(input, options: nil, range:myRange) as? [NSTextCheckingResult]
+        let myRange = NSMakeRange(0, input.characters.count)
+        if let matches = self.internalExpression?.matchesInString(input, options: [], range:myRange) 
         {
             for match in matches
             {
@@ -34,6 +39,11 @@ class Regex {
                 res.append(groupMatch)
             }
         }
-        return res
+        if res.count > 0{
+            return res
+        }
+        else{
+            return nil
+        }
     }
 }

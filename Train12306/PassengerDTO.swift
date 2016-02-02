@@ -8,11 +8,11 @@
 
 import Foundation
 
-class PassengerDTO:NSObject,Printable {
+class PassengerDTO:NSObject {
     
-    override var description:String{
-        return "name:\(passenger_name) sex:\(sex_name)"
-    }
+//    override var description:String{
+//        return "name:\(passenger_name) sex:\(sex_name)"
+//    }
     
     var code :String?
     var passenger_name :String?
@@ -38,9 +38,19 @@ class PassengerDTO:NSObject,Printable {
     
     var isChecked: Bool
     var seatCode = "O";
-    var seatCodeName = "";
+    var seatCodeName = "二等座";
     var ticketCode = "1";
     var ticketCodeName = "成人票";
+    
+    //测试方法
+    override init(){
+        isChecked = false
+        
+        let x=random()%5
+        let nameArr = ["lin1","lin2","lin3","lin4","lin5"]
+        passenger_name = nameArr[x]
+        
+    }
     
     init(jsonData:JSON)
     {

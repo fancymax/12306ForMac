@@ -9,7 +9,8 @@
 import Foundation
 
 class User {
-    var name: String?
-    var passWord: String?
-    var IsLogin: Bool?
+    var loginName: String?
+    var loginPassWord: String?
+    var realName:String?
+//    var isLogin = false
 }
