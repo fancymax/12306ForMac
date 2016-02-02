@@ -8,9 +8,24 @@
 
 import Cocoa
 
-@NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+let logger: XCGLogger = {
+    // Setup XCGLogger
+    let log = XCGLogger.defaultInstance()
+    let logPath: NSString = ("~/Desktop/12306ForMac_log.txt" as NSString).stringByExpandingTildeInPath
+    log.xcodeColors = [
+        .Verbose: .lightGrey,
+        .Debug: .darkGrey,
+        .Info: .darkGreen,
+        .Warning: .orange,
+        .Error: XCGLogger.XcodeColor(fg: NSColor.redColor(), bg: NSColor.whiteColor()), // Optionally use an NSColor
+        .Severe: XCGLogger.XcodeColor(fg: (255, 255, 255), bg: (255, 0, 0)) // Optionally use RGB values directly
+    ]
+    log.setup(.Debug, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: logPath)
+    
+    return log
+}()
 
+@NSApplicationMain class AppDelegate: NSObject, NSApplicationDelegate {
 
     var mainController:MainWindowController?
     
@@ -21,6 +36,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mainController.showWindow(self)
         
         self.mainController = mainController
+        
+        logger.debug("application start")
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -30,6 +47,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationShouldTerminateAfterLastWindowClosed(sender:NSApplication)->Bool {
         return true
     }
+    
+    
 
 
 }

@@ -17,6 +17,4 @@ struct Station {
     var Code:String
     //全拼
     var Spell:String
-    
-    
 }

@@ -43,13 +43,13 @@
     {
       "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "train-icon.png",
+      "filename" : "Submarine@0.5x.png",
       "scale" : "1x"
     },
     {
       "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "train-icon-1.png",
+      "filename" : "Submarine@1x.png",
       "scale" : "2x"
     }
   ],

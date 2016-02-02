@@ -8,14 +8,14 @@
 
 import Cocoa
 
-struct ImageDot {
-    var randCodeX: Int
-    var randCodeY: Int
-    var pointX:CGFloat
-    var pointY:CGFloat
-}
-
-class RandomCodeImageView:NSImageView {
+class RandCodeImageView:NSImageView {
+    
+    struct ImageDot {
+        var randCodeX: Int
+        var randCodeY: Int
+        var pointX:CGFloat
+        var pointY:CGFloat
+    }
     
     private var imageDots = [ImageDot]()
     
@@ -23,7 +23,7 @@ class RandomCodeImageView:NSImageView {
         get{
             if imageDots.count == 0{
                 return nil
-            }
+            } 
             var str = "\(imageDots[0].randCodeX),\(imageDots[0].randCodeY)"
             if imageDots.count >= 2
             {
@@ -42,22 +42,26 @@ class RandomCodeImageView:NSImageView {
     }
     
     override func mouseDown(theEvent: NSEvent) {
-        let imageOriginX = self.frame.origin.x
-        let imageOriginY = self.frame.origin.y + self.bounds.height
+        let frameOffsetInWindow = convertPoint(self.frame.origin, fromView: nil)
+//        Swift.print("frameInWindowX:\(frameOffsetInWindow.x) frameInWindowY:\(frameOffsetInWindow.y)")
+        
+        let imageOriginX = self.frame.origin.x - frameOffsetInWindow.x
+        let imageOriginY = self.frame.origin.y + self.bounds.height - frameOffsetInWindow.y
         let mouseX = theEvent.locationInWindow.x
         let mouseY = theEvent.locationInWindow.y
-        let X = (mouseX - imageOriginX)/1.2 - 5
-        let Y = (imageOriginY - mouseY)/1.2 - 15
-        println("\(Int(X)),\(Int(Y))")
+        let randCodeX = (mouseX - imageOriginX)/1.2
+        let randCodeY = (imageOriginY - mouseY)/1.2 - 30
         
-        if Y < 20
-        {
+        if ((randCodeX < 0) || (randCodeY < 0)){
+            Swift.print("randCodeX:\(Int(randCodeX)),randCodeY:\(Int(randCodeY)) error")
             return
         }
         
-        let pointX = mouseX - self.frame.origin.x
-        let pointY = mouseY - self.frame.origin.y
-        var newImageDot = ImageDot(randCodeX: Int(X), randCodeY: Int(Y), pointX: pointX, pointY: pointY)
+        let pointX = mouseX - (self.frame.origin.x - frameOffsetInWindow.x)
+        let pointY = mouseY - (self.frame.origin.y - frameOffsetInWindow.y)
+        
+//        Swift.print("mouseX:\(mouseX) mouseY:\(mouseY) framX:\(self.frame.origin.x) frameY:\(self.frame.origin.y) boundsX:\(self.bounds.origin.x) boundsY:\(self.bounds.origin.y)")
+        
         var isAdd = true
         if imageDots.count != 0
         {
@@ -73,7 +77,7 @@ class RandomCodeImageView:NSImageView {
         }
         if isAdd
         {
-            imageDots.append(newImageDot)
+            imageDots.append(ImageDot(randCodeX: Int(randCodeX), randCodeY: Int(randCodeY), pointX: pointX, pointY: pointY))
         }
         
         needsDisplay = true
@@ -84,18 +88,16 @@ class RandomCodeImageView:NSImageView {
         
         NSColor.greenColor().set()
         
+        func drawDot(pointX: CGFloat,pointY: CGFloat)
+        {
+            let dotRect = CGRect(origin: NSPoint(x: pointX, y: pointY), size: CGSizeZero).insetBy(dx:-10, dy:-10)
+            NSBezierPath(ovalInRect: dotRect).fill()
+        }
+        
         for point in imageDots
         {
             drawDot(point.pointX,pointY: point.pointY)
         }
     }
-    
-    func drawDot(pointX: CGFloat,pointY: CGFloat)
-    {
-        let dotRect = CGRect(origin: NSPoint(x: pointX, y: pointY), size: CGSizeZero).rectByInsetting(dx:-10, dy:-10)
-        NSBezierPath(ovalInRect: dotRect).fill()
-    }
-    
-    
     
 }
