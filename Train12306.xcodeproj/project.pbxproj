@@ -16,10 +16,11 @@
 		F11EB47C1B6A36A9000063E4 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EB47A1B6A36A9000063E4 /* MainWindowController.swift */; };
 		F11EB47D1B6A36A9000063E4 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11EB47B1B6A36A9000063E4 /* MainWindowController.xib */; };
 		F13FFBCE1B70CEF600A329E6 /* StationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FFBCD1B70CEF600A329E6 /* StationData.swift */; };
-		F168AE3D1B782BE1001009C8 /* LoginWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168AE3B1B782BE1001009C8 /* LoginWindowController.swift */; };
-		F168AE3E1B782BE1001009C8 /* LoginWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F168AE3C1B782BE1001009C8 /* LoginWindowController.xib */; };
-		F1810AD31B7DC4610055DDDB /* PreOrderWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1810AD11B7DC4610055DDDB /* PreOrderWindowController.swift */; };
-		F1810AD41B7DC4610055DDDB /* PreOrderWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1810AD21B7DC4610055DDDB /* PreOrderWindowController.xib */; };
+		F19D3D0A1C62120D005369CF /* srca.cer in Resources */ = {isa = PBXBuildFile; fileRef = F19D3D091C62120D005369CF /* srca.cer */; };
+		F19D3D101C621598005369CF /* LoginWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19D3D0C1C621598005369CF /* LoginWindowController.swift */; };
+		F19D3D111C621598005369CF /* LoginWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19D3D0D1C621598005369CF /* LoginWindowController.xib */; };
+		F19D3D121C621598005369CF /* PreOrderWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19D3D0E1C621598005369CF /* PreOrderWindowController.swift */; };
+		F19D3D131C621598005369CF /* PreOrderWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19D3D0F1C621598005369CF /* PreOrderWindowController.xib */; };
 		F1AA8AA41B9D7A200062C43D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1AA8AA31B9D7A200062C43D /* Images.xcassets */; };
 		F1D5595A1C11E2E7004ACC00 /* PassengerSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D559561C11E2E7004ACC00 /* PassengerSelectViewController.swift */; };
 		F1D5595B1C11E2E7004ACC00 /* PassengerSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D559571C11E2E7004ACC00 /* PassengerSelectViewController.xib */; };
@@ -91,10 +92,11 @@
 		F11EB47A1B6A36A9000063E4 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		F11EB47B1B6A36A9000063E4 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
 		F13FFBCD1B70CEF600A329E6 /* StationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationData.swift; sourceTree = "<group>"; };
-		F168AE3B1B782BE1001009C8 /* LoginWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWindowController.swift; sourceTree = "<group>"; };
-		F168AE3C1B782BE1001009C8 /* LoginWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginWindowController.xib; sourceTree = "<group>"; };
-		F1810AD11B7DC4610055DDDB /* PreOrderWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreOrderWindowController.swift; sourceTree = "<group>"; };
-		F1810AD21B7DC4610055DDDB /* PreOrderWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreOrderWindowController.xib; sourceTree = "<group>"; };
+		F19D3D091C62120D005369CF /* srca.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = srca.cer; sourceTree = SOURCE_ROOT; };
+		F19D3D0C1C621598005369CF /* LoginWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginWindowController.swift; path = Sheets/LoginWindowController.swift; sourceTree = "<group>"; };
+		F19D3D0D1C621598005369CF /* LoginWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginWindowController.xib; path = Sheets/LoginWindowController.xib; sourceTree = "<group>"; };
+		F19D3D0E1C621598005369CF /* PreOrderWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreOrderWindowController.swift; path = Sheets/PreOrderWindowController.swift; sourceTree = "<group>"; };
+		F19D3D0F1C621598005369CF /* PreOrderWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreOrderWindowController.xib; path = Sheets/PreOrderWindowController.xib; sourceTree = "<group>"; };
 		F1AA8AA31B9D7A200062C43D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F1CC36461B6B244C0074A014 /* Train12306-Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Train12306-Swift.h"; sourceTree = "<group>"; };
 		F1D559561C11E2E7004ACC00 /* PassengerSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassengerSelectViewController.swift; sourceTree = "<group>"; };
@@ -216,11 +218,13 @@
 		F11EB45C1B6A368E000063E4 /* Train12306 */ = {
 			isa = PBXGroup;
 			children = (
+				F19D3D091C62120D005369CF /* srca.cer */,
 				F1F69BAB1C61BE1200F4C4A6 /* Model */,
 				F1F69BA01C61BD5700F4C4A6 /* Utilities */,
 				F1F69B8C1C61BB7600F4C4A6 /* UserControls */,
 				F10D9B641B8E09EA002697DE /* StaticData */,
 				F13FFBC81B70CD1900A329E6 /* Service */,
+				F19D3D0B1C62157E005369CF /* Sheets */,
 				F11EB45F1B6A368E000063E4 /* AppDelegate.swift */,
 				F11EB4631B6A368E000063E4 /* MainMenu.xib */,
 				F11EB47A1B6A36A9000063E4 /* MainWindowController.swift */,
@@ -237,10 +241,6 @@
 				F1FF6A201BB9577B00F5AA39 /* DisclosureViewController.xib */,
 				F11E3CC01C144AA60099D457 /* LoginPopoverViewController.swift */,
 				F11E3CC11C144AA60099D457 /* LoginPopoverViewController.xib */,
-				F168AE3B1B782BE1001009C8 /* LoginWindowController.swift */,
-				F168AE3C1B782BE1001009C8 /* LoginWindowController.xib */,
-				F1810AD11B7DC4610055DDDB /* PreOrderWindowController.swift */,
-				F1810AD21B7DC4610055DDDB /* PreOrderWindowController.xib */,
 				F11EB45D1B6A368E000063E4 /* Supporting Files */,
 			);
 			path = Train12306;
@@ -282,6 +282,17 @@
 				F1F69BBB1C61BECD00F4C4A6 /* HTTPService+Order.swift */,
 			);
 			name = Service;
+			sourceTree = "<group>";
+		};
+		F19D3D0B1C62157E005369CF /* Sheets */ = {
+			isa = PBXGroup;
+			children = (
+				F19D3D0C1C621598005369CF /* LoginWindowController.swift */,
+				F19D3D0D1C621598005369CF /* LoginWindowController.xib */,
+				F19D3D0E1C621598005369CF /* PreOrderWindowController.swift */,
+				F19D3D0F1C621598005369CF /* PreOrderWindowController.xib */,
+			);
+			name = Sheets;
 			sourceTree = "<group>";
 		};
 		F1A8CCB01BA8032500B4FB03 /* Asserts */ = {
@@ -456,17 +467,18 @@
 				F11EB47D1B6A36A9000063E4 /* MainWindowController.xib in Resources */,
 				F1AA8AA41B9D7A200062C43D /* Images.xcassets in Resources */,
 				F1F69B9C1C61BC7E00F4C4A6 /* LunarCalendarView.xib in Resources */,
+				F19D3D111C621598005369CF /* LoginWindowController.xib in Resources */,
 				F1D5595B1C11E2E7004ACC00 /* PassengerSelectViewController.xib in Resources */,
 				F1FF6A221BB9577B00F5AA39 /* DisclosureViewController.xib in Resources */,
 				F11E3CC31C144AA60099D457 /* LoginPopoverViewController.xib in Resources */,
-				F1810AD41B7DC4610055DDDB /* PreOrderWindowController.xib in Resources */,
 				F1FF6A2B1BBAAB0600F5AA39 /* TicketTableViewController.xib in Resources */,
 				F1F69B8A1C61BB5500F4C4A6 /* Group.png in Resources */,
+				F19D3D0A1C62120D005369CF /* srca.cer in Resources */,
 				F1D5595D1C11E2E7004ACC00 /* PassengerViewController.xib in Resources */,
 				F11EB4651B6A368E000063E4 /* MainMenu.xib in Resources */,
+				F19D3D131C621598005369CF /* PreOrderWindowController.xib in Resources */,
 				F1F69B891C61BB5500F4C4A6 /* CalendarTemplate.png in Resources */,
 				F1FF6A261BBA48EB00F5AA39 /* NormalSearchViewController.xib in Resources */,
-				F168AE3E1B782BE1001009C8 /* LoginWindowController.xib in Resources */,
 				F1F69B8B1C61BB5500F4C4A6 /* SettingsTemplate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,15 +531,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1F69B9F1C61BCA700F4C4A6 /* GlassView.swift in Sources */,
+				F19D3D121C621598005369CF /* PreOrderWindowController.swift in Sources */,
 				F1F69BA81C61BDAD00F4C4A6 /* XCGLogger.swift in Sources */,
 				F1F69BA61C61BDAD00F4C4A6 /* SwiftyJSON.swift in Sources */,
 				F1F69BB21C61BE6600F4C4A6 /* MainModel.swift in Sources */,
 				F1F69BBE1C61BECD00F4C4A6 /* HTTPService+MobileTicketQuery.swift in Sources */,
-				F1810AD31B7DC4610055DDDB /* PreOrderWindowController.swift in Sources */,
 				F1F69BBD1C61BECD00F4C4A6 /* HTTPService+Login.swift in Sources */,
 				F1F69B931C61BBF800F4C4A6 /* ItemCellView.swift in Sources */,
 				F11EB47C1B6A36A9000063E4 /* MainWindowController.swift in Sources */,
-				F168AE3D1B782BE1001009C8 /* LoginWindowController.swift in Sources */,
 				F1F69BAA1C61BDDE00F4C4A6 /* UserDefaultManager.swift in Sources */,
 				F1E7EA2F1C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m in Sources */,
 				F1E7EA2D1C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c in Sources */,
@@ -553,6 +564,7 @@
 				F1FF6A211BB9577B00F5AA39 /* DisclosureViewController.swift in Sources */,
 				F1F69BA71C61BDAD00F4C4A6 /* SwiftyRegex.swift in Sources */,
 				F1F69BB41C61BE6600F4C4A6 /* Station.swift in Sources */,
+				F19D3D101C621598005369CF /* LoginWindowController.swift in Sources */,
 				F1F69B9B1C61BC7E00F4C4A6 /* LunarCalendarView.swift in Sources */,
 				F1F69BBC1C61BECD00F4C4A6 /* HTTPService.swift in Sources */,
 				F1F69BA51C61BDAD00F4C4A6 /* AFHTTP12306Manager.swift in Sources */,

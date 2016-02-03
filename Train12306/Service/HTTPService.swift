@@ -14,7 +14,7 @@ class HTTPService {
     
     var shareHTTPManager:AFHTTP12306Manager{
         get{
-            //OS X 10.11
+            //OS X 10.11 ATS
 //            <key>NSAppTransportSecurity</key>
 //            <dict>
 //            <key>NSExceptionDomains</key>
@@ -33,12 +33,9 @@ class HTTPService {
 //            </dict>
 //            </dict>
             
-            //todo  此处应该保证仅执行一次
-            HTTPService.staticHTTPManager.securityPolicy = AFSecurityPolicy(pinningMode: .None)
-            HTTPService.staticHTTPManager.securityPolicy.validatesDomainName = false
+            HTTPService.staticHTTPManager.securityPolicy = AFSecurityPolicy(pinningMode: .Certificate)
             HTTPService.staticHTTPManager.securityPolicy.allowInvalidCertificates = true
             HTTPService.staticHTTPManager.requestSerializer.HTTPShouldHandleCookies = true
-            
             HTTPService.staticHTTPManager.requestSerializer.setValue("kyfw.12306.cn", forHTTPHeaderField:"Host")
             HTTPService.staticHTTPManager.requestSerializer.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:36.0) Gecko/20100101 Firefox/36.0", forHTTPHeaderField:"User-Agent")
             HTTPService.staticHTTPManager.requestSerializer.setValue("keep-alive", forHTTPHeaderField:"Connection")

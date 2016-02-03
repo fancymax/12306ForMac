@@ -12,7 +12,7 @@ protocol TicketTableDelegate{
     func queryLeftTicket(fromStationCode:String, toStationCode:String, date:String)
 }
 
-class TicketTableViewController: NSViewController,NSTableViewDelegate,NSTableViewDataSource,TicketTableDelegate{
+class TicketTableViewController: NSViewController,TicketTableDelegate{
     
     @IBOutlet weak var leftTicketTable: NSTableView!
     @IBOutlet weak var loadingView: NSView!
@@ -44,6 +44,92 @@ class TicketTableViewController: NSViewController,NSTableViewDelegate,NSTableVie
         loadingView.hidden = true
     }
     
+    func queryLeftTicket(fromStationCode: String, toStationCode: String, date: String) {
+        let successHandler = {
+            //如果成功 则从MainModel里获取数据
+            self.ticketQueryResult = MainModel.leftTickets!
+            self.leftTicketTable.reloadData()
+            
+            //成功信息提示
+            
+            //停止提示信息旋转
+            self.stopLoginTip()
+        }
+        
+        let failHandler = {
+            //失败信息提示
+            
+            //停止提示信息旋转
+            self.stopLoginTip()
+        }
+        
+        startLoginTip()
+        self.fromStationCode = fromStationCode
+        self.toStationCode = toStationCode
+        self.date = date
+        
+        let queryLeftTicket = LeftTicketDTO()
+        queryLeftTicket.from_station = fromStationCode
+        queryLeftTicket.to_station = toStationCode
+        queryLeftTicket.train_date = date
+        queryLeftTicket.purpose_codes = "ADULT"
+        
+        MainModel.leftTickets = [QueryLeftNewDTO]()
+
+        service.getTicket(queryLeftTicket, successHandler:successHandler,failHandler: failHandler)
+    }
+    
+    func setSelectPassenger(){
+        MainModel.selectPassengers = [PassengerDTO]()
+        
+        for i in 0..<MainModel.passengers.count{
+            let p = MainModel.passengers[i]
+            if (p.isChecked && !MainModel.selectPassengers.contains(p)){
+                MainModel.selectPassengers.append(p)
+            }
+        }
+    }
+    
+    func submit(sender: NSButton){
+        if !MainModel.isGetUserInfo {
+            selectPassengerTip.show("请先登录～", forDuration: 0.1, withFlash: false)
+            return
+        }
+        
+        setSelectPassenger()
+        
+        if MainModel.selectPassengers.count == 0 {
+            selectPassengerTip.show("请先选择乘客～", forDuration: 0.1, withFlash: false)
+            return
+        }
+        
+        submitWindowController = PreOrderWindowController()
+        
+        let selectedRow = leftTicketTable.rowForView(sender)
+        print(sender.identifier)
+        print(MainModel.seatTypeNameDic[sender.identifier!])
+        
+        for passenger in MainModel.selectPassengers{
+            passenger.seatCode = MainModel.seatTypeNameDic[sender.identifier!]!
+            passenger.seatCodeName = sender.identifier!
+            print("seatCode = \(passenger.seatCode)")
+        }
+        
+        MainModel.selectedTicket = ticketQueryResult[selectedRow]
+        submitWindowController.trainInfo = ticketQueryResult[selectedRow]
+        if let window = self.view.window {
+            window.beginSheet(submitWindowController.window!, completionHandler:
+                {response in
+                if response == NSModalResponseOK{
+                    ///
+                }
+            })
+        }
+    }
+}
+
+// MARK: - NSTableViewDataSource 
+extension TicketTableViewController: NSTableViewDataSource{
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
         return ticketQueryResult.count
     }
@@ -58,7 +144,10 @@ class TicketTableViewController: NSViewController,NSTableViewDelegate,NSTableVie
             return nil
         }
     }
-    
+}
+
+// MARK: - NSTableViewDelegate
+extension TicketTableViewController: NSTableViewDelegate{
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let view = tableView.makeViewWithIdentifier(tableColumn!.identifier, owner: nil) as! NSTableCellView
         let ticketRow = ticketQueryResult[row]
@@ -176,89 +265,6 @@ class TicketTableViewController: NSViewController,NSTableViewDelegate,NSTableVie
         }
         
         return view
-    }
-    
-    func queryLeftTicket(fromStationCode: String, toStationCode: String, date: String) {
-        let successHandler = {
-            //如果成功 则从MainModel里获取数据
-            self.ticketQueryResult = MainModel.leftTickets!
-            self.leftTicketTable.reloadData()
-            
-            //成功信息提示
-            
-            //停止提示信息旋转
-            self.stopLoginTip()
-        }
-        
-        let failHandler = {
-            //失败信息提示
-            
-            //停止提示信息旋转
-            self.stopLoginTip()
-        }
-        
-        startLoginTip()
-        self.fromStationCode = fromStationCode
-        self.toStationCode = toStationCode
-        self.date = date
-        
-        let queryLeftTicket = LeftTicketDTO()
-        queryLeftTicket.from_station = fromStationCode
-        queryLeftTicket.to_station = toStationCode
-        queryLeftTicket.train_date = date
-        queryLeftTicket.purpose_codes = "ADULT"
-        
-        MainModel.leftTickets = [QueryLeftNewDTO]()
-
-        service.getTicket(queryLeftTicket, successHandler:successHandler,failHandler: failHandler)
-    }
-    
-    func setSelectPassenger(){
-        MainModel.selectPassengers = [PassengerDTO]()
-        
-        for i in 0..<MainModel.passengers.count{
-            let p = MainModel.passengers[i]
-            if (p.isChecked && !MainModel.selectPassengers.contains(p)){
-                MainModel.selectPassengers.append(p)
-            }
-        }
-    }
-    
-    func submit(sender: NSButton){
-        if !MainModel.isGetUserInfo {
-            selectPassengerTip.show("请先登录～", forDuration: 0.1, withFlash: false)
-            return
-        }
-        
-        setSelectPassenger()
-        
-        if MainModel.selectPassengers.count == 0 {
-            selectPassengerTip.show("请先选择乘客～", forDuration: 0.1, withFlash: false)
-            return
-        }
-        
-        submitWindowController = PreOrderWindowController()
-        
-        let selectedRow = leftTicketTable.rowForView(sender)
-        print(sender.identifier)
-        print(MainModel.seatTypeNameDic[sender.identifier!])
-        
-        for passenger in MainModel.selectPassengers{
-            passenger.seatCode = MainModel.seatTypeNameDic[sender.identifier!]!
-            passenger.seatCodeName = sender.identifier!
-            print("seatCode = \(passenger.seatCode)")
-        }
-        
-        MainModel.selectedTicket = ticketQueryResult[selectedRow]
-        submitWindowController.trainInfo = ticketQueryResult[selectedRow]
-        if let window = self.view.window {
-            window.beginSheet(submitWindowController.window!, completionHandler:
-                {response in
-                if response == NSModalResponseOK{
-                    ///
-                }
-            })
-        }
     }
     
 }
