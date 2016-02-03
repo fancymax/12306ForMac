@@ -8,15 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2ABAA600646E3C7CA540AD7D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A27C913A24FD5340F173A3F8 /* libPods.a */; };
-		F102AC3C1B8B01AD00022475 /* PassengerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102AC3B1B8B01AD00022475 /* PassengerDTO.swift */; };
-		F108582D1C06E1DA002EBC3B /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F108582C1C06E1DA002EBC3B /* UserDefaultManager.swift */; };
-		F110CA611C5C461B008FF907 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F110CA601C5C461B008FF907 /* LoginButton.swift */; };
-		F110CA631C5C4880008FF907 /* CalendarTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = F110CA621C5C4880008FF907 /* CalendarTemplate.png */; };
-		F110CA651C5C488A008FF907 /* SettingsTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = F110CA641C5C488A008FF907 /* SettingsTemplate.png */; };
-		F110CA691C5C4DAA008FF907 /* Group.png in Resources */ = {isa = PBXBuildFile; fileRef = F110CA681C5C4DAA008FF907 /* Group.png */; };
-		F116794E1B6F630B0039A1EA /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F116794D1B6F630B0039A1EA /* SwiftyJSON.swift */; };
-		F1173D071B7C94D6004986CC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1173D061B7C94D6004986CC /* User.swift */; };
-		F11E3CBF1C1420B40099D457 /* FlashLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11E3CBE1C1420B40099D457 /* FlashLabel.swift */; };
 		F11E3CC21C144AA60099D457 /* LoginPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11E3CC01C144AA60099D457 /* LoginPopoverViewController.swift */; };
 		F11E3CC31C144AA60099D457 /* LoginPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11E3CC11C144AA60099D457 /* LoginPopoverViewController.xib */; };
 		F11EB4601B6A368E000063E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EB45F1B6A368E000063E4 /* AppDelegate.swift */; };
@@ -24,39 +15,48 @@
 		F11EB4711B6A368E000063E4 /* Train12306Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EB4701B6A368E000063E4 /* Train12306Tests.swift */; };
 		F11EB47C1B6A36A9000063E4 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EB47A1B6A36A9000063E4 /* MainWindowController.swift */; };
 		F11EB47D1B6A36A9000063E4 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11EB47B1B6A36A9000063E4 /* MainWindowController.xib */; };
-		F126D6F01BEF40A6006A424C /* HTTPService+Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = F126D6EF1BEF40A6006A424C /* HTTPService+Order.swift */; };
-		F135E38A1BEE02DD001D697C /* HTTPService+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = F135E3891BEE02DD001D697C /* HTTPService+Login.swift */; };
-		F13FFBCA1B70CD3300A329E6 /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FFBC91B70CD3300A329E6 /* HTTPService.swift */; };
 		F13FFBCE1B70CEF600A329E6 /* StationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FFBCD1B70CEF600A329E6 /* StationData.swift */; };
-		F15379711C60388E00E690FD /* ItemCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15379701C60388E00E690FD /* ItemCellView.swift */; };
 		F168AE3D1B782BE1001009C8 /* LoginWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168AE3B1B782BE1001009C8 /* LoginWindowController.swift */; };
 		F168AE3E1B782BE1001009C8 /* LoginWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F168AE3C1B782BE1001009C8 /* LoginWindowController.xib */; };
 		F1810AD31B7DC4610055DDDB /* PreOrderWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1810AD11B7DC4610055DDDB /* PreOrderWindowController.swift */; };
 		F1810AD41B7DC4610055DDDB /* PreOrderWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1810AD21B7DC4610055DDDB /* PreOrderWindowController.xib */; };
-		F185F3931BDB6D530082AEE9 /* HTTPService+MobileTicketQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F185F3921BDB6D530082AEE9 /* HTTPService+MobileTicketQuery.swift */; };
-		F185F3951BDB72650082AEE9 /* LeftTicketDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F185F3941BDB72650082AEE9 /* LeftTicketDTO.swift */; };
-		F1988CAC1BC37FA1001D2C95 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1988CAB1BC37FA1001D2C95 /* MainModel.swift */; };
-		F1A923061C1E8F9600C0AC79 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A923051C1E8F9600C0AC79 /* AutoCompleteTextField.swift */; };
 		F1AA8AA41B9D7A200062C43D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1AA8AA31B9D7A200062C43D /* Images.xcassets */; };
-		F1BCFED31C1419A20054FCA5 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BCFED21C1419A20054FCA5 /* XCGLogger.swift */; };
-		F1D559551C11E26C004ACC00 /* QueryLeftNewDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D559541C11E26C004ACC00 /* QueryLeftNewDTO.swift */; };
 		F1D5595A1C11E2E7004ACC00 /* PassengerSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D559561C11E2E7004ACC00 /* PassengerSelectViewController.swift */; };
 		F1D5595B1C11E2E7004ACC00 /* PassengerSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D559571C11E2E7004ACC00 /* PassengerSelectViewController.xib */; };
 		F1D5595C1C11E2E7004ACC00 /* PassengerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D559581C11E2E7004ACC00 /* PassengerViewController.swift */; };
 		F1D5595D1C11E2E7004ACC00 /* PassengerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D559591C11E2E7004ACC00 /* PassengerViewController.xib */; };
-		F1DA0A0A1B70AD2D00271571 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA0A091B70AD2D00271571 /* Station.swift */; };
-		F1E7EA021C5A27D5007715C1 /* GlassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA011C5A27D5007715C1 /* GlassView.swift */; };
 		F1E7EA2D1C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA221C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c */; };
 		F1E7EA2E1C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA251C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m */; };
 		F1E7EA2F1C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA271C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m */; };
 		F1E7EA301C5A2E7B007715C1 /* INAppStoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA291C5A2E7B007715C1 /* INAppStoreWindow.m */; };
 		F1E7EA311C5A2E7B007715C1 /* INWindowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA2C1C5A2E7B007715C1 /* INWindowButton.m */; };
-		F1F1E2A01C3A201600746BF1 /* RandCodeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F1E29F1C3A201600746BF1 /* RandCodeImageView.swift */; };
-		F1F1E2A41C3A208F00746BF1 /* LunarCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F1E2A11C3A208F00746BF1 /* LunarCalendarView.swift */; };
-		F1F1E2A51C3A208F00746BF1 /* LunarCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F1E2A21C3A208F00746BF1 /* LunarCalendarView.xib */; };
-		F1F1E2A61C3A208F00746BF1 /* LunarSolarConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F1E2A31C3A208F00746BF1 /* LunarSolarConverter.swift */; };
-		F1F35DAC1B6B6FE800BB11A4 /* SwiftyRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F35DAB1B6B6FE800BB11A4 /* SwiftyRegex.swift */; };
-		F1F769631C043BC900EC1412 /* AFHTTP12306Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F769621C043BC900EC1412 /* AFHTTP12306Manager.swift */; };
+		F1F69B891C61BB5500F4C4A6 /* CalendarTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F69B861C61BB5500F4C4A6 /* CalendarTemplate.png */; };
+		F1F69B8A1C61BB5500F4C4A6 /* Group.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F69B871C61BB5500F4C4A6 /* Group.png */; };
+		F1F69B8B1C61BB5500F4C4A6 /* SettingsTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F69B881C61BB5500F4C4A6 /* SettingsTemplate.png */; };
+		F1F69B911C61BBF800F4C4A6 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69B8D1C61BBF800F4C4A6 /* AutoCompleteTextField.swift */; };
+		F1F69B921C61BBF800F4C4A6 /* FlashLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69B8E1C61BBF800F4C4A6 /* FlashLabel.swift */; };
+		F1F69B931C61BBF800F4C4A6 /* ItemCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69B8F1C61BBF800F4C4A6 /* ItemCellView.swift */; };
+		F1F69B941C61BBF800F4C4A6 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69B901C61BBF800F4C4A6 /* LoginButton.swift */; };
+		F1F69B961C61BC1E00F4C4A6 /* RandCodeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69B951C61BC1E00F4C4A6 /* RandCodeImageView.swift */; };
+		F1F69B9B1C61BC7E00F4C4A6 /* LunarCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69B981C61BC7E00F4C4A6 /* LunarCalendarView.swift */; };
+		F1F69B9C1C61BC7E00F4C4A6 /* LunarCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F69B991C61BC7E00F4C4A6 /* LunarCalendarView.xib */; };
+		F1F69B9D1C61BC7E00F4C4A6 /* LunarSolarConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69B9A1C61BC7E00F4C4A6 /* LunarSolarConverter.swift */; };
+		F1F69B9F1C61BCA700F4C4A6 /* GlassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69B9E1C61BCA700F4C4A6 /* GlassView.swift */; };
+		F1F69BA51C61BDAD00F4C4A6 /* AFHTTP12306Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BA11C61BDAD00F4C4A6 /* AFHTTP12306Manager.swift */; };
+		F1F69BA61C61BDAD00F4C4A6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BA21C61BDAD00F4C4A6 /* SwiftyJSON.swift */; };
+		F1F69BA71C61BDAD00F4C4A6 /* SwiftyRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BA31C61BDAD00F4C4A6 /* SwiftyRegex.swift */; };
+		F1F69BA81C61BDAD00F4C4A6 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BA41C61BDAD00F4C4A6 /* XCGLogger.swift */; };
+		F1F69BAA1C61BDDE00F4C4A6 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BA91C61BDDE00F4C4A6 /* UserDefaultManager.swift */; };
+		F1F69BB11C61BE6600F4C4A6 /* LeftTicketDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BAC1C61BE6600F4C4A6 /* LeftTicketDTO.swift */; };
+		F1F69BB21C61BE6600F4C4A6 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BAD1C61BE6600F4C4A6 /* MainModel.swift */; };
+		F1F69BB31C61BE6600F4C4A6 /* QueryLeftNewDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BAE1C61BE6600F4C4A6 /* QueryLeftNewDTO.swift */; };
+		F1F69BB41C61BE6600F4C4A6 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BAF1C61BE6600F4C4A6 /* Station.swift */; };
+		F1F69BB51C61BE6600F4C4A6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BB01C61BE6600F4C4A6 /* User.swift */; };
+		F1F69BB71C61BE7D00F4C4A6 /* PassengerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BB61C61BE7D00F4C4A6 /* PassengerDTO.swift */; };
+		F1F69BBC1C61BECD00F4C4A6 /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BB81C61BECD00F4C4A6 /* HTTPService.swift */; };
+		F1F69BBD1C61BECD00F4C4A6 /* HTTPService+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BB91C61BECD00F4C4A6 /* HTTPService+Login.swift */; };
+		F1F69BBE1C61BECD00F4C4A6 /* HTTPService+MobileTicketQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BBA1C61BECD00F4C4A6 /* HTTPService+MobileTicketQuery.swift */; };
+		F1F69BBF1C61BECD00F4C4A6 /* HTTPService+Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BBB1C61BECD00F4C4A6 /* HTTPService+Order.swift */; };
 		F1FF6A211BB9577B00F5AA39 /* DisclosureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF6A1F1BB9577B00F5AA39 /* DisclosureViewController.swift */; };
 		F1FF6A221BB9577B00F5AA39 /* DisclosureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1FF6A201BB9577B00F5AA39 /* DisclosureViewController.xib */; };
 		F1FF6A251BBA48EB00F5AA39 /* NormalSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF6A231BBA48EB00F5AA39 /* NormalSearchViewController.swift */; };
@@ -79,15 +79,6 @@
 		37638C4EC63999790EA677D6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4362C8555FDE04134EAB4433 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A27C913A24FD5340F173A3F8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F102AC3B1B8B01AD00022475 /* PassengerDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassengerDTO.swift; sourceTree = "<group>"; };
-		F108582C1C06E1DA002EBC3B /* UserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
-		F110CA601C5C461B008FF907 /* LoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = SOURCE_ROOT; };
-		F110CA621C5C4880008FF907 /* CalendarTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarTemplate.png; sourceTree = SOURCE_ROOT; };
-		F110CA641C5C488A008FF907 /* SettingsTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingsTemplate.png; sourceTree = SOURCE_ROOT; };
-		F110CA681C5C4DAA008FF907 /* Group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Group.png; sourceTree = SOURCE_ROOT; };
-		F116794D1B6F630B0039A1EA /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		F1173D061B7C94D6004986CC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		F11E3CBE1C1420B40099D457 /* FlashLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashLabel.swift; sourceTree = SOURCE_ROOT; };
 		F11E3CC01C144AA60099D457 /* LoginPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPopoverViewController.swift; sourceTree = "<group>"; };
 		F11E3CC11C144AA60099D457 /* LoginPopoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginPopoverViewController.xib; sourceTree = "<group>"; };
 		F11EB45A1B6A368E000063E4 /* Train12306.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Train12306.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,29 +90,17 @@
 		F11EB4701B6A368E000063E4 /* Train12306Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Train12306Tests.swift; sourceTree = "<group>"; };
 		F11EB47A1B6A36A9000063E4 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		F11EB47B1B6A36A9000063E4 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
-		F126D6EF1BEF40A6006A424C /* HTTPService+Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPService+Order.swift"; sourceTree = "<group>"; };
-		F135E3891BEE02DD001D697C /* HTTPService+Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPService+Login.swift"; sourceTree = "<group>"; };
-		F13FFBC91B70CD3300A329E6 /* HTTPService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
 		F13FFBCD1B70CEF600A329E6 /* StationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationData.swift; sourceTree = "<group>"; };
-		F15379701C60388E00E690FD /* ItemCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCellView.swift; sourceTree = "<group>"; };
 		F168AE3B1B782BE1001009C8 /* LoginWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWindowController.swift; sourceTree = "<group>"; };
 		F168AE3C1B782BE1001009C8 /* LoginWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginWindowController.xib; sourceTree = "<group>"; };
 		F1810AD11B7DC4610055DDDB /* PreOrderWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreOrderWindowController.swift; sourceTree = "<group>"; };
 		F1810AD21B7DC4610055DDDB /* PreOrderWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreOrderWindowController.xib; sourceTree = "<group>"; };
-		F185F3921BDB6D530082AEE9 /* HTTPService+MobileTicketQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPService+MobileTicketQuery.swift"; sourceTree = "<group>"; };
-		F185F3941BDB72650082AEE9 /* LeftTicketDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftTicketDTO.swift; sourceTree = "<group>"; };
-		F1988CAB1BC37FA1001D2C95 /* MainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
-		F1A923051C1E8F9600C0AC79 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = SOURCE_ROOT; };
 		F1AA8AA31B9D7A200062C43D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F1BCFED21C1419A20054FCA5 /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCGLogger.swift; path = ../XCGLogger.swift; sourceTree = "<group>"; };
 		F1CC36461B6B244C0074A014 /* Train12306-Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Train12306-Swift.h"; sourceTree = "<group>"; };
-		F1D559541C11E26C004ACC00 /* QueryLeftNewDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryLeftNewDTO.swift; sourceTree = "<group>"; };
 		F1D559561C11E2E7004ACC00 /* PassengerSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassengerSelectViewController.swift; sourceTree = "<group>"; };
 		F1D559571C11E2E7004ACC00 /* PassengerSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PassengerSelectViewController.xib; sourceTree = "<group>"; };
 		F1D559581C11E2E7004ACC00 /* PassengerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassengerViewController.swift; sourceTree = "<group>"; };
 		F1D559591C11E2E7004ACC00 /* PassengerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PassengerViewController.xib; sourceTree = "<group>"; };
-		F1DA0A091B70AD2D00271571 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
-		F1E7EA011C5A27D5007715C1 /* GlassView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlassView.swift; sourceTree = "<group>"; };
 		F1E7EA221C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = INAppStoreWindowSwizzling.c; sourceTree = "<group>"; };
 		F1E7EA231C5A2E7B007715C1 /* INAppStoreWindowSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindowSwizzling.h; sourceTree = "<group>"; };
 		F1E7EA241C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "INWindowBackgroundView+CoreUIRendering.h"; sourceTree = "<group>"; };
@@ -133,12 +112,33 @@
 		F1E7EA2A1C5A2E7B007715C1 /* INAppStoreWindowCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindowCompatibility.h; sourceTree = "<group>"; };
 		F1E7EA2B1C5A2E7B007715C1 /* INWindowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INWindowButton.h; sourceTree = "<group>"; };
 		F1E7EA2C1C5A2E7B007715C1 /* INWindowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INWindowButton.m; sourceTree = "<group>"; };
-		F1F1E29F1C3A201600746BF1 /* RandCodeImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandCodeImageView.swift; sourceTree = "<group>"; };
-		F1F1E2A11C3A208F00746BF1 /* LunarCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LunarCalendarView.swift; sourceTree = "<group>"; };
-		F1F1E2A21C3A208F00746BF1 /* LunarCalendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LunarCalendarView.xib; sourceTree = "<group>"; };
-		F1F1E2A31C3A208F00746BF1 /* LunarSolarConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LunarSolarConverter.swift; sourceTree = "<group>"; };
-		F1F35DAB1B6B6FE800BB11A4 /* SwiftyRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyRegex.swift; sourceTree = "<group>"; };
-		F1F769621C043BC900EC1412 /* AFHTTP12306Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFHTTP12306Manager.swift; sourceTree = "<group>"; };
+		F1F69B861C61BB5500F4C4A6 /* CalendarTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CalendarTemplate.png; path = Images/CalendarTemplate.png; sourceTree = "<group>"; };
+		F1F69B871C61BB5500F4C4A6 /* Group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Group.png; path = Images/Group.png; sourceTree = "<group>"; };
+		F1F69B881C61BB5500F4C4A6 /* SettingsTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SettingsTemplate.png; path = Images/SettingsTemplate.png; sourceTree = "<group>"; };
+		F1F69B8D1C61BBF800F4C4A6 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoCompleteTextField.swift; path = UserControls/AutoCompleteTextField.swift; sourceTree = "<group>"; };
+		F1F69B8E1C61BBF800F4C4A6 /* FlashLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlashLabel.swift; path = UserControls/FlashLabel.swift; sourceTree = "<group>"; };
+		F1F69B8F1C61BBF800F4C4A6 /* ItemCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemCellView.swift; path = UserControls/ItemCellView.swift; sourceTree = "<group>"; };
+		F1F69B901C61BBF800F4C4A6 /* LoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginButton.swift; path = UserControls/LoginButton.swift; sourceTree = "<group>"; };
+		F1F69B951C61BC1E00F4C4A6 /* RandCodeImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RandCodeImageView.swift; path = UserControls/RandCodeImageView.swift; sourceTree = "<group>"; };
+		F1F69B981C61BC7E00F4C4A6 /* LunarCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LunarCalendarView.swift; path = UserControls/LunarCalendar/LunarCalendarView.swift; sourceTree = "<group>"; };
+		F1F69B991C61BC7E00F4C4A6 /* LunarCalendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LunarCalendarView.xib; path = UserControls/LunarCalendar/LunarCalendarView.xib; sourceTree = "<group>"; };
+		F1F69B9A1C61BC7E00F4C4A6 /* LunarSolarConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LunarSolarConverter.swift; path = UserControls/LunarCalendar/LunarSolarConverter.swift; sourceTree = "<group>"; };
+		F1F69B9E1C61BCA700F4C4A6 /* GlassView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GlassView.swift; path = UserControls/GlassView.swift; sourceTree = "<group>"; };
+		F1F69BA11C61BDAD00F4C4A6 /* AFHTTP12306Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AFHTTP12306Manager.swift; path = Utilities/AFHTTP12306Manager.swift; sourceTree = "<group>"; };
+		F1F69BA21C61BDAD00F4C4A6 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Utilities/SwiftyJSON.swift; sourceTree = "<group>"; };
+		F1F69BA31C61BDAD00F4C4A6 /* SwiftyRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyRegex.swift; path = Utilities/SwiftyRegex.swift; sourceTree = "<group>"; };
+		F1F69BA41C61BDAD00F4C4A6 /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCGLogger.swift; path = Utilities/XCGLogger.swift; sourceTree = "<group>"; };
+		F1F69BA91C61BDDE00F4C4A6 /* UserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultManager.swift; path = Utilities/UserDefaultManager.swift; sourceTree = "<group>"; };
+		F1F69BAC1C61BE6600F4C4A6 /* LeftTicketDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeftTicketDTO.swift; path = Model/LeftTicketDTO.swift; sourceTree = "<group>"; };
+		F1F69BAD1C61BE6600F4C4A6 /* MainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainModel.swift; path = Model/MainModel.swift; sourceTree = "<group>"; };
+		F1F69BAE1C61BE6600F4C4A6 /* QueryLeftNewDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueryLeftNewDTO.swift; path = Model/QueryLeftNewDTO.swift; sourceTree = "<group>"; };
+		F1F69BAF1C61BE6600F4C4A6 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Station.swift; path = Model/Station.swift; sourceTree = "<group>"; };
+		F1F69BB01C61BE6600F4C4A6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
+		F1F69BB61C61BE7D00F4C4A6 /* PassengerDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PassengerDTO.swift; path = Model/PassengerDTO.swift; sourceTree = "<group>"; };
+		F1F69BB81C61BECD00F4C4A6 /* HTTPService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPService.swift; path = Service/HTTPService.swift; sourceTree = "<group>"; };
+		F1F69BB91C61BECD00F4C4A6 /* HTTPService+Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "HTTPService+Login.swift"; path = "Service/HTTPService+Login.swift"; sourceTree = "<group>"; };
+		F1F69BBA1C61BECD00F4C4A6 /* HTTPService+MobileTicketQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "HTTPService+MobileTicketQuery.swift"; path = "Service/HTTPService+MobileTicketQuery.swift"; sourceTree = "<group>"; };
+		F1F69BBB1C61BECD00F4C4A6 /* HTTPService+Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "HTTPService+Order.swift"; path = "Service/HTTPService+Order.swift"; sourceTree = "<group>"; };
 		F1FF6A1F1BB9577B00F5AA39 /* DisclosureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DisclosureViewController\U001b\U001b.swift"; sourceTree = "<group>"; };
 		F1FF6A201BB9577B00F5AA39 /* DisclosureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisclosureViewController.xib; sourceTree = "<group>"; };
 		F1FF6A231BBA48EB00F5AA39 /* NormalSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalSearchViewController.swift; sourceTree = "<group>"; };
@@ -216,17 +216,16 @@
 		F11EB45C1B6A368E000063E4 /* Train12306 */ = {
 			isa = PBXGroup;
 			children = (
+				F1F69BAB1C61BE1200F4C4A6 /* Model */,
+				F1F69BA01C61BD5700F4C4A6 /* Utilities */,
+				F1F69B8C1C61BB7600F4C4A6 /* UserControls */,
 				F10D9B641B8E09EA002697DE /* StaticData */,
-				F13FFBCC1B70CE7B00A329E6 /* Model */,
-				F13FFBCB1B70CE4E00A329E6 /* Lib */,
 				F13FFBC81B70CD1900A329E6 /* Service */,
 				F11EB45F1B6A368E000063E4 /* AppDelegate.swift */,
-				F108582C1C06E1DA002EBC3B /* UserDefaultManager.swift */,
 				F11EB4631B6A368E000063E4 /* MainMenu.xib */,
 				F11EB47A1B6A36A9000063E4 /* MainWindowController.swift */,
 				F11EB47B1B6A36A9000063E4 /* MainWindowController.xib */,
 				F1FF6A281BBAAB0600F5AA39 /* TicketTableViewController.swift */,
-				F15379701C60388E00E690FD /* ItemCellView.swift */,
 				F1FF6A291BBAAB0600F5AA39 /* TicketTableViewController.xib */,
 				F1FF6A231BBA48EB00F5AA39 /* NormalSearchViewController.swift */,
 				F1FF6A241BBA48EB00F5AA39 /* NormalSearchViewController.xib */,
@@ -277,50 +276,20 @@
 		F13FFBC81B70CD1900A329E6 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				F13FFBC91B70CD3300A329E6 /* HTTPService.swift */,
-				F185F3921BDB6D530082AEE9 /* HTTPService+MobileTicketQuery.swift */,
-				F135E3891BEE02DD001D697C /* HTTPService+Login.swift */,
-				F126D6EF1BEF40A6006A424C /* HTTPService+Order.swift */,
+				F1F69BB81C61BECD00F4C4A6 /* HTTPService.swift */,
+				F1F69BB91C61BECD00F4C4A6 /* HTTPService+Login.swift */,
+				F1F69BBA1C61BECD00F4C4A6 /* HTTPService+MobileTicketQuery.swift */,
+				F1F69BBB1C61BECD00F4C4A6 /* HTTPService+Order.swift */,
 			);
 			name = Service;
-			sourceTree = "<group>";
-		};
-		F13FFBCB1B70CE4E00A329E6 /* Lib */ = {
-			isa = PBXGroup;
-			children = (
-				F1F1E2A71C3A209900746BF1 /* LunarCalendar */,
-				F1F1E29F1C3A201600746BF1 /* RandCodeImageView.swift */,
-				F1A923051C1E8F9600C0AC79 /* AutoCompleteTextField.swift */,
-				F110CA601C5C461B008FF907 /* LoginButton.swift */,
-				F1BCFED21C1419A20054FCA5 /* XCGLogger.swift */,
-				F1F35DAB1B6B6FE800BB11A4 /* SwiftyRegex.swift */,
-				F116794D1B6F630B0039A1EA /* SwiftyJSON.swift */,
-				F1F769621C043BC900EC1412 /* AFHTTP12306Manager.swift */,
-				F11E3CBE1C1420B40099D457 /* FlashLabel.swift */,
-				F1E7EA011C5A27D5007715C1 /* GlassView.swift */,
-			);
-			name = Lib;
-			sourceTree = "<group>";
-		};
-		F13FFBCC1B70CE7B00A329E6 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				F1D559541C11E26C004ACC00 /* QueryLeftNewDTO.swift */,
-				F1DA0A091B70AD2D00271571 /* Station.swift */,
-				F1173D061B7C94D6004986CC /* User.swift */,
-				F102AC3B1B8B01AD00022475 /* PassengerDTO.swift */,
-				F1988CAB1BC37FA1001D2C95 /* MainModel.swift */,
-				F185F3941BDB72650082AEE9 /* LeftTicketDTO.swift */,
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 		F1A8CCB01BA8032500B4FB03 /* Asserts */ = {
 			isa = PBXGroup;
 			children = (
-				F110CA681C5C4DAA008FF907 /* Group.png */,
-				F110CA641C5C488A008FF907 /* SettingsTemplate.png */,
-				F110CA621C5C4880008FF907 /* CalendarTemplate.png */,
+				F1F69B861C61BB5500F4C4A6 /* CalendarTemplate.png */,
+				F1F69B871C61BB5500F4C4A6 /* Group.png */,
+				F1F69B881C61BB5500F4C4A6 /* SettingsTemplate.png */,
 			);
 			name = Asserts;
 			sourceTree = "<group>";
@@ -351,14 +320,53 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		F1F1E2A71C3A209900746BF1 /* LunarCalendar */ = {
+		F1F69B8C1C61BB7600F4C4A6 /* UserControls */ = {
 			isa = PBXGroup;
 			children = (
-				F1F1E2A11C3A208F00746BF1 /* LunarCalendarView.swift */,
-				F1F1E2A21C3A208F00746BF1 /* LunarCalendarView.xib */,
-				F1F1E2A31C3A208F00746BF1 /* LunarSolarConverter.swift */,
+				F1F69B971C61BC6E00F4C4A6 /* LunarCalendar */,
+				F1F69B9E1C61BCA700F4C4A6 /* GlassView.swift */,
+				F1F69B951C61BC1E00F4C4A6 /* RandCodeImageView.swift */,
+				F1F69B8D1C61BBF800F4C4A6 /* AutoCompleteTextField.swift */,
+				F1F69B8E1C61BBF800F4C4A6 /* FlashLabel.swift */,
+				F1F69B8F1C61BBF800F4C4A6 /* ItemCellView.swift */,
+				F1F69B901C61BBF800F4C4A6 /* LoginButton.swift */,
+			);
+			name = UserControls;
+			sourceTree = "<group>";
+		};
+		F1F69B971C61BC6E00F4C4A6 /* LunarCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				F1F69B981C61BC7E00F4C4A6 /* LunarCalendarView.swift */,
+				F1F69B991C61BC7E00F4C4A6 /* LunarCalendarView.xib */,
+				F1F69B9A1C61BC7E00F4C4A6 /* LunarSolarConverter.swift */,
 			);
 			name = LunarCalendar;
+			sourceTree = "<group>";
+		};
+		F1F69BA01C61BD5700F4C4A6 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F1F69BA91C61BDDE00F4C4A6 /* UserDefaultManager.swift */,
+				F1F69BA11C61BDAD00F4C4A6 /* AFHTTP12306Manager.swift */,
+				F1F69BA21C61BDAD00F4C4A6 /* SwiftyJSON.swift */,
+				F1F69BA31C61BDAD00F4C4A6 /* SwiftyRegex.swift */,
+				F1F69BA41C61BDAD00F4C4A6 /* XCGLogger.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		F1F69BAB1C61BE1200F4C4A6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F1F69BB61C61BE7D00F4C4A6 /* PassengerDTO.swift */,
+				F1F69BAC1C61BE6600F4C4A6 /* LeftTicketDTO.swift */,
+				F1F69BAD1C61BE6600F4C4A6 /* MainModel.swift */,
+				F1F69BAE1C61BE6600F4C4A6 /* QueryLeftNewDTO.swift */,
+				F1F69BAF1C61BE6600F4C4A6 /* Station.swift */,
+				F1F69BB01C61BE6600F4C4A6 /* User.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -447,19 +455,19 @@
 			files = (
 				F11EB47D1B6A36A9000063E4 /* MainWindowController.xib in Resources */,
 				F1AA8AA41B9D7A200062C43D /* Images.xcassets in Resources */,
+				F1F69B9C1C61BC7E00F4C4A6 /* LunarCalendarView.xib in Resources */,
 				F1D5595B1C11E2E7004ACC00 /* PassengerSelectViewController.xib in Resources */,
 				F1FF6A221BB9577B00F5AA39 /* DisclosureViewController.xib in Resources */,
-				F110CA651C5C488A008FF907 /* SettingsTemplate.png in Resources */,
 				F11E3CC31C144AA60099D457 /* LoginPopoverViewController.xib in Resources */,
 				F1810AD41B7DC4610055DDDB /* PreOrderWindowController.xib in Resources */,
 				F1FF6A2B1BBAAB0600F5AA39 /* TicketTableViewController.xib in Resources */,
+				F1F69B8A1C61BB5500F4C4A6 /* Group.png in Resources */,
 				F1D5595D1C11E2E7004ACC00 /* PassengerViewController.xib in Resources */,
 				F11EB4651B6A368E000063E4 /* MainMenu.xib in Resources */,
-				F110CA691C5C4DAA008FF907 /* Group.png in Resources */,
-				F1F1E2A51C3A208F00746BF1 /* LunarCalendarView.xib in Resources */,
-				F110CA631C5C4880008FF907 /* CalendarTemplate.png in Resources */,
+				F1F69B891C61BB5500F4C4A6 /* CalendarTemplate.png in Resources */,
 				F1FF6A261BBA48EB00F5AA39 /* NormalSearchViewController.xib in Resources */,
 				F168AE3E1B782BE1001009C8 /* LoginWindowController.xib in Resources */,
+				F1F69B8B1C61BB5500F4C4A6 /* SettingsTemplate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,45 +518,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F108582D1C06E1DA002EBC3B /* UserDefaultManager.swift in Sources */,
-				F11E3CBF1C1420B40099D457 /* FlashLabel.swift in Sources */,
-				F102AC3C1B8B01AD00022475 /* PassengerDTO.swift in Sources */,
-				F1A923061C1E8F9600C0AC79 /* AutoCompleteTextField.swift in Sources */,
+				F1F69B9F1C61BCA700F4C4A6 /* GlassView.swift in Sources */,
+				F1F69BA81C61BDAD00F4C4A6 /* XCGLogger.swift in Sources */,
+				F1F69BA61C61BDAD00F4C4A6 /* SwiftyJSON.swift in Sources */,
+				F1F69BB21C61BE6600F4C4A6 /* MainModel.swift in Sources */,
+				F1F69BBE1C61BECD00F4C4A6 /* HTTPService+MobileTicketQuery.swift in Sources */,
 				F1810AD31B7DC4610055DDDB /* PreOrderWindowController.swift in Sources */,
+				F1F69BBD1C61BECD00F4C4A6 /* HTTPService+Login.swift in Sources */,
+				F1F69B931C61BBF800F4C4A6 /* ItemCellView.swift in Sources */,
 				F11EB47C1B6A36A9000063E4 /* MainWindowController.swift in Sources */,
-				F1D559551C11E26C004ACC00 /* QueryLeftNewDTO.swift in Sources */,
 				F168AE3D1B782BE1001009C8 /* LoginWindowController.swift in Sources */,
+				F1F69BAA1C61BDDE00F4C4A6 /* UserDefaultManager.swift in Sources */,
 				F1E7EA2F1C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m in Sources */,
 				F1E7EA2D1C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c in Sources */,
-				F1E7EA021C5A27D5007715C1 /* GlassView.swift in Sources */,
 				F11EB4601B6A368E000063E4 /* AppDelegate.swift in Sources */,
-				F116794E1B6F630B0039A1EA /* SwiftyJSON.swift in Sources */,
-				F1F1E2A61C3A208F00746BF1 /* LunarSolarConverter.swift in Sources */,
+				F1F69B9D1C61BC7E00F4C4A6 /* LunarSolarConverter.swift in Sources */,
+				F1F69B961C61BC1E00F4C4A6 /* RandCodeImageView.swift in Sources */,
 				F1D5595C1C11E2E7004ACC00 /* PassengerViewController.swift in Sources */,
+				F1F69BBF1C61BECD00F4C4A6 /* HTTPService+Order.swift in Sources */,
 				F1FF6A251BBA48EB00F5AA39 /* NormalSearchViewController.swift in Sources */,
-				F135E38A1BEE02DD001D697C /* HTTPService+Login.swift in Sources */,
-				F1F35DAC1B6B6FE800BB11A4 /* SwiftyRegex.swift in Sources */,
-				F1988CAC1BC37FA1001D2C95 /* MainModel.swift in Sources */,
-				F126D6F01BEF40A6006A424C /* HTTPService+Order.swift in Sources */,
+				F1F69BB51C61BE6600F4C4A6 /* User.swift in Sources */,
 				F1FF6A2A1BBAAB0600F5AA39 /* TicketTableViewController.swift in Sources */,
 				F11E3CC21C144AA60099D457 /* LoginPopoverViewController.swift in Sources */,
-				F1BCFED31C1419A20054FCA5 /* XCGLogger.swift in Sources */,
 				F1D5595A1C11E2E7004ACC00 /* PassengerSelectViewController.swift in Sources */,
-				F110CA611C5C461B008FF907 /* LoginButton.swift in Sources */,
 				F1E7EA301C5A2E7B007715C1 /* INAppStoreWindow.m in Sources */,
 				F1E7EA311C5A2E7B007715C1 /* INWindowButton.m in Sources */,
-				F1F769631C043BC900EC1412 /* AFHTTP12306Manager.swift in Sources */,
-				F1F1E2A01C3A201600746BF1 /* RandCodeImageView.swift in Sources */,
-				F1173D071B7C94D6004986CC /* User.swift in Sources */,
-				F15379711C60388E00E690FD /* ItemCellView.swift in Sources */,
-				F185F3951BDB72650082AEE9 /* LeftTicketDTO.swift in Sources */,
-				F1DA0A0A1B70AD2D00271571 /* Station.swift in Sources */,
-				F185F3931BDB6D530082AEE9 /* HTTPService+MobileTicketQuery.swift in Sources */,
+				F1F69B911C61BBF800F4C4A6 /* AutoCompleteTextField.swift in Sources */,
+				F1F69B921C61BBF800F4C4A6 /* FlashLabel.swift in Sources */,
+				F1F69BB31C61BE6600F4C4A6 /* QueryLeftNewDTO.swift in Sources */,
 				F1E7EA2E1C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m in Sources */,
+				F1F69BB11C61BE6600F4C4A6 /* LeftTicketDTO.swift in Sources */,
 				F13FFBCE1B70CEF600A329E6 /* StationData.swift in Sources */,
+				F1F69BB71C61BE7D00F4C4A6 /* PassengerDTO.swift in Sources */,
 				F1FF6A211BB9577B00F5AA39 /* DisclosureViewController.swift in Sources */,
-				F1F1E2A41C3A208F00746BF1 /* LunarCalendarView.swift in Sources */,
-				F13FFBCA1B70CD3300A329E6 /* HTTPService.swift in Sources */,
+				F1F69BA71C61BDAD00F4C4A6 /* SwiftyRegex.swift in Sources */,
+				F1F69BB41C61BE6600F4C4A6 /* Station.swift in Sources */,
+				F1F69B9B1C61BC7E00F4C4A6 /* LunarCalendarView.swift in Sources */,
+				F1F69BBC1C61BECD00F4C4A6 /* HTTPService.swift in Sources */,
+				F1F69BA51C61BDAD00F4C4A6 /* AFHTTP12306Manager.swift in Sources */,
+				F1F69B941C61BBF800F4C4A6 /* LoginButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
