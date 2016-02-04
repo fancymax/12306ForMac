@@ -16,6 +16,7 @@
 		F11EB47C1B6A36A9000063E4 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EB47A1B6A36A9000063E4 /* MainWindowController.swift */; };
 		F11EB47D1B6A36A9000063E4 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11EB47B1B6A36A9000063E4 /* MainWindowController.xib */; };
 		F13FFBCE1B70CEF600A329E6 /* StationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FFBCD1B70CEF600A329E6 /* StationData.swift */; };
+		F17C8BB31C63767100837392 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = F17C8BB21C63767100837392 /* README.md */; };
 		F19D3D0A1C62120D005369CF /* srca.cer in Resources */ = {isa = PBXBuildFile; fileRef = F19D3D091C62120D005369CF /* srca.cer */; };
 		F19D3D101C621598005369CF /* LoginWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19D3D0C1C621598005369CF /* LoginWindowController.swift */; };
 		F19D3D111C621598005369CF /* LoginWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19D3D0D1C621598005369CF /* LoginWindowController.xib */; };
@@ -92,6 +93,7 @@
 		F11EB47A1B6A36A9000063E4 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		F11EB47B1B6A36A9000063E4 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
 		F13FFBCD1B70CEF600A329E6 /* StationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationData.swift; sourceTree = "<group>"; };
+		F17C8BB21C63767100837392 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		F19D3D091C62120D005369CF /* srca.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = srca.cer; sourceTree = SOURCE_ROOT; };
 		F19D3D0C1C621598005369CF /* LoginWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginWindowController.swift; path = Sheets/LoginWindowController.swift; sourceTree = "<group>"; };
 		F19D3D0D1C621598005369CF /* LoginWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginWindowController.xib; path = Sheets/LoginWindowController.xib; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 		F11EB45C1B6A368E000063E4 /* Train12306 */ = {
 			isa = PBXGroup;
 			children = (
+				F17C8BB21C63767100837392 /* README.md */,
 				F19D3D091C62120D005369CF /* srca.cer */,
 				F1F69BAB1C61BE1200F4C4A6 /* Model */,
 				F1F69BA01C61BD5700F4C4A6 /* Utilities */,
@@ -552,6 +555,7 @@
 				F1FF6A2A1BBAAB0600F5AA39 /* TicketTableViewController.swift in Sources */,
 				F11E3CC21C144AA60099D457 /* LoginPopoverViewController.swift in Sources */,
 				F1D5595A1C11E2E7004ACC00 /* PassengerSelectViewController.swift in Sources */,
+				F17C8BB31C63767100837392 /* README.md in Sources */,
 				F1E7EA301C5A2E7B007715C1 /* INAppStoreWindow.m in Sources */,
 				F1E7EA311C5A2E7B007715C1 /* INWindowButton.m in Sources */,
 				F1F69B911C61BBF800F4C4A6 /* AutoCompleteTextField.swift in Sources */,

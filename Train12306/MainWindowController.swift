@@ -32,7 +32,7 @@ class MainWindowController: NSWindowController,LoginPopoverDelegate{
     }
     
     func didLoginOut() {
-        loginButton.title = "未登录"
+        loginButton.title = "登录 ▾"
         login()
     }
     
@@ -73,7 +73,6 @@ class MainWindowController: NSWindowController,LoginPopoverDelegate{
         
         aWindow.titleBarDrawingBlock = {[unowned self] drawsAsMainWindow, drawingRect, edge, clippingPath  in
             NSNotificationCenter.defaultCenter().postNotificationName(NSWindowDidMoveNotification, object:self.window)
-            
         }
         
         let titleView = aWindow.titleBarView
@@ -100,5 +99,5 @@ class MainWindowController: NSWindowController,LoginPopoverDelegate{
         
         self.window?.recalculateKeyViewLoop()
     }
-    
 }
+
