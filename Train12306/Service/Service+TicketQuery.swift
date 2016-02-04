@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension HTTPService {
+extension Service {
     
     func getTicket(leftTicketDTO:LeftTicketDTO,successHandler:()->(),failHandler:()->())
     {
@@ -18,14 +18,14 @@ extension HTTPService {
         queryOperation.addDependency(logOperation)
         logOperation.addDependency(initOperation)
         //开始运行
-        shareHTTPManager.operationQueue.addOperations([initOperation,logOperation,queryOperation], waitUntilFinished: false)
+        Service.shareManager.operationQueue.addOperations([initOperation,logOperation,queryOperation], waitUntilFinished: false)
     }
     
     //leftTicket/init
     func getLeftTicketInit()->AFHTTPRequestOperation
     {
-        shareHTTPManager.responseSerializer = AFHTTPResponseSerializer()
-        return shareHTTPManager.OperationForGET(
+        Service.shareManager.responseSerializer = AFHTTPResponseSerializer()
+        return Service.shareManager.OperationForGET(
             "https://kyfw.12306.cn/otn/leftTicket/init",
             parameters: nil,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
@@ -42,16 +42,16 @@ extension HTTPService {
         let url = "https://kyfw.12306.cn/otn/leftTicket/log?" + queryParam
         
         setReferLeftTicketInit()
-        shareHTTPManager.responseSerializer = AFJSONResponseSerializer()
-        return shareHTTPManager.OperationForGET(url, parameters: nil,
+        Service.shareManager.responseSerializer = AFJSONResponseSerializer()
+        return Service.shareManager.OperationForGET(url, parameters: nil,
             success: {(operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 
-                Swift.print(self.shareHTTPManager.requestSerializer.HTTPRequestHeaders)
+                Swift.print(Service.shareManager.requestSerializer.HTTPRequestHeaders)
                 Swift.print("response Header:\(operation.response?.allHeaderFields)")
                 
                 let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies
                 let cookieStr = NSHTTPCookie.requestHeaderFieldsWithCookies(cookies!)
-                self.shareHTTPManager.requestSerializer.setValue(cookieStr["Cookie"], forHTTPHeaderField:"Cookie")
+                Service.shareManager.requestSerializer.setValue(cookieStr["Cookie"], forHTTPHeaderField:"Cookie")
                 
                 print("url cookies str = \(cookieStr)")
             },
@@ -67,8 +67,8 @@ extension HTTPService {
         let url = "https://kyfw.12306.cn/otn/leftTicket/queryT?" + queryParam
         
         setReferLeftTicketInit()
-        shareHTTPManager.responseSerializer = AFJSONResponseSerializer()
-        return shareHTTPManager.OperationForGET(url, parameters: nil,
+        Service.shareManager.responseSerializer = AFJSONResponseSerializer()
+        return Service.shareManager.OperationForGET(url, parameters: nil,
             success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) in
                 let jsonData = JSON(responseObject)["data"]
                 guard jsonData.count > 0 else {

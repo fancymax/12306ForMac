@@ -9,13 +9,13 @@
 import JavaScriptCore
 import Cocoa
 
-extension HTTPService {
+extension Service {
     
     func loginOut()
     {
         let url = "https://kyfw.12306.cn/otn/login/loginOut"
         setReferLeftTicketInit()
-        shareHTTPManager.GET(url,parameters: nil,
+        Service.shareManager.GET(url,parameters: nil,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 print(url)
             },
@@ -31,8 +31,8 @@ extension HTTPService {
         //<script src="/otn/dynamicJs/luzztpx" type="text/javascript" xml:space="preserve"></script>
         let url = "https://kyfw.12306.cn/otn/login/init"
         setReferLeftTicketInit()
-        shareHTTPManager.responseSerializer = AFHTTPResponseSerializer()
-        shareHTTPManager.GET(url,
+        Service.shareManager.responseSerializer = AFHTTPResponseSerializer()
+        Service.shareManager.GET(url,
             parameters: nil,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 print(url)
@@ -48,8 +48,8 @@ extension HTTPService {
         let url = "https://kyfw.12306.cn/otn/passcodeNew/getPassCodeNew?module=login&rand=sjrand&" + random.description
         
         setReferLoginInit()
-        shareHTTPManager.responseSerializer = AFImageResponseSerializer()
-        shareHTTPManager.GET(url,parameters: nil,
+        Service.shareManager.responseSerializer = AFImageResponseSerializer()
+        Service.shareManager.GET(url,parameters: nil,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 if let image = responseObject as? NSImage
                 {
@@ -71,7 +71,7 @@ extension HTTPService {
     
     func login(user:String,passWord:String,randCodeStr:String,successHandler:()->(),failHandler:()->()){
         let cancelOperations = {
-            self.shareHTTPManager.operationQueue.cancelAllOperations()
+            Service.shareManager.operationQueue.cancelAllOperations()
         }
         
         let checkRandOperation = checkRandCodeAnsyn(randCodeStr, successHandler: {},failHandler: cancelOperations)
@@ -83,7 +83,7 @@ extension HTTPService {
         userLoginOperation.addDependency(loginUserOperation)
         initMy12306Operation.addDependency(userLoginOperation)
         
-        shareHTTPManager.operationQueue.addOperations([checkRandOperation,loginUserOperation,initMy12306Operation], waitUntilFinished: false)
+        Service.shareManager.operationQueue.addOperations([checkRandOperation,loginUserOperation,initMy12306Operation], waitUntilFinished: false)
     }
     
     func checkRandCodeAnsyn(randCodeStr:String,successHandler:()->(),failHandler:()->())->AFHTTPRequestOperation
@@ -92,8 +92,8 @@ extension HTTPService {
         let params = ["randCode":randCodeStr,"rand":"sjrand"]
         
         setReferLoginInit()
-        shareHTTPManager.responseSerializer = AFJSONResponseSerializer()
-        return shareHTTPManager.OperationForPOST(url,parameters: params,
+        Service.shareManager.responseSerializer = AFJSONResponseSerializer()
+        return Service.shareManager.OperationForPOST(url,parameters: params,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 guard let msg = JSON(responseObject)["data"]["msg"].string where msg == "TRUE" else{
                     logger.error("randCodeStr:\(randCodeStr) json:\(JSON(responseObject))")
@@ -114,8 +114,8 @@ extension HTTPService {
         let params = ["loginUserDTO.user_name":user,"userDTO.password":passWord,"randCode":randCodeStr]
         
         setReferLoginInit()
-        shareHTTPManager.responseSerializer = AFJSONResponseSerializer()
-        return shareHTTPManager.OperationForPOST(url,parameters: params,
+        Service.shareManager.responseSerializer = AFJSONResponseSerializer()
+        return Service.shareManager.OperationForPOST(url,parameters: params,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 guard let loginCheck = JSON(responseObject)["data"]["loginCheck"].string where loginCheck == "Y" else{
                     logger.error("\(JSON(responseObject))")
@@ -137,8 +137,8 @@ extension HTTPService {
         let params = ["_json_att":""]
         
         setReferLoginInit()
-        shareHTTPManager.responseSerializer = AFJSONResponseSerializer()
-        return shareHTTPManager.OperationForPOST(url,parameters: params,
+        Service.shareManager.responseSerializer = AFJSONResponseSerializer()
+        return Service.shareManager.OperationForPOST(url,parameters: params,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 
             },
@@ -152,8 +152,8 @@ extension HTTPService {
         let url = "https://kyfw.12306.cn/otn/index/initMy12306"
         
         setReferLoginInit()
-        shareHTTPManager.responseSerializer = AFHTTPResponseSerializer()
-        return shareHTTPManager.OperationForGET(url,parameters: nil,
+        Service.shareManager.responseSerializer = AFHTTPResponseSerializer()
+        return Service.shareManager.OperationForGET(url,parameters: nil,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 if let content = NSString(data: (responseObject as! NSData), encoding: NSUTF8StringEncoding) as? String
                 {

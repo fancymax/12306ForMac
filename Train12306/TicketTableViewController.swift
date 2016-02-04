@@ -20,7 +20,7 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     
     @IBOutlet weak var selectPassengerTip: FlashLabel!
     
-    var service = HTTPService()
+    var service = Service()
     var ticketQueryResult = [QueryLeftNewDTO]()
     var toStationCode:String?
     var fromStationCode:String?

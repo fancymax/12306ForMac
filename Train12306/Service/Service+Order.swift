@@ -8,7 +8,7 @@
 
 import Cocoa
 
-extension HTTPService{
+extension Service{
     internal func getPassengerStr(passengers:[PassengerDTO]) ->(String,String){
         var passengerStr = ""
         var oldPassengerStr = ""
@@ -32,8 +32,8 @@ extension HTTPService{
     {
         let url = "https://kyfw.12306.cn/otn/confirmPassenger/getPassengerDTOs"
         setReferLeftTicketInit()
-        shareHTTPManager.responseSerializer = AFJSONResponseSerializer()
-        shareHTTPManager.POST(url,parameters: nil,
+        Service.shareManager.responseSerializer = AFJSONResponseSerializer()
+        Service.shareManager.POST(url,parameters: nil,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 let jsonData = JSON(responseObject)["data"]
                 guard jsonData["normal_passengers"].count > 0 else {
@@ -57,7 +57,7 @@ extension HTTPService{
     
     func getPreOrderImage(successHandler:(image:NSImage) -> (),failHandler:()->()){
         let cancelOperations = {
-            self.shareHTTPManager.operationQueue.cancelAllOperations()
+            Service.shareManager.operationQueue.cancelAllOperations()
         }
         
         //这里逻辑有问题
@@ -70,7 +70,7 @@ extension HTTPService{
         initDCOperation.addDependency(submitOrderOperation)
         getImageOperation.addDependency(initDCOperation)
         
-        shareHTTPManager.operationQueue.addOperations([checkUserOperation,submitOrderOperation,initDCOperation,getImageOperation], waitUntilFinished: false)
+        Service.shareManager.operationQueue.addOperations([checkUserOperation,submitOrderOperation,initDCOperation,getImageOperation], waitUntilFinished: false)
     }
     
     func checkUserForPC(successHandler:()->(),failHandler:()->())->AFHTTPRequestOperation
@@ -79,8 +79,8 @@ extension HTTPService{
         let params = ["_json_att":""]
         
         setReferLeftTicketInit()
-        shareHTTPManager.responseSerializer = AFJSONResponseSerializer()
-        return shareHTTPManager.OperationForPOST(url,parameters: params,
+        Service.shareManager.responseSerializer = AFJSONResponseSerializer()
+        return Service.shareManager.OperationForPOST(url,parameters: params,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 
                 guard JSON(responseObject)["data"]["flag"].bool == true else {
@@ -110,8 +110,8 @@ extension HTTPService{
             "undefined":""]
         
         setReferLeftTicketInit()
-        shareHTTPManager.responseSerializer = AFJSONResponseSerializer()
-        return shareHTTPManager.OperationForPOST(url,parameters: params,
+        Service.shareManager.responseSerializer = AFJSONResponseSerializer()
+        return Service.shareManager.OperationForPOST(url,parameters: params,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 guard JSON(responseObject)["data"].string == "Y" else {
                     logger.error("\(JSON(responseObject))")
@@ -132,8 +132,8 @@ extension HTTPService{
         let params = ["_json_att":""]
         
         setReferLeftTicketInit()
-        shareHTTPManager.responseSerializer = AFHTTPResponseSerializer()
-        return shareHTTPManager.OperationForPOST(url,parameters: params,
+        Service.shareManager.responseSerializer = AFHTTPResponseSerializer()
+        return Service.shareManager.OperationForPOST(url,parameters: params,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 if let content = NSString(data: (responseObject as! NSData), encoding: NSUTF8StringEncoding) as? String
                 {
@@ -192,8 +192,8 @@ extension HTTPService{
         let params = ["_json_att":"","REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken!]
         
         setReferLeftTicketInit()
-        shareHTTPManager.responseSerializer = AFJSONResponseSerializer()
-        shareHTTPManager.POST(url,parameters: params,
+        Service.shareManager.responseSerializer = AFJSONResponseSerializer()
+        Service.shareManager.POST(url,parameters: params,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 let jsonData = JSON(responseObject)["data"]
                 guard jsonData["normal_passengers"].count > 0 else {
@@ -222,8 +222,8 @@ extension HTTPService{
         let url = "https://kyfw.12306.cn/otn/passcodeNew/getPassCodeNew?module=passenger&rand=randp&0.21980984136462212"
         
         setReferLeftTicketInit()
-        shareHTTPManager.responseSerializer = AFImageResponseSerializer()
-        return shareHTTPManager.OperationForGET(url,parameters: nil,
+        Service.shareManager.responseSerializer = AFImageResponseSerializer()
+        return Service.shareManager.OperationForGET(url,parameters: nil,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 if let image = responseObject as? NSImage
                 {
@@ -243,7 +243,7 @@ extension HTTPService{
     
     func order(randCodeStr:String,successHandler:()->(),failHandler:()->()){
         let failHandlerWrapper = {
-            self.shareHTTPManager.operationQueue.cancelAllOperations()
+            Service.shareManager.operationQueue.cancelAllOperations()
         }
         
         let checkCodeOperation = checkRandCodeAnsynForPassenger(randCodeStr, successHandler: {}, failHandler: failHandlerWrapper)
@@ -267,7 +267,7 @@ extension HTTPService{
         delayOperation2.addDependency(queryOperation1)
         queryOperation2.addDependency(delayOperation2)
         
-        shareHTTPManager.operationQueue.addOperations([checkCodeOperation,checkOrderOperation,getQueueOperation,delayOperation,confirmOperation,delayOperation1,delayOperation2,queryOperation1,queryOperation2], waitUntilFinished: false)
+        Service.shareManager.operationQueue.addOperations([checkCodeOperation,checkOrderOperation,getQueueOperation,delayOperation,confirmOperation,delayOperation1,delayOperation2,queryOperation1,queryOperation2], waitUntilFinished: false)
     }
     
     func checkRandCodeAnsynForPassenger(randCodeStr:String,successHandler:()->(),failHandler:()->())->AFHTTPRequestOperation
@@ -280,8 +280,8 @@ extension HTTPService{
             "REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken!]
         
         setReferInitDC()
-        shareHTTPManager.responseSerializer = AFJSONResponseSerializer()
-        return shareHTTPManager.OperationForPOST(url,parameters: params,
+        Service.shareManager.responseSerializer = AFJSONResponseSerializer()
+        return Service.shareManager.OperationForPOST(url,parameters: params,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 guard JSON(responseObject)["data"]["result"].string == "1" else {
                     logger.error("\(JSON(responseObject))")
@@ -312,8 +312,8 @@ extension HTTPService{
             "REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken!]
         
         setReferInitDC()
-        shareHTTPManager.responseSerializer = AFJSONResponseSerializer()
-        return shareHTTPManager.OperationForPOST(url,parameters: params,
+        Service.shareManager.responseSerializer = AFJSONResponseSerializer()
+        return Service.shareManager.OperationForPOST(url,parameters: params,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 
                 guard JSON(responseObject)["data"]["submitStatus"].bool == true else{
@@ -345,8 +345,8 @@ extension HTTPService{
             "REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken!]
         
         setReferInitDC()
-        shareHTTPManager.responseSerializer = AFJSONResponseSerializer()
-        return shareHTTPManager.OperationForPOST(url,parameters: params,
+        Service.shareManager.responseSerializer = AFJSONResponseSerializer()
+        return Service.shareManager.OperationForPOST(url,parameters: params,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 let json = JSON(responseObject)
                 logger.debug("\(json)")
@@ -374,8 +374,8 @@ extension HTTPService{
             "REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken!]
        
         setReferInitDC()
-        shareHTTPManager.responseSerializer = AFJSONResponseSerializer()
-        return shareHTTPManager.OperationForPOST(url,parameters: params,
+        Service.shareManager.responseSerializer = AFJSONResponseSerializer()
+        return Service.shareManager.OperationForPOST(url,parameters: params,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 guard JSON(responseObject)["data"]["submitStatus"].bool == true else {
                     logger.error("\(JSON(responseObject))")
@@ -398,8 +398,8 @@ extension HTTPService{
         let params = "random=1446560572126&tourFlag=dc&_json_att=&REPEAT_SUBMIT_TOKEN=\(MainModel.globalRepeatSubmitToken!)"
         
         setReferInitDC()
-        shareHTTPManager.responseSerializer = AFJSONResponseSerializer()
-        return shareHTTPManager.OperationForGET(url+params,parameters: nil,
+        Service.shareManager.responseSerializer = AFJSONResponseSerializer()
+        return Service.shareManager.OperationForGET(url+params,parameters: nil,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 guard let orderId = JSON(responseObject)["data"]["orderId"].string else{
                     logger.error("\(JSON(responseObject))")

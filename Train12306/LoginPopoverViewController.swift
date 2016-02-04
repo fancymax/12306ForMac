@@ -14,7 +14,7 @@ protocol LoginPopoverDelegate{
 
 class LoginPopoverViewController: NSViewController {
     
-    let service = HTTPService()
+    let service = Service()
     var delegate:LoginPopoverDelegate?
 
     override func viewDidLoad() {

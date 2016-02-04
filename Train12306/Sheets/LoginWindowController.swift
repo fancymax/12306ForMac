@@ -19,7 +19,7 @@ class LoginWindowController: NSWindowController{
     @IBOutlet weak var loadingTipView: GlassView!
     @IBOutlet weak var logStateLabel: FlashLabel!
     
-    let service = HTTPService()
+    let service = Service()
     
     @IBAction func freshImage(sender: NSButton)
     {

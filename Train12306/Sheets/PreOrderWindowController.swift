@@ -26,7 +26,7 @@ class PreOrderWindowController: NSWindowController,NSTableViewDataSource,NSTable
     
     @IBOutlet weak var orderId: NSTextField!
     
-    let service = HTTPService()
+    let service = Service()
     
     @IBAction func FreshImage(sender: NSButton) {
         freshImage()
@@ -91,7 +91,7 @@ class PreOrderWindowController: NSWindowController,NSTableViewDataSource,NSTable
         }
         
         let getImageOperation = service.getPassCodeNewForPassenger(successHandler: handler, failHandler:{})
-        service.shareHTTPManager.operationQueue.addOperations([getImageOperation], waitUntilFinished: false)
+        Service.shareManager.operationQueue.addOperations([getImageOperation], waitUntilFinished: false)
     }
     
     override var windowNibName: String{
