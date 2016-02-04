@@ -47,12 +47,19 @@ class MainModel{
     
     static var orderId:String?
     
+    static var leftTickets:[QueryLeftNewDTO]?
+    
+    static var CLeftTicketUrl:String?
+    static var isSaveQueryLog:Bool?
+    static var dynamicJs:String?
+    
     //for PC
     static var globalRepeatSubmitToken:String?
     static var key_check_isChange:String?
     static var train_location:String?
     //"'ypInfoDetail':'O047850026O047853081M059350008'"
     static var ypInfoDetail:String?
+    
     
     static func ticketPriceBy(indentifier:String) -> Double{
         if ypInfoDetail != nil{
@@ -83,6 +90,5 @@ class MainModel{
         }
     }
     
-    static var leftTickets:[QueryLeftNewDTO]?
 }
 

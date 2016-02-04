@@ -17,7 +17,7 @@ extension Service {
         let queryOperation = getLeftTicketQuery(leftTicketDTO, successHandler: successHandler, failHandler: failHandler)
         queryOperation.addDependency(logOperation)
         logOperation.addDependency(initOperation)
-        //开始运行
+        
         Service.shareManager.operationQueue.addOperations([initOperation,logOperation,queryOperation], waitUntilFinished: false)
     }
     
@@ -29,7 +29,41 @@ extension Service {
             "https://kyfw.12306.cn/otn/leftTicket/init",
             parameters: nil,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
-                
+                if let content = NSString(data: (responseObject as! NSData), encoding: NSUTF8StringEncoding) as? String
+                {
+                    // var CLeftTicketUrl = 'leftTicket/queryT';
+                    if let matches = Regex("var CLeftTicketUrl = '([^']+)'").getMatches(content){
+                        MainModel.CLeftTicketUrl = matches[0][0]
+                        logger.debug("CLeftTicketUrl = \(MainModel.CLeftTicketUrl!)")
+                    }
+                    else{
+                        logger.error("fail to get CLeftTicketUrl:\(content)")
+                    }
+                    
+                    // var isSaveQueryLog='Y';
+                    if let matches = Regex("var isSaveQueryLog='([^']+)'").getMatches(content){
+                        let isSaveQueryLogStr = matches[0][0]
+                        if isSaveQueryLogStr == "Y" {
+                            MainModel.isSaveQueryLog = true
+                        }
+                        else{
+                            MainModel.isSaveQueryLog = false
+                        }
+                        logger.debug("isSaveQueryLogStr = \(isSaveQueryLogStr) \(MainModel.isSaveQueryLog)")
+                    }
+                    else{
+                        logger.error("fail to get isSaveQueryLog:\(content)")
+                    }
+                    
+                    // src="/otn/dynamicJs/qdrtdtw"
+                    if let matches = Regex("src=\"/otn/dynamicJs/([^\"]+)\"").getMatches(content){
+                        MainModel.dynamicJs = matches[0][0]
+                        logger.debug("dynamicJs = \(MainModel.dynamicJs)")
+                    }
+                    else{
+                        logger.error("fail to get dynamicJs:\(content)")
+                    }
+                }
             },
             failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
                 logger.error(error.localizedDescription)
@@ -45,15 +79,14 @@ extension Service {
         Service.shareManager.responseSerializer = AFJSONResponseSerializer()
         return Service.shareManager.OperationForGET(url, parameters: nil,
             success: {(operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
-                
-                Swift.print(Service.shareManager.requestSerializer.HTTPRequestHeaders)
-                Swift.print("response Header:\(operation.response?.allHeaderFields)")
+//                Swift.print("request Header: \(Service.shareManager.requestSerializer.HTTPRequestHeaders)")
+//                Swift.print("response Header: \(operation.response?.allHeaderFields)")
                 
                 let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies
                 let cookieStr = NSHTTPCookie.requestHeaderFieldsWithCookies(cookies!)
                 Service.shareManager.requestSerializer.setValue(cookieStr["Cookie"], forHTTPHeaderField:"Cookie")
                 
-                print("url cookies str = \(cookieStr)")
+                Swift.print("url cookies str = \(cookieStr)")
             },
             failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
                 logger.error(error.localizedDescription)

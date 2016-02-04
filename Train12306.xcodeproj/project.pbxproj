@@ -370,9 +370,9 @@
 		F1F69BAB1C61BE1200F4C4A6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F1F69BAD1C61BE6600F4C4A6 /* MainModel.swift */,
 				F1F69BB61C61BE7D00F4C4A6 /* PassengerDTO.swift */,
 				F1F69BAC1C61BE6600F4C4A6 /* LeftTicketDTO.swift */,
-				F1F69BAD1C61BE6600F4C4A6 /* MainModel.swift */,
 				F1F69BAE1C61BE6600F4C4A6 /* QueryLeftNewDTO.swift */,
 				F1F69BAF1C61BE6600F4C4A6 /* Station.swift */,
 				F1F69BB01C61BE6600F4C4A6 /* User.swift */,

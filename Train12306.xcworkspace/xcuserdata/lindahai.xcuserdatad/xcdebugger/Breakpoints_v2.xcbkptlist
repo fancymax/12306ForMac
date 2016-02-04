@@ -305,38 +305,6 @@
             endingLineNumber = "93"
             landmarkName = "freshImage()"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Train12306.PreOrderWindowController.freshImage (Train12306.PreOrderWindowController)() -&gt; ()"
-                  moduleName = "Train12306"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lindahai/Desktop/develop/Mac/Cocoa%20Programming%20for%20OS%20X/Train12306/Train12306/PreOrderWindowController.swift"
-                  timestampString = "476071443.321559"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93"
-                  offsetFromSymbolStart = "160">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Train12306.PreOrderWindowController.(freshImage (Train12306.PreOrderWindowController) -&gt; () -&gt; ()).(closure #2)"
-                  moduleName = "Train12306"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lindahai/Desktop/develop/Mac/Cocoa%20Programming%20for%20OS%20X/Train12306/Train12306/PreOrderWindowController.swift"
-                  timestampString = "476071443.321841"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93"
-                  offsetFromSymbolStart = "4">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -352,6 +320,22 @@
             startingLineNumber = "67"
             endingLineNumber = "67"
             landmarkName = "getPreOrderImage(_:failHandler:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Train12306/Sheets/LoginWindowController.swift"
+            timestampString = "476270626.991404"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "okayButtonClicked(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

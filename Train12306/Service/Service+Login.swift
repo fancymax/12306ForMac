@@ -76,12 +76,10 @@ extension Service {
         
         let checkRandOperation = checkRandCodeAnsyn(randCodeStr, successHandler: {},failHandler: cancelOperations)
         let loginUserOperation = loginUserAsyn(user, passWord: passWord, randCodeStr: randCodeStr, successHandler: {}, failHandler: cancelOperations)
-        let userLoginOperation = userLogin()
         let initMy12306Operation = initMy12306(successHandler, failHandler: failHandler)
         
         loginUserOperation.addDependency(checkRandOperation)
-        userLoginOperation.addDependency(loginUserOperation)
-        initMy12306Operation.addDependency(userLoginOperation)
+        initMy12306Operation.addDependency(loginUserOperation)
         
         Service.shareManager.operationQueue.addOperations([checkRandOperation,loginUserOperation,initMy12306Operation], waitUntilFinished: false)
     }
@@ -127,22 +125,6 @@ extension Service {
             },
             failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
                 failHandler()
-                logger.error(error.localizedDescription)
-            })!
-    }
-    
-    func userLogin()->AFHTTPRequestOperation
-    {
-        let url = "https://kyfw.12306.cn/otn/login/userLogin"
-        let params = ["_json_att":""]
-        
-        setReferLoginInit()
-        Service.shareManager.responseSerializer = AFJSONResponseSerializer()
-        return Service.shareManager.OperationForPOST(url,parameters: params,
-            success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
-                
-            },
-            failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
                 logger.error(error.localizedDescription)
             })!
     }
