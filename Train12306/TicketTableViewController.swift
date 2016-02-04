@@ -33,13 +33,13 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         loadingView.hidden = true
     }
     
-    func startLoginTip()
+    func startQueryTip()
     {
         loadingSpinner.startAnimation(nil)
         loadingView.hidden = false
     }
     
-    func stopLoginTip(){
+    func stopQueryTip(){
         loadingSpinner.stopAnimation(nil)
         loadingView.hidden = true
     }
@@ -53,17 +53,17 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
             //成功信息提示
             
             //停止提示信息旋转
-            self.stopLoginTip()
+            self.stopQueryTip()
         }
         
         let failHandler = {
             //失败信息提示
             
             //停止提示信息旋转
-            self.stopLoginTip()
+            self.stopQueryTip()
         }
         
-        startLoginTip()
+        startQueryTip()
         self.fromStationCode = fromStationCode
         self.toStationCode = toStationCode
         self.date = date

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class NormalSearchViewController: NSViewController,AutoCompleteTableViewDelegate,LunarCalendarViewDelegate {
+class NormalSearchViewController: NSViewController {
     
     @IBOutlet weak var fromStationName: AutoCompleteTextField!
     @IBOutlet weak var toStationName: AutoCompleteTextField!
@@ -21,19 +21,14 @@ class NormalSearchViewController: NSViewController,AutoCompleteTableViewDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        
         self.fromStationName.tableViewDelegate = self
         self.toStationName.tableViewDelegate = self
         
         self.fromStationName.stringValue = lastUserDefault.lastFromStation!
         self.toStationName.stringValue = lastUserDefault.lastToStation!
-        let laterDate = lastUserDefault.lastQueryDate!.laterDate(NSDate())
-        self.queryDate.dateValue = laterDate
-    }
-    
-    func didSelectDate(selectedDate: NSDate) {
-        self.queryDate!.dateValue = selectedDate
-        self.calendarPopover?.close()
+        
+        self.queryDate.dateValue = lastUserDefault.lastQueryDate!.laterDate(NSDate())
     }
     
     @IBAction func convertCity(sender: NSButton) {
@@ -58,6 +53,42 @@ class NormalSearchViewController: NSViewController,AutoCompleteTableViewDelegate
         self.calendarPopover = myPopover
     }
     
+    @IBAction func showCalendar(sender: AnyObject){
+        self.createCalenderPopover()
+        let cellRect = sender.bounds
+        self.calendarPopover?.showRelativeToRect(cellRect, ofView: sender as! NSView, preferredEdge: .MaxY)
+    }
+    
+    @IBAction func queryTicket(sender: NSButton) {
+        if !stationDataService.allStationMap.keys.contains(fromStationName.stringValue) {
+            print("error fromStationName: \(fromStationName.stringValue)")
+            return
+            
+        }
+        
+        if !stationDataService.allStationMap.keys.contains(toStationName.stringValue) {
+            print("error toStationName: \(toStationName.stringValue)")
+            return
+        }
+        
+        let fromStation = stationDataService.allStationMap[fromStationName.stringValue]?.Code
+        let toStation = stationDataService.allStationMap[toStationName.stringValue]?.Code
+
+        let dateStr = queryDate.dateValue.description
+        let dateRange = dateStr.rangeOfString(" ")
+        let date = dateStr[dateStr.startIndex..<dateRange!.startIndex]
+        
+        lastUserDefault.lastFromStation = fromStationName.stringValue
+        lastUserDefault.lastToStation = toStationName.stringValue
+        lastUserDefault.lastQueryDate = queryDate.dateValue
+        
+        print("\(fromStation) \(toStation) \(date)")
+        ticketTableDelegate?.queryLeftTicket(fromStation!, toStationCode: toStation!, date: date)
+    }
+}
+
+// MARK: - AutoCompleteTableViewDelegate
+extension NormalSearchViewController: AutoCompleteTableViewDelegate{
     func textField(textField: NSTextField, completions words: [String], forPartialWordRange charRange: NSRange, indexOfSelectedItem index: Int) -> [String] {
         var matches = [String]()
         //先按简拼  再按全拼  并保留上一次的match
@@ -92,27 +123,12 @@ class NormalSearchViewController: NSViewController,AutoCompleteTableViewDelegate
         
         return matches
     }
-    
-    @IBAction func showCalendar(sender: NSButton){
-        self.createCalenderPopover()
-        let cellRect = sender.bounds
-        self.calendarPopover?.showRelativeToRect(cellRect, ofView: sender, preferredEdge: .MaxY)
-    }
-    
-    @IBAction func queryTicket(sender: NSButton) {
-        let fromStation = stationDataService.allStationMap[fromStationName.stringValue]?.Code
-        let toStation = stationDataService.allStationMap[toStationName.stringValue]?.Code
+}
 
-        let dateStr = queryDate.dateValue.description
-        let dateRange = dateStr.rangeOfString(" ")
-        let date = dateStr[dateStr.startIndex..<dateRange!.startIndex]
-        
-        lastUserDefault.lastFromStation = fromStationName.stringValue
-        lastUserDefault.lastToStation = toStationName.stringValue
-        lastUserDefault.lastQueryDate = queryDate.dateValue
-        
-        print("\(fromStation) \(toStation) \(date)")
-        ticketTableDelegate?.queryLeftTicket(fromStation!, toStationCode: toStation!, date: date)
+// MARK: - LunarCalendarViewDelegate
+extension NormalSearchViewController: LunarCalendarViewDelegate{
+    func didSelectDate(selectedDate: NSDate) {
+        self.queryDate!.dateValue = selectedDate
+        self.calendarPopover?.close()
     }
-    
 }

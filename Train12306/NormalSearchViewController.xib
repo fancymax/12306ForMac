@@ -24,7 +24,7 @@
                         <constraint firstAttribute="height" constant="23" id="sUa-zI-Ffh"/>
                     </constraints>
                     <animations/>
-                    <datePickerCell key="cell" enabled="NO" borderStyle="bezel" alignment="left" drawsBackground="NO" datePickerStyle="textField" id="mtA-Ne-Vol">
+                    <datePickerCell key="cell" enabled="NO" refusesFirstResponder="YES" borderStyle="bezel" alignment="left" drawsBackground="NO" datePickerStyle="textField" id="mtA-Ne-Vol">
                         <font key="font" metaFont="system"/>
                         <date key="date" timeIntervalSinceReferenceDate="467308800">
                             <!--2015-10-23 16:00:00 +0000-->
@@ -92,7 +92,7 @@
                         <constraint firstAttribute="width" constant="23" id="xQK-si-a0B"/>
                     </constraints>
                     <animations/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="CalendarTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="dnj-f0-Tq0">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="CalendarTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="dnj-f0-Tq0">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -128,11 +128,11 @@
                         <action selector="queryTicket:" target="-2" id="jbj-kE-XF0"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NhL-cP-5Ry">
+                <button verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NhL-cP-5Ry">
                     <rect key="frame" x="201" y="5" width="50" height="16"/>
                     <animations/>
-                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="Group" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="TvC-bX-chA">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Group" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="TvC-bX-chA">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
@@ -165,6 +165,6 @@
     </objects>
     <resources>
         <image name="CalendarTemplate" width="512" height="512"/>
-        <image name="Group" width="106" height="90"/>
+        <image name="Group" width="512" height="512"/>
     </resources>
 </document>

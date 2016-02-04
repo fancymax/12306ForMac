@@ -319,7 +319,7 @@
                                                             <button identifier="软座" verticalHuggingPriority="750" tag="8" translatesAutoresizingMaskIntoConstraints="NO" id="QPP-kp-j8X" userLabel="软座">
                                                                 <rect key="frame" x="756" y="8" width="100" height="24"/>
                                                                 <animations/>
-                                                                <buttonCell key="cell" type="inline" title="软座" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J4I-Wx-FI3">
+                                                                <buttonCell key="cell" type="inline" title="软座" alternateTitle="软座" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J4I-Wx-FI3">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="smallSystemBold"/>
                                                                 </buttonCell>
