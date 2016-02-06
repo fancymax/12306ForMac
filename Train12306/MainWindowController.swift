@@ -104,6 +104,18 @@ class MainWindowController: NSWindowController,LoginPopoverDelegate{
         titleView.addSubview(segment)
         titleView.addSubview(searchField)
         
+        searchField.translatesAutoresizingMaskIntoConstraints = false
+        segment.translatesAutoresizingMaskIntoConstraints = false
+        
+        let searchFieldConstraints1 = NSLayoutConstraint.constraintsWithVisualFormat("[searchField(120)]-20-|", options: .AlignAllBaseline, metrics: nil, views: ["searchField":searchField])
+        NSLayoutConstraint.activateConstraints(searchFieldConstraints1)
+        let searchFieldConstraints2 = NSLayoutConstraint.constraintsWithVisualFormat("V:[searchField(22)]-8-|", options: .AlignAllCenterX, metrics: nil, views: ["searchField":searchField])
+        NSLayoutConstraint.activateConstraints(searchFieldConstraints2)
+        
+        let segmentConstraint1 = NSLayoutConstraint(item: segment, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: titleView, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0)
+        let segmentConstraint2 = NSLayoutConstraint(item: segment, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: titleView, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0)
+        NSLayoutConstraint.activateConstraints([segmentConstraint1,segmentConstraint2])
+        
 //	aWindow.bottomBarDrawingBlock = aWindow.titleBarDrawingBlock;
 //    	aWindow.bottomBarHeight = aWindow.titleBarHeight;
 //	NSView *titleBarView = aWindow.titleBarView;
