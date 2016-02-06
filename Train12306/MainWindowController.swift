@@ -80,6 +80,30 @@ class MainWindowController: NSWindowController,LoginPopoverDelegate{
         self.loginButton.setFrameOrigin(buttonPoint)
         titleView.addSubview(self.loginButton)
         
+        let segmentSize = NSMakeSize(120, 25)
+        let segmentFrame = NSMakeRect(
+            NSMidX(titleView.bounds) - (segmentSize.width / 2.0),
+            NSMidY(titleView.bounds) - (segmentSize.height / 2.0),
+            segmentSize.width, segmentSize.height)
+        let segment = NSSegmentedControl(frame: segmentFrame)
+        segment.segmentCount = 2
+        segment.setLabel("订票", forSegment: 0)
+        segment.setLabel("订单", forSegment: 1)
+        segment.selectedSegment = 0
+        segment.segmentStyle = NSSegmentStyle.TexturedSquare
+        segment.target = self
+        segment.action = Selector("test:")
+        
+        let searchFieldSize = NSMakeSize(150, 22)
+        let searchFrame = NSMakeRect(
+            NSMaxX(titleView.bounds) - (searchFieldSize.width + 20),
+            NSMidY(titleView.bounds) - (searchFieldSize.height / 2.0),
+            searchFieldSize.width, searchFieldSize.height)
+        let searchField = NSSearchField(frame: searchFrame)
+        
+        titleView.addSubview(segment)
+        titleView.addSubview(searchField)
+        
 //	aWindow.bottomBarDrawingBlock = aWindow.titleBarDrawingBlock;
 //    	aWindow.bottomBarHeight = aWindow.titleBarHeight;
 //	NSView *titleBarView = aWindow.titleBarView;
@@ -99,5 +123,21 @@ class MainWindowController: NSWindowController,LoginPopoverDelegate{
         
         self.window?.recalculateKeyViewLoop()
     }
+    
+    func test(sender: NSSegmentedControl){
+        if(sender.selectedSegment == 1){
+            self.stackContentView.removeView(normalSearchViewController!.view)
+            self.stackContentView.removeView(disclosureViewController!.view)
+            self.stackContentView.removeView(ticketTableViewController!.view)
+        }
+        else{
+            self.stackContentView.addView(normalSearchViewController!.view, inGravity:.Top)
+            self.stackContentView.addView(disclosureViewController!.view, inGravity: .Top)
+            self.stackContentView.addView(ticketTableViewController!.view, inGravity: .Top)
+        }
+        print("test")
+    }
+    
+    
 }
 

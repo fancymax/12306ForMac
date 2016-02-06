@@ -120,7 +120,7 @@
                         <constraint firstAttribute="height" constant="23" id="fRV-GJ-Pgd"/>
                     </constraints>
                     <animations/>
-                    <buttonCell key="cell" type="bevel" title="开始抢票" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ZVm-0P-SWd">
+                    <buttonCell key="cell" type="bevel" title="开始查询" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ZVm-0P-SWd">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>

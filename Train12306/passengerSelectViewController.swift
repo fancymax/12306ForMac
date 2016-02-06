@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate {
+class PassengerSelectViewController: NSViewController,NSTableViewDataSource{
 
     @IBOutlet weak var passengerTable: NSTableView!
     override func viewDidLoad() {
@@ -34,5 +34,4 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
     func reloadPassenger(){
         self.passengerTable.reloadData()
     }
-    
 }
