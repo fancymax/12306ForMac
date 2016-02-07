@@ -20,13 +20,13 @@
             <rect key="frame" x="0.0" y="0.0" width="995" height="490"/>
             <subviews>
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="42" horizontalPageScroll="10" verticalLineScroll="42" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVj-Bu-OX8">
-                    <rect key="frame" x="20" y="27" width="955" height="463"/>
+                    <rect key="frame" x="20" y="20" width="955" height="470"/>
                     <clipView key="contentView" drawsBackground="NO" id="mlg-8Z-lxp">
-                        <rect key="frame" x="1" y="0.0" width="953" height="462"/>
+                        <rect key="frame" x="1" y="0.0" width="953" height="469"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" headerView="nrS-wG-yzE" viewBased="YES" id="i0k-2E-Zg0">
-                                <rect key="frame" x="0.0" y="0.0" width="953" height="439"/>
+                                <rect key="frame" x="0.0" y="0.0" width="953" height="446"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <animations/>
                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -490,7 +490,7 @@
                 <constraint firstItem="WVj-Bu-OX8" firstAttribute="top" secondItem="kTF-ZD-s0j" secondAttribute="top" id="Cbw-2a-a6p"/>
                 <constraint firstItem="WVj-Bu-OX8" firstAttribute="leading" secondItem="kTF-ZD-s0j" secondAttribute="leading" constant="20" symbolic="YES" id="RmD-cY-zh6"/>
                 <constraint firstItem="nXV-5S-R9c" firstAttribute="centerX" secondItem="kTF-ZD-s0j" secondAttribute="centerX" id="bwu-N7-Jk8"/>
-                <constraint firstAttribute="bottom" secondItem="WVj-Bu-OX8" secondAttribute="bottom" constant="27" id="fbI-hk-bxC"/>
+                <constraint firstAttribute="bottom" secondItem="WVj-Bu-OX8" secondAttribute="bottom" constant="20" id="fbI-hk-bxC"/>
                 <constraint firstAttribute="trailing" secondItem="WVj-Bu-OX8" secondAttribute="trailing" constant="20" symbolic="YES" id="pvQ-F3-con"/>
             </constraints>
             <animations/>

@@ -8,60 +8,17 @@
 
 import Cocoa
 
-class MainWindowController: NSWindowController,LoginPopoverDelegate{
-    var loginWindowController = LoginWindowController()
-    
+class MainWindowController: NSWindowController{
     @IBOutlet weak var stackContentView: NSStackView!
-    @IBOutlet weak var loginButton: LoginButton!
-    
     var normalSearchViewController: NormalSearchViewController?
     var ticketTableViewController: TicketTableViewController?
     var disclosureViewController: DisclosureViewController?
     
+    var splitViewController:NFSplitViewController?
+    
+    @IBOutlet weak var loginButton: LoginButton!
+    var loginWindowController = LoginWindowController()
     var loginPopover:NSPopover?
-    
-    @IBAction func UserLogin(sender: NSButton){
-        if !MainModel.isGetUserInfo{
-            self.login()
-        }
-        else{
-            self.createLoginPopover()
-            let cellRect = sender.bounds
-            self.loginPopover?.showRelativeToRect(cellRect, ofView: sender, preferredEdge: .MaxY)
-        }
-    }
-    
-    func didLoginOut() {
-        loginButton.title = "登录 ▾"
-        login()
-    }
-    
-    func login(){
-        loginWindowController = LoginWindowController()
-        
-        if let window = self.window {
-            //赋值原始的用户名，密码
-            window.beginSheet(loginWindowController.window!) {
-                if $0 == NSModalResponseOK{
-                    self.loginButton.title = MainModel.user.realName!
-                }
-            }
-        }
-    }
-    
-    func createLoginPopover(){
-        var myPopover = self.loginPopover
-        if(myPopover == nil){
-            myPopover = NSPopover()
-            let cp = LoginPopoverViewController()
-            cp.delegate = self
-            myPopover!.contentViewController = cp
-            myPopover!.appearance = NSAppearance(named: "NSAppearanceNameAqua")
-            myPopover!.animates = true
-            myPopover!.behavior = NSPopoverBehavior.Transient
-        }
-        self.loginPopover = myPopover
-    }
     
     override func windowDidLoad()
     {
@@ -92,7 +49,7 @@ class MainWindowController: NSWindowController,LoginPopoverDelegate{
         segment.selectedSegment = 0
         segment.segmentStyle = NSSegmentStyle.TexturedSquare
         segment.target = self
-        segment.action = Selector("test:")
+        segment.action = Selector("segmentTab:")
         
         let searchFieldSize = NSMakeSize(150, 22)
         let searchFrame = NSMakeRect(
@@ -136,20 +93,86 @@ class MainWindowController: NSWindowController,LoginPopoverDelegate{
         self.window?.recalculateKeyViewLoop()
     }
     
-    func test(sender: NSSegmentedControl){
+    func segmentTab(sender: NSSegmentedControl){
         if(sender.selectedSegment == 1){
             self.stackContentView.removeView(normalSearchViewController!.view)
             self.stackContentView.removeView(disclosureViewController!.view)
             self.stackContentView.removeView(ticketTableViewController!.view)
+            
+            if splitViewController == nil{
+                splitViewController = NFSplitViewController()
+                splitViewController!.view.frame = self.stackContentView.frame
+                splitViewController!.vertical = false
+                
+                let vc1 = TestViewController()
+                vc1.backgroundColor = NSColor.whiteColor()
+                vc1.name = "Master"
+                vc1.borderWidth = 0.1
+                splitViewController?.addChildViewController(vc1)
+                
+                let vc2 = TestViewController()
+                vc2.backgroundColor = NSColor.whiteColor()
+                vc2.name = "Detail"
+                vc2.borderWidth = 0
+                splitViewController?.addChildViewController(vc2)
+            }
+            
+            self.stackContentView.addView(splitViewController!.view,inGravity:.Top)
         }
         else{
+            self.stackContentView.removeView(splitViewController!.view)
+            
             self.stackContentView.addView(normalSearchViewController!.view, inGravity:.Top)
             self.stackContentView.addView(disclosureViewController!.view, inGravity: .Top)
             self.stackContentView.addView(ticketTableViewController!.view, inGravity: .Top)
         }
-        print("test")
+    }
+}
+
+// MARK: - LoginPopoverDelegate
+extension MainWindowController: LoginPopoverDelegate{
+    @IBAction func UserLogin(sender: NSButton){
+        if !MainModel.isGetUserInfo{
+            self.login()
+        }
+        else{
+            self.createLoginPopover()
+            let cellRect = sender.bounds
+            self.loginPopover?.showRelativeToRect(cellRect, ofView: sender, preferredEdge: .MaxY)
+        }
     }
     
+    func didLoginOut() {
+        loginButton.title = "登录 ▾"
+        login()
+    }
+    
+    func login(){
+        loginWindowController = LoginWindowController()
+        
+        if let window = self.window {
+            //赋值原始的用户名，密码
+            window.beginSheet(loginWindowController.window!) {
+                if $0 == NSModalResponseOK{
+                    self.loginButton.title = MainModel.user.realName!
+                }
+            }
+        }
+    }
+    
+    func createLoginPopover(){
+        var myPopover = self.loginPopover
+        if(myPopover == nil){
+            myPopover = NSPopover()
+            let cp = LoginPopoverViewController()
+            cp.delegate = self
+            myPopover!.contentViewController = cp
+            myPopover!.appearance = NSAppearance(named: "NSAppearanceNameAqua")
+            myPopover!.animates = true
+            myPopover!.behavior = NSPopoverBehavior.Transient
+        }
+        self.loginPopover = myPopover
+    }
     
 }
 

@@ -16,6 +16,19 @@
 		F11EB47C1B6A36A9000063E4 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EB47A1B6A36A9000063E4 /* MainWindowController.swift */; };
 		F11EB47D1B6A36A9000063E4 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11EB47B1B6A36A9000063E4 /* MainWindowController.xib */; };
 		F13FFBCE1B70CEF600A329E6 /* StationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FFBCD1B70CEF600A329E6 /* StationData.swift */; };
+		F159FAA81C6731AC0024BEAB /* NFLayerBackedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F159FAA51C6731AC0024BEAB /* NFLayerBackedView.m */; };
+		F159FAA91C6731AC0024BEAB /* NFSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F159FAA71C6731AC0024BEAB /* NFSplitViewController.m */; };
+		F159FAAC1C6733EF0024BEAB /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F159FAAB1C6733EF0024BEAB /* TestViewController.m */; };
+		F159FAB91C6741370024BEAB /* DisclosureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159FAAF1C6741370024BEAB /* DisclosureViewController.swift */; };
+		F159FABA1C6741370024BEAB /* DisclosureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F159FAB01C6741370024BEAB /* DisclosureViewController.xib */; };
+		F159FABB1C6741370024BEAB /* NormalSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159FAB11C6741370024BEAB /* NormalSearchViewController.swift */; };
+		F159FABC1C6741370024BEAB /* NormalSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F159FAB21C6741370024BEAB /* NormalSearchViewController.xib */; };
+		F159FABD1C6741370024BEAB /* PassengerSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159FAB31C6741370024BEAB /* PassengerSelectViewController.swift */; };
+		F159FABE1C6741370024BEAB /* PassengerSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F159FAB41C6741370024BEAB /* PassengerSelectViewController.xib */; };
+		F159FABF1C6741370024BEAB /* PassengerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159FAB51C6741370024BEAB /* PassengerViewController.swift */; };
+		F159FAC01C6741370024BEAB /* PassengerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F159FAB61C6741370024BEAB /* PassengerViewController.xib */; };
+		F159FAC11C6741370024BEAB /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159FAB71C6741370024BEAB /* TicketTableViewController.swift */; };
+		F159FAC21C6741370024BEAB /* TicketTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F159FAB81C6741370024BEAB /* TicketTableViewController.xib */; };
 		F17C8BB31C63767100837392 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = F17C8BB21C63767100837392 /* README.md */; };
 		F19D3D0A1C62120D005369CF /* srca.cer in Resources */ = {isa = PBXBuildFile; fileRef = F19D3D091C62120D005369CF /* srca.cer */; };
 		F19D3D101C621598005369CF /* LoginWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19D3D0C1C621598005369CF /* LoginWindowController.swift */; };
@@ -24,10 +37,6 @@
 		F19D3D131C621598005369CF /* PreOrderWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19D3D0F1C621598005369CF /* PreOrderWindowController.xib */; };
 		F1A0776C1C6333B800A8C972 /* AFHTTP12306Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A0776B1C6333B800A8C972 /* AFHTTP12306Manager.swift */; };
 		F1AA8AA41B9D7A200062C43D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1AA8AA31B9D7A200062C43D /* Images.xcassets */; };
-		F1D5595A1C11E2E7004ACC00 /* PassengerSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D559561C11E2E7004ACC00 /* PassengerSelectViewController.swift */; };
-		F1D5595B1C11E2E7004ACC00 /* PassengerSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D559571C11E2E7004ACC00 /* PassengerSelectViewController.xib */; };
-		F1D5595C1C11E2E7004ACC00 /* PassengerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D559581C11E2E7004ACC00 /* PassengerViewController.swift */; };
-		F1D5595D1C11E2E7004ACC00 /* PassengerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D559591C11E2E7004ACC00 /* PassengerViewController.xib */; };
 		F1E7EA2D1C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA221C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c */; };
 		F1E7EA2E1C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA251C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m */; };
 		F1E7EA2F1C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA271C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m */; };
@@ -59,12 +68,6 @@
 		F1F69BBD1C61BECD00F4C4A6 /* Service+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BB91C61BECD00F4C4A6 /* Service+Login.swift */; };
 		F1F69BBE1C61BECD00F4C4A6 /* Service+TicketQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BBA1C61BECD00F4C4A6 /* Service+TicketQuery.swift */; };
 		F1F69BBF1C61BECD00F4C4A6 /* Service+Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BBB1C61BECD00F4C4A6 /* Service+Order.swift */; };
-		F1FF6A211BB9577B00F5AA39 /* DisclosureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF6A1F1BB9577B00F5AA39 /* DisclosureViewController.swift */; };
-		F1FF6A221BB9577B00F5AA39 /* DisclosureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1FF6A201BB9577B00F5AA39 /* DisclosureViewController.xib */; };
-		F1FF6A251BBA48EB00F5AA39 /* NormalSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF6A231BBA48EB00F5AA39 /* NormalSearchViewController.swift */; };
-		F1FF6A261BBA48EB00F5AA39 /* NormalSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1FF6A241BBA48EB00F5AA39 /* NormalSearchViewController.xib */; };
-		F1FF6A2A1BBAAB0600F5AA39 /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FF6A281BBAAB0600F5AA39 /* TicketTableViewController.swift */; };
-		F1FF6A2B1BBAAB0600F5AA39 /* TicketTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1FF6A291BBAAB0600F5AA39 /* TicketTableViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +96,22 @@
 		F11EB47A1B6A36A9000063E4 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		F11EB47B1B6A36A9000063E4 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
 		F13FFBCD1B70CEF600A329E6 /* StationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationData.swift; sourceTree = "<group>"; };
+		F159FAA41C6731AC0024BEAB /* NFLayerBackedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFLayerBackedView.h; sourceTree = "<group>"; };
+		F159FAA51C6731AC0024BEAB /* NFLayerBackedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFLayerBackedView.m; sourceTree = "<group>"; };
+		F159FAA61C6731AC0024BEAB /* NFSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFSplitViewController.h; sourceTree = "<group>"; };
+		F159FAA71C6731AC0024BEAB /* NFSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFSplitViewController.m; sourceTree = "<group>"; };
+		F159FAAA1C6733EF0024BEAB /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		F159FAAB1C6733EF0024BEAB /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		F159FAAF1C6741370024BEAB /* DisclosureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DisclosureViewController\U001b\U001b.swift"; path = "TicketViewControllers/DisclosureViewController\U001b\U001b.swift"; sourceTree = "<group>"; };
+		F159FAB01C6741370024BEAB /* DisclosureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DisclosureViewController.xib; path = TicketViewControllers/DisclosureViewController.xib; sourceTree = "<group>"; };
+		F159FAB11C6741370024BEAB /* NormalSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NormalSearchViewController.swift; path = TicketViewControllers/NormalSearchViewController.swift; sourceTree = "<group>"; };
+		F159FAB21C6741370024BEAB /* NormalSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NormalSearchViewController.xib; path = TicketViewControllers/NormalSearchViewController.xib; sourceTree = "<group>"; };
+		F159FAB31C6741370024BEAB /* PassengerSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PassengerSelectViewController.swift; path = TicketViewControllers/PassengerSelectViewController.swift; sourceTree = "<group>"; };
+		F159FAB41C6741370024BEAB /* PassengerSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PassengerSelectViewController.xib; path = TicketViewControllers/PassengerSelectViewController.xib; sourceTree = "<group>"; };
+		F159FAB51C6741370024BEAB /* PassengerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PassengerViewController.swift; path = TicketViewControllers/PassengerViewController.swift; sourceTree = "<group>"; };
+		F159FAB61C6741370024BEAB /* PassengerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PassengerViewController.xib; path = TicketViewControllers/PassengerViewController.xib; sourceTree = "<group>"; };
+		F159FAB71C6741370024BEAB /* TicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketTableViewController.swift; path = TicketViewControllers/TicketTableViewController.swift; sourceTree = "<group>"; };
+		F159FAB81C6741370024BEAB /* TicketTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TicketTableViewController.xib; path = TicketViewControllers/TicketTableViewController.xib; sourceTree = "<group>"; };
 		F17C8BB21C63767100837392 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		F19D3D091C62120D005369CF /* srca.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = srca.cer; sourceTree = SOURCE_ROOT; };
 		F19D3D0C1C621598005369CF /* LoginWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginWindowController.swift; path = Sheets/LoginWindowController.swift; sourceTree = "<group>"; };
@@ -102,10 +121,6 @@
 		F1A0776B1C6333B800A8C972 /* AFHTTP12306Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AFHTTP12306Manager.swift; path = Service/AFHTTP12306Manager.swift; sourceTree = "<group>"; };
 		F1AA8AA31B9D7A200062C43D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F1CC36461B6B244C0074A014 /* Train12306-Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Train12306-Swift.h"; sourceTree = "<group>"; };
-		F1D559561C11E2E7004ACC00 /* PassengerSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassengerSelectViewController.swift; sourceTree = "<group>"; };
-		F1D559571C11E2E7004ACC00 /* PassengerSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PassengerSelectViewController.xib; sourceTree = "<group>"; };
-		F1D559581C11E2E7004ACC00 /* PassengerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassengerViewController.swift; sourceTree = "<group>"; };
-		F1D559591C11E2E7004ACC00 /* PassengerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PassengerViewController.xib; sourceTree = "<group>"; };
 		F1E7EA221C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = INAppStoreWindowSwizzling.c; sourceTree = "<group>"; };
 		F1E7EA231C5A2E7B007715C1 /* INAppStoreWindowSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindowSwizzling.h; sourceTree = "<group>"; };
 		F1E7EA241C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "INWindowBackgroundView+CoreUIRendering.h"; sourceTree = "<group>"; };
@@ -143,12 +158,6 @@
 		F1F69BB91C61BECD00F4C4A6 /* Service+Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Service+Login.swift"; path = "Service/Service+Login.swift"; sourceTree = "<group>"; };
 		F1F69BBA1C61BECD00F4C4A6 /* Service+TicketQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Service+TicketQuery.swift"; path = "Service/Service+TicketQuery.swift"; sourceTree = "<group>"; };
 		F1F69BBB1C61BECD00F4C4A6 /* Service+Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Service+Order.swift"; path = "Service/Service+Order.swift"; sourceTree = "<group>"; };
-		F1FF6A1F1BB9577B00F5AA39 /* DisclosureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DisclosureViewController\U001b\U001b.swift"; sourceTree = "<group>"; };
-		F1FF6A201BB9577B00F5AA39 /* DisclosureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisclosureViewController.xib; sourceTree = "<group>"; };
-		F1FF6A231BBA48EB00F5AA39 /* NormalSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalSearchViewController.swift; sourceTree = "<group>"; };
-		F1FF6A241BBA48EB00F5AA39 /* NormalSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NormalSearchViewController.xib; sourceTree = "<group>"; };
-		F1FF6A281BBAAB0600F5AA39 /* TicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewController.swift; sourceTree = "<group>"; };
-		F1FF6A291BBAAB0600F5AA39 /* TicketTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketTableViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +209,7 @@
 			children = (
 				F1CC36461B6B244C0074A014 /* Train12306-Swift.h */,
 				F1E7EA201C5A2E7B007715C1 /* INAppStoreWindow */,
+				F159FAA31C6731AC0024BEAB /* NFSplitViewController */,
 				F11EB45C1B6A368E000063E4 /* Train12306 */,
 				F11EB46D1B6A368E000063E4 /* Train12306Tests */,
 				F11EB45B1B6A368E000063E4 /* Products */,
@@ -228,20 +238,12 @@
 				F10D9B641B8E09EA002697DE /* StaticData */,
 				F13FFBC81B70CD1900A329E6 /* Service */,
 				F19D3D0B1C62157E005369CF /* Sheets */,
+				F159FAAD1C67402E0024BEAB /* OrderViewControllers */,
+				F159FAAE1C6740580024BEAB /* TicketViewControllers */,
 				F11EB45F1B6A368E000063E4 /* AppDelegate.swift */,
 				F11EB4631B6A368E000063E4 /* MainMenu.xib */,
 				F11EB47A1B6A36A9000063E4 /* MainWindowController.swift */,
 				F11EB47B1B6A36A9000063E4 /* MainWindowController.xib */,
-				F1FF6A281BBAAB0600F5AA39 /* TicketTableViewController.swift */,
-				F1FF6A291BBAAB0600F5AA39 /* TicketTableViewController.xib */,
-				F1FF6A231BBA48EB00F5AA39 /* NormalSearchViewController.swift */,
-				F1FF6A241BBA48EB00F5AA39 /* NormalSearchViewController.xib */,
-				F1D559561C11E2E7004ACC00 /* PassengerSelectViewController.swift */,
-				F1D559571C11E2E7004ACC00 /* PassengerSelectViewController.xib */,
-				F1D559581C11E2E7004ACC00 /* PassengerViewController.swift */,
-				F1D559591C11E2E7004ACC00 /* PassengerViewController.xib */,
-				F1FF6A1F1BB9577B00F5AA39 /* DisclosureViewController.swift */,
-				F1FF6A201BB9577B00F5AA39 /* DisclosureViewController.xib */,
 				F11E3CC01C144AA60099D457 /* LoginPopoverViewController.swift */,
 				F11E3CC11C144AA60099D457 /* LoginPopoverViewController.xib */,
 				F11EB45D1B6A368E000063E4 /* Supporting Files */,
@@ -286,6 +288,43 @@
 				F1F69BBB1C61BECD00F4C4A6 /* Service+Order.swift */,
 			);
 			name = Service;
+			sourceTree = "<group>";
+		};
+		F159FAA31C6731AC0024BEAB /* NFSplitViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F159FAAA1C6733EF0024BEAB /* TestViewController.h */,
+				F159FAAB1C6733EF0024BEAB /* TestViewController.m */,
+				F159FAA41C6731AC0024BEAB /* NFLayerBackedView.h */,
+				F159FAA51C6731AC0024BEAB /* NFLayerBackedView.m */,
+				F159FAA61C6731AC0024BEAB /* NFSplitViewController.h */,
+				F159FAA71C6731AC0024BEAB /* NFSplitViewController.m */,
+			);
+			path = NFSplitViewController;
+			sourceTree = SOURCE_ROOT;
+		};
+		F159FAAD1C67402E0024BEAB /* OrderViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = OrderViewControllers;
+			sourceTree = "<group>";
+		};
+		F159FAAE1C6740580024BEAB /* TicketViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F159FAAF1C6741370024BEAB /* DisclosureViewController.swift */,
+				F159FAB01C6741370024BEAB /* DisclosureViewController.xib */,
+				F159FAB11C6741370024BEAB /* NormalSearchViewController.swift */,
+				F159FAB21C6741370024BEAB /* NormalSearchViewController.xib */,
+				F159FAB31C6741370024BEAB /* PassengerSelectViewController.swift */,
+				F159FAB41C6741370024BEAB /* PassengerSelectViewController.xib */,
+				F159FAB51C6741370024BEAB /* PassengerViewController.swift */,
+				F159FAB61C6741370024BEAB /* PassengerViewController.xib */,
+				F159FAB71C6741370024BEAB /* TicketTableViewController.swift */,
+				F159FAB81C6741370024BEAB /* TicketTableViewController.xib */,
+			);
+			name = TicketViewControllers;
 			sourceTree = "<group>";
 		};
 		F19D3D0B1C62157E005369CF /* Sheets */ = {
@@ -468,20 +507,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11EB47D1B6A36A9000063E4 /* MainWindowController.xib in Resources */,
+				F159FABA1C6741370024BEAB /* DisclosureViewController.xib in Resources */,
+				F159FAC01C6741370024BEAB /* PassengerViewController.xib in Resources */,
 				F1AA8AA41B9D7A200062C43D /* Images.xcassets in Resources */,
 				F1F69B9C1C61BC7E00F4C4A6 /* LunarCalendarView.xib in Resources */,
 				F19D3D111C621598005369CF /* LoginWindowController.xib in Resources */,
-				F1D5595B1C11E2E7004ACC00 /* PassengerSelectViewController.xib in Resources */,
-				F1FF6A221BB9577B00F5AA39 /* DisclosureViewController.xib in Resources */,
+				F159FABE1C6741370024BEAB /* PassengerSelectViewController.xib in Resources */,
 				F11E3CC31C144AA60099D457 /* LoginPopoverViewController.xib in Resources */,
-				F1FF6A2B1BBAAB0600F5AA39 /* TicketTableViewController.xib in Resources */,
 				F1F69B8A1C61BB5500F4C4A6 /* Group.png in Resources */,
+				F159FAC21C6741370024BEAB /* TicketTableViewController.xib in Resources */,
 				F19D3D0A1C62120D005369CF /* srca.cer in Resources */,
-				F1D5595D1C11E2E7004ACC00 /* PassengerViewController.xib in Resources */,
 				F11EB4651B6A368E000063E4 /* MainMenu.xib in Resources */,
 				F19D3D131C621598005369CF /* PreOrderWindowController.xib in Resources */,
+				F159FABC1C6741370024BEAB /* NormalSearchViewController.xib in Resources */,
 				F1F69B891C61BB5500F4C4A6 /* CalendarTemplate.png in Resources */,
-				F1FF6A261BBA48EB00F5AA39 /* NormalSearchViewController.xib in Resources */,
 				F1F69B8B1C61BB5500F4C4A6 /* SettingsTemplate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,18 +582,17 @@
 				F1F69B931C61BBF800F4C4A6 /* ItemCellView.swift in Sources */,
 				F11EB47C1B6A36A9000063E4 /* MainWindowController.swift in Sources */,
 				F1F69BAA1C61BDDE00F4C4A6 /* UserDefaultManager.swift in Sources */,
+				F159FAA81C6731AC0024BEAB /* NFLayerBackedView.m in Sources */,
 				F1E7EA2F1C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m in Sources */,
 				F1E7EA2D1C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c in Sources */,
 				F11EB4601B6A368E000063E4 /* AppDelegate.swift in Sources */,
 				F1F69B9D1C61BC7E00F4C4A6 /* LunarSolarConverter.swift in Sources */,
 				F1F69B961C61BC1E00F4C4A6 /* RandCodeImageView.swift in Sources */,
-				F1D5595C1C11E2E7004ACC00 /* PassengerViewController.swift in Sources */,
 				F1F69BBF1C61BECD00F4C4A6 /* Service+Order.swift in Sources */,
-				F1FF6A251BBA48EB00F5AA39 /* NormalSearchViewController.swift in Sources */,
 				F1F69BB51C61BE6600F4C4A6 /* User.swift in Sources */,
-				F1FF6A2A1BBAAB0600F5AA39 /* TicketTableViewController.swift in Sources */,
+				F159FABB1C6741370024BEAB /* NormalSearchViewController.swift in Sources */,
+				F159FAC11C6741370024BEAB /* TicketTableViewController.swift in Sources */,
 				F11E3CC21C144AA60099D457 /* LoginPopoverViewController.swift in Sources */,
-				F1D5595A1C11E2E7004ACC00 /* PassengerSelectViewController.swift in Sources */,
 				F17C8BB31C63767100837392 /* README.md in Sources */,
 				F1E7EA301C5A2E7B007715C1 /* INAppStoreWindow.m in Sources */,
 				F1E7EA311C5A2E7B007715C1 /* INWindowButton.m in Sources */,
@@ -562,13 +600,17 @@
 				F1F69B921C61BBF800F4C4A6 /* FlashLabel.swift in Sources */,
 				F1F69BB31C61BE6600F4C4A6 /* QueryLeftNewDTO.swift in Sources */,
 				F1E7EA2E1C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m in Sources */,
+				F159FABF1C6741370024BEAB /* PassengerViewController.swift in Sources */,
+				F159FAB91C6741370024BEAB /* DisclosureViewController.swift in Sources */,
+				F159FABD1C6741370024BEAB /* PassengerSelectViewController.swift in Sources */,
 				F1F69BB11C61BE6600F4C4A6 /* LeftTicketDTO.swift in Sources */,
 				F13FFBCE1B70CEF600A329E6 /* StationData.swift in Sources */,
 				F1F69BB71C61BE7D00F4C4A6 /* PassengerDTO.swift in Sources */,
-				F1FF6A211BB9577B00F5AA39 /* DisclosureViewController.swift in Sources */,
+				F159FAAC1C6733EF0024BEAB /* TestViewController.m in Sources */,
 				F1F69BA71C61BDAD00F4C4A6 /* SwiftyRegex.swift in Sources */,
 				F1A0776C1C6333B800A8C972 /* AFHTTP12306Manager.swift in Sources */,
 				F1F69BB41C61BE6600F4C4A6 /* Station.swift in Sources */,
+				F159FAA91C6731AC0024BEAB /* NFSplitViewController.m in Sources */,
 				F19D3D101C621598005369CF /* LoginWindowController.swift in Sources */,
 				F1F69B9B1C61BC7E00F4C4A6 /* LunarCalendarView.swift in Sources */,
 				F1F69BBC1C61BECD00F4C4A6 /* Service.swift in Sources */,

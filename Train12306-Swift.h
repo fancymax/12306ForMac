@@ -11,5 +11,7 @@
 
 #import <AFNetworking/AFNetworking.h>
 #import "INAppStoreWindow.h"
+#import "NFSplitViewController.h"
+#import "TestViewController.h"
 
 #endif
