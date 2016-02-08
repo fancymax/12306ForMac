@@ -44,8 +44,8 @@ class MainWindowController: NSWindowController{
             segmentSize.width, segmentSize.height)
         let segment = NSSegmentedControl(frame: segmentFrame)
         segment.segmentCount = 2
-        segment.setLabel("订票", forSegment: 0)
-        segment.setLabel("订单", forSegment: 1)
+        segment.setLabel("车票预订", forSegment: 0)
+        segment.setLabel("订单查询", forSegment: 1)
         segment.selectedSegment = 0
         segment.segmentStyle = NSSegmentStyle.TexturedSquare
         segment.target = self
