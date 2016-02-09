@@ -25,36 +25,42 @@ extension Service {
         )
     }
     
-    //login/init
-    func loginInit()
+    func beforeLogin(successHandler:(loadImage:NSImage)->(),failHandler:()->()){
+        let loginInitOperation = loginInit()
+        let getPassCodeOperation = getPassCodeNewForLogin(successHandler, failHandler: failHandler)
+        
+        getPassCodeOperation.addDependency(loginInitOperation)
+        Service.shareManager.operationQueue.addOperations([loginInitOperation,getPassCodeOperation], waitUntilFinished: false)
+    }
+    
+    func loginInit()-> AFHTTPRequestOperation
     {
         //<script src="/otn/dynamicJs/luzztpx" type="text/javascript" xml:space="preserve"></script>
         let url = "https://kyfw.12306.cn/otn/login/init"
         setReferLeftTicketInit()
         Service.shareManager.responseSerializer = AFHTTPResponseSerializer()
-        Service.shareManager.GET(url,
-            parameters: nil,
+        return Service.shareManager.OperationForGET(url,parameters: nil,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 print(url)
             },
             failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
                 logger.error(error.localizedDescription)
             }
-        )
+        )!
     }
     
-    func getPassCodeNewForLogin(successHandler handle:(loadImage:NSImage)->(),failHandler:()->()){
+    func getPassCodeNewForLogin(successHandler:(loadImage:NSImage)->(),failHandler:()->())->AFHTTPRequestOperation{
         let random = CGFloat(Float(arc4random()) / Float(UINT32_MAX))//0~1
         let url = "https://kyfw.12306.cn/otn/passcodeNew/getPassCodeNew?module=login&rand=sjrand&" + random.description
         
         setReferLoginInit()
         Service.shareManager.responseSerializer = AFImageResponseSerializer()
-        Service.shareManager.GET(url,parameters: nil,
+        return Service.shareManager.OperationForGET(url,parameters: nil,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 if let image = responseObject as? NSImage
                 {
                     print(url)
-                    handle(loadImage: image)
+                    successHandler(loadImage: image)
                 }
                 else
                 {
@@ -66,7 +72,7 @@ extension Service {
                 logger.error(error.localizedDescription)
                 failHandler()
             }
-        )
+        )!
     }
     
     func login(user:String,passWord:String,randCodeStr:String,successHandler:()->(),failHandler:()->()){

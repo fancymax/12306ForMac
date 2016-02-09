@@ -9,12 +9,12 @@
 import Cocoa
 
 class DisclosureViewController: NSViewController,NSPopoverDelegate{
+    @IBOutlet weak var passengersView: NSStackView!
     
     var passengerViewControllerList = [PassengerViewController]()
     let passengerSelectViewController = PassengerSelectViewController()
 
     @IBAction func selectPassenger(sender: NSButton) {
-        
         let positioningView = sender
         let positioningRect = NSZeroRect
         let preferredEdge = NSRectEdge.MaxY
@@ -63,10 +63,6 @@ class DisclosureViewController: NSViewController,NSPopoverDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        constrain.constant = 0
-//        _disclosureIsClosed = true
-        
         passengerViewControllerList = [PassengerViewController]()
     }
     
@@ -77,20 +73,4 @@ class DisclosureViewController: NSViewController,NSPopoverDelegate{
         popover.delegate = self
         return popover
         }()
-    
-    @IBOutlet weak var passengersView: NSStackView!
-//    @IBOutlet weak var constrain: NSLayoutConstraint!
-//    @IBAction func toggleDisclosure(sender:AnyObject){
-//        if(!_disclosureIsClosed){
-//            constrain.constant = 0
-//            _disclosureIsClosed = true
-//        }
-//        else{
-//            constrain.constant = 40
-//            _disclosureIsClosed = false
-//        }
-//    } 
-    
-//    private var _disclosureIsClosed = false
-//    private var closingConstraint:NSLayoutConstraint?
 }

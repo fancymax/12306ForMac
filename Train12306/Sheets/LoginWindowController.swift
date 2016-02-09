@@ -113,7 +113,6 @@ class LoginWindowController: NSWindowController{
     }
     
     func loadImage(){
-        service.loginInit()
         self.loginImage.clearRandCodes()
         self.startLoadingTip("正在加载...")
         let successHandler = {(image:NSImage) -> () in
@@ -126,7 +125,7 @@ class LoginWindowController: NSWindowController{
             self.logStateLabel.show("获取验证码失败", forDuration: 0.1, withFlash: false)
             NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:"hideLogStateLabel", userInfo: nil, repeats: false)
         }
-        service.getPassCodeNewForLogin(successHandler: successHandler,failHandler: failHandler)
+        service.beforeLogin(successHandler,failHandler: failHandler)
     }
     
     func hideLogStateLabel(){

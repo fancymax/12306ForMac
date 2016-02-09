@@ -3,4 +3,4 @@
 
 现在仅具备查询 和 登陆的功能。
 
-![demo](http://7xpbra.com1.z0.glb.clouddn.com/12306ForMac1.png)
+![demo](http://7xpbra.com1.z0.glb.clouddn.com/12306ForMac2.png)
