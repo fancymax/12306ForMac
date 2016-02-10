@@ -6,7 +6,6 @@
 //  Copyright © 2015年 fancy. All rights reserved.
 //
 
-//import Foundation
 import Cocoa
 
 protocol AutoCompleteTableViewDelegate:NSObjectProtocol{
@@ -37,9 +36,9 @@ class AutoCompleteTableRowView:NSTableRowView{
     }
 }
 
-class AutoCompleteTextField:NSTextField,NSTableViewDataSource,NSTableViewDelegate{
+class AutoCompleteTextField:NSTextField{
     weak var tableViewDelegate:AutoCompleteTableViewDelegate?
-    let popOverWidth:CGFloat = 250.0
+    let popOverWidth:CGFloat = 110.0
     let popOverPadding:CGFloat = 0.0
     let maxResults = 10
     
@@ -56,7 +55,7 @@ class AutoCompleteTextField:NSTextField,NSTableViewDataSource,NSTableViewDelegat
         tableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.Regular
         tableView.backgroundColor = NSColor.clearColor()
         tableView.rowSizeStyle = NSTableViewRowSizeStyle.Small
-        tableView.intercellSpacing = NSMakeSize(20.0, 3.0)
+        tableView.intercellSpacing = NSMakeSize(10.0, 0.0)
         tableView.headerView = nil
         tableView.refusesFirstResponder = true
         tableView.target = self
@@ -116,13 +115,10 @@ class AutoCompleteTextField:NSTextField,NSTableViewDataSource,NSTableViewDelegat
         case 36: // Return
             if isShow{
                 self.insert(self)
-                Swift.print("insert")
                 return //skip default behavior
             }
-            Swift.print("Return")
             
         case 48: //Tab
-            Swift.print("Tab")
             return
         
         case 49: //Space
@@ -175,12 +171,10 @@ class AutoCompleteTextField:NSTextField,NSTableViewDataSource,NSTableViewDelegat
             
             let rect = self.visibleRect
             self.autoCompletePopover?.showRelativeToRect(rect, ofView: self, preferredEdge: NSRectEdge.MaxY)
-            Swift.print(self.autoCompletePopover?.shown)
         }
         else{
             self.autoCompletePopover?.close()
         }
-        
     }
     
     func completionsForPartialWordRange(charRange: NSRange, indexOfSelectedItem index: Int) ->[String]{
@@ -189,7 +183,17 @@ class AutoCompleteTextField:NSTextField,NSTableViewDataSource,NSTableViewDelegat
         }
         return []
     }
-    
+}
+
+// MARK: - NSTableViewDelegate
+extension AutoCompleteTextField:NSTableViewDelegate{
+    func tableView(tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+        return AutoCompleteTableRowView()
+    }
+}
+
+// MARK: - NSTableViewDataSource
+extension AutoCompleteTextField:NSTableViewDataSource{
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
         if self.matches == nil{
             return 0
@@ -210,14 +214,10 @@ class AutoCompleteTextField:NSTextField,NSTableViewDataSource,NSTableViewDelegat
             cellView!.textField = textField
             cellView!.identifier = "MyView"
         }
-        let attrs = [NSForegroundColorAttributeName:NSColor.blackColor(),NSFontAttributeName:NSFont.systemFontOfSize(12)]
+        let attrs = [NSForegroundColorAttributeName:NSColor.blackColor(),NSFontAttributeName:NSFont.systemFontOfSize(13)]
         let mutableAttriStr = NSMutableAttributedString(string: self.matches![row], attributes: attrs)
         cellView!.textField!.attributedStringValue = mutableAttriStr
         
         return cellView
-    }
-    
-    func tableView(tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
-        return AutoCompleteTableRowView()
     }
 }

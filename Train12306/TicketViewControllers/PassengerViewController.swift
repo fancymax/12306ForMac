@@ -17,10 +17,10 @@ class PassengerViewController: NSViewController {
     @IBOutlet weak var passengerCheckBox: NSButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
         
         passengerNameLabel.stringValue = passenger!.passenger_name!
     }
+    
     @IBAction func unSelectPassenger(sender: NSButton) {
         passenger?.isChecked = false
         sender.state = NSOnState

@@ -13,7 +13,6 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource{
     @IBOutlet weak var passengerTable: NSTableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
     }
     
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {

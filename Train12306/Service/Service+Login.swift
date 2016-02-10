@@ -27,10 +27,12 @@ extension Service {
     
     func beforeLogin(successHandler:(loadImage:NSImage)->(),failHandler:()->()){
         let loginInitOperation = loginInit()
+        let delayOperation = NSBlockOperation(block: {sleep(1)})
         let getPassCodeOperation = getPassCodeNewForLogin(successHandler, failHandler: failHandler)
         
-        getPassCodeOperation.addDependency(loginInitOperation)
-        Service.shareManager.operationQueue.addOperations([loginInitOperation,getPassCodeOperation], waitUntilFinished: false)
+        delayOperation.addDependency(loginInitOperation)
+        getPassCodeOperation.addDependency(delayOperation)
+        Service.shareManager.operationQueue.addOperations([loginInitOperation,delayOperation,getPassCodeOperation], waitUntilFinished: false)
     }
     
     func loginInit()-> AFHTTPRequestOperation
