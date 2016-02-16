@@ -37,7 +37,6 @@ extension Service {
     
     func loginInit()-> AFHTTPRequestOperation
     {
-        //<script src="/otn/dynamicJs/luzztpx" type="text/javascript" xml:space="preserve"></script>
         let url = "https://kyfw.12306.cn/otn/login/init"
         setReferLeftTicketInit()
         Service.shareManager.responseSerializer = AFHTTPResponseSerializer()

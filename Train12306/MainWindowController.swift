@@ -14,7 +14,7 @@ class MainWindowController: NSWindowController{
     var ticketTableViewController: TicketTableViewController?
     var disclosureViewController: DisclosureViewController?
     
-    var splitViewController:NFSplitViewController?
+    var splitViewController:OrderViewController?
     
     @IBOutlet weak var loginButton: LoginButton!
     var loginWindowController = LoginWindowController()
@@ -100,21 +100,7 @@ class MainWindowController: NSWindowController{
             self.stackContentView.removeView(ticketTableViewController!.view)
             
             if splitViewController == nil{
-                splitViewController = NFSplitViewController()
-                splitViewController!.view.frame = self.stackContentView.frame
-                splitViewController!.vertical = false
-                
-                let vc1 = TestViewController()
-                vc1.backgroundColor = NSColor.whiteColor()
-                vc1.name = "Master"
-                vc1.borderWidth = 0.1
-                splitViewController?.addChildViewController(vc1)
-                
-                let vc2 = TestViewController()
-                vc2.backgroundColor = NSColor.whiteColor()
-                vc2.name = "Detail"
-                vc2.borderWidth = 0
-                splitViewController?.addChildViewController(vc2)
+                splitViewController = OrderViewController()
             }
             
             self.stackContentView.addView(splitViewController!.view,inGravity:.Top)

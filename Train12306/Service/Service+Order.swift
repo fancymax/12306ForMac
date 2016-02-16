@@ -137,8 +137,6 @@ extension Service{
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 if let content = NSString(data: (responseObject as! NSData), encoding: NSUTF8StringEncoding) as? String
                 {
-//                    Swift.print("request Header:\(self.shareHTTPManager.requestSerializer.HTTPRequestHeaders)")
-//                    Swift.print("response Header:\(operation.response?.allHeaderFields)")
                     //var globalRepeatSubmitToken = '0effecee973601696dc68b09bfc1329c';
                     if let matches = Regex("var globalRepeatSubmitToken = '([^']+)'").getMatches(content){
                         MainModel.globalRepeatSubmitToken = matches[0][0]

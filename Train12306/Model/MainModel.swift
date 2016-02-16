@@ -53,12 +53,13 @@ class MainModel{
     static var isSaveQueryLog:Bool?
     static var dynamicJs:String?
     
-    //for PC
     static var globalRepeatSubmitToken:String?
     static var key_check_isChange:String?
     static var train_location:String?
     //"'ypInfoDetail':'O047850026O047853081M059350008'"
     static var ypInfoDetail:String?
+    
+    static var orderDTODataList:[OrderDTOData]?
     
     
     static func ticketPriceBy(indentifier:String) -> Double{

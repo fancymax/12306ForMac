@@ -79,8 +79,6 @@ extension Service {
         Service.shareManager.responseSerializer = AFJSONResponseSerializer()
         return Service.shareManager.OperationForGET(url, parameters: nil,
             success: {(operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
-//                Swift.print("request Header: \(Service.shareManager.requestSerializer.HTTPRequestHeaders)")
-//                Swift.print("response Header: \(operation.response?.allHeaderFields)")
                 
                 let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies
                 let cookieStr = NSHTTPCookie.requestHeaderFieldsWithCookies(cookies!)

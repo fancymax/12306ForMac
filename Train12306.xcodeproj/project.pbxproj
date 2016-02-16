@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2ABAA600646E3C7CA540AD7D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A27C913A24FD5340F173A3F8 /* libPods.a */; };
 		F10F40431C682AD900709095 /* Add.png in Resources */ = {isa = PBXBuildFile; fileRef = F10F40421C682AD900709095 /* Add.png */; };
+		F1171D1F1C72D5F70053A56F /* Service+QueryOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1171D1E1C72D5F70053A56F /* Service+QueryOrder.swift */; };
+		F1171D231C72DA510053A56F /* QueryOrderParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1171D221C72DA510053A56F /* QueryOrderParam.swift */; };
+		F1171D271C7300ED0053A56F /* OrderDTOData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1171D261C7300ED0053A56F /* OrderDTOData.swift */; };
 		F11E3CC21C144AA60099D457 /* LoginPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11E3CC01C144AA60099D457 /* LoginPopoverViewController.swift */; };
 		F11E3CC31C144AA60099D457 /* LoginPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11E3CC11C144AA60099D457 /* LoginPopoverViewController.xib */; };
 		F11EB4601B6A368E000063E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EB45F1B6A368E000063E4 /* AppDelegate.swift */; };
@@ -30,6 +33,8 @@
 		F159FAC01C6741370024BEAB /* PassengerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F159FAB61C6741370024BEAB /* PassengerViewController.xib */; };
 		F159FAC11C6741370024BEAB /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159FAB71C6741370024BEAB /* TicketTableViewController.swift */; };
 		F159FAC21C6741370024BEAB /* TicketTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F159FAB81C6741370024BEAB /* TicketTableViewController.xib */; };
+		F16A04D01C72C22400662191 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16A04CE1C72C22400662191 /* OrderViewController.swift */; };
+		F16A04D11C72C22400662191 /* OrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F16A04CF1C72C22400662191 /* OrderViewController.xib */; };
 		F17C8BB31C63767100837392 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = F17C8BB21C63767100837392 /* README.md */; };
 		F19D3D0A1C62120D005369CF /* srca.cer in Resources */ = {isa = PBXBuildFile; fileRef = F19D3D091C62120D005369CF /* srca.cer */; };
 		F19D3D101C621598005369CF /* LoginWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19D3D0C1C621598005369CF /* LoginWindowController.swift */; };
@@ -67,7 +72,7 @@
 		F1F69BB71C61BE7D00F4C4A6 /* PassengerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BB61C61BE7D00F4C4A6 /* PassengerDTO.swift */; };
 		F1F69BBC1C61BECD00F4C4A6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BB81C61BECD00F4C4A6 /* Service.swift */; };
 		F1F69BBD1C61BECD00F4C4A6 /* Service+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BB91C61BECD00F4C4A6 /* Service+Login.swift */; };
-		F1F69BBE1C61BECD00F4C4A6 /* Service+TicketQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BBA1C61BECD00F4C4A6 /* Service+TicketQuery.swift */; };
+		F1F69BBE1C61BECD00F4C4A6 /* Service+QueryTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BBA1C61BECD00F4C4A6 /* Service+QueryTicket.swift */; };
 		F1F69BBF1C61BECD00F4C4A6 /* Service+Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BBB1C61BECD00F4C4A6 /* Service+Order.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +91,9 @@
 		4362C8555FDE04134EAB4433 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A27C913A24FD5340F173A3F8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F10F40421C682AD900709095 /* Add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Add.png; path = Images/Add.png; sourceTree = "<group>"; };
+		F1171D1E1C72D5F70053A56F /* Service+QueryOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Service+QueryOrder.swift"; sourceTree = "<group>"; };
+		F1171D221C72DA510053A56F /* QueryOrderParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueryOrderParam.swift; path = Model/QueryOrderParam.swift; sourceTree = "<group>"; };
+		F1171D261C7300ED0053A56F /* OrderDTOData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderDTOData.swift; path = Model/OrderDTOData.swift; sourceTree = "<group>"; };
 		F11E3CC01C144AA60099D457 /* LoginPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPopoverViewController.swift; sourceTree = "<group>"; };
 		F11E3CC11C144AA60099D457 /* LoginPopoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginPopoverViewController.xib; sourceTree = "<group>"; };
 		F11EB45A1B6A368E000063E4 /* Train12306.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Train12306.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +122,8 @@
 		F159FAB61C6741370024BEAB /* PassengerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PassengerViewController.xib; path = TicketViewControllers/PassengerViewController.xib; sourceTree = "<group>"; };
 		F159FAB71C6741370024BEAB /* TicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketTableViewController.swift; path = TicketViewControllers/TicketTableViewController.swift; sourceTree = "<group>"; };
 		F159FAB81C6741370024BEAB /* TicketTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TicketTableViewController.xib; path = TicketViewControllers/TicketTableViewController.xib; sourceTree = "<group>"; };
+		F16A04CE1C72C22400662191 /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderViewController.swift; path = OrderViewControllers/OrderViewController.swift; sourceTree = "<group>"; };
+		F16A04CF1C72C22400662191 /* OrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderViewController.xib; path = OrderViewControllers/OrderViewController.xib; sourceTree = "<group>"; };
 		F17C8BB21C63767100837392 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		F19D3D091C62120D005369CF /* srca.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = srca.cer; sourceTree = SOURCE_ROOT; };
 		F19D3D0C1C621598005369CF /* LoginWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginWindowController.swift; path = Sheets/LoginWindowController.swift; sourceTree = "<group>"; };
@@ -158,7 +168,7 @@
 		F1F69BB61C61BE7D00F4C4A6 /* PassengerDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PassengerDTO.swift; path = Model/PassengerDTO.swift; sourceTree = "<group>"; };
 		F1F69BB81C61BECD00F4C4A6 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Service.swift; path = Service/Service.swift; sourceTree = "<group>"; };
 		F1F69BB91C61BECD00F4C4A6 /* Service+Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Service+Login.swift"; path = "Service/Service+Login.swift"; sourceTree = "<group>"; };
-		F1F69BBA1C61BECD00F4C4A6 /* Service+TicketQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Service+TicketQuery.swift"; path = "Service/Service+TicketQuery.swift"; sourceTree = "<group>"; };
+		F1F69BBA1C61BECD00F4C4A6 /* Service+QueryTicket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Service+QueryTicket.swift"; path = "Service/Service+QueryTicket.swift"; sourceTree = "<group>"; };
 		F1F69BBB1C61BECD00F4C4A6 /* Service+Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Service+Order.swift"; path = "Service/Service+Order.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -286,8 +296,9 @@
 				F1A0776B1C6333B800A8C972 /* AFHTTP12306Manager.swift */,
 				F1F69BB81C61BECD00F4C4A6 /* Service.swift */,
 				F1F69BB91C61BECD00F4C4A6 /* Service+Login.swift */,
-				F1F69BBA1C61BECD00F4C4A6 /* Service+TicketQuery.swift */,
+				F1F69BBA1C61BECD00F4C4A6 /* Service+QueryTicket.swift */,
 				F1F69BBB1C61BECD00F4C4A6 /* Service+Order.swift */,
+				F1171D1E1C72D5F70053A56F /* Service+QueryOrder.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -308,6 +319,8 @@
 		F159FAAD1C67402E0024BEAB /* OrderViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F16A04CE1C72C22400662191 /* OrderViewController.swift */,
+				F16A04CF1C72C22400662191 /* OrderViewController.xib */,
 			);
 			name = OrderViewControllers;
 			sourceTree = "<group>";
@@ -415,6 +428,8 @@
 		F1F69BAB1C61BE1200F4C4A6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F1171D261C7300ED0053A56F /* OrderDTOData.swift */,
+				F1171D221C72DA510053A56F /* QueryOrderParam.swift */,
 				F1F69BAD1C61BE6600F4C4A6 /* MainModel.swift */,
 				F1F69BB61C61BE7D00F4C4A6 /* PassengerDTO.swift */,
 				F1F69BAC1C61BE6600F4C4A6 /* LeftTicketDTO.swift */,
@@ -516,6 +531,7 @@
 				F1F69B9C1C61BC7E00F4C4A6 /* LunarCalendarView.xib in Resources */,
 				F19D3D111C621598005369CF /* LoginWindowController.xib in Resources */,
 				F159FABE1C6741370024BEAB /* PassengerSelectViewController.xib in Resources */,
+				F16A04D11C72C22400662191 /* OrderViewController.xib in Resources */,
 				F11E3CC31C144AA60099D457 /* LoginPopoverViewController.xib in Resources */,
 				F1F69B8A1C61BB5500F4C4A6 /* Group.png in Resources */,
 				F159FAC21C6741370024BEAB /* TicketTableViewController.xib in Resources */,
@@ -578,14 +594,17 @@
 			files = (
 				F1F69B9F1C61BCA700F4C4A6 /* GlassView.swift in Sources */,
 				F19D3D121C621598005369CF /* PreOrderWindowController.swift in Sources */,
+				F1171D1F1C72D5F70053A56F /* Service+QueryOrder.swift in Sources */,
+				F1171D271C7300ED0053A56F /* OrderDTOData.swift in Sources */,
 				F1F69BA81C61BDAD00F4C4A6 /* XCGLogger.swift in Sources */,
 				F1F69BA61C61BDAD00F4C4A6 /* SwiftyJSON.swift in Sources */,
 				F1F69BB21C61BE6600F4C4A6 /* MainModel.swift in Sources */,
-				F1F69BBE1C61BECD00F4C4A6 /* Service+TicketQuery.swift in Sources */,
+				F1F69BBE1C61BECD00F4C4A6 /* Service+QueryTicket.swift in Sources */,
 				F1F69BBD1C61BECD00F4C4A6 /* Service+Login.swift in Sources */,
 				F1F69B931C61BBF800F4C4A6 /* ItemCellView.swift in Sources */,
 				F11EB47C1B6A36A9000063E4 /* MainWindowController.swift in Sources */,
 				F1F69BAA1C61BDDE00F4C4A6 /* UserDefaultManager.swift in Sources */,
+				F1171D231C72DA510053A56F /* QueryOrderParam.swift in Sources */,
 				F159FAA81C6731AC0024BEAB /* NFLayerBackedView.m in Sources */,
 				F1E7EA2F1C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m in Sources */,
 				F1E7EA2D1C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c in Sources */,
@@ -607,6 +626,7 @@
 				F159FABF1C6741370024BEAB /* PassengerViewController.swift in Sources */,
 				F159FAB91C6741370024BEAB /* DisclosureViewController.swift in Sources */,
 				F159FABD1C6741370024BEAB /* PassengerSelectViewController.swift in Sources */,
+				F16A04D01C72C22400662191 /* OrderViewController.swift in Sources */,
 				F1F69BB11C61BE6600F4C4A6 /* LeftTicketDTO.swift in Sources */,
 				F13FFBCE1B70CEF600A329E6 /* StationData.swift in Sources */,
 				F1F69BB71C61BE7D00F4C4A6 /* PassengerDTO.swift in Sources */,

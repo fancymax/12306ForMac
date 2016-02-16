@@ -45,4 +45,12 @@ class Service {
     func setReferInitDC(){
         setRefer("https://kyfw.12306.cn/otn/confirmPassenger/initDc")
     }
+    
+    func setReferInitMy12306(){
+        setRefer("https://kyfw.12306.cn/otn/index/initMy12306")
+    }
+    
+    func setReferQueryOrderInit(){
+        setRefer("https://kyfw.12306.cn/otn/queryOrder/init")
+    }
 }
