@@ -9,19 +9,8 @@
 import Foundation
 
 class Service {
-    
     private static var Manager = AFHTTP12306Manager()
     class var shareManager:AFHTTP12306Manager{
-        //OS X 10.11 ATS
-        //Check srca.cer
-        Service.Manager.securityPolicy = AFSecurityPolicy(pinningMode: .Certificate)
-        Service.Manager.securityPolicy.allowInvalidCertificates = true
-        Service.Manager.requestSerializer.HTTPShouldHandleCookies = true
-        Service.Manager.requestSerializer.setValue("kyfw.12306.cn", forHTTPHeaderField:"Host")
-        Service.Manager.requestSerializer.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:36.0) Gecko/20100101 Firefox/36.0", forHTTPHeaderField:"User-Agent")
-        Service.Manager.requestSerializer.setValue("keep-alive", forHTTPHeaderField:"Connection")
-        
-        
         return Service.Manager
     }
     

@@ -38,11 +38,11 @@ extension Service{
     func queryMyOrder(successHandler:()->(),failHandler:()->())->AFHTTPRequestOperation
     {
         let url = "https://kyfw.12306.cn/otn/queryOrder/queryMyOrder"
-        let params = QueryOrderParam()
+        let params = QueryOrderParam().ToPostParams()
         
         setReferQueryOrderInit()
         Service.shareManager.responseSerializer = AFJSONResponseSerializer()
-        return Service.shareManager.OperationForPOST(url,parameters: params.ToPostParams(),
+        return Service.shareManager.OperationForPOST(url,parameters: params,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
                 let jsonData = JSON(responseObject)["data"]
                 guard jsonData["OrderDTODataList"].count > 0 else {
@@ -52,14 +52,7 @@ extension Service{
                 }
                 MainModel.orderDTODataList = [OrderDTOData]()
                 let num = jsonData["OrderDTODataList"].count
-                var orderNum = 0
-                if num <= 8 {
-                    orderNum = num
-                }
-                else{
-                    orderNum = 8
-                }
-                for i in 0...orderNum-1 {
+                for i in 0...num-1 {
                     MainModel.orderDTODataList!.append(OrderDTOData(jsonData:jsonData["OrderDTODataList"][i]))
                 }
                 successHandler()
