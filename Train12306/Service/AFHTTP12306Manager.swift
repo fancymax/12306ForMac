@@ -31,7 +31,7 @@ class AFHTTP12306Manager:AFHTTPRequestOperationManager
         self.requestSerializer.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:36.0) Gecko/20100101 Firefox/36.0", forHTTPHeaderField:"User-Agent")
         self.requestSerializer.setValue("keep-alive", forHTTPHeaderField:"Connection")
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
