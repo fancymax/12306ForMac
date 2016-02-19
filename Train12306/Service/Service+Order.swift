@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import AFNetworking
 
 extension Service{
     internal func getPassengerStr(passengers:[PassengerDTO]) ->(String,String){

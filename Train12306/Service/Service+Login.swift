@@ -8,6 +8,7 @@
 
 import JavaScriptCore
 import Cocoa
+import AFNetworking
 
 extension Service {
     

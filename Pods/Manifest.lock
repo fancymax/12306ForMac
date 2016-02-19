@@ -17,11 +17,19 @@ PODS:
   - AFNetworking/Reachability (2.6.0)
   - AFNetworking/Security (2.6.0)
   - AFNetworking/Serialization (2.6.0)
+  - Realm (0.98.1):
+    - Realm/Headers (= 0.98.1)
+  - Realm/Headers (0.98.1)
+  - RealmSwift (0.98.1):
+    - Realm (= 0.98.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - RealmSwift
 
 SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
+  Realm: ca4a4122e939e228e10694fc49011386cb2ecb07
+  RealmSwift: 7d3c7033427816a2c3417ba0d004d694987e503a
 
 COCOAPODS: 0.38.2
