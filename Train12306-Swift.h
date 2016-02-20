@@ -9,9 +9,6 @@
 #ifndef _Train12306_Swift_h
 #define _Train12306_Swift_h
 
-#import <AFNetworking/AFNetworking.h>
 #import "INAppStoreWindow.h"
-#import "NFSplitViewController.h"
-#import "TestViewController.h"
 
 #endif

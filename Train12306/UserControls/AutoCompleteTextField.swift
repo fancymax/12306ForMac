@@ -39,7 +39,7 @@ class AutoCompleteTableRowView:NSTableRowView{
 
 class AutoCompleteTextField:NSTextField{
     weak var tableViewDelegate:AutoCompleteTableViewDelegate?
-    let popOverWidth:CGFloat = 110.0
+    var popOverWidth:NSNumber = 110
     let popOverPadding:CGFloat = 0.0
     let maxResults = 10
     
@@ -50,7 +50,7 @@ class AutoCompleteTextField:NSTextField{
     override func awakeFromNib() {
         let column1 = NSTableColumn(identifier: "text")
         column1.editable = false
-        column1.width = popOverWidth - 2 * popOverPadding
+        column1.width = CGFloat(popOverWidth.floatValue) - 2 * popOverPadding
         
         let tableView = NSTableView(frame: NSZeroRect)
         tableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.Regular
@@ -169,7 +169,7 @@ class AutoCompleteTextField:NSTextField{
             
             let numberOfRows = min(self.autoCompleteTableView!.numberOfRows, maxResults)
             let height = (self.autoCompleteTableView!.rowHeight + self.autoCompleteTableView!.intercellSpacing.height) * CGFloat(numberOfRows) + 2 * 0.0
-            let frame = NSMakeRect(0, 0, popOverWidth, height)
+            let frame = NSMakeRect(0, 0, CGFloat(popOverWidth.floatValue), height)
             self.autoCompleteTableView?.enclosingScrollView?.frame = NSInsetRect(frame, popOverPadding, popOverPadding)
             self.autoCompletePopover?.contentSize = NSMakeSize(NSWidth(frame), NSHeight(frame))
             

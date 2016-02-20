@@ -20,9 +20,6 @@
 		F11EB47D1B6A36A9000063E4 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11EB47B1B6A36A9000063E4 /* MainWindowController.xib */; };
 		F13FCECD1C77FA41001162FA /* Service+QueryOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCECC1C77FA41001162FA /* Service+QueryOrder.swift */; };
 		F13FFBCE1B70CEF600A329E6 /* StationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FFBCD1B70CEF600A329E6 /* StationData.swift */; };
-		F159FAA81C6731AC0024BEAB /* NFLayerBackedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F159FAA51C6731AC0024BEAB /* NFLayerBackedView.m */; };
-		F159FAA91C6731AC0024BEAB /* NFSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F159FAA71C6731AC0024BEAB /* NFSplitViewController.m */; };
-		F159FAAC1C6733EF0024BEAB /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F159FAAB1C6733EF0024BEAB /* TestViewController.m */; };
 		F159FAB91C6741370024BEAB /* DisclosureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159FAAF1C6741370024BEAB /* DisclosureViewController.swift */; };
 		F159FABA1C6741370024BEAB /* DisclosureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F159FAB01C6741370024BEAB /* DisclosureViewController.xib */; };
 		F159FABB1C6741370024BEAB /* NormalSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159FAB11C6741370024BEAB /* NormalSearchViewController.swift */; };
@@ -105,12 +102,6 @@
 		F11EB47B1B6A36A9000063E4 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
 		F13FCECC1C77FA41001162FA /* Service+QueryOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Service+QueryOrder.swift"; path = "Service/Service+QueryOrder.swift"; sourceTree = "<group>"; };
 		F13FFBCD1B70CEF600A329E6 /* StationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationData.swift; sourceTree = "<group>"; };
-		F159FAA41C6731AC0024BEAB /* NFLayerBackedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFLayerBackedView.h; sourceTree = "<group>"; };
-		F159FAA51C6731AC0024BEAB /* NFLayerBackedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFLayerBackedView.m; sourceTree = "<group>"; };
-		F159FAA61C6731AC0024BEAB /* NFSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFSplitViewController.h; sourceTree = "<group>"; };
-		F159FAA71C6731AC0024BEAB /* NFSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFSplitViewController.m; sourceTree = "<group>"; };
-		F159FAAA1C6733EF0024BEAB /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
-		F159FAAB1C6733EF0024BEAB /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		F159FAAF1C6741370024BEAB /* DisclosureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DisclosureViewController\U001b\U001b.swift"; path = "TicketViewControllers/DisclosureViewController\U001b\U001b.swift"; sourceTree = "<group>"; };
 		F159FAB01C6741370024BEAB /* DisclosureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DisclosureViewController.xib; path = TicketViewControllers/DisclosureViewController.xib; sourceTree = "<group>"; };
 		F159FAB11C6741370024BEAB /* NormalSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NormalSearchViewController.swift; path = TicketViewControllers/NormalSearchViewController.swift; sourceTree = "<group>"; };
@@ -219,7 +210,6 @@
 			children = (
 				F1CC36461B6B244C0074A014 /* Train12306-Swift.h */,
 				F1E7EA201C5A2E7B007715C1 /* INAppStoreWindow */,
-				F159FAA31C6731AC0024BEAB /* NFSplitViewController */,
 				F11EB45C1B6A368E000063E4 /* Train12306 */,
 				F11EB46D1B6A368E000063E4 /* Train12306Tests */,
 				F11EB45B1B6A368E000063E4 /* Products */,
@@ -301,19 +291,6 @@
 			);
 			name = Service;
 			sourceTree = "<group>";
-		};
-		F159FAA31C6731AC0024BEAB /* NFSplitViewController */ = {
-			isa = PBXGroup;
-			children = (
-				F159FAAA1C6733EF0024BEAB /* TestViewController.h */,
-				F159FAAB1C6733EF0024BEAB /* TestViewController.m */,
-				F159FAA41C6731AC0024BEAB /* NFLayerBackedView.h */,
-				F159FAA51C6731AC0024BEAB /* NFLayerBackedView.m */,
-				F159FAA61C6731AC0024BEAB /* NFSplitViewController.h */,
-				F159FAA71C6731AC0024BEAB /* NFSplitViewController.m */,
-			);
-			path = NFSplitViewController;
-			sourceTree = SOURCE_ROOT;
 		};
 		F159FAAD1C67402E0024BEAB /* OrderViewControllers */ = {
 			isa = PBXGroup;
@@ -626,7 +603,6 @@
 				F11EB47C1B6A36A9000063E4 /* MainWindowController.swift in Sources */,
 				F1F69BAA1C61BDDE00F4C4A6 /* UserDefaultManager.swift in Sources */,
 				F1171D231C72DA510053A56F /* QueryOrderParam.swift in Sources */,
-				F159FAA81C6731AC0024BEAB /* NFLayerBackedView.m in Sources */,
 				F1E7EA2F1C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m in Sources */,
 				F1E7EA2D1C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c in Sources */,
 				F11EB4601B6A368E000063E4 /* AppDelegate.swift in Sources */,
@@ -651,10 +627,8 @@
 				F1F69BB11C61BE6600F4C4A6 /* LeftTicketDTO.swift in Sources */,
 				F13FFBCE1B70CEF600A329E6 /* StationData.swift in Sources */,
 				F1F69BB71C61BE7D00F4C4A6 /* PassengerDTO.swift in Sources */,
-				F159FAAC1C6733EF0024BEAB /* TestViewController.m in Sources */,
 				F1F69BA71C61BDAD00F4C4A6 /* SwiftyRegex.swift in Sources */,
 				F1A0776C1C6333B800A8C972 /* AFHTTP12306Manager.swift in Sources */,
-				F159FAA91C6731AC0024BEAB /* NFSplitViewController.m in Sources */,
 				F19D3D101C621598005369CF /* LoginWindowController.swift in Sources */,
 				F1F69B9B1C61BC7E00F4C4A6 /* LunarCalendarView.swift in Sources */,
 				F1F69BBC1C61BECD00F4C4A6 /* Service.swift in Sources */,

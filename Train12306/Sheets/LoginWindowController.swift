@@ -168,10 +168,8 @@ extension LoginWindowController: AutoCompleteTableViewDelegate{
     }
     
     func didSelectItem(selectedItem: String) {
-        for  user in self.users {
-            if user.userName == selectedItem {
-                self.passWord.stringValue = user.userPassword
-            }
+        for  user in self.users where user.userName == selectedItem {
+            self.passWord.stringValue = user.userPassword
         }
     }
 }
