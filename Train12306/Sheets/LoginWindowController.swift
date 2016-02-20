@@ -7,11 +7,12 @@
 //
 
 import Cocoa
+import RealmSwift
 
 class LoginWindowController: NSWindowController{
 
     @IBOutlet weak var passWord: NSSecureTextField!
-    @IBOutlet weak var userName: NSTextField!
+    @IBOutlet weak var userName: AutoCompleteTextField!
     @IBOutlet weak var loginImage: RandCodeImageView!
     
     @IBOutlet weak var loadingTipBar: NSProgressIndicator!
@@ -20,6 +21,7 @@ class LoginWindowController: NSWindowController{
     @IBOutlet weak var logStateLabel: FlashLabel!
     
     let service = Service()
+    var users = [User]()
     
     @IBAction func freshImage(sender: NSButton)
     {
@@ -50,6 +52,15 @@ class LoginWindowController: NSWindowController{
             passWord.stringValue = lastPassword
         }
         
+        userName.tableViewDelegate = self
+        
+        let realm = try! Realm()
+        let users = realm.objects(User)
+        for var i = 0; i < users.count; i++ {
+            self.users.append(users[i])
+        }
+        Swift.print("user count = \(users.count)")
+        
         loadImage()
     }
     
@@ -64,6 +75,11 @@ class LoginWindowController: NSWindowController{
         let lastUserDefault = UserDefaultManager()
         lastUserDefault.lastUserName = userName.stringValue
         lastUserDefault.lastUserPassword = passWord.stringValue
+        
+        let realm = try! Realm()
+        try! realm.write {
+            realm.create(User.self, value: ["userName": userName.stringValue, "userPassword": passWord.stringValue], update: true)
+        }
         
         //关闭登录窗口
         self.dismissWithModalResponse(NSModalResponseOK)
@@ -136,5 +152,26 @@ class LoginWindowController: NSWindowController{
     {
         window!.sheetParent!.endSheet(window!,returnCode: response)
     }
+}
+
+// MARK: - AutoCompleteTableViewDelegate
+extension LoginWindowController: AutoCompleteTableViewDelegate{
+    func textField(textField: NSTextField, completions words: [String], forPartialWordRange charRange: NSRange, indexOfSelectedItem index: Int) -> [String] {
+        var matches = [String]()
+        for  user in self.users {
+            if let _ = user.userName.rangeOfString(textField.stringValue, options: NSStringCompareOptions.AnchoredSearch)
+            {
+                matches.append(user.userName)
+            }
+        }
+        return matches
+    }
     
+    func didSelectItem(selectedItem: String) {
+        for  user in self.users {
+            if user.userName == selectedItem {
+                self.passWord.stringValue = user.userPassword
+            }
+        }
+    }
 }

@@ -34,7 +34,7 @@ class MainModel{
     "学生票": "3",
     "残军票": "4"]
     
-    static var user = User()
+    static var realName = ""
     static var isGetUserInfo = false
     
     static var passengers = [PassengerDTO]()

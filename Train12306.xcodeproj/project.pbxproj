@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		39A7F741AF1BBBC1B0E8B416 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E7211EBA20157CBFCD3A071 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F10F40431C682AD900709095 /* Add.png in Resources */ = {isa = PBXBuildFile; fileRef = F10F40421C682AD900709095 /* Add.png */; };
-		F1171D1F1C72D5F70053A56F /* Service+QueryOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1171D1E1C72D5F70053A56F /* Service+QueryOrder.swift */; };
 		F1171D231C72DA510053A56F /* QueryOrderParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1171D221C72DA510053A56F /* QueryOrderParam.swift */; };
 		F1171D271C7300ED0053A56F /* OrderDTOData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1171D261C7300ED0053A56F /* OrderDTOData.swift */; };
 		F11E3CC21C144AA60099D457 /* LoginPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11E3CC01C144AA60099D457 /* LoginPopoverViewController.swift */; };
@@ -19,6 +18,7 @@
 		F11EB4711B6A368E000063E4 /* Train12306Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EB4701B6A368E000063E4 /* Train12306Tests.swift */; };
 		F11EB47C1B6A36A9000063E4 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EB47A1B6A36A9000063E4 /* MainWindowController.swift */; };
 		F11EB47D1B6A36A9000063E4 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11EB47B1B6A36A9000063E4 /* MainWindowController.xib */; };
+		F13FCECD1C77FA41001162FA /* Service+QueryOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCECC1C77FA41001162FA /* Service+QueryOrder.swift */; };
 		F13FFBCE1B70CEF600A329E6 /* StationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FFBCD1B70CEF600A329E6 /* StationData.swift */; };
 		F159FAA81C6731AC0024BEAB /* NFLayerBackedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F159FAA51C6731AC0024BEAB /* NFLayerBackedView.m */; };
 		F159FAA91C6731AC0024BEAB /* NFSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F159FAA71C6731AC0024BEAB /* NFSplitViewController.m */; };
@@ -43,6 +43,7 @@
 		F19D3D131C621598005369CF /* PreOrderWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19D3D0F1C621598005369CF /* PreOrderWindowController.xib */; };
 		F1A0776C1C6333B800A8C972 /* AFHTTP12306Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A0776B1C6333B800A8C972 /* AFHTTP12306Manager.swift */; };
 		F1AA8AA41B9D7A200062C43D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1AA8AA31B9D7A200062C43D /* Images.xcassets */; };
+		F1E37C541C7734A000C80B7C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E37C531C7734A000C80B7C /* User.swift */; };
 		F1E7EA2D1C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA221C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c */; };
 		F1E7EA2E1C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA251C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m */; };
 		F1E7EA2F1C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA271C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m */; };
@@ -67,8 +68,6 @@
 		F1F69BB11C61BE6600F4C4A6 /* LeftTicketDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BAC1C61BE6600F4C4A6 /* LeftTicketDTO.swift */; };
 		F1F69BB21C61BE6600F4C4A6 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BAD1C61BE6600F4C4A6 /* MainModel.swift */; };
 		F1F69BB31C61BE6600F4C4A6 /* QueryLeftNewDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BAE1C61BE6600F4C4A6 /* QueryLeftNewDTO.swift */; };
-		F1F69BB41C61BE6600F4C4A6 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BAF1C61BE6600F4C4A6 /* Station.swift */; };
-		F1F69BB51C61BE6600F4C4A6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BB01C61BE6600F4C4A6 /* User.swift */; };
 		F1F69BB71C61BE7D00F4C4A6 /* PassengerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BB61C61BE7D00F4C4A6 /* PassengerDTO.swift */; };
 		F1F69BBC1C61BECD00F4C4A6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BB81C61BECD00F4C4A6 /* Service.swift */; };
 		F1F69BBD1C61BECD00F4C4A6 /* Service+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BB91C61BECD00F4C4A6 /* Service+Login.swift */; };
@@ -91,7 +90,6 @@
 		4362C8555FDE04134EAB4433 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4E7211EBA20157CBFCD3A071 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F10F40421C682AD900709095 /* Add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Add.png; path = Images/Add.png; sourceTree = "<group>"; };
-		F1171D1E1C72D5F70053A56F /* Service+QueryOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Service+QueryOrder.swift"; sourceTree = "<group>"; };
 		F1171D221C72DA510053A56F /* QueryOrderParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueryOrderParam.swift; path = Model/QueryOrderParam.swift; sourceTree = "<group>"; };
 		F1171D261C7300ED0053A56F /* OrderDTOData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderDTOData.swift; path = Model/OrderDTOData.swift; sourceTree = "<group>"; };
 		F11E3CC01C144AA60099D457 /* LoginPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPopoverViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +103,7 @@
 		F11EB4701B6A368E000063E4 /* Train12306Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Train12306Tests.swift; sourceTree = "<group>"; };
 		F11EB47A1B6A36A9000063E4 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		F11EB47B1B6A36A9000063E4 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
+		F13FCECC1C77FA41001162FA /* Service+QueryOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Service+QueryOrder.swift"; path = "Service/Service+QueryOrder.swift"; sourceTree = "<group>"; };
 		F13FFBCD1B70CEF600A329E6 /* StationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationData.swift; sourceTree = "<group>"; };
 		F159FAA41C6731AC0024BEAB /* NFLayerBackedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFLayerBackedView.h; sourceTree = "<group>"; };
 		F159FAA51C6731AC0024BEAB /* NFLayerBackedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFLayerBackedView.m; sourceTree = "<group>"; };
@@ -133,6 +132,7 @@
 		F1A0776B1C6333B800A8C972 /* AFHTTP12306Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AFHTTP12306Manager.swift; path = Service/AFHTTP12306Manager.swift; sourceTree = "<group>"; };
 		F1AA8AA31B9D7A200062C43D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F1CC36461B6B244C0074A014 /* Train12306-Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Train12306-Swift.h"; sourceTree = "<group>"; };
+		F1E37C531C7734A000C80B7C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = RealmModel/User.swift; sourceTree = "<group>"; };
 		F1E7EA221C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = INAppStoreWindowSwizzling.c; sourceTree = "<group>"; };
 		F1E7EA231C5A2E7B007715C1 /* INAppStoreWindowSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindowSwizzling.h; sourceTree = "<group>"; };
 		F1E7EA241C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "INWindowBackgroundView+CoreUIRendering.h"; sourceTree = "<group>"; };
@@ -163,8 +163,6 @@
 		F1F69BAC1C61BE6600F4C4A6 /* LeftTicketDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeftTicketDTO.swift; path = Model/LeftTicketDTO.swift; sourceTree = "<group>"; };
 		F1F69BAD1C61BE6600F4C4A6 /* MainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainModel.swift; path = Model/MainModel.swift; sourceTree = "<group>"; };
 		F1F69BAE1C61BE6600F4C4A6 /* QueryLeftNewDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueryLeftNewDTO.swift; path = Model/QueryLeftNewDTO.swift; sourceTree = "<group>"; };
-		F1F69BAF1C61BE6600F4C4A6 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Station.swift; path = Model/Station.swift; sourceTree = "<group>"; };
-		F1F69BB01C61BE6600F4C4A6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
 		F1F69BB61C61BE7D00F4C4A6 /* PassengerDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PassengerDTO.swift; path = Model/PassengerDTO.swift; sourceTree = "<group>"; };
 		F1F69BB81C61BECD00F4C4A6 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Service.swift; path = Service/Service.swift; sourceTree = "<group>"; };
 		F1F69BB91C61BECD00F4C4A6 /* Service+Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Service+Login.swift"; path = "Service/Service+Login.swift"; sourceTree = "<group>"; };
@@ -244,6 +242,7 @@
 			children = (
 				F17C8BB21C63767100837392 /* README.md */,
 				F19D3D091C62120D005369CF /* srca.cer */,
+				F1E37C521C77325700C80B7C /* RealmModel */,
 				F1F69BAB1C61BE1200F4C4A6 /* Model */,
 				F1F69BA01C61BD5700F4C4A6 /* Utilities */,
 				F1F69B8C1C61BB7600F4C4A6 /* UserControls */,
@@ -298,7 +297,7 @@
 				F1F69BB91C61BECD00F4C4A6 /* Service+Login.swift */,
 				F1F69BBA1C61BECD00F4C4A6 /* Service+QueryTicket.swift */,
 				F1F69BBB1C61BECD00F4C4A6 /* Service+Order.swift */,
-				F1171D1E1C72D5F70053A56F /* Service+QueryOrder.swift */,
+				F13FCECC1C77FA41001162FA /* Service+QueryOrder.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -362,6 +361,14 @@
 				F1F69B881C61BB5500F4C4A6 /* SettingsTemplate.png */,
 			);
 			name = Asserts;
+			sourceTree = "<group>";
+		};
+		F1E37C521C77325700C80B7C /* RealmModel */ = {
+			isa = PBXGroup;
+			children = (
+				F1E37C531C7734A000C80B7C /* User.swift */,
+			);
+			name = RealmModel;
 			sourceTree = "<group>";
 		};
 		F1E7EA201C5A2E7B007715C1 /* INAppStoreWindow */ = {
@@ -428,14 +435,12 @@
 		F1F69BAB1C61BE1200F4C4A6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F1F69BAD1C61BE6600F4C4A6 /* MainModel.swift */,
 				F1171D261C7300ED0053A56F /* OrderDTOData.swift */,
 				F1171D221C72DA510053A56F /* QueryOrderParam.swift */,
-				F1F69BAD1C61BE6600F4C4A6 /* MainModel.swift */,
 				F1F69BB61C61BE7D00F4C4A6 /* PassengerDTO.swift */,
 				F1F69BAC1C61BE6600F4C4A6 /* LeftTicketDTO.swift */,
 				F1F69BAE1C61BE6600F4C4A6 /* QueryLeftNewDTO.swift */,
-				F1F69BAF1C61BE6600F4C4A6 /* Station.swift */,
-				F1F69BB01C61BE6600F4C4A6 /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -610,10 +615,10 @@
 			files = (
 				F1F69B9F1C61BCA700F4C4A6 /* GlassView.swift in Sources */,
 				F19D3D121C621598005369CF /* PreOrderWindowController.swift in Sources */,
-				F1171D1F1C72D5F70053A56F /* Service+QueryOrder.swift in Sources */,
 				F1171D271C7300ED0053A56F /* OrderDTOData.swift in Sources */,
 				F1F69BA81C61BDAD00F4C4A6 /* XCGLogger.swift in Sources */,
 				F1F69BA61C61BDAD00F4C4A6 /* SwiftyJSON.swift in Sources */,
+				F13FCECD1C77FA41001162FA /* Service+QueryOrder.swift in Sources */,
 				F1F69BB21C61BE6600F4C4A6 /* MainModel.swift in Sources */,
 				F1F69BBE1C61BECD00F4C4A6 /* Service+QueryTicket.swift in Sources */,
 				F1F69BBD1C61BECD00F4C4A6 /* Service+Login.swift in Sources */,
@@ -628,7 +633,6 @@
 				F1F69B9D1C61BC7E00F4C4A6 /* LunarSolarConverter.swift in Sources */,
 				F1F69B961C61BC1E00F4C4A6 /* RandCodeImageView.swift in Sources */,
 				F1F69BBF1C61BECD00F4C4A6 /* Service+Order.swift in Sources */,
-				F1F69BB51C61BE6600F4C4A6 /* User.swift in Sources */,
 				F159FABB1C6741370024BEAB /* NormalSearchViewController.swift in Sources */,
 				F159FAC11C6741370024BEAB /* TicketTableViewController.swift in Sources */,
 				F11E3CC21C144AA60099D457 /* LoginPopoverViewController.swift in Sources */,
@@ -638,6 +642,7 @@
 				F1F69B911C61BBF800F4C4A6 /* AutoCompleteTextField.swift in Sources */,
 				F1F69B921C61BBF800F4C4A6 /* FlashLabel.swift in Sources */,
 				F1F69BB31C61BE6600F4C4A6 /* QueryLeftNewDTO.swift in Sources */,
+				F1E37C541C7734A000C80B7C /* User.swift in Sources */,
 				F1E7EA2E1C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m in Sources */,
 				F159FABF1C6741370024BEAB /* PassengerViewController.swift in Sources */,
 				F159FAB91C6741370024BEAB /* DisclosureViewController.swift in Sources */,
@@ -649,7 +654,6 @@
 				F159FAAC1C6733EF0024BEAB /* TestViewController.m in Sources */,
 				F1F69BA71C61BDAD00F4C4A6 /* SwiftyRegex.swift in Sources */,
 				F1A0776C1C6333B800A8C972 /* AFHTTP12306Manager.swift in Sources */,
-				F1F69BB41C61BE6600F4C4A6 /* Station.swift in Sources */,
 				F159FAA91C6731AC0024BEAB /* NFSplitViewController.m in Sources */,
 				F19D3D101C621598005369CF /* LoginWindowController.swift in Sources */,
 				F1F69B9B1C61BC7E00F4C4A6 /* LunarCalendarView.swift in Sources */,

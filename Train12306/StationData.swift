@@ -8,6 +8,17 @@
 
 import Foundation
 
+struct Station {
+    //首字母拼音 比如 bj
+    var FirstLetter:String
+    //车站名
+    var Name:String
+    //电报码
+    var Code:String
+    //全拼
+    var Spell:String
+}
+
 // "https://kyfw.12306.cn/otn/resources/js/framework/station_name.js"
 class StationData{
     

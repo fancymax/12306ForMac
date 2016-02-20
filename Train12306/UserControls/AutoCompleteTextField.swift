@@ -8,8 +8,9 @@
 
 import Cocoa
 
-protocol AutoCompleteTableViewDelegate:NSObjectProtocol{
+@objc protocol AutoCompleteTableViewDelegate:NSObjectProtocol{
     func textField(textField:NSTextField,completions words:[String],forPartialWordRange charRange:NSRange,indexOfSelectedItem index:Int) ->[String]
+    optional func didSelectItem(selectedItem: String)
 }
 
 class AutoCompleteTableRowView:NSTableRowView{
@@ -134,12 +135,15 @@ class AutoCompleteTextField:NSTextField{
         super.keyUp(theEvent)
         self.complete(self)
     }
-    
+
     func insert(sender:AnyObject){
         let selectedRow = self.autoCompleteTableView!.selectedRow
         let matchCount = self.matches!.count
         if selectedRow >= 0 && selectedRow < matchCount{
             self.stringValue = self.matches![selectedRow]
+            if self.tableViewDelegate!.respondsToSelector(Selector("didSelectItem:")){
+                self.tableViewDelegate!.didSelectItem!(self.stringValue)
+            }
         }
         self.autoCompletePopover?.close()
     }

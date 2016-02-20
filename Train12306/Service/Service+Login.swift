@@ -151,7 +151,7 @@ extension Service {
                         //for javascript
                         let context = JSContext()
                         context.evaluateScript(matches[0][0])
-                        MainModel.user.realName = context.objectForKeyedSubscript("user_name").toString()
+                        MainModel.realName = context.objectForKeyedSubscript("user_name").toString()
                         successHandler()
                     }
                     else{

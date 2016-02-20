@@ -140,7 +140,7 @@ extension MainWindowController: LoginPopoverDelegate{
             //赋值原始的用户名，密码
             window.beginSheet(loginWindowController.window!) {
                 if $0 == NSModalResponseOK{
-                    self.loginButton.title = MainModel.user.realName!
+                    self.loginButton.title = MainModel.realName
                 }
             }
         }
