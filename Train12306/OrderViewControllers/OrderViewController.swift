@@ -8,11 +8,17 @@
 
 import Cocoa
 
-class OrderViewController: NSViewController,NSTableViewDataSource {
+class OrderViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate {
     let service = Service()
     var orderList = [OrderDTOData]()
     @IBOutlet weak var loadingView: NSView!
     @IBOutlet weak var loadingSpinner: NSProgressIndicator!
+    @IBOutlet weak var tips: FlashLabel!
+    
+    let menuListIdentifier = "MenuList"
+    let orderListIdentifier = "OrderList"
+    let unfinishOrderRow = 0
+    let orderHistoryRow = 1
 
     @IBOutlet weak var orderListTable: NSTableView!
     override func viewDidLoad() {
@@ -20,13 +26,15 @@ class OrderViewController: NSViewController,NSTableViewDataSource {
         loadingView.hidden = true
     }
     
-    @IBAction func test(sender: NSButton) {
+    @IBAction func queryOrder(sender: NSButton) {
+        if !MainModel.isGetUserInfo {
+            tips.show("请先登录～", forDuration: 0.1, withFlash: false)
+            return
+        }
         let successHandler = {
             //如果成功 则从MainModel里获取数据
             self.orderList = MainModel.orderDTODataList!
             self.orderListTable.reloadData()
-            
-            //成功信息提示
             
             //停止提示信息旋转
             self.stopQueryTip()
@@ -55,7 +63,8 @@ class OrderViewController: NSViewController,NSTableViewDataSource {
     }
     
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
-        if tableView.tag == 1{
+        print(tableView.identifier)
+        if tableView.identifier == menuListIdentifier{
             return 2
         }
         else{
@@ -65,9 +74,7 @@ class OrderViewController: NSViewController,NSTableViewDataSource {
     
     func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
         
-        print("\(tableView.tag)")
-        print("\(tableView.identifier)")
-        if tableView.tag == 1{
+        if tableView.identifier == menuListIdentifier{
             if row == 0{
                 return "未完成订单"
             }
@@ -76,6 +83,13 @@ class OrderViewController: NSViewController,NSTableViewDataSource {
             }
         }
         return orderList[row]
+    }
+    
+    func tableViewSelectionDidChange(notification: NSNotification)
+    {
+        let row = (notification.object as! NSTableView).selectedRow
+        print(notification.description)
+        print(row)
     }
     
 }

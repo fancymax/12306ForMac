@@ -18,7 +18,7 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     @IBOutlet weak var loadingView: NSView!
     @IBOutlet weak var loadingSpinner: NSProgressIndicator!
     
-    @IBOutlet weak var selectPassengerTip: FlashLabel!
+    @IBOutlet weak var tips: FlashLabel!
     
     var service = Service()
     var ticketQueryResult = [QueryLeftNewDTO]()
@@ -92,14 +92,14 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     
     func submit(sender: NSButton){
         if !MainModel.isGetUserInfo {
-            selectPassengerTip.show("请先登录～", forDuration: 0.1, withFlash: false)
+            tips.show("请先登录～", forDuration: 0.1, withFlash: false)
             return
         }
         
         setSelectPassenger()
         
         if MainModel.selectPassengers.count == 0 {
-            selectPassengerTip.show("请先选择乘客～", forDuration: 0.1, withFlash: false)
+            tips.show("请先选择乘客～", forDuration: 0.1, withFlash: false)
             return
         }
         

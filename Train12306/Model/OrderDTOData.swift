@@ -40,7 +40,7 @@ class OrderDTOData:NSObject{
     
     var orderStr:String{
         get{
-            return "\(train_code_page!) \(start_train_date_page!)->\(arrive_time_page!) \(from_station_name_page[0])->\(to_station_name_page[0])"
+            return "\(train_code_page!) \(start_train_date_page!)-\(arrive_time_page!) \(from_station_name_page[0])->\(to_station_name_page[0])"
         }
     }
     

@@ -9,6 +9,7 @@
                 <outlet property="loadingSpinner" destination="uC2-el-N3v" id="iqx-OE-9ov"/>
                 <outlet property="loadingView" destination="4mH-Np-R8c" id="Rqh-5q-qU6"/>
                 <outlet property="orderListTable" destination="Mba-dl-MeQ" id="RkP-h7-W0S"/>
+                <outlet property="tips" destination="N4e-df-tvh" id="vzk-4z-PgC"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -24,7 +25,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="150" height="360"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" tag="1" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="50" viewBased="YES" id="aOb-1J-CjJ">
+                            <tableView identifier="MenuList" verticalHuggingPriority="750" tag="1" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="50" viewBased="YES" id="aOb-1J-CjJ">
                                 <rect key="frame" x="0.0" y="0.0" width="150" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <animations/>
@@ -32,7 +33,7 @@
                                 <color key="backgroundColor" red="0.95686274509803926" green="0.95686274509803926" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn width="147" minWidth="40" maxWidth="1000" id="hLi-Hy-0tH">
+                                    <tableColumn identifier="" editable="NO" width="147" minWidth="40" maxWidth="1000" id="hLi-Hy-0tH">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -78,6 +79,7 @@
                                 <accessibility identifier="Menu"/>
                                 <connections>
                                     <outlet property="dataSource" destination="-2" id="Wow-OU-fO5"/>
+                                    <outlet property="delegate" destination="-2" id="lWc-4y-Viw"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -106,7 +108,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="330" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" tag="2" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="50" viewBased="YES" id="Mba-dl-MeQ">
+                            <tableView identifier="OrderList" verticalHuggingPriority="750" tag="2" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="50" viewBased="YES" id="Mba-dl-MeQ">
                                 <rect key="frame" x="0.0" y="0.0" width="330" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <animations/>
@@ -134,7 +136,7 @@
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="dZX-3m-GwH">
                                                         <rect key="frame" x="18" y="17" width="291" height="17"/>
                                                         <animations/>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="MS9-Vj-a14">
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="订单详情" id="MS9-Vj-a14">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -208,6 +210,15 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </customView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N4e-df-tvh" customClass="FlashLabel" customModule="Train12306" customModuleProvider="target">
+                    <rect key="frame" x="276" y="190" width="79" height="19"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="请先登录～" drawsBackground="YES" id="iWl-Rg-TSe">
+                        <font key="font" metaFont="system" size="15"/>
+                        <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MFd-Gi-kIH">
                     <rect key="frame" x="35" y="3" width="81" height="31"/>
                     <constraints>
@@ -220,18 +231,20 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="test:" target="-2" id="3B6-if-E5X"/>
+                        <action selector="queryOrder:" target="-2" id="QfK-YL-h5J"/>
                     </connections>
                 </button>
             </subviews>
             <constraints>
                 <constraint firstItem="aNY-Bu-GtP" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="47w-po-qwD"/>
                 <constraint firstAttribute="trailing" secondItem="aNY-Bu-GtP" secondAttribute="trailing" id="4r7-cO-HOo"/>
+                <constraint firstItem="N4e-df-tvh" firstAttribute="centerY" secondItem="aNY-Bu-GtP" secondAttribute="centerY" id="DAI-VW-vcB"/>
                 <constraint firstItem="Mi4-JD-yDr" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="Dip-I6-2H4"/>
                 <constraint firstItem="4mH-Np-R8c" firstAttribute="centerY" secondItem="aNY-Bu-GtP" secondAttribute="centerY" id="MGC-09-5Sn"/>
                 <constraint firstItem="Mi4-JD-yDr" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="ShN-6R-Vvi"/>
                 <constraint firstItem="4mH-Np-R8c" firstAttribute="centerX" secondItem="aNY-Bu-GtP" secondAttribute="centerX" id="Syd-jQ-TN5"/>
                 <constraint firstAttribute="bottom" secondItem="MFd-Gi-kIH" secondAttribute="bottom" constant="10" id="Vly-bV-xDn"/>
+                <constraint firstItem="N4e-df-tvh" firstAttribute="centerX" secondItem="aNY-Bu-GtP" secondAttribute="centerX" id="WrQ-yN-vDG"/>
                 <constraint firstItem="MFd-Gi-kIH" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="41" id="d8v-8X-bif"/>
                 <constraint firstItem="aNY-Bu-GtP" firstAttribute="leading" secondItem="Mi4-JD-yDr" secondAttribute="trailing" id="i2b-HI-WnD"/>
                 <constraint firstAttribute="bottom" secondItem="Mi4-JD-yDr" secondAttribute="bottom" constant="40" id="sEu-LY-xvw"/>

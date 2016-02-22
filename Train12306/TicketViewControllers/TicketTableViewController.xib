@@ -10,7 +10,7 @@
                 <outlet property="leftTicketTable" destination="i0k-2E-Zg0" id="pmS-uh-zeJ"/>
                 <outlet property="loadingSpinner" destination="kmV-3P-cx9" id="pje-1K-dZz"/>
                 <outlet property="loadingView" destination="nXV-5S-R9c" id="CTB-3n-g1X"/>
-                <outlet property="selectPassengerTip" destination="YZ2-44-iFH" id="XHt-iR-NKO"/>
+                <outlet property="tips" destination="YZ2-44-iFH" id="VDN-kf-ENF"/>
                 <outlet property="view" destination="kTF-ZD-s0j" id="Lhm-aq-8uO"/>
             </connections>
         </customObject>
@@ -249,7 +249,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView misplaced="YES" id="WIs-HT-Kwb" customClass="ItemCellView" customModule="Train12306" customModuleProvider="target">
+                                            <tableCellView id="WIs-HT-Kwb" customClass="ItemCellView" customModule="Train12306" customModuleProvider="target">
                                                 <rect key="frame" x="423" y="1" width="1197" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -448,7 +448,7 @@
                     </tableHeaderView>
                 </scrollView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="nXV-5S-R9c" userLabel="Loading View" customClass="GlassView" customModule="Train12306" customModuleProvider="target">
-                    <rect key="frame" x="437" y="218" width="120" height="30"/>
+                    <rect key="frame" x="437" y="230" width="120" height="30"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sQi-tV-O6t" userLabel="正在查询...">
                             <rect key="frame" x="29" y="7" width="85" height="17"/>
@@ -475,8 +475,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </customView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YZ2-44-iFH" customClass="FlashLabel" customModule="Train12306" customModuleProvider="target">
-                    <rect key="frame" x="440" y="268" width="114" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YZ2-44-iFH" customClass="FlashLabel" customModule="Train12306" customModuleProvider="target">
+                    <rect key="frame" x="442.5" y="235.5" width="109" height="19"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="请先选择乘客～" drawsBackground="YES" id="dMy-SC-xex">
                         <font key="font" metaFont="system" size="15"/>
@@ -486,8 +486,10 @@
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstItem="nXV-5S-R9c" firstAttribute="centerY" secondItem="kTF-ZD-s0j" secondAttribute="centerY" constant="12" id="0gH-eu-XHF"/>
+                <constraint firstItem="nXV-5S-R9c" firstAttribute="centerY" secondItem="kTF-ZD-s0j" secondAttribute="centerY" id="0gH-eu-XHF"/>
                 <constraint firstItem="WVj-Bu-OX8" firstAttribute="top" secondItem="kTF-ZD-s0j" secondAttribute="top" id="Cbw-2a-a6p"/>
+                <constraint firstItem="YZ2-44-iFH" firstAttribute="centerY" secondItem="kTF-ZD-s0j" secondAttribute="centerY" id="HqH-xw-mf5"/>
+                <constraint firstItem="YZ2-44-iFH" firstAttribute="centerX" secondItem="kTF-ZD-s0j" secondAttribute="centerX" id="KzL-se-Kqw"/>
                 <constraint firstItem="WVj-Bu-OX8" firstAttribute="leading" secondItem="kTF-ZD-s0j" secondAttribute="leading" constant="20" symbolic="YES" id="RmD-cY-zh6"/>
                 <constraint firstItem="nXV-5S-R9c" firstAttribute="centerX" secondItem="kTF-ZD-s0j" secondAttribute="centerX" id="bwu-N7-Jk8"/>
                 <constraint firstAttribute="bottom" secondItem="WVj-Bu-OX8" secondAttribute="bottom" constant="20" id="fbI-hk-bxC"/>
