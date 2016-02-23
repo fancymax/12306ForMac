@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="loadingSpinner" destination="uC2-el-N3v" id="iqx-OE-9ov"/>
                 <outlet property="loadingView" destination="4mH-Np-R8c" id="Rqh-5q-qU6"/>
+                <outlet property="menuListTable" destination="aOb-1J-CjJ" id="Jya-XN-pbq"/>
                 <outlet property="orderListTable" destination="Mba-dl-MeQ" id="RkP-h7-W0S"/>
                 <outlet property="tips" destination="N4e-df-tvh" id="vzk-4z-PgC"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>

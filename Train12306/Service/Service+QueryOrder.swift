@@ -11,9 +11,9 @@ import AFNetworking
 
 extension Service{
     
-    func GetHistoryOrder(successHandler:()->(),failHandler:()->()){
+    func GetHistoryOrder(successHandler:()->(),_ failHandler:()->()){
         let queryOrderInitOp = queryOrderInit()
-        let queryMyOrderOp = queryMyOrder(successHandler,failHandler: failHandler)
+        let queryMyOrderOp = queryMyOrder(successHandler,failHandler)
         
         queryMyOrderOp.addDependency(queryOrderInitOp)
         Service.shareManager.operationQueue.addOperations([queryOrderInitOp,queryMyOrderOp], waitUntilFinished: false)
@@ -36,7 +36,7 @@ extension Service{
         )!
     }
     
-    func queryMyOrder(successHandler:()->(),failHandler:()->())->AFHTTPRequestOperation
+    func queryMyOrder(successHandler:()->(),_ failHandler:()->())->AFHTTPRequestOperation
     {
         let url = "https://kyfw.12306.cn/otn/queryOrder/queryMyOrder"
         let params = QueryOrderParam().ToPostParams()
@@ -51,10 +51,10 @@ extension Service{
                     failHandler()
                     return
                 }
-                MainModel.orderDTODataList = [OrderDTOData]()
+                MainModel.historyOrderList.removeAll()
                 let num = jsonData["OrderDTODataList"].count
                 for i in 0...num-1 {
-                    MainModel.orderDTODataList!.append(OrderDTOData(jsonData:jsonData["OrderDTODataList"][i]))
+                    MainModel.historyOrderList.append(OrderDTOData(jsonData:jsonData["OrderDTODataList"][i]))
                 }
                 successHandler()
             },

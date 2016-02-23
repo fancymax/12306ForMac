@@ -8,19 +8,20 @@
 
 import Cocoa
 
-class OrderViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate {
-    let service = Service()
-    var orderList = [OrderDTOData]()
+class OrderViewController: NSViewController{
     @IBOutlet weak var loadingView: NSView!
     @IBOutlet weak var loadingSpinner: NSProgressIndicator!
     @IBOutlet weak var tips: FlashLabel!
+    @IBOutlet weak var orderListTable: NSTableView!
+    @IBOutlet weak var menuListTable: NSTableView!
     
+    var orderList = [OrderDTOData]()
+    let service = Service()
     let menuListIdentifier = "MenuList"
     let orderListIdentifier = "OrderList"
     let unfinishOrderRow = 0
     let orderHistoryRow = 1
 
-    @IBOutlet weak var orderListTable: NSTableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         loadingView.hidden = true
@@ -31,24 +32,29 @@ class OrderViewController: NSViewController,NSTableViewDataSource,NSTableViewDel
             tips.show("请先登录～", forDuration: 0.1, withFlash: false)
             return
         }
+        
+        startQueryTip()
+        
+        queryHistoryOrder()
+    }
+    
+    func queryHistoryOrder(){
         let successHandler = {
             //如果成功 则从MainModel里获取数据
-            self.orderList = MainModel.orderDTODataList!
+            self.orderList = MainModel.historyOrderList
             self.orderListTable.reloadData()
             
             //停止提示信息旋转
             self.stopQueryTip()
         }
-        
+
         let failHandler = {
             //失败信息提示
             
             //停止提示信息旋转
             self.stopQueryTip()
         }
-        startQueryTip()
-        service.GetHistoryOrder(successHandler,failHandler: failHandler)
-        orderListTable.reloadData()
+        service.GetHistoryOrder(successHandler,failHandler)
     }
     
     func startQueryTip()
@@ -61,9 +67,11 @@ class OrderViewController: NSViewController,NSTableViewDataSource,NSTableViewDel
         loadingSpinner.stopAnimation(nil)
         loadingView.hidden = true
     }
-    
+}
+
+// MARK: - NSTableViewDataSource for MenuList and OrderList
+extension OrderViewController: NSTableViewDataSource{
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
-        print(tableView.identifier)
         if tableView.identifier == menuListIdentifier{
             return 2
         }
@@ -73,23 +81,31 @@ class OrderViewController: NSViewController,NSTableViewDataSource,NSTableViewDel
     }
     
     func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
-        
         if tableView.identifier == menuListIdentifier{
-            if row == 0{
+            if row == unfinishOrderRow{
                 return "未完成订单"
             }
             else{
                 return "已完成订单"
             }
         }
-        return orderList[row]
+        else{
+            return orderList[row]
+        }
     }
-    
+}
+
+// MARK: - NSTableViewDelegate for MenuList
+extension OrderViewController: NSTableViewDelegate{
     func tableViewSelectionDidChange(notification: NSNotification)
     {
-        let row = (notification.object as! NSTableView).selectedRow
-        print(notification.description)
-        print(row)
+        if(menuListTable.selectedRow == unfinishOrderRow){
+            self.orderList = MainModel.unfinishOrderList
+            self.orderListTable.reloadData()
+        }
+        else{
+            self.orderList = MainModel.historyOrderList
+            self.orderListTable.reloadData()
+        }
     }
-    
 }
