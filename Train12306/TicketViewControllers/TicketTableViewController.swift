@@ -45,22 +45,20 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     }
     
     func queryLeftTicket(fromStationCode: String, toStationCode: String, date: String) {
-        let successHandler = {
+        let successHandler = { (tickets:[QueryLeftNewDTO])->()  in
             //如果成功 则从MainModel里获取数据
-            self.ticketQueryResult = MainModel.leftTickets!
+            self.ticketQueryResult = tickets
             self.leftTicketTable.reloadData()
-            
-            //成功信息提示
             
             //停止提示信息旋转
             self.stopQueryTip()
         }
         
-        let failHandler = {
-            //失败信息提示
-            
+        let failureHandler = {
             //停止提示信息旋转
             self.stopQueryTip()
+            //失败信息提示
+            
         }
         
         startQueryTip()
@@ -68,15 +66,13 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         self.toStationCode = toStationCode
         self.date = date
         
-        var leftTicketParam = LeftTicketParam()
-        leftTicketParam.from_station = fromStationCode
-        leftTicketParam.to_station = toStationCode
-        leftTicketParam.train_date = date
-        leftTicketParam.purpose_codes = "ADULT"
+        var params = LeftTicketParam()
+        params.from_station = fromStationCode
+        params.to_station = toStationCode
+        params.train_date = date
+        params.purpose_codes = "ADULT"
         
-        MainModel.leftTickets = [QueryLeftNewDTO]()
-
-        service.getTicket(leftTicketParam, successHandler:successHandler,failHandler: failHandler)
+        service.queryTicketFlowWith(params, success: successHandler,failure: failureHandler)
     }
     
     func setSelectPassenger(){

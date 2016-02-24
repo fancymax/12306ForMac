@@ -47,12 +47,6 @@ class MainModel{
     
     static var orderId:String?
     
-    static var leftTickets:[QueryLeftNewDTO]?
-    
-    static var CLeftTicketUrl:String?
-    static var isSaveQueryLog:Bool?
-    static var dynamicJs:String?
-    
     static var globalRepeatSubmitToken:String?
     static var key_check_isChange:String?
     static var train_location:String?
