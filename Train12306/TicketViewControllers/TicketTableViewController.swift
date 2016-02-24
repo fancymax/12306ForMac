@@ -68,15 +68,15 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         self.toStationCode = toStationCode
         self.date = date
         
-        let queryLeftTicket = LeftTicketDTO()
-        queryLeftTicket.from_station = fromStationCode
-        queryLeftTicket.to_station = toStationCode
-        queryLeftTicket.train_date = date
-        queryLeftTicket.purpose_codes = "ADULT"
+        var leftTicketParam = LeftTicketParam()
+        leftTicketParam.from_station = fromStationCode
+        leftTicketParam.to_station = toStationCode
+        leftTicketParam.train_date = date
+        leftTicketParam.purpose_codes = "ADULT"
         
         MainModel.leftTickets = [QueryLeftNewDTO]()
 
-        service.getTicket(queryLeftTicket, successHandler:successHandler,failHandler: failHandler)
+        service.getTicket(leftTicketParam, successHandler:successHandler,failHandler: failHandler)
     }
     
     func setSelectPassenger(){

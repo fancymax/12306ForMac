@@ -62,7 +62,7 @@
 		F1F69BA71C61BDAD00F4C4A6 /* SwiftyRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BA31C61BDAD00F4C4A6 /* SwiftyRegex.swift */; };
 		F1F69BA81C61BDAD00F4C4A6 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BA41C61BDAD00F4C4A6 /* XCGLogger.swift */; };
 		F1F69BAA1C61BDDE00F4C4A6 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BA91C61BDDE00F4C4A6 /* UserDefaultManager.swift */; };
-		F1F69BB11C61BE6600F4C4A6 /* LeftTicketDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BAC1C61BE6600F4C4A6 /* LeftTicketDTO.swift */; };
+		F1F69BB11C61BE6600F4C4A6 /* LeftTicketParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BAC1C61BE6600F4C4A6 /* LeftTicketParam.swift */; };
 		F1F69BB21C61BE6600F4C4A6 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BAD1C61BE6600F4C4A6 /* MainModel.swift */; };
 		F1F69BB31C61BE6600F4C4A6 /* QueryLeftNewDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BAE1C61BE6600F4C4A6 /* QueryLeftNewDTO.swift */; };
 		F1F69BB71C61BE7D00F4C4A6 /* PassengerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BB61C61BE7D00F4C4A6 /* PassengerDTO.swift */; };
@@ -151,7 +151,7 @@
 		F1F69BA31C61BDAD00F4C4A6 /* SwiftyRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyRegex.swift; path = Utilities/SwiftyRegex.swift; sourceTree = "<group>"; };
 		F1F69BA41C61BDAD00F4C4A6 /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCGLogger.swift; path = Utilities/XCGLogger.swift; sourceTree = "<group>"; };
 		F1F69BA91C61BDDE00F4C4A6 /* UserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultManager.swift; path = Utilities/UserDefaultManager.swift; sourceTree = "<group>"; };
-		F1F69BAC1C61BE6600F4C4A6 /* LeftTicketDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeftTicketDTO.swift; path = Model/LeftTicketDTO.swift; sourceTree = "<group>"; };
+		F1F69BAC1C61BE6600F4C4A6 /* LeftTicketParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeftTicketParam.swift; path = Model/LeftTicketParam.swift; sourceTree = "<group>"; };
 		F1F69BAD1C61BE6600F4C4A6 /* MainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainModel.swift; path = Model/MainModel.swift; sourceTree = "<group>"; };
 		F1F69BAE1C61BE6600F4C4A6 /* QueryLeftNewDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueryLeftNewDTO.swift; path = Model/QueryLeftNewDTO.swift; sourceTree = "<group>"; };
 		F1F69BB61C61BE7D00F4C4A6 /* PassengerDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PassengerDTO.swift; path = Model/PassengerDTO.swift; sourceTree = "<group>"; };
@@ -416,7 +416,7 @@
 				F1171D261C7300ED0053A56F /* OrderDTOData.swift */,
 				F1171D221C72DA510053A56F /* QueryOrderParam.swift */,
 				F1F69BB61C61BE7D00F4C4A6 /* PassengerDTO.swift */,
-				F1F69BAC1C61BE6600F4C4A6 /* LeftTicketDTO.swift */,
+				F1F69BAC1C61BE6600F4C4A6 /* LeftTicketParam.swift */,
 				F1F69BAE1C61BE6600F4C4A6 /* QueryLeftNewDTO.swift */,
 			);
 			name = Model;
@@ -624,7 +624,7 @@
 				F159FAB91C6741370024BEAB /* DisclosureViewController.swift in Sources */,
 				F159FABD1C6741370024BEAB /* PassengerSelectViewController.swift in Sources */,
 				F16A04D01C72C22400662191 /* OrderViewController.swift in Sources */,
-				F1F69BB11C61BE6600F4C4A6 /* LeftTicketDTO.swift in Sources */,
+				F1F69BB11C61BE6600F4C4A6 /* LeftTicketParam.swift in Sources */,
 				F13FFBCE1B70CEF600A329E6 /* StationData.swift in Sources */,
 				F1F69BB71C61BE7D00F4C4A6 /* PassengerDTO.swift in Sources */,
 				F1F69BA71C61BDAD00F4C4A6 /* SwiftyRegex.swift in Sources */,

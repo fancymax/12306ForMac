@@ -28,7 +28,7 @@ extension Service{
         Service.shareManager.responseSerializer = AFHTTPResponseSerializer()
         return Service.shareManager.OperationForPOST(url,parameters: params,
             success: { (operation: AFHTTPRequestOperation!,responseObject: AnyObject!) in
-                print(responseObject)
+//                print(responseObject)
             },
             failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
                 logger.error(error.localizedDescription)

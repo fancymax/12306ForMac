@@ -11,11 +11,11 @@ import AFNetworking
 
 extension Service {
     
-    func getTicket(leftTicketDTO:LeftTicketDTO,successHandler:()->(),failHandler:()->())
+    func getTicket(leftTicketParam:LeftTicketParam,successHandler:()->(),failHandler:()->())
     {
         let initOperation = getLeftTicketInit()
-        let logOperation = getLeftTicketLog(leftTicketDTO, successHandler: {}, failHandler: failHandler)
-        let queryOperation = getLeftTicketQuery(leftTicketDTO, successHandler: successHandler, failHandler: failHandler)
+        let logOperation = getLeftTicketLog(leftTicketParam, successHandler: {}, failHandler: failHandler)
+        let queryOperation = getLeftTicketQuery(leftTicketParam, successHandler: successHandler, failHandler: failHandler)
         queryOperation.addDependency(logOperation)
         logOperation.addDependency(initOperation)
         
@@ -72,9 +72,8 @@ extension Service {
         )!
     }
     
-    func getLeftTicketLog(leftTicketDTO:LeftTicketDTO,successHandler:()->(),failHandler:()->())->AFHTTPRequestOperation{
-        let queryParam = "leftTicketDTO.train_date=\(leftTicketDTO.train_date!)&leftTicketDTO.from_station=\(leftTicketDTO.from_station!)&leftTicketDTO.to_station=\(leftTicketDTO.to_station!)&purpose_codes=\(leftTicketDTO.purpose_codes!)"
-        let url = "https://kyfw.12306.cn/otn/leftTicket/log?" + queryParam
+    func getLeftTicketLog(leftTicketParam:LeftTicketParam,successHandler:()->(),failHandler:()->())->AFHTTPRequestOperation{
+        let url = "https://kyfw.12306.cn/otn/leftTicket/log?" + leftTicketParam.ToGetParams()
         
         setReferLeftTicketInit()
         Service.shareManager.responseSerializer = AFJSONResponseSerializer()
@@ -94,9 +93,8 @@ extension Service {
         )!
     }
     
-    func getLeftTicketQuery(leftTicketDTO:LeftTicketDTO,successHandler:()->(),failHandler:()->())->AFHTTPRequestOperation{
-        let queryParam = "leftTicketDTO.train_date=\(leftTicketDTO.train_date!)&leftTicketDTO.from_station=\(leftTicketDTO.from_station!)&leftTicketDTO.to_station=\(leftTicketDTO.to_station!)&purpose_codes=\(leftTicketDTO.purpose_codes!)"
-        let url = "https://kyfw.12306.cn/otn/leftTicket/queryT?" + queryParam
+    func getLeftTicketQuery(leftTicketParam:LeftTicketParam,successHandler:()->(),failHandler:()->())->AFHTTPRequestOperation{
+        let url = "https://kyfw.12306.cn/otn/leftTicket/queryT?" + leftTicketParam.ToGetParams()
         
         setReferLeftTicketInit()
         Service.shareManager.responseSerializer = AFJSONResponseSerializer()
