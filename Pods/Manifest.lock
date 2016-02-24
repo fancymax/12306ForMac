@@ -17,6 +17,26 @@ PODS:
   - AFNetworking/Reachability (2.6.0)
   - AFNetworking/Security (2.6.0)
   - AFNetworking/Serialization (2.6.0)
+  - Alamofire (3.2.0)
+  - OMGHTTPURLRQ (3.1.1):
+    - OMGHTTPURLRQ/RQ (= 3.1.1)
+  - OMGHTTPURLRQ/FormURLEncode (3.1.1)
+  - OMGHTTPURLRQ/RQ (3.1.1):
+    - OMGHTTPURLRQ/FormURLEncode
+    - OMGHTTPURLRQ/UserAgent
+  - OMGHTTPURLRQ/UserAgent (3.1.1)
+  - PromiseKit (3.0.2):
+    - PromiseKit/Foundation (= 3.0.2)
+    - PromiseKit/QuartzCore (= 3.0.2)
+    - PromiseKit/UIKit (= 3.0.2)
+  - PromiseKit/CorePromise (3.0.2)
+  - PromiseKit/Foundation (3.0.2):
+    - OMGHTTPURLRQ (~> 3.1.0)
+    - PromiseKit/CorePromise
+  - PromiseKit/QuartzCore (3.0.2):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (3.0.2):
+    - PromiseKit/CorePromise
   - Realm (0.98.1):
     - Realm/Headers (= 0.98.1)
   - Realm/Headers (0.98.1)
@@ -25,10 +45,15 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - Alamofire (~> 3.0)
+  - PromiseKit (~> 3.0)
   - RealmSwift
 
 SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
+  Alamofire: 4da478599fccddff361205c8929333d7fe18dceb
+  OMGHTTPURLRQ: 633f98ee745aeda02345935a52eec1784cddb589
+  PromiseKit: ab1a380f7a30cf8cce663a2411e8b3580b10313d
   Realm: ca4a4122e939e228e10694fc49011386cb2ecb07
   RealmSwift: 7d3c7033427816a2c3417ba0d004d694987e503a
 
