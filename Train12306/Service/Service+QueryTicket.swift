@@ -83,9 +83,12 @@ extension Service {
     
     func queryTicketLogWith(params:LeftTicketParam,isQueryLog:Bool)->Promise<String>{
         return Promise{ fulfill, reject in
+            let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
             if isQueryLog {
                 let url = "https://kyfw.12306.cn/otn/leftTicket/log?" + params.ToGetParams()
-                Service.Manager1.request(.GET, url).responseString(completionHandler:{_ in })
+                Service.Manager1.request(.GET, url, headers:headers).responseString(completionHandler:{response in
+                    print(response.request?.allHTTPHeaderFields)
+                })
             }
             fulfill("Always Succeed")
         }
@@ -94,7 +97,8 @@ extension Service {
     func queryTicketWith(params:LeftTicketParam,queryUrl:String)->Promise<[QueryLeftNewDTO]>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/" + queryUrl + "?" + params.ToGetParams()
-            Service.Manager1.request(.GET, url).responseJSON(completionHandler:{ response in
+            let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
+            Service.Manager1.request(.GET, url, headers: headers).responseJSON(completionHandler:{ response in
                     switch (response.result){
                     case .Failure(let error):
                         reject(error)

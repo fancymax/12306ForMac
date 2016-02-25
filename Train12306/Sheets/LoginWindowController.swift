@@ -28,6 +28,49 @@ class LoginWindowController: NSWindowController{
         loadImage()
     }
     
+    @IBAction func okayButtonClicked(button:NSButton){
+        self.logStateLabel.hidden = false
+        if userName.stringValue == "" || passWord.stringValue == "" {
+            self.logStateLabel.show("请先输入用户名和密码", forDuration: 0.1, withFlash: false)
+            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:"hideLogStateLabel", userInfo: nil, repeats: false)
+            return
+        }
+        if loginImage.randCodeStr == nil {
+            self.logStateLabel.show("请先选择验证码", forDuration: 0.1, withFlash: false)
+            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:"hideLogStateLabel", userInfo: nil, repeats: false)
+            return
+        }
+        //显示正在登录
+        button.enabled = false
+        
+        self.startLoadingTip("正在登录...")
+        
+        let failureHandler = {
+            //关闭正在登录提示
+            button.enabled = true
+            self.stopLoginTip()
+            //显示登录失败 持续一秒
+            self.logStateLabel.show("登录失败", forDuration: 0.1, withFlash: false)
+            NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector:"handlerAfterFailure", userInfo: nil, repeats: false)
+        }
+        
+        let successHandler = {
+            //关闭正在登录提示
+            self.stopLoginTip()
+            //显示登录成功  持续一秒
+            self.logStateLabel.show("登录成功", forDuration: 0.1, withFlash: false)
+            button.enabled = true
+            self.service.postMobileGetPassengerDTOs({})
+            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:"handlerAfterSuccess", userInfo: nil, repeats: false)
+        }
+        
+        service.loginFlow(user: userName.stringValue, passWord: passWord.stringValue, randCodeStr: loginImage.randCodeStr!, success: successHandler, failure: failureHandler)
+    }
+    
+    @IBAction func cancelButtonClicked(button:NSButton){
+        dismissWithModalResponse(NSModalResponseCancel)
+    }
+    
     override var windowNibName: String{
         return "LoginWindowController"
     }
@@ -85,49 +128,6 @@ class LoginWindowController: NSWindowController{
         self.dismissWithModalResponse(NSModalResponseOK)
     }
     
-    @IBAction func okayButtonClicked(button:NSButton){
-        self.logStateLabel.hidden = false
-        if userName.stringValue == "" || passWord.stringValue == "" {
-            self.logStateLabel.show("请先输入用户名和密码", forDuration: 0.1, withFlash: false)
-            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:"hideLogStateLabel", userInfo: nil, repeats: false)
-            return
-        }
-        if loginImage.randCodeStr == nil {
-            self.logStateLabel.show("请先选择验证码", forDuration: 0.1, withFlash: false)
-            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:"hideLogStateLabel", userInfo: nil, repeats: false)
-            return
-        }
-        //显示正在登录
-        button.enabled = false
-        
-        self.startLoadingTip("正在登录...")
-        
-        let failureHandler = {
-            //关闭正在登录提示
-            button.enabled = true
-            self.stopLoginTip()
-            //显示登录失败 持续一秒
-            self.logStateLabel.show("登录失败", forDuration: 0.1, withFlash: false)
-            NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector:"handlerAfterFailure", userInfo: nil, repeats: false)
-        }
-        
-        let successHandler = {
-            //关闭正在登录提示
-            self.stopLoginTip()
-            //显示登录成功  持续一秒
-            self.logStateLabel.show("登录成功", forDuration: 0.1, withFlash: false)
-            button.enabled = true
-            self.service.postMobileGetPassengerDTOs({})
-            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:"handlerAfterSuccess", userInfo: nil, repeats: false)
-        }
-        //调用service
-        service.login(userName.stringValue, passWord: passWord.stringValue, randCodeStr: loginImage.randCodeStr!, successHandler: successHandler, failHandler: failureHandler)
-    }
-    
-    @IBAction func cancelButtonClicked(button:NSButton){
-        dismissWithModalResponse(NSModalResponseCancel)
-    }
-    
     func loadImage(){
         self.loginImage.clearRandCodes()
         self.startLoadingTip("正在加载...")
@@ -135,13 +135,13 @@ class LoginWindowController: NSWindowController{
             self.loginImage.image = image
             self.stopLoginTip()
         }
-        let failHandler = {
+        let failureHandler = {
             self.stopLoginTip()
             self.logStateLabel.hidden = false
             self.logStateLabel.show("获取验证码失败", forDuration: 0.1, withFlash: false)
             NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:"hideLogStateLabel", userInfo: nil, repeats: false)
         }
-        service.beforeLogin(successHandler,failHandler: failHandler)
+        service.preLoginFlow(success: successHandler,failure: failureHandler)
     }
     
     func hideLogStateLabel(){
