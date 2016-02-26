@@ -19,8 +19,8 @@ class OrderViewController: NSViewController{
     let service = Service()
     let menuListIdentifier = "MenuList"
     let orderListIdentifier = "OrderList"
-    let unfinishOrderRow = 0
-    let orderHistoryRow = 1
+    let noCompleteOrderRow = 0
+    let historyOrderRow = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,12 @@ class OrderViewController: NSViewController{
         
         startQueryTip()
         
-        queryHistoryOrder()
+        if(menuListTable.selectedRow == noCompleteOrderRow){
+            queryNoCompleteOrder()
+        }
+        else{
+            queryHistoryOrder()
+        }
     }
     
     func queryHistoryOrder(){
@@ -55,6 +60,25 @@ class OrderViewController: NSViewController{
             self.stopQueryTip()
         }
         service.queryHistoryOrderFlow(success: successHandler, failure: failureHandler)
+    }
+    
+    func queryNoCompleteOrder(){
+        let successHandler = {
+            //如果成功 则从MainModel里获取数据
+            self.orderList = MainModel.noCompleteOrderList
+            self.orderListTable.reloadData()
+            
+            //停止提示信息旋转
+            self.stopQueryTip()
+        }
+
+        let failureHandler = {
+            //失败信息提示
+            
+            //停止提示信息旋转
+            self.stopQueryTip()
+        }
+        service.queryNoCompleteOrderFlow(success: successHandler, failure: failureHandler)
     }
     
     func startQueryTip()
@@ -82,7 +106,7 @@ extension OrderViewController: NSTableViewDataSource{
     
     func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
         if tableView.identifier == menuListIdentifier{
-            if row == unfinishOrderRow{
+            if row == noCompleteOrderRow{
                 return "未完成订单"
             }
             else{
@@ -99,8 +123,8 @@ extension OrderViewController: NSTableViewDataSource{
 extension OrderViewController: NSTableViewDelegate{
     func tableViewSelectionDidChange(notification: NSNotification)
     {
-        if(menuListTable.selectedRow == unfinishOrderRow){
-            self.orderList = MainModel.unfinishOrderList
+        if(menuListTable.selectedRow == noCompleteOrderRow){
+            self.orderList = MainModel.noCompleteOrderList
             self.orderListTable.reloadData()
         }
         else{

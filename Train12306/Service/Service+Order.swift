@@ -34,7 +34,7 @@ extension Service{
     {
             let url = "https://kyfw.12306.cn/otn/confirmPassenger/getPassengerDTOs"
             let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
-            Service.Manager1.request(.POST, url, headers:headers).responseJSON(completionHandler:{response in
+            Service.Manager.request(.POST, url, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
                 case .Failure(let error):
                     print(error)
@@ -56,7 +56,7 @@ extension Service{
     }
     
     func preOrderFlow(success success:(image:NSImage) -> (),failure: ()->()){
-        self.checkUser().then({_ ->Promise<String> in
+        self.checkUser().then({() ->Promise<Void> in
             return self.submitOrderRequest()
         }).then({ _ -> Promise<String> in
             return self.initDC()
@@ -72,26 +72,27 @@ extension Service{
         
     }
     
-    func checkUser()->Promise<String>{
+    func checkUser()->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/login/checkUser"
             let params = ["_json_att":""]
             let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
-            Service.Manager1.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
+            Service.Manager.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
                 case .Failure(let error):
                     reject(error)
                 case .Success(let data):
-                    guard JSON(data)["data"]["flag"].bool == true else {
+                    if JSON(data)["data"]["flag"].bool == true{
+                        fulfill()
+                    }else {
                         logger.error("\(JSON(data))")
-                        return
+                        reject(NSError(domain: "checkUser", code: 0, userInfo: nil))
                     }
-                    fulfill(url)
                 }})
         }
     }
     
-    func submitOrderRequest()->Promise<String>{
+    func submitOrderRequest()->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/leftTicket/submitOrderRequest"
             let params = [
@@ -104,12 +105,12 @@ extension Service{
                 "query_to_station_name":MainModel.selectedTicket!.ToStationName!,
                 "undefined":""]
             let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
-            Service.Manager1.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
+            Service.Manager.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
                 case .Failure(let error):
                     reject(error)
-                case .Success(let data):
-                    fulfill(url)
+                case .Success(_):
+                    fulfill()
                 }})
         }
     }
@@ -119,41 +120,38 @@ extension Service{
             let url = "https://kyfw.12306.cn/otn/confirmPassenger/initDc"
             let params = ["_json_att":""]
             let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
-            Service.Manager1.request(.POST, url, parameters: params, headers:headers).responseString(completionHandler:{response in
+            Service.Manager.request(.POST, url, parameters: params, headers:headers).responseString(completionHandler:{response in
                 switch (response.result){
                 case .Failure(let error):
                     reject(error)
                 case .Success(let content):
                     if let matches = Regex("var globalRepeatSubmitToken = '([^']+)'").getMatches(content){
                         MainModel.globalRepeatSubmitToken = matches[0][0]
-                        logger.debug("globalRepeatSubmitToken = \(MainModel.globalRepeatSubmitToken!)")
+                    }
+                    else{
+                        logger.error("fail to get globalRepeatSubmitToken:\(content)")
                     }
                     
                     if let matches = Regex("'key_check_isChange':'([^']+)'").getMatches(content){
                         MainModel.key_check_isChange = matches[0][0]
-                        logger.debug("key_check_isChange = \(MainModel.key_check_isChange!)")
                     }
                     else{
                         logger.error("fail to get key_check_isChange:\(content)")
-                        return
+                        reject(NSError(domain: "initDC", code: 0, userInfo: nil))
                     }
                     
                     if let matches = Regex("'train_location':'([^']+)'").getMatches(content){
                         MainModel.train_location = matches[0][0]
-                        logger.debug("train_location = \(MainModel.train_location!)")
                     }
                     else{
                         logger.error("fail to get train_location:\(content)")
-                        return
                     }
                     
                     if let matches = Regex("'ypInfoDetail':'([^']+)'").getMatches(content){
                         MainModel.ypInfoDetail = matches[0][0]
-                        logger.debug("ypInfoDetail = \(MainModel.ypInfoDetail!)")
                     }
                     else{
                         logger.error("fail to get ypInfoDetail:\(content)")
-                        return
                     }
                     fulfill(url)
                 }})
@@ -165,15 +163,15 @@ extension Service{
             let url = "https://kyfw.12306.cn/otn/confirmPassenger/getPassengerDTOs"
             let params = ["_json_att":"","REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken!]
             let headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
-            Service.Manager1.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
+            Service.Manager.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
                 case .Failure(let error):
                     reject(error)
                 case .Success(let data):
                     let jsonData = JSON(data)["data"]
-                    guard jsonData["normal_passengers"].count > 0 else {
+                    if jsonData["normal_passengers"].count == 0 {
                         logger.error("\(jsonData)")
-                        return
+                        reject(NSError(domain: "getPassengerDTOs", code: 0, userInfo: nil))
                     }
                     var passengers = [PassengerDTO]()
                     for i in 0...jsonData["normal_passengers"].count - 1{
@@ -193,13 +191,12 @@ extension Service{
             let random = CGFloat(Float(arc4random()) / Float(UINT32_MAX))//0~1
             let url = "https://kyfw.12306.cn/otn/passcodeNew/getPassCodeNew?module=passenger&rand=randp&" + random.description
             let headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
-            Service.Manager1.request(.GET, url, headers:headers).responseData({response in
+            Service.Manager.request(.GET, url, headers:headers).responseData({response in
                     switch (response.result){
                     case .Failure(let error):
                         reject(error)
                     case .Success(let data):
-                        let image = NSImage(data: data)!
-                        fulfill(image)
+                        fulfill(NSImage(data: data)!)
                 }})
         }
     }
@@ -215,12 +212,17 @@ extension Service{
             return self.confirmSingleForQueue(randCodeStr)
         }).then({_ -> Promise<Void> in
             return after(1)
-        }).then({() -> Promise<String> in
+        }).then({()->Promise<Bool> in
             return self.queryOrderWaitTime()
-        }).then({_ -> Promise<Void> in
-            return after(1)
-        }).then({() -> Promise<String> in
-            return self.queryOrderWaitTime()
+        }).then({ isReady -> Promise<Bool> in
+            if !isReady{
+                return after(2).then({
+                    return self.queryOrderWaitTime()
+                })
+            }
+            else{
+                return self.queryOrderWaitTime()
+            }
         }).then({_ in
             success()
         }).error({_ in
@@ -237,16 +239,18 @@ extension Service{
                 "_json_att":"",
                 "REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken!]
             let headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
-            Service.Manager1.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
+            Service.Manager.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
                 case .Failure(let error):
                     reject(error)
                 case .Success(let data):
-                    guard JSON(data)["data"]["result"].string == "1" else {
-                        logger.error("\(JSON(data))")
-                        return
+                    if JSON(data)["data"]["result"].string == "1"{
+                        fulfill(url)
                     }
-                    fulfill(url)
+                    else {
+                        logger.error("\(JSON(data))")
+                        reject(NSError(domain: "checkRandCodeForOrder", code: 0, userInfo: nil))
+                    }
                 }})
         }
     }
@@ -265,16 +269,17 @@ extension Service{
                 "_json_att":"",
                 "REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken!]
             let headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
-            Service.Manager1.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
+            Service.Manager.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
                 case .Failure(let error):
                     reject(error)
                 case .Success(let data):
-                    guard JSON(data)["data"]["submitStatus"].bool == true else{
+                    if JSON(data)["data"]["submitStatus"].bool == true{
+                        fulfill(url)
+                    }else{
                         logger.error("\(JSON(data))")
-                        return
+                        reject(NSError(domain: "checkOrderInfo", code: 0, userInfo: nil))
                     }
-                    fulfill(url)
                 }})
         }
     }
@@ -294,7 +299,7 @@ extension Service{
                 "_json_att":"",
                 "REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken!]
             let headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
-            Service.Manager1.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
+            Service.Manager.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
                 case .Failure(let error):
                     reject(error)
@@ -323,39 +328,40 @@ extension Service{
                 "_json_att":"",
                 "REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken!]
             let headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
-            Service.Manager1.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
+            Service.Manager.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
                 case .Failure(let error):
                     reject(error)
                 case .Success(let data):
-                    guard JSON(data)["data"]["submitStatus"].bool == true else {
+                    if JSON(data)["data"]["submitStatus"].bool == true{
+                        logger.debug("confirmSingleForQueueForPC submitStatus: true")
+                        fulfill(url)
+                    }else {
                         logger.error("\(JSON(data))")
-                        return
+                        reject(NSError(domain: "confirmSingleForQueue", code: 0, userInfo: nil))
                     }
-                    logger.debug("confirmSingleForQueueForPC submitStatus: true")
-                    fulfill(url)
                 }})
         }
     }
     
-    func queryOrderWaitTime() ->Promise<String>{
+    func queryOrderWaitTime() ->Promise<Bool>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/confirmPassenger/queryOrderWaitTime?"
             let params = "random=1446560572126&tourFlag=dc&_json_att=&REPEAT_SUBMIT_TOKEN=\(MainModel.globalRepeatSubmitToken!)"
             let headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
-            Service.Manager1.request(.GET, url + params, headers:headers).responseJSON(completionHandler:{response in
+            Service.Manager.request(.GET, url + params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
                 case .Failure(let error):
                     reject(error)
                 case .Success(let data):
-                    guard let orderId = JSON(data)["data"]["orderId"].string else{
-                        logger.error("\(JSON(data))")
-                        fulfill(url)
-                        return
+                    if let orderId = JSON(data)["data"]["orderId"].string{
+                        MainModel.orderId = orderId
+                        fulfill(true)
                     }
-                    MainModel.orderId = orderId
-                    logger.debug(orderId)
-                    fulfill(url)
+                    else{
+                        logger.error("\(JSON(data))")
+                        fulfill(false)
+                    }
                 }})
         }
     }

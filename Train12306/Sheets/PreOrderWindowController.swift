@@ -78,7 +78,6 @@ class PreOrderWindowController: NSWindowController,NSTableViewDataSource,NSTable
             self.stopLoadingTip()
             self.orderTicketLabel.stringValue += " 总票价:\(MainModel.ticketPrice)元"
         }
-//        service.getLeftTicketInit()  //??不确定是否需要定期调用这个接口
         service.preOrderFlow(success: handler, failure: {})
     }
     
@@ -90,8 +89,9 @@ class PreOrderWindowController: NSWindowController,NSTableViewDataSource,NSTable
             self.stopLoadingTip()
         }
         
-//        let getImageOperation = service.getPassCodeNewForPassenger(successHandler: handler, failHandler:{})
-//        Service.shareManager.operationQueue.addOperations([getImageOperation], waitUntilFinished: false)
+        service.getPassCodeNewForPassenger().then({image in
+            handler(image)
+        })
     }
     
     override var windowNibName: String{

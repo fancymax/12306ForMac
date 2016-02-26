@@ -13,8 +13,8 @@ struct QueryOrderParam{
     var queryStartDate = "2015-06-01"
     var queryEndDate = "2016-02-15"
     var come_from_flag = "my_order"
-    var pageSize = "8"
-    var pageIndex = "0"
+    var pageSize = 8
+    var pageIndex = 0
     var query_where = "H"
     var sequeue_train_name = ""
     
@@ -23,8 +23,8 @@ struct QueryOrderParam{
                 "queryStartDate":queryStartDate,
                 "queryEndDate":queryEndDate,
                 "come_from_flag":come_from_flag,
-                "pageSize":pageSize,
-                "pageIndex":pageIndex,
+                "pageSize":String(pageSize),
+                "pageIndex":String(pageIndex),
                 "query_where":query_where,
                 "sequeue_train_name":sequeue_train_name,
         ]

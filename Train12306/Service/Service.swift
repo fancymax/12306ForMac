@@ -11,7 +11,7 @@ import Alamofire
 
 class Service {
     
-    static var Manager1 : Alamofire.Manager = {
+    static var Manager : Alamofire.Manager = {
         // Create the server trust policies
         let serverTrustPolicies: [String: ServerTrustPolicy] = ["kyfw.12306.cn": ServerTrustPolicy.PinCertificates(
                 certificates:ServerTrustPolicy.certificatesInBundle(),

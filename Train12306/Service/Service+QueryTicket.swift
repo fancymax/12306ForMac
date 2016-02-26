@@ -18,7 +18,7 @@ extension Service {
         var queryUrl = ""
         var dynamicJs = ""
         
-        self.queryTicketInit().then({(isQueryLog,leftUrl,jsName) -> Promise<String> in
+        self.queryTicketInit().then({(isQueryLog,leftUrl,jsName) -> Promise<Void> in
             queryLog = isQueryLog
             queryUrl = leftUrl
             dynamicJs = jsName
@@ -36,7 +36,7 @@ extension Service {
     func queryTicketInit()->Promise<(Bool,String,String)>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/leftTicket/init"
-            Service.Manager1.request(.GET, url).responseString(completionHandler:{ response in
+            Service.Manager.request(.GET, url).responseString(completionHandler:{ response in
                 switch (response.result){
                 case .Failure(let error):
                     reject(error)
@@ -81,16 +81,16 @@ extension Service {
                 }})}
     }
     
-    func queryTicketLogWith(params:LeftTicketParam,isQueryLog:Bool)->Promise<String>{
+    func queryTicketLogWith(params:LeftTicketParam,isQueryLog:Bool)->Promise<Void>{
         return Promise{ fulfill, reject in
             let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
             if isQueryLog {
                 let url = "https://kyfw.12306.cn/otn/leftTicket/log?" + params.ToGetParams()
-                Service.Manager1.request(.GET, url, headers:headers).responseString(completionHandler:{response in
+                Service.Manager.request(.GET, url, headers:headers).responseString(completionHandler:{response in
                     print(response.request?.allHTTPHeaderFields)
                 })
             }
-            fulfill("Always Succeed")
+            fulfill()
         }
     }
     
@@ -98,7 +98,7 @@ extension Service {
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/" + queryUrl + "?" + params.ToGetParams()
             let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
-            Service.Manager1.request(.GET, url, headers: headers).responseJSON(completionHandler:{ response in
+            Service.Manager.request(.GET, url, headers: headers).responseJSON(completionHandler:{ response in
                     switch (response.result){
                     case .Failure(let error):
                         reject(error)

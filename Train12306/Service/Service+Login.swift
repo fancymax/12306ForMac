@@ -16,7 +16,7 @@ extension Service {
 //    func loginOut()
 //    {
 //        let url = "https://kyfw.12306.cn/otn/login/loginOut"
-//        Service.Manager1.request(.GET, url).responseString(completionHandler:{response in
+//        Service.Manager.request(.GET, url).responseString(completionHandler:{response in
 //            print(response.result)
 //        })
 //    }
@@ -36,7 +36,7 @@ extension Service {
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/login/init"
             let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
-            Service.Manager1.request(.GET, url, headers:headers).responseString(completionHandler:{response in
+            Service.Manager.request(.GET, url, headers:headers).responseString(completionHandler:{response in
                 
             })
             fulfill("Always Succeed")
@@ -48,13 +48,17 @@ extension Service {
             let random = CGFloat(Float(arc4random()) / Float(UINT32_MAX))//0~1
             let url = "https://kyfw.12306.cn/otn/passcodeNew/getPassCodeNew?module=login&rand=sjrand&" + random.description
             let headers = ["refer": "https://kyfw.12306.cn/otn/login/init"]
-            Service.Manager1.request(.GET, url, headers:headers).responseData({response in
+            Service.Manager.request(.GET, url, headers:headers).responseData({response in
                     switch (response.result){
                     case .Failure(let error):
                         reject(error)
                     case .Success(let data):
-                        let image = NSImage(data: data)!
-                        fulfill(image)
+                        if let image = NSImage(data: data){
+                            fulfill(image)
+                        }
+                        else{
+                            reject(NSError(domain: "getPassCodeNewForLogin", code: 0, userInfo: nil))
+                        }
                 }})
         }
     }
@@ -76,17 +80,18 @@ extension Service {
             let url = "https://kyfw.12306.cn/otn/passcodeNew/checkRandCodeAnsyn"
             let params = ["randCode":randCodeStr,"rand":"sjrand"]
             let headers = ["refer": "https://kyfw.12306.cn/otn/login/init"]
-            Service.Manager1.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
+            Service.Manager.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
                 case .Failure(let error):
                     reject(error)
                 case .Success(let data):
-                    guard let msg = JSON(data)["data"]["msg"].string where msg == "TRUE" else{
+                    if let msg = JSON(data)["data"]["msg"].string where msg == "TRUE"{
+                        fulfill(url)
+                    }
+                    else{
                         logger.error("randCodeStr:\(randCodeStr) json:\(JSON(data))")
-                        return
-                }
-                fulfill(url)
-                
+                        reject(NSError(domain: "checkRandCodeForLogin:", code: 0, userInfo: nil))
+                    }
             }})
         }
     }
@@ -96,17 +101,19 @@ extension Service {
             let url = "https://kyfw.12306.cn/otn/login/loginAysnSuggest"
             let params = ["loginUserDTO.user_name":user,"userDTO.password":passWord,"randCode":randCodeStr]
             let headers = ["refer": "https://kyfw.12306.cn/otn/login/init"]
-            Service.Manager1.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
+            Service.Manager.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
                 case .Failure(let error):
                     reject(error)
                 case .Success(let data):
-                    guard let loginCheck = JSON(data)["data"]["loginCheck"].string where loginCheck == "Y" else{
-                        logger.error("\(JSON(data))")
-                        return
+                    if let loginCheck = JSON(data)["data"]["loginCheck"].string where loginCheck == "Y"{
+                        MainModel.isGetUserInfo = true
+                        fulfill(url)
                     }
-                    MainModel.isGetUserInfo = true
-                    fulfill(url)
+                    else{
+                        logger.error("\(JSON(data))")
+                        reject(NSError(domain: "loginUserWith:", code: 0, userInfo: nil))
+                    }
             }})
         }
     }
@@ -115,7 +122,7 @@ extension Service {
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/index/initMy12306"
             let headers = ["refer": "https://kyfw.12306.cn/otn/login/init"]
-            Service.Manager1.request(.GET, url, headers:headers).responseString(completionHandler:{response in
+            Service.Manager.request(.GET, url, headers:headers).responseString(completionHandler:{response in
                 switch (response.result){
                 case .Failure(let error):
                     reject(error)
@@ -127,7 +134,7 @@ extension Service {
                         MainModel.realName = context.objectForKeyedSubscript("user_name").toString()
                     }
                     else{
-                        logger.error("can't match user_name")
+                        logger.error("can't get user_name")
                     }
                     fulfill(url)
             }})

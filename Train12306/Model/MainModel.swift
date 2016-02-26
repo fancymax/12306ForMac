@@ -54,7 +54,7 @@ class MainModel{
     static var ypInfoDetail:String?
     
     static var historyOrderList:[OrderDTOData] = []
-    static var unfinishOrderList:[OrderDTOData] = []
+    static var noCompleteOrderList:[OrderDTOData] = []
     
     
     static func ticketPriceBy(indentifier:String) -> Double{
