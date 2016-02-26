@@ -52,7 +52,6 @@ code_sign_if_enabled() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework 'Pods/AFNetworking.framework'
   install_framework 'Pods/Alamofire.framework'
   install_framework 'Pods/OMGHTTPURLRQ.framework'
   install_framework 'Pods/PromiseKit.framework'
@@ -60,7 +59,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods/RealmSwift.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework 'Pods/AFNetworking.framework'
   install_framework 'Pods/Alamofire.framework'
   install_framework 'Pods/OMGHTTPURLRQ.framework'
   install_framework 'Pods/PromiseKit.framework'

@@ -48,13 +48,13 @@ class OrderViewController: NSViewController{
             self.stopQueryTip()
         }
 
-        let failHandler = {
+        let failureHandler = {
             //失败信息提示
             
             //停止提示信息旋转
             self.stopQueryTip()
         }
-        service.GetHistoryOrder(successHandler,failHandler)
+        service.queryHistoryOrderFlow(success: successHandler, failure: failureHandler)
     }
     
     func startQueryTip()

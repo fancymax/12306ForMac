@@ -38,7 +38,6 @@
 		F19D3D111C621598005369CF /* LoginWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19D3D0D1C621598005369CF /* LoginWindowController.xib */; };
 		F19D3D121C621598005369CF /* PreOrderWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19D3D0E1C621598005369CF /* PreOrderWindowController.swift */; };
 		F19D3D131C621598005369CF /* PreOrderWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19D3D0F1C621598005369CF /* PreOrderWindowController.xib */; };
-		F1A0776C1C6333B800A8C972 /* AFHTTP12306Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A0776B1C6333B800A8C972 /* AFHTTP12306Manager.swift */; };
 		F1AA8AA41B9D7A200062C43D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1AA8AA31B9D7A200062C43D /* Images.xcassets */; };
 		F1E37C541C7734A000C80B7C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E37C531C7734A000C80B7C /* User.swift */; };
 		F1E7EA2D1C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA221C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c */; };
@@ -120,7 +119,6 @@
 		F19D3D0D1C621598005369CF /* LoginWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginWindowController.xib; path = Sheets/LoginWindowController.xib; sourceTree = "<group>"; };
 		F19D3D0E1C621598005369CF /* PreOrderWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreOrderWindowController.swift; path = Sheets/PreOrderWindowController.swift; sourceTree = "<group>"; };
 		F19D3D0F1C621598005369CF /* PreOrderWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreOrderWindowController.xib; path = Sheets/PreOrderWindowController.xib; sourceTree = "<group>"; };
-		F1A0776B1C6333B800A8C972 /* AFHTTP12306Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AFHTTP12306Manager.swift; path = Service/AFHTTP12306Manager.swift; sourceTree = "<group>"; };
 		F1AA8AA31B9D7A200062C43D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F1CC36461B6B244C0074A014 /* Train12306-Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Train12306-Swift.h"; sourceTree = "<group>"; };
 		F1E37C531C7734A000C80B7C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = RealmModel/User.swift; sourceTree = "<group>"; };
@@ -282,7 +280,6 @@
 		F13FFBC81B70CD1900A329E6 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				F1A0776B1C6333B800A8C972 /* AFHTTP12306Manager.swift */,
 				F1F69BB81C61BECD00F4C4A6 /* Service.swift */,
 				F1F69BB91C61BECD00F4C4A6 /* Service+Login.swift */,
 				F1F69BBA1C61BECD00F4C4A6 /* Service+QueryTicket.swift */,
@@ -628,7 +625,6 @@
 				F13FFBCE1B70CEF600A329E6 /* StationData.swift in Sources */,
 				F1F69BB71C61BE7D00F4C4A6 /* PassengerDTO.swift in Sources */,
 				F1F69BA71C61BDAD00F4C4A6 /* SwiftyRegex.swift in Sources */,
-				F1A0776C1C6333B800A8C972 /* AFHTTP12306Manager.swift in Sources */,
 				F19D3D101C621598005369CF /* LoginWindowController.swift in Sources */,
 				F1F69B9B1C61BC7E00F4C4A6 /* LunarCalendarView.swift in Sources */,
 				F1F69BBC1C61BECD00F4C4A6 /* Service.swift in Sources */,

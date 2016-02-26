@@ -24,7 +24,7 @@ class LoginPopoverViewController: NSViewController {
     
     @IBAction func loginOut(sender: AnyObject) {
 //        service.loginOut()
-        service.removeSession()
+//        service.removeSession()
         
         MainModel.isGetUserInfo = false
         if let loginOutDelegate = delegate{
