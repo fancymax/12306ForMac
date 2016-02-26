@@ -79,7 +79,7 @@ class PreOrderWindowController: NSWindowController,NSTableViewDataSource,NSTable
             self.orderTicketLabel.stringValue += " 总票价:\(MainModel.ticketPrice)元"
         }
 //        service.getLeftTicketInit()  //??不确定是否需要定期调用这个接口
-        service.getPreOrderImage(handler, failHandler: {})
+        service.preOrderFlow(success: handler, failure: {})
     }
     
     func freshImage(){
@@ -90,8 +90,8 @@ class PreOrderWindowController: NSWindowController,NSTableViewDataSource,NSTable
             self.stopLoadingTip()
         }
         
-        let getImageOperation = service.getPassCodeNewForPassenger(successHandler: handler, failHandler:{})
-        Service.shareManager.operationQueue.addOperations([getImageOperation], waitUntilFinished: false)
+//        let getImageOperation = service.getPassCodeNewForPassenger(successHandler: handler, failHandler:{})
+//        Service.shareManager.operationQueue.addOperations([getImageOperation], waitUntilFinished: false)
     }
     
     override var windowNibName: String{
@@ -103,7 +103,7 @@ class PreOrderWindowController: NSWindowController,NSTableViewDataSource,NSTable
         
         button.enabled = false
         //如果失败了，从哪个流程开始全部重新加载
-        let failHandler = {
+        let failureHandler = {
             self.stopLoadingTip()
             button.enabled = true
             self.freshImage()
@@ -119,7 +119,7 @@ class PreOrderWindowController: NSWindowController,NSTableViewDataSource,NSTable
             self.orderId.stringValue = MainModel.orderId!
         }
         
-        service.order(passengerImage.randCodeStr!, successHandler: successHandler, failHandler: failHandler)
+        service.orderFlowWith(passengerImage.randCodeStr!, success: successHandler, failure: failureHandler)
     }
     
     @IBAction func cancelButtonClicked(button:NSButton){

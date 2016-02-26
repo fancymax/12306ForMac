@@ -60,7 +60,7 @@ extension Service {
     }
     
     func loginFlow(user user:String,passWord:String,randCodeStr:String,success:()->(),failure:()->()){
-        checkRandCodeWith(randCodeStr).then({_ -> Promise<String> in
+        checkRandCodeForLogin(randCodeStr).then({_ -> Promise<String> in
             return self.loginUserWith(user, passWord: passWord, randCodeStr: randCodeStr)
         }).then({ _ -> Promise<String> in
             return self.initMy12306()
@@ -71,7 +71,7 @@ extension Service {
         })
     }
     
-    func checkRandCodeWith(randCodeStr:String)->Promise<String>{
+    func checkRandCodeForLogin(randCodeStr:String)->Promise<String>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/passcodeNew/checkRandCodeAnsyn"
             let params = ["randCode":randCodeStr,"rand":"sjrand"]

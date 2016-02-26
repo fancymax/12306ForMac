@@ -60,7 +60,7 @@ class LoginWindowController: NSWindowController{
             //显示登录成功  持续一秒
             self.logStateLabel.show("登录成功", forDuration: 0.1, withFlash: false)
             button.enabled = true
-            self.service.postMobileGetPassengerDTOs({})
+            self.service.postMobileGetPassengerDTOs()
             NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:"handlerAfterSuccess", userInfo: nil, repeats: false)
         }
         
