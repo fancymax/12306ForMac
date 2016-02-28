@@ -60,6 +60,8 @@ extension Service{
             return self.submitOrderRequest()
         }).then({ _ -> Promise<String> in
             return self.initDC()
+        }).then({jsName->Promise<Void> in
+            return self.requestDynamicJs(jsName, referHeader: ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"])
         }).then({_ -> Promise<String> in
             return self.getPassengerDTOs()
         }).then({_ -> Promise<NSImage> in
@@ -76,7 +78,9 @@ extension Service{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/login/checkUser"
             let params = ["_json_att":""]
-            let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
+            let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init",
+                           "If-Modified-Since":"0",
+                           "Cache-Control":"no-cache"]
             Service.Manager.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
                 case .Failure(let error):
@@ -84,6 +88,7 @@ extension Service{
                 case .Success(let data):
                     if JSON(data)["data"]["flag"].bool == true{
                         fulfill()
+                        print(data)
                     }else {
                         logger.error("\(JSON(data))")
                         reject(NSError(domain: "checkUser", code: 0, userInfo: nil))
@@ -102,15 +107,25 @@ extension Service{
                 "tour_flag":"dc",
                 "purpose_codes":"ADULT",
                 "query_from_station_name":MainModel.selectedTicket!.FromStationName!,
+//                "query_from_station_name":"深圳",
                 "query_to_station_name":MainModel.selectedTicket!.ToStationName!,
+//                "query_to_station_name":"长沙",
                 "undefined":""]
+            
             let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
             Service.Manager.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
                 case .Failure(let error):
                     reject(error)
-                case .Success(_):
-                    fulfill()
+                case .Success(let data):
+                    if let isTrue = JSON(data)["status"].bool where isTrue{
+                        fulfill()
+                    }
+                    else {
+                        logger.error("\(JSON(data))")
+                        print(params)
+                        reject(NSError(domain: "submitOrderRequest", code: 0, userInfo: nil))
+                    }
                 }})
         }
     }
@@ -130,6 +145,15 @@ extension Service{
                     }
                     else{
                         logger.error("fail to get globalRepeatSubmitToken:\(content)")
+                    }
+                    
+                    var dynamicJs = ""
+                    if let matches = Regex("src=\"/otn/dynamicJs/([^\"]+)\"").getMatches(content){
+                        dynamicJs = matches[0][0]
+                        logger.debug("dynamicJs = \(dynamicJs)")
+                    }
+                    else{
+                        logger.error("fail to get dynamicJs:\(content)")
                     }
                     
                     if let matches = Regex("'key_check_isChange':'([^']+)'").getMatches(content){
@@ -153,7 +177,7 @@ extension Service{
                     else{
                         logger.error("fail to get ypInfoDetail:\(content)")
                     }
-                    fulfill(url)
+                    fulfill(dynamicJs)
                 }})
         }
     }
@@ -196,7 +220,12 @@ extension Service{
                     case .Failure(let error):
                         reject(error)
                     case .Success(let data):
-                        fulfill(NSImage(data: data)!)
+                        if let image = NSImage(data: data){
+                            fulfill(image)
+                        }
+                        else{
+                            reject(NSError(domain: "getPassCodeNewForPassenger", code: 0, userInfo: nil))
+                        }
                 }})
         }
     }
@@ -291,7 +320,7 @@ extension Service{
                 "train_date":MainModel.selectedTicket!.jsStartTrainDateStr!,//Tue+Nov+17+2015+00%3A00%3A00+GMT%2B0800
                 "train_no":MainModel.selectedTicket!.train_no!,
                 "stationTrainCode":MainModel.selectedTicket!.TrainCode!,
-                "seatType":"O",
+                "seatType":MainModel.selectPassengers[0].seatCode,
                 "fromStationTelecode":MainModel.selectedTicket!.FromStationCode!,
                 "toStationTelecode":MainModel.selectedTicket!.ToStationCode!,
                 "leftTicket":MainModel.selectedTicket!.yp_info!,
@@ -359,7 +388,7 @@ extension Service{
                         fulfill(true)
                     }
                     else{
-                        logger.error("\(JSON(data))")
+                        logger.debug("\(JSON(data))")
                         fulfill(false)
                     }
                 }})

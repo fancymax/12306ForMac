@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import PromiseKit
 
 class Service {
     
@@ -34,4 +35,13 @@ class Service {
         return man
     }()
 
+    func requestDynamicJs(jsName:String,referHeader:[String:String])->Promise<Void>{
+        return Promise{ fulfill, reject in
+            let url = "https://kyfw.12306.cn/otn/dynamicJs/" + jsName
+            Service.Manager.request(.GET, url, headers:referHeader).response(completionHandler:{response in
+                fulfill()
+            })
+        }
+    }
+    
 }

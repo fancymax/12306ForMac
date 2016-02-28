@@ -72,13 +72,17 @@ class PreOrderWindowController: NSWindowController,NSTableViewDataSource,NSTable
     
     func loadImage(){
         self.startLoadingTip("正在加载...")
-        let handler = {(image:NSImage) -> () in
+        let successHandler = {(image:NSImage) -> () in
             self.passengerImage.clearRandCodes()
             self.passengerImage.image = image
             self.stopLoadingTip()
             self.orderTicketLabel.stringValue += " 总票价:\(MainModel.ticketPrice)元"
         }
-        service.preOrderFlow(success: handler, failure: {})
+        
+        let failureHandler = {
+            self.stopLoadingTip()
+        }
+        service.preOrderFlow(success: successHandler, failure: failureHandler)
     }
     
     func freshImage(){

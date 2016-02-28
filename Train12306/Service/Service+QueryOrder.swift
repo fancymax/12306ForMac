@@ -104,15 +104,11 @@ extension Service{
                 case .Failure(let error):
                     reject(error)
                 case .Success(let data):
-                    let jsonData = JSON(data)["data"]
-                    guard jsonData["orderDBList"].count > 0 else {
-                        print("orderDBList:\(jsonData)")
-                        fulfill(url)
-                        return
-                    }
-                    let num = jsonData["orderDBList"].count
-                    for i in 0...num-1 {
-                        MainModel.noCompleteOrderList.append(OrderDTOData(jsonData:jsonData["orderDBList"][i]))
+                    let orderDBList = JSON(data)["data"]["orderDBList"]
+                    if orderDBList.count > 0{
+                        for i in 0...orderDBList.count - 1 {
+                            MainModel.noCompleteOrderList.append(OrderDTOData(jsonData:orderDBList[i]))
+                        }
                     }
                     fulfill(url)
             }})

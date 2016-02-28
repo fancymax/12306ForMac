@@ -22,7 +22,9 @@ extension Service {
 //    }
     
     func preLoginFlow(success success:(loadImage:NSImage)->(),failure:()->()){
-        loginInit().then({_ -> Promise<NSImage> in
+        loginInit().then({dynamicJs -> Promise<Void> in
+            return self.requestDynamicJs(dynamicJs, referHeader: ["refer": "https://kyfw.12306.cn/otn/login/init"])
+         }).then({_ -> Promise<NSImage> in
             return self.getPassCodeNewForLogin()
         }).then({ image in
             success(loadImage: image)
@@ -37,9 +39,20 @@ extension Service {
             let url = "https://kyfw.12306.cn/otn/login/init"
             let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
             Service.Manager.request(.GET, url, headers:headers).responseString(completionHandler:{response in
-                
-            })
-            fulfill("Always Succeed")
+                switch (response.result){
+                case .Failure(let error):
+                    reject(error)
+                case .Success(let content):
+                    var dynamicJs = ""
+                    if let matches = Regex("src=\"/otn/dynamicJs/([^\"]+)\"").getMatches(content){
+                        dynamicJs = matches[0][0]
+                        logger.debug("dynamicJs = \(dynamicJs)")
+                    }
+                    else{
+                        logger.error("fail to get dynamicJs:\(content)")
+                    }
+                    fulfill(dynamicJs)
+                }})
         }
     }
     

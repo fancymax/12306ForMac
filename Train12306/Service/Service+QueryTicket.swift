@@ -16,15 +16,14 @@ extension Service {
     {
         var queryLog = false
         var queryUrl = ""
-        var dynamicJs = ""
         
         self.queryTicketInit().then({(isQueryLog,leftUrl,jsName) -> Promise<Void> in
             queryLog = isQueryLog
             queryUrl = leftUrl
-            dynamicJs = jsName
+            return self.requestDynamicJs(jsName, referHeader: ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"])
+        }).then({()->Promise<Void> in
             return self.queryTicketLogWith(params,isQueryLog: queryLog)
         }).then({_ -> Promise<[QueryLeftNewDTO]> in
-            print("queryLog = \(queryLog) queryUrl= \(queryUrl) dynamicJs = \(dynamicJs)")
             return self.queryTicketWith(params,queryUrl: queryUrl)
         }).then({tickets in
             success(tickets: tickets)
@@ -83,21 +82,25 @@ extension Service {
     
     func queryTicketLogWith(params:LeftTicketParam,isQueryLog:Bool)->Promise<Void>{
         return Promise{ fulfill, reject in
-            let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
+            let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init",
+                           "If-Modified-Since":"0",
+                           "Cache-Control":"no-cache"]
             if isQueryLog {
                 let url = "https://kyfw.12306.cn/otn/leftTicket/log?" + params.ToGetParams()
                 Service.Manager.request(.GET, url, headers:headers).responseString(completionHandler:{response in
                     print(response.request?.allHTTPHeaderFields)
+                    fulfill()
                 })
             }
-            fulfill()
         }
     }
     
     func queryTicketWith(params:LeftTicketParam,queryUrl:String)->Promise<[QueryLeftNewDTO]>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/" + queryUrl + "?" + params.ToGetParams()
-            let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
+            let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init",
+                           "If-Modified-Since":"0",
+                           "Cache-Control":"no-cache"]
             Service.Manager.request(.GET, url, headers: headers).responseJSON(completionHandler:{ response in
                     switch (response.result){
                     case .Failure(let error):
