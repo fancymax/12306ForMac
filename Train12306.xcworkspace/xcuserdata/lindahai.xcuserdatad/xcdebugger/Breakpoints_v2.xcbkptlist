@@ -666,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Train12306/Service/Service+Order.swift"
-            timestampString = "478346788.331976"
+            timestampString = "478488670.982748"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "getPassCodeNewForPassenger()"
             landmarkType = "5">
          </BreakpointContent>
@@ -736,6 +736,38 @@
             startingLineNumber = "49"
             endingLineNumber = "49"
             landmarkName = "queryHistoryOrder()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Train12306/TicketViewControllers/TicketTableViewController.swift"
+            timestampString = "478439974.739294"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "queryLeftTicket(_:toStationCode:date:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Train12306/TicketViewControllers/TicketTableViewController.swift"
+            timestampString = "478440002.798146"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "queryLeftTicket(_:toStationCode:date:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

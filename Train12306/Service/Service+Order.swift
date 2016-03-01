@@ -107,9 +107,7 @@ extension Service{
                 "tour_flag":"dc",
                 "purpose_codes":"ADULT",
                 "query_from_station_name":MainModel.selectedTicket!.FromStationName!,
-//                "query_from_station_name":"深圳",
                 "query_to_station_name":MainModel.selectedTicket!.ToStationName!,
-//                "query_to_station_name":"长沙",
                 "undefined":""]
             
             let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
@@ -142,6 +140,7 @@ extension Service{
                 case .Success(let content):
                     if let matches = Regex("var globalRepeatSubmitToken = '([^']+)'").getMatches(content){
                         MainModel.globalRepeatSubmitToken = matches[0][0]
+                        logger.debug("globalRepeatSubmitToken:\(MainModel.globalRepeatSubmitToken!)")
                     }
                     else{
                         logger.error("fail to get globalRepeatSubmitToken:\(content)")

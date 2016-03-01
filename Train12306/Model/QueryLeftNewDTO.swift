@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import JavaScriptCore
 /*
 gg_num 	    观光
 yb_num 	    迎宾
@@ -192,5 +193,10 @@ class QueryLeftNewDTO:NSObject {
         
         SecretStr = jsonData["secretStr"].string
         buttonTextInfo = jsonData["buttonTextInfo"].string
+        
+        if SecretStr != nil{
+            SecretStr = SecretStr!.stringByReplacingOccurrencesOfString("%3D", withString: "=").stringByReplacingOccurrencesOfString("%2F", withString: "/").stringByReplacingOccurrencesOfString("%2B", withString: "+")
+        }
+        
     }
 }
