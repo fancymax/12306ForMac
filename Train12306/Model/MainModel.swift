@@ -21,6 +21,14 @@ class MainModel{
         "硬座": "1",
         "无座": "1"]
     
+    static func getSeatCodeBy(identifier:String, trainCode:String)->String{
+        if ((trainCode.containsString("G"))||(trainCode.containsString("D")))
+        && (identifier == "无座"){
+            return MainModel.seatTypeNameDic["二等座"]!
+        }
+        return MainModel.seatTypeNameDic[identifier]!
+    }
+    
     static let cardTypeNameDic =
     ["二代身份证": "1",
     "一代身份证": "2",

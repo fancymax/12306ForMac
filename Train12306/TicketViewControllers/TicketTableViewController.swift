@@ -99,19 +99,22 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
             return
         }
         
+        
         submitWindowController = PreOrderWindowController()
         
         let selectedRow = leftTicketTable.rowForView(sender)
-        print(sender.identifier)
-        print(MainModel.seatTypeNameDic[sender.identifier!])
+        MainModel.selectedTicket = ticketQueryResult[selectedRow]
+        let seatCodeName = sender.identifier!
+        let trainCode = MainModel.selectedTicket!.TrainCode!
+        
+        print(MainModel.seatTypeNameDic[seatCodeName])
         
         for passenger in MainModel.selectPassengers{
-            passenger.seatCode = MainModel.seatTypeNameDic[sender.identifier!]!
-            passenger.seatCodeName = sender.identifier!
+            passenger.seatCodeName = seatCodeName
+            passenger.seatCode = MainModel.getSeatCodeBy(seatCodeName,trainCode: trainCode)
             print("seatCode = \(passenger.seatCode)")
         }
         
-        MainModel.selectedTicket = ticketQueryResult[selectedRow]
         submitWindowController.trainInfo = ticketQueryResult[selectedRow]
         if let window = self.view.window {
             window.beginSheet(submitWindowController.window!, completionHandler:

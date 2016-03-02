@@ -249,7 +249,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="WIs-HT-Kwb" customClass="ItemCellView" customModule="Train12306" customModuleProvider="target">
+                                            <tableCellView misplaced="YES" id="WIs-HT-Kwb" customClass="ItemCellView" customModule="Train12306" customModuleProvider="target">
                                                 <rect key="frame" x="423" y="1" width="1197" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -475,8 +475,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </customView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YZ2-44-iFH" customClass="FlashLabel" customModule="Train12306" customModuleProvider="target">
-                    <rect key="frame" x="442.5" y="235.5" width="109" height="19"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YZ2-44-iFH" customClass="FlashLabel" customModule="Train12306" customModuleProvider="target">
+                    <rect key="frame" x="442" y="235" width="109" height="19"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="请先选择乘客～" drawsBackground="YES" id="dMy-SC-xex">
                         <font key="font" metaFont="system" size="15"/>

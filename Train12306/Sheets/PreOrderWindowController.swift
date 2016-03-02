@@ -11,6 +11,7 @@ import Cocoa
 class PreOrderWindowController: NSWindowController,NSTableViewDataSource,NSTableViewDelegate{
 
     var trainInfo:QueryLeftNewDTO?
+    let service = Service()
     @IBOutlet weak var orderTicketLabel: NSTextField!
     @IBOutlet weak var passengerTable: NSTableView!
     @IBOutlet weak var passengerImage: RandCodeImageView!
@@ -26,8 +27,6 @@ class PreOrderWindowController: NSWindowController,NSTableViewDataSource,NSTable
     
     @IBOutlet weak var orderId: NSTextField!
     
-    let service = Service()
-    
     @IBAction func FreshImage(sender: NSButton) {
         freshImage()
     }
@@ -40,8 +39,7 @@ class PreOrderWindowController: NSWindowController,NSTableViewDataSource,NSTable
         preOrderView.hidden = false
         orderIdView.hidden = true
         
-        let dateStr = ""
-        orderTicketLabel.stringValue =  dateStr + " " + trainInfo!.TrainCode!
+        orderTicketLabel.stringValue =  trainInfo!.startTrainDateStr! + " " + trainInfo!.TrainCode!
         + " " + trainInfo!.FromStationName! + " " + trainInfo!.start_time! + "-" + trainInfo!.ToStationName! + " " + trainInfo!.arrive_time!
         
         loadImage()
@@ -61,12 +59,10 @@ class PreOrderWindowController: NSWindowController,NSTableViewDataSource,NSTable
     }
     
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
-        print("select p count = \(MainModel.selectPassengers.count)")
         return MainModel.selectPassengers.count
     }
     
     func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
-        print("row = \(row) name = \(MainModel.selectPassengers[row].passenger_name)")
         return MainModel.selectPassengers[row]
     }
     
@@ -76,7 +72,7 @@ class PreOrderWindowController: NSWindowController,NSTableViewDataSource,NSTable
             self.passengerImage.clearRandCodes()
             self.passengerImage.image = image
             self.stopLoadingTip()
-            self.orderTicketLabel.stringValue += " 总票价:\(MainModel.ticketPrice)元"
+            self.orderTicketLabel.stringValue += " ¥\(MainModel.ticketPrice)"
         }
         
         let failureHandler = {

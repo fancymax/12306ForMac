@@ -42,6 +42,7 @@ class PassengerDTO:NSObject {
     var ticketCode = "1";
     var ticketCodeName = "成人票";
     
+    
     //测试方法
     override init(){
         isChecked = false
