@@ -13,23 +13,23 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="202" height="225"/>
+            <rect key="frame" x="0.0" y="0.0" width="95" height="180"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="40" horizontalPageScroll="10" verticalLineScroll="40" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UC9-c9-gax">
-                    <rect key="frame" x="0.0" y="0.0" width="202" height="225"/>
+                <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="30" horizontalPageScroll="10" verticalLineScroll="30" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UC9-c9-gax">
+                    <rect key="frame" x="0.0" y="0.0" width="95" height="180"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="oJb-YT-8cb">
-                        <rect key="frame" x="1" y="1" width="200" height="223"/>
+                        <rect key="frame" x="0.0" y="0.0" width="95" height="180"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" viewBased="YES" id="Dcl-i9-g9A">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="223"/>
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="30" viewBased="YES" id="Dcl-i9-g9A">
+                                <rect key="frame" x="0.0" y="0.0" width="95" height="180"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <animations/>
-                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn editable="NO" width="200" minWidth="40" maxWidth="1000" id="NpA-Cy-R8k">
+                                    <tableColumn identifier="MyView" editable="NO" width="95" minWidth="40" maxWidth="1000" id="NpA-Cy-R8k">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="姓名">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -42,24 +42,24 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="gEM-wv-dO3">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="40"/>
+                                            <tableCellView identifier="MyView" id="gEM-wv-dO3">
+                                                <rect key="frame" x="0.0" y="0.0" width="95" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vad-dz-hiT">
-                                                        <rect key="frame" x="3" y="11" width="30" height="17"/>
+                                                        <rect key="frame" x="3" y="7" width="30" height="17"/>
                                                         <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="小明" id="lwS-x4-1Dv">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
                                                             <binding destination="gEM-wv-dO3" name="value" keyPath="objectValue.passenger_name" id="oQw-zy-igl"/>
                                                         </connections>
                                                     </textField>
-                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="Etd-7I-ild">
-                                                        <rect key="frame" x="175" y="11" width="22" height="18"/>
+                                                    <button tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="Etd-7I-ild">
+                                                        <rect key="frame" x="55" y="6" width="22" height="18"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6Qu-Il-ulu">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -69,26 +69,12 @@
                                                             <binding destination="gEM-wv-dO3" name="value" keyPath="objectValue.isChecked" id="Hj5-uZ-4Jp"/>
                                                         </connections>
                                                     </button>
-                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ikv-tg-djc">
-                                                        <rect key="frame" x="52" y="13" width="122" height="14"/>
-                                                        <animations/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" title="372145194906120516" id="xNr-VC-kSB">
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                            <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                        <connections>
-                                                            <binding destination="gEM-wv-dO3" name="value" keyPath="objectValue.passenger_id_no" id="hXA-gY-7Ts"/>
-                                                        </connections>
-                                                    </textField>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="Etd-7I-ild" firstAttribute="centerY" secondItem="gEM-wv-dO3" secondAttribute="centerY" id="0Ow-S3-p3G"/>
                                                     <constraint firstItem="Vad-dz-hiT" firstAttribute="centerY" secondItem="gEM-wv-dO3" secondAttribute="centerY" id="2Cc-WX-pBa"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Etd-7I-ild" secondAttribute="trailing" constant="20" id="3v7-6o-xsa"/>
                                                     <constraint firstItem="Vad-dz-hiT" firstAttribute="leading" secondItem="gEM-wv-dO3" secondAttribute="leading" constant="5" id="5oF-Iz-KAS"/>
-                                                    <constraint firstItem="Ikv-tg-djc" firstAttribute="centerY" secondItem="gEM-wv-dO3" secondAttribute="centerY" id="7Sk-UU-wXY"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Etd-7I-ild" secondAttribute="trailing" constant="5" id="9d5-dP-6py"/>
-                                                    <constraint firstItem="Etd-7I-ild" firstAttribute="leading" secondItem="Ikv-tg-djc" secondAttribute="trailing" constant="5" id="nHs-5N-x5c"/>
                                                 </constraints>
                                                 <animations/>
                                             </tableCellView>
@@ -102,7 +88,7 @@
                             </tableView>
                         </subviews>
                         <animations/>
-                        <nil key="backgroundColor"/>
+                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
                     <animations/>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="tmD-sn-hs7">

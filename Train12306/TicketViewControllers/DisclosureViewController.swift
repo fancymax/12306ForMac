@@ -24,6 +24,11 @@ class DisclosureViewController: NSViewController,NSPopoverDelegate{
         passengerSelectViewController.reloadPassenger()
     }
     
+    func initPassenger(){
+        MainModel.passengers.append(PassengerDTO())
+        MainModel.passengers.append(PassengerDTO())
+    }
+    
     func popoverDidClose(notification: NSNotification) {
         for i in 0..<MainModel.passengers.count{
             if(MainModel.passengers[i].isChecked){

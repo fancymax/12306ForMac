@@ -194,16 +194,6 @@ extension AutoCompleteTextField:NSTableViewDelegate{
     func tableView(tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
         return AutoCompleteTableRowView()
     }
-}
-
-// MARK: - NSTableViewDataSource
-extension AutoCompleteTextField:NSTableViewDataSource{
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
-        if self.matches == nil{
-            return 0
-        }
-        return self.matches!.count
-    }
     
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         var cellView = tableView.makeViewWithIdentifier("MyView", owner: self) as? NSTableCellView
@@ -223,5 +213,15 @@ extension AutoCompleteTextField:NSTableViewDataSource{
         cellView!.textField!.attributedStringValue = mutableAttriStr
         
         return cellView
+    }
+}
+
+// MARK: - NSTableViewDataSource
+extension AutoCompleteTextField:NSTableViewDataSource{
+    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+        if self.matches == nil{
+            return 0
+        }
+        return self.matches!.count
     }
 }

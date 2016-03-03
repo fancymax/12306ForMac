@@ -66,16 +66,20 @@ class MainModel{
     
     
     static func ticketPriceBy(indentifier:String) -> Double{
-        if ypInfoDetail != nil{
-            var range = ypInfoDetail!.rangeOfString(indentifier)
-            let end = range?.endIndex.advancedBy(5)
-            let start = range?.startIndex.advancedBy(1)
-            range?.endIndex = end!
-            range?.startIndex = start!
-            
-            let priceStr = ypInfoDetail!.substringWithRange(range!)
+        if let ticketInfo = ypInfoDetail {
+            var start = ticketInfo.startIndex
+            var end = start.advancedBy(5)
+            for seatType in MainModel.selectedTicket!.seat_types!.characters{
+                if seatType == indentifier.characters[indentifier.startIndex] {
+                    break;
+                }
+                start = start.advancedBy(10)
+                end = start.advancedBy(5)
+                print(ticketInfo.substringWithRange(Range(start: start,end: end)))
+            }
+            let priceStr = ticketInfo.substringWithRange(Range(start: start.advancedBy(1), end: end.advancedBy(1)))
             let price = Double(priceStr)! / 10
-            Swift.print("indentifier = \(indentifier) price = \(price)")
+            Swift.print("indentifier = \(indentifier) price = \(price) yp = \(ticketInfo)")
             return price
         }
         else{

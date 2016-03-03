@@ -112,7 +112,6 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         for passenger in MainModel.selectPassengers{
             passenger.seatCodeName = seatCodeName
             passenger.seatCode = MainModel.getSeatCodeBy(seatCodeName,trainCode: trainCode)
-            print("seatCode = \(passenger.seatCode)")
         }
         
         submitWindowController.trainInfo = ticketQueryResult[selectedRow]
