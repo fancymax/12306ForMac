@@ -11,23 +11,15 @@ import Foundation
 class MainModel{
     static let seatTypeNameDic =
     ["商务座": "9",
-        "特等座": "P",
-        "一等座": "M",
-        "二等座": "O",
-        "高级软卧": "6",
-        "软卧": "4",
-        "硬卧": "3",
-        "软座": "2",
-        "硬座": "1",
-        "无座": "1"]
-    
-    static func getSeatCodeBy(identifier:String, trainCode:String)->String{
-        if ((trainCode.containsString("G"))||(trainCode.containsString("D")))
-        && (identifier == "无座"){
-            return MainModel.seatTypeNameDic["二等座"]!
-        }
-        return MainModel.seatTypeNameDic[identifier]!
-    }
+    "特等座": "P",
+    "一等座": "M",
+    "二等座": "O",
+    "高级软卧": "6",
+    "软卧": "4",
+    "硬卧": "3",
+    "软座": "2",
+    "硬座": "1",
+    "无座": "1"]
     
     static let cardTypeNameDic =
     ["二代身份证": "1",
@@ -51,8 +43,6 @@ class MainModel{
     
     static var selectedTicket:QueryLeftNewDTO?
     
-    static var submitResult: String?
-    
     static var orderId:String?
     
     static var globalRepeatSubmitToken:String?
@@ -64,6 +54,13 @@ class MainModel{
     static var historyOrderList:[OrderDTO] = []
     static var noCompleteOrderList:[OrderDTO] = []
     
+    static func getSeatCodeBy(identifier:String, trainCode:String)->String{
+        if ((trainCode.containsString("G"))||(trainCode.containsString("D")))
+        && (identifier == "无座"){
+            return MainModel.seatTypeNameDic["二等座"]!
+        }
+        return MainModel.seatTypeNameDic[identifier]!
+    }
     
     static func ticketPriceBy(indentifier:String) -> Double{
         if let ticketInfo = ypInfoDetail {

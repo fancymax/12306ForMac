@@ -10,9 +10,9 @@
                 <outlet property="loadingTip" destination="Y7q-VB-u3Y" id="fHU-LY-l18"/>
                 <outlet property="loadingTipBar" destination="zqq-w5-UrA" id="Gob-3r-Rtj"/>
                 <outlet property="loadingTipView" destination="ULH-CJ-oS5" id="IWx-C9-VZa"/>
-                <outlet property="logStateLabel" destination="dVZ-7r-ebc" id="fpS-Qo-upS"/>
                 <outlet property="loginImage" destination="HYl-HA-qIH" id="qxc-PX-5Qd"/>
                 <outlet property="passWord" destination="gnT-ti-hbG" id="uGZ-Lw-Zt0"/>
+                <outlet property="tips" destination="dVZ-7r-ebc" id="l1L-7x-kzB"/>
                 <outlet property="userName" destination="Oyq-IG-8iP" id="S5v-Cg-SZD"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -23,7 +23,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="480" height="400"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="400"/>
                 <autoresizingMask key="autoresizingMask"/>

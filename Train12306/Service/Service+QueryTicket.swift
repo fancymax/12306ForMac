@@ -12,6 +12,7 @@ import PromiseKit
 
 extension Service {
     
+// MARK: - Request Flow
     func queryTicketFlowWith(params:LeftTicketParam,success:(tickets:[QueryLeftNewDTO])->(),failure:()->())
     {
         var queryLog = false
@@ -32,6 +33,7 @@ extension Service {
         })
     }
     
+// MARK: - Chainable Request
     func queryTicketInit()->Promise<(Bool,String,String)>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/leftTicket/init"

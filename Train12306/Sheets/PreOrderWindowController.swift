@@ -10,7 +10,6 @@ import Cocoa
 
 class PreOrderWindowController: NSWindowController,NSTableViewDataSource,NSTableViewDelegate{
 
-    var trainInfo:QueryLeftNewDTO?
     let service = Service()
     @IBOutlet weak var orderTicketLabel: NSTextField!
     @IBOutlet weak var passengerTable: NSTableView!
@@ -39,6 +38,7 @@ class PreOrderWindowController: NSWindowController,NSTableViewDataSource,NSTable
         preOrderView.hidden = false
         orderIdView.hidden = true
         
+        let trainInfo = MainModel.selectedTicket
         orderTicketLabel.stringValue =  trainInfo!.startTrainDateStr! + " " + trainInfo!.TrainCode!
         + " " + trainInfo!.FromStationName! + " " + trainInfo!.start_time! + "-" + trainInfo!.ToStationName! + " " + trainInfo!.arrive_time!
         
@@ -100,16 +100,14 @@ class PreOrderWindowController: NSWindowController,NSTableViewDataSource,NSTable
     
     @IBAction func okayButtonClicked(button:NSButton){
         self.startLoadingTip("正在提交...")
-        
         button.enabled = false
-        //如果失败了，从哪个流程开始全部重新加载
+        
         let failureHandler = {
             self.stopLoadingTip()
             button.enabled = true
             self.freshImage()
         }
         
-        //成功了就显示订单界面，并提示付款
         let successHandler = {
             self.stopLoadingTip()
             button.enabled = true

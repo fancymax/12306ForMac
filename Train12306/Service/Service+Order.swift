@@ -11,6 +11,65 @@ import Alamofire
 import PromiseKit
 
 extension Service{
+    
+// MARK: - Request Flow
+    func submitFlow(success success:() -> (),failure:(error:NSError)->()){
+        self.checkUser().then({() ->Promise<Void> in
+            return self.submitOrderRequest()
+        }).then({_ in
+            success()
+        }).error({error in
+            failure(error: error as NSError)
+        })
+    }
+    
+    func preOrderFlow(success success:(image:NSImage) -> (),failure: ()->()){
+        self.initDC().then({jsName->Promise<Void> in
+            return self.requestDynamicJs(jsName, referHeader: ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"])
+        }).then({_ -> Promise<String> in
+            return self.getPassengerDTOs()
+        }).then({_ -> Promise<NSImage> in
+            return self.getPassCodeNewForPassenger()
+        }).then({image in
+            success(image: image)
+        }).error({_ in
+            failure()
+        })
+    }
+    
+    func orderFlowWith(randCodeStr:String,success:()->(),failure:()->()){
+        self.checkRandCodeForOrder(randCodeStr).then({_ -> Promise<String> in
+            return self.checkOrderInfo(randCodeStr)
+        }).then({_ -> Promise<String> in
+            return self.getQueueCount()
+        }).then({_ -> Promise<Void> in
+            return after(1)
+        }).then({()-> Promise<String> in
+            return self.confirmSingleForQueue(randCodeStr)
+        }).then({_ -> Promise<Void> in
+            return after(1)
+        }).then({()->Promise<Bool> in
+            return self.queryOrderWaitTime()
+        }).then({ isReady -> Promise<Bool> in
+            if !isReady{
+                return after(2).then({
+                    return self.queryOrderWaitTime()
+                })
+            }
+            else{
+                return self.queryOrderWaitTime()
+            }
+        }).then({_ in
+            success()
+        }).error({_ in
+            failure()
+        })
+    }
+    
+    func queryOrderIdFlow(){
+        self.queryOrderWaitTime()
+    }
+    
     internal func getPassengerStr(passengers:[PassengerDTO]) ->(String,String){
         var passengerStr = ""
         var oldPassengerStr = ""
@@ -55,30 +114,8 @@ extension Service{
                 }})
     }
     
-    func submitFlow(success success:() -> (),failure:(error:NSError)->()){
-        self.checkUser().then({() ->Promise<Void> in
-            return self.submitOrderRequest()
-        }).then({_ in
-            success()
-        }).error({error in
-            failure(error: error as NSError)
-        })
-    }
     
-    func preOrderFlow(success success:(image:NSImage) -> (),failure: ()->()){
-        self.initDC().then({jsName->Promise<Void> in
-            return self.requestDynamicJs(jsName, referHeader: ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"])
-        }).then({_ -> Promise<String> in
-            return self.getPassengerDTOs()
-        }).then({_ -> Promise<NSImage> in
-            return self.getPassCodeNewForPassenger()
-        }).then({image in
-            success(image: image)
-        }).error({_ in
-            failure()
-        })
-    }
-    
+// MARK: - Chainable Request
     func checkUser()->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/login/checkUser"
@@ -236,39 +273,6 @@ extension Service{
                         }
                 }})
         }
-    }
-    
-    func orderFlowWith(randCodeStr:String,success:()->(),failure:()->()){
-        self.checkRandCodeForOrder(randCodeStr).then({_ -> Promise<String> in
-            return self.checkOrderInfo(randCodeStr)
-        }).then({_ -> Promise<String> in
-            return self.getQueueCount()
-        }).then({_ -> Promise<Void> in
-            return after(1)
-        }).then({()-> Promise<String> in
-            return self.confirmSingleForQueue(randCodeStr)
-        }).then({_ -> Promise<Void> in
-            return after(1)
-        }).then({()->Promise<Bool> in
-            return self.queryOrderWaitTime()
-        }).then({ isReady -> Promise<Bool> in
-            if !isReady{
-                return after(2).then({
-                    return self.queryOrderWaitTime()
-                })
-            }
-            else{
-                return self.queryOrderWaitTime()
-            }
-        }).then({_ in
-            success()
-        }).error({_ in
-            failure()
-        })
-    }
-    
-    func queryOrderIdFlow(){
-        self.queryOrderWaitTime()
     }
     
     func checkRandCodeForOrder(randCodeStr:String) ->Promise<String>{

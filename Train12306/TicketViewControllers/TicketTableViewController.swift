@@ -43,7 +43,6 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     func receiveDidSendSubmitMessageNotification(note: NSNotification){
         print("receiveDidSendSubmitMessageNotification")
         submitWindowController = PreOrderWindowController()
-        submitWindowController.trainInfo = MainModel.selectedTicket
         if let window = self.view.window {
             window.beginSheet(submitWindowController.window!, completionHandler:
                 {response in
@@ -68,19 +67,15 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     
     func queryLeftTicket(fromStationCode: String, toStationCode: String, date: String) {
         let successHandler = { (tickets:[QueryLeftNewDTO])->()  in
-            //如果成功 则从MainModel里获取数据
             self.ticketQueryResult = tickets
             self.leftTicketTable.reloadData()
             
-            //停止提示信息旋转
             self.stopLoadingTip()
         }
         
         let failureHandler = {
-            //停止提示信息旋转
             self.stopLoadingTip()
             //失败信息提示
-            
         }
         
         self.startLoadingTip("正在查询...")

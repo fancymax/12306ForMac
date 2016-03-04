@@ -152,7 +152,6 @@ extension MainWindowController: LoginPopoverDelegate{
         loginWindowController = LoginWindowController()
         
         if let window = self.window {
-            //赋值原始的用户名，密码
             window.beginSheet(loginWindowController.window!) {
                 if $0 == NSModalResponseOK{
                     self.loginButton.title = MainModel.realName
@@ -162,17 +161,16 @@ extension MainWindowController: LoginPopoverDelegate{
     }
     
     func createLoginPopover(){
-        var myPopover = self.loginPopover
-        if(myPopover == nil){
-            myPopover = NSPopover()
-            let cp = LoginPopoverViewController()
-            cp.delegate = self
-            myPopover!.contentViewController = cp
-            myPopover!.appearance = NSAppearance(named: "NSAppearanceNameAqua")
-            myPopover!.animates = true
-            myPopover!.behavior = NSPopoverBehavior.Transient
+        if(self.loginPopover == nil){
+            let popover = NSPopover()
+            let controller = LoginPopoverViewController()
+            controller.delegate = self
+            popover.contentViewController = controller
+            popover.appearance = NSAppearance(named: "NSAppearanceNameAqua")
+            popover.animates = true
+            popover.behavior = NSPopoverBehavior.Transient
+            self.loginPopover = popover
         }
-        self.loginPopover = myPopover
     }
     
 }

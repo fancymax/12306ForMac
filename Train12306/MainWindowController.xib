@@ -16,15 +16,15 @@
         <window title="12306ForMac" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="yxO-x7-Uu9" customClass="INAppStoreWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="131" y="165" width="910" height="670"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
-            <value key="minSize" type="size" width="910" height="670"/>
+            <rect key="contentRect" x="131" y="165" width="910" height="750"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <value key="minSize" type="size" width="910" height="710"/>
             <view key="contentView" id="agO-Wm-PyO">
-                <rect key="frame" x="0.0" y="0.0" width="910" height="670"/>
+                <rect key="frame" x="0.0" y="0.0" width="910" height="750"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <stackView orientation="vertical" alignment="leading" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="3rh-ac-vqb">
-                        <rect key="frame" x="0.0" y="0.0" width="910" height="670"/>
+                        <rect key="frame" x="0.0" y="0.0" width="910" height="750"/>
                         <animations/>
                     </stackView>
                 </subviews>

@@ -28,18 +28,20 @@ class Service {
         ]
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         configuration.HTTPAdditionalHeaders = headers
-        let man = Alamofire.Manager(
+        let manager = Alamofire.Manager(
             configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
             serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
         )
-        return man
+        return manager
     }()
 
     func requestDynamicJs(jsName:String,referHeader:[String:String])->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/dynamicJs/" + jsName
-            Service.Manager.request(.GET, url, headers:referHeader).response(completionHandler:{response in
-                fulfill()
+            Service.Manager
+                .request(.GET, url, headers:referHeader)
+                .response(completionHandler:{
+                    _ in fulfill()
             })
         }
     }

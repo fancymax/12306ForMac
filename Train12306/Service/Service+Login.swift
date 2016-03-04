@@ -21,6 +21,7 @@ extension Service {
 //        })
 //    }
     
+// MARK: - Request Flow
     func preLoginFlow(success success:(loadImage:NSImage)->(),failure:()->()){
         loginInit().then({dynamicJs -> Promise<Void> in
             return self.requestDynamicJs(dynamicJs, referHeader: ["refer": "https://kyfw.12306.cn/otn/login/init"])
@@ -31,9 +32,21 @@ extension Service {
         }).error({ _ in
             failure()
         })
-        
     }
     
+    func loginFlow(user user:String,passWord:String,randCodeStr:String,success:()->(),failure:()->()){
+        checkRandCodeForLogin(randCodeStr).then({_ -> Promise<String> in
+            return self.loginUserWith(user, passWord: passWord, randCodeStr: randCodeStr)
+        }).then({ _ -> Promise<String> in
+            return self.initMy12306()
+        }).then({_ in
+            success()
+        }).error({ _ in
+            failure()
+        })
+    }
+    
+// MARK: - Chainable Request
     func loginInit()->Promise<String>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/login/init"
@@ -74,18 +87,6 @@ extension Service {
                         }
                 }})
         }
-    }
-    
-    func loginFlow(user user:String,passWord:String,randCodeStr:String,success:()->(),failure:()->()){
-        checkRandCodeForLogin(randCodeStr).then({_ -> Promise<String> in
-            return self.loginUserWith(user, passWord: passWord, randCodeStr: randCodeStr)
-        }).then({ _ -> Promise<String> in
-            return self.initMy12306()
-        }).then({_ in
-            success()
-        }).error({ _ in
-            failure()
-        })
     }
     
     func checkRandCodeForLogin(randCodeStr:String)->Promise<String>{
