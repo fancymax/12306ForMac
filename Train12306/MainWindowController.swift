@@ -10,13 +10,14 @@ import Cocoa
 
 class MainWindowController: NSWindowController{
     @IBOutlet weak var stackContentView: NSStackView!
+    @IBOutlet weak var loginButton: LoginButton!
+    
     var normalSearchViewController: NormalSearchViewController?
     var ticketTableViewController: TicketTableViewController?
     var disclosureViewController: DisclosureViewController?
     
     var splitViewController:OrderViewController?
     
-    @IBOutlet weak var loginButton: LoginButton!
     var loginWindowController = LoginWindowController()
     var loginPopover:NSPopover?
     
@@ -91,6 +92,10 @@ class MainWindowController: NSWindowController{
         self.stackContentView.spacing = 0
         
         self.window?.recalculateKeyViewLoop()
+        
+        //login notification
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: Selector("receiveDidSendLoginMessageNotification:"), name: DidSendLoginMessageNotification, object: nil)
     }
     
     func segmentTab(sender: NSSegmentedControl){
@@ -112,6 +117,16 @@ class MainWindowController: NSWindowController{
             self.stackContentView.addView(disclosureViewController!.view, inGravity: .Top)
             self.stackContentView.addView(ticketTableViewController!.view, inGravity: .Top)
         }
+    }
+    
+    func receiveDidSendLoginMessageNotification(note: NSNotification){
+        print("receiveDidSendLoginMessageNotification")
+        didLoginOut()
+    }
+    
+    deinit{
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.removeObserver(self)
     }
 }
 

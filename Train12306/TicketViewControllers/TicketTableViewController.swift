@@ -16,12 +16,14 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     
     @IBOutlet weak var leftTicketTable: NSTableView!
     @IBOutlet weak var loadingView: NSView!
+    @IBOutlet weak var loadingTip: NSTextField!
     @IBOutlet weak var loadingSpinner: NSProgressIndicator!
     
     @IBOutlet weak var tips: FlashLabel!
     
     var service = Service()
     var ticketQueryResult = [QueryLeftNewDTO]()
+    var hasAddSubmitObserver:Bool = false
     var toStationCode:String?
     var fromStationCode:String?
     var date:String?
@@ -31,15 +33,35 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         loadingView.hidden = true
+        
+        if !hasAddSubmitObserver{
+            let notificationCenter = NSNotificationCenter.defaultCenter()
+            notificationCenter.addObserver(self, selector: Selector("receiveDidSendSubmitMessageNotification:"), name: DidSendSubmitMessageNotification, object: nil)
+        }
     }
     
-    func startQueryTip()
+    func receiveDidSendSubmitMessageNotification(note: NSNotification){
+        print("receiveDidSendSubmitMessageNotification")
+        submitWindowController = PreOrderWindowController()
+        submitWindowController.trainInfo = MainModel.selectedTicket
+        if let window = self.view.window {
+            window.beginSheet(submitWindowController.window!, completionHandler:
+                {response in
+                if response == NSModalResponseOK{
+                    ///
+                }
+            })
+        }
+    }
+    
+    func startLoadingTip(tip:String) 
     {
         loadingSpinner.startAnimation(nil)
+        loadingTip.stringValue = tip
         loadingView.hidden = false
     }
     
-    func stopQueryTip(){
+    func stopLoadingTip(){
         loadingSpinner.stopAnimation(nil)
         loadingView.hidden = true
     }
@@ -51,17 +73,17 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
             self.leftTicketTable.reloadData()
             
             //停止提示信息旋转
-            self.stopQueryTip()
+            self.stopLoadingTip()
         }
         
         let failureHandler = {
             //停止提示信息旋转
-            self.stopQueryTip()
+            self.stopLoadingTip()
             //失败信息提示
             
         }
         
-        startQueryTip()
+        self.startLoadingTip("正在查询...")
         self.fromStationCode = fromStationCode
         self.toStationCode = toStationCode
         self.date = date
@@ -75,7 +97,7 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         service.queryTicketFlowWith(params, success: successHandler,failure: failureHandler)
     }
     
-    func setSelectPassenger(){
+    func setSelectedPassenger(){
         MainModel.selectPassengers = [PassengerDTO]()
         
         for i in 0..<MainModel.passengers.count{
@@ -86,43 +108,58 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         }
     }
     
+    func setSeatCodeForSelectedPassenger(seatCode:String, seatCodeName:String){
+        for passenger in MainModel.selectPassengers{
+            passenger.seatCodeName = seatCodeName
+            passenger.seatCode = MainModel.getSeatCodeBy(seatCodeName,trainCode: seatCode)
+        }
+    }
+    
     func submit(sender: NSButton){
+        let notificationCenter = NSNotificationCenter.defaultCenter()
         if !MainModel.isGetUserInfo {
-            tips.show("请先登录～", forDuration: 0.1, withFlash: false)
+            notificationCenter.postNotificationName(DidSendLoginMessageNotification, object: nil)
             return
         }
         
-        setSelectPassenger()
+        setSelectedPassenger()
         
         if MainModel.selectPassengers.count == 0 {
             tips.show("请先选择乘客～", forDuration: 0.1, withFlash: false)
             return
         }
         
-        
-        submitWindowController = PreOrderWindowController()
-        
         let selectedRow = leftTicketTable.rowForView(sender)
         MainModel.selectedTicket = ticketQueryResult[selectedRow]
-        let seatCodeName = sender.identifier!
-        let trainCode = MainModel.selectedTicket!.TrainCode!
+        setSeatCodeForSelectedPassenger(MainModel.selectedTicket!.TrainCode! ,seatCodeName: sender.identifier!)
         
-        print(MainModel.seatTypeNameDic[seatCodeName])
+        self.startLoadingTip("正在提交...")
         
-        for passenger in MainModel.selectPassengers{
-            passenger.seatCodeName = seatCodeName
-            passenger.seatCode = MainModel.getSeatCodeBy(seatCodeName,trainCode: trainCode)
+        let postSubmitWindowMessage = {
+            self.stopLoadingTip()
+            self.tips.show("提交成功", forDuration: 0.1, withFlash: false)
+            //post submit notification
+            notificationCenter.postNotificationName(DidSendSubmitMessageNotification, object: nil)
         }
         
-        submitWindowController.trainInfo = ticketQueryResult[selectedRow]
-        if let window = self.view.window {
-            window.beginSheet(submitWindowController.window!, completionHandler:
-                {response in
-                if response == NSModalResponseOK{
-                    ///
+        let failHandler = {(error:NSError)->() in
+            self.stopLoadingTip()
+            if error.domain == "checkUser"{
+                notificationCenter.postNotificationName(DidSendLoginMessageNotification, object: nil)
+            }else{
+                //print submit error
+                if error.code != 0 {
+                    self.tips.show(error.domain, forDuration: 0.1, withFlash: false)
                 }
-            })
+            }
         }
+        
+        service.submitFlow(success: postSubmitWindowMessage, failure: failHandler)
+    }
+    
+    deinit{
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.removeObserver(self)
     }
 }
 

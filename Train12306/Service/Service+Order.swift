@@ -55,12 +55,18 @@ extension Service{
                 }})
     }
     
-    func preOrderFlow(success success:(image:NSImage) -> (),failure: ()->()){
+    func submitFlow(success success:() -> (),failure:(error:NSError)->()){
         self.checkUser().then({() ->Promise<Void> in
             return self.submitOrderRequest()
-        }).then({ _ -> Promise<String> in
-            return self.initDC()
-        }).then({jsName->Promise<Void> in
+        }).then({_ in
+            success()
+        }).error({error in
+            failure(error: error as NSError)
+        })
+    }
+    
+    func preOrderFlow(success success:(image:NSImage) -> (),failure: ()->()){
+        self.initDC().then({jsName->Promise<Void> in
             return self.requestDynamicJs(jsName, referHeader: ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"])
         }).then({_ -> Promise<String> in
             return self.getPassengerDTOs()
@@ -71,7 +77,6 @@ extension Service{
         }).error({_ in
             failure()
         })
-        
     }
     
     func checkUser()->Promise<Void>{
@@ -88,7 +93,6 @@ extension Service{
                 case .Success(let data):
                     if JSON(data)["data"]["flag"].bool == true{
                         fulfill()
-                        print(data)
                     }else {
                         logger.error("\(JSON(data))")
                         reject(NSError(domain: "checkUser", code: 0, userInfo: nil))
@@ -122,7 +126,12 @@ extension Service{
                     else {
                         logger.error("\(JSON(data))")
                         print(params)
-                        reject(NSError(domain: "submitOrderRequest", code: 0, userInfo: nil))
+                        if let message = JSON(data)["messages"][0].string{
+                            reject(NSError(domain: message, code: 1, userInfo: nil))
+                        }
+                        else{
+                            reject(NSError(domain: "submitOrderRequest", code: 0, userInfo: nil))
+                        }
                     }
                 }})
         }

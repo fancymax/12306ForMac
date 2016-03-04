@@ -233,7 +233,7 @@
                                 </connections>
                             </button>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pov-nB-bqD" userLabel="Loading View" customClass="GlassView" customModule="Train12306" customModuleProvider="target">
-                                <rect key="frame" x="121" y="120" width="120" height="30"/>
+                                <rect key="frame" x="121" y="138" width="120" height="30"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DWe-8V-jUQ" userLabel="正在查询...">
                                         <rect key="frame" x="29" y="7" width="85" height="17"/>
@@ -259,11 +259,20 @@
                         </subviews>
                         <animations/>
                     </customView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fF1-ZM-O39">
+                        <rect key="frame" x="393" y="287" width="107" height="18"/>
+                        <animations/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="订票成功！！！" id="ndI-8k-fsQ">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vJY-p7-r54">
-                        <rect key="frame" x="395" y="5" width="356" height="270"/>
+                        <rect key="frame" x="386" y="5" width="363" height="270"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="myB-rD-1e5">
-                                <rect key="frame" x="87" y="229" width="166" height="17"/>
+                                <rect key="frame" x="96" y="229" width="166" height="17"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="5Oa-qb-hRe">
                                     <font key="font" metaFont="system"/>
@@ -272,7 +281,7 @@
                                 </textFieldCell>
                             </textField>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eXq-pb-kjT">
-                                <rect key="frame" x="185" y="3" width="76" height="29"/>
+                                <rect key="frame" x="194" y="3" width="76" height="29"/>
                                 <animations/>
                                 <buttonCell key="cell" type="bevel" title="稍后付款" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="A0D-4d-sCi">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -283,7 +292,7 @@
                                 </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y6G-Ou-4py">
-                                <rect key="frame" x="276" y="3" width="76" height="29"/>
+                                <rect key="frame" x="285" y="3" width="76" height="29"/>
                                 <animations/>
                                 <buttonCell key="cell" type="bevel" title="立刻付款" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RrL-4R-XMZ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -294,7 +303,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8nu-be-cXP">
-                                <rect key="frame" x="8" y="229" width="56" height="17"/>
+                                <rect key="frame" x="17" y="229" width="56" height="17"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="订单号：" id="3At-Vy-cEr">
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -305,15 +314,6 @@
                         </subviews>
                         <animations/>
                     </customView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fF1-ZM-O39">
-                        <rect key="frame" x="393" y="287" width="107" height="18"/>
-                        <animations/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="订票成功！！！" id="ndI-8k-fsQ">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                 </subviews>
                 <animations/>
             </view>

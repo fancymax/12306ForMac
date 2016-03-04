@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="leftTicketTable" destination="i0k-2E-Zg0" id="pmS-uh-zeJ"/>
                 <outlet property="loadingSpinner" destination="kmV-3P-cx9" id="pje-1K-dZz"/>
+                <outlet property="loadingTip" destination="sQi-tV-O6t" id="NKG-WK-8Xj"/>
                 <outlet property="loadingView" destination="nXV-5S-R9c" id="CTB-3n-g1X"/>
                 <outlet property="tips" destination="YZ2-44-iFH" id="VDN-kf-ENF"/>
                 <outlet property="view" destination="kTF-ZD-s0j" id="Lhm-aq-8uO"/>

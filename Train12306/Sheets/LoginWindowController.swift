@@ -114,7 +114,6 @@ class LoginWindowController: NSWindowController{
     }
    
     func handlerAfterSuccess(){
-        self.logStateLabel.hidden = true
         let lastUserDefault = UserDefaultManager()
         lastUserDefault.lastUserName = userName.stringValue
         lastUserDefault.lastUserPassword = passWord.stringValue
@@ -126,6 +125,7 @@ class LoginWindowController: NSWindowController{
         
         //关闭登录窗口
         self.dismissWithModalResponse(NSModalResponseOK)
+        self.logStateLabel.hidden = true
     }
     
     func loadImage(){
