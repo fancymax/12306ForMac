@@ -15,6 +15,10 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
         super.viewDidLoad()
     }
     
+    func reloadPassenger(){
+        self.passengerTable.reloadData()
+    }
+    
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
         return MainModel.passengers.count
     }
@@ -46,7 +50,4 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
         return AutoCompleteTableRowView()
     }
     
-    func reloadPassenger(){
-        self.passengerTable.reloadData()
-    }
 }

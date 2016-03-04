@@ -65,7 +65,7 @@ extension Service{
                     let total = jsonData["order_total_number"].string
                     let num = jsonData["OrderDTODataList"].count
                     for i in 0...num-1 {
-                        MainModel.historyOrderList.append(OrderDTOData(jsonData:jsonData["OrderDTODataList"][i]))
+                        MainModel.historyOrderList.append(OrderDTO(json:jsonData["OrderDTODataList"][i]))
                     }
                     fulfill(Int(total!)!)
             }})
@@ -107,7 +107,7 @@ extension Service{
                     let orderDBList = JSON(data)["data"]["orderDBList"]
                     if orderDBList.count > 0{
                         for i in 0...orderDBList.count - 1 {
-                            MainModel.noCompleteOrderList.append(OrderDTOData(jsonData:orderDBList[i]))
+                            MainModel.noCompleteOrderList.append(OrderDTO(json:orderDBList[i]))
                         }
                     }
                     fulfill(url)

@@ -15,7 +15,7 @@ class OrderViewController: NSViewController{
     @IBOutlet weak var orderListTable: NSTableView!
     @IBOutlet weak var menuListTable: NSTableView!
     
-    var orderList = [OrderDTOData]()
+    var orderList = [OrderDTO]()
     let service = Service()
     let menuListIdentifier = "MenuList"
     let orderListIdentifier = "OrderList"

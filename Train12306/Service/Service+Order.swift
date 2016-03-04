@@ -46,7 +46,7 @@ extension Service{
                     }
                     var passengers = [PassengerDTO]()
                     for i in 0...jsonData["normal_passengers"].count - 1{
-                        passengers.append(PassengerDTO(jsonData:jsonData["normal_passengers"][i]))
+                        passengers.append(PassengerDTO(json:jsonData["normal_passengers"][i]))
                     }
                     if !MainModel.isGetPassengersInfo {
                         MainModel.passengers = passengers
@@ -191,14 +191,14 @@ extension Service{
                 case .Failure(let error):
                     reject(error)
                 case .Success(let data):
-                    let jsonData = JSON(data)["data"]
-                    if jsonData["normal_passengers"].count == 0 {
-                        logger.error("\(jsonData)")
+                    let json = JSON(data)["data"]
+                    if json["normal_passengers"].count == 0 {
+                        logger.error("\(json)")
                         reject(NSError(domain: "getPassengerDTOs", code: 0, userInfo: nil))
                     }
                     var passengers = [PassengerDTO]()
-                    for i in 0...jsonData["normal_passengers"].count - 1{
-                        passengers.append(PassengerDTO(jsonData:jsonData["normal_passengers"][i]))
+                    for i in 0...json["normal_passengers"].count - 1{
+                        passengers.append(PassengerDTO(json:json["normal_passengers"][i]))
                     }
                     if !MainModel.isGetPassengersInfo {
                         MainModel.passengers = passengers
@@ -256,6 +256,10 @@ extension Service{
         }).error({_ in
             failure()
         })
+    }
+    
+    func queryOrderIdFlow(){
+        self.queryOrderWaitTime()
     }
     
     func checkRandCodeForOrder(randCodeStr:String) ->Promise<String>{

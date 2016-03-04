@@ -10,7 +10,7 @@
 		39A7F741AF1BBBC1B0E8B416 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E7211EBA20157CBFCD3A071 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F10F40431C682AD900709095 /* Add.png in Resources */ = {isa = PBXBuildFile; fileRef = F10F40421C682AD900709095 /* Add.png */; };
 		F1171D231C72DA510053A56F /* QueryOrderParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1171D221C72DA510053A56F /* QueryOrderParam.swift */; };
-		F1171D271C7300ED0053A56F /* OrderDTOData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1171D261C7300ED0053A56F /* OrderDTOData.swift */; };
+		F1171D271C7300ED0053A56F /* OrderDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1171D261C7300ED0053A56F /* OrderDTO.swift */; };
 		F11E3CC21C144AA60099D457 /* LoginPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11E3CC01C144AA60099D457 /* LoginPopoverViewController.swift */; };
 		F11E3CC31C144AA60099D457 /* LoginPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11E3CC11C144AA60099D457 /* LoginPopoverViewController.xib */; };
 		F11EB4601B6A368E000063E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EB45F1B6A368E000063E4 /* AppDelegate.swift */; };
@@ -45,6 +45,8 @@
 		F1E7EA2F1C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA271C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m */; };
 		F1E7EA301C5A2E7B007715C1 /* INAppStoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA291C5A2E7B007715C1 /* INAppStoreWindow.m */; };
 		F1E7EA311C5A2E7B007715C1 /* INWindowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA2C1C5A2E7B007715C1 /* INWindowButton.m */; };
+		F1F520A41C87E43C002C13D7 /* OrderQueueResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F520A31C87E43C002C13D7 /* OrderQueueResult.swift */; };
+		F1F520A81C87E70C002C13D7 /* QueryOrderWaitTimeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F520A71C87E70C002C13D7 /* QueryOrderWaitTimeResult.swift */; };
 		F1F69B891C61BB5500F4C4A6 /* CalendarTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F69B861C61BB5500F4C4A6 /* CalendarTemplate.png */; };
 		F1F69B8A1C61BB5500F4C4A6 /* Group.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F69B871C61BB5500F4C4A6 /* Group.png */; };
 		F1F69B8B1C61BB5500F4C4A6 /* SettingsTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F69B881C61BB5500F4C4A6 /* SettingsTemplate.png */; };
@@ -87,7 +89,7 @@
 		4E7211EBA20157CBFCD3A071 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F10F40421C682AD900709095 /* Add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Add.png; path = Images/Add.png; sourceTree = "<group>"; };
 		F1171D221C72DA510053A56F /* QueryOrderParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueryOrderParam.swift; path = Model/QueryOrderParam.swift; sourceTree = "<group>"; };
-		F1171D261C7300ED0053A56F /* OrderDTOData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderDTOData.swift; path = Model/OrderDTOData.swift; sourceTree = "<group>"; };
+		F1171D261C7300ED0053A56F /* OrderDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderDTO.swift; path = Model/OrderDTO.swift; sourceTree = "<group>"; };
 		F11E3CC01C144AA60099D457 /* LoginPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPopoverViewController.swift; sourceTree = "<group>"; };
 		F11E3CC11C144AA60099D457 /* LoginPopoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginPopoverViewController.xib; sourceTree = "<group>"; };
 		F11EB45A1B6A368E000063E4 /* Train12306.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Train12306.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +135,8 @@
 		F1E7EA2A1C5A2E7B007715C1 /* INAppStoreWindowCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindowCompatibility.h; sourceTree = "<group>"; };
 		F1E7EA2B1C5A2E7B007715C1 /* INWindowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INWindowButton.h; sourceTree = "<group>"; };
 		F1E7EA2C1C5A2E7B007715C1 /* INWindowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INWindowButton.m; sourceTree = "<group>"; };
+		F1F520A31C87E43C002C13D7 /* OrderQueueResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "OrderQueueResult\U001b.swift"; path = "Model/OrderQueueResult\U001b.swift"; sourceTree = "<group>"; };
+		F1F520A71C87E70C002C13D7 /* QueryOrderWaitTimeResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueryOrderWaitTimeResult.swift; path = Model/QueryOrderWaitTimeResult.swift; sourceTree = "<group>"; };
 		F1F69B861C61BB5500F4C4A6 /* CalendarTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CalendarTemplate.png; path = Images/CalendarTemplate.png; sourceTree = "<group>"; };
 		F1F69B871C61BB5500F4C4A6 /* Group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Group.png; path = Images/Group.png; sourceTree = "<group>"; };
 		F1F69B881C61BB5500F4C4A6 /* SettingsTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SettingsTemplate.png; path = Images/SettingsTemplate.png; sourceTree = "<group>"; };
@@ -410,11 +414,13 @@
 			isa = PBXGroup;
 			children = (
 				F1F69BAD1C61BE6600F4C4A6 /* MainModel.swift */,
-				F1171D261C7300ED0053A56F /* OrderDTOData.swift */,
+				F1171D261C7300ED0053A56F /* OrderDTO.swift */,
 				F1171D221C72DA510053A56F /* QueryOrderParam.swift */,
 				F1F69BB61C61BE7D00F4C4A6 /* PassengerDTO.swift */,
 				F1F69BAC1C61BE6600F4C4A6 /* LeftTicketParam.swift */,
 				F1F69BAE1C61BE6600F4C4A6 /* QueryLeftNewDTO.swift */,
+				F1F520A31C87E43C002C13D7 /* OrderQueueResult.swift */,
+				F1F520A71C87E70C002C13D7 /* QueryOrderWaitTimeResult.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -589,7 +595,7 @@
 			files = (
 				F1F69B9F1C61BCA700F4C4A6 /* GlassView.swift in Sources */,
 				F19D3D121C621598005369CF /* PreOrderWindowController.swift in Sources */,
-				F1171D271C7300ED0053A56F /* OrderDTOData.swift in Sources */,
+				F1171D271C7300ED0053A56F /* OrderDTO.swift in Sources */,
 				F1F69BA81C61BDAD00F4C4A6 /* XCGLogger.swift in Sources */,
 				F1F69BA61C61BDAD00F4C4A6 /* SwiftyJSON.swift in Sources */,
 				F13FCECD1C77FA41001162FA /* Service+QueryOrder.swift in Sources */,
@@ -597,6 +603,7 @@
 				F1F69BBE1C61BECD00F4C4A6 /* Service+QueryTicket.swift in Sources */,
 				F1F69BBD1C61BECD00F4C4A6 /* Service+Login.swift in Sources */,
 				F1F69B931C61BBF800F4C4A6 /* ItemCellView.swift in Sources */,
+				F1F520A81C87E70C002C13D7 /* QueryOrderWaitTimeResult.swift in Sources */,
 				F11EB47C1B6A36A9000063E4 /* MainWindowController.swift in Sources */,
 				F1F69BAA1C61BDDE00F4C4A6 /* UserDefaultManager.swift in Sources */,
 				F1171D231C72DA510053A56F /* QueryOrderParam.swift in Sources */,
@@ -614,6 +621,7 @@
 				F1E7EA311C5A2E7B007715C1 /* INWindowButton.m in Sources */,
 				F1F69B911C61BBF800F4C4A6 /* AutoCompleteTextField.swift in Sources */,
 				F1F69B921C61BBF800F4C4A6 /* FlashLabel.swift in Sources */,
+				F1F520A41C87E43C002C13D7 /* OrderQueueResult.swift in Sources */,
 				F1F69BB31C61BE6600F4C4A6 /* QueryLeftNewDTO.swift in Sources */,
 				F1E37C541C7734A000C80B7C /* User.swift in Sources */,
 				F1E7EA2E1C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m in Sources */,

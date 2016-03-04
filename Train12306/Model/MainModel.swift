@@ -61,8 +61,8 @@ class MainModel{
     //"'ypInfoDetail':'O047850026O047853081M059350008'"
     static var ypInfoDetail:String?
     
-    static var historyOrderList:[OrderDTOData] = []
-    static var noCompleteOrderList:[OrderDTOData] = []
+    static var historyOrderList:[OrderDTO] = []
+    static var noCompleteOrderList:[OrderDTO] = []
     
     
     static func ticketPriceBy(indentifier:String) -> Double{

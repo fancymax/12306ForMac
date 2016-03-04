@@ -53,30 +53,30 @@ class PassengerDTO:NSObject {
         
     }
     
-    init(jsonData:JSON)
+    init(json:JSON)
     {
         isChecked = false
         
-        code = jsonData["code"].string
-        passenger_name = jsonData["passenger_name"].string
-        sex_code = jsonData["sex_code"].string
-        sex_name = jsonData["sex_name"].string
-        born_date = jsonData["born_date"].string
-        country_code = jsonData["country_code"].string
-        passenger_id_type_code = jsonData["passenger_id_type_code"].string
-        passenger_id_type_name = jsonData["passenger_id_type_name"].string
-        passenger_id_no = jsonData["passenger_id_no"].string
-        passenger_type = jsonData["passenger_type"].string
-        passenger_flag = jsonData["passenger_flag"].string
-        passenger_type_name = jsonData["passenger_type_name"].string
-        mobile_no = jsonData["mobile_no"].string
-        phone_no = jsonData["phone_no"].string
-        email = jsonData["email"].string
-        address = jsonData["address"].string
-        postalcode = jsonData["postalcode"].string
-        first_letter = jsonData["first_letter"].string
-        recordCount = jsonData["recordCount"].string
-        total_times = jsonData["total_times"].string
-        index_id = jsonData["index_id"].string
+        code = json["code"].string
+        passenger_name = json["passenger_name"].string
+        sex_code = json["sex_code"].string
+        sex_name = json["sex_name"].string
+        born_date = json["born_date"].string
+        country_code = json["country_code"].string
+        passenger_id_type_code = json["passenger_id_type_code"].string
+        passenger_id_type_name = json["passenger_id_type_name"].string
+        passenger_id_no = json["passenger_id_no"].string
+        passenger_type = json["passenger_type"].string
+        passenger_flag = json["passenger_flag"].string
+        passenger_type_name = json["passenger_type_name"].string
+        mobile_no = json["mobile_no"].string
+        phone_no = json["phone_no"].string
+        email = json["email"].string
+        address = json["address"].string
+        postalcode = json["postalcode"].string
+        first_letter = json["first_letter"].string
+        recordCount = json["recordCount"].string
+        total_times = json["total_times"].string
+        index_id = json["index_id"].string
     }
 }
