@@ -20,7 +20,8 @@ class DisclosureViewController: NSViewController,NSPopoverDelegate{
         let preferredEdge = NSRectEdge.MaxY
         
         popover.showRelativeToRect(positioningRect, ofView: positioningView, preferredEdge: preferredEdge)
-        
+       
+//        initPassenger()
         passengerSelectViewController.reloadPassenger()
     }
     
@@ -32,7 +33,7 @@ class DisclosureViewController: NSViewController,NSPopoverDelegate{
     func popoverDidClose(notification: NSNotification) {
         for i in 0..<MainModel.passengers.count{
             if(MainModel.passengers[i].isChecked){
-                if isPassengerHasSelected(MainModel.passengers[i]){
+                if passengerSelected(MainModel.passengers[i]){
                     checkPassenger(MainModel.passengers[i])
                 }
                 else{
@@ -48,7 +49,7 @@ class DisclosureViewController: NSViewController,NSPopoverDelegate{
         }
     }
     
-    func isPassengerHasSelected(passenger:PassengerDTO) -> Bool{
+    func passengerSelected(passenger:PassengerDTO) -> Bool{
         for passengerViewController in passengerViewControllerList{
             if(passengerViewController.passenger == passenger){
                 return true

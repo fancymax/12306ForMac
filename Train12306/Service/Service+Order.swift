@@ -26,6 +26,8 @@ extension Service{
     func preOrderFlow(success success:(image:NSImage) -> (),failure: ()->()){
         self.initDC().then({jsName->Promise<Void> in
             return self.requestDynamicJs(jsName, referHeader: ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"])
+        }).then({_ -> Promise<Void> in
+            return after(1)
         }).then({_ -> Promise<String> in
             return self.getPassengerDTOs()
         }).then({_ -> Promise<NSImage> in

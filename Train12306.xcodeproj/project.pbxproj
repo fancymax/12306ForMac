@@ -414,10 +414,10 @@
 			isa = PBXGroup;
 			children = (
 				F1F69BAD1C61BE6600F4C4A6 /* MainModel.swift */,
-				F1171D261C7300ED0053A56F /* OrderDTO.swift */,
 				F1171D221C72DA510053A56F /* QueryOrderParam.swift */,
-				F1F69BB61C61BE7D00F4C4A6 /* PassengerDTO.swift */,
 				F1F69BAC1C61BE6600F4C4A6 /* LeftTicketParam.swift */,
+				F1171D261C7300ED0053A56F /* OrderDTO.swift */,
+				F1F69BB61C61BE7D00F4C4A6 /* PassengerDTO.swift */,
 				F1F69BAE1C61BE6600F4C4A6 /* QueryLeftNewDTO.swift */,
 				F1F520A31C87E43C002C13D7 /* OrderQueueResult.swift */,
 				F1F520A71C87E70C002C13D7 /* QueryOrderWaitTimeResult.swift */,
@@ -479,6 +479,7 @@
 				TargetAttributes = {
 					F11EB4591B6A368E000063E4 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = B88D2XN634;
 					};
 					F11EB4691B6A368E000063E4 = {
 						CreatedOnToolsVersion = 6.4;
@@ -759,12 +760,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = Train12306/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "fancymax.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = fancymax.Train12306;
 				PRODUCT_NAME = Train12306;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Train12306-Bridging-Header.h";
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Train12306-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -777,12 +781,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = Train12306/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "fancymax.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = fancymax.Train12306;
 				PRODUCT_NAME = Train12306;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Train12306-Bridging-Header.h";
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Train12306-Swift.h";
 			};
