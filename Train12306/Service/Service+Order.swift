@@ -48,28 +48,11 @@ extension Service{
             return after(1)
         }).then({()-> Promise<String> in
             return self.confirmSingleForQueue(randCodeStr)
-        }).then({_ -> Promise<Void> in
-            return after(1)
-        }).then({()->Promise<Bool> in
-            return self.queryOrderWaitTime()
-        }).then({ isReady -> Promise<Bool> in
-            if !isReady{
-                return after(2).then({
-                    return self.queryOrderWaitTime()
-                })
-            }
-            else{
-                return self.queryOrderWaitTime()
-            }
-        }).then({_ in
-            success()
+        }).then({_  in
+            self.queryOrderWaitTime(failure, waitMethod: {}, finishMethod: success)
         }).error({_ in
             failure()
         })
-    }
-    
-    func queryOrderIdFlow(){
-        self.queryOrderWaitTime()
     }
     
     internal func getPassengerStr(passengers:[PassengerDTO]) ->(String,String){
@@ -391,26 +374,46 @@ extension Service{
         }
     }
     
-    func queryOrderWaitTime() ->Promise<Bool>{
-        return Promise{ fulfill, reject in
+    func queryOrderWaitTime(failMethod:()->(), waitMethod :() -> (),finishMethod:()->()) {
             let url = "https://kyfw.12306.cn/otn/confirmPassenger/queryOrderWaitTime?"
             let params = "random=1446560572126&tourFlag=dc&_json_att=&REPEAT_SUBMIT_TOKEN=\(MainModel.globalRepeatSubmitToken!)"
             let headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
+        
+        func calcWaitSecond(waitTime:Int) -> Int {
+            var p1 = waitTime * 2 / 3
+            if p1 > 60 {
+                p1 = 60
+            }
+            
+            print("calcWaitTime=\(p1)")
+            return p1
+        }
+        
             Service.Manager.request(.GET, url + params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
                 case .Failure(let error):
-                    reject(error)
+                    print(error)
+                    failMethod()
                 case .Success(let data):
-                    if let orderId = JSON(data)["data"]["orderId"].string{
-                        MainModel.orderId = orderId
-                        fulfill(true)
+                    print(JSON(data))
+                    let waitTimeResult = QueryOrderWaitTimeResult(json: JSON(data)["data"])
+                    if let submitStatus = waitTimeResult.queryOrderWaitTimeStatus where submitStatus == true {
+                        if let orderId = waitTimeResult.orderId {
+                            MainModel.orderId = orderId
+                            print(MainModel.orderId!)
+                            finishMethod()
+                        }
+                        else{
+                            let waitSecond = calcWaitSecond(waitTimeResult.waitTime!)
+                            waitMethod()
+                            sleep(UInt32(waitSecond))
+                            self.queryOrderWaitTime(failMethod,waitMethod: waitMethod,finishMethod: finishMethod)
+                        }
                     }
                     else{
-                        logger.debug("\(JSON(data))")
-                        fulfill(false)
+                        //maybe login again
                     }
                 }})
-        }
     }
     
 }
