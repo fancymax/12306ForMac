@@ -98,6 +98,10 @@ class PreOrderWindowController: NSWindowController,NSTableViewDataSource,NSTable
         return "PreOrderWindowController"
     }
     
+    @IBAction func payButtonClicked(sender: NSButton) {
+        NSWorkspace.sharedWorkspace().openURL(NSURL(string: "https://kyfw.12306.cn/otn/login/init")!)
+    }
+    
     @IBAction func okayButtonClicked(button:NSButton){
         self.startLoadingTip("正在提交...")
         button.enabled = false

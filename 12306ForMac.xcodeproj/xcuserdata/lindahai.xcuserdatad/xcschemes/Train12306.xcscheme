@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F11EB4591B6A368E000063E4"
-               BuildableName = "Train12306.app"
-               BlueprintName = "Train12306"
-               ReferencedContainer = "container:Train12306.xcodeproj">
+               BuildableName = "12306ForMac.app"
+               BlueprintName = "12306ForMac"
+               ReferencedContainer = "container:12306ForMac.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F11EB4691B6A368E000063E4"
-               BuildableName = "Train12306.xctest"
-               BlueprintName = "Train12306Tests"
-               ReferencedContainer = "container:Train12306.xcodeproj">
+               BuildableName = "12306ForMac.xctest"
+               BlueprintName = "12306ForMacTests"
+               ReferencedContainer = "container:12306ForMac.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F11EB4691B6A368E000063E4"
-               BuildableName = "Train12306.xctest"
-               BlueprintName = "Train12306Tests"
-               ReferencedContainer = "container:Train12306.xcodeproj">
+               BuildableName = "12306ForMac.xctest"
+               BlueprintName = "12306ForMacTests"
+               ReferencedContainer = "container:12306ForMac.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F11EB4591B6A368E000063E4"
-            BuildableName = "Train12306.app"
-            BlueprintName = "Train12306"
-            ReferencedContainer = "container:Train12306.xcodeproj">
+            BuildableName = "12306ForMac.app"
+            BlueprintName = "12306ForMac"
+            ReferencedContainer = "container:12306ForMac.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F11EB4591B6A368E000063E4"
-            BuildableName = "Train12306.app"
-            BlueprintName = "Train12306"
-            ReferencedContainer = "container:Train12306.xcodeproj">
+            BuildableName = "12306ForMac.app"
+            BlueprintName = "12306ForMac"
+            ReferencedContainer = "container:12306ForMac.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -99,9 +99,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F11EB4591B6A368E000063E4"
-            BuildableName = "Train12306.app"
-            BlueprintName = "Train12306"
-            ReferencedContainer = "container:Train12306.xcodeproj">
+            BuildableName = "12306ForMac.app"
+            BlueprintName = "12306ForMac"
+            ReferencedContainer = "container:12306ForMac.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

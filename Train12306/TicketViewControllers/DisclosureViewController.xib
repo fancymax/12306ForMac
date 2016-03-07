@@ -5,7 +5,7 @@
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="DisclosureViewController" customModule="Train12306" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="DisclosureViewController" customModule="_2306ForMac" customModuleProvider="target">
             <connections>
                 <outlet property="passengersView" destination="wW4-GX-WuV" id="fd6-0W-Mwb"/>
                 <outlet property="view" destination="R8F-8R-cT3" id="DcC-iJ-Q52"/>
@@ -16,7 +16,7 @@
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="R8F-8R-cT3">
             <rect key="frame" x="0.0" y="0.0" width="492" height="40"/>
             <subviews>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bwO-NL-po4" customClass="LoginButton" customModule="Train12306" customModuleProvider="target">
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bwO-NL-po4" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
                     <rect key="frame" x="18" y="7" width="60" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="B1K-8j-3qg"/>

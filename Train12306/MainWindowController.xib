@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController" customModule="Train12306" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController" customModule="_2306ForMac" customModuleProvider="target">
             <connections>
                 <outlet property="loginButton" destination="YwA-eV-Pe9" id="TVf-Hk-1W3"/>
                 <outlet property="stackContentView" destination="3rh-ac-vqb" id="jxu-B2-rWr"/>
@@ -17,7 +17,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="131" y="165" width="910" height="750"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="910" height="710"/>
             <view key="contentView" id="agO-Wm-PyO">
                 <rect key="frame" x="0.0" y="0.0" width="910" height="750"/>
@@ -38,7 +38,7 @@
             </view>
             <point key="canvasLocation" x="581" y="506"/>
         </window>
-        <button id="YwA-eV-Pe9" customClass="LoginButton" customModule="Train12306" customModuleProvider="target">
+        <button id="YwA-eV-Pe9" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="83" height="27"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <animations/>

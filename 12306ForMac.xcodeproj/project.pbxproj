@@ -15,7 +15,6 @@
 		F11E3CC31C144AA60099D457 /* LoginPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11E3CC11C144AA60099D457 /* LoginPopoverViewController.xib */; };
 		F11EB4601B6A368E000063E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EB45F1B6A368E000063E4 /* AppDelegate.swift */; };
 		F11EB4651B6A368E000063E4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11EB4631B6A368E000063E4 /* MainMenu.xib */; };
-		F11EB4711B6A368E000063E4 /* Train12306Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EB4701B6A368E000063E4 /* Train12306Tests.swift */; };
 		F11EB47C1B6A36A9000063E4 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EB47A1B6A36A9000063E4 /* MainWindowController.swift */; };
 		F11EB47D1B6A36A9000063E4 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11EB47B1B6A36A9000063E4 /* MainWindowController.xib */; };
 		F13FCECD1C77FA41001162FA /* Service+QueryOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCECC1C77FA41001162FA /* Service+QueryOrder.swift */; };
@@ -32,7 +31,6 @@
 		F159FAC21C6741370024BEAB /* TicketTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F159FAB81C6741370024BEAB /* TicketTableViewController.xib */; };
 		F16A04D01C72C22400662191 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16A04CE1C72C22400662191 /* OrderViewController.swift */; };
 		F16A04D11C72C22400662191 /* OrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F16A04CF1C72C22400662191 /* OrderViewController.xib */; };
-		F17C8BB31C63767100837392 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = F17C8BB21C63767100837392 /* README.md */; };
 		F19D3D0A1C62120D005369CF /* srca.cer in Resources */ = {isa = PBXBuildFile; fileRef = F19D3D091C62120D005369CF /* srca.cer */; };
 		F19D3D101C621598005369CF /* LoginWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19D3D0C1C621598005369CF /* LoginWindowController.swift */; };
 		F19D3D111C621598005369CF /* LoginWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19D3D0D1C621598005369CF /* LoginWindowController.xib */; };
@@ -73,16 +71,6 @@
 		F1F69BBF1C61BECD00F4C4A6 /* Service+Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BBB1C61BECD00F4C4A6 /* Service+Order.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		F11EB46B1B6A368E000063E4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F11EB4521B6A368E000063E4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F11EB4591B6A368E000063E4;
-			remoteInfo = Train12306;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		37638C4EC63999790EA677D6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4362C8555FDE04134EAB4433 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -92,13 +80,10 @@
 		F1171D261C7300ED0053A56F /* OrderDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderDTO.swift; path = Model/OrderDTO.swift; sourceTree = "<group>"; };
 		F11E3CC01C144AA60099D457 /* LoginPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPopoverViewController.swift; sourceTree = "<group>"; };
 		F11E3CC11C144AA60099D457 /* LoginPopoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginPopoverViewController.xib; sourceTree = "<group>"; };
-		F11EB45A1B6A368E000063E4 /* Train12306.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Train12306.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F11EB45A1B6A368E000063E4 /* 12306ForMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 12306ForMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F11EB45E1B6A368E000063E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F11EB45F1B6A368E000063E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F11EB4641B6A368E000063E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		F11EB46A1B6A368E000063E4 /* Train12306.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Train12306.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F11EB46F1B6A368E000063E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F11EB4701B6A368E000063E4 /* Train12306Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Train12306Tests.swift; sourceTree = "<group>"; };
 		F11EB47A1B6A36A9000063E4 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		F11EB47B1B6A36A9000063E4 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
 		F13FCECC1C77FA41001162FA /* Service+QueryOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Service+QueryOrder.swift"; path = "Service/Service+QueryOrder.swift"; sourceTree = "<group>"; };
@@ -172,13 +157,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F11EB4671B6A368E000063E4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -213,7 +191,6 @@
 				F1CC36461B6B244C0074A014 /* Train12306-Swift.h */,
 				F1E7EA201C5A2E7B007715C1 /* INAppStoreWindow */,
 				F11EB45C1B6A368E000063E4 /* Train12306 */,
-				F11EB46D1B6A368E000063E4 /* Train12306Tests */,
 				F11EB45B1B6A368E000063E4 /* Products */,
 				261B13F41F4566381D40C5BA /* Pods */,
 				7EE5AE4095B588D2CBD04072 /* Frameworks */,
@@ -223,8 +200,7 @@
 		F11EB45B1B6A368E000063E4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F11EB45A1B6A368E000063E4 /* Train12306.app */,
-				F11EB46A1B6A368E000063E4 /* Train12306.xctest */,
+				F11EB45A1B6A368E000063E4 /* 12306ForMac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -260,23 +236,6 @@
 				F1A8CCB01BA8032500B4FB03 /* Asserts */,
 				F1AA8AA31B9D7A200062C43D /* Images.xcassets */,
 				F11EB45E1B6A368E000063E4 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		F11EB46D1B6A368E000063E4 /* Train12306Tests */ = {
-			isa = PBXGroup;
-			children = (
-				F11EB4701B6A368E000063E4 /* Train12306Tests.swift */,
-				F11EB46E1B6A368E000063E4 /* Supporting Files */,
-			);
-			path = Train12306Tests;
-			sourceTree = "<group>";
-		};
-		F11EB46E1B6A368E000063E4 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				F11EB46F1B6A368E000063E4 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -428,9 +387,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F11EB4591B6A368E000063E4 /* Train12306 */ = {
+		F11EB4591B6A368E000063E4 /* 12306ForMac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F11EB4741B6A368E000063E4 /* Build configuration list for PBXNativeTarget "Train12306" */;
+			buildConfigurationList = F11EB4741B6A368E000063E4 /* Build configuration list for PBXNativeTarget "12306ForMac" */;
 			buildPhases = (
 				01EFCD70E9D7C95CBA6F6FC8 /* Check Pods Manifest.lock */,
 				F11EB4561B6A368E000063E4 /* Sources */,
@@ -443,28 +402,10 @@
 			);
 			dependencies = (
 			);
-			name = Train12306;
+			name = 12306ForMac;
 			productName = Train12306;
-			productReference = F11EB45A1B6A368E000063E4 /* Train12306.app */;
+			productReference = F11EB45A1B6A368E000063E4 /* 12306ForMac.app */;
 			productType = "com.apple.product-type.application";
-		};
-		F11EB4691B6A368E000063E4 /* Train12306Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F11EB4771B6A368E000063E4 /* Build configuration list for PBXNativeTarget "Train12306Tests" */;
-			buildPhases = (
-				F11EB4661B6A368E000063E4 /* Sources */,
-				F11EB4671B6A368E000063E4 /* Frameworks */,
-				F11EB4681B6A368E000063E4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F11EB46C1B6A368E000063E4 /* PBXTargetDependency */,
-			);
-			name = Train12306Tests;
-			productName = Train12306Tests;
-			productReference = F11EB46A1B6A368E000063E4 /* Train12306.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -481,13 +422,9 @@
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = B88D2XN634;
 					};
-					F11EB4691B6A368E000063E4 = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = F11EB4591B6A368E000063E4;
-					};
 				};
 			};
-			buildConfigurationList = F11EB4551B6A368E000063E4 /* Build configuration list for PBXProject "Train12306" */;
+			buildConfigurationList = F11EB4551B6A368E000063E4 /* Build configuration list for PBXProject "12306ForMac" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -500,8 +437,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F11EB4591B6A368E000063E4 /* Train12306 */,
-				F11EB4691B6A368E000063E4 /* Train12306Tests */,
+				F11EB4591B6A368E000063E4 /* 12306ForMac */,
 			);
 		};
 /* End PBXProject section */
@@ -529,13 +465,6 @@
 				F159FABC1C6741370024BEAB /* NormalSearchViewController.xib in Resources */,
 				F1F69B891C61BB5500F4C4A6 /* CalendarTemplate.png in Resources */,
 				F1F69B8B1C61BB5500F4C4A6 /* SettingsTemplate.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F11EB4681B6A368E000063E4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,7 +546,6 @@
 				F159FABB1C6741370024BEAB /* NormalSearchViewController.swift in Sources */,
 				F159FAC11C6741370024BEAB /* TicketTableViewController.swift in Sources */,
 				F11E3CC21C144AA60099D457 /* LoginPopoverViewController.swift in Sources */,
-				F17C8BB31C63767100837392 /* README.md in Sources */,
 				F1E7EA301C5A2E7B007715C1 /* INAppStoreWindow.m in Sources */,
 				F1E7EA311C5A2E7B007715C1 /* INWindowButton.m in Sources */,
 				F1F69B911C61BBF800F4C4A6 /* AutoCompleteTextField.swift in Sources */,
@@ -641,23 +569,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F11EB4661B6A368E000063E4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F11EB4711B6A368E000063E4 /* Train12306Tests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		F11EB46C1B6A368E000063E4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F11EB4591B6A368E000063E4 /* Train12306 */;
-			targetProxy = F11EB46B1B6A368E000063E4 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F11EB4631B6A368E000063E4 /* MainMenu.xib */ = {
@@ -766,8 +678,8 @@
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = Train12306/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = fancymax.Train12306;
-				PRODUCT_NAME = Train12306;
+				PRODUCT_BUNDLE_IDENTIFIER = fancymax.12306ForMac;
+				PRODUCT_NAME = 12306ForMac;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Train12306-Bridging-Header.h";
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Train12306-Swift.h";
@@ -787,56 +699,18 @@
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = Train12306/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = fancymax.Train12306;
-				PRODUCT_NAME = Train12306;
+				PRODUCT_BUNDLE_IDENTIFIER = fancymax.12306ForMac;
+				PRODUCT_NAME = 12306ForMac;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Train12306-Bridging-Header.h";
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Train12306-Swift.h";
 			};
 			name = Release;
 		};
-		F11EB4781B6A368E000063E4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Train12306Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "fancymax.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Train12306;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Train12306.app/Contents/MacOS/Train12306";
-			};
-			name = Debug;
-		};
-		F11EB4791B6A368E000063E4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Train12306Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "fancymax.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = Train12306;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Train12306.app/Contents/MacOS/Train12306";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F11EB4551B6A368E000063E4 /* Build configuration list for PBXProject "Train12306" */ = {
+		F11EB4551B6A368E000063E4 /* Build configuration list for PBXProject "12306ForMac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F11EB4721B6A368E000063E4 /* Debug */,
@@ -845,20 +719,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F11EB4741B6A368E000063E4 /* Build configuration list for PBXNativeTarget "Train12306" */ = {
+		F11EB4741B6A368E000063E4 /* Build configuration list for PBXNativeTarget "12306ForMac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F11EB4751B6A368E000063E4 /* Debug */,
 				F11EB4761B6A368E000063E4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F11EB4771B6A368E000063E4 /* Build configuration list for PBXNativeTarget "Train12306Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F11EB4781B6A368E000063E4 /* Debug */,
-				F11EB4791B6A368E000063E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
