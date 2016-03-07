@@ -54,8 +54,6 @@
 		F11154C51C8D92D000FA6059 /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154BB1C8D92D000FA6059 /* TicketTableViewController.swift */; };
 		F11154C61C8D92D000FA6059 /* TicketTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11154BC1C8D92D000FA6059 /* TicketTableViewController.xib */; };
 		F11154C81C8D92FC00FA6059 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154C71C8D92FC00FA6059 /* AppDelegate.swift */; };
-		F11154CD1C8D931500FA6059 /* LoginPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154C91C8D931500FA6059 /* LoginPopoverViewController.swift */; };
-		F11154CE1C8D931500FA6059 /* LoginPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11154CA1C8D931500FA6059 /* LoginPopoverViewController.xib */; };
 		F11154CF1C8D931500FA6059 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154CB1C8D931500FA6059 /* MainWindowController.swift */; };
 		F11154D01C8D931500FA6059 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11154CC1C8D931500FA6059 /* MainWindowController.xib */; };
 		F11154D31C8D936300FA6059 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11154D11C8D936300FA6059 /* MainMenu.xib */; };
@@ -122,8 +120,6 @@
 		F11154BB1C8D92D000FA6059 /* TicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewController.swift; sourceTree = "<group>"; };
 		F11154BC1C8D92D000FA6059 /* TicketTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketTableViewController.xib; sourceTree = "<group>"; };
 		F11154C71C8D92FC00FA6059 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = 12306ForMac/AppDelegate.swift; sourceTree = "<group>"; };
-		F11154C91C8D931500FA6059 /* LoginPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginPopoverViewController.swift; path = 12306ForMac/LoginPopoverViewController.swift; sourceTree = "<group>"; };
-		F11154CA1C8D931500FA6059 /* LoginPopoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginPopoverViewController.xib; path = 12306ForMac/LoginPopoverViewController.xib; sourceTree = "<group>"; };
 		F11154CB1C8D931500FA6059 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainWindowController.swift; path = 12306ForMac/MainWindowController.swift; sourceTree = "<group>"; };
 		F11154CC1C8D931500FA6059 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindowController.xib; path = 12306ForMac/MainWindowController.xib; sourceTree = "<group>"; };
 		F11154D21C8D936300FA6059 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = 12306ForMac/Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -180,12 +176,9 @@
 		F11154611C8D91B300FA6059 /* 12306ForMac */ = {
 			isa = PBXGroup;
 			children = (
-				F11154D11C8D936300FA6059 /* MainMenu.xib */,
-				F11154C71C8D92FC00FA6059 /* AppDelegate.swift */,
-				F11154C91C8D931500FA6059 /* LoginPopoverViewController.swift */,
-				F11154CA1C8D931500FA6059 /* LoginPopoverViewController.xib */,
-				F11154CB1C8D931500FA6059 /* MainWindowController.swift */,
-				F11154CC1C8D931500FA6059 /* MainWindowController.xib */,
+				F11154971C8D927C00FA6059 /* StationData.swift */,
+				F11154621C8D91F800FA6059 /* README.md */,
+				F11154631C8D91F800FA6059 /* srca.cer */,
 				F11154B21C8D92D000FA6059 /* TicketViewControllers */,
 				F11154AD1C8D92C100FA6059 /* OrderViewControllers */,
 				F11154A41C8D92A700FA6059 /* Sheets */,
@@ -194,9 +187,10 @@
 				F111547A1C8D923C00FA6059 /* Utilities */,
 				F11154691C8D921400FA6059 /* Model */,
 				F11154661C8D920600FA6059 /* RealmModel */,
-				F11154971C8D927C00FA6059 /* StationData.swift */,
-				F11154621C8D91F800FA6059 /* README.md */,
-				F11154631C8D91F800FA6059 /* srca.cer */,
+				F11154D11C8D936300FA6059 /* MainMenu.xib */,
+				F11154C71C8D92FC00FA6059 /* AppDelegate.swift */,
+				F11154CB1C8D931500FA6059 /* MainWindowController.swift */,
+				F11154CC1C8D931500FA6059 /* MainWindowController.xib */,
 				F11EB45D1B6A368E000063E4 /* Supporting Files */,
 			);
 			name = 12306ForMac;
@@ -451,7 +445,6 @@
 				F11154E81C8D93B300FA6059 /* SettingsTemplate.png in Resources */,
 				F11154AA1C8D92A700FA6059 /* LoginWindowController.xib in Resources */,
 				F11154C21C8D92D000FA6059 /* PassengerSelectViewController.xib in Resources */,
-				F11154CE1C8D931500FA6059 /* LoginPopoverViewController.xib in Resources */,
 				F11154B11C8D92C100FA6059 /* OrderViewController.xib in Resources */,
 				F11154D31C8D936300FA6059 /* MainMenu.xib in Resources */,
 				F11154651C8D91F800FA6059 /* srca.cer in Resources */,
@@ -548,7 +541,6 @@
 				F11154961C8D925200FA6059 /* RandCodeImageView.swift in Sources */,
 				F11154681C8D920600FA6059 /* User.swift in Sources */,
 				F1E7EA301C5A2E7B007715C1 /* INAppStoreWindow.m in Sources */,
-				F11154CD1C8D931500FA6059 /* LoginPopoverViewController.swift in Sources */,
 				F1E7EA311C5A2E7B007715C1 /* INWindowButton.m in Sources */,
 				F11154BF1C8D92D000FA6059 /* NormalSearchViewController.swift in Sources */,
 				F11154811C8D923C00FA6059 /* UserDefaultManager.swift in Sources */,

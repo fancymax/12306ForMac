@@ -13,13 +13,6 @@ import PromiseKit
 
 extension Service {
     
-//    func loginOut()
-//    {
-//        let url = "https://kyfw.12306.cn/otn/login/loginOut"
-//        Service.Manager.request(.GET, url).responseString(completionHandler:{response in
-//            print(response.result)
-//        })
-//    }
     
 // MARK: - Request Flow
     func preLoginFlow(success success:(loadImage:NSImage)->(),failure:()->()){
@@ -67,6 +60,14 @@ extension Service {
                     fulfill(dynamicJs)
                 }})
         }
+    }
+    
+    func loginOut()
+    {
+        let url = "https://kyfw.12306.cn/otn/login/loginOut"
+        Service.Manager.request(.GET, url).responseString(completionHandler:{response in
+            print(response.result)
+        })
     }
     
     func getPassCodeNewForLogin()->Promise<NSImage>{

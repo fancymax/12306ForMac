@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController" customModule="_2306ForMac" customModuleProvider="target">
             <connections>
+                <outlet property="LoginMenu" destination="xmP-jf-NW1" id="ab5-GD-wDK"/>
                 <outlet property="loginButton" destination="YwA-eV-Pe9" id="TVf-Hk-1W3"/>
                 <outlet property="stackContentView" destination="3rh-ac-vqb" id="jxu-B2-rWr"/>
                 <outlet property="window" destination="yxO-x7-Uu9" id="OUq-e0-FVQ"/>
@@ -50,6 +51,17 @@
                 <action selector="UserLogin:" target="-2" id="TBR-ZU-Q1H"/>
             </connections>
         </button>
+        <menu id="xmP-jf-NW1">
+            <items>
+                <menuItem title="  注销" id="Wf7-ku-yLR">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="loginOut:" target="-2" id="KI7-71-4qb"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="100.5" y="1000.5"/>
+        </menu>
     </objects>
     <resources>
         <image name="NSUserAccounts" width="32" height="32"/>

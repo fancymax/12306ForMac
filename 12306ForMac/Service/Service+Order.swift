@@ -76,27 +76,27 @@ extension Service{
     
     func postMobileGetPassengerDTOs()
     {
-            let url = "https://kyfw.12306.cn/otn/confirmPassenger/getPassengerDTOs"
-            let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
-            Service.Manager.request(.POST, url, headers:headers).responseJSON(completionHandler:{response in
-                switch (response.result){
-                case .Failure(let error):
-                    print(error)
-                case .Success(let data):
-                    let jsonData = JSON(data)["data"]
-                    guard jsonData["normal_passengers"].count > 0 else {
-                        logger.error("\(jsonData)")
-                        return
-                    }
-                    var passengers = [PassengerDTO]()
-                    for i in 0...jsonData["normal_passengers"].count - 1{
-                        passengers.append(PassengerDTO(json:jsonData["normal_passengers"][i]))
-                    }
-                    if !MainModel.isGetPassengersInfo {
-                        MainModel.passengers = passengers
-                        MainModel.isGetPassengersInfo = true
-                    }
-                }})
+        let url = "https://kyfw.12306.cn/otn/confirmPassenger/getPassengerDTOs"
+        let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
+        Service.Manager.request(.POST, url, headers:headers).responseJSON(completionHandler:{response in
+            switch (response.result){
+            case .Failure(let error):
+                print(error)
+            case .Success(let data):
+                let jsonData = JSON(data)["data"]
+                guard jsonData["normal_passengers"].count > 0 else {
+                    logger.error("\(jsonData)")
+                    return
+                }
+                var passengers = [PassengerDTO]()
+                for i in 0...jsonData["normal_passengers"].count - 1{
+                    passengers.append(PassengerDTO(json:jsonData["normal_passengers"][i]))
+                }
+                if !MainModel.isGetPassengersInfo {
+                    MainModel.passengers = passengers
+                    MainModel.isGetPassengersInfo = true
+                }
+            }})
     }
     
     

@@ -5,7 +5,7 @@
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="TicketTableViewController" customModule="Train12306" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="TicketTableViewController" customModule="_2306ForMac" customModuleProvider="target">
             <connections>
                 <outlet property="leftTicketTable" destination="i0k-2E-Zg0" id="pmS-uh-zeJ"/>
                 <outlet property="loadingSpinner" destination="kmV-3P-cx9" id="pje-1K-dZz"/>
@@ -89,7 +89,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="U9T-uC-T3X" customClass="ItemCellView" customModule="Train12306" customModuleProvider="target">
+                                            <tableCellView id="U9T-uC-T3X" customClass="ItemCellView" customModule="_2306ForMac" customModuleProvider="target">
                                                 <rect key="frame" x="84" y="1" width="125" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -149,7 +149,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="sm8-La-HbK" customClass="ItemCellView" customModule="Train12306" customModuleProvider="target">
+                                            <tableCellView id="sm8-La-HbK" customClass="ItemCellView" customModule="_2306ForMac" customModuleProvider="target">
                                                 <rect key="frame" x="212" y="1" width="125" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -250,7 +250,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView misplaced="YES" id="WIs-HT-Kwb" customClass="ItemCellView" customModule="Train12306" customModuleProvider="target">
+                                            <tableCellView misplaced="YES" id="WIs-HT-Kwb" customClass="ItemCellView" customModule="_2306ForMac" customModuleProvider="target">
                                                 <rect key="frame" x="423" y="1" width="1197" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -448,7 +448,7 @@
                         <animations/>
                     </tableHeaderView>
                 </scrollView>
-                <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nXV-5S-R9c" userLabel="Loading View" customClass="GlassView" customModule="Train12306" customModuleProvider="target">
+                <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nXV-5S-R9c" userLabel="Loading View" customClass="GlassView" customModule="_2306ForMac" customModuleProvider="target">
                     <rect key="frame" x="437" y="270" width="120" height="30"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sQi-tV-O6t" userLabel="正在查询...">
@@ -476,7 +476,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </customView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YZ2-44-iFH" customClass="FlashLabel" customModule="Train12306" customModuleProvider="target">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YZ2-44-iFH" customClass="FlashLabel" customModule="_2306ForMac" customModuleProvider="target">
                     <rect key="frame" x="442" y="275" width="109" height="19"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="请先选择乘客～" drawsBackground="YES" id="dMy-SC-xex">

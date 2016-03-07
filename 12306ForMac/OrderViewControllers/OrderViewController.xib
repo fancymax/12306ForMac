@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="OrderViewController" customModule="Train12306" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="OrderViewController" customModule="_2306ForMac" customModuleProvider="target">
             <connections>
                 <outlet property="loadingSpinner" destination="uC2-el-N3v" id="iqx-OE-9ov"/>
                 <outlet property="loadingView" destination="4mH-Np-R8c" id="Rqh-5q-qU6"/>
@@ -181,7 +181,7 @@
                         <animations/>
                     </scroller>
                 </scrollView>
-                <customView translatesAutoresizingMaskIntoConstraints="NO" id="4mH-Np-R8c" userLabel="Loading View" customClass="GlassView" customModule="Train12306" customModuleProvider="target">
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="4mH-Np-R8c" userLabel="Loading View" customClass="GlassView" customModule="_2306ForMac" customModuleProvider="target">
                     <rect key="frame" x="255" y="185" width="120" height="30"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cff-ez-eTt" userLabel="正在查询...">
@@ -211,7 +211,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </customView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N4e-df-tvh" customClass="FlashLabel" customModule="Train12306" customModuleProvider="target">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N4e-df-tvh" customClass="FlashLabel" customModule="_2306ForMac" customModuleProvider="target">
                     <rect key="frame" x="276" y="190" width="79" height="19"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="请先登录～" drawsBackground="YES" id="iWl-Rg-TSe">

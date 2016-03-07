@@ -11,6 +11,7 @@ import Cocoa
 class MainWindowController: NSWindowController{
     @IBOutlet weak var stackContentView: NSStackView!
     @IBOutlet weak var loginButton: LoginButton!
+    @IBOutlet var LoginMenu: NSMenu!
     
     var normalSearchViewController: NormalSearchViewController?
     var ticketTableViewController: TicketTableViewController?
@@ -19,7 +20,6 @@ class MainWindowController: NSWindowController{
     var splitViewController:OrderViewController?
     
     var loginWindowController = LoginWindowController()
-    var loginPopover:NSPopover?
     
     override func windowDidLoad()
     {
@@ -121,32 +121,39 @@ class MainWindowController: NSWindowController{
     
     func receiveDidSendLoginMessageNotification(note: NSNotification){
         print("receiveDidSendLoginMessageNotification")
-        didLoginOut()
+        loginOut()
     }
     
     deinit{
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.removeObserver(self)
     }
-}
 
-// MARK: - LoginPopoverDelegate
-extension MainWindowController: LoginPopoverDelegate{
     @IBAction func UserLogin(sender: NSButton){
         if !MainModel.isGetUserInfo{
             self.login()
         }
         else{
-            self.createLoginPopover()
-            let cellRect = sender.bounds
-            self.loginPopover?.showRelativeToRect(cellRect, ofView: sender, preferredEdge: .MaxY)
+            var position:NSPoint = sender.bounds.origin
+            position.y += sender.bounds.size.height + 5
+            self.LoginMenu.minimumWidth = sender.bounds.size.width
+            self.LoginMenu.popUpMenuPositioningItem(nil, atLocation: position, inView: sender)
         }
     }
     
-    func didLoginOut() {
+    @IBAction func loginOut(sender: NSMenuItem) {
+        loginOut()
+    }
+    
+    func loginOut(){
+        MainModel.isGetUserInfo = false
+        MainModel.isGetPassengersInfo = false
         loginButton.title = "登录 ▾"
+        let service = Service()
+        service.loginOut()
         login()
     }
+    
     
     func login(){
         loginWindowController = LoginWindowController()
@@ -157,19 +164,6 @@ extension MainWindowController: LoginPopoverDelegate{
                     self.loginButton.title = MainModel.realName
                 }
             }
-        }
-    }
-    
-    func createLoginPopover(){
-        if(self.loginPopover == nil){
-            let popover = NSPopover()
-            let controller = LoginPopoverViewController()
-            controller.delegate = self
-            popover.contentViewController = controller
-            popover.appearance = NSAppearance(named: "NSAppearanceNameAqua")
-            popover.animates = true
-            popover.behavior = NSPopoverBehavior.Transient
-            self.loginPopover = popover
         }
     }
     
