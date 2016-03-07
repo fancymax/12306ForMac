@@ -8,107 +8,133 @@
 
 /* Begin PBXBuildFile section */
 		39A7F741AF1BBBC1B0E8B416 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E7211EBA20157CBFCD3A071 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		F10F40431C682AD900709095 /* Add.png in Resources */ = {isa = PBXBuildFile; fileRef = F10F40421C682AD900709095 /* Add.png */; };
-		F1171D231C72DA510053A56F /* QueryOrderParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1171D221C72DA510053A56F /* QueryOrderParam.swift */; };
-		F1171D271C7300ED0053A56F /* OrderDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1171D261C7300ED0053A56F /* OrderDTO.swift */; };
-		F11E3CC21C144AA60099D457 /* LoginPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11E3CC01C144AA60099D457 /* LoginPopoverViewController.swift */; };
-		F11E3CC31C144AA60099D457 /* LoginPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11E3CC11C144AA60099D457 /* LoginPopoverViewController.xib */; };
-		F11EB4601B6A368E000063E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EB45F1B6A368E000063E4 /* AppDelegate.swift */; };
-		F11EB4651B6A368E000063E4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11EB4631B6A368E000063E4 /* MainMenu.xib */; };
-		F11EB47C1B6A36A9000063E4 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EB47A1B6A36A9000063E4 /* MainWindowController.swift */; };
-		F11EB47D1B6A36A9000063E4 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11EB47B1B6A36A9000063E4 /* MainWindowController.xib */; };
-		F13FCECD1C77FA41001162FA /* Service+QueryOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FCECC1C77FA41001162FA /* Service+QueryOrder.swift */; };
-		F13FFBCE1B70CEF600A329E6 /* StationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FFBCD1B70CEF600A329E6 /* StationData.swift */; };
-		F159FAB91C6741370024BEAB /* DisclosureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159FAAF1C6741370024BEAB /* DisclosureViewController.swift */; };
-		F159FABA1C6741370024BEAB /* DisclosureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F159FAB01C6741370024BEAB /* DisclosureViewController.xib */; };
-		F159FABB1C6741370024BEAB /* NormalSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159FAB11C6741370024BEAB /* NormalSearchViewController.swift */; };
-		F159FABC1C6741370024BEAB /* NormalSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F159FAB21C6741370024BEAB /* NormalSearchViewController.xib */; };
-		F159FABD1C6741370024BEAB /* PassengerSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159FAB31C6741370024BEAB /* PassengerSelectViewController.swift */; };
-		F159FABE1C6741370024BEAB /* PassengerSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F159FAB41C6741370024BEAB /* PassengerSelectViewController.xib */; };
-		F159FABF1C6741370024BEAB /* PassengerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159FAB51C6741370024BEAB /* PassengerViewController.swift */; };
-		F159FAC01C6741370024BEAB /* PassengerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F159FAB61C6741370024BEAB /* PassengerViewController.xib */; };
-		F159FAC11C6741370024BEAB /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159FAB71C6741370024BEAB /* TicketTableViewController.swift */; };
-		F159FAC21C6741370024BEAB /* TicketTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F159FAB81C6741370024BEAB /* TicketTableViewController.xib */; };
-		F16A04D01C72C22400662191 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16A04CE1C72C22400662191 /* OrderViewController.swift */; };
-		F16A04D11C72C22400662191 /* OrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F16A04CF1C72C22400662191 /* OrderViewController.xib */; };
-		F19D3D0A1C62120D005369CF /* srca.cer in Resources */ = {isa = PBXBuildFile; fileRef = F19D3D091C62120D005369CF /* srca.cer */; };
-		F19D3D101C621598005369CF /* LoginWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19D3D0C1C621598005369CF /* LoginWindowController.swift */; };
-		F19D3D111C621598005369CF /* LoginWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19D3D0D1C621598005369CF /* LoginWindowController.xib */; };
-		F19D3D121C621598005369CF /* PreOrderWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19D3D0E1C621598005369CF /* PreOrderWindowController.swift */; };
-		F19D3D131C621598005369CF /* PreOrderWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19D3D0F1C621598005369CF /* PreOrderWindowController.xib */; };
-		F1AA8AA41B9D7A200062C43D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1AA8AA31B9D7A200062C43D /* Images.xcassets */; };
-		F1E37C541C7734A000C80B7C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E37C531C7734A000C80B7C /* User.swift */; };
+		F11154651C8D91F800FA6059 /* srca.cer in Resources */ = {isa = PBXBuildFile; fileRef = F11154631C8D91F800FA6059 /* srca.cer */; };
+		F11154681C8D920600FA6059 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154671C8D920600FA6059 /* User.swift */; };
+		F11154721C8D921400FA6059 /* LeftTicketParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111546A1C8D921400FA6059 /* LeftTicketParam.swift */; };
+		F11154731C8D921400FA6059 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111546B1C8D921400FA6059 /* MainModel.swift */; };
+		F11154741C8D921400FA6059 /* OrderDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111546C1C8D921400FA6059 /* OrderDTO.swift */; };
+		F11154751C8D921400FA6059 /* OrderQueueResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111546D1C8D921400FA6059 /* OrderQueueResult.swift */; };
+		F11154761C8D921400FA6059 /* PassengerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111546E1C8D921400FA6059 /* PassengerDTO.swift */; };
+		F11154771C8D921400FA6059 /* QueryLeftNewDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111546F1C8D921400FA6059 /* QueryLeftNewDTO.swift */; };
+		F11154781C8D921400FA6059 /* QueryOrderParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154701C8D921400FA6059 /* QueryOrderParam.swift */; };
+		F11154791C8D921400FA6059 /* QueryOrderWaitTimeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154711C8D921400FA6059 /* QueryOrderWaitTimeResult.swift */; };
+		F111547F1C8D923C00FA6059 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111547B1C8D923C00FA6059 /* SwiftyJSON.swift */; };
+		F11154801C8D923C00FA6059 /* SwiftyRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111547C1C8D923C00FA6059 /* SwiftyRegex.swift */; };
+		F11154811C8D923C00FA6059 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111547D1C8D923C00FA6059 /* UserDefaultManager.swift */; };
+		F11154821C8D923C00FA6059 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111547E1C8D923C00FA6059 /* XCGLogger.swift */; };
+		F111548E1C8D925200FA6059 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154841C8D925200FA6059 /* AutoCompleteTextField.swift */; };
+		F111548F1C8D925200FA6059 /* FlashLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154851C8D925200FA6059 /* FlashLabel.swift */; };
+		F11154901C8D925200FA6059 /* GlassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154861C8D925200FA6059 /* GlassView.swift */; };
+		F11154911C8D925200FA6059 /* ItemCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154871C8D925200FA6059 /* ItemCellView.swift */; };
+		F11154921C8D925200FA6059 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154881C8D925200FA6059 /* LoginButton.swift */; };
+		F11154931C8D925200FA6059 /* LunarCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111548A1C8D925200FA6059 /* LunarCalendarView.swift */; };
+		F11154941C8D925200FA6059 /* LunarCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F111548B1C8D925200FA6059 /* LunarCalendarView.xib */; };
+		F11154951C8D925200FA6059 /* LunarSolarConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111548C1C8D925200FA6059 /* LunarSolarConverter.swift */; };
+		F11154961C8D925200FA6059 /* RandCodeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111548D1C8D925200FA6059 /* RandCodeImageView.swift */; };
+		F11154981C8D927C00FA6059 /* StationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154971C8D927C00FA6059 /* StationData.swift */; };
+		F111549F1C8D929200FA6059 /* Service+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111549A1C8D929200FA6059 /* Service+Login.swift */; };
+		F11154A01C8D929200FA6059 /* Service+Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111549B1C8D929200FA6059 /* Service+Order.swift */; };
+		F11154A11C8D929200FA6059 /* Service+QueryOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111549C1C8D929200FA6059 /* Service+QueryOrder.swift */; };
+		F11154A21C8D929200FA6059 /* Service+QueryTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111549D1C8D929200FA6059 /* Service+QueryTicket.swift */; };
+		F11154A31C8D929200FA6059 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111549E1C8D929200FA6059 /* Service.swift */; };
+		F11154A91C8D92A700FA6059 /* LoginWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154A51C8D92A700FA6059 /* LoginWindowController.swift */; };
+		F11154AA1C8D92A700FA6059 /* LoginWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11154A61C8D92A700FA6059 /* LoginWindowController.xib */; };
+		F11154AB1C8D92A700FA6059 /* PreOrderWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154A71C8D92A700FA6059 /* PreOrderWindowController.swift */; };
+		F11154AC1C8D92A700FA6059 /* PreOrderWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11154A81C8D92A700FA6059 /* PreOrderWindowController.xib */; };
+		F11154B01C8D92C100FA6059 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154AE1C8D92C100FA6059 /* OrderViewController.swift */; };
+		F11154B11C8D92C100FA6059 /* OrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11154AF1C8D92C100FA6059 /* OrderViewController.xib */; };
+		F11154BD1C8D92D000FA6059 /* DisclosureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154B31C8D92D000FA6059 /* DisclosureViewController.swift */; };
+		F11154BE1C8D92D000FA6059 /* DisclosureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11154B41C8D92D000FA6059 /* DisclosureViewController.xib */; };
+		F11154BF1C8D92D000FA6059 /* NormalSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154B51C8D92D000FA6059 /* NormalSearchViewController.swift */; };
+		F11154C01C8D92D000FA6059 /* NormalSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11154B61C8D92D000FA6059 /* NormalSearchViewController.xib */; };
+		F11154C11C8D92D000FA6059 /* PassengerSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154B71C8D92D000FA6059 /* PassengerSelectViewController.swift */; };
+		F11154C21C8D92D000FA6059 /* PassengerSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11154B81C8D92D000FA6059 /* PassengerSelectViewController.xib */; };
+		F11154C31C8D92D000FA6059 /* PassengerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154B91C8D92D000FA6059 /* PassengerViewController.swift */; };
+		F11154C41C8D92D000FA6059 /* PassengerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11154BA1C8D92D000FA6059 /* PassengerViewController.xib */; };
+		F11154C51C8D92D000FA6059 /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154BB1C8D92D000FA6059 /* TicketTableViewController.swift */; };
+		F11154C61C8D92D000FA6059 /* TicketTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11154BC1C8D92D000FA6059 /* TicketTableViewController.xib */; };
+		F11154C81C8D92FC00FA6059 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154C71C8D92FC00FA6059 /* AppDelegate.swift */; };
+		F11154CD1C8D931500FA6059 /* LoginPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154C91C8D931500FA6059 /* LoginPopoverViewController.swift */; };
+		F11154CE1C8D931500FA6059 /* LoginPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11154CA1C8D931500FA6059 /* LoginPopoverViewController.xib */; };
+		F11154CF1C8D931500FA6059 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154CB1C8D931500FA6059 /* MainWindowController.swift */; };
+		F11154D01C8D931500FA6059 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11154CC1C8D931500FA6059 /* MainWindowController.xib */; };
+		F11154D31C8D936300FA6059 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11154D11C8D936300FA6059 /* MainMenu.xib */; };
+		F11154D61C8D937E00FA6059 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F11154D41C8D937E00FA6059 /* Images.xcassets */; };
+		F11154E51C8D93B300FA6059 /* Add.png in Resources */ = {isa = PBXBuildFile; fileRef = F11154E11C8D93B300FA6059 /* Add.png */; };
+		F11154E61C8D93B300FA6059 /* CalendarTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = F11154E21C8D93B300FA6059 /* CalendarTemplate.png */; };
+		F11154E71C8D93B300FA6059 /* Group.png in Resources */ = {isa = PBXBuildFile; fileRef = F11154E31C8D93B300FA6059 /* Group.png */; };
+		F11154E81C8D93B300FA6059 /* SettingsTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = F11154E41C8D93B300FA6059 /* SettingsTemplate.png */; };
 		F1E7EA2D1C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA221C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c */; };
 		F1E7EA2E1C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA251C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m */; };
 		F1E7EA2F1C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA271C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m */; };
 		F1E7EA301C5A2E7B007715C1 /* INAppStoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA291C5A2E7B007715C1 /* INAppStoreWindow.m */; };
 		F1E7EA311C5A2E7B007715C1 /* INWindowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA2C1C5A2E7B007715C1 /* INWindowButton.m */; };
-		F1F520A41C87E43C002C13D7 /* OrderQueueResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F520A31C87E43C002C13D7 /* OrderQueueResult.swift */; };
-		F1F520A81C87E70C002C13D7 /* QueryOrderWaitTimeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F520A71C87E70C002C13D7 /* QueryOrderWaitTimeResult.swift */; };
-		F1F69B891C61BB5500F4C4A6 /* CalendarTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F69B861C61BB5500F4C4A6 /* CalendarTemplate.png */; };
-		F1F69B8A1C61BB5500F4C4A6 /* Group.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F69B871C61BB5500F4C4A6 /* Group.png */; };
-		F1F69B8B1C61BB5500F4C4A6 /* SettingsTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F69B881C61BB5500F4C4A6 /* SettingsTemplate.png */; };
-		F1F69B911C61BBF800F4C4A6 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69B8D1C61BBF800F4C4A6 /* AutoCompleteTextField.swift */; };
-		F1F69B921C61BBF800F4C4A6 /* FlashLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69B8E1C61BBF800F4C4A6 /* FlashLabel.swift */; };
-		F1F69B931C61BBF800F4C4A6 /* ItemCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69B8F1C61BBF800F4C4A6 /* ItemCellView.swift */; };
-		F1F69B941C61BBF800F4C4A6 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69B901C61BBF800F4C4A6 /* LoginButton.swift */; };
-		F1F69B961C61BC1E00F4C4A6 /* RandCodeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69B951C61BC1E00F4C4A6 /* RandCodeImageView.swift */; };
-		F1F69B9B1C61BC7E00F4C4A6 /* LunarCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69B981C61BC7E00F4C4A6 /* LunarCalendarView.swift */; };
-		F1F69B9C1C61BC7E00F4C4A6 /* LunarCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F69B991C61BC7E00F4C4A6 /* LunarCalendarView.xib */; };
-		F1F69B9D1C61BC7E00F4C4A6 /* LunarSolarConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69B9A1C61BC7E00F4C4A6 /* LunarSolarConverter.swift */; };
-		F1F69B9F1C61BCA700F4C4A6 /* GlassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69B9E1C61BCA700F4C4A6 /* GlassView.swift */; };
-		F1F69BA61C61BDAD00F4C4A6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BA21C61BDAD00F4C4A6 /* SwiftyJSON.swift */; };
-		F1F69BA71C61BDAD00F4C4A6 /* SwiftyRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BA31C61BDAD00F4C4A6 /* SwiftyRegex.swift */; };
-		F1F69BA81C61BDAD00F4C4A6 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BA41C61BDAD00F4C4A6 /* XCGLogger.swift */; };
-		F1F69BAA1C61BDDE00F4C4A6 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BA91C61BDDE00F4C4A6 /* UserDefaultManager.swift */; };
-		F1F69BB11C61BE6600F4C4A6 /* LeftTicketParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BAC1C61BE6600F4C4A6 /* LeftTicketParam.swift */; };
-		F1F69BB21C61BE6600F4C4A6 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BAD1C61BE6600F4C4A6 /* MainModel.swift */; };
-		F1F69BB31C61BE6600F4C4A6 /* QueryLeftNewDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BAE1C61BE6600F4C4A6 /* QueryLeftNewDTO.swift */; };
-		F1F69BB71C61BE7D00F4C4A6 /* PassengerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BB61C61BE7D00F4C4A6 /* PassengerDTO.swift */; };
-		F1F69BBC1C61BECD00F4C4A6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BB81C61BECD00F4C4A6 /* Service.swift */; };
-		F1F69BBD1C61BECD00F4C4A6 /* Service+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BB91C61BECD00F4C4A6 /* Service+Login.swift */; };
-		F1F69BBE1C61BECD00F4C4A6 /* Service+QueryTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BBA1C61BECD00F4C4A6 /* Service+QueryTicket.swift */; };
-		F1F69BBF1C61BECD00F4C4A6 /* Service+Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F69BBB1C61BECD00F4C4A6 /* Service+Order.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		37638C4EC63999790EA677D6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4362C8555FDE04134EAB4433 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4E7211EBA20157CBFCD3A071 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F10F40421C682AD900709095 /* Add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Add.png; path = Images/Add.png; sourceTree = "<group>"; };
-		F1171D221C72DA510053A56F /* QueryOrderParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueryOrderParam.swift; path = Model/QueryOrderParam.swift; sourceTree = "<group>"; };
-		F1171D261C7300ED0053A56F /* OrderDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderDTO.swift; path = Model/OrderDTO.swift; sourceTree = "<group>"; };
-		F11E3CC01C144AA60099D457 /* LoginPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPopoverViewController.swift; sourceTree = "<group>"; };
-		F11E3CC11C144AA60099D457 /* LoginPopoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginPopoverViewController.xib; sourceTree = "<group>"; };
+		F11154621C8D91F800FA6059 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F11154631C8D91F800FA6059 /* srca.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = srca.cer; sourceTree = "<group>"; };
+		F11154671C8D920600FA6059 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F111546A1C8D921400FA6059 /* LeftTicketParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftTicketParam.swift; sourceTree = "<group>"; };
+		F111546B1C8D921400FA6059 /* MainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		F111546C1C8D921400FA6059 /* OrderDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDTO.swift; sourceTree = "<group>"; };
+		F111546D1C8D921400FA6059 /* OrderQueueResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OrderQueueResult\U001b.swift"; sourceTree = "<group>"; };
+		F111546E1C8D921400FA6059 /* PassengerDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassengerDTO.swift; sourceTree = "<group>"; };
+		F111546F1C8D921400FA6059 /* QueryLeftNewDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryLeftNewDTO.swift; sourceTree = "<group>"; };
+		F11154701C8D921400FA6059 /* QueryOrderParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryOrderParam.swift; sourceTree = "<group>"; };
+		F11154711C8D921400FA6059 /* QueryOrderWaitTimeResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryOrderWaitTimeResult.swift; sourceTree = "<group>"; };
+		F111547B1C8D923C00FA6059 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		F111547C1C8D923C00FA6059 /* SwiftyRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyRegex.swift; sourceTree = "<group>"; };
+		F111547D1C8D923C00FA6059 /* UserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
+		F111547E1C8D923C00FA6059 /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCGLogger.swift; sourceTree = "<group>"; };
+		F11154841C8D925200FA6059 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
+		F11154851C8D925200FA6059 /* FlashLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashLabel.swift; sourceTree = "<group>"; };
+		F11154861C8D925200FA6059 /* GlassView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlassView.swift; sourceTree = "<group>"; };
+		F11154871C8D925200FA6059 /* ItemCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCellView.swift; sourceTree = "<group>"; };
+		F11154881C8D925200FA6059 /* LoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		F111548A1C8D925200FA6059 /* LunarCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LunarCalendarView.swift; sourceTree = "<group>"; };
+		F111548B1C8D925200FA6059 /* LunarCalendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LunarCalendarView.xib; sourceTree = "<group>"; };
+		F111548C1C8D925200FA6059 /* LunarSolarConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LunarSolarConverter.swift; sourceTree = "<group>"; };
+		F111548D1C8D925200FA6059 /* RandCodeImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandCodeImageView.swift; sourceTree = "<group>"; };
+		F11154971C8D927C00FA6059 /* StationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StationData.swift; path = 12306ForMac/StationData.swift; sourceTree = "<group>"; };
+		F111549A1C8D929200FA6059 /* Service+Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Service+Login.swift"; sourceTree = "<group>"; };
+		F111549B1C8D929200FA6059 /* Service+Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Service+Order.swift"; sourceTree = "<group>"; };
+		F111549C1C8D929200FA6059 /* Service+QueryOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Service+QueryOrder.swift"; sourceTree = "<group>"; };
+		F111549D1C8D929200FA6059 /* Service+QueryTicket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Service+QueryTicket.swift"; sourceTree = "<group>"; };
+		F111549E1C8D929200FA6059 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		F11154A51C8D92A700FA6059 /* LoginWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWindowController.swift; sourceTree = "<group>"; };
+		F11154A61C8D92A700FA6059 /* LoginWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginWindowController.xib; sourceTree = "<group>"; };
+		F11154A71C8D92A700FA6059 /* PreOrderWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreOrderWindowController.swift; sourceTree = "<group>"; };
+		F11154A81C8D92A700FA6059 /* PreOrderWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreOrderWindowController.xib; sourceTree = "<group>"; };
+		F11154AE1C8D92C100FA6059 /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		F11154AF1C8D92C100FA6059 /* OrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderViewController.xib; sourceTree = "<group>"; };
+		F11154B31C8D92D000FA6059 /* DisclosureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DisclosureViewController\U001b\U001b.swift"; sourceTree = "<group>"; };
+		F11154B41C8D92D000FA6059 /* DisclosureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisclosureViewController.xib; sourceTree = "<group>"; };
+		F11154B51C8D92D000FA6059 /* NormalSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalSearchViewController.swift; sourceTree = "<group>"; };
+		F11154B61C8D92D000FA6059 /* NormalSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NormalSearchViewController.xib; sourceTree = "<group>"; };
+		F11154B71C8D92D000FA6059 /* PassengerSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassengerSelectViewController.swift; sourceTree = "<group>"; };
+		F11154B81C8D92D000FA6059 /* PassengerSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PassengerSelectViewController.xib; sourceTree = "<group>"; };
+		F11154B91C8D92D000FA6059 /* PassengerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassengerViewController.swift; sourceTree = "<group>"; };
+		F11154BA1C8D92D000FA6059 /* PassengerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PassengerViewController.xib; sourceTree = "<group>"; };
+		F11154BB1C8D92D000FA6059 /* TicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewController.swift; sourceTree = "<group>"; };
+		F11154BC1C8D92D000FA6059 /* TicketTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketTableViewController.xib; sourceTree = "<group>"; };
+		F11154C71C8D92FC00FA6059 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = 12306ForMac/AppDelegate.swift; sourceTree = "<group>"; };
+		F11154C91C8D931500FA6059 /* LoginPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginPopoverViewController.swift; path = 12306ForMac/LoginPopoverViewController.swift; sourceTree = "<group>"; };
+		F11154CA1C8D931500FA6059 /* LoginPopoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginPopoverViewController.xib; path = 12306ForMac/LoginPopoverViewController.xib; sourceTree = "<group>"; };
+		F11154CB1C8D931500FA6059 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainWindowController.swift; path = 12306ForMac/MainWindowController.swift; sourceTree = "<group>"; };
+		F11154CC1C8D931500FA6059 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindowController.xib; path = 12306ForMac/MainWindowController.xib; sourceTree = "<group>"; };
+		F11154D21C8D936300FA6059 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = 12306ForMac/Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		F11154D41C8D937E00FA6059 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = 12306ForMac/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		F11154E11C8D93B300FA6059 /* Add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Add.png; path = 12306ForMac/images/Add.png; sourceTree = SOURCE_ROOT; };
+		F11154E21C8D93B300FA6059 /* CalendarTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CalendarTemplate.png; path = 12306ForMac/images/CalendarTemplate.png; sourceTree = SOURCE_ROOT; };
+		F11154E31C8D93B300FA6059 /* Group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Group.png; path = 12306ForMac/images/Group.png; sourceTree = SOURCE_ROOT; };
+		F11154E41C8D93B300FA6059 /* SettingsTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SettingsTemplate.png; path = 12306ForMac/images/SettingsTemplate.png; sourceTree = SOURCE_ROOT; };
+		F11154E91C8D945C00FA6059 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = 12306ForMac/Info.plist; sourceTree = SOURCE_ROOT; };
 		F11EB45A1B6A368E000063E4 /* 12306ForMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 12306ForMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F11EB45E1B6A368E000063E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F11EB45F1B6A368E000063E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F11EB4641B6A368E000063E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		F11EB47A1B6A36A9000063E4 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
-		F11EB47B1B6A36A9000063E4 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
-		F13FCECC1C77FA41001162FA /* Service+QueryOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Service+QueryOrder.swift"; path = "Service/Service+QueryOrder.swift"; sourceTree = "<group>"; };
-		F13FFBCD1B70CEF600A329E6 /* StationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationData.swift; sourceTree = "<group>"; };
-		F159FAAF1C6741370024BEAB /* DisclosureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DisclosureViewController\U001b\U001b.swift"; path = "TicketViewControllers/DisclosureViewController\U001b\U001b.swift"; sourceTree = "<group>"; };
-		F159FAB01C6741370024BEAB /* DisclosureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DisclosureViewController.xib; path = TicketViewControllers/DisclosureViewController.xib; sourceTree = "<group>"; };
-		F159FAB11C6741370024BEAB /* NormalSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NormalSearchViewController.swift; path = TicketViewControllers/NormalSearchViewController.swift; sourceTree = "<group>"; };
-		F159FAB21C6741370024BEAB /* NormalSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NormalSearchViewController.xib; path = TicketViewControllers/NormalSearchViewController.xib; sourceTree = "<group>"; };
-		F159FAB31C6741370024BEAB /* PassengerSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PassengerSelectViewController.swift; path = TicketViewControllers/PassengerSelectViewController.swift; sourceTree = "<group>"; };
-		F159FAB41C6741370024BEAB /* PassengerSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PassengerSelectViewController.xib; path = TicketViewControllers/PassengerSelectViewController.xib; sourceTree = "<group>"; };
-		F159FAB51C6741370024BEAB /* PassengerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PassengerViewController.swift; path = TicketViewControllers/PassengerViewController.swift; sourceTree = "<group>"; };
-		F159FAB61C6741370024BEAB /* PassengerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PassengerViewController.xib; path = TicketViewControllers/PassengerViewController.xib; sourceTree = "<group>"; };
-		F159FAB71C6741370024BEAB /* TicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketTableViewController.swift; path = TicketViewControllers/TicketTableViewController.swift; sourceTree = "<group>"; };
-		F159FAB81C6741370024BEAB /* TicketTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TicketTableViewController.xib; path = TicketViewControllers/TicketTableViewController.xib; sourceTree = "<group>"; };
-		F16A04CE1C72C22400662191 /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderViewController.swift; path = OrderViewControllers/OrderViewController.swift; sourceTree = "<group>"; };
-		F16A04CF1C72C22400662191 /* OrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderViewController.xib; path = OrderViewControllers/OrderViewController.xib; sourceTree = "<group>"; };
-		F17C8BB21C63767100837392 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
-		F19D3D091C62120D005369CF /* srca.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = srca.cer; sourceTree = SOURCE_ROOT; };
-		F19D3D0C1C621598005369CF /* LoginWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginWindowController.swift; path = Sheets/LoginWindowController.swift; sourceTree = "<group>"; };
-		F19D3D0D1C621598005369CF /* LoginWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginWindowController.xib; path = Sheets/LoginWindowController.xib; sourceTree = "<group>"; };
-		F19D3D0E1C621598005369CF /* PreOrderWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreOrderWindowController.swift; path = Sheets/PreOrderWindowController.swift; sourceTree = "<group>"; };
-		F19D3D0F1C621598005369CF /* PreOrderWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreOrderWindowController.xib; path = Sheets/PreOrderWindowController.xib; sourceTree = "<group>"; };
-		F1AA8AA31B9D7A200062C43D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F1CC36461B6B244C0074A014 /* Train12306-Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Train12306-Swift.h"; sourceTree = "<group>"; };
-		F1E37C531C7734A000C80B7C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = RealmModel/User.swift; sourceTree = "<group>"; };
+		F1CC36461B6B244C0074A014 /* 12306ForMac-Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "12306ForMac-Swift.h"; sourceTree = "<group>"; };
 		F1E7EA221C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = INAppStoreWindowSwizzling.c; sourceTree = "<group>"; };
 		F1E7EA231C5A2E7B007715C1 /* INAppStoreWindowSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindowSwizzling.h; sourceTree = "<group>"; };
 		F1E7EA241C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "INWindowBackgroundView+CoreUIRendering.h"; sourceTree = "<group>"; };
@@ -120,32 +146,6 @@
 		F1E7EA2A1C5A2E7B007715C1 /* INAppStoreWindowCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindowCompatibility.h; sourceTree = "<group>"; };
 		F1E7EA2B1C5A2E7B007715C1 /* INWindowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INWindowButton.h; sourceTree = "<group>"; };
 		F1E7EA2C1C5A2E7B007715C1 /* INWindowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INWindowButton.m; sourceTree = "<group>"; };
-		F1F520A31C87E43C002C13D7 /* OrderQueueResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "OrderQueueResult\U001b.swift"; path = "Model/OrderQueueResult\U001b.swift"; sourceTree = "<group>"; };
-		F1F520A71C87E70C002C13D7 /* QueryOrderWaitTimeResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueryOrderWaitTimeResult.swift; path = Model/QueryOrderWaitTimeResult.swift; sourceTree = "<group>"; };
-		F1F69B861C61BB5500F4C4A6 /* CalendarTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CalendarTemplate.png; path = Images/CalendarTemplate.png; sourceTree = "<group>"; };
-		F1F69B871C61BB5500F4C4A6 /* Group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Group.png; path = Images/Group.png; sourceTree = "<group>"; };
-		F1F69B881C61BB5500F4C4A6 /* SettingsTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SettingsTemplate.png; path = Images/SettingsTemplate.png; sourceTree = "<group>"; };
-		F1F69B8D1C61BBF800F4C4A6 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoCompleteTextField.swift; path = UserControls/AutoCompleteTextField.swift; sourceTree = "<group>"; };
-		F1F69B8E1C61BBF800F4C4A6 /* FlashLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlashLabel.swift; path = UserControls/FlashLabel.swift; sourceTree = "<group>"; };
-		F1F69B8F1C61BBF800F4C4A6 /* ItemCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemCellView.swift; path = UserControls/ItemCellView.swift; sourceTree = "<group>"; };
-		F1F69B901C61BBF800F4C4A6 /* LoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginButton.swift; path = UserControls/LoginButton.swift; sourceTree = "<group>"; };
-		F1F69B951C61BC1E00F4C4A6 /* RandCodeImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RandCodeImageView.swift; path = UserControls/RandCodeImageView.swift; sourceTree = "<group>"; };
-		F1F69B981C61BC7E00F4C4A6 /* LunarCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LunarCalendarView.swift; path = UserControls/LunarCalendar/LunarCalendarView.swift; sourceTree = "<group>"; };
-		F1F69B991C61BC7E00F4C4A6 /* LunarCalendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LunarCalendarView.xib; path = UserControls/LunarCalendar/LunarCalendarView.xib; sourceTree = "<group>"; };
-		F1F69B9A1C61BC7E00F4C4A6 /* LunarSolarConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LunarSolarConverter.swift; path = UserControls/LunarCalendar/LunarSolarConverter.swift; sourceTree = "<group>"; };
-		F1F69B9E1C61BCA700F4C4A6 /* GlassView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GlassView.swift; path = UserControls/GlassView.swift; sourceTree = "<group>"; };
-		F1F69BA21C61BDAD00F4C4A6 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Utilities/SwiftyJSON.swift; sourceTree = "<group>"; };
-		F1F69BA31C61BDAD00F4C4A6 /* SwiftyRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyRegex.swift; path = Utilities/SwiftyRegex.swift; sourceTree = "<group>"; };
-		F1F69BA41C61BDAD00F4C4A6 /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCGLogger.swift; path = Utilities/XCGLogger.swift; sourceTree = "<group>"; };
-		F1F69BA91C61BDDE00F4C4A6 /* UserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultManager.swift; path = Utilities/UserDefaultManager.swift; sourceTree = "<group>"; };
-		F1F69BAC1C61BE6600F4C4A6 /* LeftTicketParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeftTicketParam.swift; path = Model/LeftTicketParam.swift; sourceTree = "<group>"; };
-		F1F69BAD1C61BE6600F4C4A6 /* MainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainModel.swift; path = Model/MainModel.swift; sourceTree = "<group>"; };
-		F1F69BAE1C61BE6600F4C4A6 /* QueryLeftNewDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueryLeftNewDTO.swift; path = Model/QueryLeftNewDTO.swift; sourceTree = "<group>"; };
-		F1F69BB61C61BE7D00F4C4A6 /* PassengerDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PassengerDTO.swift; path = Model/PassengerDTO.swift; sourceTree = "<group>"; };
-		F1F69BB81C61BECD00F4C4A6 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Service.swift; path = Service/Service.swift; sourceTree = "<group>"; };
-		F1F69BB91C61BECD00F4C4A6 /* Service+Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Service+Login.swift"; path = "Service/Service+Login.swift"; sourceTree = "<group>"; };
-		F1F69BBA1C61BECD00F4C4A6 /* Service+QueryTicket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Service+QueryTicket.swift"; path = "Service/Service+QueryTicket.swift"; sourceTree = "<group>"; };
-		F1F69BBB1C61BECD00F4C4A6 /* Service+Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Service+Order.swift"; path = "Service/Service+Order.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,20 +177,152 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F10D9B641B8E09EA002697DE /* StaticData */ = {
+		F11154611C8D91B300FA6059 /* 12306ForMac */ = {
 			isa = PBXGroup;
 			children = (
-				F13FFBCD1B70CEF600A329E6 /* StationData.swift */,
+				F11154D11C8D936300FA6059 /* MainMenu.xib */,
+				F11154C71C8D92FC00FA6059 /* AppDelegate.swift */,
+				F11154C91C8D931500FA6059 /* LoginPopoverViewController.swift */,
+				F11154CA1C8D931500FA6059 /* LoginPopoverViewController.xib */,
+				F11154CB1C8D931500FA6059 /* MainWindowController.swift */,
+				F11154CC1C8D931500FA6059 /* MainWindowController.xib */,
+				F11154B21C8D92D000FA6059 /* TicketViewControllers */,
+				F11154AD1C8D92C100FA6059 /* OrderViewControllers */,
+				F11154A41C8D92A700FA6059 /* Sheets */,
+				F11154991C8D929200FA6059 /* Service */,
+				F11154831C8D925200FA6059 /* UserControls */,
+				F111547A1C8D923C00FA6059 /* Utilities */,
+				F11154691C8D921400FA6059 /* Model */,
+				F11154661C8D920600FA6059 /* RealmModel */,
+				F11154971C8D927C00FA6059 /* StationData.swift */,
+				F11154621C8D91F800FA6059 /* README.md */,
+				F11154631C8D91F800FA6059 /* srca.cer */,
+				F11EB45D1B6A368E000063E4 /* Supporting Files */,
 			);
-			name = StaticData;
+			name = 12306ForMac;
+			sourceTree = "<group>";
+		};
+		F11154661C8D920600FA6059 /* RealmModel */ = {
+			isa = PBXGroup;
+			children = (
+				F11154671C8D920600FA6059 /* User.swift */,
+			);
+			name = RealmModel;
+			path = 12306ForMac/RealmModel;
+			sourceTree = "<group>";
+		};
+		F11154691C8D921400FA6059 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F111546A1C8D921400FA6059 /* LeftTicketParam.swift */,
+				F111546B1C8D921400FA6059 /* MainModel.swift */,
+				F111546C1C8D921400FA6059 /* OrderDTO.swift */,
+				F111546D1C8D921400FA6059 /* OrderQueueResult.swift */,
+				F111546E1C8D921400FA6059 /* PassengerDTO.swift */,
+				F111546F1C8D921400FA6059 /* QueryLeftNewDTO.swift */,
+				F11154701C8D921400FA6059 /* QueryOrderParam.swift */,
+				F11154711C8D921400FA6059 /* QueryOrderWaitTimeResult.swift */,
+			);
+			name = Model;
+			path = 12306ForMac/Model;
+			sourceTree = "<group>";
+		};
+		F111547A1C8D923C00FA6059 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F111547B1C8D923C00FA6059 /* SwiftyJSON.swift */,
+				F111547C1C8D923C00FA6059 /* SwiftyRegex.swift */,
+				F111547D1C8D923C00FA6059 /* UserDefaultManager.swift */,
+				F111547E1C8D923C00FA6059 /* XCGLogger.swift */,
+			);
+			name = Utilities;
+			path = 12306ForMac/Utilities;
+			sourceTree = "<group>";
+		};
+		F11154831C8D925200FA6059 /* UserControls */ = {
+			isa = PBXGroup;
+			children = (
+				F11154841C8D925200FA6059 /* AutoCompleteTextField.swift */,
+				F11154851C8D925200FA6059 /* FlashLabel.swift */,
+				F11154861C8D925200FA6059 /* GlassView.swift */,
+				F11154871C8D925200FA6059 /* ItemCellView.swift */,
+				F11154881C8D925200FA6059 /* LoginButton.swift */,
+				F11154891C8D925200FA6059 /* LunarCalendar */,
+				F111548D1C8D925200FA6059 /* RandCodeImageView.swift */,
+			);
+			name = UserControls;
+			path = 12306ForMac/UserControls;
+			sourceTree = "<group>";
+		};
+		F11154891C8D925200FA6059 /* LunarCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				F111548A1C8D925200FA6059 /* LunarCalendarView.swift */,
+				F111548B1C8D925200FA6059 /* LunarCalendarView.xib */,
+				F111548C1C8D925200FA6059 /* LunarSolarConverter.swift */,
+			);
+			path = LunarCalendar;
+			sourceTree = "<group>";
+		};
+		F11154991C8D929200FA6059 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				F111549A1C8D929200FA6059 /* Service+Login.swift */,
+				F111549B1C8D929200FA6059 /* Service+Order.swift */,
+				F111549C1C8D929200FA6059 /* Service+QueryOrder.swift */,
+				F111549D1C8D929200FA6059 /* Service+QueryTicket.swift */,
+				F111549E1C8D929200FA6059 /* Service.swift */,
+			);
+			name = Service;
+			path = 12306ForMac/Service;
+			sourceTree = "<group>";
+		};
+		F11154A41C8D92A700FA6059 /* Sheets */ = {
+			isa = PBXGroup;
+			children = (
+				F11154A51C8D92A700FA6059 /* LoginWindowController.swift */,
+				F11154A61C8D92A700FA6059 /* LoginWindowController.xib */,
+				F11154A71C8D92A700FA6059 /* PreOrderWindowController.swift */,
+				F11154A81C8D92A700FA6059 /* PreOrderWindowController.xib */,
+			);
+			name = Sheets;
+			path = 12306ForMac/Sheets;
+			sourceTree = "<group>";
+		};
+		F11154AD1C8D92C100FA6059 /* OrderViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F11154AE1C8D92C100FA6059 /* OrderViewController.swift */,
+				F11154AF1C8D92C100FA6059 /* OrderViewController.xib */,
+			);
+			name = OrderViewControllers;
+			path = 12306ForMac/OrderViewControllers;
+			sourceTree = "<group>";
+		};
+		F11154B21C8D92D000FA6059 /* TicketViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F11154B31C8D92D000FA6059 /* DisclosureViewController.swift */,
+				F11154B41C8D92D000FA6059 /* DisclosureViewController.xib */,
+				F11154B51C8D92D000FA6059 /* NormalSearchViewController.swift */,
+				F11154B61C8D92D000FA6059 /* NormalSearchViewController.xib */,
+				F11154B71C8D92D000FA6059 /* PassengerSelectViewController.swift */,
+				F11154B81C8D92D000FA6059 /* PassengerSelectViewController.xib */,
+				F11154B91C8D92D000FA6059 /* PassengerViewController.swift */,
+				F11154BA1C8D92D000FA6059 /* PassengerViewController.xib */,
+				F11154BB1C8D92D000FA6059 /* TicketTableViewController.swift */,
+				F11154BC1C8D92D000FA6059 /* TicketTableViewController.xib */,
+			);
+			name = TicketViewControllers;
+			path = 12306ForMac/TicketViewControllers;
 			sourceTree = "<group>";
 		};
 		F11EB4511B6A368E000063E4 = {
 			isa = PBXGroup;
 			children = (
-				F1CC36461B6B244C0074A014 /* Train12306-Swift.h */,
+				F1CC36461B6B244C0074A014 /* 12306ForMac-Swift.h */,
 				F1E7EA201C5A2E7B007715C1 /* INAppStoreWindow */,
-				F11EB45C1B6A368E000063E4 /* Train12306 */,
+				F11154611C8D91B300FA6059 /* 12306ForMac */,
 				F11EB45B1B6A368E000063E4 /* Products */,
 				261B13F41F4566381D40C5BA /* Pods */,
 				7EE5AE4095B588D2CBD04072 /* Frameworks */,
@@ -205,107 +337,26 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F11EB45C1B6A368E000063E4 /* Train12306 */ = {
-			isa = PBXGroup;
-			children = (
-				F17C8BB21C63767100837392 /* README.md */,
-				F19D3D091C62120D005369CF /* srca.cer */,
-				F1E37C521C77325700C80B7C /* RealmModel */,
-				F1F69BAB1C61BE1200F4C4A6 /* Model */,
-				F1F69BA01C61BD5700F4C4A6 /* Utilities */,
-				F1F69B8C1C61BB7600F4C4A6 /* UserControls */,
-				F10D9B641B8E09EA002697DE /* StaticData */,
-				F13FFBC81B70CD1900A329E6 /* Service */,
-				F19D3D0B1C62157E005369CF /* Sheets */,
-				F159FAAD1C67402E0024BEAB /* OrderViewControllers */,
-				F159FAAE1C6740580024BEAB /* TicketViewControllers */,
-				F11EB45F1B6A368E000063E4 /* AppDelegate.swift */,
-				F11EB4631B6A368E000063E4 /* MainMenu.xib */,
-				F11EB47A1B6A36A9000063E4 /* MainWindowController.swift */,
-				F11EB47B1B6A36A9000063E4 /* MainWindowController.xib */,
-				F11E3CC01C144AA60099D457 /* LoginPopoverViewController.swift */,
-				F11E3CC11C144AA60099D457 /* LoginPopoverViewController.xib */,
-				F11EB45D1B6A368E000063E4 /* Supporting Files */,
-			);
-			path = Train12306;
-			sourceTree = "<group>";
-		};
 		F11EB45D1B6A368E000063E4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F11154E91C8D945C00FA6059 /* Info.plist */,
+				F11154D41C8D937E00FA6059 /* Images.xcassets */,
 				F1A8CCB01BA8032500B4FB03 /* Asserts */,
-				F1AA8AA31B9D7A200062C43D /* Images.xcassets */,
-				F11EB45E1B6A368E000063E4 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		F13FFBC81B70CD1900A329E6 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				F1F69BB81C61BECD00F4C4A6 /* Service.swift */,
-				F1F69BB91C61BECD00F4C4A6 /* Service+Login.swift */,
-				F1F69BBA1C61BECD00F4C4A6 /* Service+QueryTicket.swift */,
-				F1F69BBB1C61BECD00F4C4A6 /* Service+Order.swift */,
-				F13FCECC1C77FA41001162FA /* Service+QueryOrder.swift */,
-			);
-			name = Service;
-			sourceTree = "<group>";
-		};
-		F159FAAD1C67402E0024BEAB /* OrderViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				F16A04CE1C72C22400662191 /* OrderViewController.swift */,
-				F16A04CF1C72C22400662191 /* OrderViewController.xib */,
-			);
-			name = OrderViewControllers;
-			sourceTree = "<group>";
-		};
-		F159FAAE1C6740580024BEAB /* TicketViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				F159FAAF1C6741370024BEAB /* DisclosureViewController.swift */,
-				F159FAB01C6741370024BEAB /* DisclosureViewController.xib */,
-				F159FAB11C6741370024BEAB /* NormalSearchViewController.swift */,
-				F159FAB21C6741370024BEAB /* NormalSearchViewController.xib */,
-				F159FAB31C6741370024BEAB /* PassengerSelectViewController.swift */,
-				F159FAB41C6741370024BEAB /* PassengerSelectViewController.xib */,
-				F159FAB51C6741370024BEAB /* PassengerViewController.swift */,
-				F159FAB61C6741370024BEAB /* PassengerViewController.xib */,
-				F159FAB71C6741370024BEAB /* TicketTableViewController.swift */,
-				F159FAB81C6741370024BEAB /* TicketTableViewController.xib */,
-			);
-			name = TicketViewControllers;
-			sourceTree = "<group>";
-		};
-		F19D3D0B1C62157E005369CF /* Sheets */ = {
-			isa = PBXGroup;
-			children = (
-				F19D3D0C1C621598005369CF /* LoginWindowController.swift */,
-				F19D3D0D1C621598005369CF /* LoginWindowController.xib */,
-				F19D3D0E1C621598005369CF /* PreOrderWindowController.swift */,
-				F19D3D0F1C621598005369CF /* PreOrderWindowController.xib */,
-			);
-			name = Sheets;
+			path = Train12306;
 			sourceTree = "<group>";
 		};
 		F1A8CCB01BA8032500B4FB03 /* Asserts */ = {
 			isa = PBXGroup;
 			children = (
-				F10F40421C682AD900709095 /* Add.png */,
-				F1F69B861C61BB5500F4C4A6 /* CalendarTemplate.png */,
-				F1F69B871C61BB5500F4C4A6 /* Group.png */,
-				F1F69B881C61BB5500F4C4A6 /* SettingsTemplate.png */,
+				F11154E11C8D93B300FA6059 /* Add.png */,
+				F11154E21C8D93B300FA6059 /* CalendarTemplate.png */,
+				F11154E31C8D93B300FA6059 /* Group.png */,
+				F11154E41C8D93B300FA6059 /* SettingsTemplate.png */,
 			);
 			name = Asserts;
-			sourceTree = "<group>";
-		};
-		F1E37C521C77325700C80B7C /* RealmModel */ = {
-			isa = PBXGroup;
-			children = (
-				F1E37C531C7734A000C80B7C /* User.swift */,
-			);
-			name = RealmModel;
 			sourceTree = "<group>";
 		};
 		F1E7EA201C5A2E7B007715C1 /* INAppStoreWindow */ = {
@@ -332,56 +383,6 @@
 				F1E7EA271C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		F1F69B8C1C61BB7600F4C4A6 /* UserControls */ = {
-			isa = PBXGroup;
-			children = (
-				F1F69B971C61BC6E00F4C4A6 /* LunarCalendar */,
-				F1F69B9E1C61BCA700F4C4A6 /* GlassView.swift */,
-				F1F69B951C61BC1E00F4C4A6 /* RandCodeImageView.swift */,
-				F1F69B8D1C61BBF800F4C4A6 /* AutoCompleteTextField.swift */,
-				F1F69B8E1C61BBF800F4C4A6 /* FlashLabel.swift */,
-				F1F69B8F1C61BBF800F4C4A6 /* ItemCellView.swift */,
-				F1F69B901C61BBF800F4C4A6 /* LoginButton.swift */,
-			);
-			name = UserControls;
-			sourceTree = "<group>";
-		};
-		F1F69B971C61BC6E00F4C4A6 /* LunarCalendar */ = {
-			isa = PBXGroup;
-			children = (
-				F1F69B981C61BC7E00F4C4A6 /* LunarCalendarView.swift */,
-				F1F69B991C61BC7E00F4C4A6 /* LunarCalendarView.xib */,
-				F1F69B9A1C61BC7E00F4C4A6 /* LunarSolarConverter.swift */,
-			);
-			name = LunarCalendar;
-			sourceTree = "<group>";
-		};
-		F1F69BA01C61BD5700F4C4A6 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				F1F69BA91C61BDDE00F4C4A6 /* UserDefaultManager.swift */,
-				F1F69BA21C61BDAD00F4C4A6 /* SwiftyJSON.swift */,
-				F1F69BA31C61BDAD00F4C4A6 /* SwiftyRegex.swift */,
-				F1F69BA41C61BDAD00F4C4A6 /* XCGLogger.swift */,
-			);
-			name = Utilities;
-			sourceTree = "<group>";
-		};
-		F1F69BAB1C61BE1200F4C4A6 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				F1F69BAD1C61BE6600F4C4A6 /* MainModel.swift */,
-				F1171D221C72DA510053A56F /* QueryOrderParam.swift */,
-				F1F69BAC1C61BE6600F4C4A6 /* LeftTicketParam.swift */,
-				F1171D261C7300ED0053A56F /* OrderDTO.swift */,
-				F1F69BB61C61BE7D00F4C4A6 /* PassengerDTO.swift */,
-				F1F69BAE1C61BE6600F4C4A6 /* QueryLeftNewDTO.swift */,
-				F1F520A31C87E43C002C13D7 /* OrderQueueResult.swift */,
-				F1F520A71C87E70C002C13D7 /* QueryOrderWaitTimeResult.swift */,
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -447,24 +448,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F11EB47D1B6A36A9000063E4 /* MainWindowController.xib in Resources */,
-				F159FABA1C6741370024BEAB /* DisclosureViewController.xib in Resources */,
-				F159FAC01C6741370024BEAB /* PassengerViewController.xib in Resources */,
-				F1AA8AA41B9D7A200062C43D /* Images.xcassets in Resources */,
-				F1F69B9C1C61BC7E00F4C4A6 /* LunarCalendarView.xib in Resources */,
-				F19D3D111C621598005369CF /* LoginWindowController.xib in Resources */,
-				F159FABE1C6741370024BEAB /* PassengerSelectViewController.xib in Resources */,
-				F16A04D11C72C22400662191 /* OrderViewController.xib in Resources */,
-				F11E3CC31C144AA60099D457 /* LoginPopoverViewController.xib in Resources */,
-				F1F69B8A1C61BB5500F4C4A6 /* Group.png in Resources */,
-				F159FAC21C6741370024BEAB /* TicketTableViewController.xib in Resources */,
-				F19D3D0A1C62120D005369CF /* srca.cer in Resources */,
-				F11EB4651B6A368E000063E4 /* MainMenu.xib in Resources */,
-				F10F40431C682AD900709095 /* Add.png in Resources */,
-				F19D3D131C621598005369CF /* PreOrderWindowController.xib in Resources */,
-				F159FABC1C6741370024BEAB /* NormalSearchViewController.xib in Resources */,
-				F1F69B891C61BB5500F4C4A6 /* CalendarTemplate.png in Resources */,
-				F1F69B8B1C61BB5500F4C4A6 /* SettingsTemplate.png in Resources */,
+				F11154E81C8D93B300FA6059 /* SettingsTemplate.png in Resources */,
+				F11154AA1C8D92A700FA6059 /* LoginWindowController.xib in Resources */,
+				F11154C21C8D92D000FA6059 /* PassengerSelectViewController.xib in Resources */,
+				F11154CE1C8D931500FA6059 /* LoginPopoverViewController.xib in Resources */,
+				F11154B11C8D92C100FA6059 /* OrderViewController.xib in Resources */,
+				F11154D31C8D936300FA6059 /* MainMenu.xib in Resources */,
+				F11154651C8D91F800FA6059 /* srca.cer in Resources */,
+				F11154C61C8D92D000FA6059 /* TicketTableViewController.xib in Resources */,
+				F11154941C8D925200FA6059 /* LunarCalendarView.xib in Resources */,
+				F11154D01C8D931500FA6059 /* MainWindowController.xib in Resources */,
+				F11154D61C8D937E00FA6059 /* Images.xcassets in Resources */,
+				F11154C01C8D92D000FA6059 /* NormalSearchViewController.xib in Resources */,
+				F11154E51C8D93B300FA6059 /* Add.png in Resources */,
+				F11154C41C8D92D000FA6059 /* PassengerViewController.xib in Resources */,
+				F11154E71C8D93B300FA6059 /* Group.png in Resources */,
+				F11154BE1C8D92D000FA6059 /* DisclosureViewController.xib in Resources */,
+				F11154E61C8D93B300FA6059 /* CalendarTemplate.png in Resources */,
+				F11154AC1C8D92A700FA6059 /* PreOrderWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,59 +524,59 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1F69B9F1C61BCA700F4C4A6 /* GlassView.swift in Sources */,
-				F19D3D121C621598005369CF /* PreOrderWindowController.swift in Sources */,
-				F1171D271C7300ED0053A56F /* OrderDTO.swift in Sources */,
-				F1F69BA81C61BDAD00F4C4A6 /* XCGLogger.swift in Sources */,
-				F1F69BA61C61BDAD00F4C4A6 /* SwiftyJSON.swift in Sources */,
-				F13FCECD1C77FA41001162FA /* Service+QueryOrder.swift in Sources */,
-				F1F69BB21C61BE6600F4C4A6 /* MainModel.swift in Sources */,
-				F1F69BBE1C61BECD00F4C4A6 /* Service+QueryTicket.swift in Sources */,
-				F1F69BBD1C61BECD00F4C4A6 /* Service+Login.swift in Sources */,
-				F1F69B931C61BBF800F4C4A6 /* ItemCellView.swift in Sources */,
-				F1F520A81C87E70C002C13D7 /* QueryOrderWaitTimeResult.swift in Sources */,
-				F11EB47C1B6A36A9000063E4 /* MainWindowController.swift in Sources */,
-				F1F69BAA1C61BDDE00F4C4A6 /* UserDefaultManager.swift in Sources */,
-				F1171D231C72DA510053A56F /* QueryOrderParam.swift in Sources */,
+				F11154CF1C8D931500FA6059 /* MainWindowController.swift in Sources */,
+				F11154C11C8D92D000FA6059 /* PassengerSelectViewController.swift in Sources */,
+				F11154801C8D923C00FA6059 /* SwiftyRegex.swift in Sources */,
+				F11154781C8D921400FA6059 /* QueryOrderParam.swift in Sources */,
+				F11154C81C8D92FC00FA6059 /* AppDelegate.swift in Sources */,
+				F111548E1C8D925200FA6059 /* AutoCompleteTextField.swift in Sources */,
+				F11154731C8D921400FA6059 /* MainModel.swift in Sources */,
+				F11154791C8D921400FA6059 /* QueryOrderWaitTimeResult.swift in Sources */,
+				F11154771C8D921400FA6059 /* QueryLeftNewDTO.swift in Sources */,
+				F111549F1C8D929200FA6059 /* Service+Login.swift in Sources */,
+				F111548F1C8D925200FA6059 /* FlashLabel.swift in Sources */,
+				F11154981C8D927C00FA6059 /* StationData.swift in Sources */,
+				F111547F1C8D923C00FA6059 /* SwiftyJSON.swift in Sources */,
+				F11154741C8D921400FA6059 /* OrderDTO.swift in Sources */,
+				F11154931C8D925200FA6059 /* LunarCalendarView.swift in Sources */,
 				F1E7EA2F1C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m in Sources */,
 				F1E7EA2D1C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c in Sources */,
-				F11EB4601B6A368E000063E4 /* AppDelegate.swift in Sources */,
-				F1F69B9D1C61BC7E00F4C4A6 /* LunarSolarConverter.swift in Sources */,
-				F1F69B961C61BC1E00F4C4A6 /* RandCodeImageView.swift in Sources */,
-				F1F69BBF1C61BECD00F4C4A6 /* Service+Order.swift in Sources */,
-				F159FABB1C6741370024BEAB /* NormalSearchViewController.swift in Sources */,
-				F159FAC11C6741370024BEAB /* TicketTableViewController.swift in Sources */,
-				F11E3CC21C144AA60099D457 /* LoginPopoverViewController.swift in Sources */,
+				F11154911C8D925200FA6059 /* ItemCellView.swift in Sources */,
+				F11154C51C8D92D000FA6059 /* TicketTableViewController.swift in Sources */,
+				F11154AB1C8D92A700FA6059 /* PreOrderWindowController.swift in Sources */,
+				F11154901C8D925200FA6059 /* GlassView.swift in Sources */,
+				F11154961C8D925200FA6059 /* RandCodeImageView.swift in Sources */,
+				F11154681C8D920600FA6059 /* User.swift in Sources */,
 				F1E7EA301C5A2E7B007715C1 /* INAppStoreWindow.m in Sources */,
+				F11154CD1C8D931500FA6059 /* LoginPopoverViewController.swift in Sources */,
 				F1E7EA311C5A2E7B007715C1 /* INWindowButton.m in Sources */,
-				F1F69B911C61BBF800F4C4A6 /* AutoCompleteTextField.swift in Sources */,
-				F1F69B921C61BBF800F4C4A6 /* FlashLabel.swift in Sources */,
-				F1F520A41C87E43C002C13D7 /* OrderQueueResult.swift in Sources */,
-				F1F69BB31C61BE6600F4C4A6 /* QueryLeftNewDTO.swift in Sources */,
-				F1E37C541C7734A000C80B7C /* User.swift in Sources */,
+				F11154BF1C8D92D000FA6059 /* NormalSearchViewController.swift in Sources */,
+				F11154811C8D923C00FA6059 /* UserDefaultManager.swift in Sources */,
+				F11154A01C8D929200FA6059 /* Service+Order.swift in Sources */,
+				F11154C31C8D92D000FA6059 /* PassengerViewController.swift in Sources */,
 				F1E7EA2E1C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m in Sources */,
-				F159FABF1C6741370024BEAB /* PassengerViewController.swift in Sources */,
-				F159FAB91C6741370024BEAB /* DisclosureViewController.swift in Sources */,
-				F159FABD1C6741370024BEAB /* PassengerSelectViewController.swift in Sources */,
-				F16A04D01C72C22400662191 /* OrderViewController.swift in Sources */,
-				F1F69BB11C61BE6600F4C4A6 /* LeftTicketParam.swift in Sources */,
-				F13FFBCE1B70CEF600A329E6 /* StationData.swift in Sources */,
-				F1F69BB71C61BE7D00F4C4A6 /* PassengerDTO.swift in Sources */,
-				F1F69BA71C61BDAD00F4C4A6 /* SwiftyRegex.swift in Sources */,
-				F19D3D101C621598005369CF /* LoginWindowController.swift in Sources */,
-				F1F69B9B1C61BC7E00F4C4A6 /* LunarCalendarView.swift in Sources */,
-				F1F69BBC1C61BECD00F4C4A6 /* Service.swift in Sources */,
-				F1F69B941C61BBF800F4C4A6 /* LoginButton.swift in Sources */,
+				F11154761C8D921400FA6059 /* PassengerDTO.swift in Sources */,
+				F11154A31C8D929200FA6059 /* Service.swift in Sources */,
+				F11154951C8D925200FA6059 /* LunarSolarConverter.swift in Sources */,
+				F11154721C8D921400FA6059 /* LeftTicketParam.swift in Sources */,
+				F11154A11C8D929200FA6059 /* Service+QueryOrder.swift in Sources */,
+				F11154BD1C8D92D000FA6059 /* DisclosureViewController.swift in Sources */,
+				F11154A21C8D929200FA6059 /* Service+QueryTicket.swift in Sources */,
+				F11154A91C8D92A700FA6059 /* LoginWindowController.swift in Sources */,
+				F11154751C8D921400FA6059 /* OrderQueueResult.swift in Sources */,
+				F11154B01C8D92C100FA6059 /* OrderViewController.swift in Sources */,
+				F11154821C8D923C00FA6059 /* XCGLogger.swift in Sources */,
+				F11154921C8D925200FA6059 /* LoginButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		F11EB4631B6A368E000063E4 /* MainMenu.xib */ = {
+		F11154D11C8D936300FA6059 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F11EB4641B6A368E000063E4 /* Base */,
+				F11154D21C8D936300FA6059 /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -676,13 +677,14 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
-				INFOPLIST_FILE = Train12306/Info.plist;
+				INFOPLIST_FILE = 12306ForMac/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = fancymax.12306ForMac;
 				PRODUCT_NAME = 12306ForMac;
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Train12306-Bridging-Header.h";
-				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Train12306-Swift.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "12306ForMac-Bridging-Header.h";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "12306ForMac-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -697,13 +699,14 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
-				INFOPLIST_FILE = Train12306/Info.plist;
+				INFOPLIST_FILE = 12306ForMac/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = fancymax.12306ForMac;
 				PRODUCT_NAME = 12306ForMac;
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Train12306-Bridging-Header.h";
-				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Train12306-Swift.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "12306ForMac-Bridging-Header.h";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "12306ForMac-Swift.h";
 			};
 			name = Release;
 		};
