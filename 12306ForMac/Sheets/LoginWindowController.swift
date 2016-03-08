@@ -13,7 +13,7 @@ class LoginWindowController: NSWindowController{
 
     @IBOutlet weak var passWord: NSSecureTextField!
     @IBOutlet weak var userName: AutoCompleteTextField!
-    @IBOutlet weak var loginImage: RandCodeImageView!
+    @IBOutlet weak var loginImage: RandCodeImageView2!
     
     @IBOutlet weak var loadingTipBar: NSProgressIndicator!
     @IBOutlet weak var loadingTip: NSTextField!

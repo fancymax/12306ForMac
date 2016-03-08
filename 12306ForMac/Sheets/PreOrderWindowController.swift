@@ -13,7 +13,7 @@ class PreOrderWindowController: NSWindowController,NSTableViewDataSource,NSTable
     let service = Service()
     @IBOutlet weak var orderTicketLabel: NSTextField!
     @IBOutlet weak var passengerTable: NSTableView!
-    @IBOutlet weak var passengerImage: RandCodeImageView!
+    @IBOutlet weak var passengerImage: RandCodeImageView2!
     
     @IBOutlet weak var orderTipLabel: NSTextField!
     

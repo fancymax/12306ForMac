@@ -194,7 +194,7 @@
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WkC-1X-oZ2">
                         <rect key="frame" x="388" y="5" width="363" height="270"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DNm-pn-QOi" customClass="RandCodeImageView" customModule="_2306ForMac" customModuleProvider="target">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DNm-pn-QOi" customClass="RandCodeImageView2" customModule="_2306ForMac" customModuleProvider="target">
                                 <rect key="frame" x="4" y="39" width="351" height="228"/>
                                 <animations/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" imageFrameStyle="photo" id="cqS-ac-3uM"/>

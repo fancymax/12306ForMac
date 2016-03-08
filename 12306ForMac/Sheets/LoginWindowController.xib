@@ -69,7 +69,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </textField>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HYl-HA-qIH" customClass="RandCodeImageView" customModule="_2306ForMac" customModuleProvider="target">
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HYl-HA-qIH" customClass="RandCodeImageView2" customModule="_2306ForMac" customModuleProvider="target">
                         <rect key="frame" x="85" y="66" width="351" height="228"/>
                         <animations/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" imageFrameStyle="photo" id="b5Z-NX-XEL"/>
