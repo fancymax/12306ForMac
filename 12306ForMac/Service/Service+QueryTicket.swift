@@ -13,7 +13,7 @@ import PromiseKit
 extension Service {
     
 // MARK: - Request Flow
-    func queryTicketFlowWith(params:LeftTicketParam,success:(tickets:[QueryLeftNewDTO])->(),failure:()->())
+    func queryTicketFlowWith(params:LeftTicketParam,success:(tickets:[QueryLeftNewDTO])->(),failure:(error:NSError)->())
     {
         var queryLog = false
         var queryUrl = ""
@@ -28,8 +28,8 @@ extension Service {
             return self.queryTicketWith(params,queryUrl: queryUrl)
         }).then({tickets in
             success(tickets: tickets)
-        }).error({_ in
-            failure()
+        }).error({error  in
+            failure(error: error as NSError)
         })
     }
     
@@ -90,10 +90,11 @@ extension Service {
             if isQueryLog {
                 let url = "https://kyfw.12306.cn/otn/leftTicket/log?" + params.ToGetParams()
                 Service.Manager.request(.GET, url, headers:headers).responseString(completionHandler:{response in
-                    print(response.request?.allHTTPHeaderFields)
-                    fulfill()
                 })
             }
+            
+            fulfill()
+            
         }
     }
     
@@ -108,14 +109,21 @@ extension Service {
                     case .Failure(let error):
                         reject(error)
                     case .Success(let data):
-                        let jsonData = JSON(data)["data"]
-                        var tickets = [QueryLeftNewDTO]()
-                        for i in 0..<jsonData.count
-                        {
-                            let leftTicket = QueryLeftNewDTO(jsonData: jsonData[i])
-                            tickets.append(leftTicket)
+                        let json = JSON(data)["data"]
+                        if json.count > 0 {
+                            var tickets = [QueryLeftNewDTO]()
+                            for i in 0..<json.count
+                            {
+                                let leftTicket = QueryLeftNewDTO(json: json[i])
+                                tickets.append(leftTicket)
+                            }
+                            fulfill(tickets)
                         }
-                        fulfill(tickets)
+                        else{
+                            let failureReason = "未能查到任何车次,请检查查询设置"
+                            let error = ServiceError.errorWithCode(.QueryTicketFailed, failureReason: failureReason)
+                            reject(error)
+                        }
                     }
                 })}
     }

@@ -62,6 +62,8 @@
 		F11154E61C8D93B300FA6059 /* CalendarTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = F11154E21C8D93B300FA6059 /* CalendarTemplate.png */; };
 		F11154E71C8D93B300FA6059 /* Group.png in Resources */ = {isa = PBXBuildFile; fileRef = F11154E31C8D93B300FA6059 /* Group.png */; };
 		F11154E81C8D93B300FA6059 /* SettingsTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = F11154E41C8D93B300FA6059 /* SettingsTemplate.png */; };
+		F113B4F81C8FBA2E0001AE09 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113B4F71C8FBA2E0001AE09 /* ServiceError.swift */; };
+		F113B4FA1C8FC7930001AE09 /* ErrorTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113B4F91C8FC7930001AE09 /* ErrorTranslator.swift */; };
 		F1D390A41C8F177F000B3FD7 /* RandCodeImageView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D390A31C8F177F000B3FD7 /* RandCodeImageView2.swift */; };
 		F1E7EA2D1C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA221C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c */; };
 		F1E7EA2E1C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA251C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m */; };
@@ -130,6 +132,8 @@
 		F11154E31C8D93B300FA6059 /* Group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Group.png; path = 12306ForMac/images/Group.png; sourceTree = SOURCE_ROOT; };
 		F11154E41C8D93B300FA6059 /* SettingsTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SettingsTemplate.png; path = 12306ForMac/images/SettingsTemplate.png; sourceTree = SOURCE_ROOT; };
 		F11154E91C8D945C00FA6059 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = 12306ForMac/Info.plist; sourceTree = SOURCE_ROOT; };
+		F113B4F71C8FBA2E0001AE09 /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		F113B4F91C8FC7930001AE09 /* ErrorTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTranslator.swift; sourceTree = "<group>"; };
 		F11EB45A1B6A368E000063E4 /* 12306ForMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 12306ForMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1CC36461B6B244C0074A014 /* 12306ForMac-Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "12306ForMac-Swift.h"; sourceTree = "<group>"; };
 		F1D390A31C8F177F000B3FD7 /* RandCodeImageView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandCodeImageView2.swift; sourceTree = "<group>"; };
@@ -269,6 +273,8 @@
 				F111549C1C8D929200FA6059 /* Service+QueryOrder.swift */,
 				F111549D1C8D929200FA6059 /* Service+QueryTicket.swift */,
 				F111549E1C8D929200FA6059 /* Service.swift */,
+				F113B4F71C8FBA2E0001AE09 /* ServiceError.swift */,
+				F113B4F91C8FC7930001AE09 /* ErrorTranslator.swift */,
 			);
 			name = Service;
 			path = 12306ForMac/Service;
@@ -557,9 +563,11 @@
 				F11154721C8D921400FA6059 /* LeftTicketParam.swift in Sources */,
 				F11154A11C8D929200FA6059 /* Service+QueryOrder.swift in Sources */,
 				F11154BD1C8D92D000FA6059 /* DisclosureViewController.swift in Sources */,
+				F113B4FA1C8FC7930001AE09 /* ErrorTranslator.swift in Sources */,
 				F11154A21C8D929200FA6059 /* Service+QueryTicket.swift in Sources */,
 				F11154A91C8D92A700FA6059 /* LoginWindowController.swift in Sources */,
 				F11154751C8D921400FA6059 /* OrderQueueResult.swift in Sources */,
+				F113B4F81C8FBA2E0001AE09 /* ServiceError.swift in Sources */,
 				F11154B01C8D92C100FA6059 /* OrderViewController.swift in Sources */,
 				F11154821C8D923C00FA6059 /* XCGLogger.swift in Sources */,
 				F11154921C8D925200FA6059 /* LoginButton.swift in Sources */,
@@ -669,6 +677,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -690,6 +699,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;

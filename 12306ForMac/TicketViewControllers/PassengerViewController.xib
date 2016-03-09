@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="PassengerViewController" customModule="Train12306" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="PassengerViewController" customModule="_2306ForMac" customModuleProvider="target">
             <connections>
                 <outlet property="passengerCheckBox" destination="YLs-Ia-aFu" id="qfm-g9-2iu"/>
                 <outlet property="passengerNameLabel" destination="IT0-rI-DVT" id="w2t-Xh-1Bi"/>

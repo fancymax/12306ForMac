@@ -83,14 +83,22 @@ class PreOrderWindowController: NSWindowController,NSTableViewDataSource,NSTable
     
     func freshImage(){
         self.startLoadingTip("正在加载...")
-        let handler = {(image:NSImage) -> () in
+        let successHandler = {(image:NSImage) -> () in
             self.passengerImage.clearRandCodes()
             self.passengerImage.image = image
             self.stopLoadingTip()
         }
         
+        let failHandler = {(error:ErrorType) -> () in
+            self.passengerImage.clearRandCodes()
+            self.passengerImage.image = nil
+            self.stopLoadingTip()
+        }
+        
         service.getPassCodeNewForPassenger().then({image in
-            handler(image)
+            successHandler(image)
+        }).error({error in
+            failHandler(error)
         })
     }
     

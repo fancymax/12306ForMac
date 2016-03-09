@@ -44,13 +44,13 @@ class LoginWindowController: NSWindowController{
         button.enabled = false
         self.startLoadingTip("正在登录...")
         
-        let failureHandler = {
+        let failureHandler = {(error:NSError) -> () in
             //关闭正在登录提示
             button.enabled = true
             self.stopLoadingTip()
             //显示登录失败 持续一秒
-            self.tips.show("登录失败", forDuration: 0.1, withFlash: false)
-            NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector:"handlerAfterFailure", userInfo: nil, repeats: false)
+            self.tips.show(translate(error), forDuration: 0.1, withFlash: false)
+            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:"handlerAfterFailure", userInfo: nil, repeats: false)
         }
         
         let successHandler = {
@@ -126,9 +126,9 @@ class LoginWindowController: NSWindowController{
             self.loginImage.image = image
             self.stopLoadingTip()
         }
-        let failureHandler = {
+        let failureHandler = {(error:NSError) -> () in
             self.stopLoadingTip()
-            self.tips.show("获取验证码失败", forDuration: 0.1, withFlash: false)
+            self.tips.show(translate(error), forDuration: 0.1, withFlash: false)
             NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:"hideLogStateLabel", userInfo: nil, repeats: false)
         }
         service.preLoginFlow(success: successHandler,failure: failureHandler)

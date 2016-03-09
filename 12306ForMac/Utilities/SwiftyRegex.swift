@@ -14,11 +14,9 @@ class Regex {
     
     init(_ pattern: String) {
         self.pattern = pattern
-        var error: NSError?
         do {
             self.internalExpression = try NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
-        } catch let error1 as NSError {
-            error = error1
+        } catch _ as NSError {
             self.internalExpression = nil
         }
     }

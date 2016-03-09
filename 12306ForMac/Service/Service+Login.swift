@@ -15,27 +15,27 @@ extension Service {
     
     
 // MARK: - Request Flow
-    func preLoginFlow(success success:(loadImage:NSImage)->(),failure:()->()){
+    func preLoginFlow(success success:(loadImage:NSImage)->(),failure:(error:NSError)->()){
         loginInit().then({dynamicJs -> Promise<Void> in
             return self.requestDynamicJs(dynamicJs, referHeader: ["refer": "https://kyfw.12306.cn/otn/login/init"])
          }).then({_ -> Promise<NSImage> in
             return self.getPassCodeNewForLogin()
         }).then({ image in
             success(loadImage: image)
-        }).error({ _ in
-            failure()
+        }).error({ error in
+            failure(error: error as NSError)
         })
     }
     
-    func loginFlow(user user:String,passWord:String,randCodeStr:String,success:()->(),failure:()->()){
+    func loginFlow(user user:String,passWord:String,randCodeStr:String,success:()->(),failure:(error:NSError)->()){
         checkRandCodeForLogin(randCodeStr).then({_ -> Promise<String> in
             return self.loginUserWith(user, passWord: passWord, randCodeStr: randCodeStr)
         }).then({ _ -> Promise<String> in
             return self.initMy12306()
         }).then({_ in
             success()
-        }).error({ _ in
-            failure()
+        }).error({ error in
+            failure(error: error as NSError)
         })
     }
     
@@ -84,7 +84,9 @@ extension Service {
                             fulfill(image)
                         }
                         else{
-                            reject(NSError(domain: "getPassCodeNewForLogin", code: 0, userInfo: nil))
+                            let failureReason = "获取验证码失败"
+                            let error = ServiceError.errorWithCode(.GetRandCodeFailed, failureReason: failureReason)
+                            reject(error)
                         }
                 }})
         }
@@ -104,8 +106,9 @@ extension Service {
                         fulfill(url)
                     }
                     else{
-                        logger.error("randCodeStr:\(randCodeStr) json:\(JSON(data))")
-                        reject(NSError(domain: "checkRandCodeForLogin:", code: 0, userInfo: nil))
+                        let failureReason = "验证码错误"
+                        let error = ServiceError.errorWithCode(.CheckRandCodeFailed, failureReason: failureReason)
+                        reject(error)
                     }
             }})
         }
@@ -126,8 +129,15 @@ extension Service {
                         fulfill(url)
                     }
                     else{
-                        logger.error("\(JSON(data))")
-                        reject(NSError(domain: "loginUserWith:", code: 0, userInfo: nil))
+                        var failureReason = ""
+                        if let errorStr = JSON(data)["messages"][0].string{
+                            failureReason = errorStr
+                        }
+                        else{
+                            failureReason = "登录失败"
+                        }
+                        let error = ServiceError.errorWithCode(.CheckRandCodeFailed, failureReason: failureReason)
+                        reject(error)
                     }
             }})
         }

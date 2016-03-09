@@ -73,9 +73,10 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
             self.stopLoadingTip()
         }
         
-        let failureHandler = {
+        let failureHandler = {(error:NSError)->() in
             self.stopLoadingTip()
-            //失败信息提示
+            
+            self.tips.show(translate(error), forDuration: 1, withFlash: false)
         }
         
         self.startLoadingTip("正在查询...")
@@ -84,8 +85,9 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         self.date = date
         
         var params = LeftTicketParam()
-        params.from_station = fromStationCode
-        params.to_station = toStationCode
+        params.from_stationCode = fromStationCode
+        params.to_stationCode = toStationCode
+        
         params.train_date = date
         params.purpose_codes = "ADULT"
         
@@ -120,7 +122,7 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         setSelectedPassenger()
         
         if MainModel.selectPassengers.count == 0 {
-            tips.show("请先选择乘客～", forDuration: 0.1, withFlash: false)
+            tips.show("请先选择乘客", forDuration: 0.1, withFlash: false)
             return
         }
         

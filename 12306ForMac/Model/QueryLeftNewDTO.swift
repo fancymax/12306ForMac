@@ -141,9 +141,9 @@ class QueryLeftNewDTO:NSObject {
     //商务座
     var Swz_Nu:String?
     
-    init(jsonData:JSON)
+    init(json:JSON)
     {
-        let ticket = jsonData["queryLeftNewDTO"]
+        let ticket = json["queryLeftNewDTO"]
         train_no = ticket["train_no"].string
         TrainCode = ticket["station_train_code"].string
         
@@ -191,8 +191,8 @@ class QueryLeftNewDTO:NSObject {
         Wz_Num = ticket["wz_num"].string
         Qt_Num = ticket["qt_num"].string
         
-        SecretStr = jsonData["secretStr"].string
-        buttonTextInfo = jsonData["buttonTextInfo"].string
+        SecretStr = json["secretStr"].string
+        buttonTextInfo = json["buttonTextInfo"].string
         
         if SecretStr != nil{
             SecretStr = SecretStr!.stringByReplacingOccurrencesOfString("%3D", withString: "=").stringByReplacingOccurrencesOfString("%2F", withString: "/").stringByReplacingOccurrencesOfString("%2B", withString: "+")
