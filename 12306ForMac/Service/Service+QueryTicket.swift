@@ -120,8 +120,7 @@ extension Service {
                             fulfill(tickets)
                         }
                         else{
-                            let failureReason = "未能查到任何车次,请检查查询设置"
-                            let error = ServiceError.errorWithCode(.QueryTicketFailed, failureReason: failureReason)
+                            let error = ServiceError.errorWithCode(.QueryTicketFailed)
                             reject(error)
                         }
                     }

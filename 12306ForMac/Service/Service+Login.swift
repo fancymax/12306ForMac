@@ -76,7 +76,7 @@ extension Service {
             let url = "https://kyfw.12306.cn/otn/passcodeNew/getPassCodeNew?module=login&rand=sjrand&" + random.description
             let headers = ["refer": "https://kyfw.12306.cn/otn/login/init"]
             Service.Manager.request(.GET, url, headers:headers).responseData({response in
-                    switch (response.result){
+                switch (response.result){
                     case .Failure(let error):
                         reject(error)
                     case .Success(let data):
@@ -84,8 +84,7 @@ extension Service {
                             fulfill(image)
                         }
                         else{
-                            let failureReason = "获取验证码失败"
-                            let error = ServiceError.errorWithCode(.GetRandCodeFailed, failureReason: failureReason)
+                            let error = ServiceError.errorWithCode(.GetRandCodeFailed)
                             reject(error)
                         }
                 }})
@@ -106,8 +105,7 @@ extension Service {
                         fulfill(url)
                     }
                     else{
-                        let failureReason = "验证码错误"
-                        let error = ServiceError.errorWithCode(.CheckRandCodeFailed, failureReason: failureReason)
+                        let error = ServiceError.errorWithCode(.CheckRandCodeFailed)
                         reject(error)
                     }
             }})
@@ -129,14 +127,13 @@ extension Service {
                         fulfill(url)
                     }
                     else{
-                        var failureReason = ""
+                        let error:NSError
                         if let errorStr = JSON(data)["messages"][0].string{
-                            failureReason = errorStr
+                            error = ServiceError.errorWithCode(.CheckRandCodeFailed, failureReason: errorStr)
                         }
                         else{
-                            failureReason = "登录失败"
+                            error = ServiceError.errorWithCode(.CheckRandCodeFailed)
                         }
-                        let error = ServiceError.errorWithCode(.CheckRandCodeFailed, failureReason: failureReason)
                         reject(error)
                     }
             }})

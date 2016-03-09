@@ -37,6 +37,7 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         if !hasAddSubmitObserver{
             let notificationCenter = NSNotificationCenter.defaultCenter()
             notificationCenter.addObserver(self, selector: Selector("receiveDidSendSubmitMessageNotification:"), name: DidSendSubmitMessageNotification, object: nil)
+            hasAddSubmitObserver = true
         }
     }
     
@@ -75,6 +76,8 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         
         let failureHandler = {(error:NSError)->() in
             self.stopLoadingTip()
+            self.ticketQueryResult = [QueryLeftNewDTO]()
+            self.leftTicketTable.reloadData()
             
             self.tips.show(translate(error), forDuration: 1, withFlash: false)
         }
@@ -141,13 +144,11 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         
         let failHandler = {(error:NSError)->() in
             self.stopLoadingTip()
-            if error.domain == "checkUser"{
+            
+            if error.code == ServiceError.Code.CheckUserFailed.rawValue {
                 notificationCenter.postNotificationName(DidSendLoginMessageNotification, object: nil)
             }else{
-                //print submit error
-                if error.code != 0 {
-                    self.tips.show(error.domain, forDuration: 0.1, withFlash: false)
-                }
+                self.tips.show(translate(error), forDuration: 0.1, withFlash: false)
             }
         }
         

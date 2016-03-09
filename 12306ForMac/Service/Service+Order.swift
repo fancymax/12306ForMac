@@ -116,8 +116,8 @@ extension Service{
                     if JSON(data)["data"]["flag"].bool == true{
                         fulfill()
                     }else {
-                        logger.error("\(JSON(data))")
-                        reject(NSError(domain: "checkUser", code: 0, userInfo: nil))
+                        let error = ServiceError.errorWithCode(.CheckUserFailed)
+                        reject(error)
                     }
                 }})
         }
@@ -148,12 +148,14 @@ extension Service{
                     else {
                         logger.error("\(JSON(data))")
                         print(params)
+                        let error:NSError
                         if let message = JSON(data)["messages"][0].string{
-                            reject(NSError(domain: message, code: 1, userInfo: nil))
+                            error = ServiceError.errorWithCode(.SubmitOrderFailed, failureReason: message)
                         }
                         else{
-                            reject(NSError(domain: "submitOrderRequest", code: 0, userInfo: nil))
+                            error = ServiceError.errorWithCode(.SubmitOrderFailed)
                         }
+                        reject(error)
                     }
                 }})
         }
@@ -246,7 +248,7 @@ extension Service{
             let url = "https://kyfw.12306.cn/otn/passcodeNew/getPassCodeNew?module=passenger&rand=randp&" + random.description
             let headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
             Service.Manager.request(.GET, url, headers:headers).responseData({response in
-                    switch (response.result){
+                switch (response.result){
                     case .Failure(let error):
                         reject(error)
                     case .Success(let data):
@@ -254,7 +256,8 @@ extension Service{
                             fulfill(image)
                         }
                         else{
-                            reject(NSError(domain: "getPassCodeNewForPassenger", code: 0, userInfo: nil))
+                            let error = ServiceError.errorWithCode(.GetRandCodeFailed)
+                            reject(error)
                         }
                 }})
         }
@@ -279,7 +282,8 @@ extension Service{
                     }
                     else {
                         logger.error("\(JSON(data))")
-                        reject(NSError(domain: "checkRandCodeForOrder", code: 0, userInfo: nil))
+                        let error = ServiceError.errorWithCode(.CheckRandCodeFailed)
+                        reject(error)
                     }
                 }})
         }
@@ -308,7 +312,8 @@ extension Service{
                         fulfill(url)
                     }else{
                         logger.error("\(JSON(data))")
-                        reject(NSError(domain: "checkOrderInfo", code: 0, userInfo: nil))
+                        let error = ServiceError.errorWithCode(.CheckOrderInfoFailed)
+                        reject(error)
                     }
                 }})
         }
@@ -364,11 +369,12 @@ extension Service{
                     reject(error)
                 case .Success(let data):
                     if JSON(data)["data"]["submitStatus"].bool == true{
-                        logger.debug("confirmSingleForQueueForPC submitStatus: true")
+                        logger.debug("confirmSingleForQueue true")
                         fulfill(url)
                     }else {
                         logger.error("\(JSON(data))")
-                        reject(NSError(domain: "confirmSingleForQueue", code: 0, userInfo: nil))
+                        let error = ServiceError.errorWithCode(.ConfirmSingleForQueueFailed)
+                        reject(error)
                     }
                 }})
         }
