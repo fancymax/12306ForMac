@@ -28,9 +28,9 @@ extension Service {
     }
     
     func loginFlow(user user:String,passWord:String,randCodeStr:String,success:()->(),failure:(error:NSError)->()){
-        checkRandCodeForLogin(randCodeStr).then({_ -> Promise<String> in
+        checkRandCodeForLogin(randCodeStr).then({() -> Promise<Void> in
             return self.loginUserWith(user, passWord: passWord, randCodeStr: randCodeStr)
-        }).then({ _ -> Promise<String> in
+        }).then({ () -> Promise<Void> in
             return self.initMy12306()
         }).then({_ in
             success()
@@ -91,7 +91,7 @@ extension Service {
         }
     }
     
-    func checkRandCodeForLogin(randCodeStr:String)->Promise<String>{
+    func checkRandCodeForLogin(randCodeStr:String)->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/passcodeNew/checkRandCodeAnsyn"
             let params = ["randCode":randCodeStr,"rand":"sjrand"]
@@ -102,7 +102,7 @@ extension Service {
                     reject(error)
                 case .Success(let data):
                     if let msg = JSON(data)["data"]["msg"].string where msg == "TRUE"{
-                        fulfill(url)
+                        fulfill()
                     }
                     else{
                         let error = ServiceError.errorWithCode(.CheckRandCodeFailed)
@@ -112,7 +112,7 @@ extension Service {
         }
     }
     
-    func loginUserWith(user:String, passWord:String, randCodeStr:String)->Promise<String>{
+    func loginUserWith(user:String, passWord:String, randCodeStr:String)->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/login/loginAysnSuggest"
             let params = ["loginUserDTO.user_name":user,"userDTO.password":passWord,"randCode":randCodeStr]
@@ -124,7 +124,8 @@ extension Service {
                 case .Success(let data):
                     if let loginCheck = JSON(data)["data"]["loginCheck"].string where loginCheck == "Y"{
                         MainModel.isGetUserInfo = true
-                        fulfill(url)
+                        MainModel.userName = user
+                        fulfill()
                     }
                     else{
                         let error:NSError
@@ -140,7 +141,7 @@ extension Service {
         }
     }
     
-    func initMy12306()->Promise<String>{
+    func initMy12306()->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/index/initMy12306"
             let headers = ["refer": "https://kyfw.12306.cn/otn/login/init"]
@@ -158,7 +159,7 @@ extension Service {
                     else{
                         logger.error("can't get user_name")
                     }
-                    fulfill(url)
+                    fulfill()
             }})
         }
     }

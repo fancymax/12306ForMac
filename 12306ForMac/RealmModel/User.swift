@@ -8,9 +8,15 @@
 
 import RealmSwift
 
+class Passenger:Object{
+    dynamic var id = ""
+    dynamic var name = ""
+}
+
 class User:Object{
     dynamic var userName = ""
     dynamic var userPassword = ""
+    let selectedPassengers = List<Passenger>()
     
     override static func primaryKey() -> String? {
         return "userName"

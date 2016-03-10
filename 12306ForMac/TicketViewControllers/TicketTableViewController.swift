@@ -104,6 +104,7 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
             let p = MainModel.passengers[i]
             if (p.isChecked && !MainModel.selectPassengers.contains(p)){
                 MainModel.selectPassengers.append(p)
+                
             }
         }
     }
@@ -158,6 +159,14 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     deinit{
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.removeObserver(self)
+    }
+    
+    func saveSelectedPassenger(){
+        //获取当前用户
+        
+        //更新选择的乘客
+        
+        //保存
     }
 }
 

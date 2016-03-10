@@ -37,10 +37,10 @@ class DisclosureViewController: NSViewController,NSPopoverDelegate{
                     checkPassenger(MainModel.passengers[i])
                 }
                 else{
-                    let test = PassengerViewController()
-                    test.passenger = MainModel.passengers[i]
-                    passengerViewControllerList.append(test)
-                    self.passengersView.addView(test.view, inGravity:.Top)
+                    let p = PassengerViewController()
+                    p.passenger = MainModel.passengers[i]
+                    passengerViewControllerList.append(p)
+                    self.passengersView.addView(p.view, inGravity:.Top)
                 }
             }
             else{
@@ -50,20 +50,15 @@ class DisclosureViewController: NSViewController,NSPopoverDelegate{
     }
     
     func passengerSelected(passenger:PassengerDTO) -> Bool{
-        for passengerViewController in passengerViewControllerList{
-            if(passengerViewController.passenger == passenger){
-                return true
-                
-            }
+        for controller in passengerViewControllerList where controller.passenger == passenger{
+            return true
         }
         return false
     }
     
     func checkPassenger(passenger:PassengerDTO){
-        for passengerViewController in passengerViewControllerList{
-            if(passengerViewController.passenger == passenger){
-                passengerViewController.SelectPassenger()
-            }
+        for controller in passengerViewControllerList where controller.passenger == passenger{
+            controller.SelectPassenger()
         }
     }
     

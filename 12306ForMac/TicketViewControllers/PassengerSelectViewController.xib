@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="PassengerSelectViewController" customModule="Train12306" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="PassengerSelectViewController" customModule="_2306ForMac" customModuleProvider="target">
             <connections>
                 <outlet property="passengerTable" destination="Dcl-i9-g9A" id="IVH-O5-7e7"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -47,33 +47,20 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="Etd-7I-ild">
-                                                        <rect key="frame" x="8" y="4" width="22" height="18"/>
+                                                        <rect key="frame" x="8" y="4" width="48" height="18"/>
                                                         <animations/>
-                                                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6Qu-Il-ulu">
+                                                        <buttonCell key="cell" type="check" title="小明" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6Qu-Il-ulu">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
                                                             <binding destination="gEM-wv-dO3" name="value" keyPath="objectValue.isChecked" id="Hj5-uZ-4Jp"/>
+                                                            <binding destination="gEM-wv-dO3" name="title" keyPath="objectValue.passenger_name" id="CWr-pl-aAh"/>
                                                         </connections>
                                                     </button>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vad-dz-hiT">
-                                                        <rect key="frame" x="28" y="4" width="30" height="17"/>
-                                                        <animations/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="小明" id="lwS-x4-1Dv">
-                                                            <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                        <connections>
-                                                            <binding destination="gEM-wv-dO3" name="value" keyPath="objectValue.passenger_name" id="oQw-zy-igl"/>
-                                                        </connections>
-                                                    </textField>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="Etd-7I-ild" firstAttribute="centerY" secondItem="gEM-wv-dO3" secondAttribute="centerY" id="0Ow-S3-p3G"/>
-                                                    <constraint firstItem="Vad-dz-hiT" firstAttribute="centerY" secondItem="gEM-wv-dO3" secondAttribute="centerY" id="2Cc-WX-pBa"/>
-                                                    <constraint firstItem="Vad-dz-hiT" firstAttribute="leading" secondItem="Etd-7I-ild" secondAttribute="trailing" constant="2" id="AyI-mj-FL6"/>
                                                     <constraint firstItem="Etd-7I-ild" firstAttribute="leading" secondItem="gEM-wv-dO3" secondAttribute="leading" constant="10" id="bPY-0U-mNE"/>
                                                 </constraints>
                                                 <animations/>
@@ -91,7 +78,7 @@
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
                     <animations/>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="tmD-sn-hs7">
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="tmD-sn-hs7">
                         <rect key="frame" x="0.0" y="-16" width="0.0" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>

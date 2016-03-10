@@ -34,14 +34,17 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
         }
     }
     
+    func checkPassenger(sender:NSButton){
+        print("checkPassenger")
+        
+    }
+    
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let cellView = tableView.makeViewWithIdentifier(tableColumn!.identifier, owner: self) as! NSTableCellView
-        let name = cellView.viewWithTag(0) as! NSTextField
-        name.drawsBackground = true
-        name.backgroundColor = NSColor.clearColor()
-        let attrs = [NSForegroundColorAttributeName:NSColor.blackColor(),NSFontAttributeName:NSFont.systemFontSize()]
-        let mutableAttriStr = NSMutableAttributedString(string: MainModel.passengers[row].passenger_name!, attributes: attrs)
-        name.attributedStringValue = mutableAttriStr
+        
+        let check = cellView.viewWithTag(1) as! NSButton
+        check.target = self
+        check.action = Selector("checkPassenger:")
         
         return cellView
     }
