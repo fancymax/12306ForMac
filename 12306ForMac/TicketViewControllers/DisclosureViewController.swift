@@ -8,11 +8,48 @@
 
 import Cocoa
 
-class DisclosureViewController: NSViewController,NSPopoverDelegate{
+class DisclosureViewController: NSViewController{
     @IBOutlet weak var passengersView: NSStackView!
     
     var passengerViewControllerList = [PassengerViewController]()
     let passengerSelectViewController = PassengerSelectViewController()
+    
+    lazy var popover: NSPopover = {
+        let popover = NSPopover()
+        popover.behavior = .Semitransient
+        popover.contentViewController = self.passengerSelectViewController
+        return popover
+        }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        passengerViewControllerList = [PassengerViewController]()
+        
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: Selector("receiveDidSendCheckPassengerMessageNotification:"), name: DidSendCheckPassengerMessageNotification, object: nil)
+    }
+    
+    func receiveDidSendCheckPassengerMessageNotification(notification: NSNotification) {
+        let name = notification.object as! String
+        
+        for i in 0..<MainModel.passengers.count {
+            if MainModel.passengers[i].passenger_name == name{
+                if passengerSelected(MainModel.passengers[i]){
+                    checkPassenger(MainModel.passengers[i])
+                }
+                else{
+                    let p = PassengerViewController()
+                    p.passenger = MainModel.passengers[i]
+                    passengerViewControllerList.append(p)
+                    self.passengersView.addView(p.view, inGravity:.Top)
+                }
+                
+                break
+            }
+            
+        }
+        
+    }
 
     @IBAction func selectPassenger(sender: NSButton) {
         let positioningView = sender
@@ -30,25 +67,6 @@ class DisclosureViewController: NSViewController,NSPopoverDelegate{
         MainModel.passengers.append(PassengerDTO())
     }
     
-    func popoverDidClose(notification: NSNotification) {
-        for i in 0..<MainModel.passengers.count{
-            if(MainModel.passengers[i].isChecked){
-                if passengerSelected(MainModel.passengers[i]){
-                    checkPassenger(MainModel.passengers[i])
-                }
-                else{
-                    let p = PassengerViewController()
-                    p.passenger = MainModel.passengers[i]
-                    passengerViewControllerList.append(p)
-                    self.passengersView.addView(p.view, inGravity:.Top)
-                }
-            }
-            else{
-                checkPassenger(MainModel.passengers[i])
-            }
-        }
-    }
-    
     func passengerSelected(passenger:PassengerDTO) -> Bool{
         for controller in passengerViewControllerList where controller.passenger == passenger{
             return true
@@ -62,16 +80,8 @@ class DisclosureViewController: NSViewController,NSPopoverDelegate{
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        passengerViewControllerList = [PassengerViewController]()
+    deinit{
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.removeObserver(self)
     }
-    
-    lazy var popover: NSPopover = {
-        let popover = NSPopover()
-        popover.behavior = .Semitransient
-        popover.contentViewController = self.passengerSelectViewController
-        popover.delegate = self
-        return popover
-        }()
 }

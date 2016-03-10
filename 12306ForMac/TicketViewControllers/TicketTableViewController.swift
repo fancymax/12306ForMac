@@ -23,7 +23,6 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     
     var service = Service()
     var ticketQueryResult = [QueryLeftNewDTO]()
-    var hasAddSubmitObserver:Bool = false
     var toStationCode:String?
     var fromStationCode:String?
     var date:String?
@@ -34,11 +33,8 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         super.viewDidLoad()
         loadingView.hidden = true
         
-        if !hasAddSubmitObserver{
-            let notificationCenter = NSNotificationCenter.defaultCenter()
-            notificationCenter.addObserver(self, selector: Selector("receiveDidSendSubmitMessageNotification:"), name: DidSendSubmitMessageNotification, object: nil)
-            hasAddSubmitObserver = true
-        }
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: Selector("receiveDidSendSubmitMessageNotification:"), name: DidSendSubmitMessageNotification, object: nil)
     }
     
     func receiveDidSendSubmitMessageNotification(note: NSNotification){

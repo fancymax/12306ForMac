@@ -36,6 +36,8 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
     
     func checkPassenger(sender:NSButton){
         print("checkPassenger")
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.postNotificationName(DidSendCheckPassengerMessageNotification, object: sender.title)
         
     }
     
