@@ -250,7 +250,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView misplaced="YES" id="WIs-HT-Kwb" customClass="ItemCellView" customModule="_2306ForMac" customModuleProvider="target">
+                                            <tableCellView id="WIs-HT-Kwb" customClass="ItemCellView" customModule="_2306ForMac" customModuleProvider="target">
                                                 <rect key="frame" x="423" y="1" width="1197" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -448,8 +448,8 @@
                         <animations/>
                     </tableHeaderView>
                 </scrollView>
-                <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nXV-5S-R9c" userLabel="Loading View" customClass="GlassView" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="437" y="270" width="120" height="30"/>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="nXV-5S-R9c" userLabel="Loading View" customClass="GlassView" customModule="_2306ForMac" customModuleProvider="target">
+                    <rect key="frame" x="437" y="250" width="120" height="30"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sQi-tV-O6t" userLabel="正在查询...">
                             <rect key="frame" x="29" y="7" width="85" height="17"/>
@@ -476,8 +476,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </customView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YZ2-44-iFH" customClass="FlashLabel" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="442" y="275" width="109" height="19"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YZ2-44-iFH" customClass="FlashLabel" customModule="_2306ForMac" customModuleProvider="target">
+                    <rect key="frame" x="443" y="255" width="109" height="19"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="请先选择乘客～" drawsBackground="YES" id="dMy-SC-xex">
                         <font key="font" metaFont="system" size="15"/>
