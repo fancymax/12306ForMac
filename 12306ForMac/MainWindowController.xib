@@ -8,7 +8,6 @@
             <connections>
                 <outlet property="LoginMenu" destination="xmP-jf-NW1" id="ab5-GD-wDK"/>
                 <outlet property="loginButton" destination="YwA-eV-Pe9" id="TVf-Hk-1W3"/>
-                <outlet property="stackContentView" destination="3rh-ac-vqb" id="jxu-B2-rWr"/>
                 <outlet property="window" destination="yxO-x7-Uu9" id="OUq-e0-FVQ"/>
             </connections>
         </customObject>
@@ -23,18 +22,6 @@
             <view key="contentView" id="agO-Wm-PyO">
                 <rect key="frame" x="0.0" y="0.0" width="910" height="710"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                <subviews>
-                    <stackView orientation="vertical" alignment="leading" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3rh-ac-vqb">
-                        <rect key="frame" x="0.0" y="-40" width="910" height="750"/>
-                        <animations/>
-                    </stackView>
-                </subviews>
-                <constraints>
-                    <constraint firstAttribute="trailing" secondItem="3rh-ac-vqb" secondAttribute="trailing" id="JAt-eV-2Ib"/>
-                    <constraint firstItem="3rh-ac-vqb" firstAttribute="leading" secondItem="agO-Wm-PyO" secondAttribute="leading" id="NRS-cz-aQc"/>
-                    <constraint firstItem="3rh-ac-vqb" firstAttribute="top" secondItem="agO-Wm-PyO" secondAttribute="top" id="gam-bC-e7i"/>
-                    <constraint firstAttribute="bottom" secondItem="3rh-ac-vqb" secondAttribute="bottom" id="kMk-dB-CMP"/>
-                </constraints>
                 <animations/>
             </view>
             <point key="canvasLocation" x="581" y="506"/>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TicketQueryMainViewController" customModule="_2306ForMac" customModuleProvider="target">
+            <connections>
+                <outlet property="stackContentView" destination="Q3P-1n-q0W" id="6aq-aD-dmW"/>
+                <outlet property="view" destination="lnD-vo-KnU" id="OQJ-lR-XIC"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <view id="lnD-vo-KnU">
+            <rect key="frame" x="0.0" y="0.0" width="910" height="710"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView orientation="vertical" alignment="leading" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Q3P-1n-q0W">
+                    <rect key="frame" x="0.0" y="0.0" width="910" height="710"/>
+                    <animations/>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Q3P-1n-q0W" firstAttribute="top" secondItem="lnD-vo-KnU" secondAttribute="top" id="9KZ-ev-LS2"/>
+                <constraint firstItem="Q3P-1n-q0W" firstAttribute="leading" secondItem="lnD-vo-KnU" secondAttribute="leading" id="LXc-FC-par"/>
+                <constraint firstAttribute="bottom" secondItem="Q3P-1n-q0W" secondAttribute="bottom" id="Nod-an-eog"/>
+                <constraint firstAttribute="trailing" secondItem="Q3P-1n-q0W" secondAttribute="trailing" id="XVI-y2-Iv4"/>
+            </constraints>
+            <animations/>
+        </view>
+    </objects>
+</document>

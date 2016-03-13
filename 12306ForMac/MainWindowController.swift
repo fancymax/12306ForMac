@@ -9,15 +9,11 @@
 import Cocoa
 
 class MainWindowController: NSWindowController{
-    @IBOutlet weak var stackContentView: NSStackView!
     @IBOutlet weak var loginButton: LoginButton!
     @IBOutlet var LoginMenu: NSMenu!
     
-    var normalSearchViewController: NormalSearchViewController?
-    var ticketTableViewController: TicketTableViewController?
-    var disclosureViewController: DisclosureViewController?
-    
-    var splitViewController:OrderViewController?
+    var orderQueryViewController:OrderViewController?
+    var ticketQueryViewController:TicketQueryViewController?
     
     var loginWindowController = LoginWindowController()
     
@@ -44,9 +40,10 @@ class MainWindowController: NSWindowController{
             NSMidY(titleView.bounds) - (segmentSize.height / 2.0),
             segmentSize.width, segmentSize.height)
         let segment = NSSegmentedControl(frame: segmentFrame)
-        segment.segmentCount = 2
+        segment.segmentCount = 3
         segment.setLabel("车票预订", forSegment: 0)
-        segment.setLabel("订单查询", forSegment: 1)
+        segment.setLabel("抢票任务", forSegment: 1)
+        segment.setLabel("订单查询", forSegment: 2)
         segment.selectedSegment = 0
         segment.segmentStyle = NSSegmentStyle.TexturedSquare
         segment.target = self
@@ -78,18 +75,7 @@ class MainWindowController: NSWindowController{
 //    	aWindow.bottomBarHeight = aWindow.titleBarHeight;
 //	NSView *titleBarView = aWindow.titleBarView;
         
-        self.normalSearchViewController = NormalSearchViewController(nibName: "NormalSearchViewController",bundle: nil)
-        self.ticketTableViewController = TicketTableViewController(nibName: "TicketTableViewController",bundle: nil)
-        self.normalSearchViewController?.ticketTableDelegate = self.ticketTableViewController
-        self.disclosureViewController = DisclosureViewController(nibName:"DisclosureViewController", bundle:nil)
-        
-        self.stackContentView.addView(normalSearchViewController!.view, inGravity:.Top)
-        self.stackContentView.addView(disclosureViewController!.view, inGravity: .Top)
-        self.stackContentView.addView(ticketTableViewController!.view, inGravity: .Top)
-        
-        self.stackContentView.orientation = .Vertical
-        self.stackContentView.alignment = .CenterX
-        self.stackContentView.spacing = 0
+        selectModule(0)
         
         self.window?.recalculateKeyViewLoop()
         
@@ -99,23 +85,25 @@ class MainWindowController: NSWindowController{
     }
     
     func segmentTab(sender: NSSegmentedControl){
-        if(sender.selectedSegment == 1){
-            self.stackContentView.removeView(normalSearchViewController!.view)
-            self.stackContentView.removeView(disclosureViewController!.view)
-            self.stackContentView.removeView(ticketTableViewController!.view)
-            
-            if splitViewController == nil{
-                splitViewController = OrderViewController()
+        selectModule(sender.selectedSegment)
+    }
+    
+    func selectModule(moduleIndex:Int){
+        if(moduleIndex == 2){
+            if orderQueryViewController == nil{
+                orderQueryViewController = OrderViewController()
             }
-            
-            self.stackContentView.addView(splitViewController!.view,inGravity:.Top)
+            self.window?.contentView = orderQueryViewController!.view
+        }
+        else if(moduleIndex == 0){
+            if ticketQueryViewController == nil{
+                ticketQueryViewController = TicketQueryViewController()
+            }
+            self.window?.contentView = ticketQueryViewController!.view
         }
         else{
-            self.stackContentView.removeView(splitViewController!.view)
+            self.window?.contentView = NSView()
             
-            self.stackContentView.addView(normalSearchViewController!.view, inGravity:.Top)
-            self.stackContentView.addView(disclosureViewController!.view, inGravity: .Top)
-            self.stackContentView.addView(ticketTableViewController!.view, inGravity: .Top)
         }
     }
     
