@@ -14,6 +14,7 @@ class MainWindowController: NSWindowController{
     
     var orderQueryViewController:OrderViewController?
     var ticketQueryViewController:TicketQueryViewController?
+    var taskViewController:TaskViewController?
     
     var loginWindowController = LoginWindowController()
     
@@ -102,8 +103,10 @@ class MainWindowController: NSWindowController{
             self.window?.contentView = ticketQueryViewController!.view
         }
         else{
-            self.window?.contentView = NSView()
-            
+            if taskViewController == nil{
+                taskViewController = TaskViewController()
+            }
+            self.window?.contentView = taskViewController!.view
         }
     }
     

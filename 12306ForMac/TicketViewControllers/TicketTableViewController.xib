@@ -250,7 +250,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="WIs-HT-Kwb" customClass="ItemCellView" customModule="_2306ForMac" customModuleProvider="target">
+                                            <tableCellView misplaced="YES" id="WIs-HT-Kwb" customClass="ItemCellView" customModule="_2306ForMac" customModuleProvider="target">
                                                 <rect key="frame" x="423" y="1" width="1197" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>

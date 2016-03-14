@@ -64,6 +64,8 @@
 		F11154E81C8D93B300FA6059 /* SettingsTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = F11154E41C8D93B300FA6059 /* SettingsTemplate.png */; };
 		F113B4F81C8FBA2E0001AE09 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113B4F71C8FBA2E0001AE09 /* ServiceError.swift */; };
 		F113B4FA1C8FC7930001AE09 /* ErrorTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113B4F91C8FC7930001AE09 /* ErrorTranslator.swift */; };
+		F11DA95B1C956BBE00322D82 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11DA9591C956BBE00322D82 /* TaskViewController.swift */; };
+		F11DA95C1C956BBE00322D82 /* TaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11DA95A1C956BBE00322D82 /* TaskViewController.xib */; };
 		F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F17AB1CB1C95630E00FEB221 /* Credits.rtf */; };
 		F1D390A41C8F177F000B3FD7 /* RandCodeImageView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D390A31C8F177F000B3FD7 /* RandCodeImageView2.swift */; };
 		F1D575761C95541D00A214B0 /* TicketQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */; };
@@ -137,6 +139,8 @@
 		F11154E91C8D945C00FA6059 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = 12306ForMac/Info.plist; sourceTree = SOURCE_ROOT; };
 		F113B4F71C8FBA2E0001AE09 /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		F113B4F91C8FC7930001AE09 /* ErrorTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTranslator.swift; sourceTree = "<group>"; };
+		F11DA9591C956BBE00322D82 /* TaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskViewController.swift; path = 12306ForMac/TaskViewControllers/TaskViewController.swift; sourceTree = "<group>"; };
+		F11DA95A1C956BBE00322D82 /* TaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TaskViewController.xib; path = 12306ForMac/TaskViewControllers/TaskViewController.xib; sourceTree = "<group>"; };
 		F11EB45A1B6A368E000063E4 /* 12306ForMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 12306ForMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17AB1CB1C95630E00FEB221 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = 12306ForMac/Resources/Credits.rtf; sourceTree = SOURCE_ROOT; };
 		F1CC36461B6B244C0074A014 /* 12306ForMac-Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "12306ForMac-Swift.h"; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 				F11154621C8D91F800FA6059 /* README.md */,
 				F11154631C8D91F800FA6059 /* srca.cer */,
 				F11154B21C8D92D000FA6059 /* TicketViewControllers */,
+				F11DA9581C956A8000322D82 /* TaskViewControllers */,
 				F11154AD1C8D92C100FA6059 /* OrderViewControllers */,
 				F11154A41C8D92A700FA6059 /* Sheets */,
 				F11154991C8D929200FA6059 /* Service */,
@@ -326,6 +331,15 @@
 			);
 			name = TicketViewControllers;
 			path = 12306ForMac/TicketViewControllers;
+			sourceTree = "<group>";
+		};
+		F11DA9581C956A8000322D82 /* TaskViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F11DA9591C956BBE00322D82 /* TaskViewController.swift */,
+				F11DA95A1C956BBE00322D82 /* TaskViewController.xib */,
+			);
+			name = TaskViewControllers;
 			sourceTree = "<group>";
 		};
 		F11EB4511B6A368E000063E4 = {
@@ -465,6 +479,7 @@
 				F11154C21C8D92D000FA6059 /* PassengerSelectViewController.xib in Resources */,
 				F11154B11C8D92C100FA6059 /* OrderViewController.xib in Resources */,
 				F11154D31C8D936300FA6059 /* MainMenu.xib in Resources */,
+				F11DA95C1C956BBE00322D82 /* TaskViewController.xib in Resources */,
 				F11154651C8D91F800FA6059 /* srca.cer in Resources */,
 				F11154C61C8D92D000FA6059 /* TicketTableViewController.xib in Resources */,
 				F11154941C8D925200FA6059 /* LunarCalendarView.xib in Resources */,
@@ -542,6 +557,7 @@
 				F11154801C8D923C00FA6059 /* SwiftyRegex.swift in Sources */,
 				F11154781C8D921400FA6059 /* QueryOrderParam.swift in Sources */,
 				F11154C81C8D92FC00FA6059 /* AppDelegate.swift in Sources */,
+				F11DA95B1C956BBE00322D82 /* TaskViewController.swift in Sources */,
 				F111548E1C8D925200FA6059 /* AutoCompleteTextField.swift in Sources */,
 				F11154731C8D921400FA6059 /* MainModel.swift in Sources */,
 				F11154791C8D921400FA6059 /* QueryOrderWaitTimeResult.swift in Sources */,
