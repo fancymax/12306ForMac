@@ -8,11 +8,6 @@
 
 import RealmSwift
 
-class Passenger:Object{
-    dynamic var id = ""
-    dynamic var name = ""
-}
-
 class User:Object{
     dynamic var userName = ""
     dynamic var userPassword = ""

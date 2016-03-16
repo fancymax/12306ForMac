@@ -66,6 +66,10 @@
 		F113B4FA1C8FC7930001AE09 /* ErrorTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113B4F91C8FC7930001AE09 /* ErrorTranslator.swift */; };
 		F11DA95B1C956BBE00322D82 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11DA9591C956BBE00322D82 /* TaskViewController.swift */; };
 		F11DA95C1C956BBE00322D82 /* TaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11DA95A1C956BBE00322D82 /* TaskViewController.xib */; };
+		F13B6FC71C98241B0095B196 /* TicketTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B6FC61C98241B0095B196 /* TicketTask.swift */; };
+		F13B6FC91C9829BD0095B196 /* Passenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B6FC81C9829BD0095B196 /* Passenger.swift */; };
+		F13B6FCB1C982A130095B196 /* Train.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B6FCA1C982A130095B196 /* Train.swift */; };
+		F13B6FCD1C982A1D0095B196 /* Seat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B6FCC1C982A1D0095B196 /* Seat.swift */; };
 		F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F17AB1CB1C95630E00FEB221 /* Credits.rtf */; };
 		F1D390A41C8F177F000B3FD7 /* RandCodeImageView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D390A31C8F177F000B3FD7 /* RandCodeImageView2.swift */; };
 		F1D575761C95541D00A214B0 /* TicketQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */; };
@@ -142,6 +146,10 @@
 		F11DA9591C956BBE00322D82 /* TaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskViewController.swift; path = 12306ForMac/TaskViewControllers/TaskViewController.swift; sourceTree = "<group>"; };
 		F11DA95A1C956BBE00322D82 /* TaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TaskViewController.xib; path = 12306ForMac/TaskViewControllers/TaskViewController.xib; sourceTree = "<group>"; };
 		F11EB45A1B6A368E000063E4 /* 12306ForMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 12306ForMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F13B6FC61C98241B0095B196 /* TicketTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTask.swift; sourceTree = "<group>"; };
+		F13B6FC81C9829BD0095B196 /* Passenger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Passenger.swift; sourceTree = "<group>"; };
+		F13B6FCA1C982A130095B196 /* Train.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Train.swift; sourceTree = "<group>"; };
+		F13B6FCC1C982A1D0095B196 /* Seat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seat.swift; sourceTree = "<group>"; };
 		F17AB1CB1C95630E00FEB221 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = 12306ForMac/Resources/Credits.rtf; sourceTree = SOURCE_ROOT; };
 		F1CC36461B6B244C0074A014 /* 12306ForMac-Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "12306ForMac-Swift.h"; sourceTree = "<group>"; };
 		F1D390A31C8F177F000B3FD7 /* RandCodeImageView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandCodeImageView2.swift; sourceTree = "<group>"; };
@@ -216,7 +224,11 @@
 		F11154661C8D920600FA6059 /* RealmModel */ = {
 			isa = PBXGroup;
 			children = (
+				F13B6FC61C98241B0095B196 /* TicketTask.swift */,
 				F11154671C8D920600FA6059 /* User.swift */,
+				F13B6FC81C9829BD0095B196 /* Passenger.swift */,
+				F13B6FCA1C982A130095B196 /* Train.swift */,
+				F13B6FCC1C982A1D0095B196 /* Seat.swift */,
 			);
 			name = RealmModel;
 			path = 12306ForMac/RealmModel;
@@ -570,9 +582,12 @@
 				F11154931C8D925200FA6059 /* LunarCalendarView.swift in Sources */,
 				F1E7EA2F1C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m in Sources */,
 				F1E7EA2D1C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c in Sources */,
+				F13B6FC71C98241B0095B196 /* TicketTask.swift in Sources */,
 				F11154911C8D925200FA6059 /* ItemCellView.swift in Sources */,
+				F13B6FCD1C982A1D0095B196 /* Seat.swift in Sources */,
 				F11154C51C8D92D000FA6059 /* TicketTableViewController.swift in Sources */,
 				F11154AB1C8D92A700FA6059 /* PreOrderWindowController.swift in Sources */,
+				F13B6FC91C9829BD0095B196 /* Passenger.swift in Sources */,
 				F11154901C8D925200FA6059 /* GlassView.swift in Sources */,
 				F11154961C8D925200FA6059 /* RandCodeImageView.swift in Sources */,
 				F11154681C8D920600FA6059 /* User.swift in Sources */,
@@ -598,6 +613,7 @@
 				F113B4F81C8FBA2E0001AE09 /* ServiceError.swift in Sources */,
 				F11154B01C8D92C100FA6059 /* OrderViewController.swift in Sources */,
 				F11154821C8D923C00FA6059 /* XCGLogger.swift in Sources */,
+				F13B6FCB1C982A130095B196 /* Train.swift in Sources */,
 				F11154921C8D925200FA6059 /* LoginButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

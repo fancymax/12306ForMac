@@ -99,7 +99,7 @@ extension NormalSearchViewController: AutoCompleteTableViewDelegate{
                 matches.append(station.Name)
             }
         }
-        //isEmpty is better than .count==0
+        
         if(matches.isEmpty)
         {
             for station in stationDataService.allStation
