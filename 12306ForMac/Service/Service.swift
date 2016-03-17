@@ -26,9 +26,11 @@ class Service {
             "User-Agent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:36.0) Gecko/20100101 Firefox/36.0",
             "Connection" : "keep-alive"]
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        
+        configuration.HTTPCookieAcceptPolicy = .Always
         configuration.HTTPAdditionalHeaders = headers
         let manager = Alamofire.Manager(
-            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+            configuration: configuration,
             serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
         )
         return manager

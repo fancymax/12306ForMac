@@ -18,4 +18,8 @@ class TicketTask:Object{
     var seatArr:List<Seat>?
     var passengerArr:List<Passenger>!
     
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
 }
