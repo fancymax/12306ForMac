@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zW4-eN-i2g" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="162" y="155" width="60" height="25"/>
+                    <rect key="frame" x="162" y="190" width="60" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="Ddo-53-5Ol"/>
                         <constraint firstAttribute="height" constant="25" id="cWt-6Z-AZ6"/>
@@ -65,7 +65,7 @@
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="u46-74-1fg">
                                                         <rect key="frame" x="18" y="16" width="113" height="19"/>
                                                         <animations/>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="抢票任务1" id="uaA-3Q-Ke7">
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="抢票任务1" id="uaA-3Q-Ke7">
                                                             <font key="font" metaFont="systemThin" size="15"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -92,6 +92,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="-2" id="UuO-mk-Nal"/>
                                     <outlet property="delegate" destination="-2" id="vyR-Mb-upn"/>
+                                    <outlet property="menu" destination="e0f-6s-AHe" id="ueO-pu-PUn"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -116,7 +117,7 @@
                     <accessibility identifier="Menu"/>
                 </scrollView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="z9q-jx-WES">
-                    <rect key="frame" x="365" y="590" width="64" height="20"/>
+                    <rect key="frame" x="365" y="625" width="64" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="Ebb-Sl-C8K"/>
                         <constraint firstAttribute="height" constant="20" id="LtH-Wo-JDY"/>
@@ -129,7 +130,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9mt-Hv-LCg">
-                    <rect key="frame" x="160" y="590" width="64" height="20"/>
+                    <rect key="frame" x="160" y="625" width="64" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="AwJ-w5-nHn"/>
                         <constraint firstAttribute="width" constant="60" id="zg2-nS-wRY"/>
@@ -142,7 +143,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MMY-vb-EUd">
-                    <rect key="frame" x="160" y="670" width="64" height="20"/>
+                    <rect key="frame" x="160" y="675" width="64" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="6jx-SN-eD4"/>
                         <constraint firstAttribute="width" constant="60" id="6tA-h4-OY6"/>
@@ -155,7 +156,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KE7-k0-5Aq" customClass="AutoCompleteTextField" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="225" y="588" width="100" height="23"/>
+                    <rect key="frame" x="225" y="623" width="100" height="23"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="YLA-La-L9b"/>
                         <constraint firstAttribute="height" constant="23" id="uoE-LU-n98"/>
@@ -173,7 +174,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mwg-gJ-lVH" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="162" y="300" width="60" height="25"/>
+                    <rect key="frame" x="162" y="335" width="60" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="2u1-3d-0ep"/>
                         <constraint firstAttribute="width" constant="60" id="diL-YH-9LB"/>
@@ -185,7 +186,7 @@
                     </buttonCell>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ND5-z5-PbQ" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="162" y="445" width="60" height="25"/>
+                    <rect key="frame" x="162" y="480" width="60" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="0Gg-6I-Dwg"/>
                         <constraint firstAttribute="width" constant="60" id="Ut2-UQ-PUy"/>
@@ -197,7 +198,7 @@
                     </buttonCell>
                 </button>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6wG-My-eJn" customClass="AutoCompleteTextField" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="427" y="588" width="100" height="23"/>
+                    <rect key="frame" x="427" y="623" width="100" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="Dlg-0D-cNQ"/>
                         <constraint firstAttribute="width" constant="100" id="Ngc-Gt-Elj"/>
@@ -230,7 +231,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RPP-6m-VrP">
-                    <rect key="frame" x="330" y="592" width="35" height="16"/>
+                    <rect key="frame" x="330" y="627" width="35" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="35" id="Kqa-6c-g3J"/>
                         <constraint firstAttribute="height" constant="16" id="Qu0-4e-6mR"/>
@@ -267,7 +268,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DH7-wx-fKc">
-                    <rect key="frame" x="548" y="590" width="64" height="20"/>
+                    <rect key="frame" x="548" y="625" width="64" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="yGJ-oh-NjL"/>
                         <constraint firstAttribute="height" constant="20" id="zRr-1p-na5"/>
@@ -280,7 +281,7 @@
                     </textFieldCell>
                 </textField>
                 <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fIq-S7-QP6">
-                    <rect key="frame" x="608" y="589" width="100" height="23"/>
+                    <rect key="frame" x="608" y="624" width="100" height="23"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="3lC-vE-T6K"/>
                         <constraint firstAttribute="height" constant="23" id="MVH-xb-6Jb"/>
@@ -296,7 +297,7 @@
                     </datePickerCell>
                 </datePicker>
                 <button tag="1" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ukm-po-QLs">
-                    <rect key="frame" x="721" y="589" width="23" height="23"/>
+                    <rect key="frame" x="721" y="624" width="23" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="Ior-ib-rDd"/>
                         <constraint firstAttribute="width" constant="23" id="ndc-GN-zXD"/>
@@ -308,7 +309,7 @@
                     </buttonCell>
                 </button>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EjM-yn-bVE">
-                    <rect key="frame" x="225" y="669" width="100" height="23"/>
+                    <rect key="frame" x="225" y="674" width="100" height="23"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="82J-iQ-b6d"/>
                         <constraint firstAttribute="height" constant="23" id="bUq-cu-pJ8"/>
@@ -330,14 +331,14 @@
                 <constraint firstItem="KE7-k0-5Aq" firstAttribute="centerY" secondItem="9mt-Hv-LCg" secondAttribute="centerY" id="Cbd-Z7-sws"/>
                 <constraint firstItem="DH7-wx-fKc" firstAttribute="centerY" secondItem="9mt-Hv-LCg" secondAttribute="centerY" id="ClG-AE-6K8"/>
                 <constraint firstItem="ND5-z5-PbQ" firstAttribute="top" secondItem="9mt-Hv-LCg" secondAttribute="bottom" constant="120" id="DuX-z9-Nly"/>
-                <constraint firstItem="9mt-Hv-LCg" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="100" id="EYw-C9-xUe"/>
+                <constraint firstItem="9mt-Hv-LCg" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="65" id="EYw-C9-xUe"/>
                 <constraint firstItem="EjM-yn-bVE" firstAttribute="centerY" secondItem="MMY-vb-EUd" secondAttribute="centerY" id="FE8-iJ-Rrp"/>
                 <constraint firstItem="MMY-vb-EUd" firstAttribute="leading" secondItem="TtQ-pX-z2t" secondAttribute="trailing" constant="12" id="Kg5-cv-gQQ"/>
                 <constraint firstItem="9mt-Hv-LCg" firstAttribute="leading" secondItem="TtQ-pX-z2t" secondAttribute="trailing" constant="12" id="L1O-uA-YjR"/>
                 <constraint firstItem="RPP-6m-VrP" firstAttribute="leading" secondItem="KE7-k0-5Aq" secondAttribute="trailing" constant="5" id="SKp-oL-agE"/>
                 <constraint firstItem="ukm-po-QLs" firstAttribute="leading" secondItem="fIq-S7-QP6" secondAttribute="trailing" constant="13" id="TiQ-5W-mnp"/>
                 <constraint firstItem="fIq-S7-QP6" firstAttribute="leading" secondItem="DH7-wx-fKc" secondAttribute="trailing" constant="-2" id="Uem-H3-GZ3"/>
-                <constraint firstItem="MMY-vb-EUd" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" symbolic="YES" id="VMz-uE-x5L"/>
+                <constraint firstItem="MMY-vb-EUd" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="15" id="VMz-uE-x5L"/>
                 <constraint firstAttribute="bottom" secondItem="X2E-XN-A0p" secondAttribute="bottom" constant="20" symbolic="YES" id="YIa-nJ-ji3"/>
                 <constraint firstItem="6wG-My-eJn" firstAttribute="centerY" secondItem="KE7-k0-5Aq" secondAttribute="centerY" id="Z25-jB-QSH"/>
                 <constraint firstItem="6wG-My-eJn" firstAttribute="leading" secondItem="z9q-jx-WES" secondAttribute="trailing" id="c3V-8L-Fr2"/>
@@ -362,6 +363,17 @@
             <animations/>
             <point key="canvasLocation" x="505" y="469"/>
         </customView>
+        <menu id="e0f-6s-AHe">
+            <items>
+                <menuItem title="删除" id="cav-xf-7nt">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="deleteTask:" target="-2" id="I6o-L7-ouF"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="100.5" y="1000.5"/>
+        </menu>
     </objects>
     <resources>
         <image name="Add" width="512" height="512"/>

@@ -12,6 +12,7 @@ import RealmSwift
 class TaskViewController: NSViewController {
     var stationDataService = StationData()
 
+    @IBOutlet var contextMenu: NSMenu!
     @IBOutlet weak var taskName: NSTextField!
     @IBOutlet weak var fromStationName: AutoCompleteTextField!
     @IBOutlet weak var toStationName: AutoCompleteTextField!
@@ -30,6 +31,17 @@ class TaskViewController: NSViewController {
         taskListTable.selectRowIndexes(NSIndexSet(index: index), byExtendingSelection: false)
         loadTask(task)
         taskListTable.scrollRowToVisible(index)
+    }
+    
+    @IBAction func deleteTask(sender: NSMenuItem) {
+        if self.taskListTable.clickedRow != -1 {
+            let realm = try! Realm()
+            try! realm.write {
+                realm.delete(self.tasks[self.taskListTable.clickedRow])
+            }
+            self.tasks.removeAtIndex(self.taskListTable.clickedRow)
+        }
+        self.taskListTable.reloadData()
     }
     
     @IBAction func saveTask(sender: NSButton) {
@@ -52,6 +64,11 @@ class TaskViewController: NSViewController {
         let task = realm.objects(TicketTask)
         for var i = 0; i < task.count; i++ {
             self.tasks.append(task[i])
+        }
+        
+        if tasks.count > 0 {
+            let index = 0
+            taskListTable.selectRowIndexes(NSIndexSet(index: index), byExtendingSelection: false)
         }
     }
 }
