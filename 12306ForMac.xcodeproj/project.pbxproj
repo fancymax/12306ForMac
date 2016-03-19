@@ -71,6 +71,7 @@
 		F13B6FCB1C982A130095B196 /* Train.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B6FCA1C982A130095B196 /* Train.swift */; };
 		F13B6FCD1C982A1D0095B196 /* Seat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B6FCC1C982A1D0095B196 /* Seat.swift */; };
 		F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F17AB1CB1C95630E00FEB221 /* Credits.rtf */; };
+		F196445E1C9CED830097FF67 /* Service+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F196445D1C9CED830097FF67 /* Service+Utilities.swift */; };
 		F1D390A41C8F177F000B3FD7 /* RandCodeImageView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D390A31C8F177F000B3FD7 /* RandCodeImageView2.swift */; };
 		F1D575761C95541D00A214B0 /* TicketQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */; };
 		F1D575771C95541D00A214B0 /* TicketQueryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D575751C95541D00A214B0 /* TicketQueryViewController.xib */; };
@@ -151,6 +152,7 @@
 		F13B6FCA1C982A130095B196 /* Train.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Train.swift; sourceTree = "<group>"; };
 		F13B6FCC1C982A1D0095B196 /* Seat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seat.swift; sourceTree = "<group>"; };
 		F17AB1CB1C95630E00FEB221 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = 12306ForMac/Resources/Credits.rtf; sourceTree = SOURCE_ROOT; };
+		F196445D1C9CED830097FF67 /* Service+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Service+Utilities.swift"; sourceTree = "<group>"; };
 		F1CC36461B6B244C0074A014 /* 12306ForMac-Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "12306ForMac-Swift.h"; sourceTree = "<group>"; };
 		F1D390A31C8F177F000B3FD7 /* RandCodeImageView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandCodeImageView2.swift; sourceTree = "<group>"; };
 		F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketQueryViewController.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				F111549E1C8D929200FA6059 /* Service.swift */,
 				F113B4F71C8FBA2E0001AE09 /* ServiceError.swift */,
 				F113B4F91C8FC7930001AE09 /* ErrorTranslator.swift */,
+				F196445D1C9CED830097FF67 /* Service+Utilities.swift */,
 			);
 			name = Service;
 			path = 12306ForMac/Service;
@@ -574,6 +577,7 @@
 				F11154731C8D921400FA6059 /* MainModel.swift in Sources */,
 				F11154791C8D921400FA6059 /* QueryOrderWaitTimeResult.swift in Sources */,
 				F11154771C8D921400FA6059 /* QueryLeftNewDTO.swift in Sources */,
+				F196445E1C9CED830097FF67 /* Service+Utilities.swift in Sources */,
 				F111549F1C8D929200FA6059 /* Service+Login.swift in Sources */,
 				F111548F1C8D925200FA6059 /* FlashLabel.swift in Sources */,
 				F11154981C8D927C00FA6059 /* StationData.swift in Sources */,

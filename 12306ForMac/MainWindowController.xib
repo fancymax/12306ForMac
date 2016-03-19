@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController" customModule="_2306ForMac" customModuleProvider="target">
             <connections>
+                <outlet property="IPLabel" destination="znX-tU-VSF" id="EVC-px-kdM"/>
                 <outlet property="LoginMenu" destination="xmP-jf-NW1" id="ab5-GD-wDK"/>
                 <outlet property="loginButton" destination="YwA-eV-Pe9" id="TVf-Hk-1W3"/>
                 <outlet property="window" destination="yxO-x7-Uu9" id="OUq-e0-FVQ"/>
@@ -49,6 +50,17 @@
             </items>
             <point key="canvasLocation" x="100.5" y="1000.5"/>
         </menu>
+        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="znX-tU-VSF">
+            <rect key="frame" x="0.0" y="0.0" width="37" height="17"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <animations/>
+            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="qay-7e-hhN">
+                <font key="font" metaFont="system"/>
+                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+            </textFieldCell>
+            <point key="canvasLocation" x="382.5" y="1217.5"/>
+        </textField>
     </objects>
     <resources>
         <image name="NSUserAccounts" width="32" height="32"/>

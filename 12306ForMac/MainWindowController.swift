@@ -11,6 +11,7 @@ import Cocoa
 class MainWindowController: NSWindowController{
     @IBOutlet weak var loginButton: LoginButton!
     @IBOutlet var LoginMenu: NSMenu!
+    @IBOutlet var IPLabel: NSTextField!
     
     var orderQueryViewController:OrderViewController?
     var ticketQueryViewController:TicketQueryViewController?
@@ -55,7 +56,9 @@ class MainWindowController: NSWindowController{
             NSMaxX(titleView.bounds) - (searchFieldSize.width + 20),
             NSMidY(titleView.bounds) - (searchFieldSize.height / 2.0),
             searchFieldSize.width, searchFieldSize.height)
-        let searchField = NSSearchField(frame: searchFrame)
+        self.IPLabel.frame = searchFrame
+        let searchField = self.IPLabel
+        
         
         titleView.addSubview(segment)
         titleView.addSubview(searchField)
@@ -83,6 +86,11 @@ class MainWindowController: NSWindowController{
         //login notification
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: Selector("receiveDidSendLoginMessageNotification:"), name: DidSendLoginMessageNotification, object: nil)
+        
+        let service = Service()
+        service.getWanIP({ip in
+            self.IPLabel.stringValue = ip
+        })
     }
     
     func segmentTab(sender: NSSegmentedControl){

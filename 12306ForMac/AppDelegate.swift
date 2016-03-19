@@ -42,6 +42,7 @@ let DidSendCheckPassengerMessageNotification = "com.12306.DidSendCheckPassengerM
         self.mainController = mainController
         
         logger.debug("application start")
+        
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
