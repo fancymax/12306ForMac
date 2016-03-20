@@ -10,10 +10,15 @@ import RealmSwift
 
 class TicketTask:Object{
     dynamic var id = 0
-    dynamic var name = "抢票任务1"
-    dynamic var fromStationName = ""
-    dynamic var toStationName = ""
-    dynamic var date = NSDate()
+    dynamic var name:String {
+        get {
+            return fromStationName + " -> " + toStationName
+        }
+    }
+    
+    dynamic var fromStationName = "深圳"
+    dynamic var toStationName = "福州"
+    dynamic var date = "2016-03-14"
     var trainCodeArr:List<Train>!
     var seatArr:List<Seat>?
     var passengerArr:List<Passenger>!

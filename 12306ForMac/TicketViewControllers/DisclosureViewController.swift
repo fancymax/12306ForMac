@@ -46,9 +46,7 @@ class DisclosureViewController: NSViewController{
                 
                 break
             }
-            
         }
-        
     }
 
     @IBAction func selectPassenger(sender: NSButton) {

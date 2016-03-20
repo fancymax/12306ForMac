@@ -13,9 +13,10 @@ class TaskViewController: NSViewController {
     var stationDataService = StationData()
 
     @IBOutlet var contextMenu: NSMenu!
-    @IBOutlet weak var taskName: NSTextField!
     @IBOutlet weak var fromStationName: AutoCompleteTextField!
     @IBOutlet weak var toStationName: AutoCompleteTextField!
+    @IBOutlet weak var queryDate: NSDatePicker!
+    var calendarPopover:NSPopover?
     
     @IBOutlet weak var taskListTable: NSTableView!
     var tasks = [TicketTask]()
@@ -47,7 +48,7 @@ class TaskViewController: NSViewController {
     @IBAction func saveTask(sender: NSButton) {
         let realm = try! Realm()
         try! realm.write {
-            currentTask = realm.create(TicketTask.self, value: ["id": currentTask.id, "name": self.taskName.stringValue, "fromStationName": self.fromStationName.stringValue,"toStationName": self.toStationName.stringValue], update: true)
+            currentTask = realm.create(TicketTask.self, value: ["id": currentTask.id,  "fromStationName": self.fromStationName.stringValue,"toStationName": self.toStationName.stringValue], update: true)
         }
         self.tasks[self.taskListTable.selectedRow] = currentTask
         let row = self.taskListTable.selectedRow
@@ -91,7 +92,6 @@ extension TaskViewController:NSTableViewDelegate{
     
     func loadTask(task:TicketTask){
         self.currentTask = task
-        self.taskName.stringValue = task.name
         self.fromStationName.stringValue = task.fromStationName
         self.toStationName.stringValue = task.toStationName
     }
@@ -133,5 +133,34 @@ extension TaskViewController: AutoCompleteTableViewDelegate{
         }
         
         return matches
+    }
+}
+
+extension TaskViewController: LunarCalendarViewDelegate{
+    func createCalenderPopover(){
+        var myPopover = self.calendarPopover
+        if(myPopover == nil){
+            myPopover = NSPopover()
+            let cp = LunarCalendarView()
+            cp.delegate = self
+            cp.date = self.queryDate.dateValue
+            cp.selectedDate = self.queryDate.dateValue
+            myPopover!.contentViewController = cp
+            myPopover!.appearance = NSAppearance(named: "NSAppearanceNameAqua")
+            myPopover!.animates = true
+            myPopover!.behavior = NSPopoverBehavior.Transient
+        }
+        self.calendarPopover = myPopover
+    }
+    
+    @IBAction func showCalendar(sender: AnyObject){
+        self.createCalenderPopover()
+        let cellRect = sender.bounds
+        self.calendarPopover?.showRelativeToRect(cellRect, ofView: sender as! NSView, preferredEdge: .MaxY)
+    }
+    
+    func didSelectDate(selectedDate: NSDate) {
+        self.queryDate!.dateValue = selectedDate
+        self.calendarPopover?.close()
     }
 }

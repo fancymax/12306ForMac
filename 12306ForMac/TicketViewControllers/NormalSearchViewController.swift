@@ -37,27 +37,6 @@ class NormalSearchViewController: NSViewController {
         self.toStationName.stringValue = temp
     }
     
-    func createCalenderPopover(){
-        var myPopover = self.calendarPopover
-        if(myPopover == nil){
-            myPopover = NSPopover()
-            let cp = LunarCalendarView()
-            cp.delegate = self
-            cp.date = self.queryDate.dateValue
-            cp.selectedDate = self.queryDate.dateValue
-            myPopover!.contentViewController = cp
-            myPopover!.appearance = NSAppearance(named: "NSAppearanceNameAqua")
-            myPopover!.animates = true
-            myPopover!.behavior = NSPopoverBehavior.Transient
-        }
-        self.calendarPopover = myPopover
-    }
-    
-    @IBAction func showCalendar(sender: AnyObject){
-        self.createCalenderPopover()
-        let cellRect = sender.bounds
-        self.calendarPopover?.showRelativeToRect(cellRect, ofView: sender as! NSView, preferredEdge: .MaxY)
-    }
     
     @IBAction func queryTicket(sender: NSButton) {
         if !stationDataService.allStationMap.keys.contains(fromStationName.stringValue) {
@@ -128,6 +107,28 @@ extension NormalSearchViewController: AutoCompleteTableViewDelegate{
 
 // MARK: - LunarCalendarViewDelegate
 extension NormalSearchViewController: LunarCalendarViewDelegate{
+    func createCalenderPopover(){
+        var myPopover = self.calendarPopover
+        if(myPopover == nil){
+            myPopover = NSPopover()
+            let cp = LunarCalendarView()
+            cp.delegate = self
+            cp.date = self.queryDate.dateValue
+            cp.selectedDate = self.queryDate.dateValue
+            myPopover!.contentViewController = cp
+            myPopover!.appearance = NSAppearance(named: "NSAppearanceNameAqua")
+            myPopover!.animates = true
+            myPopover!.behavior = NSPopoverBehavior.Transient
+        }
+        self.calendarPopover = myPopover
+    }
+    
+    @IBAction func showCalendar(sender: AnyObject){
+        self.createCalenderPopover()
+        let cellRect = sender.bounds
+        self.calendarPopover?.showRelativeToRect(cellRect, ofView: sender as! NSView, preferredEdge: .MaxY)
+    }
+    
     func didSelectDate(selectedDate: NSDate) {
         self.queryDate!.dateValue = selectedDate
         self.calendarPopover?.close()
