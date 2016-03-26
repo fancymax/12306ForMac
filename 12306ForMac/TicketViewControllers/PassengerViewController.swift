@@ -12,20 +12,18 @@ class PassengerViewController: NSViewController {
     
     var passenger:PassengerDTO?
     
-    @IBOutlet private weak var passengerNameLabel: NSTextField!
-    
     @IBOutlet weak var passengerCheckBox: NSButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        passengerNameLabel.stringValue = passenger!.passenger_name!
+        passengerCheckBox.title = passenger!.passenger_name!
     }
     
     @IBAction func unSelectPassenger(sender: NSButton) {
         passenger?.isChecked = false
         sender.state = NSOnState
         self.view.hidden = true
-        //保持check状态
     }
     
     func SelectPassenger(){

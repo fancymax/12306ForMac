@@ -121,6 +121,7 @@ class MainWindowController: NSWindowController{
     func receiveDidSendLoginMessageNotification(note: NSNotification){
         print("receiveDidSendLoginMessageNotification")
         loginOut()
+        login()
     }
     
     deinit{
@@ -150,7 +151,6 @@ class MainWindowController: NSWindowController{
         loginButton.title = "登录 ▾"
         let service = Service()
         service.loginOut()
-        login()
     }
     
     

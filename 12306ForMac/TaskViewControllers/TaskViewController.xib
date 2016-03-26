@@ -38,7 +38,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView identifier="MenuList" verticalHuggingPriority="750" tag="1" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="50" viewBased="YES" id="TtQ-pX-z2t">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="670"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <animations/>
                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -63,7 +63,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="u46-74-1fg">
-                                                        <rect key="frame" x="18" y="26" width="263" height="19"/>
+                                                        <rect key="frame" x="18" y="26" width="181" height="19"/>
                                                         <animations/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="深圳 -&gt; 福州" id="uaA-3Q-Ke7">
                                                             <font key="font" metaFont="systemThin" size="15"/>
@@ -86,8 +86,8 @@
                                                             <binding destination="4uv-Oj-BiO" name="value" keyPath="objectValue.date" id="B4j-4Y-uHG"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8e8-Vg-yJ5">
-                                                        <rect key="frame" x="134" y="7" width="85" height="17"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="8e8-Vg-yJ5">
+                                                        <rect key="frame" x="120" y="7" width="78" height="17"/>
                                                         <animations/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="第100次抢票" id="PTi-g4-aur">
                                                             <font key="font" metaFont="systemThin" size="13"/>
@@ -95,13 +95,29 @@
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
+                                                    <button horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2fb-wA-dcQ">
+                                                        <rect key="frame" x="225" y="10" width="69" height="29"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="65" id="8SX-JV-GM8"/>
+                                                            <constraint firstAttribute="height" constant="24" id="R9F-uf-bbn"/>
+                                                        </constraints>
+                                                        <animations/>
+                                                        <buttonCell key="cell" type="bevel" title="查询中" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LZ0-sI-vWv">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                    </button>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="8e8-Vg-yJ5" firstAttribute="centerY" secondItem="1kH-93-80K" secondAttribute="centerY" id="1Xu-ir-dED"/>
+                                                    <constraint firstItem="2fb-wA-dcQ" firstAttribute="centerY" secondItem="4uv-Oj-BiO" secondAttribute="centerY" id="6ny-rv-XbF"/>
+                                                    <constraint firstItem="8e8-Vg-yJ5" firstAttribute="leading" secondItem="1kH-93-80K" secondAttribute="trailing" constant="30" id="BX7-dQ-KqW"/>
                                                     <constraint firstItem="1kH-93-80K" firstAttribute="leading" secondItem="u46-74-1fg" secondAttribute="leading" id="Ewq-QY-wBv"/>
                                                     <constraint firstItem="u46-74-1fg" firstAttribute="top" secondItem="4uv-Oj-BiO" secondAttribute="top" constant="5" id="VbM-XN-1pt"/>
                                                     <constraint firstItem="u46-74-1fg" firstAttribute="leading" secondItem="4uv-Oj-BiO" secondAttribute="leading" constant="20" symbolic="YES" id="Xhf-YX-Ddg"/>
-                                                    <constraint firstAttribute="trailing" secondItem="u46-74-1fg" secondAttribute="trailing" constant="18" id="iQ9-BW-KGk"/>
+                                                    <constraint firstAttribute="trailing" secondItem="2fb-wA-dcQ" secondAttribute="trailing" constant="5" id="YS0-9B-oeG"/>
                                                     <constraint firstItem="1kH-93-80K" firstAttribute="top" secondItem="u46-74-1fg" secondAttribute="bottom" constant="2" id="rGA-8s-4FS"/>
+                                                    <constraint firstItem="2fb-wA-dcQ" firstAttribute="leading" secondItem="u46-74-1fg" secondAttribute="trailing" constant="30" id="tAJ-T2-mQe"/>
                                                 </constraints>
                                                 <animations/>
                                                 <connections>
