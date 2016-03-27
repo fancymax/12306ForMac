@@ -9,7 +9,7 @@
 import Cocoa
 import RealmSwift
 
-class TaskViewController: NSViewController {
+class TaskViewController: NSViewController{
     var stationDataService = StationData()
 
     @IBOutlet var contextMenu: NSMenu!
@@ -18,9 +18,77 @@ class TaskViewController: NSViewController {
     @IBOutlet weak var queryDate: NSDatePicker!
     var calendarPopover:NSPopover?
     
+    @IBOutlet weak var passengerStackView: NSStackView!
     @IBOutlet weak var taskListTable: NSTableView!
     var tasks = [TicketTask]()
     var currentTask: TicketTask = TicketTask()
+    var currentPassengers = [PassengerDTO]()
+    
+    var passengerViewControllerList = [PassengerViewController]()
+    let passengerSelectViewController = PassengerSelectViewController()
+    lazy var passengerPopover: NSPopover = {
+        let popover = NSPopover()
+        popover.behavior = .Semitransient
+        popover.contentViewController = self.passengerSelectViewController
+        return popover
+        }()
+    
+    @IBAction func addPassenger(sender: LoginButton) {
+        if currentPassengers.count == 0{
+            for p in MainModel.passengers {
+                let passenger = PassengerDTO()
+                passenger.passenger_id_no = p.passenger_id_no
+                passenger.passenger_name = p.passenger_name
+                currentPassengers.append(passenger)
+            }
+        }
+        
+        let positioningView = sender
+        let positioningRect = NSZeroRect
+        let preferredEdge = NSRectEdge.MaxY
+        
+        passengerPopover.showRelativeToRect(positioningRect, ofView: positioningView, preferredEdge: preferredEdge)
+        
+        passengerSelectViewController.reloadPassenger(currentPassengers)
+    }
+    
+    func receiveDidSendCheckPassengerMessageNotification(notification: NSNotification) {
+        if !self.passengerPopover.shown {
+            print("not my message in TaskViewController")
+            return
+        }
+        
+        let name = notification.object as! String
+        
+        for i in 0..<currentPassengers.count {
+            if currentPassengers[i].passenger_name == name{
+                if passengerSelected(currentPassengers[i]){
+                    checkPassenger(currentPassengers[i])
+                }
+                else{
+                    let p = PassengerViewController()
+                    p.passenger = currentPassengers[i]
+                    passengerViewControllerList.append(p)
+                    self.passengerStackView.addView(p.view, inGravity:.Top)
+                }
+                
+                break
+            }
+        }
+    }
+    
+    func passengerSelected(passenger:PassengerDTO) -> Bool{
+        for controller in passengerViewControllerList where controller.passenger == passenger{
+            return true
+        }
+        return false
+    }
+    
+    func checkPassenger(passenger:PassengerDTO){
+        for controller in passengerViewControllerList where controller.passenger == passenger{
+            controller.SelectPassenger()
+        }
+    }
     
     @IBAction func addTask(sender: NSButton) {
         let task = TicketTask()
@@ -71,10 +139,19 @@ class TaskViewController: NSViewController {
             let index = 0
             taskListTable.selectRowIndexes(NSIndexSet(index: index), byExtendingSelection: false)
         }
+        
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: Selector("receiveDidSendCheckPassengerMessageNotification:"), name: DidSendCheckPassengerMessageNotification, object: nil)
+    }
+    
+    deinit{
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.removeObserver(self)
     }
 }
 
-extension TaskViewController:NSTableViewDataSource{
+// MARK: - NSTableViewDataSource,NSTableViewDelegate
+extension TaskViewController:NSTableViewDataSource,NSTableViewDelegate{
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
         return tasks.count
     }
@@ -82,9 +159,7 @@ extension TaskViewController:NSTableViewDataSource{
     func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
         return tasks[row]
     }
-}
 
-extension TaskViewController:NSTableViewDelegate{
     func tableViewSelectionDidChange(notification: NSNotification) {
         let task = self.tasks[self.taskListTable.selectedRow]
         loadTask(task)
@@ -136,6 +211,7 @@ extension TaskViewController: AutoCompleteTableViewDelegate{
     }
 }
 
+// MARK: - LunarCalendarViewDelegate
 extension TaskViewController: LunarCalendarViewDelegate{
     func createCalenderPopover(){
         var myPopover = self.calendarPopover

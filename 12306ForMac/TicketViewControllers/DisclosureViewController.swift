@@ -30,6 +30,11 @@ class DisclosureViewController: NSViewController{
     }
     
     func receiveDidSendCheckPassengerMessageNotification(notification: NSNotification) {
+        if !self.popover.shown {
+            print("not my message in DisclosureViewController")
+            return
+        }
+        
         let name = notification.object as! String
         
         for i in 0..<MainModel.passengers.count {
@@ -57,7 +62,7 @@ class DisclosureViewController: NSViewController{
         popover.showRelativeToRect(positioningRect, ofView: positioningView, preferredEdge: preferredEdge)
        
 //        initPassenger()
-        passengerSelectViewController.reloadPassenger()
+        passengerSelectViewController.reloadPassenger(MainModel.passengers)
     }
     
     func initPassenger(){

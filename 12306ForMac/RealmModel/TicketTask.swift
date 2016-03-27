@@ -21,7 +21,7 @@ class TicketTask:Object{
     dynamic var date = "2016-03-14"
     var trainCodeArr:List<Train>!
     var seatArr:List<Seat>?
-    var passengerArr:List<Passenger>!
+    var passengerArr = List<Passenger>()
     
     override static func primaryKey() -> String? {
         return "id"

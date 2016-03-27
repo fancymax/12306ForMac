@@ -2,11 +2,13 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TaskViewController" customModule="_2306ForMac" customModuleProvider="target">
             <connections>
                 <outlet property="fromStationName" destination="KE7-k0-5Aq" id="A17-fe-Th8"/>
+                <outlet property="passengerStackView" destination="ftr-M1-use" id="jFN-IT-1Bg"/>
                 <outlet property="queryDate" destination="fIq-S7-QP6" id="mi8-Ti-dF6"/>
                 <outlet property="taskListTable" destination="TtQ-pX-z2t" id="UKO-De-1Im"/>
                 <outlet property="toStationName" destination="6wG-My-eJn" id="RZ8-jq-sg1"/>
@@ -30,6 +32,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="addPassenger:" target="-2" id="55P-0V-w0g"/>
+                    </connections>
                 </button>
                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="52" horizontalPageScroll="10" verticalLineScroll="52" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLs-7R-agf">
                     <rect key="frame" x="0.0" y="40" width="300" height="670"/>
@@ -267,17 +272,6 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NGu-9x-KgL">
-                    <rect key="frame" x="732" y="13" width="82" height="32"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="70" id="JI8-Kg-ETp"/>
-                    </constraints>
-                    <animations/>
-                    <buttonCell key="cell" type="push" title="编辑" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="G0e-3t-Fbi">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="X2E-XN-A0p">
                     <rect key="frame" x="814" y="13" width="82" height="32"/>
                     <constraints>
@@ -336,11 +330,16 @@
                         <action selector="showCalendar:" target="-2" id="d0M-bo-HYQ"/>
                     </connections>
                 </button>
+                <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ftr-M1-use">
+                    <rect key="frame" x="377" y="240" width="0.0" height="25"/>
+                    <animations/>
+                </stackView>
             </subviews>
             <constraints>
                 <constraint firstItem="rLs-7R-agf" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="2Nl-5G-TBS"/>
                 <constraint firstItem="fIq-S7-QP6" firstAttribute="centerY" secondItem="DH7-wx-fKc" secondAttribute="centerY" id="2fT-yo-Png"/>
                 <constraint firstItem="zW4-eN-i2g" firstAttribute="leading" secondItem="mwg-gJ-lVH" secondAttribute="leading" id="3oT-fh-u6r"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ftr-M1-use" secondAttribute="trailing" constant="20" symbolic="YES" id="5RW-zZ-sS2"/>
                 <constraint firstItem="RPP-6m-VrP" firstAttribute="centerY" secondItem="KE7-k0-5Aq" secondAttribute="centerY" id="8NZ-Ye-PCX"/>
                 <constraint firstItem="g7U-8J-5xj" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="BTc-0a-Hyp"/>
                 <constraint firstItem="KE7-k0-5Aq" firstAttribute="centerY" secondItem="9mt-Hv-LCg" secondAttribute="centerY" id="Cbd-Z7-sws"/>
@@ -351,18 +350,19 @@
                 <constraint firstItem="RPP-6m-VrP" firstAttribute="leading" secondItem="KE7-k0-5Aq" secondAttribute="trailing" constant="5" id="SKp-oL-agE"/>
                 <constraint firstItem="ukm-po-QLs" firstAttribute="leading" secondItem="fIq-S7-QP6" secondAttribute="trailing" constant="13" id="TiQ-5W-mnp"/>
                 <constraint firstItem="fIq-S7-QP6" firstAttribute="leading" secondItem="DH7-wx-fKc" secondAttribute="trailing" constant="-2" id="Uem-H3-GZ3"/>
+                <constraint firstItem="ftr-M1-use" firstAttribute="centerY" secondItem="zW4-eN-i2g" secondAttribute="centerY" id="Uy2-lI-eI6"/>
                 <constraint firstAttribute="bottom" secondItem="X2E-XN-A0p" secondAttribute="bottom" constant="20" symbolic="YES" id="YIa-nJ-ji3"/>
                 <constraint firstItem="6wG-My-eJn" firstAttribute="centerY" secondItem="KE7-k0-5Aq" secondAttribute="centerY" id="Z25-jB-QSH"/>
                 <constraint firstItem="ND5-z5-PbQ" firstAttribute="leading" secondItem="9mt-Hv-LCg" secondAttribute="leading" id="acN-gy-3dk"/>
                 <constraint firstItem="6wG-My-eJn" firstAttribute="leading" secondItem="z9q-jx-WES" secondAttribute="trailing" id="c3V-8L-Fr2"/>
-                <constraint firstItem="X2E-XN-A0p" firstAttribute="leading" secondItem="NGu-9x-KgL" secondAttribute="trailing" constant="12" symbolic="YES" id="dJr-CD-63L"/>
                 <constraint firstItem="ukm-po-QLs" firstAttribute="centerY" secondItem="fIq-S7-QP6" secondAttribute="centerY" id="e4l-Ro-kvI"/>
                 <constraint firstItem="g7U-8J-5xj" firstAttribute="top" secondItem="rLs-7R-agf" secondAttribute="bottom" id="iOf-Q6-bgH"/>
+                <constraint firstItem="ftr-M1-use" firstAttribute="height" secondItem="zW4-eN-i2g" secondAttribute="height" id="id2-XU-nGV"/>
                 <constraint firstItem="mwg-gJ-lVH" firstAttribute="leading" secondItem="ND5-z5-PbQ" secondAttribute="leading" id="j9o-88-PiZ"/>
-                <constraint firstItem="NGu-9x-KgL" firstAttribute="baseline" secondItem="X2E-XN-A0p" secondAttribute="baseline" id="kpW-tV-gmA"/>
                 <constraint firstItem="z9q-jx-WES" firstAttribute="centerY" secondItem="9mt-Hv-LCg" secondAttribute="centerY" id="lD4-Ax-y6b"/>
                 <constraint firstItem="mwg-gJ-lVH" firstAttribute="top" secondItem="ND5-z5-PbQ" secondAttribute="bottom" constant="120" id="quv-7o-bMN"/>
                 <constraint firstItem="z9q-jx-WES" firstAttribute="leading" secondItem="KE7-k0-5Aq" secondAttribute="trailing" constant="42" id="rbW-dY-dPD"/>
+                <constraint firstItem="ftr-M1-use" firstAttribute="leading" secondItem="zW4-eN-i2g" secondAttribute="trailing" constant="5" id="rkt-e0-0vA"/>
                 <constraint firstItem="KE7-k0-5Aq" firstAttribute="leading" secondItem="9mt-Hv-LCg" secondAttribute="trailing" constant="3" id="vrY-ZP-XYY"/>
                 <constraint firstItem="DH7-wx-fKc" firstAttribute="leading" secondItem="6wG-My-eJn" secondAttribute="trailing" constant="23" id="wGw-ip-1eP"/>
                 <constraint firstItem="rLs-7R-agf" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="xEt-6C-ynu"/>

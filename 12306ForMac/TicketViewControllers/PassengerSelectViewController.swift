@@ -9,29 +9,24 @@
 import Cocoa
 
 class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate{
-
     @IBOutlet weak var passengerTable: NSTableView!
+    var passengers = [PassengerDTO]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    func reloadPassenger(){
+    func reloadPassenger(passengersToShow:[PassengerDTO]){
+        self.passengers = passengersToShow
         self.passengerTable.reloadData()
     }
     
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
-        return MainModel.passengers.count
+        return self.passengers.count
     }
     
     func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
-        if(MainModel.passengers.count - 1 >= row)
-        {
-            return MainModel.passengers[row]
-        }
-        else
-        {
-            return nil
-        }
+        return self.passengers[row]
     }
     
     func checkPassenger(sender:NSButton){
