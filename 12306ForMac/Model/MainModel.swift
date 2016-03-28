@@ -9,6 +9,7 @@
 import Foundation
 
 class MainModel{
+    static let seatTypes = ["商务座", "特等座", "一等座", "二等座", "高级软卧", "软卧", "硬卧", "软座", "硬座", "无座"]
     static let seatTypeNameDic =
     ["商务座": "9",
     "特等座": "P",

@@ -19,10 +19,13 @@ class TaskViewController: NSViewController{
     var calendarPopover:NSPopover?
     
     @IBOutlet weak var passengerStackView: NSStackView!
+    @IBOutlet weak var seatTypeStackView: NSStackView!
+    
     @IBOutlet weak var taskListTable: NSTableView!
     var tasks = [TicketTask]()
     var currentTask: TicketTask = TicketTask()
     var currentPassengers = [PassengerDTO]()
+    var currentSeatTypes = [SeatTypeModel]()
     
     var passengerViewControllerList = [PassengerViewController]()
     let passengerSelectViewController = PassengerSelectViewController()
@@ -30,6 +33,15 @@ class TaskViewController: NSViewController{
         let popover = NSPopover()
         popover.behavior = .Semitransient
         popover.contentViewController = self.passengerSelectViewController
+        return popover
+        }()
+    
+    var seatTypeViewControllerList = [SeatTypeViewController]()
+    let seatTypeSelectViewController = SeatTypeSelectViewController()
+    lazy var seatTypePopover: NSPopover = {
+        let popover = NSPopover()
+        popover.behavior = .Semitransient
+        popover.contentViewController = self.seatTypeSelectViewController
         return popover
         }()
     
@@ -52,9 +64,65 @@ class TaskViewController: NSViewController{
         passengerSelectViewController.reloadPassenger(currentPassengers)
     }
     
+    @IBAction func addTicketType(sender: LoginButton) {
+        if currentSeatTypes.count == 0{
+            for p in MainModel.seatTypes {
+                let ticketType = SeatTypeModel()
+                ticketType.name = p
+                ticketType.id = MainModel.ticketTypeNameDic[p]
+                currentSeatTypes.append(ticketType)
+            }
+        }
+        
+        let positioningView = sender
+        let positioningRect = NSZeroRect
+        let preferredEdge = NSRectEdge.MaxY
+        
+        seatTypePopover.showRelativeToRect(positioningRect, ofView: positioningView, preferredEdge: preferredEdge)
+        
+        seatTypeSelectViewController.reloadTicketTypes(currentSeatTypes)
+    }
+    
+    func receiveDidSendCheckSeatTypeMessageNotification(notification: NSNotification){
+        if !self.seatTypePopover.shown {
+            print("not receiveDidSendCheckSeatTypeMessageNotification in TaskViewController")
+            return
+        }
+        let name = notification.object as! String
+        
+        for i in 0..<currentSeatTypes.count {
+            if currentSeatTypes[i].name == name{
+                if seatSelected(currentSeatTypes[i]){
+                    checkSeat(currentSeatTypes[i])
+                }
+                else{
+                    let p = SeatTypeViewController()
+                    p.seatType = currentSeatTypes[i]
+                    seatTypeViewControllerList.append(p)
+                    self.seatTypeStackView.addView(p.view, inGravity:.Top)
+                }
+                
+                break
+            }
+        }
+    }
+    
+    func seatSelected(seatType:SeatTypeModel) -> Bool{
+        for controller in seatTypeViewControllerList where controller.seatType == seatType{
+            return true
+        }
+        return false
+    }
+    
+    func checkSeat(seatType:SeatTypeModel){
+        for controller in seatTypeViewControllerList where controller.seatType == seatType{
+            controller.select()
+        }
+    }
+    
     func receiveDidSendCheckPassengerMessageNotification(notification: NSNotification) {
         if !self.passengerPopover.shown {
-            print("not my message in TaskViewController")
+            print("not receiveDidSendCheckPassengerMessageNotification in TaskViewController")
             return
         }
         
@@ -86,7 +154,7 @@ class TaskViewController: NSViewController{
     
     func checkPassenger(passenger:PassengerDTO){
         for controller in passengerViewControllerList where controller.passenger == passenger{
-            controller.SelectPassenger()
+            controller.select()
         }
     }
     
@@ -142,6 +210,7 @@ class TaskViewController: NSViewController{
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: Selector("receiveDidSendCheckPassengerMessageNotification:"), name: DidSendCheckPassengerMessageNotification, object: nil)
+        notificationCenter.addObserver(self, selector: Selector("receiveDidSendCheckSeatTypeMessageNotification:"), name: DidSendCheckSeatTypeMessageNotification, object: nil)
     }
     
     deinit{

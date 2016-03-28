@@ -80,6 +80,11 @@
 		F1E7EA2F1C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA271C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m */; };
 		F1E7EA301C5A2E7B007715C1 /* INAppStoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA291C5A2E7B007715C1 /* INAppStoreWindow.m */; };
 		F1E7EA311C5A2E7B007715C1 /* INWindowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA2C1C5A2E7B007715C1 /* INWindowButton.m */; };
+		F1F5CE0C1CA942F5005C33BD /* SeatTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F5CE0A1CA942F5005C33BD /* SeatTypeViewController.swift */; };
+		F1F5CE0D1CA942F5005C33BD /* SeatTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F5CE0B1CA942F5005C33BD /* SeatTypeViewController.xib */; };
+		F1F5CE0F1CA9431D005C33BD /* SeatTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F5CE0E1CA9431D005C33BD /* SeatTypeModel.swift */; };
+		F1F5CE121CA943D1005C33BD /* SeatTypeSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F5CE101CA943D1005C33BD /* SeatTypeSelectViewController.swift */; };
+		F1F5CE131CA943D1005C33BD /* SeatTypeSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F5CE111CA943D1005C33BD /* SeatTypeSelectViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -168,6 +173,11 @@
 		F1E7EA2A1C5A2E7B007715C1 /* INAppStoreWindowCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindowCompatibility.h; sourceTree = "<group>"; };
 		F1E7EA2B1C5A2E7B007715C1 /* INWindowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INWindowButton.h; sourceTree = "<group>"; };
 		F1E7EA2C1C5A2E7B007715C1 /* INWindowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INWindowButton.m; sourceTree = "<group>"; };
+		F1F5CE0A1CA942F5005C33BD /* SeatTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SeatTypeViewController.swift; path = 12306ForMac/TaskViewControllers/SeatTypeViewController.swift; sourceTree = "<group>"; };
+		F1F5CE0B1CA942F5005C33BD /* SeatTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SeatTypeViewController.xib; path = 12306ForMac/TaskViewControllers/SeatTypeViewController.xib; sourceTree = "<group>"; };
+		F1F5CE0E1CA9431D005C33BD /* SeatTypeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatTypeModel.swift; sourceTree = "<group>"; };
+		F1F5CE101CA943D1005C33BD /* SeatTypeSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SeatTypeSelectViewController.swift; path = 12306ForMac/TaskViewControllers/SeatTypeSelectViewController.swift; sourceTree = "<group>"; };
+		F1F5CE111CA943D1005C33BD /* SeatTypeSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SeatTypeSelectViewController.xib; path = 12306ForMac/TaskViewControllers/SeatTypeSelectViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +257,7 @@
 				F111546F1C8D921400FA6059 /* QueryLeftNewDTO.swift */,
 				F11154701C8D921400FA6059 /* QueryOrderParam.swift */,
 				F11154711C8D921400FA6059 /* QueryOrderWaitTimeResult.swift */,
+				F1F5CE0E1CA9431D005C33BD /* SeatTypeModel.swift */,
 			);
 			name = Model;
 			path = 12306ForMac/Model;
@@ -353,6 +364,10 @@
 			children = (
 				F11DA9591C956BBE00322D82 /* TaskViewController.swift */,
 				F11DA95A1C956BBE00322D82 /* TaskViewController.xib */,
+				F1F5CE0A1CA942F5005C33BD /* SeatTypeViewController.swift */,
+				F1F5CE0B1CA942F5005C33BD /* SeatTypeViewController.xib */,
+				F1F5CE101CA943D1005C33BD /* SeatTypeSelectViewController.swift */,
+				F1F5CE111CA943D1005C33BD /* SeatTypeSelectViewController.xib */,
 			);
 			name = TaskViewControllers;
 			sourceTree = "<group>";
@@ -495,11 +510,13 @@
 				F11154B11C8D92C100FA6059 /* OrderViewController.xib in Resources */,
 				F11154D31C8D936300FA6059 /* MainMenu.xib in Resources */,
 				F11DA95C1C956BBE00322D82 /* TaskViewController.xib in Resources */,
+				F1F5CE131CA943D1005C33BD /* SeatTypeSelectViewController.xib in Resources */,
 				F11154651C8D91F800FA6059 /* srca.cer in Resources */,
 				F11154C61C8D92D000FA6059 /* TicketTableViewController.xib in Resources */,
 				F11154941C8D925200FA6059 /* LunarCalendarView.xib in Resources */,
 				F11154D01C8D931500FA6059 /* MainWindowController.xib in Resources */,
 				F11154D61C8D937E00FA6059 /* Images.xcassets in Resources */,
+				F1F5CE0D1CA942F5005C33BD /* SeatTypeViewController.xib in Resources */,
 				F11154C01C8D92D000FA6059 /* NormalSearchViewController.xib in Resources */,
 				F11154E51C8D93B300FA6059 /* Add.png in Resources */,
 				F1D575771C95541D00A214B0 /* TicketQueryViewController.xib in Resources */,
@@ -616,9 +633,12 @@
 				F11154751C8D921400FA6059 /* OrderQueueResult.swift in Sources */,
 				F113B4F81C8FBA2E0001AE09 /* ServiceError.swift in Sources */,
 				F11154B01C8D92C100FA6059 /* OrderViewController.swift in Sources */,
+				F1F5CE0F1CA9431D005C33BD /* SeatTypeModel.swift in Sources */,
 				F11154821C8D923C00FA6059 /* XCGLogger.swift in Sources */,
 				F13B6FCB1C982A130095B196 /* Train.swift in Sources */,
+				F1F5CE121CA943D1005C33BD /* SeatTypeSelectViewController.swift in Sources */,
 				F11154921C8D925200FA6059 /* LoginButton.swift in Sources */,
+				F1F5CE0C1CA942F5005C33BD /* SeatTypeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

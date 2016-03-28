@@ -79,7 +79,7 @@ class DisclosureViewController: NSViewController{
     
     func checkPassenger(passenger:PassengerDTO){
         for controller in passengerViewControllerList where controller.passenger == passenger{
-            controller.SelectPassenger()
+            controller.select()
         }
     }
     

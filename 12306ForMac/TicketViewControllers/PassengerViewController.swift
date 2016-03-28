@@ -26,7 +26,7 @@ class PassengerViewController: NSViewController {
         self.view.hidden = true
     }
     
-    func SelectPassenger(){
+    func select(){
         if passenger!.isChecked {
             self.view.hidden = false
         }
@@ -34,7 +34,4 @@ class PassengerViewController: NSViewController {
             self.view.hidden = true
         }
     }
-    
-
-    
 }

@@ -10,6 +10,7 @@
                 <outlet property="fromStationName" destination="KE7-k0-5Aq" id="A17-fe-Th8"/>
                 <outlet property="passengerStackView" destination="ftr-M1-use" id="jFN-IT-1Bg"/>
                 <outlet property="queryDate" destination="fIq-S7-QP6" id="mi8-Ti-dF6"/>
+                <outlet property="seatTypeStackView" destination="Aax-fv-Mtq" id="bds-mx-Tgt"/>
                 <outlet property="taskListTable" destination="TtQ-pX-z2t" id="UKO-De-1Im"/>
                 <outlet property="toStationName" destination="6wG-My-eJn" id="RZ8-jq-sg1"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -21,6 +22,10 @@
             <rect key="frame" x="0.0" y="0.0" width="910" height="710"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
+                <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ftr-M1-use">
+                    <rect key="frame" x="377" y="240" width="0.0" height="25"/>
+                    <animations/>
+                </stackView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zW4-eN-i2g" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
                     <rect key="frame" x="312" y="240" width="60" height="25"/>
                     <constraints>
@@ -107,7 +112,7 @@
                                                             <constraint firstAttribute="height" constant="24" id="R9F-uf-bbn"/>
                                                         </constraints>
                                                         <animations/>
-                                                        <buttonCell key="cell" type="bevel" title="查询中" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LZ0-sI-vWv">
+                                                        <buttonCell key="cell" type="bevel" title="预定" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LZ0-sI-vWv">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -204,6 +209,10 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </textField>
+                <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aax-fv-Mtq">
+                    <rect key="frame" x="377" y="385" width="0.0" height="25"/>
+                    <animations/>
+                </stackView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mwg-gJ-lVH" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
                     <rect key="frame" x="312" y="385" width="60" height="25"/>
                     <constraints>
@@ -215,6 +224,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="addTicketType:" target="-2" id="inO-s4-ROl"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ND5-z5-PbQ" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
                     <rect key="frame" x="312" y="530" width="60" height="25"/>
@@ -330,10 +342,6 @@
                         <action selector="showCalendar:" target="-2" id="d0M-bo-HYQ"/>
                     </connections>
                 </button>
-                <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ftr-M1-use">
-                    <rect key="frame" x="377" y="240" width="0.0" height="25"/>
-                    <animations/>
-                </stackView>
             </subviews>
             <constraints>
                 <constraint firstItem="rLs-7R-agf" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="2Nl-5G-TBS"/>
@@ -349,6 +357,7 @@
                 <constraint firstItem="9mt-Hv-LCg" firstAttribute="leading" secondItem="TtQ-pX-z2t" secondAttribute="trailing" constant="12" id="L1O-uA-YjR"/>
                 <constraint firstItem="RPP-6m-VrP" firstAttribute="leading" secondItem="KE7-k0-5Aq" secondAttribute="trailing" constant="5" id="SKp-oL-agE"/>
                 <constraint firstItem="ukm-po-QLs" firstAttribute="leading" secondItem="fIq-S7-QP6" secondAttribute="trailing" constant="13" id="TiQ-5W-mnp"/>
+                <constraint firstItem="Aax-fv-Mtq" firstAttribute="height" secondItem="mwg-gJ-lVH" secondAttribute="height" id="UQN-64-7sG"/>
                 <constraint firstItem="fIq-S7-QP6" firstAttribute="leading" secondItem="DH7-wx-fKc" secondAttribute="trailing" constant="-2" id="Uem-H3-GZ3"/>
                 <constraint firstItem="ftr-M1-use" firstAttribute="centerY" secondItem="zW4-eN-i2g" secondAttribute="centerY" id="Uy2-lI-eI6"/>
                 <constraint firstAttribute="bottom" secondItem="X2E-XN-A0p" secondAttribute="bottom" constant="20" symbolic="YES" id="YIa-nJ-ji3"/>
@@ -358,8 +367,10 @@
                 <constraint firstItem="ukm-po-QLs" firstAttribute="centerY" secondItem="fIq-S7-QP6" secondAttribute="centerY" id="e4l-Ro-kvI"/>
                 <constraint firstItem="g7U-8J-5xj" firstAttribute="top" secondItem="rLs-7R-agf" secondAttribute="bottom" id="iOf-Q6-bgH"/>
                 <constraint firstItem="ftr-M1-use" firstAttribute="height" secondItem="zW4-eN-i2g" secondAttribute="height" id="id2-XU-nGV"/>
+                <constraint firstItem="Aax-fv-Mtq" firstAttribute="leading" secondItem="mwg-gJ-lVH" secondAttribute="trailing" constant="5" id="igJ-iT-hvP"/>
                 <constraint firstItem="mwg-gJ-lVH" firstAttribute="leading" secondItem="ND5-z5-PbQ" secondAttribute="leading" id="j9o-88-PiZ"/>
                 <constraint firstItem="z9q-jx-WES" firstAttribute="centerY" secondItem="9mt-Hv-LCg" secondAttribute="centerY" id="lD4-Ax-y6b"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Aax-fv-Mtq" secondAttribute="trailing" constant="20" symbolic="YES" id="oa7-Dz-cVV"/>
                 <constraint firstItem="mwg-gJ-lVH" firstAttribute="top" secondItem="ND5-z5-PbQ" secondAttribute="bottom" constant="120" id="quv-7o-bMN"/>
                 <constraint firstItem="z9q-jx-WES" firstAttribute="leading" secondItem="KE7-k0-5Aq" secondAttribute="trailing" constant="42" id="rbW-dY-dPD"/>
                 <constraint firstItem="ftr-M1-use" firstAttribute="leading" secondItem="zW4-eN-i2g" secondAttribute="trailing" constant="5" id="rkt-e0-0vA"/>
@@ -369,6 +380,7 @@
                 <constraint firstAttribute="bottom" secondItem="rLs-7R-agf" secondAttribute="bottom" constant="40" id="xGZ-h8-Hdz"/>
                 <constraint firstItem="g7U-8J-5xj" firstAttribute="width" secondItem="rLs-7R-agf" secondAttribute="width" id="yMT-0I-dw3"/>
                 <constraint firstAttribute="bottom" secondItem="g7U-8J-5xj" secondAttribute="bottom" id="zFB-jP-hMx"/>
+                <constraint firstItem="Aax-fv-Mtq" firstAttribute="centerY" secondItem="mwg-gJ-lVH" secondAttribute="centerY" id="zKm-9b-EMF"/>
                 <constraint firstItem="zW4-eN-i2g" firstAttribute="top" secondItem="mwg-gJ-lVH" secondAttribute="bottom" constant="120" id="zMe-lz-E7u"/>
                 <constraint firstAttribute="trailing" secondItem="X2E-XN-A0p" secondAttribute="trailing" constant="20" symbolic="YES" id="zQv-kz-1r9"/>
             </constraints>
