@@ -239,6 +239,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="addTrainCode:" target="-2" id="hn7-2Q-wAQ"/>
+                    </connections>
                 </button>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6wG-My-eJn" customClass="AutoCompleteTextField" customModule="_2306ForMac" customModuleProvider="target">
                     <rect key="frame" x="577" y="673" width="100" height="23"/>

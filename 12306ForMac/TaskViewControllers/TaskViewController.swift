@@ -27,6 +27,8 @@ class TaskViewController: NSViewController{
     var currentPassengers = [PassengerDTO]()
     var currentSeatTypes = [SeatTypeModel]()
     
+    var ticketSelectWindowController: TicketSelectWindowController!
+    
     var passengerViewControllerList = [PassengerViewController]()
     let passengerSelectViewController = PassengerSelectViewController()
     lazy var passengerPopover: NSPopover = {
@@ -44,6 +46,25 @@ class TaskViewController: NSViewController{
         popover.contentViewController = self.seatTypeSelectViewController
         return popover
         }()
+    
+    @IBAction func addTrainCode(sender: LoginButton) {
+        ticketSelectWindowController = TicketSelectWindowController()
+        
+        ticketSelectWindowController.fromStationCode = stationDataService.allStationMap[fromStationName.stringValue]?.Code
+        ticketSelectWindowController.toStationCode = stationDataService.allStationMap[toStationName.stringValue]?.Code
+        
+        let dateStr = queryDate.dateValue.description
+        let dateRange = dateStr.rangeOfString(" ")
+        ticketSelectWindowController.date = dateStr[dateStr.startIndex..<dateRange!.startIndex]
+        
+        if let window = self.view.window {
+            window.beginSheet(ticketSelectWindowController.window!) {
+                if $0 == NSModalResponseOK{
+//                    self.loginButton.title = MainModel.realName
+                }
+            }
+        }
+    }
     
     @IBAction func addPassenger(sender: LoginButton) {
         if currentPassengers.count == 0{
@@ -207,6 +228,8 @@ class TaskViewController: NSViewController{
             let index = 0
             taskListTable.selectRowIndexes(NSIndexSet(index: index), byExtendingSelection: false)
         }
+        
+        self.queryDate.dateValue = NSDate()
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: Selector("receiveDidSendCheckPassengerMessageNotification:"), name: DidSendCheckPassengerMessageNotification, object: nil)

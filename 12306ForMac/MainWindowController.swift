@@ -17,7 +17,7 @@ class MainWindowController: NSWindowController{
     var ticketQueryViewController:TicketQueryViewController?
     var taskViewController:TaskViewController?
     
-    var loginWindowController = LoginWindowController()
+    var loginWindowController:LoginWindowController!
     
     override func windowDidLoad()
     {

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "12306ForMac/TaskViewControllers/TaskViewController.swift"
-            timestampString = "480867825.217833"
+            timestampString = "481952399.84177"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "addTicketType(_:)"
             landmarkType = "5">
          </BreakpointContent>
