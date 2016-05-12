@@ -134,14 +134,14 @@ extension TicketSelectWindowController: NSTableViewDelegate{
                 }
                 else if (ticket == "有"){
                     sender.target = self
-                    sender.action = Selector("submit:")
+                    sender.action = #selector(TicketTableViewController.submit(_:))
                     sender.hidden = false
                     sender.enabled = false
                     sender.title = sender.alternateTitle + "(有票)"
                 }
                 else{
                     sender.target = self
-                    sender.action = Selector("submit:")
+                    sender.action = #selector(TicketTableViewController.submit(_:))
                     sender.hidden = false
                     sender.enabled = false
                     sender.title = sender.alternateTitle + "(\(ticket)张)"

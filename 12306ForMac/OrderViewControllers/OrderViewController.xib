@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="OrderViewController" customModule="_2306ForMac" customModuleProvider="target">
@@ -29,7 +29,6 @@
                             <tableView identifier="MenuList" verticalHuggingPriority="750" tag="1" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="50" viewBased="YES" id="aOb-1J-CjJ">
                                 <rect key="frame" x="0.0" y="0.0" width="150" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <animations/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" red="0.95686274509803926" green="0.95686274509803926" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -53,7 +52,6 @@
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="G3P-r0-Mex">
                                                         <rect key="frame" x="18" y="16" width="113" height="19"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="已完成订单" id="5S2-Se-WWb">
                                                             <font key="font" metaFont="systemThin" size="15"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -69,7 +67,6 @@
                                                     <constraint firstItem="G3P-r0-Mex" firstAttribute="centerY" secondItem="lfh-2R-mvZ" secondAttribute="centerY" id="heU-KX-C6m"/>
                                                     <constraint firstAttribute="trailing" secondItem="G3P-r0-Mex" secondAttribute="trailing" constant="18" id="sQq-ga-9Ni"/>
                                                 </constraints>
-                                                <animations/>
                                                 <connections>
                                                     <outlet property="textField" destination="G3P-r0-Mex" id="NlY-LH-AIY"/>
                                                 </connections>
@@ -84,22 +81,18 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
                     <constraints>
                         <constraint firstAttribute="width" constant="150" id="d25-o3-hyv"/>
                     </constraints>
-                    <animations/>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="fRk-Mn-jlT">
                         <rect key="frame" x="1" y="383" width="148" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="uRq-Cy-1cS">
                         <rect key="frame" x="224" y="17" width="15" height="102"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </scroller>
                     <accessibility identifier="Menu"/>
                 </scrollView>
@@ -112,7 +105,6 @@
                             <tableView identifier="OrderList" verticalHuggingPriority="750" tag="2" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="50" viewBased="YES" id="Mba-dl-MeQ">
                                 <rect key="frame" x="0.0" y="0.0" width="330" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <animations/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -136,7 +128,6 @@
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="dZX-3m-GwH">
                                                         <rect key="frame" x="18" y="17" width="291" height="17"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="订单详情" id="MS9-Vj-a14">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -152,7 +143,6 @@
                                                     <constraint firstItem="dZX-3m-GwH" firstAttribute="leading" secondItem="jTQ-kZ-AWU" secondAttribute="leading" constant="20" symbolic="YES" id="l6h-9X-pPu"/>
                                                     <constraint firstItem="dZX-3m-GwH" firstAttribute="centerY" secondItem="jTQ-kZ-AWU" secondAttribute="centerY" id="vRS-mi-thN"/>
                                                 </constraints>
-                                                <animations/>
                                                 <connections>
                                                     <outlet property="textField" destination="dZX-3m-GwH" id="cEu-VP-c6e"/>
                                                 </connections>
@@ -166,19 +156,15 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
-                    <animations/>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="nYZ-lC-U4L">
                         <rect key="frame" x="1" y="119" width="223" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="y1D-Am-WfU">
                         <rect key="frame" x="224" y="17" width="15" height="102"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </scroller>
                 </scrollView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="4mH-Np-R8c" userLabel="Loading View" customClass="GlassView" customModule="_2306ForMac" customModuleProvider="target">
@@ -186,7 +172,6 @@
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cff-ez-eTt" userLabel="正在查询...">
                             <rect key="frame" x="29" y="7" width="85" height="17"/>
-                            <animations/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="正在查询..." id="YHU-EJ-HBR">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
@@ -195,7 +180,6 @@
                         </textField>
                         <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="uC2-el-N3v">
                             <rect key="frame" x="7" y="7" width="16" height="16"/>
-                            <animations/>
                         </progressIndicator>
                     </subviews>
                     <constraints>
@@ -204,7 +188,6 @@
                         <constraint firstAttribute="height" constant="30" id="em5-RE-LNm"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="iBK-hc-vNg"/>
                     </constraints>
-                    <animations/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
                             <color key="value" red="1" green="0.97048561960000002" blue="0.9787521159" alpha="0.79592483110000001" colorSpace="calibratedRGB"/>
@@ -213,7 +196,6 @@
                 </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N4e-df-tvh" customClass="FlashLabel" customModule="_2306ForMac" customModuleProvider="target">
                     <rect key="frame" x="276" y="190" width="79" height="19"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="请先登录～" drawsBackground="YES" id="iWl-Rg-TSe">
                         <font key="font" metaFont="system" size="15"/>
                         <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
@@ -226,7 +208,6 @@
                         <constraint firstAttribute="height" constant="20" id="iVz-xc-CPD"/>
                         <constraint firstAttribute="width" constant="69" id="y5p-Pd-KnT"/>
                     </constraints>
-                    <animations/>
                     <buttonCell key="cell" type="push" title="刷新" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5WU-x5-Vr0">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -251,7 +232,6 @@
                 <constraint firstAttribute="bottom" secondItem="Mi4-JD-yDr" secondAttribute="bottom" constant="40" id="sEu-LY-xvw"/>
                 <constraint firstAttribute="bottom" secondItem="aNY-Bu-GtP" secondAttribute="bottom" id="wJe-D1-yRx"/>
             </constraints>
-            <animations/>
             <point key="canvasLocation" x="252" y="429"/>
         </customView>
     </objects>

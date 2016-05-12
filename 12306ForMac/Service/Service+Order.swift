@@ -69,7 +69,7 @@ extension Service{
                     passengerStr += "_"
                 }
             }
-            i++
+            i += 1
         }
         return (passengerStr,oldPassengerStr)
     }

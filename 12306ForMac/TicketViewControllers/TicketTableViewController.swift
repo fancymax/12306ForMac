@@ -34,7 +34,7 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         loadingView.hidden = true
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: Selector("receiveDidSendSubmitMessageNotification:"), name: DidSendSubmitMessageNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(TicketTableViewController.receiveDidSendSubmitMessageNotification(_:)), name: DidSendSubmitMessageNotification, object: nil)
     }
     
     func receiveDidSendSubmitMessageNotification(note: NSNotification){
@@ -211,14 +211,14 @@ extension TicketTableViewController: NSTableViewDelegate{
                 }
                 else if (ticket == "有"){
                     sender.target = self
-                    sender.action = Selector("submit:")
+                    sender.action = #selector(TicketTableViewController.submit(_:))
                     sender.hidden = false
                     sender.enabled = true
                     sender.title = sender.alternateTitle + "(有票)"
                 }
                 else{
                     sender.target = self
-                    sender.action = Selector("submit:")
+                    sender.action = #selector(TicketTableViewController.submit(_:))
                     sender.hidden = false
                     sender.enabled = true
                     sender.title = sender.alternateTitle + "(\(ticket)张)"

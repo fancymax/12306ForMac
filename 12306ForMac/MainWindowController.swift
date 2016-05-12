@@ -49,7 +49,7 @@ class MainWindowController: NSWindowController{
         segment.selectedSegment = 0
         segment.segmentStyle = NSSegmentStyle.TexturedSquare
         segment.target = self
-        segment.action = Selector("segmentTab:")
+        segment.action = #selector(MainWindowController.segmentTab(_:))
         
         let searchFieldSize = NSMakeSize(150, 22)
         let searchFrame = NSMakeRect(
@@ -85,7 +85,7 @@ class MainWindowController: NSWindowController{
         
         //login notification
         let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: Selector("receiveDidSendLoginMessageNotification:"), name: DidSendLoginMessageNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(MainWindowController.receiveDidSendLoginMessageNotification(_:)), name: DidSendLoginMessageNotification, object: nil)
         
         let service = Service()
         service.getWanIP({ip in

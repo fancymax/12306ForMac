@@ -60,7 +60,7 @@ class AutoCompleteTextField:NSTextField{
         tableView.headerView = nil
         tableView.refusesFirstResponder = true
         tableView.target = self
-        tableView.doubleAction = Selector("insert:")
+        tableView.doubleAction = #selector(AutoCompleteTextField.insert(_:))
         tableView.addTableColumn(column1)
         tableView.setDelegate(self)
         tableView.setDataSource(self)
@@ -141,7 +141,7 @@ class AutoCompleteTextField:NSTextField{
         let matchCount = self.matches!.count
         if selectedRow >= 0 && selectedRow < matchCount{
             self.stringValue = self.matches![selectedRow]
-            if self.tableViewDelegate!.respondsToSelector(Selector("didSelectItem:")){
+            if self.tableViewDelegate!.respondsToSelector(#selector(AutoCompleteTableViewDelegate.didSelectItem(_:))){
                 self.tableViewDelegate!.didSelectItem!(self.stringValue)
             }
         }
@@ -182,7 +182,7 @@ class AutoCompleteTextField:NSTextField{
     }
     
     func completionsForPartialWordRange(charRange: NSRange, indexOfSelectedItem index: Int) ->[String]{
-        if self.tableViewDelegate!.respondsToSelector(Selector("textField:completions:forPartialWordRange:indexOfSelectedItem:")){
+        if self.tableViewDelegate!.respondsToSelector(#selector(AutoCompleteTableViewDelegate.textField(_:completions:forPartialWordRange:indexOfSelectedItem:))){
             return self.tableViewDelegate!.textField(self, completions: [], forPartialWordRange: charRange, indexOfSelectedItem: index)
         }
         return []

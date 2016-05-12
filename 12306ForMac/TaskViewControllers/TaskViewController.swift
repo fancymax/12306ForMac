@@ -220,7 +220,7 @@ class TaskViewController: NSViewController{
         
         let realm = try! Realm()
         let task = realm.objects(TicketTask)
-        for var i = 0; i < task.count; i++ {
+        for i in 0 ..< task.count {
             self.tasks.append(task[i])
         }
         
@@ -232,8 +232,8 @@ class TaskViewController: NSViewController{
         self.queryDate.dateValue = NSDate()
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: Selector("receiveDidSendCheckPassengerMessageNotification:"), name: DidSendCheckPassengerMessageNotification, object: nil)
-        notificationCenter.addObserver(self, selector: Selector("receiveDidSendCheckSeatTypeMessageNotification:"), name: DidSendCheckSeatTypeMessageNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(TaskViewController.receiveDidSendCheckPassengerMessageNotification(_:)), name: DidSendCheckPassengerMessageNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(TaskViewController.receiveDidSendCheckSeatTypeMessageNotification(_:)), name: DidSendCheckSeatTypeMessageNotification, object: nil)
     }
     
     deinit{

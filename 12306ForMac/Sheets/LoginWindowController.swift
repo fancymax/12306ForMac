@@ -32,12 +32,10 @@ class LoginWindowController: NSWindowController{
     @IBAction func okayButtonClicked(button:NSButton){
         if userName.stringValue == "" || passWord.stringValue == "" {
             tips.show("请先输入用户名和密码", forDuration: 0.1, withFlash: false)
-            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:"hideLogStateLabel", userInfo: nil, repeats: false)
             return
         }
         if loginImage.randCodeStr == nil {
             tips.show("请先选择验证码", forDuration: 0.1, withFlash: false)
-            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:"hideLogStateLabel", userInfo: nil, repeats: false)
             return
         }
         
@@ -50,7 +48,7 @@ class LoginWindowController: NSWindowController{
             self.stopLoadingTip()
             //显示登录失败 持续一秒
             self.tips.show(translate(error), forDuration: 0.1, withFlash: false)
-            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:"handlerAfterFailure", userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:#selector(LoginWindowController.handlerAfterFailure), userInfo: nil, repeats: false)
         }
         
         let successHandler = {
@@ -58,7 +56,7 @@ class LoginWindowController: NSWindowController{
             self.tips.show("登录成功", forDuration: 0.1, withFlash: false)
             button.enabled = true
             self.service.postMobileGetPassengerDTOs()
-            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:"handlerAfterSuccess", userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:#selector(LoginWindowController.handlerAfterSuccess), userInfo: nil, repeats: false)
         }
         
         service.loginFlow(user: userName.stringValue, passWord: passWord.stringValue, randCodeStr: loginImage.randCodeStr!, success: successHandler, failure: failureHandler)
@@ -95,7 +93,7 @@ class LoginWindowController: NSWindowController{
         
         let realm = try! Realm()
         let users = realm.objects(User)
-        for var i = 0; i < users.count; i++ {
+        for i in 0 ..< users.count {
             self.users.append(users[i])
         }
         
@@ -129,7 +127,6 @@ class LoginWindowController: NSWindowController{
         let failureHandler = {(error:NSError) -> () in
             self.stopLoadingTip()
             self.tips.show(translate(error), forDuration: 0.1, withFlash: false)
-            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:"hideLogStateLabel", userInfo: nil, repeats: false)
         }
         service.preLoginFlow(success: successHandler,failure: failureHandler)
     }

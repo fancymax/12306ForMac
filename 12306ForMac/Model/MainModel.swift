@@ -63,7 +63,6 @@ class MainModel{
         }
         return MainModel.seatTypeNameDic[identifier]!
     }
-    
     static func ticketPriceBy(indentifier:String) -> Double{
         if let ticketInfo = ypInfoDetail {
             var start = ticketInfo.startIndex
@@ -74,9 +73,9 @@ class MainModel{
                 }
                 start = start.advancedBy(10)
                 end = start.advancedBy(5)
-                print(ticketInfo.substringWithRange(Range(start: start,end: end)))
+                print(ticketInfo.substringWithRange(Range(start..<end)))
             }
-            let priceStr = ticketInfo.substringWithRange(Range(start: start.advancedBy(1), end: end.advancedBy(1)))
+            let priceStr = ticketInfo.substringWithRange(Range(start.advancedBy(1)..<end.advancedBy(1)))
             let price = Double(priceStr)! / 10
             Swift.print("indentifier = \(indentifier) price = \(price) yp = \(ticketInfo)")
             return price

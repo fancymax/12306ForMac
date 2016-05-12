@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
@@ -24,7 +24,6 @@
             <subviews>
                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ftr-M1-use">
                     <rect key="frame" x="377" y="240" width="0.0" height="25"/>
-                    <animations/>
                 </stackView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zW4-eN-i2g" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
                     <rect key="frame" x="312" y="240" width="60" height="25"/>
@@ -32,7 +31,6 @@
                         <constraint firstAttribute="width" constant="60" id="Ddo-53-5Ol"/>
                         <constraint firstAttribute="height" constant="25" id="cWt-6Z-AZ6"/>
                     </constraints>
-                    <animations/>
                     <buttonCell key="cell" type="bevel" title="乘客" bezelStyle="rounded" image="Add" imagePosition="left" alignment="center" imageScaling="proportionallyDown" inset="2" id="hsa-Ix-hMh">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -50,7 +48,6 @@
                             <tableView identifier="MenuList" verticalHuggingPriority="750" tag="1" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="50" viewBased="YES" id="TtQ-pX-z2t">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <animations/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -74,7 +71,6 @@
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="u46-74-1fg">
                                                         <rect key="frame" x="18" y="26" width="181" height="19"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="深圳 -&gt; 福州" id="uaA-3Q-Ke7">
                                                             <font key="font" metaFont="systemThin" size="15"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -86,7 +82,6 @@
                                                     </textField>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1kH-93-80K">
                                                         <rect key="frame" x="18" y="7" width="76" height="17"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="2016-03-14" id="zbl-rk-BcU">
                                                             <font key="font" metaFont="systemThin" size="13"/>
                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -98,7 +93,6 @@
                                                     </textField>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="8e8-Vg-yJ5">
                                                         <rect key="frame" x="120" y="7" width="78" height="17"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="第100次抢票" id="PTi-g4-aur">
                                                             <font key="font" metaFont="systemThin" size="13"/>
                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -111,7 +105,6 @@
                                                             <constraint firstAttribute="width" constant="65" id="8SX-JV-GM8"/>
                                                             <constraint firstAttribute="height" constant="24" id="R9F-uf-bbn"/>
                                                         </constraints>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="bevel" title="预定" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LZ0-sI-vWv">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -129,7 +122,6 @@
                                                     <constraint firstItem="1kH-93-80K" firstAttribute="top" secondItem="u46-74-1fg" secondAttribute="bottom" constant="2" id="rGA-8s-4FS"/>
                                                     <constraint firstItem="2fb-wA-dcQ" firstAttribute="leading" secondItem="u46-74-1fg" secondAttribute="trailing" constant="30" id="tAJ-T2-mQe"/>
                                                 </constraints>
-                                                <animations/>
                                                 <connections>
                                                     <outlet property="textField" destination="u46-74-1fg" id="iJi-t1-4Zo"/>
                                                 </connections>
@@ -145,23 +137,19 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="SQf-Gw-nB6"/>
                         <constraint firstAttribute="width" constant="300" id="hgb-xN-YsZ"/>
                     </constraints>
-                    <animations/>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="WGG-lU-y5a">
                         <rect key="frame" x="1" y="383" width="148" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Ewv-iM-fwE">
                         <rect key="frame" x="224" y="17" width="15" height="102"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </scroller>
                     <accessibility identifier="Menu"/>
                 </scrollView>
@@ -171,7 +159,6 @@
                         <constraint firstAttribute="width" constant="60" id="Ebb-Sl-C8K"/>
                         <constraint firstAttribute="height" constant="20" id="LtH-Wo-JDY"/>
                     </constraints>
-                    <animations/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="到达城市" id="1zW-zr-Fnh">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -184,7 +171,6 @@
                         <constraint firstAttribute="height" constant="20" id="AwJ-w5-nHn"/>
                         <constraint firstAttribute="width" constant="60" id="zg2-nS-wRY"/>
                     </constraints>
-                    <animations/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="出发城市" id="NXP-7o-tX4">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -197,7 +183,6 @@
                         <constraint firstAttribute="width" constant="100" id="YLA-La-L9b"/>
                         <constraint firstAttribute="height" constant="23" id="uoE-LU-n98"/>
                     </constraints>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="blI-c4-x9E">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -211,7 +196,6 @@
                 </textField>
                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aax-fv-Mtq">
                     <rect key="frame" x="377" y="385" width="0.0" height="25"/>
-                    <animations/>
                 </stackView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mwg-gJ-lVH" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
                     <rect key="frame" x="312" y="385" width="60" height="25"/>
@@ -219,7 +203,6 @@
                         <constraint firstAttribute="height" constant="25" id="2u1-3d-0ep"/>
                         <constraint firstAttribute="width" constant="60" id="diL-YH-9LB"/>
                     </constraints>
-                    <animations/>
                     <buttonCell key="cell" type="bevel" title="席别" bezelStyle="rounded" image="Add" imagePosition="left" alignment="center" imageScaling="proportionallyDown" inset="2" id="Bz9-nr-o79">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -234,7 +217,6 @@
                         <constraint firstAttribute="height" constant="25" id="0Gg-6I-Dwg"/>
                         <constraint firstAttribute="width" constant="60" id="Ut2-UQ-PUy"/>
                     </constraints>
-                    <animations/>
                     <buttonCell key="cell" type="bevel" title="车次" bezelStyle="rounded" image="Add" imagePosition="left" alignment="center" imageScaling="proportionallyDown" inset="2" id="Y9y-IB-Vol">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -249,7 +231,6 @@
                         <constraint firstAttribute="height" constant="23" id="Dlg-0D-cNQ"/>
                         <constraint firstAttribute="width" constant="100" id="Ngc-Gt-Elj"/>
                     </constraints>
-                    <animations/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="CQk-5u-kRI">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -266,7 +247,6 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="LnB-HJ-uTH"/>
                     </constraints>
-                    <animations/>
                     <buttonCell key="cell" type="bevel" title="+" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sob-oo-VtA">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -281,7 +261,6 @@
                         <constraint firstAttribute="width" constant="35" id="Kqa-6c-g3J"/>
                         <constraint firstAttribute="height" constant="16" id="Qu0-4e-6mR"/>
                     </constraints>
-                    <animations/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Group" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="qKR-68-RHJ">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -292,7 +271,6 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="70" id="cmD-Ip-WWx"/>
                     </constraints>
-                    <animations/>
                     <buttonCell key="cell" type="push" title="保存" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="emA-WE-bX6">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -307,7 +285,6 @@
                         <constraint firstAttribute="width" constant="60" id="yGJ-oh-NjL"/>
                         <constraint firstAttribute="height" constant="20" id="zRr-1p-na5"/>
                     </constraints>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="出发日期" id="xva-Hw-XMM">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -320,7 +297,6 @@
                         <constraint firstAttribute="width" constant="100" id="3lC-vE-T6K"/>
                         <constraint firstAttribute="height" constant="23" id="MVH-xb-6Jb"/>
                     </constraints>
-                    <animations/>
                     <datePickerCell key="cell" enabled="NO" refusesFirstResponder="YES" borderStyle="bezel" alignment="left" drawsBackground="NO" datePickerStyle="textField" id="nMK-Wu-0XQ">
                         <font key="font" metaFont="system"/>
                         <date key="date" timeIntervalSinceReferenceDate="467308800">
@@ -336,7 +312,6 @@
                         <constraint firstAttribute="height" constant="23" id="Ior-ib-rDd"/>
                         <constraint firstAttribute="width" constant="23" id="ndc-GN-zXD"/>
                     </constraints>
-                    <animations/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="CalendarTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="tgk-gw-9vX">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -387,7 +362,6 @@
                 <constraint firstItem="zW4-eN-i2g" firstAttribute="top" secondItem="mwg-gJ-lVH" secondAttribute="bottom" constant="120" id="zMe-lz-E7u"/>
                 <constraint firstAttribute="trailing" secondItem="X2E-XN-A0p" secondAttribute="trailing" constant="20" symbolic="YES" id="zQv-kz-1r9"/>
             </constraints>
-            <animations/>
             <point key="canvasLocation" x="505" y="469"/>
         </customView>
         <menu id="e0f-6s-AHe">

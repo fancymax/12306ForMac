@@ -45,6 +45,7 @@ extension Service {
                     var cLeftTicketUrl:String = "leftTicket/queryT"
                     if let matches = Regex("var CLeftTicketUrl = '([^']+)'").getMatches(content){
                         cLeftTicketUrl = matches[0][0]
+                        logger.debug("cLeftTicketUrl=\(cLeftTicketUrl)")
                     }
                     else{
                         logger.error("fail to get CLeftTicketUrl:\(content)")

@@ -40,7 +40,7 @@ class SeatTypeSelectViewController: NSViewController {
         
         let check = cellView.viewWithTag(1) as! NSButton
         check.target = self
-        check.action = Selector("checkTicketType:")
+        check.action = #selector(SeatTypeSelectViewController.checkTicketType(_:))
         
         return cellView
     }

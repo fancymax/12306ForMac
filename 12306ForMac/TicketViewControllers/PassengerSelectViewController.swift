@@ -41,7 +41,7 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
         
         let check = cellView.viewWithTag(1) as! NSButton
         check.target = self
-        check.action = Selector("checkPassenger:")
+        check.action = #selector(PassengerSelectViewController.checkPassenger(_:))
         
         return cellView
     }
