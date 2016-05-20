@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SeatTypeSelectViewController" customModule="_2306ForMac" customModuleProvider="target">
@@ -25,7 +25,6 @@
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="25" viewBased="YES" id="eEo-wp-Ja0">
                                 <rect key="frame" x="0.0" y="0.0" width="90" height="125"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <animations/>
                                 <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
@@ -48,7 +47,6 @@
                                                 <subviews>
                                                     <button tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="GTy-As-quv">
                                                         <rect key="frame" x="8" y="4" width="61" height="18"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="一等座" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Ta2-cf-yKP">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -63,7 +61,6 @@
                                                     <constraint firstItem="GTy-As-quv" firstAttribute="leading" secondItem="iKh-cf-31Z" secondAttribute="leading" constant="10" id="04X-g8-le8"/>
                                                     <constraint firstItem="GTy-As-quv" firstAttribute="centerY" secondItem="iKh-cf-31Z" secondAttribute="centerY" id="M82-RI-2pE"/>
                                                 </constraints>
-                                                <animations/>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
@@ -74,23 +71,18 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
-                    <animations/>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="thv-8Q-8Bx">
                         <rect key="frame" x="0.0" y="-16" width="0.0" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="0LC-Gj-YWc">
                         <rect key="frame" x="224" y="17" width="15" height="102"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </scroller>
                 </scrollView>
             </subviews>
-            <animations/>
             <point key="canvasLocation" x="124" y="364.5"/>
         </customView>
     </objects>

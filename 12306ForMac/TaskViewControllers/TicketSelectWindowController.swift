@@ -10,7 +10,6 @@ import Cocoa
 
 class TicketSelectWindowController: NSWindowController{
     @IBOutlet weak var loadingView: NSView!
-//    @IBOutlet weak var loadingTip: NSTextField!
     @IBOutlet weak var loadingSpinner: NSProgressIndicator!
     
     @IBOutlet weak var loadingTip: NSTextField!
@@ -21,7 +20,7 @@ class TicketSelectWindowController: NSWindowController{
     var toStationCode:String!
     var fromStationCode:String!
     var date:String!
-    
+   
     var ticketQueryResult = [QueryLeftNewDTO]()
 
     var service = Service()
@@ -41,6 +40,10 @@ class TicketSelectWindowController: NSWindowController{
     
     @IBAction func cancelButtonClicked(button:NSButton){
         dismissWithModalResponse(NSModalResponseCancel)
+    }
+    
+    @IBAction func okButtonClicked(button: NSButton){
+        dismissWithModalResponse(NSModalResponseOK);
     }
     
     func startLoadingTip(tip:String) 

@@ -112,6 +112,8 @@ class QueryLeftNewDTO:NSObject {
         }
     }
     
+    var isSelected = false
+    
     //标识符
     var SecretStr:String?
     //票务描述

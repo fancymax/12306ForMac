@@ -20,14 +20,17 @@ class TaskViewController: NSViewController{
     
     @IBOutlet weak var passengerStackView: NSStackView!
     @IBOutlet weak var seatTypeStackView: NSStackView!
+    @IBOutlet weak var trainCodeStackView: NSStackView!
     
     @IBOutlet weak var taskListTable: NSTableView!
     var tasks = [TicketTask]()
     var currentTask: TicketTask = TicketTask()
     var currentPassengers = [PassengerDTO]()
     var currentSeatTypes = [SeatTypeModel]()
+    var currentTrainCodes = [QueryLeftNewDTO]()
     
     var ticketSelectWindowController: TicketSelectWindowController!
+    var trainCodeViewControllerList = [TrainCodeViewController]()
     
     var passengerViewControllerList = [PassengerViewController]()
     let passengerSelectViewController = PassengerSelectViewController()
@@ -60,7 +63,8 @@ class TaskViewController: NSViewController{
         if let window = self.view.window {
             window.beginSheet(ticketSelectWindowController.window!) {
                 if $0 == NSModalResponseOK{
-//                    self.loginButton.title = MainModel.realName
+                    self.currentTrainCodes = self.ticketSelectWindowController.ticketQueryResult
+                    self.addSelectedTrainToStackView()
                 }
             }
         }
@@ -102,6 +106,18 @@ class TaskViewController: NSViewController{
         seatTypePopover.showRelativeToRect(positioningRect, ofView: positioningView, preferredEdge: preferredEdge)
         
         seatTypeSelectViewController.reloadTicketTypes(currentSeatTypes)
+    }
+    
+    func addSelectedTrainToStackView() {
+        for i in 0..<currentTrainCodes.count{
+            if(currentTrainCodes[i].isSelected){
+                let p = TrainCodeViewController()
+                p.ticket = currentTrainCodes[i]
+                self.trainCodeStackView.addView(p.view, inGravity: .Top)
+                self.trainCodeViewControllerList.append(p)
+            }
+        }
+        
     }
     
     func receiveDidSendCheckSeatTypeMessageNotification(notification: NSNotification){

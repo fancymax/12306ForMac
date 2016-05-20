@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TrainCodeViewController" customModule="_2306ForMac" customModuleProvider="target">
+            <connections>
+                <outlet property="checkBox" destination="Dg7-3H-kNb" id="E59-uA-Ju0"/>
+                <outlet property="view" destination="Woj-Ip-wMR" id="lf9-5q-24Q"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Woj-Ip-wMR">
+            <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dg7-3H-kNb">
+                    <rect key="frame" x="3" y="4" width="69" height="23"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="19" id="GQq-hc-Lw7"/>
+                    </constraints>
+                    <buttonCell key="cell" type="check" title="D2323" bezelStyle="regularSquare" imagePosition="left" alignment="left" lineBreakMode="truncatingTail" state="on" inset="2" id="GAd-Nf-a3l">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="unSelect:" target="-2" id="sNk-FV-fTR"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Dg7-3H-kNb" firstAttribute="centerY" secondItem="Woj-Ip-wMR" secondAttribute="centerY" id="2c5-nO-Xb6"/>
+                <constraint firstItem="Dg7-3H-kNb" firstAttribute="leading" secondItem="Woj-Ip-wMR" secondAttribute="leading" constant="5" id="66J-uv-pvV"/>
+                <constraint firstAttribute="trailing" secondItem="Dg7-3H-kNb" secondAttribute="trailing" constant="5" id="KgN-Ha-d0J"/>
+            </constraints>
+            <point key="canvasLocation" x="236.5" y="372"/>
+        </customView>
+    </objects>
+</document>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SeatTypeViewController">
@@ -21,7 +21,6 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="19" id="015-y7-NFR"/>
                     </constraints>
-                    <animations/>
                     <buttonCell key="cell" type="check" title="一等座" bezelStyle="regularSquare" imagePosition="left" alignment="left" lineBreakMode="truncatingTail" state="on" inset="2" id="mLZ-8e-QwG">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -36,7 +35,6 @@
                 <constraint firstItem="iyC-sQ-YVJ" firstAttribute="centerY" secondItem="Nzn-lk-Oq4" secondAttribute="centerY" id="TWq-SN-ebR"/>
                 <constraint firstAttribute="trailing" secondItem="iyC-sQ-YVJ" secondAttribute="trailing" constant="5" id="fm8-oH-Sbj"/>
             </constraints>
-            <animations/>
             <point key="canvasLocation" x="236.5" y="372"/>
         </customView>
     </objects>
