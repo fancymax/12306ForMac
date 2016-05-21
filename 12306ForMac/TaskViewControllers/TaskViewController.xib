@@ -322,7 +322,7 @@
                     </connections>
                 </button>
                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X0u-0V-189">
-                    <rect key="frame" x="377" y="530.5" width="0.0" height="25"/>
+                    <rect key="frame" x="377" y="530" width="0.0" height="25"/>
                 </stackView>
             </subviews>
             <constraints>

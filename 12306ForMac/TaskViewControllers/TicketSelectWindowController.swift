@@ -20,7 +20,8 @@ class TicketSelectWindowController: NSWindowController{
     var toStationCode:String!
     var fromStationCode:String!
     var date:String!
-   
+    
+    var lastTickets = [QueryLeftNewDTO]()
     var ticketQueryResult = [QueryLeftNewDTO]()
 
     var service = Service()
@@ -58,9 +59,22 @@ class TicketSelectWindowController: NSWindowController{
         loadingView.hidden = true
     }
     
+    func checkLastTicket(){
+        for lastTicket in lastTickets {
+            for currentTicket in ticketQueryResult {
+                if((lastTicket.isSelected)&&(lastTicket.TrainCode == currentTicket.TrainCode))
+                {
+                    currentTicket.isSelected = true;
+                    continue
+                }
+            }
+        }
+    }
+    
     func queryLeftTicket(fromStationCode: String, toStationCode: String, date: String) {
         let successHandler = { (tickets:[QueryLeftNewDTO])->()  in
             self.ticketQueryResult = tickets
+            self.checkLastTicket()
             self.leftTicketTable.reloadData()
             
             self.stopLoadingTip()

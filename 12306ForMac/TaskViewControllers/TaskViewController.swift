@@ -52,7 +52,7 @@ class TaskViewController: NSViewController{
     
     @IBAction func addTrainCode(sender: LoginButton) {
         ticketSelectWindowController = TicketSelectWindowController()
-        
+        ticketSelectWindowController.lastTickets = self.currentTrainCodes
         ticketSelectWindowController.fromStationCode = stationDataService.allStationMap[fromStationName.stringValue]?.Code
         ticketSelectWindowController.toStationCode = stationDataService.allStationMap[toStationName.stringValue]?.Code
         
@@ -110,14 +110,23 @@ class TaskViewController: NSViewController{
     
     func addSelectedTrainToStackView() {
         for i in 0..<currentTrainCodes.count{
-            if(currentTrainCodes[i].isSelected){
+            if ((currentTrainCodes[i].isSelected)&&(!trainCodeSelected(currentTrainCodes[i]))){
                 let p = TrainCodeViewController()
                 p.ticket = currentTrainCodes[i]
                 self.trainCodeStackView.addView(p.view, inGravity: .Top)
                 self.trainCodeViewControllerList.append(p)
             }
         }
+    }
+    
+    func trainCodeSelected(ticket: QueryLeftNewDTO) -> Bool {
+        for controller in trainCodeViewControllerList{
+            if controller.ticket.TrainCode == ticket.TrainCode {
+                return true
+            }
+        }
         
+        return false
     }
     
     func receiveDidSendCheckSeatTypeMessageNotification(notification: NSNotification){
