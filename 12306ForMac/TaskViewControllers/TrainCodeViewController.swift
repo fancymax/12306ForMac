@@ -12,6 +12,7 @@ class TrainCodeViewController: NSViewController {
     
     var ticket: QueryLeftNewDTO!
     @IBOutlet weak var checkBox: NSButton!
+    weak var delegate: TaskViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,15 +24,16 @@ class TrainCodeViewController: NSViewController {
         ticket.isSelected = false
         sender.state = NSOnState
         self.view.hidden = true
+        delegate.unSelectCurrentTrainCode(ticket)
     }
     
     func select(){
-        if ticket.isSelected {
-            self.view.hidden = false
-        }
-        else{
-            self.view.hidden = true
-        }
+        self.view.hidden = false
     }
+    
+    func unSelect(){
+        self.view.hidden = true
+    }
+    
 
 }

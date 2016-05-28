@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TicketQueryMainViewController" customModule="_2306ForMac" customModuleProvider="target">
@@ -18,7 +18,6 @@
             <subviews>
                 <stackView orientation="vertical" alignment="leading" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Q3P-1n-q0W">
                     <rect key="frame" x="0.0" y="0.0" width="910" height="710"/>
-                    <animations/>
                 </stackView>
             </subviews>
             <constraints>
@@ -27,7 +26,6 @@
                 <constraint firstAttribute="bottom" secondItem="Q3P-1n-q0W" secondAttribute="bottom" id="Nod-an-eog"/>
                 <constraint firstAttribute="trailing" secondItem="Q3P-1n-q0W" secondAttribute="trailing" id="XVI-y2-Iv4"/>
             </constraints>
-            <animations/>
         </view>
     </objects>
 </document>

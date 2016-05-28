@@ -50,6 +50,35 @@ class TaskViewController: NSViewController{
         return popover
         }()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.fromStationName.tableViewDelegate = self
+        self.toStationName.tableViewDelegate = self
+        
+        let realm = try! Realm()
+        let task = realm.objects(TicketTask)
+        for i in 0 ..< task.count {
+            self.tasks.append(task[i])
+        }
+        
+        if tasks.count > 0 {
+            let index = 0
+            taskListTable.selectRowIndexes(NSIndexSet(index: index), byExtendingSelection: false)
+        }
+        
+        self.queryDate.dateValue = NSDate()
+        
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: #selector(TaskViewController.receiveDidSendCheckPassengerMessageNotification(_:)), name: DidSendCheckPassengerMessageNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(TaskViewController.receiveDidSendCheckSeatTypeMessageNotification(_:)), name: DidSendCheckSeatTypeMessageNotification, object: nil)
+    }
+    
+    deinit{
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.removeObserver(self)
+    }
+    
+// MARK:Add TrainCode
     @IBAction func addTrainCode(sender: LoginButton) {
         ticketSelectWindowController = TicketSelectWindowController()
         ticketSelectWindowController.lastTickets = self.currentTrainCodes
@@ -70,6 +99,55 @@ class TaskViewController: NSViewController{
         }
     }
     
+    func addSelectedTrainToStackView() {
+        for i in 0..<currentTrainCodes.count {
+            if currentTrainCodes[i].isSelected {
+                if !hasTrainCode(currentTrainCodes[i]) {
+                    let p = TrainCodeViewController()
+                    p.delegate = self
+                    p.ticket = currentTrainCodes[i]
+                    self.trainCodeStackView.addView(p.view, inGravity: .Top)
+                    self.trainCodeViewControllerList.append(p)
+                }
+                else{
+                    selectTicketCode(currentTrainCodes[i])
+                }
+            }
+            else{
+                unSelectTicketCode(currentTrainCodes[i]);
+            }
+        }
+    }
+    
+    func selectTicketCode(ticket:QueryLeftNewDTO){
+        for controller in trainCodeViewControllerList where controller.ticket.TrainCode == ticket.TrainCode{
+            controller.select()
+        }
+    }
+    
+    func unSelectTicketCode(ticket:QueryLeftNewDTO){
+        for controller in trainCodeViewControllerList where controller.ticket.TrainCode == ticket.TrainCode{
+            controller.unSelect()
+        }
+    }
+    
+    func unSelectCurrentTrainCode(ticket:QueryLeftNewDTO) {
+        for currentTicket in currentTrainCodes where currentTicket.TrainCode == ticket.TrainCode{
+            currentTicket.isSelected = false;
+        }
+    }
+    
+    func hasTrainCode(ticket: QueryLeftNewDTO) -> Bool {
+        for controller in trainCodeViewControllerList{
+            if controller.ticket.TrainCode == ticket.TrainCode {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+// MARK:Add Passenger
     @IBAction func addPassenger(sender: LoginButton) {
         if currentPassengers.count == 0{
             for p in MainModel.passengers {
@@ -87,83 +165,6 @@ class TaskViewController: NSViewController{
         passengerPopover.showRelativeToRect(positioningRect, ofView: positioningView, preferredEdge: preferredEdge)
         
         passengerSelectViewController.reloadPassenger(currentPassengers)
-    }
-    
-    @IBAction func addTicketType(sender: LoginButton) {
-        if currentSeatTypes.count == 0{
-            for p in MainModel.seatTypes {
-                let ticketType = SeatTypeModel()
-                ticketType.name = p
-                ticketType.id = MainModel.ticketTypeNameDic[p]
-                currentSeatTypes.append(ticketType)
-            }
-        }
-        
-        let positioningView = sender
-        let positioningRect = NSZeroRect
-        let preferredEdge = NSRectEdge.MaxY
-        
-        seatTypePopover.showRelativeToRect(positioningRect, ofView: positioningView, preferredEdge: preferredEdge)
-        
-        seatTypeSelectViewController.reloadTicketTypes(currentSeatTypes)
-    }
-    
-    func addSelectedTrainToStackView() {
-        for i in 0..<currentTrainCodes.count{
-            if ((currentTrainCodes[i].isSelected)&&(!trainCodeSelected(currentTrainCodes[i]))){
-                let p = TrainCodeViewController()
-                p.ticket = currentTrainCodes[i]
-                self.trainCodeStackView.addView(p.view, inGravity: .Top)
-                self.trainCodeViewControllerList.append(p)
-            }
-        }
-    }
-    
-    func trainCodeSelected(ticket: QueryLeftNewDTO) -> Bool {
-        for controller in trainCodeViewControllerList{
-            if controller.ticket.TrainCode == ticket.TrainCode {
-                return true
-            }
-        }
-        
-        return false
-    }
-    
-    func receiveDidSendCheckSeatTypeMessageNotification(notification: NSNotification){
-        if !self.seatTypePopover.shown {
-            print("not receiveDidSendCheckSeatTypeMessageNotification in TaskViewController")
-            return
-        }
-        let name = notification.object as! String
-        
-        for i in 0..<currentSeatTypes.count {
-            if currentSeatTypes[i].name == name{
-                if seatSelected(currentSeatTypes[i]){
-                    checkSeat(currentSeatTypes[i])
-                }
-                else{
-                    let p = SeatTypeViewController()
-                    p.seatType = currentSeatTypes[i]
-                    seatTypeViewControllerList.append(p)
-                    self.seatTypeStackView.addView(p.view, inGravity:.Top)
-                }
-                
-                break
-            }
-        }
-    }
-    
-    func seatSelected(seatType:SeatTypeModel) -> Bool{
-        for controller in seatTypeViewControllerList where controller.seatType == seatType{
-            return true
-        }
-        return false
-    }
-    
-    func checkSeat(seatType:SeatTypeModel){
-        for controller in seatTypeViewControllerList where controller.seatType == seatType{
-            controller.select()
-        }
     }
     
     func receiveDidSendCheckPassengerMessageNotification(notification: NSNotification) {
@@ -204,6 +205,64 @@ class TaskViewController: NSViewController{
         }
     }
     
+// MARK:Add TicketType
+    @IBAction func addTicketType(sender: LoginButton) {
+        if currentSeatTypes.count == 0{
+            for p in MainModel.seatTypes {
+                let ticketType = SeatTypeModel()
+                ticketType.name = p
+                ticketType.id = MainModel.ticketTypeNameDic[p]
+                currentSeatTypes.append(ticketType)
+            }
+        }
+        
+        let positioningView = sender
+        let positioningRect = NSZeroRect
+        let preferredEdge = NSRectEdge.MaxY
+        
+        seatTypePopover.showRelativeToRect(positioningRect, ofView: positioningView, preferredEdge: preferredEdge)
+        
+        seatTypeSelectViewController.reloadTicketTypes(currentSeatTypes)
+    }
+    
+    func receiveDidSendCheckSeatTypeMessageNotification(notification: NSNotification){
+        if !self.seatTypePopover.shown {
+            print("not receiveDidSendCheckSeatTypeMessageNotification in TaskViewController")
+            return
+        }
+        let name = notification.object as! String
+        
+        for i in 0..<currentSeatTypes.count {
+            if currentSeatTypes[i].name == name{
+                if seatSelected(currentSeatTypes[i]){
+                    checkSeat(currentSeatTypes[i])
+                }
+                else{
+                    let p = SeatTypeViewController()
+                    p.seatType = currentSeatTypes[i]
+                    seatTypeViewControllerList.append(p)
+                    self.seatTypeStackView.addView(p.view, inGravity:.Top)
+                }
+                
+                break
+            }
+        }
+    }
+    
+    func seatSelected(seatType:SeatTypeModel) -> Bool{
+        for controller in seatTypeViewControllerList where controller.seatType == seatType{
+            return true
+        }
+        return false
+    }
+    
+    func checkSeat(seatType:SeatTypeModel){
+        for controller in seatTypeViewControllerList where controller.seatType == seatType{
+            controller.select()
+        }
+    }
+    
+// MARK:Handle Task
     @IBAction func addTask(sender: NSButton) {
         let task = TicketTask()
         task.id = self.taskListTable.numberOfRows
@@ -236,34 +295,6 @@ class TaskViewController: NSViewController{
         let row = self.taskListTable.selectedRow
         self.taskListTable.reloadDataForRowIndexes(NSIndexSet(index: row), columnIndexes: NSIndexSet(index: 0))
         
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.fromStationName.tableViewDelegate = self
-        self.toStationName.tableViewDelegate = self
-        
-        let realm = try! Realm()
-        let task = realm.objects(TicketTask)
-        for i in 0 ..< task.count {
-            self.tasks.append(task[i])
-        }
-        
-        if tasks.count > 0 {
-            let index = 0
-            taskListTable.selectRowIndexes(NSIndexSet(index: index), byExtendingSelection: false)
-        }
-        
-        self.queryDate.dateValue = NSDate()
-        
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: #selector(TaskViewController.receiveDidSendCheckPassengerMessageNotification(_:)), name: DidSendCheckPassengerMessageNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(TaskViewController.receiveDidSendCheckSeatTypeMessageNotification(_:)), name: DidSendCheckSeatTypeMessageNotification, object: nil)
-    }
-    
-    deinit{
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.removeObserver(self)
     }
 }
 
