@@ -287,14 +287,19 @@ class TaskViewController: NSViewController{
     }
     
     @IBAction func saveTask(sender: NSButton) {
+        
+        
         let realm = try! Realm()
         try! realm.write {
-            currentTask = realm.create(TicketTask.self, value: ["id": currentTask.id,  "fromStationName": self.fromStationName.stringValue,"toStationName": self.toStationName.stringValue], update: true)
+            currentTask = realm.create(TicketTask.self, value: ["id": currentTask.id,
+                "fromStationName": self.fromStationName.stringValue,
+                "toStationName": self.toStationName.stringValue,
+                "date": self.queryDate.dateValue],
+                update: true)
         }
         self.tasks[self.taskListTable.selectedRow] = currentTask
         let row = self.taskListTable.selectedRow
         self.taskListTable.reloadDataForRowIndexes(NSIndexSet(index: row), columnIndexes: NSIndexSet(index: 0))
-        
     }
 }
 
@@ -309,6 +314,7 @@ extension TaskViewController:NSTableViewDataSource,NSTableViewDelegate{
     }
 
     func tableViewSelectionDidChange(notification: NSNotification) {
+        
         let task = self.tasks[self.taskListTable.selectedRow]
         loadTask(task)
     }
@@ -317,6 +323,7 @@ extension TaskViewController:NSTableViewDataSource,NSTableViewDelegate{
         self.currentTask = task
         self.fromStationName.stringValue = task.fromStationName
         self.toStationName.stringValue = task.toStationName
+        self.queryDate.dateValue = task.date
     }
 }
 

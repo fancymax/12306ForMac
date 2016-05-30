@@ -52,10 +52,7 @@ class NormalSearchViewController: NSViewController {
         
         let fromStation = stationDataService.allStationMap[fromStationName.stringValue]?.Code
         let toStation = stationDataService.allStationMap[toStationName.stringValue]?.Code
-
-        let dateStr = queryDate.dateValue.description
-        let dateRange = dateStr.rangeOfString(" ")
-        let date = dateStr[dateStr.startIndex..<dateRange!.startIndex]
+        let date = MainModel.getDateStr(queryDate.dateValue)
         
         lastUserDefault.lastFromStation = fromStationName.stringValue
         lastUserDefault.lastToStation = toStationName.stringValue

@@ -96,5 +96,11 @@ class MainModel{
         }
     }
     
+    static func getDateStr(date:NSDate) -> String{
+        let dateDescription = date.description
+        let dateRange = dateDescription.rangeOfString(" ")
+        return dateDescription[dateDescription.startIndex..<dateRange!.startIndex]
+    }
+    
 }
 

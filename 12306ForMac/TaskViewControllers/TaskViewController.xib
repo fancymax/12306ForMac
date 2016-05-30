@@ -43,11 +43,11 @@
                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="52" horizontalPageScroll="10" verticalLineScroll="52" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLs-7R-agf">
                     <rect key="frame" x="0.0" y="40" width="300" height="670"/>
                     <clipView key="contentView" id="Isj-uo-X2b">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="670"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="655"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView identifier="MenuList" verticalHuggingPriority="750" tag="1" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="50" viewBased="YES" id="TtQ-pX-z2t">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="0.0"/>
+                                <rect key="frame" x="0.0" y="0.0" width="301" height="655"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -84,6 +84,7 @@
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1kH-93-80K">
                                                         <rect key="frame" x="18" y="7" width="76" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="2016-03-14" id="zbl-rk-BcU">
+                                                            <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" timeStyle="short" dateFormat="yyyy-MM-dd " id="DdY-dg-CNs"/>
                                                             <font key="font" metaFont="systemThin" size="13"/>
                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -144,8 +145,8 @@
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="SQf-Gw-nB6"/>
                         <constraint firstAttribute="width" constant="300" id="hgb-xN-YsZ"/>
                     </constraints>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="WGG-lU-y5a">
-                        <rect key="frame" x="1" y="383" width="148" height="16"/>
+                    <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.5" horizontal="YES" id="WGG-lU-y5a">
+                        <rect key="frame" x="0.0" y="655" width="300" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Ewv-iM-fwE">
