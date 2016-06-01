@@ -59,9 +59,9 @@ public class FlashLabel: NSTextField {
         if flash {
             timeSummation = 0
             showTime = time
-            timer = NSTimer.scheduledTimerWithTimeInterval(flashInterval, target: self, selector: Selector("flashNotify"), userInfo: nil, repeats: true)
+            timer = NSTimer.scheduledTimerWithTimeInterval(flashInterval, target: self, selector: #selector(FlashLabel.flashNotify), userInfo: nil, repeats: true)
         } else {
-            timer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(time), target: self, selector: Selector("timerNotify"), userInfo: nil, repeats: false)
+            timer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(time), target: self, selector: #selector(FlashLabel.timerNotify), userInfo: nil, repeats: false)
         }
     }
     

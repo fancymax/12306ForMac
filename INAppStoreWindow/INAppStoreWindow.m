@@ -500,13 +500,19 @@ NS_INLINE void INApplyClippingPathInCurrentContext(CGPathRef path) {
 
 - (void)mouseUp:(NSEvent *)theEvent
 {
-	if (theEvent.clickCount == 2) {
-		// Get settings from "System Preferences" >	 "Appearance" > "Double-click on windows title bar to minimize"
-		NSString *const MDAppleMiniaturizeOnDoubleClickKey = @"AppleMiniaturizeOnDoubleClick";
+	if ([theEvent clickCount] == 2) {
 		NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+		
+		// Get settings from "System Preferences" >  "Appearance" > "Double-click on windows title bar to minimize"
+		NSString *const MDAppleMiniaturizeOnDoubleClickKey = @"AppleMiniaturizeOnDoubleClick";
 		BOOL shouldMiniaturize = [[userDefaults objectForKey:MDAppleMiniaturizeOnDoubleClickKey] boolValue];
+		
+		// In El Capitan and later from "System Preferences" >  "Dock" > "Double-click on windows title bar to ..."
+		NSString *const MDAppleMiniaturizeOnDoubleClickKeyElCapitan = @"AppleActionOnDoubleClick";
+		shouldMiniaturize = shouldMiniaturize || [[userDefaults objectForKey:MDAppleMiniaturizeOnDoubleClickKeyElCapitan] isEqualToString:@"Minimize"];
+		
 		if (shouldMiniaturize) {
-			[self.window performMiniaturize:self];
+			[[self window] performMiniaturize:self];
 		}
 	}
 }
@@ -1146,11 +1152,7 @@ NS_INLINE void INApplyClippingPathInCurrentContext(CGPathRef path) {
 	CGFloat buttonOrigin = 0.0;
 	if (!self.verticalTrafficLightButtons) {
 		if (self.centerTrafficLightButtons) {
-			if (INRunningYosemite() && self.styleMask & NSFullScreenWindowMask) {
-				buttonOrigin = round(self._minimumTitlebarHeight * 0.5 - INMidHeight(closeFrame));
-			} else {
-				buttonOrigin = round(NSMidY(titleBarFrame) - INMidHeight(closeFrame));
-			}
+			buttonOrigin = round(NSMidY(titleBarFrame) - INMidHeight(closeFrame));
 		} else {
 			buttonOrigin = NSMaxY(titleBarFrame) - NSHeight(closeFrame) - self.trafficLightButtonsTopMargin;
 		}
