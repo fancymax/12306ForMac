@@ -27,11 +27,10 @@ class SeatTypeViewController: NSViewController {
     }
     
     func select(){
-        if seatType.isChecked {
-            self.view.hidden = false
-        }
-        else{
-            self.view.hidden = true
-        }
+        self.view.hidden = false
+    }
+    
+    func unSelect(){
+        self.view.hidden = true
     }
 }

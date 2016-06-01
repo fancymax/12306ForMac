@@ -55,6 +55,12 @@ class TaskViewController: NSViewController{
         self.fromStationName.tableViewDelegate = self
         self.toStationName.tableViewDelegate = self
         
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: #selector(TaskViewController.receiveDidSendCheckPassengerMessageNotification(_:)), name: DidSendCheckPassengerMessageNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(TaskViewController.receiveDidSendCheckSeatTypeMessageNotification(_:)), name: DidSendCheckSeatTypeMessageNotification, object: nil)
+        
+        initSeatTypes()
+        
         let realm = try! Realm()
         let task = realm.objects(TicketTask)
         for i in 0 ..< task.count {
@@ -64,13 +70,20 @@ class TaskViewController: NSViewController{
         if tasks.count > 0 {
             let index = 0
             taskListTable.selectRowIndexes(NSIndexSet(index: index), byExtendingSelection: false)
+            //无须loadTask,在TableViewIndex会loadTask
+//            loadTask(self.tasks[index])
         }
-        
-        self.queryDate.dateValue = NSDate()
-        
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: #selector(TaskViewController.receiveDidSendCheckPassengerMessageNotification(_:)), name: DidSendCheckPassengerMessageNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(TaskViewController.receiveDidSendCheckSeatTypeMessageNotification(_:)), name: DidSendCheckSeatTypeMessageNotification, object: nil)
+    }
+    
+    func initSeatTypes() {
+        if currentSeatTypes.count == 0{
+            for p in MainModel.seatTypes {
+                let ticketType = SeatTypeModel()
+                ticketType.name = p
+                ticketType.id = MainModel.ticketTypeNameDic[p]
+                currentSeatTypes.append(ticketType)
+            }
+        }
     }
     
     deinit{
@@ -205,17 +218,8 @@ class TaskViewController: NSViewController{
         }
     }
     
-// MARK:Add TicketType
-    @IBAction func addTicketType(sender: LoginButton) {
-        if currentSeatTypes.count == 0{
-            for p in MainModel.seatTypes {
-                let ticketType = SeatTypeModel()
-                ticketType.name = p
-                ticketType.id = MainModel.ticketTypeNameDic[p]
-                currentSeatTypes.append(ticketType)
-            }
-        }
-        
+// MARK:Add Seat
+    @IBAction func addSeat(sender: LoginButton) {
         let positioningView = sender
         let positioningRect = NSZeroRect
         let preferredEdge = NSRectEdge.MaxY
@@ -230,12 +234,21 @@ class TaskViewController: NSViewController{
             print("not receiveDidSendCheckSeatTypeMessageNotification in TaskViewController")
             return
         }
-        let name = notification.object as! String
+        let seat = notification.object as! String
         
+        addSeatToStackView(seat)
+    }
+    
+    func addSeatToStackView(seat: String){
         for i in 0..<currentSeatTypes.count {
-            if currentSeatTypes[i].name == name{
-                if seatSelected(currentSeatTypes[i]){
-                    checkSeat(currentSeatTypes[i])
+            if currentSeatTypes[i].name == seat{
+                if isSeatAdded(currentSeatTypes[i]){
+                    if(isSeatChecked(currentSeatTypes[i])){
+                        selectSeat(currentSeatTypes[i])
+                    }
+                    else{
+                        unSelectSeat(currentSeatTypes[i])
+                    }
                 }
                 else{
                     let p = SeatTypeViewController()
@@ -243,24 +256,37 @@ class TaskViewController: NSViewController{
                     seatTypeViewControllerList.append(p)
                     self.seatTypeStackView.addView(p.view, inGravity:.Top)
                 }
-                
                 break
             }
         }
     }
     
-    func seatSelected(seatType:SeatTypeModel) -> Bool{
+    func isSeatAdded(seatType:SeatTypeModel) -> Bool{
         for controller in seatTypeViewControllerList where controller.seatType == seatType{
             return true
         }
         return false
     }
     
-    func checkSeat(seatType:SeatTypeModel){
+    func isSeatChecked(seatType:SeatTypeModel) -> Bool{
+        for controller in seatTypeViewControllerList where controller.seatType == seatType{
+            return controller.seatType.isChecked
+        }
+        return false
+    }
+    
+    func selectSeat(seatType:SeatTypeModel){
         for controller in seatTypeViewControllerList where controller.seatType == seatType{
             controller.select()
         }
     }
+    
+    func unSelectSeat(seatType:SeatTypeModel){
+        for controller in seatTypeViewControllerList where controller.seatType == seatType{
+            controller.unSelect()
+        }
+    }
+    
     
 // MARK:Handle Task
     @IBAction func addTask(sender: NSButton) {
@@ -287,19 +313,46 @@ class TaskViewController: NSViewController{
     }
     
     @IBAction func saveTask(sender: NSButton) {
-        
-        
         let realm = try! Realm()
         try! realm.write {
+            
             currentTask = realm.create(TicketTask.self, value: ["id": currentTask.id,
                 "fromStationName": self.fromStationName.stringValue,
                 "toStationName": self.toStationName.stringValue,
                 "date": self.queryDate.dateValue],
                 update: true)
+            
+            for seatType in currentSeatTypes where seatType.isChecked{
+                let seatModel = realm.create(Seat.self,value: ["seatType":seatType.name],update: true)
+                if !currentTask.seatArr.contains(seatModel){
+                    currentTask.seatArr.append(seatModel);
+                }
+            }
         }
         self.tasks[self.taskListTable.selectedRow] = currentTask
         let row = self.taskListTable.selectedRow
         self.taskListTable.reloadDataForRowIndexes(NSIndexSet(index: row), columnIndexes: NSIndexSet(index: 0))
+    }
+    
+    func loadTask(task:TicketTask){
+        self.currentTask = task
+        self.fromStationName.stringValue = task.fromStationName
+        self.toStationName.stringValue = task.toStationName
+        self.queryDate.dateValue = task.date
+        
+        for seat in task.seatArr {
+            addSeatToStackView(seat.seatType)
+            for seatType in currentSeatTypes where seatType.name == seat.seatType{
+                seatType.isChecked = true
+            }
+        }
+    }
+    
+    func removeLastViews() {
+        self.seatTypeViewControllerList.removeAll()
+        for view in self.seatTypeStackView.views {
+            seatTypeStackView.removeView(view)
+        }
     }
 }
 
@@ -314,17 +367,12 @@ extension TaskViewController:NSTableViewDataSource,NSTableViewDelegate{
     }
 
     func tableViewSelectionDidChange(notification: NSNotification) {
+        removeLastViews()
         
         let task = self.tasks[self.taskListTable.selectedRow]
         loadTask(task)
     }
     
-    func loadTask(task:TicketTask){
-        self.currentTask = task
-        self.fromStationName.stringValue = task.fromStationName
-        self.toStationName.stringValue = task.toStationName
-        self.queryDate.dateValue = task.date
-    }
 }
 
 // MARK: - AutoCompleteTableViewDelegate

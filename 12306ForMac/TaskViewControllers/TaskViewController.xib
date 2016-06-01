@@ -47,7 +47,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView identifier="MenuList" verticalHuggingPriority="750" tag="1" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="50" viewBased="YES" id="TtQ-pX-z2t">
-                                <rect key="frame" x="0.0" y="0.0" width="301" height="655"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -81,9 +81,9 @@
                                                             <binding destination="4uv-Oj-BiO" name="value" keyPath="objectValue.name" id="89C-LO-qAn"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1kH-93-80K">
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1kH-93-80K">
                                                         <rect key="frame" x="18" y="7" width="76" height="17"/>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="2016-03-14" id="zbl-rk-BcU">
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="2016-03-14 " id="zbl-rk-BcU">
                                                             <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" timeStyle="short" dateFormat="yyyy-MM-dd " id="DdY-dg-CNs"/>
                                                             <font key="font" metaFont="systemThin" size="13"/>
                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -93,7 +93,7 @@
                                                             <binding destination="4uv-Oj-BiO" name="value" keyPath="objectValue.date" id="B4j-4Y-uHG"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="8e8-Vg-yJ5">
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8e8-Vg-yJ5">
                                                         <rect key="frame" x="120" y="7" width="78" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="第100次抢票" id="PTi-g4-aur">
                                                             <font key="font" metaFont="systemThin" size="13"/>
@@ -145,7 +145,7 @@
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="SQf-Gw-nB6"/>
                         <constraint firstAttribute="width" constant="300" id="hgb-xN-YsZ"/>
                     </constraints>
-                    <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.5" horizontal="YES" id="WGG-lU-y5a">
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="0.5" horizontal="YES" id="WGG-lU-y5a">
                         <rect key="frame" x="0.0" y="655" width="300" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
@@ -210,7 +210,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="addTicketType:" target="-2" id="inO-s4-ROl"/>
+                        <action selector="addSeat:" target="-2" id="jzV-Qs-6Qe"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ND5-z5-PbQ" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
