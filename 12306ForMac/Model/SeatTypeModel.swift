@@ -9,7 +9,6 @@
 import Foundation
 
 class SeatTypeModel:NSObject{
-    var id:String!
     var name:String!
     var isChecked:Bool = false
 }

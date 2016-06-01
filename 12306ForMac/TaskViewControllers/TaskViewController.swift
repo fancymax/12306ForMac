@@ -59,7 +59,8 @@ class TaskViewController: NSViewController{
         notificationCenter.addObserver(self, selector: #selector(TaskViewController.receiveDidSendCheckPassengerMessageNotification(_:)), name: DidSendCheckPassengerMessageNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(TaskViewController.receiveDidSendCheckSeatTypeMessageNotification(_:)), name: DidSendCheckSeatTypeMessageNotification, object: nil)
         
-        initSeatTypes()
+        initCurrentSeatTypes()
+        initCurrentPassengers()
         
         let realm = try! Realm()
         let task = realm.objects(TicketTask)
@@ -75,16 +76,6 @@ class TaskViewController: NSViewController{
         }
     }
     
-    func initSeatTypes() {
-        if currentSeatTypes.count == 0{
-            for p in MainModel.seatTypes {
-                let ticketType = SeatTypeModel()
-                ticketType.name = p
-                ticketType.id = MainModel.ticketTypeNameDic[p]
-                currentSeatTypes.append(ticketType)
-            }
-        }
-    }
     
     deinit{
         let notificationCenter = NSNotificationCenter.defaultCenter()
@@ -162,15 +153,6 @@ class TaskViewController: NSViewController{
     
 // MARK:Add Passenger
     @IBAction func addPassenger(sender: LoginButton) {
-        if currentPassengers.count == 0{
-            for p in MainModel.passengers {
-                let passenger = PassengerDTO()
-                passenger.passenger_id_no = p.passenger_id_no
-                passenger.passenger_name = p.passenger_name
-                currentPassengers.append(passenger)
-            }
-        }
-        
         let positioningView = sender
         let positioningRect = NSZeroRect
         let preferredEdge = NSRectEdge.MaxY
@@ -180,6 +162,17 @@ class TaskViewController: NSViewController{
         passengerSelectViewController.reloadPassenger(currentPassengers)
     }
     
+    func initCurrentPassengers() {
+        if currentPassengers.count == 0{
+            for p in MainModel.passengers {
+                let passenger = PassengerDTO()
+                passenger.passenger_id_no = p.passenger_id_no
+                passenger.passenger_name = p.passenger_name
+                currentPassengers.append(passenger)
+            }
+        }
+    }
+    
     func receiveDidSendCheckPassengerMessageNotification(notification: NSNotification) {
         if !self.passengerPopover.shown {
             print("not receiveDidSendCheckPassengerMessageNotification in TaskViewController")
@@ -187,7 +180,23 @@ class TaskViewController: NSViewController{
         }
         
         let name = notification.object as! String
-        
+        addPassengerToStackView(name)
+    }
+    
+    func passengerSelected(passenger:PassengerDTO) -> Bool{
+        for controller in passengerViewControllerList where controller.passenger == passenger{
+            return true
+        }
+        return false
+    }
+    
+    func checkPassenger(passenger:PassengerDTO){
+        for controller in passengerViewControllerList where controller.passenger == passenger{
+            controller.select()
+        }
+    }
+    
+    func addPassengerToStackView(name:String) {
         for i in 0..<currentPassengers.count {
             if currentPassengers[i].passenger_name == name{
                 if passengerSelected(currentPassengers[i]){
@@ -205,20 +214,7 @@ class TaskViewController: NSViewController{
         }
     }
     
-    func passengerSelected(passenger:PassengerDTO) -> Bool{
-        for controller in passengerViewControllerList where controller.passenger == passenger{
-            return true
-        }
-        return false
-    }
-    
-    func checkPassenger(passenger:PassengerDTO){
-        for controller in passengerViewControllerList where controller.passenger == passenger{
-            controller.select()
-        }
-    }
-    
-// MARK:Add Seat
+// MARK:Add SeatType
     @IBAction func addSeat(sender: LoginButton) {
         let positioningView = sender
         let positioningRect = NSZeroRect
@@ -227,6 +223,16 @@ class TaskViewController: NSViewController{
         seatTypePopover.showRelativeToRect(positioningRect, ofView: positioningView, preferredEdge: preferredEdge)
         
         seatTypeSelectViewController.reloadTicketTypes(currentSeatTypes)
+    }
+    
+    func initCurrentSeatTypes() {
+        if currentSeatTypes.count == 0{
+            for p in MainModel.seatTypes {
+                let ticketType = SeatTypeModel()
+                ticketType.name = p
+                currentSeatTypes.append(ticketType)
+            }
+        }
     }
     
     func receiveDidSendCheckSeatTypeMessageNotification(notification: NSNotification){
@@ -239,51 +245,83 @@ class TaskViewController: NSViewController{
         addSeatToStackView(seat)
     }
     
-    func addSeatToStackView(seat: String){
-        for i in 0..<currentSeatTypes.count {
-            if currentSeatTypes[i].name == seat{
-                if isSeatAdded(currentSeatTypes[i]){
-                    if(isSeatChecked(currentSeatTypes[i])){
-                        selectSeat(currentSeatTypes[i])
-                    }
-                    else{
-                        unSelectSeat(currentSeatTypes[i])
-                    }
-                }
-                else{
-                    let p = SeatTypeViewController()
-                    p.seatType = currentSeatTypes[i]
-                    seatTypeViewControllerList.append(p)
-                    self.seatTypeStackView.addView(p.view, inGravity:.Top)
-                }
-                break
+    func addSeatToStackView(seatTypeName: String){
+        if isSeatAdded(seatTypeName){
+            if(isSeatChecked(seatTypeName)){
+                selectSeat(seatTypeName)
             }
+            else{
+                unSelectSeat(seatTypeName)
+            }
+        }
+        else{
+            let controller = SeatTypeViewController()
+            controller.seatType = getCurrentSeatType(seatTypeName)
+            seatTypeViewControllerList.append(controller)
+            self.seatTypeStackView.addView(controller.view, inGravity:.Top)
         }
     }
     
-    func isSeatAdded(seatType:SeatTypeModel) -> Bool{
-        for controller in seatTypeViewControllerList where controller.seatType == seatType{
+    func getCurrentSeatType(name:String) -> SeatTypeModel! {
+        for currentSeatType in currentSeatTypes where currentSeatType.name == name{
+            return currentSeatType
+        }
+        return nil
+    }
+    
+    func isSeatAdded(seatTypeName:String) -> Bool{
+        for controller in seatTypeViewControllerList where controller.seatType.name == seatTypeName{
             return true
         }
         return false
     }
     
-    func isSeatChecked(seatType:SeatTypeModel) -> Bool{
-        for controller in seatTypeViewControllerList where controller.seatType == seatType{
+    func isSeatChecked(seatTypeName:String) -> Bool{
+        for controller in seatTypeViewControllerList where controller.seatType.name == seatTypeName{
             return controller.seatType.isChecked
         }
         return false
     }
     
-    func selectSeat(seatType:SeatTypeModel){
-        for controller in seatTypeViewControllerList where controller.seatType == seatType{
+    func selectSeat(seatTypeName:String){
+        for controller in seatTypeViewControllerList where controller.seatType.name == seatTypeName{
             controller.select()
         }
     }
     
-    func unSelectSeat(seatType:SeatTypeModel){
-        for controller in seatTypeViewControllerList where controller.seatType == seatType{
+    func unSelectSeat(seatTypeName:String){
+        for controller in seatTypeViewControllerList where controller.seatType.name == seatTypeName{
             controller.unSelect()
+        }
+    }
+    
+    func syncSeatTypeFrom(fileModelList:List<Seat>, toCurrentModel:[SeatTypeModel]){
+        for currentSeatType in toCurrentModel {
+            var isFind = false
+            for fileModel in fileModelList where fileModel.seatType == currentSeatType.name {
+                isFind = true
+            }
+            if isFind{
+                currentSeatType.isChecked = true
+            }
+            else{
+                currentSeatType.isChecked = false
+            }
+        }
+    
+    }
+    
+    func syncSeatTypeToViewsFrom(currentModels:[SeatTypeModel]){
+        for currentModel in currentModels where currentModel.isChecked {
+            addSeatToStackView(currentModel.name)
+        }
+        
+    }
+    
+    func removeLastSeatTypeViews() {
+        self.seatTypeViewControllerList.removeAll()
+        for view in self.seatTypeStackView.views {
+            seatTypeStackView.removeView(view)
         }
     }
     
@@ -340,20 +378,10 @@ class TaskViewController: NSViewController{
         self.toStationName.stringValue = task.toStationName
         self.queryDate.dateValue = task.date
         
-        for seat in task.seatArr {
-            addSeatToStackView(seat.seatType)
-            for seatType in currentSeatTypes where seatType.name == seat.seatType{
-                seatType.isChecked = true
-            }
-        }
+        syncSeatTypeFrom(currentTask.seatArr, toCurrentModel: currentSeatTypes)
+        syncSeatTypeToViewsFrom(currentSeatTypes)
     }
     
-    func removeLastViews() {
-        self.seatTypeViewControllerList.removeAll()
-        for view in self.seatTypeStackView.views {
-            seatTypeStackView.removeView(view)
-        }
-    }
 }
 
 // MARK: - NSTableViewDataSource,NSTableViewDelegate
@@ -367,7 +395,7 @@ extension TaskViewController:NSTableViewDataSource,NSTableViewDelegate{
     }
 
     func tableViewSelectionDidChange(notification: NSNotification) {
-        removeLastViews()
+        removeLastSeatTypeViews()
         
         let task = self.tasks[self.taskListTable.selectedRow]
         loadTask(task)
