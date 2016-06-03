@@ -17,7 +17,8 @@ class SeatTypeViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        passengerCheckBox.title = seatType.name
+        
+//        passengerCheckBox.title = seatType.name
     }
     
     @IBAction func unSelect(sender: NSButton) {

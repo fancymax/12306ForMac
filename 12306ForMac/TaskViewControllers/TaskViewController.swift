@@ -158,7 +158,7 @@ class TaskViewController: NSViewController{
         let preferredEdge = NSRectEdge.MaxY
         
         passengerPopover.showRelativeToRect(positioningRect, ofView: positioningView, preferredEdge: preferredEdge)
-        
+        initCurrentPassengers()
         passengerSelectViewController.reloadPassenger(currentPassengers)
     }
     
@@ -183,34 +183,81 @@ class TaskViewController: NSViewController{
         addPassengerToStackView(name)
     }
     
-    func passengerSelected(passenger:PassengerDTO) -> Bool{
-        for controller in passengerViewControllerList where controller.passenger == passenger{
+    func isPassengerAdded(name:String) -> Bool{
+        for controller in passengerViewControllerList where controller.passenger!.passenger_name == name{
             return true
         }
         return false
     }
     
-    func checkPassenger(passenger:PassengerDTO){
-        for controller in passengerViewControllerList where controller.passenger == passenger{
-            controller.select()
+    func selectPassenger(name:String){
+        for controller in passengerViewControllerList where controller.passenger!.passenger_name == name{
+            controller.check()
+        }
+    }
+    
+    func unSelectPassenger(name:String){
+        for controller in passengerViewControllerList where controller.passenger!.passenger_name == name{
+            controller.unCheck()
+        }
+    }
+    
+    func getCurrentPassenger(name:String) -> PassengerDTO! {
+        for currentPassenger in currentPassengers where currentPassenger.passenger_name == name{
+            return currentPassenger
+        }
+        return nil
+    }
+    
+    func syncPassengerFrom(fileModels:List<Passenger>, to CurrentModels:[PassengerDTO]){
+        for currentModel in CurrentModels {
+            var isFind = false
+            for fileModel in fileModels where fileModel.name == currentModel.passenger_name {
+                isFind = true
+            }
+            if isFind{
+                currentModel.isChecked = true
+            }
+            else{
+                currentModel.isChecked = false
+            }
+        }
+    }
+    
+    func syncPassengerToViewsFrom(currentModels:[PassengerDTO]){
+        for currentModel in currentModels where currentModel.isChecked {
+            addPassengerToStackView(currentModel.passenger_name!)
+        }
+    }
+    
+    func isPassengerChecked(name:String) -> Bool{
+        for controller in passengerViewControllerList where controller.passenger!.passenger_name == name{
+            return controller.passenger!.isChecked
+        }
+        return false
+    }
+    
+    func removeLastPassengerViews() {
+        self.passengerViewControllerList.removeAll()
+        for view in self.passengerStackView.views {
+            passengerStackView.removeView(view)
         }
     }
     
     func addPassengerToStackView(name:String) {
-        for i in 0..<currentPassengers.count {
-            if currentPassengers[i].passenger_name == name{
-                if passengerSelected(currentPassengers[i]){
-                    checkPassenger(currentPassengers[i])
-                }
-                else{
-                    let p = PassengerViewController()
-                    p.passenger = currentPassengers[i]
-                    passengerViewControllerList.append(p)
-                    self.passengerStackView.addView(p.view, inGravity:.Top)
-                }
-                
-                break
+        if isPassengerAdded(name){
+            if isPassengerChecked(name){
+                selectPassenger(name)
             }
+            else{
+                unSelectPassenger(name)
+            }
+        }
+        else{
+            let controller = PassengerViewController()
+            controller.passenger = getCurrentPassenger(name)
+            passengerViewControllerList.append(controller)
+            self.passengerStackView.addView(controller.view, inGravity:.Top)
         }
     }
     
@@ -295,8 +342,8 @@ class TaskViewController: NSViewController{
         }
     }
     
-    func syncSeatTypeFrom(fileModelList:List<Seat>, toCurrentModel:[SeatTypeModel]){
-        for currentSeatType in toCurrentModel {
+    func syncSeatTypeFrom(fileModelList:List<Seat>, to currentModels:[SeatTypeModel]){
+        for currentSeatType in currentModels {
             var isFind = false
             for fileModel in fileModelList where fileModel.seatType == currentSeatType.name {
                 isFind = true
@@ -360,10 +407,39 @@ class TaskViewController: NSViewController{
                 "date": self.queryDate.dateValue],
                 update: true)
             
-            for seatType in currentSeatTypes where seatType.isChecked{
-                let seatModel = realm.create(Seat.self,value: ["seatType":seatType.name],update: true)
-                if !currentTask.seatArr.contains(seatModel){
-                    currentTask.seatArr.append(seatModel);
+            for seatType in currentSeatTypes {
+                if seatType.isChecked {
+                    let seatModel = realm.create(Seat.self,value: ["seatType":seatType.name],update: true)
+                    for i in 0..<currentTask.seatArr.count {
+                        if currentTask.seatArr[i].seatType != seatType.name {
+                            currentTask.seatArr.append(seatModel);
+                        }
+                    }
+                }
+                else{
+                    for i in 0..<currentTask.seatArr.count {
+                        if currentTask.seatArr[i].seatType == seatType.name {
+                            currentTask.seatArr.removeAtIndex(i)
+                            break
+                        }
+                    }
+                }
+            }
+            
+            for passenger in currentPassengers {
+                if passenger.isChecked{
+                    let passengerModel = realm.create(Passenger.self,value: ["id":passenger.passenger_id_no!,"name":passenger.passenger_name!],update: true)
+                    if !currentTask.passengerArr.contains(passengerModel){
+                        currentTask.passengerArr.append(passengerModel);
+                    }
+                }
+                else{
+                    for i in 0..<currentTask.passengerArr.count{
+                        if currentTask.passengerArr[i].name == passenger.passenger_name {
+                            currentTask.passengerArr.removeAtIndex(i)
+                            break
+                        }
+                    }
                 }
             }
         }
@@ -378,8 +454,11 @@ class TaskViewController: NSViewController{
         self.toStationName.stringValue = task.toStationName
         self.queryDate.dateValue = task.date
         
-        syncSeatTypeFrom(currentTask.seatArr, toCurrentModel: currentSeatTypes)
+        syncSeatTypeFrom(currentTask.seatArr, to: currentSeatTypes)
         syncSeatTypeToViewsFrom(currentSeatTypes)
+        
+        syncPassengerFrom(currentTask.passengerArr, to: currentPassengers)
+        syncPassengerToViewsFrom(currentPassengers)
     }
     
 }
@@ -396,6 +475,7 @@ extension TaskViewController:NSTableViewDataSource,NSTableViewDelegate{
 
     func tableViewSelectionDidChange(notification: NSNotification) {
         removeLastSeatTypeViews()
+        removeLastPassengerViews()
         
         let task = self.tasks[self.taskListTable.selectedRow]
         loadTask(task)

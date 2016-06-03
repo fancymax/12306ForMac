@@ -26,7 +26,7 @@ class DisclosureViewController: NSViewController{
         passengerViewControllerList = [PassengerViewController]()
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: Selector("receiveDidSendCheckPassengerMessageNotification:"), name: DidSendCheckPassengerMessageNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(DisclosureViewController.receiveDidSendCheckPassengerMessageNotification(_:)), name: DidSendCheckPassengerMessageNotification, object: nil)
     }
     
     func receiveDidSendCheckPassengerMessageNotification(notification: NSNotification) {

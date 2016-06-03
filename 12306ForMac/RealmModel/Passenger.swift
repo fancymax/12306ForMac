@@ -11,7 +11,6 @@ import RealmSwift
 class Passenger:Object{
     dynamic var id = ""
     dynamic var name = ""
-    dynamic var isChecked = false
     
     override static func primaryKey() -> String? {
         return "id"
