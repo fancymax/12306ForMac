@@ -19,6 +19,10 @@ class MainWindowController: NSWindowController{
     
     var loginWindowController:LoginWindowController!
     
+    let TrainBook = "车票预订"
+    let TrainTask = "抢票任务"
+    let TrainOrder = "订单查询"
+    
     override func windowDidLoad()
     {
         super.windowDidLoad()
@@ -42,10 +46,10 @@ class MainWindowController: NSWindowController{
             NSMidY(titleView.bounds) - (segmentSize.height / 2.0),
             segmentSize.width, segmentSize.height)
         let segment = NSSegmentedControl(frame: segmentFrame)
-        segment.segmentCount = 3
-        segment.setLabel("车票预订", forSegment: 0)
-        segment.setLabel("抢票任务", forSegment: 1)
-        segment.setLabel("订单查询", forSegment: 2)
+        segment.segmentCount = 2
+        segment.setLabel(TrainBook, forSegment: 0)
+        segment.setLabel(TrainOrder, forSegment: 1)
+//        segment.setLabel(TainTask, forSegment: 2)
         segment.selectedSegment = 0
         segment.segmentStyle = NSSegmentStyle.TexturedSquare
         segment.target = self
@@ -79,7 +83,7 @@ class MainWindowController: NSWindowController{
 //    	aWindow.bottomBarHeight = aWindow.titleBarHeight;
 //	NSView *titleBarView = aWindow.titleBarView;
         
-        selectModule(0)
+        selectModule(TrainBook)
         
         self.window?.recalculateKeyViewLoop()
         
@@ -94,17 +98,17 @@ class MainWindowController: NSWindowController{
     }
     
     func segmentTab(sender: NSSegmentedControl){
-        selectModule(sender.selectedSegment)
+        selectModule(sender.labelForSegment(sender.selectedSegment)!)
     }
     
-    func selectModule(moduleIndex:Int){
-        if(moduleIndex == 2){
+    func selectModule(moduleName:String){
+        if(moduleName == TrainOrder){
             if orderQueryViewController == nil{
                 orderQueryViewController = OrderViewController()
             }
             self.window?.contentView = orderQueryViewController!.view
         }
-        else if(moduleIndex == 0){
+        else if(moduleName == TrainBook){
             if ticketQueryViewController == nil{
                 ticketQueryViewController = TicketQueryViewController()
             }
