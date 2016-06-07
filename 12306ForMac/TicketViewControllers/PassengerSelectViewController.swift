@@ -11,9 +11,12 @@ import Cocoa
 class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate{
     @IBOutlet weak var passengerTable: NSTableView!
     var passengers = [PassengerDTO]()
+    let maxSelectedPassengerCount = 5
+    var hasSelectedPassengerCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hasSelectedPassengerCount = 0
     }
     
     func reloadPassenger(passengersToShow:[PassengerDTO]){
@@ -30,10 +33,29 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
     }
     
     func checkPassenger(sender:NSButton){
-        print("checkPassenger")
+        if sender.state == NSOnState{
+            hasSelectedPassengerCount += 1
+        }
+        else{
+            hasSelectedPassengerCount -= 1
+        }
+        
+        if hasSelectedPassengerCount > maxSelectedPassengerCount {
+            hasSelectedPassengerCount -= 1
+            sender.state = NSOffState
+            
+            for passenger in passengers{
+                if passenger.passenger_name == sender.title {
+                    passenger.isChecked = false
+                    break
+                }
+            }
+            //todo 提示乘客超过5个
+            return
+        }
+        
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.postNotificationName(DidSendCheckPassengerMessageNotification, object: sender.title)
-        
     }
     
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
