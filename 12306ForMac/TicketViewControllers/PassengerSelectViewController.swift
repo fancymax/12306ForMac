@@ -17,6 +17,9 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
     override func viewDidLoad() {
         super.viewDidLoad()
         hasSelectedPassengerCount = 0
+        
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: #selector(PassengerSelectViewController.receiveLogoutMessageNotification(_:)), name: DidSendLogoutMessageNotification, object: nil)
     }
     
     func reloadPassenger(passengersToShow:[PassengerDTO]){
@@ -30,6 +33,12 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
     
     func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
         return self.passengers[row]
+    }
+    
+    func receiveLogoutMessageNotification(notification: NSNotification) {
+        passengers.removeAll()
+        passengerTable.reloadData()
+        hasSelectedPassengerCount = 0
     }
     
     @IBAction func checkPassenger(sender:NSButton){
@@ -60,6 +69,11 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
     
     func tableView(tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
         return AutoCompleteTableRowView()
+    }
+    
+    deinit{
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.removeObserver(self)
     }
     
 }

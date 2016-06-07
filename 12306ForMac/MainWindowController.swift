@@ -152,6 +152,8 @@ class MainWindowController: NSWindowController{
     func loginOut(){
         MainModel.isGetUserInfo = false
         MainModel.isGetPassengersInfo = false
+        MainModel.passengers = [PassengerDTO]()
+        NSNotificationCenter.defaultCenter().postNotificationName(DidSendLogoutMessageNotification, object:nil)
         loginButton.title = "登录 ▾"
         let service = Service()
         service.loginOut()

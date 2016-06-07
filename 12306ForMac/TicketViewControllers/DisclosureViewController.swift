@@ -26,10 +26,11 @@ class DisclosureViewController: NSViewController{
         passengerViewControllerList = [PassengerViewController]()
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: #selector(DisclosureViewController.receiveDidSendCheckPassengerMessageNotification(_:)), name: DidSendCheckPassengerMessageNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(DisclosureViewController.receiveCheckPassengerMessageNotification(_:)), name: DidSendCheckPassengerMessageNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(DisclosureViewController.receiveLogoutMessageNotification(_:)), name: DidSendLogoutMessageNotification, object: nil)
     }
     
-    func receiveDidSendCheckPassengerMessageNotification(notification: NSNotification) {
+    func receiveCheckPassengerMessageNotification(notification: NSNotification) {
         if !self.popover.shown {
             print("not my message in DisclosureViewController")
             return
@@ -51,6 +52,13 @@ class DisclosureViewController: NSViewController{
                 
                 break
             }
+        }
+    }
+    
+    func receiveLogoutMessageNotification(notification: NSNotification) {
+        passengerViewControllerList.removeAll()
+        for view in passengersView.views{
+            view.removeFromSuperview()
         }
     }
 
