@@ -32,7 +32,7 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
         return self.passengers[row]
     }
     
-    func checkPassenger(sender:NSButton){
+    @IBAction func checkPassenger(sender:NSButton){
         if sender.state == NSOnState{
             hasSelectedPassengerCount += 1
         }
@@ -56,16 +56,6 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.postNotificationName(DidSendCheckPassengerMessageNotification, object: sender.title)
-    }
-    
-    func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let cellView = tableView.makeViewWithIdentifier(tableColumn!.identifier, owner: self) as! NSTableCellView
-        
-        let check = cellView.viewWithTag(1) as! NSButton
-        check.target = self
-        check.action = #selector(PassengerSelectViewController.checkPassenger(_:))
-        
-        return cellView
     }
     
     func tableView(tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
