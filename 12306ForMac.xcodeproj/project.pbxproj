@@ -125,10 +125,10 @@
 		F111549C1C8D929200FA6059 /* Service+QueryOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Service+QueryOrder.swift"; sourceTree = "<group>"; };
 		F111549D1C8D929200FA6059 /* Service+QueryTicket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Service+QueryTicket.swift"; sourceTree = "<group>"; };
 		F111549E1C8D929200FA6059 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
-		F11154A51C8D92A700FA6059 /* LoginWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWindowController.swift; sourceTree = "<group>"; };
-		F11154A61C8D92A700FA6059 /* LoginWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginWindowController.xib; sourceTree = "<group>"; };
-		F11154A71C8D92A700FA6059 /* PreOrderWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreOrderWindowController.swift; sourceTree = "<group>"; };
-		F11154A81C8D92A700FA6059 /* PreOrderWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreOrderWindowController.xib; sourceTree = "<group>"; };
+		F11154A51C8D92A700FA6059 /* LoginWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginWindowController.swift; path = ../Sheets/LoginWindowController.swift; sourceTree = "<group>"; };
+		F11154A61C8D92A700FA6059 /* LoginWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginWindowController.xib; path = ../Sheets/LoginWindowController.xib; sourceTree = "<group>"; };
+		F11154A71C8D92A700FA6059 /* PreOrderWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreOrderWindowController.swift; path = ../Sheets/PreOrderWindowController.swift; sourceTree = "<group>"; };
+		F11154A81C8D92A700FA6059 /* PreOrderWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreOrderWindowController.xib; path = ../Sheets/PreOrderWindowController.xib; sourceTree = "<group>"; };
 		F11154AE1C8D92C100FA6059 /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		F11154AF1C8D92C100FA6059 /* OrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderViewController.xib; sourceTree = "<group>"; };
 		F11154B31C8D92D000FA6059 /* DisclosureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DisclosureViewController\U001b\U001b.swift"; sourceTree = "<group>"; };
@@ -223,10 +223,9 @@
 				F11154971C8D927C00FA6059 /* StationData.swift */,
 				F11154621C8D91F800FA6059 /* README.md */,
 				F11154631C8D91F800FA6059 /* srca.cer */,
-				F11154B21C8D92D000FA6059 /* TicketViewControllers */,
+				F11154B21C8D92D000FA6059 /* TicketQueryModule */,
 				F11DA9581C956A8000322D82 /* TaskViewControllers */,
 				F11154AD1C8D92C100FA6059 /* OrderViewControllers */,
-				F11154A41C8D92A700FA6059 /* Sheets */,
 				F11154991C8D929200FA6059 /* Service */,
 				F11154831C8D925200FA6059 /* UserControls */,
 				F111547A1C8D923C00FA6059 /* Utilities */,
@@ -325,18 +324,6 @@
 			path = 12306ForMac/Service;
 			sourceTree = "<group>";
 		};
-		F11154A41C8D92A700FA6059 /* Sheets */ = {
-			isa = PBXGroup;
-			children = (
-				F11154A51C8D92A700FA6059 /* LoginWindowController.swift */,
-				F11154A61C8D92A700FA6059 /* LoginWindowController.xib */,
-				F11154A71C8D92A700FA6059 /* PreOrderWindowController.swift */,
-				F11154A81C8D92A700FA6059 /* PreOrderWindowController.xib */,
-			);
-			name = Sheets;
-			path = 12306ForMac/Sheets;
-			sourceTree = "<group>";
-		};
 		F11154AD1C8D92C100FA6059 /* OrderViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,7 +334,7 @@
 			path = 12306ForMac/OrderViewControllers;
 			sourceTree = "<group>";
 		};
-		F11154B21C8D92D000FA6059 /* TicketViewControllers */ = {
+		F11154B21C8D92D000FA6059 /* TicketQueryModule */ = {
 			isa = PBXGroup;
 			children = (
 				F11154B31C8D92D000FA6059 /* DisclosureViewController.swift */,
@@ -362,8 +349,12 @@
 				F11154BC1C8D92D000FA6059 /* TicketTableViewController.xib */,
 				F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */,
 				F1D575751C95541D00A214B0 /* TicketQueryViewController.xib */,
+				F11154A51C8D92A700FA6059 /* LoginWindowController.swift */,
+				F11154A61C8D92A700FA6059 /* LoginWindowController.xib */,
+				F11154A71C8D92A700FA6059 /* PreOrderWindowController.swift */,
+				F11154A81C8D92A700FA6059 /* PreOrderWindowController.xib */,
 			);
-			name = TicketViewControllers;
+			name = TicketQueryModule;
 			path = 12306ForMac/TicketViewControllers;
 			sourceTree = "<group>";
 		};
