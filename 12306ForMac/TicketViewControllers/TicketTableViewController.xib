@@ -86,7 +86,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="U9T-uC-T3X" customClass="TrainStationTableCellView" customModule="_2306ForMac" customModuleProvider="target">
+                                            <tableCellView id="U9T-uC-T3X" customClass="StartStationTableCellView" customModule="_2306ForMac" customModuleProvider="target">
                                                 <rect key="frame" x="84" y="1" width="125" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -124,8 +124,10 @@
                                                     <constraint firstItem="pCE-g8-3NX" firstAttribute="top" secondItem="U9T-uC-T3X" secondAttribute="top" constant="2" id="sK2-zp-ULb"/>
                                                 </constraints>
                                                 <connections>
+                                                    <outlet property="stationField" destination="pCE-g8-3NX" id="S3b-9i-s7S"/>
                                                     <outlet property="stationMarkField" destination="5hC-9H-eXm" id="ai1-Xe-vxQ"/>
                                                     <outlet property="textField" destination="pCE-g8-3NX" id="bhO-Ai-4Bh"/>
+                                                    <outlet property="timeField" destination="nFa-D6-8D7" id="YzU-fs-PyP"/>
                                                 </connections>
                                             </tableCellView>
                                             <customView identifier="row" id="hFB-Oa-PaV" customClass="TrainTableRowView" customModule="_2306ForMac" customModuleProvider="target">
@@ -147,7 +149,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="sm8-La-HbK" customClass="TrainStationTableCellView" customModule="_2306ForMac" customModuleProvider="target">
+                                            <tableCellView id="sm8-La-HbK" customClass="EndStationTableCellView" customModule="_2306ForMac" customModuleProvider="target">
                                                 <rect key="frame" x="212" y="1" width="125" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -185,8 +187,10 @@
                                                     <constraint firstItem="RCZ-sh-DYo" firstAttribute="top" secondItem="sm8-La-HbK" secondAttribute="top" constant="2" id="ZKm-8y-7iC"/>
                                                 </constraints>
                                                 <connections>
+                                                    <outlet property="stationField" destination="RCZ-sh-DYo" id="vbm-1A-HRU"/>
                                                     <outlet property="stationMarkField" destination="t4v-sA-pbH" id="VeB-bg-M8g"/>
                                                     <outlet property="textField" destination="RCZ-sh-DYo" id="oya-VL-hJt"/>
+                                                    <outlet property="timeField" destination="ge1-Pn-Jqd" id="08g-8Z-w8h"/>
                                                 </connections>
                                             </tableCellView>
                                         </prototypeCellViews>

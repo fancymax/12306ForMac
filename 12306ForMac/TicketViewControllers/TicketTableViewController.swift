@@ -280,33 +280,19 @@ extension TicketTableViewController: NSTableViewDelegate{
         
         }
         else if(tableColumn!.identifier == "发站"){
-            let startStation:NSTextField = view.viewWithTag(1) as! NSTextField
-            let startMark:NSTextField = view.viewWithTag(11) as! NSTextField
-            let startTime:NSTextField = view.viewWithTag(3) as! NSTextField
-            startStation.stringValue = ticketRow.FromStationName!
-            startTime.stringValue = ticketRow.start_time!
-            if ticketRow.isStartStation{
-                startMark.hidden = false
-            }
-            else{
-                startMark.hidden = true
-            }
+            return cellForTicketStation(view, ticketInfo: ticketRow)
         }
         else if(tableColumn!.identifier == "到站"){
-            let endStation:NSTextField = view.viewWithTag(1) as! NSTextField
-            let endMark:NSTextField = view.viewWithTag(11) as! NSTextField
-            let endTime:NSTextField = view.viewWithTag(3) as! NSTextField
-            endStation.stringValue = ticketRow.ToStationName!
-            endTime.stringValue = ticketRow.arrive_time!
-            if ticketRow.isEndStation{
-                endMark.hidden = false
-            }
-            else{
-                endMark.hidden = true
-            }
+            return cellForTicketStation(view, ticketInfo: ticketRow)
         }
         
         return view
+    }
+    
+    private func cellForTicketStation(view:NSView, ticketInfo: QueryLeftNewDTO)->NSView?{
+        let stationCell = view as! TrainStationTableCellView
+        stationCell.ticketInfo = ticketInfo
+        return stationCell
     }
     
 }
