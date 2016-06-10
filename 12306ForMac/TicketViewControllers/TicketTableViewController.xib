@@ -86,7 +86,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="U9T-uC-T3X" customClass="ItemCellView" customModule="_2306ForMac" customModuleProvider="target">
+                                            <tableCellView id="U9T-uC-T3X" customClass="TrainStationTableCellView" customModule="_2306ForMac" customModuleProvider="target">
                                                 <rect key="frame" x="84" y="1" width="125" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -106,27 +106,32 @@
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField verticalHuggingPriority="750" tag="11" translatesAutoresizingMaskIntoConstraints="NO" id="5hC-9H-eXm" userLabel="StartMark">
-                                                        <rect key="frame" x="40" y="21" width="27" height="17"/>
+                                                    <textField verticalHuggingPriority="749" tag="11" translatesAutoresizingMaskIntoConstraints="NO" id="5hC-9H-eXm" userLabel="StartMark">
+                                                        <rect key="frame" x="40" y="21" width="24" height="14"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" state="on" title="[始]" id="wSz-PK-0Ak">
-                                                            <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" white="0.0" alpha="0.45394320101351349" colorSpace="deviceWhite"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="5hC-9H-eXm" firstAttribute="bottom" secondItem="pCE-g8-3NX" secondAttribute="bottom" id="RwP-fD-jPb"/>
                                                     <constraint firstItem="nFa-D6-8D7" firstAttribute="top" secondItem="pCE-g8-3NX" secondAttribute="bottom" constant="1" id="XNK-y2-uuP"/>
-                                                    <constraint firstItem="5hC-9H-eXm" firstAttribute="centerY" secondItem="pCE-g8-3NX" secondAttribute="centerY" id="dOC-Cn-dIH"/>
                                                     <constraint firstItem="nFa-D6-8D7" firstAttribute="leading" secondItem="pCE-g8-3NX" secondAttribute="leading" id="gQ8-uM-ETN"/>
                                                     <constraint firstItem="pCE-g8-3NX" firstAttribute="leading" secondItem="U9T-uC-T3X" secondAttribute="leading" constant="2" id="mbb-rT-YxD"/>
                                                     <constraint firstItem="5hC-9H-eXm" firstAttribute="leading" secondItem="pCE-g8-3NX" secondAttribute="trailing" constant="1" id="nL5-6y-MqU"/>
                                                     <constraint firstItem="pCE-g8-3NX" firstAttribute="top" secondItem="U9T-uC-T3X" secondAttribute="top" constant="2" id="sK2-zp-ULb"/>
                                                 </constraints>
                                                 <connections>
+                                                    <outlet property="stationMarkField" destination="5hC-9H-eXm" id="ai1-Xe-vxQ"/>
                                                     <outlet property="textField" destination="pCE-g8-3NX" id="bhO-Ai-4Bh"/>
                                                 </connections>
                                             </tableCellView>
+                                            <customView identifier="row" id="hFB-Oa-PaV" customClass="TrainTableRowView" customModule="_2306ForMac" customModuleProvider="target">
+                                                <rect key="frame" x="84" y="43" width="125" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            </customView>
                                         </prototypeCellViews>
                                     </tableColumn>
                                     <tableColumn identifier="到站" width="125" minWidth="10" maxWidth="3.4028234663852886e+38" id="tSa-xu-jHa">
@@ -142,7 +147,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="sm8-La-HbK" customClass="ItemCellView" customModule="_2306ForMac" customModuleProvider="target">
+                                            <tableCellView id="sm8-La-HbK" customClass="TrainStationTableCellView" customModule="_2306ForMac" customModuleProvider="target">
                                                 <rect key="frame" x="212" y="1" width="125" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -163,10 +168,10 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField verticalHuggingPriority="750" tag="11" translatesAutoresizingMaskIntoConstraints="NO" id="t4v-sA-pbH" userLabel="endMark">
-                                                        <rect key="frame" x="27" y="21" width="27" height="17"/>
+                                                        <rect key="frame" x="27" y="21" width="24" height="14"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" state="on" title="[终]" id="82E-lf-ElU">
-                                                            <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.45000000000000001" colorSpace="calibratedRGB"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
@@ -175,11 +180,12 @@
                                                     <constraint firstItem="ge1-Pn-Jqd" firstAttribute="top" secondItem="RCZ-sh-DYo" secondAttribute="bottom" constant="1" id="BqI-Fo-JNH"/>
                                                     <constraint firstItem="RCZ-sh-DYo" firstAttribute="leading" secondItem="sm8-La-HbK" secondAttribute="leading" constant="2" id="Djo-pG-6KT"/>
                                                     <constraint firstItem="t4v-sA-pbH" firstAttribute="leading" secondItem="RCZ-sh-DYo" secondAttribute="trailing" constant="1" id="Rhv-AV-lKp"/>
+                                                    <constraint firstItem="t4v-sA-pbH" firstAttribute="bottom" secondItem="RCZ-sh-DYo" secondAttribute="bottom" id="UR8-b7-AIP"/>
                                                     <constraint firstItem="ge1-Pn-Jqd" firstAttribute="leading" secondItem="RCZ-sh-DYo" secondAttribute="leading" id="VfO-jf-wRp"/>
                                                     <constraint firstItem="RCZ-sh-DYo" firstAttribute="top" secondItem="sm8-La-HbK" secondAttribute="top" constant="2" id="ZKm-8y-7iC"/>
-                                                    <constraint firstItem="t4v-sA-pbH" firstAttribute="centerY" secondItem="RCZ-sh-DYo" secondAttribute="centerY" id="h9g-AY-t9U"/>
                                                 </constraints>
                                                 <connections>
+                                                    <outlet property="stationMarkField" destination="t4v-sA-pbH" id="VeB-bg-M8g"/>
                                                     <outlet property="textField" destination="RCZ-sh-DYo" id="oya-VL-hJt"/>
                                                 </connections>
                                             </tableCellView>
@@ -238,7 +244,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView misplaced="YES" id="WIs-HT-Kwb" customClass="ItemCellView" customModule="_2306ForMac" customModuleProvider="target">
-                                                <rect key="frame" x="423" y="1" width="1197" height="40"/>
+                                                <rect key="frame" x="423" y="1" width="500" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zbQ-SX-Tc7">

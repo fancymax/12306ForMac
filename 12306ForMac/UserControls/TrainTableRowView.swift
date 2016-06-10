@@ -1,0 +1,44 @@
+//
+//  TrainTableRowView.swift
+//  12306ForMac
+//
+//  Created by fancymax on 16/6/10.
+//  Copyright © 2016年 fancy. All rights reserved.
+//
+
+import Cocoa
+
+class TrainTableRowView: NSTableRowView {
+    
+    private var shouldDrawAsKey = true
+    
+    override var selected: Bool {
+        didSet {
+            updateSubviewsInterestedInSelectionState()
+        }
+    }
+
+    private func updateSubviewsInterestedInSelectionState() {
+        guard subviews.count > 0 else { return }
+        
+        for view in subviews {
+            if view .isKindOfClass(TrainStationTableCellView) {
+                let stationCellView = view as! TrainStationTableCellView
+                stationCellView.selected = selected
+            }
+        }
+    }
+    
+//    override func drawSelectionInRect(dirtyRect:NSRect) {
+//        let fillColor = NSColor.greenColor()
+//        if shouldDrawAsKey {
+//            
+//        }
+//        else {
+//            
+//        }
+//        
+//        fillColor.setFill()
+//        NSRectFillUsingOperation(dirtyRect, .CompositeOverlay)
+//    }
+}

@@ -186,6 +186,10 @@ extension TicketTableViewController: NSTableViewDataSource{
 
 // MARK: - NSTableViewDelegate
 extension TicketTableViewController: NSTableViewDelegate{
+    func tableView(tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+        return tableView.makeViewWithIdentifier("row", owner: tableView) as? NSTableRowView
+    }
+    
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let view = tableView.makeViewWithIdentifier(tableColumn!.identifier, owner: nil) as! NSTableCellView
         let ticketRow = ticketQueryResult[row]
