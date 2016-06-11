@@ -59,6 +59,7 @@ class TrainStationTableCellView: TrainTableCellView {
     }
 }
 
+// MARK: - 发站
 class StartStationTableCellView: TrainStationTableCellView {
     override func updateUI() {
         stationField.stringValue = ticketInfo.FromStationName!
@@ -72,6 +73,7 @@ class StartStationTableCellView: TrainStationTableCellView {
     }
 }
 
+// MARK: - 到站
 class EndStationTableCellView: TrainStationTableCellView {
     override func updateUI() {
         stationField.stringValue = ticketInfo.ToStationName!
@@ -85,6 +87,16 @@ class EndStationTableCellView: TrainStationTableCellView {
     }
 }
 
+// MARK: - 车次
+class TrainCodeTableCellView: TrainTableCellView {
+    @IBOutlet weak private var trainCodeField: ClickableTextField!
+    
+    override func updateTint() {
+        trainCodeField.selected = self.selected
+    }
+}
+
+// MARK: - 余票信息
 class TrainInfoTableCellView: TrainTableCellView {
     @IBOutlet weak private var messageField: NSTextField!
     @IBOutlet weak private var SwzBtn: NSButton!

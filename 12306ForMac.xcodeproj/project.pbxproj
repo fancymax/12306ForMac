@@ -73,6 +73,7 @@
 		F13E9C981D0AA9760011F7E2 /* TrainInfoTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13E9C971D0AA9760011F7E2 /* TrainInfoTableCellView.swift */; };
 		F13E9C9A1D0AB3310011F7E2 /* TrainTableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13E9C991D0AB3310011F7E2 /* TrainTableRowView.swift */; };
 		F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F17AB1CB1C95630E00FEB221 /* Credits.rtf */; };
+		F17C82191D0C4B5900FB178B /* ClickableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17C82181D0C4B5900FB178B /* ClickableTextField.swift */; };
 		F196445E1C9CED830097FF67 /* Service+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F196445D1C9CED830097FF67 /* Service+Utilities.swift */; };
 		F1A08AFE1CB25911008C5D40 /* TicketSelectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A08AFC1CB25911008C5D40 /* TicketSelectWindowController.swift */; };
 		F1A08AFF1CB25911008C5D40 /* TicketSelectWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A08AFD1CB25911008C5D40 /* TicketSelectWindowController.xib */; };
@@ -165,6 +166,7 @@
 		F13E9C971D0AA9760011F7E2 /* TrainInfoTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainInfoTableCellView.swift; sourceTree = "<group>"; };
 		F13E9C991D0AB3310011F7E2 /* TrainTableRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainTableRowView.swift; sourceTree = "<group>"; };
 		F17AB1CB1C95630E00FEB221 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = 12306ForMac/Resources/Credits.rtf; sourceTree = SOURCE_ROOT; };
+		F17C82181D0C4B5900FB178B /* ClickableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClickableTextField.swift; sourceTree = "<group>"; };
 		F196445D1C9CED830097FF67 /* Service+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Service+Utilities.swift"; sourceTree = "<group>"; };
 		F1A08AFC1CB25911008C5D40 /* TicketSelectWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketSelectWindowController.swift; path = 12306ForMac/TaskViewControllers/TicketSelectWindowController.swift; sourceTree = "<group>"; };
 		F1A08AFD1CB25911008C5D40 /* TicketSelectWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TicketSelectWindowController.xib; path = 12306ForMac/TaskViewControllers/TicketSelectWindowController.xib; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				F1D390A31C8F177F000B3FD7 /* RandCodeImageView2.swift */,
 				F13E9C971D0AA9760011F7E2 /* TrainInfoTableCellView.swift */,
 				F13E9C991D0AB3310011F7E2 /* TrainTableRowView.swift */,
+				F17C82181D0C4B5900FB178B /* ClickableTextField.swift */,
 			);
 			name = UserControls;
 			path = 12306ForMac/UserControls;
@@ -633,6 +636,7 @@
 				F1A08AFE1CB25911008C5D40 /* TicketSelectWindowController.swift in Sources */,
 				F1D575761C95541D00A214B0 /* TicketQueryViewController.swift in Sources */,
 				F11154C31C8D92D000FA6059 /* PassengerViewController.swift in Sources */,
+				F17C82191D0C4B5900FB178B /* ClickableTextField.swift in Sources */,
 				F1D390A41C8F177F000B3FD7 /* RandCodeImageView2.swift in Sources */,
 				F1E7EA2E1C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m in Sources */,
 				F11154761C8D921400FA6059 /* PassengerDTO.swift in Sources */,

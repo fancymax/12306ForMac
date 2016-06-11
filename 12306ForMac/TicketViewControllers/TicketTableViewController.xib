@@ -47,15 +47,15 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="Thi-I0-xpS">
+                                            <tableCellView id="Thi-I0-xpS" customClass="TrainCodeTableCellView" customModule="_2306ForMac" customModuleProvider="target">
                                                 <rect key="frame" x="1" y="1" width="80" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="VjQ-w0-ad3">
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="VjQ-w0-ad3" customClass="ClickableTextField" customModule="_2306ForMac" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="12" width="43" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="D2312" id="iOY-6H-nTA">
-                                                            <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                            <font key="font" metaFont="systemLight" size="13"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
@@ -69,6 +69,7 @@
                                                 </constraints>
                                                 <connections>
                                                     <outlet property="textField" destination="VjQ-w0-ad3" id="P1S-Mo-4bC"/>
+                                                    <outlet property="trainCodeField" destination="VjQ-w0-ad3" id="sru-Pj-KBd"/>
                                                 </connections>
                                             </tableCellView>
                                         </prototypeCellViews>
@@ -93,15 +94,15 @@
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="pCE-g8-3NX" userLabel="StartStation">
                                                         <rect key="frame" x="0.0" y="21" width="43" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="深圳北" id="K4w-f7-z0b">
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="systemLight" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nFa-D6-8D7" userLabel="Time">
+                                                    <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nFa-D6-8D7" userLabel="Time">
                                                         <rect key="frame" x="0.0" y="3" width="33" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" state="on" alignment="left" title="9:00" id="sWk-38-1vq">
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="systemLight" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -156,7 +157,7 @@
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="RCZ-sh-DYo" userLabel="endStation">
                                                         <rect key="frame" x="0.0" y="21" width="30" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="福州" id="Dl4-v5-gwe">
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="systemLight" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -164,7 +165,7 @@
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ge1-Pn-Jqd" userLabel="Time">
                                                         <rect key="frame" x="0.0" y="3" width="38" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" state="on" alignment="left" title="12:00" id="4vS-hV-Gze">
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="systemLight" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -215,7 +216,7 @@
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Zfv-ty-qRd">
                                                         <rect key="frame" x="18" y="12" width="44" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="05:22" id="q5u-J1-PsS">
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="systemLight" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -252,20 +253,20 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zbQ-SX-Tc7">
-                                                        <rect key="frame" x="0.0" y="0.0" width="1179" height="40"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="1197" height="40"/>
                                                         <subviews>
                                                             <button identifier="商务座" verticalHuggingPriority="750" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="wlw-V5-eFc" userLabel="商务座">
                                                                 <rect key="frame" x="0.0" y="8" width="100" height="24"/>
-                                                                <buttonCell key="cell" type="inline" title="商务座" alternateTitle="商务座" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BA9-H0-aw3">
+                                                                <buttonCell key="cell" type="inline" title="商务" alternateTitle="商务" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BA9-H0-aw3">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                    <font key="font" metaFont="system" size="11"/>
+                                                                    <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
                                                             <button identifier="特等座" verticalHuggingPriority="750" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="amo-ve-rtZ" userLabel="特等座">
                                                                 <rect key="frame" x="108" y="8" width="100" height="24"/>
-                                                                <buttonCell key="cell" type="inline" title="特等座" alternateTitle="特等座" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SdW-w4-1G4">
+                                                                <buttonCell key="cell" type="inline" title="特等" alternateTitle="特等" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SdW-w4-1G4">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                    <font key="font" metaFont="system" size="11"/>
+                                                                    <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
                                                             <button identifier="一等座" horizontalHuggingPriority="249" verticalHuggingPriority="750" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="Lgd-p7-ZYI" userLabel="一等座">
@@ -274,64 +275,64 @@
                                                                     <constraint firstAttribute="width" constant="100" id="61X-bG-m55"/>
                                                                     <constraint firstAttribute="height" constant="23" id="ONl-EC-rYg"/>
                                                                 </constraints>
-                                                                <buttonCell key="cell" type="inline" title="一等座" alternateTitle="一等座" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="V5c-D5-4aG">
+                                                                <buttonCell key="cell" type="inline" title="一等" alternateTitle="一等" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="V5c-D5-4aG">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                    <font key="font" metaFont="system" size="11"/>
+                                                                    <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
                                                             <button identifier="二等座" verticalHuggingPriority="750" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="MfS-ww-ubE" userLabel="二等座">
                                                                 <rect key="frame" x="324" y="8" width="100" height="24"/>
-                                                                <buttonCell key="cell" type="inline" title="二等座" alternateTitle="二等座" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="k7V-GM-G3g">
+                                                                <buttonCell key="cell" type="inline" title="二等" alternateTitle="二等" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="k7V-GM-G3g">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                    <font key="font" metaFont="system" size="11"/>
+                                                                    <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
                                                             <button identifier="高级软卧" verticalHuggingPriority="750" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="0k8-8n-30j" userLabel="高级软卧">
                                                                 <rect key="frame" x="432" y="8" width="100" height="24"/>
-                                                                <buttonCell key="cell" type="inline" title="高级软卧" alternateTitle="高级软卧" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="C4g-gw-A1U">
+                                                                <buttonCell key="cell" type="inline" title="高软" alternateTitle="高软" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="C4g-gw-A1U">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                    <font key="font" metaFont="system" size="11"/>
+                                                                    <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
                                                             <button identifier="软卧" verticalHuggingPriority="750" tag="6" translatesAutoresizingMaskIntoConstraints="NO" id="sr9-MS-5Hq" userLabel="软卧">
                                                                 <rect key="frame" x="540" y="8" width="100" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="软卧" alternateTitle="软卧" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CAy-mz-kNR">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                    <font key="font" metaFont="system" size="11"/>
+                                                                    <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
                                                             <button identifier="硬卧" verticalHuggingPriority="750" tag="7" translatesAutoresizingMaskIntoConstraints="NO" id="mH7-pm-FHT" userLabel="硬卧">
                                                                 <rect key="frame" x="648" y="8" width="100" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="硬卧" alternateTitle="硬卧" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vhe-hG-HUq">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                    <font key="font" metaFont="system" size="11"/>
+                                                                    <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
                                                             <button identifier="软座" verticalHuggingPriority="750" tag="8" translatesAutoresizingMaskIntoConstraints="NO" id="QPP-kp-j8X" userLabel="软座">
                                                                 <rect key="frame" x="756" y="8" width="100" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="软座" alternateTitle="软座" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J4I-Wx-FI3">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                    <font key="font" metaFont="system" size="11"/>
+                                                                    <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
                                                             <button identifier="硬座" verticalHuggingPriority="750" tag="9" translatesAutoresizingMaskIntoConstraints="NO" id="ee3-2t-ayO" userLabel="硬座">
                                                                 <rect key="frame" x="864" y="8" width="100" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="硬座" alternateTitle="硬座" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2G8-35-q7S">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                    <font key="font" metaFont="system" size="11"/>
+                                                                    <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
                                                             <button identifier="无座" verticalHuggingPriority="750" tag="10" translatesAutoresizingMaskIntoConstraints="NO" id="90h-df-nAo" userLabel="无座">
                                                                 <rect key="frame" x="972" y="8" width="100" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="无座" alternateTitle="无座" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Zuv-1Y-8m6">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                    <font key="font" metaFont="system" size="11"/>
+                                                                    <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="11" translatesAutoresizingMaskIntoConstraints="NO" id="MdL-Jz-r4d">
-                                                                <rect key="frame" x="1078" y="14" width="103" height="14"/>
+                                                                <rect key="frame" x="1078" y="12" width="121" height="17"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="本车次暂无可售车票" id="gcJ-yl-jL0">
-                                                                    <font key="font" metaFont="smallSystem"/>
+                                                                    <font key="font" metaFont="systemLight" size="13"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.45088420540000002" colorSpace="calibratedRGB"/>
                                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
