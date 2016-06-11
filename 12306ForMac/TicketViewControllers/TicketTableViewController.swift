@@ -112,7 +112,7 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         }
     }
     
-    func submit(sender: NSButton){
+    @IBAction func submit(sender: NSButton){
         let notificationCenter = NSNotificationCenter.defaultCenter()
         if !MainModel.isGetUserInfo {
             notificationCenter.postNotificationName(DidSendLoginMessageNotification, object: nil)
@@ -192,107 +192,21 @@ extension TicketTableViewController: NSTableViewDelegate{
     
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let view = tableView.makeViewWithIdentifier(tableColumn!.identifier, owner: nil) as! NSTableCellView
-        let ticketRow = ticketQueryResult[row]
         
-        if(tableColumn!.identifier == "余票信息"){
-            
-            let sub1:NSButton = view.viewWithTag(1) as! NSButton
-            let sub2:NSButton = view.viewWithTag(2) as! NSButton
-            let sub3:NSButton = view.viewWithTag(3) as! NSButton
-            let sub4:NSButton = view.viewWithTag(4) as! NSButton
-            let sub5:NSButton = view.viewWithTag(5) as! NSButton
-            let sub6:NSButton = view.viewWithTag(6) as! NSButton
-            let sub7:NSButton = view.viewWithTag(7) as! NSButton
-            let sub8:NSButton = view.viewWithTag(8) as! NSButton
-            let sub9:NSButton = view.viewWithTag(9) as! NSButton
-            let sub10:NSButton = view.viewWithTag(10) as! NSButton
-            
-            let label:NSTextField = view.viewWithTag(11) as! NSTextField
-            
-            func setTicketButton(ticket:String,sender:NSButton){
-                if ((ticket == "--")||(ticket == "无")||(ticket == "*")){
-                    sender.hidden = true
-                }
-                else if (ticket == "有"){
-                    sender.target = self
-                    sender.action = #selector(TicketTableViewController.submit(_:))
-                    sender.hidden = false
-                    sender.enabled = true
-                    sender.title = sender.alternateTitle + "(有票)"
-                }
-                else{
-                    sender.target = self
-                    sender.action = #selector(TicketTableViewController.submit(_:))
-                    sender.hidden = false
-                    sender.enabled = true
-                    sender.title = sender.alternateTitle + "(\(ticket)张)"
-                }
-            }
-            
-            setTicketButton(ticketRow.Swz_Nu!, sender: sub1)
-            setTicketButton(ticketRow.Tz_Num!, sender: sub2)
-            setTicketButton(ticketRow.Zy_Num!, sender: sub3)
-            setTicketButton(ticketRow.Ze_Num!, sender: sub4)
-            setTicketButton(ticketRow.Gr_Num!, sender: sub5)
-            setTicketButton(ticketRow.Rw_Num!, sender: sub6)
-            setTicketButton(ticketRow.Yw_Num!, sender: sub7)
-            setTicketButton(ticketRow.Rz_Num!, sender: sub8)
-            setTicketButton(ticketRow.Yz_Num!, sender: sub9)
-            setTicketButton(ticketRow.Wz_Num!, sender: sub10)
-            
-            if ticketRow.canWebBuy == "Y" {
-                label.hidden = true
-            }
-            else if ticketRow.canWebBuy == "N" {
-
-                label.stringValue = "本车次暂无可售车票"
-                label.hidden = false
-            }
-            else if ticketRow.canWebBuy == "IS_TIME_NOT_BUY"{
-                if ticketRow.buttonTextInfo == "23:00-07:00系统维护时间" {
-                    sub1.enabled = false
-                    sub2.enabled = false
-                    sub3.enabled = false
-                    sub4.enabled = false
-                    sub5.enabled = false
-                    sub6.enabled = false
-                    sub7.enabled = false
-                    sub8.enabled = false
-                    sub9.enabled = false
-                    sub10.enabled = false
-                    label.hidden = true
-                }
-                else
-                {
-                    if let range = ticketRow.buttonTextInfo!.rangeOfString("<br/>"){
-                        ticketRow.buttonTextInfo!.removeRange(range)
-                    }
-                    label.stringValue = ticketRow.buttonTextInfo!
-                    label.hidden = false
-                    return view
-                }
-            }
-            
-            if sub1.hidden && sub2.hidden && sub3.hidden && sub4.hidden && sub5.hidden && sub6.hidden && sub7.hidden && sub8.hidden && sub9.hidden && sub10.hidden {
-                label.stringValue = "本车次暂无可售车票"
-                label.hidden = false
-            }
-        
+        let columnIdentifier = tableColumn!.identifier
+        if(columnIdentifier == "余票信息"){
+            let cell = view as! TrainInfoTableCellView
+            cell.ticketInfo = ticketQueryResult[row]
+            cell.setTarget(self, action: #selector(TicketTableViewController.submit(_:)))
+            return cell
         }
-        else if(tableColumn!.identifier == "发站"){
-            return cellForTicketStation(view, ticketInfo: ticketRow)
-        }
-        else if(tableColumn!.identifier == "到站"){
-            return cellForTicketStation(view, ticketInfo: ticketRow)
+        else if(columnIdentifier == "发站" || columnIdentifier == "到站"){
+            let cell = view as! TrainTableCellView
+            cell.ticketInfo = ticketQueryResult[row]
+            return cell
         }
         
         return view
-    }
-    
-    private func cellForTicketStation(view:NSView, ticketInfo: QueryLeftNewDTO)->NSView?{
-        let stationCell = view as! TrainStationTableCellView
-        stationCell.ticketInfo = ticketInfo
-        return stationCell
     }
     
 }

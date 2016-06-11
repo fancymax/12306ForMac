@@ -165,7 +165,7 @@ extension TicketSelectWindowController: NSTableViewDelegate{
                 }
             }
             
-            setTicketButton(ticketRow.Swz_Nu!, sender: sub1)
+            setTicketButton(ticketRow.Swz_Num!, sender: sub1)
             setTicketButton(ticketRow.Tz_Num!, sender: sub2)
             setTicketButton(ticketRow.Zy_Num!, sender: sub3)
             setTicketButton(ticketRow.Ze_Num!, sender: sub4)

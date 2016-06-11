@@ -22,8 +22,8 @@ class TrainTableRowView: NSTableRowView {
         guard subviews.count > 0 else { return }
         
         for view in subviews {
-            if view .isKindOfClass(TrainStationTableCellView) {
-                let stationCellView = view as! TrainStationTableCellView
+            if view.isKindOfClass(TrainTableCellView) {
+                let stationCellView = view as! TrainTableCellView
                 stationCellView.selected = selected
             }
         }

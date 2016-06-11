@@ -141,7 +141,7 @@ class QueryLeftNewDTO:NSObject {
     //一等座
     var Zy_Num:String?
     //商务座
-    var Swz_Nu:String?
+    var Swz_Num:String?
     
     init(json:JSON)
     {
@@ -181,7 +181,7 @@ class QueryLeftNewDTO:NSObject {
         sale_time = ticket["sale_time"].string
         is_support_card = ticket["is_support_card"].string
         
-        Swz_Nu = ticket["swz_num"].string
+        Swz_Num = ticket["swz_num"].string
         Tz_Num = ticket["tz_num"].string
         Zy_Num = ticket["zy_num"].string
         Ze_Num = ticket["ze_num"].string
