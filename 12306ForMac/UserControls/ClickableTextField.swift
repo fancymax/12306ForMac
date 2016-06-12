@@ -8,8 +8,14 @@
 
 import Cocoa
 
+@objc protocol ClickableTextFieldDelegate {
+    func textFieldDidMouseEntered(sender: ClickableTextField)
+    func textFieldDidMouseExited()
+}
+
 class ClickableTextField: NSTextField {
     private var hovered: Bool = false
+    weak var clickDelegate: ClickableTextFieldDelegate?
     
     var selected = false {
         didSet{
@@ -50,11 +56,17 @@ class ClickableTextField: NSTextField {
     override func mouseEntered(theEvent: NSEvent) {
         self.hovered = true
         self.needsDisplay = true
+        if clickDelegate != nil {
+            clickDelegate?.textFieldDidMouseEntered(self)
+        }
     }
     
     override func mouseExited(theEvent: NSEvent) {
         self.hovered = false
         self.needsDisplay = true
+        if clickDelegate != nil {
+            clickDelegate?.textFieldDidMouseExited()
+        }
     }
     
     private var trackingArea: NSTrackingArea!

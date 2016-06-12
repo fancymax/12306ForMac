@@ -29,6 +29,14 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     
     var submitWindowController = PreOrderWindowController()
     
+    let trainCodeDetailViewController = TrainCodeDetailViewController()
+    lazy var popover: NSPopover = {
+        let popover = NSPopover()
+        popover.behavior = .Semitransient
+        popover.contentViewController = self.trainCodeDetailViewController
+        return popover
+        }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadingView.hidden = true
@@ -198,15 +206,49 @@ extension TicketTableViewController: NSTableViewDelegate{
             let cell = view as! TrainInfoTableCellView
             cell.ticketInfo = ticketQueryResult[row]
             cell.setTarget(self, action: #selector(TicketTableViewController.submit(_:)))
-            return cell
         }
         else if(columnIdentifier == "发站" || columnIdentifier == "到站"){
             let cell = view as! TrainTableCellView
             cell.ticketInfo = ticketQueryResult[row]
-            return cell
+        }
+        else if(columnIdentifier == "车次"){
+            let cell = view as! TrainCodeTableCellView
+            cell.setClickableTextFieldDelegate(self)
         }
         
         return view
     }
     
+}
+
+extension TicketTableViewController: ClickableTextFieldDelegate {
+    func textFieldDidMouseEntered(sender:ClickableTextField) {
+        let positioningView = sender
+        let positioningRect = NSZeroRect
+        let preferredEdge = NSRectEdge.MaxX
+        popover.showRelativeToRect(positioningRect, ofView: positioningView, preferredEdge: preferredEdge)
+        
+        let trainCode = sender.stringValue
+        var queryByTrainCodeParam = QueryByTrainCodeParam()
+        queryByTrainCodeParam.depart_date = self.date!
+        
+        for i in 0..<ticketQueryResult.count {
+            if ticketQueryResult[i].TrainCode == trainCode {
+                queryByTrainCodeParam.train_no = ticketQueryResult[i].train_no!
+                queryByTrainCodeParam.from_station_telecode = ticketQueryResult[i].FromStationCode!
+                queryByTrainCodeParam.to_station_telecode = ticketQueryResult[i].ToStationCode!
+                break
+            }
+        }
+        
+        self.trainCodeDetailViewController.queryByTrainCodeParam = queryByTrainCodeParam
+        
+        
+        print("textFiled Entered")
+    }
+    
+    
+    func textFieldDidMouseExited() {
+        print("textField Exited")
+    }
 }

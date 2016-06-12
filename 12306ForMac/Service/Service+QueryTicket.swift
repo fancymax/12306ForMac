@@ -33,6 +33,14 @@ extension Service {
         })
     }
     
+    func queryTrainNoFlowWith(params:QueryByTrainCodeParam,success:(trainCodeDetail:TrainCodeDetails)->(),failure:(error:NSError)->()) {
+        self.queryByTrainNo(params).then({trainCodeDetails in
+            success(trainCodeDetail: trainCodeDetails)
+        }).error({error in
+            failure(error: error as NSError)
+        })
+    }
+    
 // MARK: - Chainable Request
     func queryTicketInit()->Promise<(Bool,String,String)>{
         return Promise{ fulfill, reject in
@@ -123,6 +131,32 @@ extension Service {
                         else{
                             let error = ServiceError.errorWithCode(.QueryTicketFailed)
                             reject(error)
+                        }
+                    }
+                })}
+    }
+    
+    //https://kyfw.12306.cn/otn/czxx/queryByTrainNo?train_no=6i000D232806&from_station_telecode=IOQ&to_station_telecode=FYS&depart_date=2016-06-12
+    func queryByTrainNo(params: QueryByTrainCodeParam)->Promise<TrainCodeDetails>{
+        return Promise{ fulfill, reject in
+            let url = "https://kyfw.12306.cn/otn/czxx/queryByTrainNo?" + params.ToGetParams()
+            let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init",
+                           "If-Modified-Since":"0",
+                           "Cache-Control":"no-cache"]
+            Service.Manager.request(.GET, url, headers: headers).responseJSON(completionHandler:{ response in
+                    switch (response.result){
+                    case .Failure(let error):
+                        reject(error)
+                    case .Success(let data):
+                        let json = JSON(data)["data"]["data"]
+                        if json.count > 0 {
+                            let trainCodeDetails = TrainCodeDetails(json: json)
+                            fulfill(trainCodeDetails)
+                        }
+                        else  {
+                            let error = ServiceError.errorWithCode(.QueryTicketFailed)
+                            reject(error)
+                            
                         }
                     }
                 })}

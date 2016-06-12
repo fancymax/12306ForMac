@@ -77,6 +77,10 @@
 		F196445E1C9CED830097FF67 /* Service+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F196445D1C9CED830097FF67 /* Service+Utilities.swift */; };
 		F1A08AFE1CB25911008C5D40 /* TicketSelectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A08AFC1CB25911008C5D40 /* TicketSelectWindowController.swift */; };
 		F1A08AFF1CB25911008C5D40 /* TicketSelectWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A08AFD1CB25911008C5D40 /* TicketSelectWindowController.xib */; };
+		F1CCA2D81D0D3DFA00B6853E /* TrainCodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCA2D61D0D3DFA00B6853E /* TrainCodeDetailViewController.swift */; };
+		F1CCA2D91D0D3DFA00B6853E /* TrainCodeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CCA2D71D0D3DFA00B6853E /* TrainCodeDetailViewController.xib */; };
+		F1CCA2DB1D0D42D700B6853E /* QueryByTrainCodeParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCA2DA1D0D42D700B6853E /* QueryByTrainCodeParam.swift */; };
+		F1CCA2DE1D0D4A1400B6853E /* TrainCodeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCA2DD1D0D4A1400B6853E /* TrainCodeDetail.swift */; };
 		F1D390A41C8F177F000B3FD7 /* RandCodeImageView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D390A31C8F177F000B3FD7 /* RandCodeImageView2.swift */; };
 		F1D575761C95541D00A214B0 /* TicketQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */; };
 		F1D575771C95541D00A214B0 /* TicketQueryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D575751C95541D00A214B0 /* TicketQueryViewController.xib */; };
@@ -171,6 +175,10 @@
 		F1A08AFC1CB25911008C5D40 /* TicketSelectWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketSelectWindowController.swift; path = 12306ForMac/TaskViewControllers/TicketSelectWindowController.swift; sourceTree = "<group>"; };
 		F1A08AFD1CB25911008C5D40 /* TicketSelectWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TicketSelectWindowController.xib; path = 12306ForMac/TaskViewControllers/TicketSelectWindowController.xib; sourceTree = "<group>"; };
 		F1CC36461B6B244C0074A014 /* 12306ForMac-Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "12306ForMac-Swift.h"; sourceTree = "<group>"; };
+		F1CCA2D61D0D3DFA00B6853E /* TrainCodeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainCodeDetailViewController.swift; sourceTree = "<group>"; };
+		F1CCA2D71D0D3DFA00B6853E /* TrainCodeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrainCodeDetailViewController.xib; sourceTree = "<group>"; };
+		F1CCA2DA1D0D42D700B6853E /* QueryByTrainCodeParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryByTrainCodeParam.swift; sourceTree = "<group>"; };
+		F1CCA2DD1D0D4A1400B6853E /* TrainCodeDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainCodeDetail.swift; sourceTree = "<group>"; };
 		F1D390A31C8F177F000B3FD7 /* RandCodeImageView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandCodeImageView2.swift; sourceTree = "<group>"; };
 		F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketQueryViewController.swift; sourceTree = "<group>"; };
 		F1D575751C95541D00A214B0 /* TicketQueryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketQueryViewController.xib; sourceTree = "<group>"; };
@@ -262,15 +270,15 @@
 		F11154691C8D921400FA6059 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F111546A1C8D921400FA6059 /* LeftTicketParam.swift */,
+				F1CCA2DC1D0D42EA00B6853E /* Params */,
 				F111546B1C8D921400FA6059 /* MainModel.swift */,
 				F111546C1C8D921400FA6059 /* OrderDTO.swift */,
 				F111546D1C8D921400FA6059 /* OrderQueueResult.swift */,
 				F111546E1C8D921400FA6059 /* PassengerDTO.swift */,
 				F111546F1C8D921400FA6059 /* QueryLeftNewDTO.swift */,
-				F11154701C8D921400FA6059 /* QueryOrderParam.swift */,
 				F11154711C8D921400FA6059 /* QueryOrderWaitTimeResult.swift */,
 				F1F5CE0E1CA9431D005C33BD /* SeatTypeModel.swift */,
+				F1CCA2DD1D0D4A1400B6853E /* TrainCodeDetail.swift */,
 			);
 			name = Model;
 			path = 12306ForMac/Model;
@@ -362,6 +370,8 @@
 				F11154A61C8D92A700FA6059 /* LoginWindowController.xib */,
 				F11154A71C8D92A700FA6059 /* PreOrderWindowController.swift */,
 				F11154A81C8D92A700FA6059 /* PreOrderWindowController.xib */,
+				F1CCA2D61D0D3DFA00B6853E /* TrainCodeDetailViewController.swift */,
+				F1CCA2D71D0D3DFA00B6853E /* TrainCodeDetailViewController.xib */,
 			);
 			name = TicketQueryModule;
 			path = 12306ForMac/TicketViewControllers;
@@ -425,6 +435,16 @@
 				F11154E41C8D93B300FA6059 /* SettingsTemplate.png */,
 			);
 			name = Asserts;
+			sourceTree = "<group>";
+		};
+		F1CCA2DC1D0D42EA00B6853E /* Params */ = {
+			isa = PBXGroup;
+			children = (
+				F111546A1C8D921400FA6059 /* LeftTicketParam.swift */,
+				F11154701C8D921400FA6059 /* QueryOrderParam.swift */,
+				F1CCA2DA1D0D42D700B6853E /* QueryByTrainCodeParam.swift */,
+			);
+			name = Params;
 			sourceTree = "<group>";
 		};
 		F1E7EA201C5A2E7B007715C1 /* INAppStoreWindow */ = {
@@ -539,6 +559,7 @@
 				F11154E71C8D93B300FA6059 /* Group.png in Resources */,
 				F11154BE1C8D92D000FA6059 /* DisclosureViewController.xib in Resources */,
 				F11154E61C8D93B300FA6059 /* CalendarTemplate.png in Resources */,
+				F1CCA2D91D0D3DFA00B6853E /* TrainCodeDetailViewController.xib in Resources */,
 				F11154AC1C8D92A700FA6059 /* PreOrderWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -613,6 +634,7 @@
 				F111549F1C8D929200FA6059 /* Service+Login.swift in Sources */,
 				F1DF512A1CEFD1C900AAD444 /* TrainCodeViewController.swift in Sources */,
 				F111548F1C8D925200FA6059 /* FlashLabel.swift in Sources */,
+				F1CCA2DE1D0D4A1400B6853E /* TrainCodeDetail.swift in Sources */,
 				F11154981C8D927C00FA6059 /* StationData.swift in Sources */,
 				F111547F1C8D923C00FA6059 /* SwiftyJSON.swift in Sources */,
 				F11154741C8D921400FA6059 /* OrderDTO.swift in Sources */,
@@ -631,6 +653,7 @@
 				F1E7EA301C5A2E7B007715C1 /* INAppStoreWindow.m in Sources */,
 				F1E7EA311C5A2E7B007715C1 /* INWindowButton.m in Sources */,
 				F11154BF1C8D92D000FA6059 /* NormalSearchViewController.swift in Sources */,
+				F1CCA2DB1D0D42D700B6853E /* QueryByTrainCodeParam.swift in Sources */,
 				F11154811C8D923C00FA6059 /* UserDefaultManager.swift in Sources */,
 				F11154A01C8D929200FA6059 /* Service+Order.swift in Sources */,
 				F1A08AFE1CB25911008C5D40 /* TicketSelectWindowController.swift in Sources */,
@@ -654,6 +677,7 @@
 				F11154B01C8D92C100FA6059 /* OrderViewController.swift in Sources */,
 				F1F5CE0F1CA9431D005C33BD /* SeatTypeModel.swift in Sources */,
 				F11154821C8D923C00FA6059 /* XCGLogger.swift in Sources */,
+				F1CCA2D81D0D3DFA00B6853E /* TrainCodeDetailViewController.swift in Sources */,
 				F13B6FCB1C982A130095B196 /* Train.swift in Sources */,
 				F1F5CE121CA943D1005C33BD /* SeatTypeSelectViewController.swift in Sources */,
 				F11154921C8D925200FA6059 /* LoginButton.swift in Sources */,

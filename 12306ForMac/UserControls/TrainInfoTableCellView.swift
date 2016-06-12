@@ -94,6 +94,10 @@ class TrainCodeTableCellView: TrainTableCellView {
     override func updateTint() {
         trainCodeField.selected = self.selected
     }
+    
+    func setClickableTextFieldDelegate(delegate: ClickableTextFieldDelegate){
+        trainCodeField.clickDelegate = delegate
+    }
 }
 
 // MARK: - 余票信息
