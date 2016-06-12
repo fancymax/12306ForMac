@@ -29,6 +29,17 @@ class TrainTableRowView: NSTableRowView {
         }
     }
     
+//    override func drawSelectionInRect(dirtyRect: NSRect) {
+//        if self.selectionHighlightStyle != .None{
+//            let selectionRect = NSInsetRect(self.bounds, 0.5, 0.5)
+//            NSColor.selectedMenuItemColor().setStroke()
+//            NSColor.selectedMenuItemColor().setFill()
+//            let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 0.0, yRadius: 0.0)
+//            selectionPath.fill()
+//            selectionPath.stroke()
+//        }
+//    }
+    
 //    override func drawSelectionInRect(dirtyRect:NSRect) {
 //        let fillColor = NSColor.greenColor()
 //        if shouldDrawAsKey {

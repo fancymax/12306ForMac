@@ -15,6 +15,7 @@ class TrainCodeDetail: NSObject {
     var start_time: String! // = "16:07"
     var stopover_time: String! // = "----"
     var isEnable: Bool! // = True
+    var textColor:NSColor!
     
     init(json:JSON) {
         station_no = json["station_no"].string
@@ -22,8 +23,15 @@ class TrainCodeDetail: NSObject {
         arrive_time = json["arrive_time"].string
         start_time = json["start_time"].string
         stopover_time = json["stopover_time"].string
-        isEnable = json["isEnable"].boolValue
+        isEnable = json["isEnabled"].boolValue
+        if isEnable! {
+            textColor = NSColor.blackColor()
+        }
+        else{
+            textColor = NSColor.grayColor()
+        }
     }
+    
 }
 
 class TrainCodeDetails: NSObject {

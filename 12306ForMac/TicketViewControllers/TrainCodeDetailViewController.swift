@@ -13,6 +13,11 @@ class TrainCodeDetailViewController: NSViewController {
     var queryByTrainCodeParam: QueryByTrainCodeParam! {
         didSet{
             print("\(queryByTrainCodeParam.ToGetParams())")
+            if oldValue != nil {
+                if oldValue.ToGetParams() == queryByTrainCodeParam.ToGetParams() {
+                    return
+                }
+            }
             
             let successHandler = { (trainDetails:TrainCodeDetails)->()  in
                 self.trainCodeDetails = trainDetails
@@ -41,6 +46,7 @@ class TrainCodeDetailViewController: NSViewController {
         super.viewDidLoad()
         // Do view setup here.
     }
+    
 }
 
 // MARK: - NSTableViewDataSource 
@@ -62,7 +68,7 @@ extension TrainCodeDetailViewController: NSTableViewDataSource{
 
 extension TrainCodeDetailViewController: NSTableViewDelegate {
     
-    func tableView(tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
-        return AutoCompleteTableRowView()
-    }
+//    func tableView(tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+//        return AutoCompleteTableRowView()
+//    }
 }
