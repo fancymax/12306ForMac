@@ -140,17 +140,18 @@ class TrainInfoTableCellView: TrainTableCellView {
         func setTicketButton(ticket:String,sender:NSButton){
             if ((ticket == "--")||(ticket == "无")||(ticket == "*")){
                 sender.hidden = true
+                return
             }
-            else if (ticket == "有"){
-                sender.hidden = false
-                sender.enabled = true
+            
+            sender.hidden = false
+            sender.enabled = true
+            if (ticket == "有"){
                 sender.title = sender.alternateTitle + "(有票)"
             }
             else{
-                sender.hidden = false
-                sender.enabled = true
                 sender.title = sender.alternateTitle + "(\(ticket)张)"
             }
+            sender.toolTip = "¥\(ticketInfo.getTicketPriceBy(sender.identifier!))"
         }
         
         setTicketButton(ticketInfo.Swz_Num!, sender: SwzBtn)

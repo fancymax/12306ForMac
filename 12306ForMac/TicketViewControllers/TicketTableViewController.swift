@@ -113,10 +113,10 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         }
     }
     
-    func setSeatCodeForSelectedPassenger(seatCode:String, seatCodeName:String){
+    func setSeatCodeForSelectedPassenger(trainCode:String, seatCodeName:String){
         for passenger in MainModel.selectPassengers{
             passenger.seatCodeName = seatCodeName
-            passenger.seatCode = MainModel.getSeatCodeBy(seatCodeName,trainCode: seatCode)
+            passenger.seatCode = MainModel.getSeatCodeBy(seatCodeName,trainCode: trainCode)
         }
     }
     

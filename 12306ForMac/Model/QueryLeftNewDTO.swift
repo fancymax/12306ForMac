@@ -112,6 +112,12 @@ class QueryLeftNewDTO:NSObject {
         }
     }
     
+    func getTicketPriceBy(identifier:String) -> Double {
+        let seatCode = MainModel.getSeatCodeBy(identifier, trainCode: TrainCode!)
+        let price = MainModel.ticketPriceBy(seatCode, ticketPriceInfo: yp_info, seatTypes: seat_types)
+        return price
+    }
+    
     var isSelected = false
     
     //标识符

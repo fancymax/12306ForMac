@@ -63,11 +63,11 @@ class MainModel{
         }
         return MainModel.seatTypeNameDic[identifier]!
     }
-    static func ticketPriceBy(indentifier:String) -> Double{
-        if let ticketInfo = ypInfoDetail {
+    static func ticketPriceBy(indentifier:String, ticketPriceInfo:String?, seatTypes: String?) -> Double{
+        if let ticketInfo = ticketPriceInfo {
             var start = ticketInfo.startIndex
             var end = start.advancedBy(5)
-            for seatType in MainModel.selectedTicket!.seat_types!.characters{
+            for seatType in seatTypes!.characters{
                 if seatType == indentifier.characters[indentifier.startIndex] {
                     break;
                 }
@@ -89,7 +89,7 @@ class MainModel{
         get{
             var totalPrice:Double = 0
             for passenger in MainModel.selectPassengers{
-                totalPrice += ticketPriceBy(passenger.seatCode)
+                totalPrice += ticketPriceBy(passenger.seatCode,ticketPriceInfo: ypInfoDetail,seatTypes: selectedTicket?.seat_types)
             }
             return totalPrice
             
