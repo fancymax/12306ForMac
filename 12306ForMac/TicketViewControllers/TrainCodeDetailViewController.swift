@@ -8,6 +8,21 @@
 
 import Cocoa
 
+
+class MyHeaderCell : NSTableHeaderCell {
+    
+    override func drawWithFrame(cellFrame: NSRect, inView controlView: NSView) {
+        let (borderRect, fillRect) = cellFrame.divide(1.0, fromEdge: .MaxYEdge)
+        
+        NSColor.grayColor().set()
+        NSRectFill(borderRect)
+        
+        NSColor(calibratedRed:0.921569, green:0.921569, blue:0.921569, alpha:1.0).set()
+        NSRectFill(fillRect)
+        self.drawInteriorWithFrame(CGRectInset(fillRect, 0.0, 1.0), inView: controlView)
+    }
+}
+
 class TrainCodeDetailViewController: NSViewController {
     var service = Service()
     var queryByTrainCodeParam: QueryByTrainCodeParam! {
@@ -45,6 +60,11 @@ class TrainCodeDetailViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        
+        for col in trainCodeDetailTable.tableColumns {
+            col.headerCell = MyHeaderCell(textCell: col.headerCell.stringValue)
+            col.headerCell.alignment = .Center
+        }
     }
     
 }
@@ -64,11 +84,4 @@ extension TrainCodeDetailViewController: NSTableViewDataSource{
         }
         return trainCodeDetails!.trainNos[row]
     }
-}
-
-extension TrainCodeDetailViewController: NSTableViewDelegate {
-    
-//    func tableView(tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
-//        return AutoCompleteTableRowView()
-//    }
 }

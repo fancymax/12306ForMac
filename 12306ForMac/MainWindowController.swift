@@ -91,10 +91,10 @@ class MainWindowController: NSWindowController{
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: #selector(MainWindowController.receiveDidSendLoginMessageNotification(_:)), name: DidSendLoginMessageNotification, object: nil)
         
-        let service = Service()
-        service.getWanIP({ip in
-            self.IPLabel.stringValue = ip
-        })
+//        let service = Service()
+//        service.getWanIP({ip in
+//            self.IPLabel.stringValue = ip
+//        })
     }
     
     func segmentTab(sender: NSSegmentedControl){

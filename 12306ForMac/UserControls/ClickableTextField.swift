@@ -10,7 +10,7 @@ import Cocoa
 
 @objc protocol ClickableTextFieldDelegate {
     func textFieldDidMouseEntered(sender: ClickableTextField)
-    func textFieldDidMouseExited()
+    func textFieldDidMouseExited(sender: ClickableTextField)
 }
 
 class ClickableTextField: NSTextField {
@@ -65,7 +65,7 @@ class ClickableTextField: NSTextField {
         self.hovered = false
         self.needsDisplay = true
         if clickDelegate != nil {
-            clickDelegate?.textFieldDidMouseExited()
+            clickDelegate?.textFieldDidMouseExited(self)
         }
     }
     

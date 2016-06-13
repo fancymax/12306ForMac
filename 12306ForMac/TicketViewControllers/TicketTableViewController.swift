@@ -242,13 +242,10 @@ extension TicketTableViewController: ClickableTextFieldDelegate {
         }
         
         self.trainCodeDetailViewController.queryByTrainCodeParam = queryByTrainCodeParam
-        
-        
-        print("textFiled Entered")
     }
     
     
-    func textFieldDidMouseExited() {
+    func textFieldDidMouseExited(sender: ClickableTextField) {
         print("textField Exited")
     }
 }
