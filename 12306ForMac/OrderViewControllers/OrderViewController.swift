@@ -28,19 +28,31 @@ class OrderViewController: NSViewController{
     }
     
     @IBAction func queryOrder(sender: NSButton) {
-        if !MainModel.isGetUserInfo {
-            tips.show("请先登录～", forDuration: 0.1, withFlash: false)
-            return
-        }
+//        if !MainModel.isGetUserInfo {
+//            tips.show("请先登录～", forDuration: 0.1, withFlash: false)
+//            return
+//        }
         
-        startQueryTip()
+//        startQueryTip()
         
-        if(menuListTable.selectedRow == noCompleteOrderRow){
-            queryNoCompleteOrder()
+        initDemoOrderList()
+        
+//        if(menuListTable.selectedRow == noCompleteOrderRow){
+//            queryNoCompleteOrder()
+//        }
+//        else{
+//            queryHistoryOrder()
+//        }
+    }
+    
+    func initDemoOrderList(){
+        var demoList = [OrderDTO]()
+        for i in 0..<5 {
+            var demo = OrderDTO()
+            demoList.append(demo)
         }
-        else{
-            queryHistoryOrder()
-        }
+        self.orderList = demoList
+        self.orderListTable.reloadData()
     }
     
     func queryHistoryOrder(){
@@ -96,26 +108,11 @@ class OrderViewController: NSViewController{
 // MARK: - NSTableViewDataSource for MenuList and OrderList
 extension OrderViewController: NSTableViewDataSource{
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
-        if tableView.identifier == menuListIdentifier{
-            return 2
-        }
-        else{
             return orderList.count
-        }
     }
     
     func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
-        if tableView.identifier == menuListIdentifier{
-            if row == noCompleteOrderRow{
-                return "未完成订单"
-            }
-            else{
-                return "已完成订单"
-            }
-        }
-        else{
             return orderList[row]
-        }
     }
 }
 
