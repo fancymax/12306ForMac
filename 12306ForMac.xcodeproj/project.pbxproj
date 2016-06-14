@@ -239,7 +239,7 @@
 				F11154631C8D91F800FA6059 /* srca.cer */,
 				F11154B21C8D92D000FA6059 /* TicketQueryModule */,
 				F11DA9581C956A8000322D82 /* TaskViewControllers */,
-				F11154AD1C8D92C100FA6059 /* OrderViewControllers */,
+				F11154AD1C8D92C100FA6059 /* OrderQueryModule */,
 				F11154991C8D929200FA6059 /* Service */,
 				F11154831C8D925200FA6059 /* UserControls */,
 				F111547A1C8D923C00FA6059 /* Utilities */,
@@ -341,13 +341,13 @@
 			path = 12306ForMac/Service;
 			sourceTree = "<group>";
 		};
-		F11154AD1C8D92C100FA6059 /* OrderViewControllers */ = {
+		F11154AD1C8D92C100FA6059 /* OrderQueryModule */ = {
 			isa = PBXGroup;
 			children = (
 				F11154AE1C8D92C100FA6059 /* OrderViewController.swift */,
 				F11154AF1C8D92C100FA6059 /* OrderViewController.xib */,
 			);
-			name = OrderViewControllers;
+			name = "OrderQuery\U001bModule";
 			path = 12306ForMac/OrderViewControllers;
 			sourceTree = "<group>";
 		};

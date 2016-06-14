@@ -13,7 +13,6 @@ class OrderViewController: NSViewController{
     @IBOutlet weak var loadingSpinner: NSProgressIndicator!
     @IBOutlet weak var tips: FlashLabel!
     @IBOutlet weak var orderListTable: NSTableView!
-    @IBOutlet weak var menuListTable: NSTableView!
     
     var orderList = [OrderDTO]()
     let service = Service()
@@ -28,27 +27,23 @@ class OrderViewController: NSViewController{
     }
     
     @IBAction func queryOrder(sender: NSButton) {
-//        if !MainModel.isGetUserInfo {
-//            tips.show("请先登录～", forDuration: 0.1, withFlash: false)
-//            return
-//        }
+        if !MainModel.isGetUserInfo {
+            tips.show("请先登录～", forDuration: 0.1, withFlash: false)
+            return
+        }
         
-//        startQueryTip()
+        startQueryTip()
         
-        initDemoOrderList()
+//        initDemoOrderList()
         
-//        if(menuListTable.selectedRow == noCompleteOrderRow){
-//            queryNoCompleteOrder()
-//        }
-//        else{
+            queryNoCompleteOrder()
 //            queryHistoryOrder()
-//        }
     }
     
     func initDemoOrderList(){
         var demoList = [OrderDTO]()
-        for i in 0..<5 {
-            var demo = OrderDTO()
+        for _ in 0..<5 {
+            let demo = OrderDTO()
             demoList.append(demo)
         }
         self.orderList = demoList
@@ -113,20 +108,5 @@ extension OrderViewController: NSTableViewDataSource{
     
     func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
             return orderList[row]
-    }
-}
-
-// MARK: - NSTableViewDelegate for MenuList
-extension OrderViewController: NSTableViewDelegate{
-    func tableViewSelectionDidChange(notification: NSNotification)
-    {
-        if(menuListTable.selectedRow == noCompleteOrderRow){
-            self.orderList = MainModel.noCompleteOrderList
-            self.orderListTable.reloadData()
-        }
-        else{
-            self.orderList = MainModel.historyOrderList
-            self.orderListTable.reloadData()
-        }
     }
 }

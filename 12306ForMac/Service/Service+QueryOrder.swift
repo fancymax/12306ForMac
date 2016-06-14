@@ -57,15 +57,18 @@ extension Service{
                     reject(error)
                 case .Success(let data):
                     let jsonData = JSON(data)["data"]
-                    guard jsonData["OrderDTODataList"].count > 0 else {
+                    let orderDBList = JSON(data)["data"]["orderDBList"]
+                    guard orderDBList.count > 0 else {
                         print("queryMyOrder:\(jsonData)")
                         reject(NSError(domain: "queryMyOrderWithPageIndex:", code: 0, userInfo: nil))
                         return
                     }
                     let total = jsonData["order_total_number"].string
-                    let num = jsonData["OrderDTODataList"].count
-                    for i in 0...num-1 {
-                        MainModel.historyOrderList.append(OrderDTO(json:jsonData["OrderDTODataList"][i]))
+                    for i in 0..<orderDBList.count {
+                        let ticketNum = orderDBList[i]["tickets"].count
+                        for y in 0..<ticketNum {
+                            MainModel.historyOrderList.append(OrderDTO(json: orderDBList[i], ticketIdx: y))
+                        }
                     }
                     fulfill(Int(total!)!)
             }})
@@ -106,8 +109,11 @@ extension Service{
                 case .Success(let data):
                     let orderDBList = JSON(data)["data"]["orderDBList"]
                     if orderDBList.count > 0{
-                        for i in 0...orderDBList.count - 1 {
-                            MainModel.noCompleteOrderList.append(OrderDTO(json:orderDBList[i]))
+                        for i in 0..<orderDBList.count {
+                            let ticketNum = orderDBList[i]["tickets"].count
+                            for y in 0..<ticketNum {
+                                MainModel.noCompleteOrderList.append(OrderDTO(json:orderDBList[i], ticketIdx: y))
+                            }
                         }
                     }
                     fulfill(url)
