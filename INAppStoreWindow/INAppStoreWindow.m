@@ -1152,7 +1152,11 @@ NS_INLINE void INApplyClippingPathInCurrentContext(CGPathRef path) {
 	CGFloat buttonOrigin = 0.0;
 	if (!self.verticalTrafficLightButtons) {
 		if (self.centerTrafficLightButtons) {
-			buttonOrigin = round(NSMidY(titleBarFrame) - INMidHeight(closeFrame));
+            if (INRunningYosemite() && self.styleMask & NSFullScreenWindowMask) {
+                buttonOrigin = round(self._minimumTitlebarHeight * 0.5 - INMidHeight(closeFrame));
+            } else {
+                buttonOrigin = round(NSMidY(titleBarFrame) - INMidHeight(closeFrame));
+            }
 		} else {
 			buttonOrigin = NSMaxY(titleBarFrame) - NSHeight(closeFrame) - self.trafficLightButtonsTopMargin;
 		}
