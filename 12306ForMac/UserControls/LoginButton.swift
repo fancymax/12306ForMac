@@ -28,7 +28,7 @@ class LoginButton: NSButton{
     }
     
     func commonInit(){
-        self.wantsLayer = true
+//        self.wantsLayer = true
         self.createTrackingArea()
         self.hovered = false
     }

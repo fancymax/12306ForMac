@@ -23,11 +23,11 @@
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="42" horizontalPageScroll="10" verticalLineScroll="42" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVj-Bu-OX8">
                     <rect key="frame" x="20" y="20" width="955" height="510"/>
                     <clipView key="contentView" drawsBackground="NO" id="mlg-8Z-lxp">
-                        <rect key="frame" x="1" y="1" width="953" height="508"/>
+                        <rect key="frame" x="1" y="0.0" width="953" height="509"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" viewBased="YES" id="i0k-2E-Zg0">
-                                <rect key="frame" x="0.0" y="0.0" width="953" height="508"/>
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" headerView="zKE-jQ-JtL" viewBased="YES" id="i0k-2E-Zg0">
+                                <rect key="frame" x="0.0" y="0.0" width="953" height="492"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -247,11 +247,11 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="WIs-HT-Kwb" customClass="TrainInfoTableCellView" customModule="_2306ForMac" customModuleProvider="target">
+                                            <tableCellView misplaced="YES" id="WIs-HT-Kwb" customClass="TrainInfoTableCellView" customModule="_2306ForMac" customModuleProvider="target">
                                                 <rect key="frame" x="423" y="1" width="1009" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" misplaced="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zbQ-SX-Tc7">
+                                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zbQ-SX-Tc7">
                                                         <rect key="frame" x="0.0" y="0.0" width="997" height="40"/>
                                                         <subviews>
                                                             <button identifier="商务座" verticalHuggingPriority="750" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="wlw-V5-eFc" userLabel="商务座" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
@@ -328,7 +328,7 @@
                                                                     <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
-                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" tag="11" translatesAutoresizingMaskIntoConstraints="NO" id="MdL-Jz-r4d">
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="11" translatesAutoresizingMaskIntoConstraints="NO" id="MdL-Jz-r4d">
                                                                 <rect key="frame" x="878" y="12" width="121" height="17"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="本车次暂无可售车票" id="gcJ-yl-jL0">
                                                                     <font key="font" metaFont="systemLight" size="13"/>
@@ -435,6 +435,10 @@
                         <rect key="frame" x="853" y="17" width="16" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
+                    <tableHeaderView key="headerView" id="zKE-jQ-JtL">
+                        <rect key="frame" x="0.0" y="0.0" width="953" height="17"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </tableHeaderView>
                 </scrollView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="nXV-5S-R9c" userLabel="Loading View" customClass="GlassView" customModule="_2306ForMac" customModuleProvider="target">
                     <rect key="frame" x="437" y="250" width="120" height="30"/>
