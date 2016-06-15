@@ -78,6 +78,8 @@
 		F1A08AFE1CB25911008C5D40 /* TicketSelectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A08AFC1CB25911008C5D40 /* TicketSelectWindowController.swift */; };
 		F1A08AFF1CB25911008C5D40 /* TicketSelectWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A08AFD1CB25911008C5D40 /* TicketSelectWindowController.xib */; };
 		F1CA12051D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA12041D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift */; };
+		F1CA120B1D113293003EFD0B /* ContentBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA120A1D113293003EFD0B /* ContentBackgroundView.swift */; };
+		F1CA120D1D1135E2003EFD0B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA120C1D1135E2003EFD0B /* Theme.swift */; };
 		F1CCA2D81D0D3DFA00B6853E /* TrainCodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCA2D61D0D3DFA00B6853E /* TrainCodeDetailViewController.swift */; };
 		F1CCA2D91D0D3DFA00B6853E /* TrainCodeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1CCA2D71D0D3DFA00B6853E /* TrainCodeDetailViewController.xib */; };
 		F1CCA2DB1D0D42D700B6853E /* QueryByTrainCodeParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCA2DA1D0D42D700B6853E /* QueryByTrainCodeParam.swift */; };
@@ -176,6 +178,8 @@
 		F1A08AFC1CB25911008C5D40 /* TicketSelectWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketSelectWindowController.swift; path = 12306ForMac/TaskViewControllers/TicketSelectWindowController.swift; sourceTree = "<group>"; };
 		F1A08AFD1CB25911008C5D40 /* TicketSelectWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TicketSelectWindowController.xib; path = 12306ForMac/TaskViewControllers/TicketSelectWindowController.xib; sourceTree = "<group>"; };
 		F1CA12041D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainCodeDetailHeaderCell.swift; sourceTree = "<group>"; };
+		F1CA120A1D113293003EFD0B /* ContentBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentBackgroundView.swift; sourceTree = "<group>"; };
+		F1CA120C1D1135E2003EFD0B /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		F1CC36461B6B244C0074A014 /* 12306ForMac-Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "12306ForMac-Swift.h"; sourceTree = "<group>"; };
 		F1CCA2D61D0D3DFA00B6853E /* TrainCodeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainCodeDetailViewController.swift; sourceTree = "<group>"; };
 		F1CCA2D71D0D3DFA00B6853E /* TrainCodeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrainCodeDetailViewController.xib; sourceTree = "<group>"; };
@@ -301,6 +305,7 @@
 		F11154831C8D925200FA6059 /* UserControls */ = {
 			isa = PBXGroup;
 			children = (
+				F1CA120C1D1135E2003EFD0B /* Theme.swift */,
 				F11154841C8D925200FA6059 /* AutoCompleteTextField.swift */,
 				F11154851C8D925200FA6059 /* FlashLabel.swift */,
 				F11154861C8D925200FA6059 /* GlassView.swift */,
@@ -313,6 +318,7 @@
 				F13E9C991D0AB3310011F7E2 /* TrainTableRowView.swift */,
 				F17C82181D0C4B5900FB178B /* ClickableTextField.swift */,
 				F1CA12041D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift */,
+				F1CA120A1D113293003EFD0B /* ContentBackgroundView.swift */,
 			);
 			name = UserControls;
 			path = 12306ForMac/UserControls;
@@ -637,6 +643,7 @@
 				F111549F1C8D929200FA6059 /* Service+Login.swift in Sources */,
 				F1DF512A1CEFD1C900AAD444 /* TrainCodeViewController.swift in Sources */,
 				F111548F1C8D925200FA6059 /* FlashLabel.swift in Sources */,
+				F1CA120D1D1135E2003EFD0B /* Theme.swift in Sources */,
 				F1CA12051D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift in Sources */,
 				F1CCA2DE1D0D4A1400B6853E /* TrainCodeDetail.swift in Sources */,
 				F11154981C8D927C00FA6059 /* StationData.swift in Sources */,
@@ -684,6 +691,7 @@
 				F1CCA2D81D0D3DFA00B6853E /* TrainCodeDetailViewController.swift in Sources */,
 				F13B6FCB1C982A130095B196 /* Train.swift in Sources */,
 				F1F5CE121CA943D1005C33BD /* SeatTypeSelectViewController.swift in Sources */,
+				F1CA120B1D113293003EFD0B /* ContentBackgroundView.swift in Sources */,
 				F11154921C8D925200FA6059 /* LoginButton.swift in Sources */,
 				F1F5CE0C1CA942F5005C33BD /* SeatTypeViewController.swift in Sources */,
 			);

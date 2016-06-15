@@ -17,7 +17,7 @@ class TrainCodeDetailHeaderCell: NSTableHeaderCell {
         NSColor.grayColor().set()
         NSRectFill(borderRect)
         
-        NSColor(calibratedRed:0.921569, green:0.921569, blue:0.921569, alpha:1.0).set()
+        Theme.GobalTheme.backgroundColor.set()
         NSRectFill(fillRect)
         self.drawInteriorWithFrame(CGRectInset(fillRect, 0.0, 1.0), inView: controlView)
     }
