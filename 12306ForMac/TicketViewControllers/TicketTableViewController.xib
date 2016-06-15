@@ -23,11 +23,11 @@
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="42" horizontalPageScroll="10" verticalLineScroll="42" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVj-Bu-OX8">
                     <rect key="frame" x="20" y="20" width="955" height="510"/>
                     <clipView key="contentView" drawsBackground="NO" id="mlg-8Z-lxp">
-                        <rect key="frame" x="1" y="0.0" width="953" height="509"/>
+                        <rect key="frame" x="1" y="1" width="953" height="508"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" headerView="nrS-wG-yzE" viewBased="YES" id="i0k-2E-Zg0">
-                                <rect key="frame" x="0.0" y="0.0" width="953" height="486"/>
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" viewBased="YES" id="i0k-2E-Zg0">
+                                <rect key="frame" x="0.0" y="0.0" width="953" height="508"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -73,7 +73,7 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="发站" width="125" minWidth="40" maxWidth="1000" id="YX6-Ca-16P">
+                                    <tableColumn identifier="发站" width="110" minWidth="40" maxWidth="1000" id="YX6-Ca-16P">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="发站/时间">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -87,7 +87,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="U9T-uC-T3X" customClass="StartStationTableCellView" customModule="_2306ForMac" customModuleProvider="target">
-                                                <rect key="frame" x="84" y="1" width="125" height="40"/>
+                                                <rect key="frame" x="84" y="1" width="110" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="pCE-g8-3NX" userLabel="StartStation">
@@ -98,8 +98,8 @@
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nFa-D6-8D7" userLabel="Time">
-                                                        <rect key="frame" x="0.0" y="3" width="33" height="17"/>
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nFa-D6-8D7" userLabel="Time">
+                                                        <rect key="frame" x="0.0" y="3" width="32" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" state="on" alignment="left" title="9:00" id="sWk-38-1vq">
                                                             <font key="font" metaFont="systemLight" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -131,12 +131,12 @@
                                                 </connections>
                                             </tableCellView>
                                             <customView identifier="row" id="hFB-Oa-PaV" customClass="TrainTableRowView" customModule="_2306ForMac" customModuleProvider="target">
-                                                <rect key="frame" x="84" y="43" width="125" height="40"/>
+                                                <rect key="frame" x="84" y="43" width="110" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             </customView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="到站" width="125" minWidth="10" maxWidth="3.4028234663852886e+38" id="tSa-xu-jHa">
+                                    <tableColumn identifier="到站" width="110" minWidth="10" maxWidth="3.4028234663852886e+38" id="tSa-xu-jHa">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="到站/时间">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -150,7 +150,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="sm8-La-HbK" customClass="EndStationTableCellView" customModule="_2306ForMac" customModuleProvider="target">
-                                                <rect key="frame" x="212" y="1" width="125" height="40"/>
+                                                <rect key="frame" x="197" y="1" width="110" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="RCZ-sh-DYo" userLabel="endStation">
@@ -195,7 +195,7 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="历时" width="80" minWidth="10" maxWidth="3.4028234663852886e+38" id="yHB-NS-KXS">
+                                    <tableColumn identifier="历时" width="110" minWidth="10" maxWidth="3.4028234663852886e+38" id="yHB-NS-KXS">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="历时">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -209,7 +209,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="ls5-8q-SMF">
-                                                <rect key="frame" x="340" y="1" width="80" height="40"/>
+                                                <rect key="frame" x="310" y="1" width="110" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Zfv-ty-qRd">
@@ -225,8 +225,8 @@
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="Zfv-ty-qRd" firstAttribute="centerX" secondItem="ls5-8q-SMF" secondAttribute="centerX" id="Ccz-p1-Jlw"/>
                                                     <constraint firstItem="Zfv-ty-qRd" firstAttribute="centerY" secondItem="ls5-8q-SMF" secondAttribute="centerY" id="Xly-33-7EF"/>
+                                                    <constraint firstItem="Zfv-ty-qRd" firstAttribute="leading" secondItem="ls5-8q-SMF" secondAttribute="leading" constant="20" symbolic="YES" id="tFP-mg-mjy"/>
                                                 </constraints>
                                                 <connections>
                                                     <outlet property="textField" destination="Zfv-ty-qRd" id="7KL-oa-6Tq"/>
@@ -247,31 +247,31 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView misplaced="YES" id="WIs-HT-Kwb" customClass="TrainInfoTableCellView" customModule="_2306ForMac" customModuleProvider="target">
-                                                <rect key="frame" x="423" y="1" width="500" height="40"/>
+                                            <tableCellView id="WIs-HT-Kwb" customClass="TrainInfoTableCellView" customModule="_2306ForMac" customModuleProvider="target">
+                                                <rect key="frame" x="423" y="1" width="1009" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zbQ-SX-Tc7">
-                                                        <rect key="frame" x="0.0" y="0.0" width="1197" height="40"/>
+                                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" misplaced="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zbQ-SX-Tc7">
+                                                        <rect key="frame" x="0.0" y="0.0" width="997" height="40"/>
                                                         <subviews>
-                                                            <button identifier="商务座" verticalHuggingPriority="750" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="wlw-V5-eFc" userLabel="商务座">
-                                                                <rect key="frame" x="0.0" y="8" width="100" height="24"/>
-                                                                <buttonCell key="cell" type="inline" title="商务" alternateTitle="商务" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BA9-H0-aw3">
+                                                            <button identifier="商务座" verticalHuggingPriority="750" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="wlw-V5-eFc" userLabel="商务座" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="8" width="80" height="24"/>
+                                                                <buttonCell key="cell" type="inline" title="商务" alternateTitle="商务" bezelStyle="inline" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BA9-H0-aw3">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
-                                                            <button identifier="特等座" verticalHuggingPriority="750" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="amo-ve-rtZ" userLabel="特等座">
-                                                                <rect key="frame" x="108" y="8" width="100" height="24"/>
+                                                            <button identifier="特等座" verticalHuggingPriority="750" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="amo-ve-rtZ" userLabel="特等座" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
+                                                                <rect key="frame" x="88" y="8" width="80" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="特等" alternateTitle="特等" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SdW-w4-1G4">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
-                                                            <button identifier="一等座" horizontalHuggingPriority="249" verticalHuggingPriority="750" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="Lgd-p7-ZYI" userLabel="一等座">
-                                                                <rect key="frame" x="216" y="8" width="100" height="24"/>
+                                                            <button identifier="一等座" horizontalHuggingPriority="249" verticalHuggingPriority="750" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="Lgd-p7-ZYI" userLabel="一等座" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
+                                                                <rect key="frame" x="176" y="8" width="80" height="24"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="100" id="61X-bG-m55"/>
+                                                                    <constraint firstAttribute="width" constant="80" id="61X-bG-m55"/>
                                                                     <constraint firstAttribute="height" constant="23" id="ONl-EC-rYg"/>
                                                                 </constraints>
                                                                 <buttonCell key="cell" type="inline" title="一等" alternateTitle="一等" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="V5c-D5-4aG">
@@ -279,57 +279,57 @@
                                                                     <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
-                                                            <button identifier="二等座" verticalHuggingPriority="750" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="MfS-ww-ubE" userLabel="二等座">
-                                                                <rect key="frame" x="324" y="8" width="100" height="24"/>
+                                                            <button identifier="二等座" verticalHuggingPriority="750" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="MfS-ww-ubE" userLabel="二等座" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
+                                                                <rect key="frame" x="264" y="8" width="80" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="二等" alternateTitle="二等" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="k7V-GM-G3g">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
-                                                            <button identifier="高级软卧" verticalHuggingPriority="750" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="0k8-8n-30j" userLabel="高级软卧">
-                                                                <rect key="frame" x="432" y="8" width="100" height="24"/>
+                                                            <button identifier="高级软卧" verticalHuggingPriority="750" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="0k8-8n-30j" userLabel="高级软卧" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
+                                                                <rect key="frame" x="352" y="8" width="80" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="高软" alternateTitle="高软" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="C4g-gw-A1U">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
-                                                            <button identifier="软卧" verticalHuggingPriority="750" tag="6" translatesAutoresizingMaskIntoConstraints="NO" id="sr9-MS-5Hq" userLabel="软卧">
-                                                                <rect key="frame" x="540" y="8" width="100" height="24"/>
+                                                            <button identifier="软卧" verticalHuggingPriority="750" tag="6" translatesAutoresizingMaskIntoConstraints="NO" id="sr9-MS-5Hq" userLabel="软卧" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
+                                                                <rect key="frame" x="440" y="8" width="80" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="软卧" alternateTitle="软卧" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CAy-mz-kNR">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
-                                                            <button identifier="硬卧" verticalHuggingPriority="750" tag="7" translatesAutoresizingMaskIntoConstraints="NO" id="mH7-pm-FHT" userLabel="硬卧">
-                                                                <rect key="frame" x="648" y="8" width="100" height="24"/>
+                                                            <button identifier="硬卧" verticalHuggingPriority="750" tag="7" translatesAutoresizingMaskIntoConstraints="NO" id="mH7-pm-FHT" userLabel="硬卧" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
+                                                                <rect key="frame" x="528" y="8" width="80" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="硬卧" alternateTitle="硬卧" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vhe-hG-HUq">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
-                                                            <button identifier="软座" verticalHuggingPriority="750" tag="8" translatesAutoresizingMaskIntoConstraints="NO" id="QPP-kp-j8X" userLabel="软座">
-                                                                <rect key="frame" x="756" y="8" width="100" height="24"/>
+                                                            <button identifier="软座" verticalHuggingPriority="750" tag="8" translatesAutoresizingMaskIntoConstraints="NO" id="QPP-kp-j8X" userLabel="软座" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
+                                                                <rect key="frame" x="616" y="8" width="80" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="软座" alternateTitle="软座" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J4I-Wx-FI3">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
-                                                            <button identifier="硬座" verticalHuggingPriority="750" tag="9" translatesAutoresizingMaskIntoConstraints="NO" id="ee3-2t-ayO" userLabel="硬座">
-                                                                <rect key="frame" x="864" y="8" width="100" height="24"/>
+                                                            <button identifier="硬座" verticalHuggingPriority="750" tag="9" translatesAutoresizingMaskIntoConstraints="NO" id="ee3-2t-ayO" userLabel="硬座" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
+                                                                <rect key="frame" x="704" y="8" width="80" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="硬座" alternateTitle="硬座" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2G8-35-q7S">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
-                                                            <button identifier="无座" verticalHuggingPriority="750" tag="10" translatesAutoresizingMaskIntoConstraints="NO" id="90h-df-nAo" userLabel="无座">
-                                                                <rect key="frame" x="972" y="8" width="100" height="24"/>
+                                                            <button identifier="无座" verticalHuggingPriority="750" tag="10" translatesAutoresizingMaskIntoConstraints="NO" id="90h-df-nAo" userLabel="无座" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
+                                                                <rect key="frame" x="792" y="8" width="80" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="无座" alternateTitle="无座" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Zuv-1Y-8m6">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
-                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="11" translatesAutoresizingMaskIntoConstraints="NO" id="MdL-Jz-r4d">
-                                                                <rect key="frame" x="1078" y="12" width="121" height="17"/>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" tag="11" translatesAutoresizingMaskIntoConstraints="NO" id="MdL-Jz-r4d">
+                                                                <rect key="frame" x="878" y="12" width="121" height="17"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="本车次暂无可售车票" id="gcJ-yl-jL0">
                                                                     <font key="font" metaFont="systemLight" size="13"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.45088420540000002" colorSpace="calibratedRGB"/>
@@ -435,10 +435,6 @@
                         <rect key="frame" x="853" y="17" width="16" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <tableHeaderView key="headerView" id="nrS-wG-yzE">
-                        <rect key="frame" x="0.0" y="0.0" width="953" height="23"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </tableHeaderView>
                 </scrollView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="nXV-5S-R9c" userLabel="Loading View" customClass="GlassView" customModule="_2306ForMac" customModuleProvider="target">
                     <rect key="frame" x="437" y="250" width="120" height="30"/>

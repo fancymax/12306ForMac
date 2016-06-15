@@ -15,8 +15,10 @@ class TrainTableCellView: NSTableCellView {
         }
     }
     
-    var selected = false {
-        didSet{
+    var selected = false
+    //change color by backgroundStyle not selected status
+    override var backgroundStyle: NSBackgroundStyle {
+        didSet {
             updateTint()
         }
     }
@@ -26,7 +28,8 @@ class TrainTableCellView: NSTableCellView {
     }
     
     internal func updateTint() {
-        if selected {
+//        if selected {
+        if backgroundStyle == .Dark {
             setSelectedControlStyle()
         }
         else{
@@ -129,10 +132,18 @@ class TrainInfoTableCellView: TrainTableCellView {
     
     override func setSelectedControlStyle() {
         messageField.textColor = NSColor(calibratedWhite: 1.0, alpha: 0.70)
+        
+        for btn in dictOfBtn.values {
+            (btn as! LoginButton).textColor = NSColor(calibratedWhite: 1.0, alpha: 1)
+        }
     }
     
     override func setUnSelectedControlStyle() {
         messageField.textColor = NSColor(calibratedWhite: 0.0, alpha: 0.45)
+        
+        for btn in dictOfBtn.values {
+            (btn as! LoginButton).textColor = NSColor(calibratedWhite: 0.0, alpha: 1)
+        }
     }
     
     override func updateUI() {
@@ -169,11 +180,11 @@ class TrainInfoTableCellView: TrainTableCellView {
             messageField.hidden = true
         }
         else if ticketInfo.canWebBuy == "N" {
-            messageField.stringValue = "本车次暂无可售车票"
+            messageField.stringValue = "   本车次暂无可售车票"
             messageField.hidden = false
         }
         else if ticketInfo.canWebBuy == "IS_TIME_NOT_BUY"{
-            if ticketInfo.buttonTextInfo == "23:00-07:00系统维护时间" {
+            if ticketInfo.buttonTextInfo == "   23:00-07:00系统维护时间" {
                 for btn in dictOfBtn.values {
                     btn.enabled = false
                 }
@@ -182,7 +193,7 @@ class TrainInfoTableCellView: TrainTableCellView {
                     hasNoTicket = hasNoTicket && btn.hidden
                 }
                 if hasNoTicket {
-                    messageField.stringValue = "本车次暂无可售车票"
+                    messageField.stringValue = "   本车次暂无可售车票"
                     messageField.hidden = false
                 }
                 else{
@@ -194,7 +205,7 @@ class TrainInfoTableCellView: TrainTableCellView {
                 if let range = ticketInfo.buttonTextInfo!.rangeOfString("<br/>"){
                     ticketInfo.buttonTextInfo!.removeRange(range)
                 }
-                messageField.stringValue = ticketInfo.buttonTextInfo!
+                messageField.stringValue = "   " + ticketInfo.buttonTextInfo!
                 messageField.hidden = false
             }
         }
