@@ -51,7 +51,6 @@
 		4B2CFEF2EB6A3AEFC33EAA564D444485 /* RLMPredicateUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = A44AD3E3A653C9638CA78D2DC846980D /* RLMPredicateUtil.mm */; settings = {COMPILER_FLAGS = "-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@\"0.98.1\"' -D__ASSERTMACROS__"; }; };
 		4D9A334937C04DC9EEF9FA4B9C068145 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFDDA7F1454E789AFE40FEE22F2FDDB /* Request.swift */; };
 		4E02A7FB34718C8DB47B4717CE8FD588 /* RLMConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = B0BC51303145CE51609602D107B7FB1A /* RLMConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4EC6EC020251D5B5DEDEB018CBF44981 /* NSNotificationCenter+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0595EFB97E052F1E9A2E0787CC6741 /* NSNotificationCenter+Promise.swift */; };
 		4F05DA3A12BBF8D9518B8EFD664A97C0 /* RealmSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DEEB2A4989157A02CAA3F9B28A990CCA /* RealmSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		51767098BF21C859CBC7CC8BD18EE9F2 /* RLMUpdateChecker.mm in Sources */ = {isa = PBXBuildFile; fileRef = 956FD0E2881003044A3D6155957A8E58 /* RLMUpdateChecker.mm */; settings = {COMPILER_FLAGS = "-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@\"0.98.1\"' -D__ASSERTMACROS__"; }; };
 		519DE13356D5EB147C3DE2DFA6AB9BCE /* RLMObject.h in Headers */ = {isa = PBXBuildFile; fileRef = AEACBC888F6ECF6B25AE300CD55C07B4 /* RLMObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -376,7 +375,6 @@
 		C9B43BB04A649FEC5BECBE3CB2D9C0D1 /* RLMSchema.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = RLMSchema.mm; path = Realm/RLMSchema.mm; sourceTree = "<group>"; };
 		CA99AC0113E3D69D43213F03B745037F /* Realm.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Realm.swift; path = RealmSwift/Realm.swift; sourceTree = "<group>"; };
 		CAFC451CCC890FD40CEF5CEE3F8A1077 /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Source/Error.swift; sourceTree = "<group>"; };
-		CB0595EFB97E052F1E9A2E0787CC6741 /* NSNotificationCenter+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSNotificationCenter+Promise.swift"; path = "Categories/Foundation/NSNotificationCenter+Promise.swift"; sourceTree = "<group>"; };
 		CBC0F7C552B739C909B650A0F42F7F38 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
 		CDFAA5B8405C0511470D8055DA8CD5BD /* NSError+Cancellation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSError+Cancellation.h"; path = "Sources/NSError+Cancellation.h"; sourceTree = "<group>"; };
 		CE4060AE408F965B808383D9055A59C8 /* PromiseKit-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "PromiseKit-Private.xcconfig"; sourceTree = "<group>"; };
@@ -536,7 +534,6 @@
 			children = (
 				3772A215C73472F56E880F620DC251BB /* NSNotificationCenter+AnyPromise.h */,
 				5C291B269A2A40CC700B8663138511EF /* NSNotificationCenter+AnyPromise.m */,
-				CB0595EFB97E052F1E9A2E0787CC6741 /* NSNotificationCenter+Promise.swift */,
 				71A0B874B65B475F3521F5A0D68E44FE /* NSObject+Promise.swift */,
 				3FA7AA0008A694ED8C63DC8C439D45D6 /* NSTask+AnyPromise.h */,
 				83513DA9D71B1E954CF55CEBB8F55EEB /* NSTask+AnyPromise.m */,
@@ -1184,7 +1181,6 @@
 				9BF398ED2E51F75D04054DB890806944 /* CALayer+AnyPromise.m in Sources */,
 				F397379263D8E7D1B31C99ECD5EF72D6 /* Error.swift in Sources */,
 				245000B4A6D5094EF7D0575278B76374 /* NSNotificationCenter+AnyPromise.m in Sources */,
-				4EC6EC020251D5B5DEDEB018CBF44981 /* NSNotificationCenter+Promise.swift in Sources */,
 				83D8A7C0949ABE247B472FE9160F5B60 /* NSObject+Promise.swift in Sources */,
 				7E1D4A890709CEF6CDCBA055C2BBB924 /* NSTask+AnyPromise.m in Sources */,
 				58C4CF139D975828C3E79931F5F363CD /* NSTask+Promise.swift in Sources */,
