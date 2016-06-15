@@ -12,7 +12,7 @@ OS X10.10以上
 代码是开源的，可以保证安全性，大家可以放心使用。
 
 #截图
-![demo](http://7xpbra.com1.z0.glb.clouddn.com/12306ForMac2.png)
+![demo](screenshot/12306ForMac.png)
 
 #感谢
 本项目基于 Alamofire、PromiseKit、Realm、INAppStoreWindow 进行开发，感谢他们对开源社区做出的贡献。
