@@ -5,6 +5,8 @@
 //  Created by fancymax on 15/7/30.
 //  Copyright (c) 2015年 fancy. All rights reserved.
 //
+import Fabric
+import Crashlytics
 
 import Cocoa
 
@@ -36,7 +38,7 @@ let DidSendCheckSeatTypeMessageNotification = "com.12306.DidSendCheckSeatTypeMes
     var mainController:MainWindowController?
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        
+        Fabric.with([Crashlytics.self])
         
         let mainController = MainWindowController(windowNibName: "MainWindowController")
         mainController.showWindow(self)

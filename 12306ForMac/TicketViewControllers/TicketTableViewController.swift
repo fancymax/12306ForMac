@@ -221,6 +221,7 @@ extension TicketTableViewController: NSTableViewDelegate{
     
 }
 
+// MARK: - ClickableTextFieldDelegate
 extension TicketTableViewController: ClickableTextFieldDelegate {
     func textFieldDidMouseEntered(sender:ClickableTextField) {
         let positioningView = sender

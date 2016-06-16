@@ -4,3 +4,5 @@ use_frameworks!
 pod 'RealmSwift'
 pod "PromiseKit", "~> 3.0”
 pod 'Alamofire', '~> 3.0'
+pod 'Fabric'
+pod 'Crashlytics'
