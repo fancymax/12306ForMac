@@ -203,7 +203,7 @@ class QueryLeftNewDTO:NSObject {
         buttonTextInfo = json["buttonTextInfo"].string
         
         if SecretStr != nil{
-            SecretStr = SecretStr!.stringByReplacingOccurrencesOfString("%3D", withString: "=").stringByReplacingOccurrencesOfString("%2F", withString: "/").stringByReplacingOccurrencesOfString("%2B", withString: "+")
+            SecretStr = SecretStr!.stringByRemovingPercentEncoding
         }
         
     }

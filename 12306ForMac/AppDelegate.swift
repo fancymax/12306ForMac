@@ -38,6 +38,8 @@ let DidSendCheckSeatTypeMessageNotification = "com.12306.DidSendCheckSeatTypeMes
     var mainController:MainWindowController?
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
+    NSUserDefaults.standardUserDefaults().registerDefaults(["NSApplicationCrashOnExceptions":NSNumber(bool: true)])
+        
         Fabric.with([Crashlytics.self])
         
         let mainController = MainWindowController(windowNibName: "MainWindowController")
