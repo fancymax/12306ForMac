@@ -27,7 +27,7 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     var fromStationCode:String?
     var date:String?
     
-    var submitWindowController = PreOrderWindowController()
+    var submitWindowController = SubmitWindowController()
     
     let trainCodeDetailViewController = TrainCodeDetailViewController()
     lazy var popover: NSPopover = {
@@ -47,7 +47,7 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     
     func receiveDidSendSubmitMessageNotification(note: NSNotification){
         print("receiveDidSendSubmitMessageNotification")
-        submitWindowController = PreOrderWindowController()
+        submitWindowController = SubmitWindowController()
         if let window = self.view.window {
             window.beginSheet(submitWindowController.window!, completionHandler:
                 {response in
