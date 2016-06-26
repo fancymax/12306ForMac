@@ -87,7 +87,7 @@
 		F1D390A41C8F177F000B3FD7 /* RandCodeImageView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D390A31C8F177F000B3FD7 /* RandCodeImageView2.swift */; };
 		F1D575761C95541D00A214B0 /* TicketQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */; };
 		F1D575771C95541D00A214B0 /* TicketQueryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D575751C95541D00A214B0 /* TicketQueryViewController.xib */; };
-		F1DB28711D1FFEAF001CA8BD /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = F1DB28701D1FFEAF001CA8BD /* User.png */; };
+		F1DB28731D2004D8001CA8BD /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = F1DB28721D2004D8001CA8BD /* User.png */; };
 		F1DF512A1CEFD1C900AAD444 /* TrainCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DF51281CEFD1C900AAD444 /* TrainCodeViewController.swift */; };
 		F1DF512B1CEFD1C900AAD444 /* TrainCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1DF51291CEFD1C900AAD444 /* TrainCodeViewController.xib */; };
 		F1E7EA2D1C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA221C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c */; };
@@ -189,7 +189,7 @@
 		F1D390A31C8F177F000B3FD7 /* RandCodeImageView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandCodeImageView2.swift; sourceTree = "<group>"; };
 		F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketQueryViewController.swift; sourceTree = "<group>"; };
 		F1D575751C95541D00A214B0 /* TicketQueryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketQueryViewController.xib; sourceTree = "<group>"; };
-		F1DB28701D1FFEAF001CA8BD /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = User.png; sourceTree = SOURCE_ROOT; };
+		F1DB28721D2004D8001CA8BD /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = User.png; sourceTree = SOURCE_ROOT; };
 		F1DF51281CEFD1C900AAD444 /* TrainCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrainCodeViewController.swift; path = 12306ForMac/TaskViewControllers/TrainCodeViewController.swift; sourceTree = "<group>"; };
 		F1DF51291CEFD1C900AAD444 /* TrainCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TrainCodeViewController.xib; path = 12306ForMac/TaskViewControllers/TrainCodeViewController.xib; sourceTree = "<group>"; };
 		F1E7EA221C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = INAppStoreWindowSwizzling.c; sourceTree = "<group>"; };
@@ -429,7 +429,7 @@
 		F1A8CCB01BA8032500B4FB03 /* Asserts */ = {
 			isa = PBXGroup;
 			children = (
-				F1DB28701D1FFEAF001CA8BD /* User.png */,
+				F1DB28721D2004D8001CA8BD /* User.png */,
 				F11154E11C8D93B300FA6059 /* Add.png */,
 				F11154E21C8D93B300FA6059 /* CalendarTemplate.png */,
 				F11154E31C8D93B300FA6059 /* Group.png */,
@@ -571,12 +571,12 @@
 				F11154941C8D925200FA6059 /* LunarCalendarView.xib in Resources */,
 				F11154D01C8D931500FA6059 /* MainWindowController.xib in Resources */,
 				F11154D61C8D937E00FA6059 /* Images.xcassets in Resources */,
+				F1DB28731D2004D8001CA8BD /* User.png in Resources */,
 				F1F5CE0D1CA942F5005C33BD /* SeatTypeViewController.xib in Resources */,
 				F11154C01C8D92D000FA6059 /* NormalSearchViewController.xib in Resources */,
 				F11154E51C8D93B300FA6059 /* Add.png in Resources */,
 				F1D575771C95541D00A214B0 /* TicketQueryViewController.xib in Resources */,
 				F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */,
-				F1DB28711D1FFEAF001CA8BD /* User.png in Resources */,
 				F11154C41C8D92D000FA6059 /* PassengerViewController.xib in Resources */,
 				F11154E71C8D93B300FA6059 /* Group.png in Resources */,
 				F11154BE1C8D92D000FA6059 /* DisclosureViewController.xib in Resources */,

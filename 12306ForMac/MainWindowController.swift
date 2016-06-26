@@ -36,7 +36,7 @@ class MainWindowController: NSWindowController{
         }
         
         let titleView = aWindow.titleBarView
-        let buttonPoint = NSMakePoint(80, 5)
+        let buttonPoint = NSMakePoint(85, 5)
         self.loginButton.setFrameOrigin(buttonPoint)
         titleView.addSubview(self.loginButton)
         
@@ -172,5 +172,17 @@ class MainWindowController: NSWindowController{
         }
     }
     
+}
+
+extension MainWindowController: NSWindowDelegate {
+    func windowWillEnterFullScreen(notification: NSNotification) {
+        let buttonPoint = NSMakePoint(20, 5)
+        self.loginButton.setFrameOrigin(buttonPoint)
+    }
+    
+    func windowWillExitFullScreen(notification: NSNotification) {
+        let buttonPoint = NSMakePoint(85, 5)
+        self.loginButton.setFrameOrigin(buttonPoint)
+    }
 }
 

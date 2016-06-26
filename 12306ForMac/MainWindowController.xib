@@ -24,6 +24,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="910" height="710"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="ok6-AH-STO"/>
+            </connections>
             <point key="canvasLocation" x="581" y="506"/>
         </window>
         <button id="YwA-eV-Pe9" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
