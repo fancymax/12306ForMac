@@ -122,6 +122,10 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     
     @IBAction func submit(sender: NSButton){
         let notificationCenter = NSNotificationCenter.defaultCenter()
+        
+//            notificationCenter.postNotificationName(DidSendSubmitMessageNotification, object: nil)
+//            return
+        
         if !MainModel.isGetUserInfo {
             notificationCenter.postNotificationName(DidSendLoginMessageNotification, object: nil)
             return

@@ -47,8 +47,8 @@
                                                 <rect key="frame" x="1" y="1" width="40" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xVM-pk-ttA">
-                                                        <rect key="frame" x="6" y="7" width="29" height="17"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="xVM-pk-ttA">
+                                                        <rect key="frame" x="5" y="7" width="30" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="站序" id="Lf2-eS-QV3">
                                                             <font key="font" metaFont="systemLight" size="13"/>
                                                             <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
@@ -87,8 +87,8 @@
                                                 <rect key="frame" x="44" y="1" width="65" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cga-pR-zIC">
-                                                        <rect key="frame" x="18" y="7" width="29" height="17"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Cga-pR-zIC">
+                                                        <rect key="frame" x="18" y="7" width="30" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="站名" id="BnW-4c-T0o">
                                                             <font key="font" metaFont="systemLight" size="13"/>
                                                             <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
@@ -127,8 +127,8 @@
                                                 <rect key="frame" x="112" y="1" width="65" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZHz-kO-na6">
-                                                        <rect key="frame" x="5" y="7" width="55" height="17"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ZHz-kO-na6">
+                                                        <rect key="frame" x="5" y="7" width="56" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="到站时间" id="RxO-CB-Ysl">
                                                             <font key="font" metaFont="systemLight" size="13"/>
                                                             <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
@@ -207,8 +207,8 @@
                                                 <rect key="frame" x="248" y="1" width="70" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0V8-Ns-heO">
-                                                        <rect key="frame" x="8" y="7" width="55" height="17"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="0V8-Ns-heO">
+                                                        <rect key="frame" x="7" y="7" width="56" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="停留时间" id="MTZ-b9-3X8">
                                                             <font key="font" metaFont="systemLight" size="13"/>
                                                             <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>

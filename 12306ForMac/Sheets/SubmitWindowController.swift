@@ -8,15 +8,16 @@
 
 import Cocoa
 
-class SubmitWindowController: NSWindowController,NSTableViewDataSource,NSTableViewDelegate{
+class SubmitWindowController: NSWindowController{
 
+    @IBOutlet weak var trainCodeLabel: NSTextField!
+    @IBOutlet weak var trainTimeLabel: NSTextField!
+    
     let service = Service()
-    @IBOutlet weak var orderTicketLabel: NSTextField!
     @IBOutlet weak var passengerTable: NSTableView!
     @IBOutlet weak var passengerImage: RandCodeImageView2!
     
-    @IBOutlet weak var orderTipLabel: NSTextField!
-    
+    @IBOutlet var orderInfoView: NSView!
     @IBOutlet weak var preOrderView: GlassView!
     @IBOutlet weak var orderIdView: GlassView!
     
@@ -25,6 +26,7 @@ class SubmitWindowController: NSWindowController,NSTableViewDataSource,NSTableVi
     @IBOutlet weak var loadingTipBar: NSProgressIndicator!
     
     @IBOutlet weak var orderId: NSTextField!
+    @IBOutlet weak var totalPriceLabel: NSTextField!
     
     @IBAction func FreshImage(sender: NSButton) {
         freshImage()
@@ -33,17 +35,25 @@ class SubmitWindowController: NSWindowController,NSTableViewDataSource,NSTableVi
     override func windowDidLoad() {
         super.windowDidLoad()
         
-        orderTipLabel.hidden = true
+        self.switchViewFrom(nil, to: orderInfoView)
+        self.freshOrderInfoView()
         
-        preOrderView.hidden = false
-        orderIdView.hidden = true
-        
-        let trainInfo = MainModel.selectedTicket
-        orderTicketLabel.stringValue =  trainInfo!.startTrainDateStr! + " " + trainInfo!.TrainCode!
-        + " " + trainInfo!.FromStationName! + " " + trainInfo!.start_time! + "-" + trainInfo!.ToStationName! + " " + trainInfo!.arrive_time!
-        
-        loadImage()
+        self.loadImage()
+    }
+    
+    func freshOrderInfoView(){
+        let info = MainModel.selectedTicket!
+        trainCodeLabel.stringValue = "\(info.TrainCode!) \(info.FromStationName!) - \(info.ToStationName!)"
+        trainTimeLabel.stringValue = "\(info.startTrainDateStr!) \(info.start_time!)~\(info.arrive_time!) 历时\(info.lishi!)"
         passengerTable.reloadData()
+    }
+    
+    func switchViewFrom(oldView:NSView?,to newView: NSView) {
+        if oldView != nil {
+            oldView!.removeFromSuperview()
+        }
+        self.window?.setFrame(newView.frame, display: true, animate: true)
+        self.window?.contentView?.addSubview(newView)
     }
     
     func startLoadingTip(tip:String)
@@ -58,13 +68,6 @@ class SubmitWindowController: NSWindowController,NSTableViewDataSource,NSTableVi
         loadingTipView.hidden = true
     }
     
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
-        return MainModel.selectPassengers.count
-    }
-    
-    func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
-        return MainModel.selectPassengers[row]
-    }
     
     func loadImage(){
         self.startLoadingTip("正在加载...")
@@ -72,7 +75,6 @@ class SubmitWindowController: NSWindowController,NSTableViewDataSource,NSTableVi
             self.passengerImage.clearRandCodes()
             self.passengerImage.image = image
             self.stopLoadingTip()
-            self.orderTicketLabel.stringValue += " ¥\(MainModel.ticketPrice)"
         }
         
         let failureHandler = {
@@ -110,7 +112,12 @@ class SubmitWindowController: NSWindowController,NSTableViewDataSource,NSTableVi
         NSWorkspace.sharedWorkspace().openURL(NSURL(string: "https://kyfw.12306.cn/otn/login/init")!)
     }
     
+    @IBAction func clickCheckOrderBtn(sender: NSButton) {
+        self.switchViewFrom(orderInfoView, to: preOrderView)
+    }
+    
     @IBAction func okayButtonClicked(button:NSButton){
+        
         self.startLoadingTip("正在提交...")
         button.enabled = false
         
@@ -123,10 +130,9 @@ class SubmitWindowController: NSWindowController,NSTableViewDataSource,NSTableVi
         let successHandler = {
             self.stopLoadingTip()
             button.enabled = true
-            self.preOrderView.hidden = true
-            self.orderIdView.hidden = false
-            self.orderTipLabel.hidden = false
+            self.switchViewFrom(self.preOrderView, to: self.orderIdView)
             self.orderId.stringValue = MainModel.orderId!
+            self.totalPriceLabel.stringValue = "¥\(MainModel.ticketPrice)"
         }
         
         service.orderFlowWith(passengerImage.randCodeStr!, success: successHandler, failure: failureHandler)
@@ -139,5 +145,16 @@ class SubmitWindowController: NSWindowController,NSTableViewDataSource,NSTableVi
     func dismissWithModalResponse(response:NSModalResponse)
     {
         window!.sheetParent!.endSheet(window!,returnCode: response)
+    }
+}
+
+// MARK: - NSTableViewDataSource
+extension SubmitWindowController:NSTableViewDataSource {
+    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+        return MainModel.selectPassengers.count
+    }
+    
+    func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
+        return MainModel.selectPassengers[row]
     }
 }

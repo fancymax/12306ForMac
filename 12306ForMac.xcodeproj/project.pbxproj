@@ -242,9 +242,6 @@
 		F11154611C8D91B300FA6059 /* 12306ForMac */ = {
 			isa = PBXGroup;
 			children = (
-				F11154971C8D927C00FA6059 /* StationData.swift */,
-				F11154621C8D91F800FA6059 /* README.md */,
-				F11154631C8D91F800FA6059 /* srca.cer */,
 				F11154B21C8D92D000FA6059 /* TicketQueryModule */,
 				F11DA9581C956A8000322D82 /* TaskViewControllers */,
 				F11154AD1C8D92C100FA6059 /* OrderQueryModule */,
@@ -257,6 +254,9 @@
 				F11154C71C8D92FC00FA6059 /* AppDelegate.swift */,
 				F11154CB1C8D931500FA6059 /* MainWindowController.swift */,
 				F11154CC1C8D931500FA6059 /* MainWindowController.xib */,
+				F11154971C8D927C00FA6059 /* StationData.swift */,
+				F11154621C8D91F800FA6059 /* README.md */,
+				F11154631C8D91F800FA6059 /* srca.cer */,
 				F11EB45D1B6A368E000063E4 /* Supporting Files */,
 			);
 			name = 12306ForMac;

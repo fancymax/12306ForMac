@@ -53,7 +53,7 @@ public struct ServiceError {
             case .ConfirmSingleForQueueFailed:
                 failureReason = "锁定订单失败"
         }
-        return errorWithCode(code.rawValue, failureReason: failureReason)
+        return errorWithCode(code, failureReason: failureReason)
     }
 
     public static func errorWithCode(code: Code, failureReason: String) -> NSError {

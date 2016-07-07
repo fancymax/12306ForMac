@@ -60,6 +60,10 @@ class TrainCodeDetails: NSObject {
             let trainNo = TrainCodeDetail(json: json[i])
             self.trainNos.append(trainNo)
         }
+        
+//        self.trainNos = json.map { (string,json) in
+//            TrainCodeDetail(json: json)
+//        }
     }
     
 }
