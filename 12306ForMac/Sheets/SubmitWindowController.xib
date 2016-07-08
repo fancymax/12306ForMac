@@ -18,7 +18,8 @@
                 <outlet property="preOrderView" destination="WkC-1X-oZ2" id="wlg-LP-U9S"/>
                 <outlet property="totalPriceLabel" destination="gQY-Hx-eFZ" id="H1y-S2-ggj"/>
                 <outlet property="trainCodeLabel" destination="ecd-8X-J61" id="Wff-hy-bOF"/>
-                <outlet property="trainTimeLabel" destination="x9s-aY-vXl" id="WfG-zi-p36"/>
+                <outlet property="trainDateLabel" destination="x9s-aY-vXl" id="3mg-W2-WvV"/>
+                <outlet property="trainTimeLabel" destination="AkP-ak-M2v" id="4Wd-84-Q6B"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -151,14 +152,6 @@
                         <action selector="okayButtonClicked:" target="-2" id="xlA-Zh-CLc"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="llD-R4-fpi">
-                    <rect key="frame" x="13" y="299" width="55" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="验证码" id="39j-ej-xL8">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pov-nB-bqD" userLabel="Loading View" customClass="GlassView" customModule="_2306ForMac" customModuleProvider="target">
                     <rect key="frame" x="127" y="152" width="120" height="30"/>
                     <subviews>
@@ -181,7 +174,7 @@
                     </userDefinedRuntimeAttributes>
                 </customView>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWi-7O-JdJ" customClass="FlashLabel" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="66" y="299" width="296" height="18"/>
+                    <rect key="frame" x="13" y="296" width="349" height="32"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Tips" id="baD-uV-MNz">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
@@ -336,7 +329,7 @@
                     </tableHeaderView>
                 </scrollView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ecd-8X-J61">
-                    <rect key="frame" x="58" y="269" width="243" height="18"/>
+                    <rect key="frame" x="58" y="273" width="243" height="18"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="G1002 深圳 - 福州" id="6qv-RU-k8p">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -344,15 +337,23 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x9s-aY-vXl">
-                    <rect key="frame" x="58" y="229" width="243" height="18"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="2016-03-02 11:35～17:16 历时05:16" id="1z2-tG-6pI">
+                    <rect key="frame" x="58" y="247" width="243" height="18"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="2016-03-02" id="1z2-tG-6pI">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AkP-ak-M2v">
+                    <rect key="frame" x="58" y="219" width="243" height="18"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="11:35～17:16 历时05:16" id="FFW-6x-UIp">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KKS-fd-Ws0">
-                    <rect key="frame" x="13" y="269" width="38" height="19"/>
+                    <rect key="frame" x="13" y="273" width="38" height="19"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="车次" id="1ey-gV-XxV">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -360,8 +361,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gp0-kf-513">
-                    <rect key="frame" x="13" y="231" width="38" height="19"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="时间" id="lqv-40-Exz">
+                    <rect key="frame" x="13" y="246" width="38" height="19"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="日期" id="lqv-40-Exz">
                         <font key="font" size="13" name=".PingFangSC-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -387,8 +388,16 @@
                         <action selector="clickCheckOrderBtn:" target="-2" id="Y9E-FF-KLV"/>
                     </connections>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G7m-M5-dFw">
+                    <rect key="frame" x="13" y="218" width="38" height="19"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="时间" id="k5q-3B-54P">
+                        <font key="font" size="13" name=".PingFangSC-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="332" y="-59.5"/>
+            <point key="canvasLocation" x="452" y="-195.5"/>
         </customView>
     </objects>
 </document>

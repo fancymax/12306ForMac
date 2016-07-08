@@ -11,6 +11,7 @@ import Cocoa
 class SubmitWindowController: NSWindowController{
 
     @IBOutlet weak var trainCodeLabel: NSTextField!
+    @IBOutlet weak var trainDateLabel: NSTextField!
     @IBOutlet weak var trainTimeLabel: NSTextField!
     
     let service = Service()
@@ -46,7 +47,9 @@ class SubmitWindowController: NSWindowController{
     func freshOrderInfoView(){
         let info = MainModel.selectedTicket!
         trainCodeLabel.stringValue = "\(info.TrainCode!) \(info.FromStationName!) - \(info.ToStationName!)"
-        trainTimeLabel.stringValue = "\(info.startTrainDateStr!) \(info.start_time!)~\(info.arrive_time!) 历时\(info.lishi!)"
+        trainDateLabel.stringValue = "\(info.startTrainDateStr!)"
+        trainTimeLabel.stringValue = "\(info.start_time!)~\(info.arrive_time!) 历时\(info.lishi!)"
+        
         passengerTable.reloadData()
     }
     
@@ -120,6 +123,11 @@ class SubmitWindowController: NSWindowController{
     }
     
     @IBAction func okayButtonClicked(button:NSButton){
+        
+        if passengerImage.randCodeStr == nil {
+            errorFlashLabel.show("请先选择验证码", forDuration: 0.1, withFlash: false)
+            return
+        }
         
         self.startLoadingTip("正在提交...")
         button.enabled = false

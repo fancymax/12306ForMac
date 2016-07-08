@@ -28,7 +28,9 @@ extension Service {
     }
     
     func loginFlow(user user:String,passWord:String,randCodeStr:String,success:()->(),failure:(error:NSError)->()){
-        checkRandCodeForLogin(randCodeStr).then({() -> Promise<Void> in
+        after(1).then({ () -> Promise<Void> in
+            self.checkRandCodeForLogin(randCodeStr)
+        }).then({() -> Promise<Void> in
             return self.loginUserWith(user, passWord: passWord, randCodeStr: randCodeStr)
         }).then({ () -> Promise<Void> in
             return self.initMy12306()
