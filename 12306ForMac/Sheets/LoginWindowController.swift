@@ -56,7 +56,7 @@ class LoginWindowController: NSWindowController{
             self.tips.show("登录成功", forDuration: 0.1, withFlash: false)
             button.enabled = true
             self.service.postMobileGetPassengerDTOs()
-            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:#selector(LoginWindowController.handlerAfterSuccess), userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector:#selector(LoginWindowController.handlerAfterSuccess), userInfo: nil, repeats: false)
         }
         
         service.loginFlow(user: userName.stringValue, passWord: passWord.stringValue, randCodeStr: loginImage.randCodeStr!, success: successHandler, failure: failureHandler)

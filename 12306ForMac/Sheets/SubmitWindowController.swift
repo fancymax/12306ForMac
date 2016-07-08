@@ -28,6 +28,8 @@ class SubmitWindowController: NSWindowController{
     @IBOutlet weak var orderId: NSTextField!
     @IBOutlet weak var totalPriceLabel: NSTextField!
     
+    @IBOutlet weak var errorFlashLabel: FlashLabel!
+    
     @IBAction func FreshImage(sender: NSButton) {
         freshImage()
     }
@@ -77,7 +79,8 @@ class SubmitWindowController: NSWindowController{
             self.stopLoadingTip()
         }
         
-        let failureHandler = {
+        let failureHandler = { (error:NSError) -> () in
+            self.errorFlashLabel.show(translate(error), forDuration: 10, withFlash: false)
             self.stopLoadingTip()
         }
         service.preOrderFlow(success: successHandler, failure: failureHandler)
@@ -121,9 +124,10 @@ class SubmitWindowController: NSWindowController{
         self.startLoadingTip("正在提交...")
         button.enabled = false
         
-        let failureHandler = {
+        let failureHandler = { (error:NSError) -> () in
             self.stopLoadingTip()
             button.enabled = true
+            self.errorFlashLabel.show(translate(error), forDuration: 0.1, withFlash: false)
             self.freshImage()
         }
         

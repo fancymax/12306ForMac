@@ -23,7 +23,7 @@ extension Service{
         })
     }
     
-    func preOrderFlow(success success:(image:NSImage) -> (),failure: ()->()){
+    func preOrderFlow(success success:(image:NSImage) -> (),failure: (error:NSError)->()){
         self.initDC().then({jsName->Promise<Void> in
             return self.requestDynamicJs(jsName, referHeader: ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"])
         }).then({_ -> Promise<Void> in
@@ -34,12 +34,12 @@ extension Service{
             return self.getPassCodeNewForPassenger()
         }).then({image in
             success(image: image)
-        }).error({_ in
-            failure()
+        }).error({error in
+            failure(error: error as NSError)
         })
     }
     
-    func orderFlowWith(randCodeStr:String,success:()->(),failure:()->()){
+    func orderFlowWith(randCodeStr:String,success:()->(),failure:(error:NSError)->()){
         self.checkRandCodeForOrder(randCodeStr).then({_ -> Promise<String> in
             return self.checkOrderInfo(randCodeStr)
         }).then({_ -> Promise<String> in
@@ -49,9 +49,9 @@ extension Service{
         }).then({()-> Promise<String> in
             return self.confirmSingleForQueue(randCodeStr)
         }).then({_  in
-            self.queryOrderWaitTime(failure, waitMethod: {}, finishMethod: success)
-        }).error({_ in
-            failure()
+            self.queryOrderWaitTime({}, waitMethod: {}, finishMethod: success)
+        }).error({error in
+            failure(error: error as NSError)
         })
     }
     
@@ -312,8 +312,12 @@ extension Service{
                         fulfill(url)
                     }else{
                         logger.error("\(JSON(data))")
-                        let error = ServiceError.errorWithCode(.CheckOrderInfoFailed)
-                        reject(error)
+                        if let errMsg = JSON(data)["data"]["errMsg"].string {
+                            reject(ServiceError.errorWithCode(.CheckOrderInfoFailed,failureReason: errMsg))
+                        }
+                        else{
+                            reject(ServiceError.errorWithCode(.CheckOrderInfoFailed))
+                        }
                     }
                 }})
         }

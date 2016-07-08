@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SubmitWindowController" customModule="_2306ForMac" customModuleProvider="target">
             <connections>
+                <outlet property="errorFlashLabel" destination="yWi-7O-JdJ" id="diO-JM-5sF"/>
                 <outlet property="loadingTip" destination="DWe-8V-jUQ" id="sOw-yF-kQ1"/>
                 <outlet property="loadingTipBar" destination="wCc-U1-M6E" id="XDd-0J-1AM"/>
                 <outlet property="loadingTipView" destination="pov-nB-bqD" id="FhM-lb-z52"/>
@@ -27,7 +28,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="390" height="370"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="390" height="370"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -35,7 +36,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="364" y="378"/>
+            <point key="canvasLocation" x="966" y="395"/>
         </window>
         <customView id="vJY-p7-r54">
             <rect key="frame" x="0.0" y="0.0" width="273" height="244"/>
@@ -93,27 +94,19 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LG1-yb-srF">
-                    <rect key="frame" x="18" y="140" width="242" height="77"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="席位已经锁定，请您在     分钟     秒内进行网上支付，否则席位将自动释放给其它旅客。付款成功后，请在开车前到售票窗换取纸质车票后乘车。" id="Xdg-6L-d2j">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Pw-hU-qDF">
                     <rect key="frame" x="148" y="201" width="21" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="09" id="cFo-0S-YJ8">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="30" id="cFo-0S-YJ8">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oh2-Nd-fnI">
-                    <rect key="frame" x="193" y="201" width="21" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="47" id="14Q-8B-AlB">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LG1-yb-srF">
+                    <rect key="frame" x="18" y="141" width="242" height="77"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="席位已经锁定，请您在     分钟内进行网上支付，否则席位将自动释放给其它旅客。付款成功后，请在开车前到售票窗换取纸质车票后乘车。" id="Xdg-6L-d2j">
                         <font key="font" metaFont="system"/>
-                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
@@ -121,15 +114,15 @@
             <point key="canvasLocation" x="789.5" y="-59"/>
         </customView>
         <customView id="WkC-1X-oZ2">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="321"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="333"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DNm-pn-QOi" customClass="RandCodeImageView2" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="12" y="53" width="351" height="228"/>
+                    <rect key="frame" x="12" y="52" width="351" height="228"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" imageFrameStyle="photo" id="cqS-ac-3uM"/>
                 </imageView>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gac-he-aZq">
-                    <rect key="frame" x="289" y="248" width="75" height="32"/>
+                    <rect key="frame" x="288" y="246" width="75" height="32"/>
                     <buttonCell key="cell" type="push" title="换一张" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GRI-Pc-Ljw">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -139,7 +132,7 @@
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EWQ-MH-lbW">
-                    <rect key="frame" x="188" y="12" width="76" height="29"/>
+                    <rect key="frame" x="188" y="14" width="76" height="29"/>
                     <buttonCell key="cell" type="bevel" title="取消" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ivi-qi-tVj">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -149,7 +142,7 @@
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hLk-wf-da0">
-                    <rect key="frame" x="286" y="12" width="76" height="29"/>
+                    <rect key="frame" x="286" y="14" width="76" height="29"/>
                     <buttonCell key="cell" type="bevel" title="确定" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="YDk-Cj-LoK">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -159,7 +152,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="llD-R4-fpi">
-                    <rect key="frame" x="13" y="287" width="55" height="17"/>
+                    <rect key="frame" x="13" y="299" width="55" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="验证码" id="39j-ej-xL8">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -187,8 +180,16 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </customView>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWi-7O-JdJ" customClass="FlashLabel" customModule="_2306ForMac" customModuleProvider="target">
+                    <rect key="frame" x="66" y="299" width="296" height="18"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Tips" id="baD-uV-MNz">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="367.5" y="504.5"/>
+            <point key="canvasLocation" x="1203.5" y="-55.5"/>
         </customView>
         <customView id="wUj-Nk-WKF">
             <rect key="frame" x="0.0" y="0.0" width="314" height="325"/>
@@ -277,7 +278,7 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="" width="10" minWidth="10" maxWidth="3.4028234663852886e+38" id="8jc-g5-w99">
+                                    <tableColumn identifier="" width="93" minWidth="10" maxWidth="3.4028234663852886e+38" id="8jc-g5-w99">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="席别">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -291,7 +292,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="06W-kn-CdA">
-                                                <rect key="frame" x="187" y="1" width="10" height="30"/>
+                                                <rect key="frame" x="187" y="1" width="93" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mly-Q6-Sy2">

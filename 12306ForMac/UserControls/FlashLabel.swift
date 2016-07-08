@@ -27,7 +27,7 @@ public class FlashLabel: NSTextField {
     var showAnimation: CABasicAnimation = {
         var showAnimation = CABasicAnimation()
         showAnimation = CABasicAnimation(keyPath: "opacity")
-        showAnimation.duration = 2
+        showAnimation.duration = 3
         showAnimation.fromValue = 0
         showAnimation.toValue = 1
         showAnimation.repeatCount = 0
@@ -37,7 +37,7 @@ public class FlashLabel: NSTextField {
     var hideAnimation: CABasicAnimation = {
         var showAnimation = CABasicAnimation()
         showAnimation = CABasicAnimation(keyPath: "opacity")
-        showAnimation.duration = 2
+        showAnimation.duration = 3
         showAnimation.fromValue = 1
         showAnimation.toValue = 0
         showAnimation.repeatCount = 0
