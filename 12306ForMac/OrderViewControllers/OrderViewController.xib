@@ -50,9 +50,9 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="dZX-3m-GwH">
-                                                        <rect key="frame" x="0.0" y="12" width="110" height="17"/>
+                                                        <rect key="frame" x="0.0" y="12" width="108" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="2016/6/30 15:40" id="MS9-Vj-a14">
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="systemThin" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -89,9 +89,9 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="sS9-RL-FHH">
-                                                        <rect key="frame" x="0.0" y="12" width="44" height="17"/>
+                                                        <rect key="frame" x="0.0" y="12" width="43" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="D2313" id="b4l-UE-oq3">
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="systemThin" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -130,7 +130,7 @@
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="HBu-Ao-bXK">
                                                         <rect key="frame" x="0.0" y="12" width="43" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="深圳北" id="J5l-o2-MFP">
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="systemThin" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -169,7 +169,7 @@
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="d07-26-bbj">
                                                         <rect key="frame" x="0.0" y="12" width="43" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="长沙南" id="LCc-Vf-WqP">
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="systemThin" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -208,7 +208,7 @@
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Wsg-xh-JkU">
                                                         <rect key="frame" x="0.0" y="12" width="43" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="成人票" id="QFX-o3-oIa">
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="systemThin" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -247,7 +247,7 @@
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="edf-m1-A7g">
                                                         <rect key="frame" x="0.0" y="12" width="43" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="二等座" id="pHi-Po-XNh">
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="systemThin" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -284,9 +284,9 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="RxA-H1-GeU">
-                                                        <rect key="frame" x="0.0" y="12" width="45" height="17"/>
+                                                        <rect key="frame" x="0.0" y="12" width="44" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="01车厢" id="Gyd-tJ-k4c">
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="systemThin" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -325,7 +325,7 @@
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="nMX-gJ-Pt0">
                                                         <rect key="frame" x="0.0" y="12" width="43" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="03C号" id="9KS-gG-aDd">
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="systemThin" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -362,9 +362,9 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="mZv-2t-VwA">
-                                                        <rect key="frame" x="0.0" y="12" width="48" height="17"/>
+                                                        <rect key="frame" x="0.0" y="12" width="47" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="¥603.5" id="Jdt-8x-mbj">
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="systemThin" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -403,7 +403,7 @@
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="IZD-KB-Ac8">
                                                         <rect key="frame" x="0.0" y="12" width="43" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="林大海" id="fnx-WU-mKw">
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="systemThin" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -440,9 +440,9 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="MZf-8q-r6E">
-                                                        <rect key="frame" x="0.0" y="12" width="158" height="17"/>
+                                                        <rect key="frame" x="0.0" y="12" width="157" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="待支付(请在 19:20 前支付)" id="B6i-2S-AZa">
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="systemThin" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -483,10 +483,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <customView translatesAutoresizingMaskIntoConstraints="NO" id="4mH-Np-R8c" userLabel="Loading View" customClass="GlassView" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="395" y="168" width="120" height="30"/>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4mH-Np-R8c" userLabel="Loading View" customClass="GlassView" customModule="_2306ForMac" customModuleProvider="target">
+                    <rect key="frame" x="770" y="360" width="120" height="30"/>
                     <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cff-ez-eTt" userLabel="正在查询...">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cff-ez-eTt" userLabel="正在查询...">
                             <rect key="frame" x="19" y="7" width="68" height="17"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="正在查询..." id="YHU-EJ-HBR">
                                 <font key="font" metaFont="system"/>
@@ -494,18 +494,11 @@
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="uC2-el-N3v">
+                        <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="uC2-el-N3v">
                             <rect key="frame" x="0.0" y="7" width="16" height="16"/>
                         </progressIndicator>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="width" constant="120" id="OwX-kV-dBj"/>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="POS-cF-2Vb"/>
-                        <constraint firstItem="uC2-el-N3v" firstAttribute="centerY" secondItem="4mH-Np-R8c" secondAttribute="centerY" id="Uhr-qd-3QA"/>
-                        <constraint firstItem="cff-ez-eTt" firstAttribute="centerY" secondItem="4mH-Np-R8c" secondAttribute="centerY" id="ZPa-dF-4nf"/>
-                        <constraint firstAttribute="height" constant="30" id="em5-RE-LNm"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="iBK-hc-vNg"/>
-                        <constraint firstItem="uC2-el-N3v" firstAttribute="leading" secondItem="4mH-Np-R8c" secondAttribute="leading" id="q1k-Mf-yWz"/>
                         <constraint firstItem="cff-ez-eTt" firstAttribute="leading" secondItem="uC2-el-N3v" secondAttribute="trailing" constant="5" id="qa9-il-cJA"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
@@ -514,14 +507,6 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </customView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N4e-df-tvh" customClass="FlashLabel" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="416" y="173" width="79" height="19"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="请先登录～" drawsBackground="YES" id="iWl-Rg-TSe">
-                        <font key="font" metaFont="system" size="15"/>
-                        <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MFd-Gi-kIH">
                     <rect key="frame" x="14" y="358" width="81" height="32"/>
                     <buttonCell key="cell" type="push" title="刷新" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5WU-x5-Vr0">
@@ -532,15 +517,19 @@
                         <action selector="queryOrder:" target="-2" id="QfK-YL-h5J"/>
                     </connections>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N4e-df-tvh" customClass="FlashLabel" customModule="_2306ForMac" customModuleProvider="target">
+                    <rect key="frame" x="416" y="366" width="79" height="19"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="请先登录～" drawsBackground="YES" id="iWl-Rg-TSe">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
                 <constraint firstItem="aNY-Bu-GtP" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="3sB-JD-P0l"/>
                 <constraint firstItem="aNY-Bu-GtP" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="55" id="47w-po-qwD"/>
                 <constraint firstAttribute="trailing" secondItem="aNY-Bu-GtP" secondAttribute="trailing" constant="20" symbolic="YES" id="4r7-cO-HOo"/>
-                <constraint firstItem="N4e-df-tvh" firstAttribute="centerY" secondItem="aNY-Bu-GtP" secondAttribute="centerY" id="DAI-VW-vcB"/>
-                <constraint firstItem="4mH-Np-R8c" firstAttribute="centerY" secondItem="aNY-Bu-GtP" secondAttribute="centerY" id="MGC-09-5Sn"/>
-                <constraint firstItem="4mH-Np-R8c" firstAttribute="centerX" secondItem="aNY-Bu-GtP" secondAttribute="centerX" id="Syd-jQ-TN5"/>
-                <constraint firstItem="N4e-df-tvh" firstAttribute="centerX" secondItem="aNY-Bu-GtP" secondAttribute="centerX" id="WrQ-yN-vDG"/>
                 <constraint firstAttribute="bottom" secondItem="aNY-Bu-GtP" secondAttribute="bottom" constant="20" symbolic="YES" id="wJe-D1-yRx"/>
             </constraints>
             <point key="canvasLocation" x="521" y="402"/>

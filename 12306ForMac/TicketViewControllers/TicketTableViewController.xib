@@ -247,7 +247,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView misplaced="YES" id="WIs-HT-Kwb" customClass="TrainInfoTableCellView" customModule="_2306ForMac" customModuleProvider="target">
+                                            <tableCellView id="WIs-HT-Kwb" customClass="TrainInfoTableCellView" customModule="_2306ForMac" customModuleProvider="target">
                                                 <rect key="frame" x="453" y="1" width="997" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -446,7 +446,7 @@
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sQi-tV-O6t" userLabel="正在查询...">
                             <rect key="frame" x="29" y="7" width="85" height="17"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="正在查询..." id="Jy3-sf-5Zh">
-                                <font key="font" size="15" name="STHeitiSC-Light"/>
+                                <font key="font" metaFont="system" size="15"/>
                                 <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -470,7 +470,7 @@
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="请先选择乘客～" drawsBackground="YES" id="dMy-SC-xex">
                         <font key="font" metaFont="system" size="15"/>
                         <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="deviceWhite"/>
                     </textFieldCell>
                 </textField>
             </subviews>

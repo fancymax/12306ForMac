@@ -27,16 +27,16 @@ class OrderViewController: NSViewController{
     }
     
     @IBAction func queryOrder(sender: NSButton) {
+//        initDemoOrderList()
+//        return
+        
         if !MainModel.isGetUserInfo {
             tips.show("请先登录～", forDuration: 0.1, withFlash: false)
             return
         }
         
         startQueryTip()
-        
-//        initDemoOrderList()
-        
-            queryNoCompleteOrder()
+        queryNoCompleteOrder()
 //            queryHistoryOrder()
     }
     
