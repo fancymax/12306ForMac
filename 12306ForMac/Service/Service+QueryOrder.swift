@@ -108,6 +108,7 @@ extension Service{
                     reject(error)
                 case .Success(let data):
                     let orderDBList = JSON(data)["data"]["orderDBList"]
+                    MainModel.noCompleteOrderList = [OrderDTO]()
                     if orderDBList.count > 0{
                         for i in 0..<orderDBList.count {
                             let ticketNum = orderDBList[i]["tickets"].count

@@ -14,10 +14,6 @@ class OrderViewController: NSViewController{
     
     var orderList = [OrderDTO]()
     let service = Service()
-    let menuListIdentifier = "MenuList"
-    let orderListIdentifier = "OrderList"
-    let noCompleteOrderRow = 0
-    let historyOrderRow = 1
     var loadingTipController = LoadingTipViewController(nibName:"LoadingTipViewController",bundle: nil)!
 
     override func viewDidLoad() {
@@ -32,9 +28,11 @@ class OrderViewController: NSViewController{
     @IBAction func queryOrder(sender: NSButton) {
 //        initDemoOrderList()
 //        return
+        self.orderList = [OrderDTO]()
+        self.orderListTable.reloadData()
         
         if !MainModel.isGetUserInfo {
-            tips.show("请先登录～", forDuration: 0.1, withFlash: false)
+            NSNotificationCenter.defaultCenter().postNotificationName(DidSendLoginMessageNotification, object: nil)
             return
         }
         
@@ -54,6 +52,7 @@ class OrderViewController: NSViewController{
     }
     
     func queryHistoryOrder(){
+        
         let successHandler = {
             //如果成功 则从MainModel里获取数据
             self.orderList = MainModel.historyOrderList

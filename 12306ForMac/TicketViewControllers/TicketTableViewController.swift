@@ -19,14 +19,12 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     
     var service = Service()
     var ticketQueryResult = [QueryLeftNewDTO]()
-    var toStationCode:String?
-    var fromStationCode:String?
     var date:String?
     
-    var submitWindowController = SubmitWindowController()
+    lazy var submitWindowController:SubmitWindowController = SubmitWindowController()
     var loadingTipController = LoadingTipViewController(nibName:"LoadingTipViewController",bundle: nil)!
     
-    let trainCodeDetailViewController = TrainCodeDetailViewController()
+    lazy var trainCodeDetailViewController:TrainCodeDetailViewController = TrainCodeDetailViewController()
     lazy var popover: NSPopover = {
         let popover = NSPopover()
         popover.behavior = .Semitransient
@@ -75,8 +73,8 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         self.leftTicketTable.reloadData()
         
         self.loadingTipController.start(tip:"正在查询...")
-        self.fromStationCode = fromStationCode
-        self.toStationCode = toStationCode
+//        self.fromStationCode = fromStationCode
+//        self.toStationCode = toStationCode
         self.date = date
         
         var params = LeftTicketParam()
