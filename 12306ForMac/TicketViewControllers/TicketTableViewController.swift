@@ -15,10 +15,6 @@ protocol TicketTableDelegate{
 class TicketTableViewController: NSViewController,TicketTableDelegate{
     
     @IBOutlet weak var leftTicketTable: NSTableView!
-    @IBOutlet weak var loadingView: NSView!
-    @IBOutlet weak var loadingTip: NSTextField!
-    @IBOutlet weak var loadingSpinner: NSProgressIndicator!
-    
     @IBOutlet weak var tips: FlashLabel!
     
     var service = Service()
@@ -28,6 +24,7 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     var date:String?
     
     var submitWindowController = SubmitWindowController()
+    var loadingTipController = LoadingTipViewController(nibName:"LoadingTipViewController",bundle: nil)!
     
     let trainCodeDetailViewController = TrainCodeDetailViewController()
     lazy var popover: NSPopover = {
@@ -39,10 +36,14 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadingView.hidden = true
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: #selector(TicketTableViewController.receiveDidSendSubmitMessageNotification(_:)), name: DidSendSubmitMessageNotification, object: nil)
+        
+        //init loadingTipView
+        self.view.addSubview(loadingTipController.view)
+        self.loadingTipController.setCenterConstrainBy(view: self.view)
+        self.loadingTipController.setTipView(isHidden: true)
     }
     
     func receiveDidSendSubmitMessageNotification(note: NSNotification){
@@ -58,35 +59,22 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         }
     }
     
-    func startLoadingTip(tip:String) 
-    {
-        loadingSpinner.startAnimation(nil)
-        loadingTip.stringValue = tip
-        loadingView.hidden = false
-    }
-    
-    func stopLoadingTip(){
-        loadingSpinner.stopAnimation(nil)
-        loadingView.hidden = true
-    }
-    
     func queryLeftTicket(fromStationCode: String, toStationCode: String, date: String) {
         let successHandler = { (tickets:[QueryLeftNewDTO])->()  in
             self.ticketQueryResult = tickets
             self.leftTicketTable.reloadData()
-            
-            self.stopLoadingTip()
+            self.loadingTipController.stop()
         }
         
         let failureHandler = {(error:NSError)->() in
-            self.stopLoadingTip()
-            self.ticketQueryResult = [QueryLeftNewDTO]()
-            self.leftTicketTable.reloadData()
-            
+            self.loadingTipController.stop()
             self.tips.show(translate(error), forDuration: 1, withFlash: false)
         }
         
-        self.startLoadingTip("正在查询...")
+        self.ticketQueryResult = [QueryLeftNewDTO]()
+        self.leftTicketTable.reloadData()
+        
+        self.loadingTipController.start(tip:"正在查询...")
         self.fromStationCode = fromStationCode
         self.toStationCode = toStationCode
         self.date = date
@@ -123,8 +111,8 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     @IBAction func submit(sender: NSButton){
         let notificationCenter = NSNotificationCenter.defaultCenter()
         
-//            notificationCenter.postNotificationName(DidSendSubmitMessageNotification, object: nil)
-//            return
+//        notificationCenter.postNotificationName(DidSendSubmitMessageNotification, object: nil)
+//        return
         
         if !MainModel.isGetUserInfo {
             notificationCenter.postNotificationName(DidSendLoginMessageNotification, object: nil)
@@ -142,17 +130,17 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         MainModel.selectedTicket = ticketQueryResult[selectedRow]
         setSeatCodeForSelectedPassenger(MainModel.selectedTicket!.TrainCode! ,seatCodeName: sender.identifier!)
         
-        self.startLoadingTip("正在提交...")
+        self.loadingTipController.start(tip:"正在提交...")
         
         let postSubmitWindowMessage = {
-            self.stopLoadingTip()
+            self.loadingTipController.stop()
             self.tips.show("提交成功", forDuration: 0.1, withFlash: false)
             //post submit notification
             notificationCenter.postNotificationName(DidSendSubmitMessageNotification, object: nil)
         }
         
         let failHandler = {(error:NSError)->() in
-            self.stopLoadingTip()
+            self.loadingTipController.stop()
             
             if error.code == ServiceError.Code.CheckUserFailed.rawValue {
                 notificationCenter.postNotificationName(DidSendLoginMessageNotification, object: nil)

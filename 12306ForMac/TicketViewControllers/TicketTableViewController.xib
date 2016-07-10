@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
@@ -8,9 +8,6 @@
         <customObject id="-2" userLabel="File's Owner" customClass="TicketTableViewController" customModule="_2306ForMac" customModuleProvider="target">
             <connections>
                 <outlet property="leftTicketTable" destination="i0k-2E-Zg0" id="pmS-uh-zeJ"/>
-                <outlet property="loadingSpinner" destination="kmV-3P-cx9" id="pje-1K-dZz"/>
-                <outlet property="loadingTip" destination="sQi-tV-O6t" id="NKG-WK-8Xj"/>
-                <outlet property="loadingView" destination="nXV-5S-R9c" id="CTB-3n-g1X"/>
                 <outlet property="tips" destination="YZ2-44-iFH" id="VDN-kf-ENF"/>
                 <outlet property="view" destination="kTF-ZD-s0j" id="Lhm-aq-8uO"/>
             </connections>
@@ -440,30 +437,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <customView translatesAutoresizingMaskIntoConstraints="NO" id="nXV-5S-R9c" userLabel="Loading View" customClass="GlassView" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="437" y="250" width="120" height="30"/>
-                    <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sQi-tV-O6t" userLabel="正在查询...">
-                            <rect key="frame" x="29" y="7" width="85" height="17"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="正在查询..." id="Jy3-sf-5Zh">
-                                <font key="font" metaFont="system" size="15"/>
-                                <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="kmV-3P-cx9">
-                            <rect key="frame" x="7" y="7" width="16" height="16"/>
-                        </progressIndicator>
-                    </subviews>
+                <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nXV-5S-R9c" userLabel="Loading View">
+                    <rect key="frame" x="437.5" y="260" width="120" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="IhS-bd-j3b"/>
                         <constraint firstAttribute="width" constant="120" id="VaP-VR-UNs"/>
                     </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                            <color key="value" red="1" green="0.97048561960000002" blue="0.9787521159" alpha="0.79592483108108103" colorSpace="calibratedRGB"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
                 </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YZ2-44-iFH" customClass="FlashLabel" customModule="_2306ForMac" customModuleProvider="target">
                     <rect key="frame" x="443" y="255" width="109" height="19"/>
@@ -475,14 +454,14 @@
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstItem="nXV-5S-R9c" firstAttribute="centerY" secondItem="kTF-ZD-s0j" secondAttribute="centerY" id="0gH-eu-XHF"/>
                 <constraint firstItem="WVj-Bu-OX8" firstAttribute="top" secondItem="kTF-ZD-s0j" secondAttribute="top" id="Cbw-2a-a6p"/>
-                <constraint firstItem="YZ2-44-iFH" firstAttribute="centerY" secondItem="kTF-ZD-s0j" secondAttribute="centerY" id="HqH-xw-mf5"/>
-                <constraint firstItem="YZ2-44-iFH" firstAttribute="centerX" secondItem="kTF-ZD-s0j" secondAttribute="centerX" id="KzL-se-Kqw"/>
+                <constraint firstItem="nXV-5S-R9c" firstAttribute="centerY" secondItem="WVj-Bu-OX8" secondAttribute="centerY" id="FhJ-ig-w1Z"/>
                 <constraint firstItem="WVj-Bu-OX8" firstAttribute="leading" secondItem="kTF-ZD-s0j" secondAttribute="leading" constant="20" symbolic="YES" id="RmD-cY-zh6"/>
-                <constraint firstItem="nXV-5S-R9c" firstAttribute="centerX" secondItem="kTF-ZD-s0j" secondAttribute="centerX" id="bwu-N7-Jk8"/>
                 <constraint firstAttribute="bottom" secondItem="WVj-Bu-OX8" secondAttribute="bottom" constant="20" id="fbI-hk-bxC"/>
                 <constraint firstAttribute="trailing" secondItem="WVj-Bu-OX8" secondAttribute="trailing" constant="20" symbolic="YES" id="pvQ-F3-con"/>
+                <constraint firstItem="nXV-5S-R9c" firstAttribute="centerX" secondItem="WVj-Bu-OX8" secondAttribute="centerX" id="sV4-vg-lyS"/>
+                <constraint firstItem="YZ2-44-iFH" firstAttribute="centerY" secondItem="kTF-ZD-s0j" secondAttribute="centerY" id="tYi-ws-Pbc"/>
+                <constraint firstItem="YZ2-44-iFH" firstAttribute="centerX" secondItem="kTF-ZD-s0j" secondAttribute="centerX" id="z15-qI-WB4"/>
             </constraints>
             <point key="canvasLocation" x="217.5" y="1197"/>
         </customView>

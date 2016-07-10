@@ -9,8 +9,6 @@
 import Cocoa
 
 class OrderViewController: NSViewController{
-    @IBOutlet weak var loadingView: NSView!
-    @IBOutlet weak var loadingSpinner: NSProgressIndicator!
     @IBOutlet weak var tips: FlashLabel!
     @IBOutlet weak var orderListTable: NSTableView!
     
@@ -20,10 +18,15 @@ class OrderViewController: NSViewController{
     let orderListIdentifier = "OrderList"
     let noCompleteOrderRow = 0
     let historyOrderRow = 1
+    var loadingTipController = LoadingTipViewController(nibName:"LoadingTipViewController",bundle: nil)!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadingView.hidden = true
+        
+        //init loadingTipView
+        self.view.addSubview(loadingTipController.view)
+        self.loadingTipController.setCenterConstrainBy(view: self.view)
+        self.loadingTipController.setTipView(isHidden: true)
     }
     
     @IBAction func queryOrder(sender: NSButton) {
@@ -35,7 +38,7 @@ class OrderViewController: NSViewController{
             return
         }
         
-        startQueryTip()
+        self.loadingTipController.start(tip:"正在查询...")
         queryNoCompleteOrder()
 //            queryHistoryOrder()
     }
@@ -57,14 +60,14 @@ class OrderViewController: NSViewController{
             self.orderListTable.reloadData()
             
             //停止提示信息旋转
-            self.stopQueryTip()
+            self.loadingTipController.stop()
         }
 
         let failureHandler = {
             //失败信息提示
             
             //停止提示信息旋转
-            self.stopQueryTip()
+            self.loadingTipController.stop()
         }
         service.queryHistoryOrderFlow(success: successHandler, failure: failureHandler)
     }
@@ -76,27 +79,16 @@ class OrderViewController: NSViewController{
             self.orderListTable.reloadData()
             
             //停止提示信息旋转
-            self.stopQueryTip()
+            self.loadingTipController.stop()
         }
 
         let failureHandler = {
             //失败信息提示
             
             //停止提示信息旋转
-            self.stopQueryTip()
+            self.loadingTipController.stop()
         }
         service.queryNoCompleteOrderFlow(success: successHandler, failure: failureHandler)
-    }
-    
-    func startQueryTip()
-    {
-        loadingSpinner.startAnimation(nil)
-        loadingView.hidden = false
-    }
-    
-    func stopQueryTip(){
-        loadingSpinner.stopAnimation(nil)
-        loadingView.hidden = true
     }
 }
 
