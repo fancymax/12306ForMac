@@ -28,7 +28,6 @@ class TrainTableCellView: NSTableCellView {
     }
     
     internal func updateTint() {
-//        if selected {
         if backgroundStyle == .Dark {
             setSelectedControlStyle()
         }
@@ -92,14 +91,11 @@ class EndStationTableCellView: TrainStationTableCellView {
 
 // MARK: - 车次
 class TrainCodeTableCellView: TrainTableCellView {
-    @IBOutlet weak private var trainCodeField: ClickableTextField!
+    @IBOutlet weak private var trainCodeBtn: NSButton!
     
-    override func updateTint() {
-        trainCodeField.selected = self.selected
-    }
-    
-    func setClickableTextFieldDelegate(delegate: ClickableTextFieldDelegate){
-        trainCodeField.clickDelegate = delegate
+    func setTarget(target:AnyObject?, action:Selector){
+            trainCodeBtn.target = target
+            trainCodeBtn.action = action
     }
 }
 

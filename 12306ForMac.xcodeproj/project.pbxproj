@@ -76,7 +76,6 @@
 		F16CB2291D312A6D0055D39D /* LoadingTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16CB2271D312A6D0055D39D /* LoadingTipViewController.swift */; };
 		F16CB22A1D312A6D0055D39D /* LoadingTipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F16CB2281D312A6D0055D39D /* LoadingTipViewController.xib */; };
 		F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F17AB1CB1C95630E00FEB221 /* Credits.rtf */; };
-		F17C82191D0C4B5900FB178B /* ClickableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17C82181D0C4B5900FB178B /* ClickableTextField.swift */; };
 		F196445E1C9CED830097FF67 /* Service+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F196445D1C9CED830097FF67 /* Service+Utilities.swift */; };
 		F1A08AFE1CB25911008C5D40 /* TicketSelectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A08AFC1CB25911008C5D40 /* TicketSelectWindowController.swift */; };
 		F1A08AFF1CB25911008C5D40 /* TicketSelectWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A08AFD1CB25911008C5D40 /* TicketSelectWindowController.xib */; };
@@ -102,6 +101,7 @@
 		F1F5CE0F1CA9431D005C33BD /* SeatTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F5CE0E1CA9431D005C33BD /* SeatTypeModel.swift */; };
 		F1F5CE121CA943D1005C33BD /* SeatTypeSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F5CE101CA943D1005C33BD /* SeatTypeSelectViewController.swift */; };
 		F1F5CE131CA943D1005C33BD /* SeatTypeSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F5CE111CA943D1005C33BD /* SeatTypeSelectViewController.xib */; };
+		F1FCFF4B1D386F8F0070A32C /* URLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FCFF4A1D386F8F0070A32C /* URLButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -179,7 +179,6 @@
 		F16CB2271D312A6D0055D39D /* LoadingTipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingTipViewController.swift; sourceTree = "<group>"; };
 		F16CB2281D312A6D0055D39D /* LoadingTipViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingTipViewController.xib; sourceTree = "<group>"; };
 		F17AB1CB1C95630E00FEB221 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = 12306ForMac/Resources/Credits.rtf; sourceTree = SOURCE_ROOT; };
-		F17C82181D0C4B5900FB178B /* ClickableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClickableTextField.swift; sourceTree = "<group>"; };
 		F196445D1C9CED830097FF67 /* Service+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Service+Utilities.swift"; sourceTree = "<group>"; };
 		F1A08AFC1CB25911008C5D40 /* TicketSelectWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketSelectWindowController.swift; path = 12306ForMac/TaskViewControllers/TicketSelectWindowController.swift; sourceTree = "<group>"; };
 		F1A08AFD1CB25911008C5D40 /* TicketSelectWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TicketSelectWindowController.xib; path = 12306ForMac/TaskViewControllers/TicketSelectWindowController.xib; sourceTree = "<group>"; };
@@ -212,6 +211,7 @@
 		F1F5CE0E1CA9431D005C33BD /* SeatTypeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatTypeModel.swift; sourceTree = "<group>"; };
 		F1F5CE101CA943D1005C33BD /* SeatTypeSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SeatTypeSelectViewController.swift; path = 12306ForMac/TaskViewControllers/SeatTypeSelectViewController.swift; sourceTree = "<group>"; };
 		F1F5CE111CA943D1005C33BD /* SeatTypeSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SeatTypeSelectViewController.xib; path = 12306ForMac/TaskViewControllers/SeatTypeSelectViewController.xib; sourceTree = "<group>"; };
+		F1FCFF4A1D386F8F0070A32C /* URLButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,9 +323,9 @@
 				F1D390A31C8F177F000B3FD7 /* RandCodeImageView2.swift */,
 				F13E9C971D0AA9760011F7E2 /* TrainInfoTableCellView.swift */,
 				F13E9C991D0AB3310011F7E2 /* TrainTableRowView.swift */,
-				F17C82181D0C4B5900FB178B /* ClickableTextField.swift */,
 				F1CA12041D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift */,
 				F1CA120A1D113293003EFD0B /* ContentBackgroundView.swift */,
+				F1FCFF4A1D386F8F0070A32C /* URLButton.swift */,
 			);
 			name = UserControls;
 			path = 12306ForMac/UserControls;
@@ -711,13 +711,13 @@
 				F1A08AFE1CB25911008C5D40 /* TicketSelectWindowController.swift in Sources */,
 				F1D575761C95541D00A214B0 /* TicketQueryViewController.swift in Sources */,
 				F11154C31C8D92D000FA6059 /* PassengerViewController.swift in Sources */,
-				F17C82191D0C4B5900FB178B /* ClickableTextField.swift in Sources */,
 				F1D390A41C8F177F000B3FD7 /* RandCodeImageView2.swift in Sources */,
 				F1E7EA2E1C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m in Sources */,
 				F11154761C8D921400FA6059 /* PassengerDTO.swift in Sources */,
 				F11154A31C8D929200FA6059 /* Service.swift in Sources */,
 				F11154951C8D925200FA6059 /* LunarSolarConverter.swift in Sources */,
 				F11154721C8D921400FA6059 /* LeftTicketParam.swift in Sources */,
+				F1FCFF4B1D386F8F0070A32C /* URLButton.swift in Sources */,
 				F11154A11C8D929200FA6059 /* Service+QueryOrder.swift in Sources */,
 				F11154BD1C8D92D000FA6059 /* DisclosureViewController.swift in Sources */,
 				F113B4FA1C8FC7930001AE09 /* ErrorTranslator.swift in Sources */,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
@@ -47,25 +47,26 @@
                                                 <rect key="frame" x="1" y="1" width="80" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="VjQ-w0-ad3" customClass="ClickableTextField" customModule="_2306ForMac" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="12" width="43" height="17"/>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="D2312" id="iOY-6H-nTA">
-                                                            <font key="font" metaFont="systemLight" size="13"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rqt-ib-2ou" customClass="URLButton" customModule="_2306ForMac" customModuleProvider="target">
+                                                        <rect key="frame" x="2" y="10" width="43" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="e0j-2Y-TK4"/>
+                                                        </constraints>
+                                                        <buttonCell key="cell" type="squareTextured" title="D2313" bezelStyle="texturedSquare" alignment="left" imageScaling="proportionallyDown" inset="2" id="qQ9-R1-1yX">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="systemThin" size="13"/>
+                                                        </buttonCell>
                                                         <connections>
-                                                            <binding destination="Thi-I0-xpS" name="value" keyPath="objectValue.TrainCode" id="Hqw-KS-8Zp"/>
+                                                            <binding destination="Thi-I0-xpS" name="title" keyPath="objectValue.TrainCode" id="6jg-8k-IjC"/>
                                                         </connections>
-                                                    </textField>
+                                                    </button>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="VjQ-w0-ad3" firstAttribute="centerY" secondItem="Thi-I0-xpS" secondAttribute="centerY" id="QAb-Vn-r4B"/>
-                                                    <constraint firstItem="VjQ-w0-ad3" firstAttribute="leading" secondItem="Thi-I0-xpS" secondAttribute="leading" constant="2" id="Tvg-HS-49b"/>
+                                                    <constraint firstItem="Rqt-ib-2ou" firstAttribute="centerY" secondItem="Thi-I0-xpS" secondAttribute="centerY" id="HqQ-ZQ-1ve"/>
+                                                    <constraint firstItem="Rqt-ib-2ou" firstAttribute="leading" secondItem="Thi-I0-xpS" secondAttribute="leading" constant="2" id="YQy-CG-ijv"/>
                                                 </constraints>
                                                 <connections>
-                                                    <outlet property="textField" destination="VjQ-w0-ad3" id="P1S-Mo-4bC"/>
-                                                    <outlet property="trainCodeField" destination="VjQ-w0-ad3" id="sru-Pj-KBd"/>
+                                                    <outlet property="trainCodeBtn" destination="Rqt-ib-2ou" id="y6F-gI-57P"/>
                                                 </connections>
                                             </tableCellView>
                                         </prototypeCellViews>
@@ -438,7 +439,7 @@
                     </tableHeaderView>
                 </scrollView>
                 <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nXV-5S-R9c" userLabel="Loading View">
-                    <rect key="frame" x="437.5" y="260" width="120" height="30"/>
+                    <rect key="frame" x="438" y="260" width="120" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="IhS-bd-j3b"/>
                         <constraint firstAttribute="width" constant="120" id="VaP-VR-UNs"/>

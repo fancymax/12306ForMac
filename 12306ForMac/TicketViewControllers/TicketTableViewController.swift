@@ -106,7 +106,7 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         }
     }
     
-    @IBAction func submit(sender: NSButton){
+    func submit(sender: NSButton){
         let notificationCenter = NSNotificationCenter.defaultCenter()
         
 //        notificationCenter.postNotificationName(DidSendSubmitMessageNotification, object: nil)
@@ -148,6 +148,28 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         }
         
         service.submitFlow(success: postSubmitWindowMessage, failure: failHandler)
+    }
+    
+    func clickTrainCode(sender:NSButton) {
+        let positioningView = sender
+        let positioningRect = NSZeroRect
+        let preferredEdge = NSRectEdge.MaxX
+        popover.showRelativeToRect(positioningRect, ofView: positioningView, preferredEdge: preferredEdge)
+        
+        let trainCode = sender.title
+        var queryByTrainCodeParam = QueryByTrainCodeParam()
+        queryByTrainCodeParam.depart_date = self.date!
+        
+        for i in 0..<ticketQueryResult.count {
+            if ticketQueryResult[i].TrainCode == trainCode {
+                queryByTrainCodeParam.train_no = ticketQueryResult[i].train_no!
+                queryByTrainCodeParam.from_station_telecode = ticketQueryResult[i].FromStationCode!
+                queryByTrainCodeParam.to_station_telecode = ticketQueryResult[i].ToStationCode!
+                break
+            }
+        }
+        
+        self.trainCodeDetailViewController.queryByTrainCodeParam = queryByTrainCodeParam
     }
     
     deinit{
@@ -203,40 +225,10 @@ extension TicketTableViewController: NSTableViewDelegate{
         }
         else if(columnIdentifier == "车次"){
             let cell = view as! TrainCodeTableCellView
-            cell.setClickableTextFieldDelegate(self)
+            cell.setTarget(self, action:#selector(TicketTableViewController.clickTrainCode(_:)))
         }
         
         return view
     }
     
-}
-
-// MARK: - ClickableTextFieldDelegate
-extension TicketTableViewController: ClickableTextFieldDelegate {
-    func textFieldDidMouseEntered(sender:ClickableTextField) {
-        let positioningView = sender
-        let positioningRect = NSZeroRect
-        let preferredEdge = NSRectEdge.MaxX
-        popover.showRelativeToRect(positioningRect, ofView: positioningView, preferredEdge: preferredEdge)
-        
-        let trainCode = sender.stringValue
-        var queryByTrainCodeParam = QueryByTrainCodeParam()
-        queryByTrainCodeParam.depart_date = self.date!
-        
-        for i in 0..<ticketQueryResult.count {
-            if ticketQueryResult[i].TrainCode == trainCode {
-                queryByTrainCodeParam.train_no = ticketQueryResult[i].train_no!
-                queryByTrainCodeParam.from_station_telecode = ticketQueryResult[i].FromStationCode!
-                queryByTrainCodeParam.to_station_telecode = ticketQueryResult[i].ToStationCode!
-                break
-            }
-        }
-        
-        self.trainCodeDetailViewController.queryByTrainCodeParam = queryByTrainCodeParam
-    }
-    
-    
-    func textFieldDidMouseExited(sender: ClickableTextField) {
-        print("textField Exited")
-    }
 }

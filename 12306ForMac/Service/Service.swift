@@ -29,6 +29,8 @@ class Service {
         
         configuration.HTTPCookieAcceptPolicy = .Always
         configuration.HTTPAdditionalHeaders = headers
+        configuration.timeoutIntervalForRequest = 5
+        
         let manager = Alamofire.Manager(
             configuration: configuration,
             serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)

@@ -12,7 +12,7 @@ class TrainCodeDetailViewController: NSViewController {
     var service = Service()
     var queryByTrainCodeParam: QueryByTrainCodeParam! {
         didSet{
-            print("\(queryByTrainCodeParam.ToGetParams())")
+//            print("\(queryByTrainCodeParam.ToGetParams())")
             if oldValue != nil {
                 if oldValue.ToGetParams() == queryByTrainCodeParam.ToGetParams() {
                     return
