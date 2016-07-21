@@ -38,7 +38,7 @@ class MainModel{
     static var noCompleteOrderList:[OrderDTO] = []
     
     static func getSeatCodeBy(identifier:String, trainCode:String)->String{
-        if (trainCode.containsString("G"))||(trainCode.containsString("D")) {
+        if (trainCode.containsString("G"))||(trainCode.containsString("D")||(trainCode.containsString("C"))) {
             if(identifier == "无座"){
                 return MainModel.seatTypeNameDic["动车无座"]!
             }

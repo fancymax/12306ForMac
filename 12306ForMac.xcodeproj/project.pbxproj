@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		39A7F741AF1BBBC1B0E8B416 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E7211EBA20157CBFCD3A071 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F10F47A91D409ED3004668BB /* station_name.js in Resources */ = {isa = PBXBuildFile; fileRef = F10F47A81D409ED3004668BB /* station_name.js */; };
 		F11154651C8D91F800FA6059 /* srca.cer in Resources */ = {isa = PBXBuildFile; fileRef = F11154631C8D91F800FA6059 /* srca.cer */; };
 		F11154681C8D920600FA6059 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154671C8D920600FA6059 /* User.swift */; };
 		F11154721C8D921400FA6059 /* LeftTicketParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111546A1C8D921400FA6059 /* LeftTicketParam.swift */; };
@@ -108,6 +109,7 @@
 		37638C4EC63999790EA677D6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4362C8555FDE04134EAB4433 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4E7211EBA20157CBFCD3A071 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F10F47A81D409ED3004668BB /* station_name.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = station_name.js; path = 12306ForMac/station_name.js; sourceTree = "<group>"; };
 		F11154621C8D91F800FA6059 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F11154631C8D91F800FA6059 /* srca.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = srca.cer; sourceTree = "<group>"; };
 		F11154671C8D920600FA6059 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				F11154C71C8D92FC00FA6059 /* AppDelegate.swift */,
 				F11154CB1C8D931500FA6059 /* MainWindowController.swift */,
 				F11154CC1C8D931500FA6059 /* MainWindowController.xib */,
+				F10F47A81D409ED3004668BB /* station_name.js */,
 				F11154971C8D927C00FA6059 /* StationData.swift */,
 				F11154621C8D91F800FA6059 /* README.md */,
 				F11154631C8D91F800FA6059 /* srca.cer */,
@@ -575,6 +578,7 @@
 				F11154AA1C8D92A700FA6059 /* LoginWindowController.xib in Resources */,
 				F11154C21C8D92D000FA6059 /* PassengerSelectViewController.xib in Resources */,
 				F11154B11C8D92C100FA6059 /* OrderViewController.xib in Resources */,
+				F10F47A91D409ED3004668BB /* station_name.js in Resources */,
 				F1DF512B1CEFD1C900AAD444 /* TrainCodeViewController.xib in Resources */,
 				F11154D31C8D936300FA6059 /* MainMenu.xib in Resources */,
 				F11DA95C1C956BBE00322D82 /* TaskViewController.xib in Resources */,
