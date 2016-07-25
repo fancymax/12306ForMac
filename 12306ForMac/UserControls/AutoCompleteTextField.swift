@@ -89,13 +89,6 @@ class AutoCompleteTextField:NSTextField{
         let row:Int = self.autoCompleteTableView!.selectedRow
         let isShow = self.autoCompletePopover!.shown
         switch(theEvent.keyCode){
-        case 53: //Esc
-            if let isShow = self.autoCompletePopover?.shown{
-                if isShow{
-                    self.autoCompletePopover?.close()
-                }
-            }
-            return //skip default behavior
             
         case 125: //Down
             if isShow{
@@ -103,7 +96,6 @@ class AutoCompleteTextField:NSTextField{
                 self.autoCompleteTableView?.scrollRowToVisible((self.autoCompleteTableView?.selectedRow)!)
                 return //skip default behavior
             }
-            break
             
         case 126: //Up
             if isShow{
@@ -111,7 +103,6 @@ class AutoCompleteTextField:NSTextField{
                 self.autoCompleteTableView?.scrollRowToVisible((self.autoCompleteTableView?.selectedRow)!)
                 return //skip default behavior
             }
-            break
         
         case 36: // Return
             if isShow{
@@ -120,13 +111,16 @@ class AutoCompleteTextField:NSTextField{
             }
             
         case 48: //Tab
+            if isShow{
+                self.insert(self)
+            }
             return
         
         case 49: //Space
             if isShow {
-                self.autoCompletePopover?.close()
+                self.insert(self)
             }
-            break
+            return
             
         default:
             break
