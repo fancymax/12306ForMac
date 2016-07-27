@@ -671,11 +671,18 @@ NS_INLINE void INApplyClippingPathInCurrentContext(CGPathRef path) {
 
 - (void)becomeKeyWindow
 {
+    // repost the first NSLeftMouseDown event filter by NSWindow
+    NSEvent *theEvent = [self currentEvent];
+    if (theEvent.type == NSLeftMouseDown) {
+        [self postEvent:theEvent atStart:true];
+        NSLog(@"repost LeftMouseDown event");
+    }
 	[super becomeKeyWindow];
 	[self _updateTitlebarView];
 	[self _updateBottomBarView];
 	[self _layoutTrafficLightsAndContent];
 	[self _setupTrafficLightsTrackingArea];
+    
 }
 
 - (void)resignKeyWindow
