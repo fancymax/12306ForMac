@@ -10,32 +10,31 @@ import Cocoa
 
 class TrainCodeDetailViewController: NSViewController {
     var service = Service()
-    var queryByTrainCodeParam: QueryByTrainCodeParam! {
+    
+    var queryByTrainCodeParam: QueryByTrainCodeParam? {
         didSet{
 //            print("\(queryByTrainCodeParam.ToGetParams())")
             if oldValue != nil {
-                if oldValue.ToGetParams() == queryByTrainCodeParam.ToGetParams() {
+                if oldValue!.ToGetParams() == queryByTrainCodeParam!.ToGetParams() {
                     return
                 }
+            }
+            
+            if self.trainCodeDetails != nil {
+                self.trainCodeDetails!.trainNos!.removeAll()
+                self.trainCodeDetailTable.reloadData()
             }
             
             let successHandler = { (trainDetails:TrainCodeDetails)->()  in
                 self.trainCodeDetails = trainDetails
                 self.trainCodeDetailTable.reloadData()
                 self.trainCodeDetailTable.scrollRowToVisible(0)
-//
-//                self.stopLoadingTip()
             }
             
             let failureHandler = {(error:NSError)->() in
-//                self.stopLoadingTip()
-//                self.ticketQueryResult = [QueryLeftNewDTO]()
-//                self.leftTicketTable.reloadData()
-//                
-//                self.tips.show(translate(error), forDuration: 1, withFlash: false)
             }
             
-            service.queryTrainNoFlowWith(queryByTrainCodeParam, success: successHandler, failure: failureHandler)
+            service.queryTrainNoFlowWith(queryByTrainCodeParam!, success: successHandler, failure: failureHandler)
         }
     }
     @IBOutlet weak var trainCodeDetailTable: NSTableView!
@@ -50,6 +49,7 @@ class TrainCodeDetailViewController: NSViewController {
             col.headerCell = TrainCodeDetailHeaderCell(textCell: col.headerCell.stringValue)
             col.headerCell.alignment = .Center
         }
+        
     }
     
 }
