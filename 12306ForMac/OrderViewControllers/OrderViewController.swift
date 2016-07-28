@@ -15,6 +15,7 @@ class OrderViewController: NSViewController{
     var orderList = [OrderDTO]()
     let service = Service()
     var loadingTipController = LoadingTipViewController(nibName:"LoadingTipViewController",bundle: nil)!
+    @IBOutlet weak var payBtn: NSButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,7 @@ class OrderViewController: NSViewController{
         self.view.addSubview(loadingTipController.view)
         self.loadingTipController.setCenterConstrainBy(view: self.view)
         self.loadingTipController.setTipView(isHidden: true)
+        self.payBtn.enabled = false
     }
     
     @IBAction func queryOrder(sender: NSButton) {
@@ -38,7 +40,6 @@ class OrderViewController: NSViewController{
         
         self.loadingTipController.start(tip:"正在查询...")
         queryNoCompleteOrder()
-//            queryHistoryOrder()
     }
     
     func initDemoOrderList(){
@@ -51,41 +52,45 @@ class OrderViewController: NSViewController{
         self.orderListTable.reloadData()
     }
     
+    @IBAction func payOrder(sender: NSButton) {
+        NSWorkspace.sharedWorkspace().openURL(NSURL(string: "https://kyfw.12306.cn/otn/login/init")!)
+    }
+    
     func queryHistoryOrder(){
         
         let successHandler = {
-            //如果成功 则从MainModel里获取数据
             self.orderList = MainModel.historyOrderList
             self.orderListTable.reloadData()
             
-            //停止提示信息旋转
             self.loadingTipController.stop()
         }
 
         let failureHandler = {
-            //失败信息提示
-            
-            //停止提示信息旋转
             self.loadingTipController.stop()
+            
         }
         service.queryHistoryOrderFlow(success: successHandler, failure: failureHandler)
     }
     
     func queryNoCompleteOrder(){
         let successHandler = {
-            //如果成功 则从MainModel里获取数据
             self.orderList = MainModel.noCompleteOrderList
             self.orderListTable.reloadData()
             
-            //停止提示信息旋转
             self.loadingTipController.stop()
+            
+            if self.orderList.count > 0 {
+                self.payBtn.enabled = true
+            }
+            else {
+                self.payBtn.enabled = false
+            }
         }
 
         let failureHandler = {
-            //失败信息提示
-            
-            //停止提示信息旋转
             self.loadingTipController.stop()
+            
+            self.payBtn.enabled = false
         }
         service.queryNoCompleteOrderFlow(success: successHandler, failure: failureHandler)
     }

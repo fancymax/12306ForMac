@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
@@ -7,6 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="OrderViewController" customModule="_2306ForMac" customModuleProvider="target">
             <connections>
                 <outlet property="orderListTable" destination="Mba-dl-MeQ" id="RkP-h7-W0S"/>
+                <outlet property="payBtn" destination="1s0-kc-s4d" id="oU5-Fp-AiW"/>
                 <outlet property="tips" destination="N4e-df-tvh" id="vzk-4z-PgC"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -506,6 +507,16 @@
                         <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="deviceWhite"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1s0-kc-s4d">
+                    <rect key="frame" x="103" y="358" width="81" height="32"/>
+                    <buttonCell key="cell" type="push" title="付款" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ur0-WH-1wD">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="payOrder:" target="-2" id="l52-2q-lHP"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="GfL-96-4Ih" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="0gM-MD-fqg"/>
@@ -517,7 +528,7 @@
                 <constraint firstItem="N4e-df-tvh" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="ca2-hN-xCr"/>
                 <constraint firstAttribute="bottom" secondItem="aNY-Bu-GtP" secondAttribute="bottom" constant="20" symbolic="YES" id="wJe-D1-yRx"/>
             </constraints>
-            <point key="canvasLocation" x="521" y="402"/>
+            <point key="canvasLocation" x="1365" y="482"/>
         </customView>
     </objects>
 </document>
