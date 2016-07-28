@@ -44,6 +44,14 @@ class OrderDTO:NSObject{
         return name
     }
     
+    var startEndStation:String {
+        return "\(from_station_name!)->\(to_station_name!)"
+    }
+    
+    var whereToSeat:String {
+        return "\(coachName) \(seat_name!)"
+    }
+    
     //¥603.5
     var ticketPrice:String{
         var name = ""

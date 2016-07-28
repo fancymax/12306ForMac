@@ -11,11 +11,12 @@ import Cocoa
 class OrderViewController: NSViewController{
     @IBOutlet weak var tips: FlashLabel!
     @IBOutlet weak var orderListTable: NSTableView!
+    @IBOutlet weak var payBtn: NSButton!
     
+    var hasQuery = false
     var orderList = [OrderDTO]()
     let service = Service()
     var loadingTipController = LoadingTipViewController(nibName:"LoadingTipViewController",bundle: nil)!
-    @IBOutlet weak var payBtn: NSButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +28,16 @@ class OrderViewController: NSViewController{
         self.payBtn.enabled = false
     }
     
+    override func viewDidAppear() {
+        if ((!hasQuery) && (MainModel.isGetUserInfo)) {
+            queryNoCompleteOrder()
+        }
+    }
+    
     @IBAction func queryOrder(sender: NSButton) {
 //        initDemoOrderList()
 //        return
+        
         self.orderList = [OrderDTO]()
         self.orderListTable.reloadData()
         
@@ -38,6 +46,7 @@ class OrderViewController: NSViewController{
             return
         }
         
+        hasQuery = true
         self.loadingTipController.start(tip:"正在查询...")
         queryNoCompleteOrder()
     }
