@@ -172,6 +172,19 @@ class MainWindowController: NSWindowController{
         }
     }
     
+    @IBAction func showHelp(sender:AnyObject) {
+        sendEmailWithMail()
+    }
+    
+    func sendEmailWithMail() {
+        let receiver = "lindahai_max@126.com"
+        let subject = "12306ForMac Feedback"
+        
+        let mailToAddress = "mailto:\(receiver)?Subject=\(subject)"
+        let mailUrl = NSURL(string: mailToAddress.stringByReplacingOccurrencesOfString(" ", withString: "%20"))
+        NSWorkspace.sharedWorkspace().openURL(mailUrl!)
+    }
+    
 }
 
 extension MainWindowController: NSWindowDelegate {
