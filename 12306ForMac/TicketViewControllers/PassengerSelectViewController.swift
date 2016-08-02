@@ -12,11 +12,9 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
     @IBOutlet weak var passengerTable: NSTableView!
     var passengers = [PassengerDTO]()
     let maxSelectedPassengerCount = 5
-    var hasSelectedPassengerCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hasSelectedPassengerCount = 0
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: #selector(PassengerSelectViewController.receiveLogoutMessageNotification(_:)), name: DidSendLogoutMessageNotification, object: nil)
@@ -38,19 +36,10 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
     func receiveLogoutMessageNotification(notification: NSNotification) {
         passengers.removeAll()
         passengerTable.reloadData()
-        hasSelectedPassengerCount = 0
     }
     
     @IBAction func checkPassenger(sender:NSButton){
-        if sender.state == NSOnState{
-            hasSelectedPassengerCount += 1
-        }
-        else{
-            hasSelectedPassengerCount -= 1
-        }
-        
-        if hasSelectedPassengerCount > maxSelectedPassengerCount {
-            hasSelectedPassengerCount -= 1
+        if isMaxPassengerNumber(exclude:sender.title) {
             sender.state = NSOffState
             
             for passenger in passengers{
@@ -59,12 +48,28 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
                     break
                 }
             }
-            //todo 提示乘客超过5个
+            
             return
         }
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.postNotificationName(DidSendCheckPassengerMessageNotification, object: sender.title)
+    }
+    
+    func isMaxPassengerNumber(exclude excludePassenger:String)->Bool {
+        var count = 0
+        for passenger in passengers{
+            if (passenger.isChecked)&&(passenger.passenger_name != excludePassenger) {
+                count += 1
+            }
+        }
+        
+        if count >= maxSelectedPassengerCount {
+            return true
+        }
+        else {
+            return false
+        }
     }
     
     func tableView(tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
