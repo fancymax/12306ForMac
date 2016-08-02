@@ -68,6 +68,8 @@
 		F11E29291D2AA2B6004BE59D /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = F11E29281D2AA2B6004BE59D /* User.png */; };
 		F12746701D502E8100975DFA /* Filter.png in Resources */ = {isa = PBXBuildFile; fileRef = F127466F1D502E8100975DFA /* Filter.png */; };
 		F12746721D50345D00975DFA /* ClickableDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12746711D50345D00975DFA /* ClickableDatePicker.swift */; };
+		F12746751D50784100975DFA /* TrainFilterWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12746731D50784100975DFA /* TrainFilterWindowController.swift */; };
+		F12746761D50784100975DFA /* TrainFilterWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F12746741D50784100975DFA /* TrainFilterWindowController.xib */; };
 		F13B6FC71C98241B0095B196 /* TicketTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B6FC61C98241B0095B196 /* TicketTask.swift */; };
 		F13B6FC91C9829BD0095B196 /* Passenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B6FC81C9829BD0095B196 /* Passenger.swift */; };
 		F13B6FCB1C982A130095B196 /* Train.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B6FCA1C982A130095B196 /* Train.swift */; };
@@ -164,6 +166,8 @@
 		F11EB45A1B6A368E000063E4 /* 12306ForMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 12306ForMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F127466F1D502E8100975DFA /* Filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Filter.png; path = 12306ForMac/images/Filter.png; sourceTree = SOURCE_ROOT; };
 		F12746711D50345D00975DFA /* ClickableDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClickableDatePicker.swift; sourceTree = "<group>"; };
+		F12746731D50784100975DFA /* TrainFilterWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainFilterWindowController.swift; sourceTree = "<group>"; };
+		F12746741D50784100975DFA /* TrainFilterWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrainFilterWindowController.xib; sourceTree = "<group>"; };
 		F13B6FC61C98241B0095B196 /* TicketTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTask.swift; sourceTree = "<group>"; };
 		F13B6FC81C9829BD0095B196 /* Passenger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Passenger.swift; sourceTree = "<group>"; };
 		F13B6FCA1C982A130095B196 /* Train.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Train.swift; sourceTree = "<group>"; };
@@ -364,6 +368,8 @@
 				F11154A61C8D92A700FA6059 /* LoginWindowController.xib */,
 				F11154A71C8D92A700FA6059 /* SubmitWindowController.swift */,
 				F11154A81C8D92A700FA6059 /* SubmitWindowController.xib */,
+				F12746731D50784100975DFA /* TrainFilterWindowController.swift */,
+				F12746741D50784100975DFA /* TrainFilterWindowController.xib */,
 			);
 			name = TicketQueryModule;
 			path = 12306ForMac/TicketViewControllers;
@@ -558,6 +564,7 @@
 				F11154E51C8D93B300FA6059 /* Add.png in Resources */,
 				F1D575771C95541D00A214B0 /* TicketQueryViewController.xib in Resources */,
 				F11E29291D2AA2B6004BE59D /* User.png in Resources */,
+				F12746761D50784100975DFA /* TrainFilterWindowController.xib in Resources */,
 				F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */,
 				F11154C41C8D92D000FA6059 /* PassengerViewController.xib in Resources */,
 				F11154E71C8D93B300FA6059 /* Group.png in Resources */,
@@ -689,6 +696,7 @@
 				F113B4FA1C8FC7930001AE09 /* ErrorTranslator.swift in Sources */,
 				F11154A21C8D929200FA6059 /* Service+QueryTicket.swift in Sources */,
 				F11154A91C8D92A700FA6059 /* LoginWindowController.swift in Sources */,
+				F12746751D50784100975DFA /* TrainFilterWindowController.swift in Sources */,
 				F11154751C8D921400FA6059 /* OrderQueueResult.swift in Sources */,
 				F13E9C981D0AA9760011F7E2 /* TrainInfoTableCellView.swift in Sources */,
 				F113B4F81C8FBA2E0001AE09 /* ServiceError.swift in Sources */,

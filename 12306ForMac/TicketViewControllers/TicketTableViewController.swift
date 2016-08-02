@@ -21,6 +21,7 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     var ticketQueryResult = [QueryLeftNewDTO]()
     var date:String?
     
+    lazy var trainFilterWindowController:TrainFilterWindowController = TrainFilterWindowController()
     lazy var submitWindowController:SubmitWindowController = SubmitWindowController()
     var loadingTipController = LoadingTipViewController(nibName:"LoadingTipViewController",bundle: nil)!
     
@@ -37,6 +38,7 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: #selector(TicketTableViewController.receiveDidSendSubmitMessageNotification(_:)), name: DidSendSubmitMessageNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(TicketTableViewController.receiveDidSendTrainFilterMessageNotification(_:)), name: DidSendTrainFilterMessageNotification, object: nil)
         
         //init loadingTipView
         self.view.addSubview(loadingTipController.view)
@@ -55,6 +57,20 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
                 }
             })
         }
+    }
+    
+    func receiveDidSendTrainFilterMessageNotification(note: NSNotification){
+        print("receiveDidSendTrainFilterMessageNotification")
+        trainFilterWindowController = TrainFilterWindowController()
+        if let window = self.view.window {
+            window.beginSheet(trainFilterWindowController.window!, completionHandler:
+                {response in
+                if response == NSModalResponseOK{
+                    ///
+                }
+            })
+        }
+        
     }
     
     func queryLeftTicket(fromStationCode: String, toStationCode: String, date: String) {

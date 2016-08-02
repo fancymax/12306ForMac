@@ -30,6 +30,7 @@ let logger: XCGLogger = {
 let DidSendLoginMessageNotification = "com.12306.DidSendLoginMessageNotification"
 let DidSendLogoutMessageNotification = "com.12306.DidSendLogoutMessageNotification"
 let DidSendSubmitMessageNotification = "com.12306.DidSendSubmitMessageNotification"
+let DidSendTrainFilterMessageNotification = "com.12306.DidSendTrainFilterMessageNotification"
 let DidSendCheckPassengerMessageNotification = "com.12306.DidSendCheckPassengerMessageNotification"
 
 @NSApplicationMain class AppDelegate: NSObject, NSApplicationDelegate {

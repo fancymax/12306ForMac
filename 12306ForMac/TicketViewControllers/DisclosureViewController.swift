@@ -55,6 +55,11 @@ class DisclosureViewController: NSViewController{
         }
     }
     
+    @IBAction func clickTrainFilterBtn(sender: AnyObject) {
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.postNotificationName(DidSendTrainFilterMessageNotification, object: sender.title)
+    }
+    
     func receiveLogoutMessageNotification(notification: NSNotification) {
         passengerViewControllerList.removeAll()
         for view in passengersView.views{

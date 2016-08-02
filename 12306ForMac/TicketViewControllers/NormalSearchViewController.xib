@@ -18,7 +18,7 @@
             <rect key="frame" x="0.0" y="0.0" width="910" height="40"/>
             <subviews>
                 <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2fS-yZ-Jy1" customClass="ClickableDatePicker" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="589" y="1.5" width="90" height="23"/>
+                    <rect key="frame" x="589" y="1" width="90" height="23"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="90" id="0MU-Oo-DrC"/>
                         <constraint firstAttribute="height" constant="23" id="sUa-zI-Ffh"/>
@@ -36,7 +36,7 @@
                     </connections>
                 </datePicker>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h2m-0m-Ogc" customClass="AutoCompleteTextField" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="88" y="1.5" width="100" height="23"/>
+                    <rect key="frame" x="88" y="1" width="100" height="23"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="8P7-u9-eWS"/>
                         <constraint firstAttribute="height" constant="23" id="gLR-SQ-wZh"/>
@@ -56,7 +56,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yFl-fM-P9i" customClass="AutoCompleteTextField" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="331" y="1.5" width="100" height="23"/>
+                    <rect key="frame" x="331" y="1" width="100" height="23"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="JN0-lm-EGb"/>
                         <constraint firstAttribute="height" constant="23" id="exH-iA-e7F"/>
@@ -100,7 +100,7 @@
                     </textFieldCell>
                 </textField>
                 <button tag="1" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ICq-A0-D25">
-                    <rect key="frame" x="687" y="1.5" width="23" height="23"/>
+                    <rect key="frame" x="687" y="1" width="23" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="gFc-uf-NRK"/>
                         <constraint firstAttribute="width" constant="23" id="xQK-si-a0B"/>
@@ -140,7 +140,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NhL-cP-5Ry">
-                    <rect key="frame" x="201" y="5.5" width="50" height="16"/>
+                    <rect key="frame" x="201" y="5" width="50" height="16"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="16" id="123-M5-GoO"/>
                         <constraint firstAttribute="width" constant="50" id="1Y5-90-32M"/>
