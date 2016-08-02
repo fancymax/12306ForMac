@@ -66,6 +66,8 @@
 		F113B4F81C8FBA2E0001AE09 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113B4F71C8FBA2E0001AE09 /* ServiceError.swift */; };
 		F113B4FA1C8FC7930001AE09 /* ErrorTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113B4F91C8FC7930001AE09 /* ErrorTranslator.swift */; };
 		F11E29291D2AA2B6004BE59D /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = F11E29281D2AA2B6004BE59D /* User.png */; };
+		F12746701D502E8100975DFA /* Filter.png in Resources */ = {isa = PBXBuildFile; fileRef = F127466F1D502E8100975DFA /* Filter.png */; };
+		F12746721D50345D00975DFA /* ClickableDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12746711D50345D00975DFA /* ClickableDatePicker.swift */; };
 		F13B6FC71C98241B0095B196 /* TicketTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B6FC61C98241B0095B196 /* TicketTask.swift */; };
 		F13B6FC91C9829BD0095B196 /* Passenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B6FC81C9829BD0095B196 /* Passenger.swift */; };
 		F13B6FCB1C982A130095B196 /* Train.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B6FCA1C982A130095B196 /* Train.swift */; };
@@ -160,6 +162,8 @@
 		F113B4F91C8FC7930001AE09 /* ErrorTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTranslator.swift; sourceTree = "<group>"; };
 		F11E29281D2AA2B6004BE59D /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = User.png; path = 12306ForMac/images/User.png; sourceTree = SOURCE_ROOT; };
 		F11EB45A1B6A368E000063E4 /* 12306ForMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 12306ForMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F127466F1D502E8100975DFA /* Filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Filter.png; path = 12306ForMac/images/Filter.png; sourceTree = SOURCE_ROOT; };
+		F12746711D50345D00975DFA /* ClickableDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClickableDatePicker.swift; sourceTree = "<group>"; };
 		F13B6FC61C98241B0095B196 /* TicketTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTask.swift; sourceTree = "<group>"; };
 		F13B6FC81C9829BD0095B196 /* Passenger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Passenger.swift; sourceTree = "<group>"; };
 		F13B6FCA1C982A130095B196 /* Train.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Train.swift; sourceTree = "<group>"; };
@@ -308,6 +312,7 @@
 				F1CA12041D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift */,
 				F1CA120A1D113293003EFD0B /* ContentBackgroundView.swift */,
 				F1FCFF4A1D386F8F0070A32C /* URLButton.swift */,
+				F12746711D50345D00975DFA /* ClickableDatePicker.swift */,
 			);
 			name = UserControls;
 			path = 12306ForMac/UserControls;
@@ -408,6 +413,7 @@
 		F1A8CCB01BA8032500B4FB03 /* Asserts */ = {
 			isa = PBXGroup;
 			children = (
+				F127466F1D502E8100975DFA /* Filter.png */,
 				F11E29281D2AA2B6004BE59D /* User.png */,
 				F11154E11C8D93B300FA6059 /* Add.png */,
 				F11154E21C8D93B300FA6059 /* CalendarTemplate.png */,
@@ -555,6 +561,7 @@
 				F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */,
 				F11154C41C8D92D000FA6059 /* PassengerViewController.xib in Resources */,
 				F11154E71C8D93B300FA6059 /* Group.png in Resources */,
+				F12746701D502E8100975DFA /* Filter.png in Resources */,
 				F11154BE1C8D92D000FA6059 /* DisclosureViewController.xib in Resources */,
 				F11154E61C8D93B300FA6059 /* CalendarTemplate.png in Resources */,
 				F1CCA2D91D0D3DFA00B6853E /* TrainCodeDetailViewController.xib in Resources */,
@@ -660,6 +667,7 @@
 				F13B6FC91C9829BD0095B196 /* Passenger.swift in Sources */,
 				F11154901C8D925200FA6059 /* GlassView.swift in Sources */,
 				F11154961C8D925200FA6059 /* RandCodeImageView.swift in Sources */,
+				F12746721D50345D00975DFA /* ClickableDatePicker.swift in Sources */,
 				F11154681C8D920600FA6059 /* User.swift in Sources */,
 				F1E7EA301C5A2E7B007715C1 /* INAppStoreWindow.m in Sources */,
 				F1E7EA311C5A2E7B007715C1 /* INWindowButton.m in Sources */,

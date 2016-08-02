@@ -33,19 +33,42 @@
                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wW4-GX-WuV">
                     <rect key="frame" x="83" y="0.0" width="0.0" height="40"/>
                 </stackView>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="O9P-Ms-I6L">
+                    <rect key="frame" x="454" y="11" width="22" height="18"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="l4X-53-sSc">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mbU-dL-uxW" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
+                    <rect key="frame" x="394" y="7" width="60" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="e9D-yI-TAI"/>
+                        <constraint firstAttribute="height" constant="25" id="jwT-iN-rpU"/>
+                    </constraints>
+                    <buttonCell key="cell" type="bevel" title="筛选" bezelStyle="rounded" image="Filter" imagePosition="left" alignment="center" imageScaling="proportionallyDown" inset="2" id="wJy-8u-wmT">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
             </subviews>
             <constraints>
+                <constraint firstItem="O9P-Ms-I6L" firstAttribute="leading" secondItem="mbU-dL-uxW" secondAttribute="trailing" constant="2" id="1iq-sb-2WZ"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wW4-GX-WuV" secondAttribute="trailing" constant="20" symbolic="YES" id="8VY-84-zxp"/>
                 <constraint firstItem="wW4-GX-WuV" firstAttribute="top" secondItem="R8F-8R-cT3" secondAttribute="top" id="F2R-Nt-MFz"/>
+                <constraint firstAttribute="trailing" secondItem="O9P-Ms-I6L" secondAttribute="trailing" constant="18" id="L99-qO-hvN"/>
                 <constraint firstAttribute="bottom" secondItem="wW4-GX-WuV" secondAttribute="bottom" id="O7D-dc-Xlh"/>
+                <constraint firstItem="mbU-dL-uxW" firstAttribute="centerY" secondItem="R8F-8R-cT3" secondAttribute="centerY" id="TCi-BB-yih"/>
                 <constraint firstItem="wW4-GX-WuV" firstAttribute="leading" secondItem="bwO-NL-po4" secondAttribute="trailing" constant="5" id="Xn6-Lo-Oir"/>
                 <constraint firstAttribute="height" constant="40" id="Yt3-QW-2Od"/>
                 <constraint firstItem="bwO-NL-po4" firstAttribute="centerY" secondItem="wW4-GX-WuV" secondAttribute="centerY" id="eHJ-LH-g7d"/>
+                <constraint firstItem="O9P-Ms-I6L" firstAttribute="centerY" secondItem="R8F-8R-cT3" secondAttribute="centerY" id="gcP-WQ-Zx1"/>
                 <constraint firstItem="bwO-NL-po4" firstAttribute="leading" secondItem="R8F-8R-cT3" secondAttribute="leading" constant="18" id="mRq-fm-Fbx"/>
             </constraints>
         </customView>
     </objects>
     <resources>
         <image name="Add" width="512" height="512"/>
+        <image name="Filter" width="100" height="102"/>
     </resources>
 </document>
