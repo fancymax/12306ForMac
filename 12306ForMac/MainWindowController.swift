@@ -15,12 +15,10 @@ class MainWindowController: NSWindowController{
     
     var orderQueryViewController:OrderViewController?
     var ticketQueryViewController:TicketQueryViewController?
-    var taskViewController:TaskViewController?
     
     var loginWindowController:LoginWindowController!
     
     let TrainBook = "车票预订"
-    let TrainTask = "抢票任务"
     let TrainOrder = "订单查询"
     
     override func windowDidLoad()
@@ -113,12 +111,6 @@ class MainWindowController: NSWindowController{
                 ticketQueryViewController = TicketQueryViewController()
             }
             self.window?.contentView = ticketQueryViewController!.view
-        }
-        else{
-            if taskViewController == nil{
-                taskViewController = TaskViewController()
-            }
-            self.window?.contentView = taskViewController!.view
         }
     }
     

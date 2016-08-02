@@ -65,8 +65,6 @@
 		F11154E81C8D93B300FA6059 /* SettingsTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = F11154E41C8D93B300FA6059 /* SettingsTemplate.png */; };
 		F113B4F81C8FBA2E0001AE09 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113B4F71C8FBA2E0001AE09 /* ServiceError.swift */; };
 		F113B4FA1C8FC7930001AE09 /* ErrorTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113B4F91C8FC7930001AE09 /* ErrorTranslator.swift */; };
-		F11DA95B1C956BBE00322D82 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11DA9591C956BBE00322D82 /* TaskViewController.swift */; };
-		F11DA95C1C956BBE00322D82 /* TaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11DA95A1C956BBE00322D82 /* TaskViewController.xib */; };
 		F11E29291D2AA2B6004BE59D /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = F11E29281D2AA2B6004BE59D /* User.png */; };
 		F13B6FC71C98241B0095B196 /* TicketTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B6FC61C98241B0095B196 /* TicketTask.swift */; };
 		F13B6FC91C9829BD0095B196 /* Passenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B6FC81C9829BD0095B196 /* Passenger.swift */; };
@@ -78,8 +76,6 @@
 		F16CB22A1D312A6D0055D39D /* LoadingTipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F16CB2281D312A6D0055D39D /* LoadingTipViewController.xib */; };
 		F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F17AB1CB1C95630E00FEB221 /* Credits.rtf */; };
 		F196445E1C9CED830097FF67 /* Service+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F196445D1C9CED830097FF67 /* Service+Utilities.swift */; };
-		F1A08AFE1CB25911008C5D40 /* TicketSelectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A08AFC1CB25911008C5D40 /* TicketSelectWindowController.swift */; };
-		F1A08AFF1CB25911008C5D40 /* TicketSelectWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A08AFD1CB25911008C5D40 /* TicketSelectWindowController.xib */; };
 		F1CA12051D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA12041D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift */; };
 		F1CA120B1D113293003EFD0B /* ContentBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA120A1D113293003EFD0B /* ContentBackgroundView.swift */; };
 		F1CA120D1D1135E2003EFD0B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA120C1D1135E2003EFD0B /* Theme.swift */; };
@@ -90,18 +86,12 @@
 		F1D390A41C8F177F000B3FD7 /* RandCodeImageView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D390A31C8F177F000B3FD7 /* RandCodeImageView2.swift */; };
 		F1D575761C95541D00A214B0 /* TicketQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */; };
 		F1D575771C95541D00A214B0 /* TicketQueryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D575751C95541D00A214B0 /* TicketQueryViewController.xib */; };
-		F1DF512A1CEFD1C900AAD444 /* TrainCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DF51281CEFD1C900AAD444 /* TrainCodeViewController.swift */; };
-		F1DF512B1CEFD1C900AAD444 /* TrainCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1DF51291CEFD1C900AAD444 /* TrainCodeViewController.xib */; };
 		F1E7EA2D1C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA221C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c */; };
 		F1E7EA2E1C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA251C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m */; };
 		F1E7EA2F1C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA271C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m */; };
 		F1E7EA301C5A2E7B007715C1 /* INAppStoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA291C5A2E7B007715C1 /* INAppStoreWindow.m */; };
 		F1E7EA311C5A2E7B007715C1 /* INWindowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA2C1C5A2E7B007715C1 /* INWindowButton.m */; };
-		F1F5CE0C1CA942F5005C33BD /* SeatTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F5CE0A1CA942F5005C33BD /* SeatTypeViewController.swift */; };
-		F1F5CE0D1CA942F5005C33BD /* SeatTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F5CE0B1CA942F5005C33BD /* SeatTypeViewController.xib */; };
 		F1F5CE0F1CA9431D005C33BD /* SeatTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F5CE0E1CA9431D005C33BD /* SeatTypeModel.swift */; };
-		F1F5CE121CA943D1005C33BD /* SeatTypeSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F5CE101CA943D1005C33BD /* SeatTypeSelectViewController.swift */; };
-		F1F5CE131CA943D1005C33BD /* SeatTypeSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F5CE111CA943D1005C33BD /* SeatTypeSelectViewController.xib */; };
 		F1FCFF4B1D386F8F0070A32C /* URLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FCFF4A1D386F8F0070A32C /* URLButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -168,8 +158,6 @@
 		F11154E91C8D945C00FA6059 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = 12306ForMac/Info.plist; sourceTree = SOURCE_ROOT; };
 		F113B4F71C8FBA2E0001AE09 /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		F113B4F91C8FC7930001AE09 /* ErrorTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTranslator.swift; sourceTree = "<group>"; };
-		F11DA9591C956BBE00322D82 /* TaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskViewController.swift; path = 12306ForMac/TaskViewControllers/TaskViewController.swift; sourceTree = "<group>"; };
-		F11DA95A1C956BBE00322D82 /* TaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TaskViewController.xib; path = 12306ForMac/TaskViewControllers/TaskViewController.xib; sourceTree = "<group>"; };
 		F11E29281D2AA2B6004BE59D /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = User.png; path = 12306ForMac/images/User.png; sourceTree = SOURCE_ROOT; };
 		F11EB45A1B6A368E000063E4 /* 12306ForMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 12306ForMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F13B6FC61C98241B0095B196 /* TicketTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTask.swift; sourceTree = "<group>"; };
@@ -182,8 +170,6 @@
 		F16CB2281D312A6D0055D39D /* LoadingTipViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingTipViewController.xib; sourceTree = "<group>"; };
 		F17AB1CB1C95630E00FEB221 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = 12306ForMac/Resources/Credits.rtf; sourceTree = SOURCE_ROOT; };
 		F196445D1C9CED830097FF67 /* Service+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Service+Utilities.swift"; sourceTree = "<group>"; };
-		F1A08AFC1CB25911008C5D40 /* TicketSelectWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketSelectWindowController.swift; path = 12306ForMac/TaskViewControllers/TicketSelectWindowController.swift; sourceTree = "<group>"; };
-		F1A08AFD1CB25911008C5D40 /* TicketSelectWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TicketSelectWindowController.xib; path = 12306ForMac/TaskViewControllers/TicketSelectWindowController.xib; sourceTree = "<group>"; };
 		F1CA12041D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainCodeDetailHeaderCell.swift; sourceTree = "<group>"; };
 		F1CA120A1D113293003EFD0B /* ContentBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentBackgroundView.swift; sourceTree = "<group>"; };
 		F1CA120C1D1135E2003EFD0B /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -195,8 +181,6 @@
 		F1D390A31C8F177F000B3FD7 /* RandCodeImageView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandCodeImageView2.swift; sourceTree = "<group>"; };
 		F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketQueryViewController.swift; sourceTree = "<group>"; };
 		F1D575751C95541D00A214B0 /* TicketQueryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketQueryViewController.xib; sourceTree = "<group>"; };
-		F1DF51281CEFD1C900AAD444 /* TrainCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrainCodeViewController.swift; path = 12306ForMac/TaskViewControllers/TrainCodeViewController.swift; sourceTree = "<group>"; };
-		F1DF51291CEFD1C900AAD444 /* TrainCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TrainCodeViewController.xib; path = 12306ForMac/TaskViewControllers/TrainCodeViewController.xib; sourceTree = "<group>"; };
 		F1E7EA221C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = INAppStoreWindowSwizzling.c; sourceTree = "<group>"; };
 		F1E7EA231C5A2E7B007715C1 /* INAppStoreWindowSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindowSwizzling.h; sourceTree = "<group>"; };
 		F1E7EA241C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "INWindowBackgroundView+CoreUIRendering.h"; sourceTree = "<group>"; };
@@ -208,11 +192,7 @@
 		F1E7EA2A1C5A2E7B007715C1 /* INAppStoreWindowCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindowCompatibility.h; sourceTree = "<group>"; };
 		F1E7EA2B1C5A2E7B007715C1 /* INWindowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INWindowButton.h; sourceTree = "<group>"; };
 		F1E7EA2C1C5A2E7B007715C1 /* INWindowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INWindowButton.m; sourceTree = "<group>"; };
-		F1F5CE0A1CA942F5005C33BD /* SeatTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SeatTypeViewController.swift; path = 12306ForMac/TaskViewControllers/SeatTypeViewController.swift; sourceTree = "<group>"; };
-		F1F5CE0B1CA942F5005C33BD /* SeatTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SeatTypeViewController.xib; path = 12306ForMac/TaskViewControllers/SeatTypeViewController.xib; sourceTree = "<group>"; };
 		F1F5CE0E1CA9431D005C33BD /* SeatTypeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatTypeModel.swift; sourceTree = "<group>"; };
-		F1F5CE101CA943D1005C33BD /* SeatTypeSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SeatTypeSelectViewController.swift; path = 12306ForMac/TaskViewControllers/SeatTypeSelectViewController.swift; sourceTree = "<group>"; };
-		F1F5CE111CA943D1005C33BD /* SeatTypeSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SeatTypeSelectViewController.xib; path = 12306ForMac/TaskViewControllers/SeatTypeSelectViewController.xib; sourceTree = "<group>"; };
 		F1FCFF4A1D386F8F0070A32C /* URLButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,7 +229,6 @@
 			isa = PBXGroup;
 			children = (
 				F11154B21C8D92D000FA6059 /* TicketQueryModule */,
-				F11DA9581C956A8000322D82 /* TaskViewControllers */,
 				F11154AD1C8D92C100FA6059 /* OrderQueryModule */,
 				F11154991C8D929200FA6059 /* Service */,
 				F11154831C8D925200FA6059 /* UserControls */,
@@ -383,23 +362,6 @@
 			);
 			name = TicketQueryModule;
 			path = 12306ForMac/TicketViewControllers;
-			sourceTree = "<group>";
-		};
-		F11DA9581C956A8000322D82 /* TaskViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				F11DA9591C956BBE00322D82 /* TaskViewController.swift */,
-				F11DA95A1C956BBE00322D82 /* TaskViewController.xib */,
-				F1F5CE0A1CA942F5005C33BD /* SeatTypeViewController.swift */,
-				F1DF51281CEFD1C900AAD444 /* TrainCodeViewController.swift */,
-				F1DF51291CEFD1C900AAD444 /* TrainCodeViewController.xib */,
-				F1F5CE0B1CA942F5005C33BD /* SeatTypeViewController.xib */,
-				F1F5CE101CA943D1005C33BD /* SeatTypeSelectViewController.swift */,
-				F1F5CE111CA943D1005C33BD /* SeatTypeSelectViewController.xib */,
-				F1A08AFC1CB25911008C5D40 /* TicketSelectWindowController.swift */,
-				F1A08AFD1CB25911008C5D40 /* TicketSelectWindowController.xib */,
-			);
-			name = TaskViewControllers;
 			sourceTree = "<group>";
 		};
 		F11EB4511B6A368E000063E4 = {
@@ -579,17 +541,12 @@
 				F11154C21C8D92D000FA6059 /* PassengerSelectViewController.xib in Resources */,
 				F11154B11C8D92C100FA6059 /* OrderViewController.xib in Resources */,
 				F10F47A91D409ED3004668BB /* station_name.js in Resources */,
-				F1DF512B1CEFD1C900AAD444 /* TrainCodeViewController.xib in Resources */,
 				F11154D31C8D936300FA6059 /* MainMenu.xib in Resources */,
-				F11DA95C1C956BBE00322D82 /* TaskViewController.xib in Resources */,
-				F1F5CE131CA943D1005C33BD /* SeatTypeSelectViewController.xib in Resources */,
-				F1A08AFF1CB25911008C5D40 /* TicketSelectWindowController.xib in Resources */,
 				F11154651C8D91F800FA6059 /* srca.cer in Resources */,
 				F11154C61C8D92D000FA6059 /* TicketTableViewController.xib in Resources */,
 				F11154941C8D925200FA6059 /* LunarCalendarView.xib in Resources */,
 				F11154D01C8D931500FA6059 /* MainWindowController.xib in Resources */,
 				F11154D61C8D937E00FA6059 /* Images.xcassets in Resources */,
-				F1F5CE0D1CA942F5005C33BD /* SeatTypeViewController.xib in Resources */,
 				F11154C01C8D92D000FA6059 /* NormalSearchViewController.xib in Resources */,
 				F16CB22A1D312A6D0055D39D /* LoadingTipViewController.xib in Resources */,
 				F11154E51C8D93B300FA6059 /* Add.png in Resources */,
@@ -679,14 +636,12 @@
 				F11154781C8D921400FA6059 /* QueryOrderParam.swift in Sources */,
 				F13E9C9A1D0AB3310011F7E2 /* TrainTableRowView.swift in Sources */,
 				F11154C81C8D92FC00FA6059 /* AppDelegate.swift in Sources */,
-				F11DA95B1C956BBE00322D82 /* TaskViewController.swift in Sources */,
 				F111548E1C8D925200FA6059 /* AutoCompleteTextField.swift in Sources */,
 				F11154731C8D921400FA6059 /* MainModel.swift in Sources */,
 				F11154791C8D921400FA6059 /* QueryOrderWaitTimeResult.swift in Sources */,
 				F11154771C8D921400FA6059 /* QueryLeftNewDTO.swift in Sources */,
 				F196445E1C9CED830097FF67 /* Service+Utilities.swift in Sources */,
 				F111549F1C8D929200FA6059 /* Service+Login.swift in Sources */,
-				F1DF512A1CEFD1C900AAD444 /* TrainCodeViewController.swift in Sources */,
 				F111548F1C8D925200FA6059 /* FlashLabel.swift in Sources */,
 				F1CA120D1D1135E2003EFD0B /* Theme.swift in Sources */,
 				F1CA12051D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift in Sources */,
@@ -712,7 +667,6 @@
 				F1CCA2DB1D0D42D700B6853E /* QueryByTrainCodeParam.swift in Sources */,
 				F11154811C8D923C00FA6059 /* UserDefaultManager.swift in Sources */,
 				F11154A01C8D929200FA6059 /* Service+Order.swift in Sources */,
-				F1A08AFE1CB25911008C5D40 /* TicketSelectWindowController.swift in Sources */,
 				F1D575761C95541D00A214B0 /* TicketQueryViewController.swift in Sources */,
 				F11154C31C8D92D000FA6059 /* PassengerViewController.swift in Sources */,
 				F1D390A41C8F177F000B3FD7 /* RandCodeImageView2.swift in Sources */,
@@ -736,10 +690,8 @@
 				F1CCA2D81D0D3DFA00B6853E /* TrainCodeDetailViewController.swift in Sources */,
 				F13B6FCB1C982A130095B196 /* Train.swift in Sources */,
 				F16CB2291D312A6D0055D39D /* LoadingTipViewController.swift in Sources */,
-				F1F5CE121CA943D1005C33BD /* SeatTypeSelectViewController.swift in Sources */,
 				F1CA120B1D113293003EFD0B /* ContentBackgroundView.swift in Sources */,
 				F11154921C8D925200FA6059 /* LoginButton.swift in Sources */,
-				F1F5CE0C1CA942F5005C33BD /* SeatTypeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
