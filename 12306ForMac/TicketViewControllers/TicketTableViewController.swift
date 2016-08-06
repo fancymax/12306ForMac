@@ -62,6 +62,7 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     func receiveDidSendTrainFilterMessageNotification(note: NSNotification){
         print("receiveDidSendTrainFilterMessageNotification")
         trainFilterWindowController = TrainFilterWindowController()
+        trainFilterWindowController.trains = ticketQueryResult
         if let window = self.view.window {
             window.beginSheet(trainFilterWindowController.window!, completionHandler:
                 {response in
@@ -74,23 +75,32 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     }
     
     func queryLeftTicket(fromStationCode: String, toStationCode: String, date: String) {
+        
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        
         let successHandler = { (tickets:[QueryLeftNewDTO])->()  in
             self.ticketQueryResult = tickets
             self.leftTicketTable.reloadData()
             self.loadingTipController.stop()
+            
+            var canFilter = false
+            if tickets.count > 0 {
+                canFilter = true
+            }
+            notificationCenter.postNotificationName(CanFilterTrainNotification, object: canFilter)
         }
         
         let failureHandler = {(error:NSError)->() in
             self.loadingTipController.stop()
             self.tips.show(translate(error), forDuration: 1, withFlash: false)
+            
+            notificationCenter.postNotificationName(CanFilterTrainNotification, object: false)
         }
         
         self.ticketQueryResult = [QueryLeftNewDTO]()
         self.leftTicketTable.reloadData()
         
         self.loadingTipController.start(tip:"正在查询...")
-//        self.fromStationCode = fromStationCode
-//        self.toStationCode = toStationCode
         self.date = date
         
         var params = LeftTicketParam()

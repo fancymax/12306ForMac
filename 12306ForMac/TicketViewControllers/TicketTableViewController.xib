@@ -245,7 +245,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="WIs-HT-Kwb" customClass="TrainInfoTableCellView" customModule="_2306ForMac" customModuleProvider="target">
+                                            <tableCellView misplaced="YES" id="WIs-HT-Kwb" customClass="TrainInfoTableCellView" customModule="_2306ForMac" customModuleProvider="target">
                                                 <rect key="frame" x="453" y="1" width="997" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>

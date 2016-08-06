@@ -14,6 +14,9 @@ class DisclosureViewController: NSViewController{
     var passengerViewControllerList = [PassengerViewController]()
     let passengerSelectViewController = PassengerSelectViewController()
     
+    @IBOutlet weak var filterBtn: LoginButton!
+    @IBOutlet weak var filterCbx: NSButton!
+    
     lazy var popover: NSPopover = {
         let popover = NSPopover()
         popover.behavior = .Semitransient
@@ -26,8 +29,12 @@ class DisclosureViewController: NSViewController{
         passengerViewControllerList = [PassengerViewController]()
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
+        filterBtn.enabled = false
+        filterCbx.enabled = false
+        
         notificationCenter.addObserver(self, selector: #selector(DisclosureViewController.receiveCheckPassengerMessageNotification(_:)), name: DidSendCheckPassengerMessageNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(DisclosureViewController.receiveLogoutMessageNotification(_:)), name: DidSendLogoutMessageNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(DisclosureViewController.receiveCanFilterNotification(_:)), name: CanFilterTrainNotification, object: nil)
     }
     
     func receiveCheckPassengerMessageNotification(notification: NSNotification) {
@@ -55,17 +62,31 @@ class DisclosureViewController: NSViewController{
         }
     }
     
-    @IBAction func clickTrainFilterBtn(sender: AnyObject) {
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.postNotificationName(DidSendTrainFilterMessageNotification, object: sender.title)
-    }
-    
     func receiveLogoutMessageNotification(notification: NSNotification) {
         passengerViewControllerList.removeAll()
         for view in passengersView.views{
             view.removeFromSuperview()
         }
     }
+    
+    func receiveCanFilterNotification(notification: NSNotification) {
+        let canFilter = notification.object as! Bool
+        if canFilter {
+            filterBtn.enabled = true
+            filterCbx.enabled = true
+        }
+        else {
+            filterBtn.enabled = false
+            filterCbx.enabled = false
+            
+        }
+    }
+    
+    @IBAction func clickTrainFilterBtn(sender: AnyObject) {
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.postNotificationName(DidSendTrainFilterMessageNotification, object: sender.title)
+    }
+    
 
     @IBAction func selectPassenger(sender: NSButton) {
         let positioningView = sender

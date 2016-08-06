@@ -45,11 +45,19 @@ class LoginButton: NSButton{
     }
     
     override func mouseEntered(theEvent: NSEvent) {
+        if !self.enabled {
+            return
+        }
+        
         self.hovered = true
         self.needsDisplay = true
     }
     
     override func mouseExited(theEvent: NSEvent) {
+        if !self.enabled {
+            return
+        }
+        
         self.hovered = false
         self.needsDisplay = true
     }
