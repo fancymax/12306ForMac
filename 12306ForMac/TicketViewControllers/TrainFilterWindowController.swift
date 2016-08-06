@@ -8,17 +8,6 @@
 
 import Cocoa
 
-class DemoModel: NSObject {
-    init(type:Int,key:String,isChecked:Bool) {
-        self.type = type
-        self.key = key
-        self.isChecked = isChecked
-    }
-    var type = 0
-    var key = ""
-    var isChecked = false
-}
-
 class FilterPresentationItem: NSObject {
     init(type:Int,key:String,presentation:String,isChecked:Bool) {
         self.type = type
@@ -39,18 +28,21 @@ class TrainFilterWindowController: NSWindowController,NSTableViewDelegate,NSTabl
     var fromStationName = ""
     var toStationName = ""
     var trainDate = ""
+    
+    var trainFilterKey = ""
+    var seatFilterKey = ""
         
     func createFilterItemByTrains(trains:[QueryLeftNewDTO]){
         filterItems.append(FilterPresentationItem(type: 0,key:"",presentation: "席别类型",isChecked: false))
-        filterItems.append(FilterPresentationItem(type: 1,key:"",presentation: "商务座",isChecked: false))
-        filterItems.append(FilterPresentationItem(type: 1,key:"",presentation: "特等座",isChecked: false))
-        filterItems.append(FilterPresentationItem(type: 1,key:"",presentation: "一等座",isChecked: false))
-        filterItems.append(FilterPresentationItem(type: 1,key:"",presentation: "二等座",isChecked: true))
-        filterItems.append(FilterPresentationItem(type: 1,key:"",presentation: "高级软卧",isChecked: false))
-        filterItems.append(FilterPresentationItem(type: 1,key:"",presentation: "软卧",isChecked: false))
-        filterItems.append(FilterPresentationItem(type: 1,key:"",presentation: "硬卧",isChecked: false))
-        filterItems.append(FilterPresentationItem(type: 1,key:"",presentation: "硬座",isChecked: true))
-        filterItems.append(FilterPresentationItem(type: 1,key:"",presentation: "无座",isChecked: false))
+        filterItems.append(FilterPresentationItem(type: 1,key:"9",presentation: "商务座",isChecked: false))
+        filterItems.append(FilterPresentationItem(type: 1,key:"P",presentation: "特等座",isChecked: false))
+        filterItems.append(FilterPresentationItem(type: 1,key:"M",presentation: "一等座",isChecked: false))
+        filterItems.append(FilterPresentationItem(type: 1,key:"O",presentation: "二等座",isChecked: true))
+        filterItems.append(FilterPresentationItem(type: 1,key:"6",presentation: "高级软卧",isChecked: false))
+        filterItems.append(FilterPresentationItem(type: 1,key:"O|4",presentation: "软卧",isChecked: false))
+        filterItems.append(FilterPresentationItem(type: 1,key:"3",presentation: "硬卧",isChecked: false))
+        filterItems.append(FilterPresentationItem(type: 1,key:"1",presentation: "硬座",isChecked: true))
+        filterItems.append(FilterPresentationItem(type: 1,key:"1|O",presentation: "无座",isChecked: false))
         filterItems.append(FilterPresentationItem(type: 0,key:"",presentation: "出发时段",isChecked: false))
         filterItems.append(FilterPresentationItem(type: 2,key:"",presentation: "00:00--06:00",isChecked: true))
         filterItems.append(FilterPresentationItem(type: 2,key:"",presentation: "06:00--12:00",isChecked: true))
@@ -74,6 +66,28 @@ class TrainFilterWindowController: NSWindowController,NSTableViewDelegate,NSTabl
         
     }
     
+    func getFilterKey(){
+        trainFilterKey = ""
+        seatFilterKey = ""
+        for item in filterItems {
+            if ((item.type == 4) && (item.isChecked)) {
+                trainFilterKey += "\(item.key)|"
+            }
+            
+            if ((item.type == 1) && (item.isChecked)) {
+                seatFilterKey += "\(item.key)|"
+            }
+        }
+        
+        print(trainFilterKey)
+        print(seatFilterKey)
+        
+    }
+    
+    @IBAction func checkTrainFilter(sender: NSButton) {
+//        sender.ob
+        print("check Train Filter")
+    }
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
         return filterItems.count
     }
@@ -92,7 +106,13 @@ class TrainFilterWindowController: NSWindowController,NSTableViewDelegate,NSTabl
             return tableView.makeViewWithIdentifier("TextCell", owner: nil)
         }
         else{
-            return tableView.makeViewWithIdentifier("MainCell", owner: nil)
+            let mainCell = tableView.makeViewWithIdentifier("MainCell", owner: nil)
+            
+            let button = mainCell?.viewWithTag(100) as! NSButton
+            button.target = self
+            button.action = #selector(TrainFilterWindowController.checkTrainFilter(_:))
+            
+            return mainCell
         }
     }
     
@@ -123,7 +143,7 @@ class TrainFilterWindowController: NSWindowController,NSTableViewDelegate,NSTabl
     }
     
     @IBAction func okButtonClicked(button:NSButton){
-        
+        getFilterKey()
         dismissWithModalResponse(NSModalResponseOK)
     }
     

@@ -57,7 +57,7 @@
                                                     <rect key="frame" x="1" y="1" width="360" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="Fel-Wr-y7n">
+                                                        <button tag="100" translatesAutoresizingMaskIntoConstraints="NO" id="Fel-Wr-y7n">
                                                             <rect key="frame" x="18" y="-1" width="324" height="19"/>
                                                             <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="right" alignment="left" state="on" inset="2" id="NPv-ot-Hll">
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -128,7 +128,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="cancelButtonClicked:" target="-2" id="yZr-Vr-2bc"/>
+                            <action selector="okButtonClicked:" target="-2" id="nPo-Gg-7E8"/>
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OUn-9d-T7P">
