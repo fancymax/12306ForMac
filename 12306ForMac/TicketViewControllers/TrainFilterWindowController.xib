@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TrainFilterWindowController" customModule="_2306ForMac" customModuleProvider="target">
             <connections>
+                <outlet property="trainFilterTable" destination="8mr-ue-ogU" id="x6H-8l-rQD"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -15,7 +16,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="361" height="697"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="361" height="697"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -64,8 +65,8 @@
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
                                                             <connections>
-                                                                <binding destination="mIw-Y3-MY5" name="title" keyPath="objectValue.presentation" id="68Y-hb-79L"/>
                                                                 <binding destination="mIw-Y3-MY5" name="value" keyPath="objectValue.isChecked" id="qlh-iL-FLD"/>
+                                                                <binding destination="mIw-Y3-MY5" name="title" keyPath="objectValue.presentation" id="68Y-hb-79L"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
