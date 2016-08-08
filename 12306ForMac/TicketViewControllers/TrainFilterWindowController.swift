@@ -80,10 +80,6 @@ class TrainFilterWindowController: NSWindowController,NSTableViewDelegate,NSTabl
                 seatFilterKey += "\(item.key)|"
             }
         }
-        
-        print(trainFilterKey)
-        print(seatFilterKey)
-        
     }
     
     @IBAction func checkTrainFilter(sender: NSButton) {

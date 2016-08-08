@@ -22,6 +22,8 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     var date:String?
     var fromStationName:String?
     var toStationName:String?
+    var trainFilterKey = ""
+    var seatFilterKey = ""
     
     lazy var trainFilterWindowController:TrainFilterWindowController = TrainFilterWindowController()
     lazy var submitWindowController:SubmitWindowController = SubmitWindowController()
@@ -52,8 +54,7 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         print("receiveDidSendSubmitMessageNotification")
         submitWindowController = SubmitWindowController()
         if let window = self.view.window {
-            window.beginSheet(submitWindowController.window!, completionHandler:
-                {response in
+            window.beginSheet(submitWindowController.window!, completionHandler: {response in
                 if response == NSModalResponseOK{
                     ///
                 }
@@ -69,10 +70,12 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         trainFilterWindowController.toStationName = self.toStationName!
         trainFilterWindowController.trainDate = self.date!
         if let window = self.view.window {
-            window.beginSheet(trainFilterWindowController.window!, completionHandler:
-                {response in
+            window.beginSheet(trainFilterWindowController.window!, completionHandler: {response in
                 if response == NSModalResponseOK{
-                    ///
+                    self.trainFilterKey = self.trainFilterWindowController.trainFilterKey
+                    self.seatFilterKey = self.trainFilterWindowController.seatFilterKey
+                    print(self.trainFilterKey)
+                    print(self.seatFilterKey)
                 }
             })
         }
