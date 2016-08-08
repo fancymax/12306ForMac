@@ -9,7 +9,7 @@
 import Cocoa
 
 protocol TicketTableDelegate{
-    func queryLeftTicket(fromStationCode:String, toStationCode:String, date:String)
+    func queryLeftTicket(fromStation:String, toStation:String, date:String)
 }
 
 class TicketTableViewController: NSViewController,TicketTableDelegate{
@@ -20,6 +20,8 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     var service = Service()
     var ticketQueryResult = [QueryLeftNewDTO]()
     var date:String?
+    var fromStationName:String?
+    var toStationName:String?
     
     lazy var trainFilterWindowController:TrainFilterWindowController = TrainFilterWindowController()
     lazy var submitWindowController:SubmitWindowController = SubmitWindowController()
@@ -63,6 +65,9 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         print("receiveDidSendTrainFilterMessageNotification")
         trainFilterWindowController = TrainFilterWindowController()
         trainFilterWindowController.trains = ticketQueryResult
+        trainFilterWindowController.fromStationName = self.fromStationName!
+        trainFilterWindowController.toStationName = self.toStationName!
+        trainFilterWindowController.trainDate = self.date!
         if let window = self.view.window {
             window.beginSheet(trainFilterWindowController.window!, completionHandler:
                 {response in
@@ -74,7 +79,7 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         
     }
     
-    func queryLeftTicket(fromStationCode: String, toStationCode: String, date: String) {
+    func queryLeftTicket(fromStation: String, toStation: String, date: String) {
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
         
@@ -97,15 +102,21 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
             notificationCenter.postNotificationName(CanFilterTrainNotification, object: false)
         }
         
+
+        
         self.ticketQueryResult = [QueryLeftNewDTO]()
         self.leftTicketTable.reloadData()
         
         self.loadingTipController.start(tip:"正在查询...")
         self.date = date
+        self.fromStationName = fromStation
+        self.toStationName = toStation
         
+        let fromStationCode = StationNameJs.sharedInstance.allStationMap[fromStation]?.Code
+        let toStationCode = StationNameJs.sharedInstance.allStationMap[toStation]?.Code
         var params = LeftTicketParam()
-        params.from_stationCode = fromStationCode
-        params.to_stationCode = toStationCode
+        params.from_stationCode = fromStationCode!
+        params.to_stationCode = toStationCode!
         
         params.train_date = date
         params.purpose_codes = "ADULT"
@@ -135,9 +146,6 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     func submit(sender: NSButton){
         let notificationCenter = NSNotificationCenter.defaultCenter()
         
-//        notificationCenter.postNotificationName(DidSendSubmitMessageNotification, object: nil)
-//        return
-        
         if !MainModel.isGetUserInfo {
             notificationCenter.postNotificationName(DidSendLoginMessageNotification, object: nil)
             return
@@ -159,7 +167,7 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         let postSubmitWindowMessage = {
             self.loadingTipController.stop()
             self.tips.show("提交成功", forDuration: 0.1, withFlash: false)
-            //post submit notification
+            
             notificationCenter.postNotificationName(DidSendSubmitMessageNotification, object: nil)
         }
         

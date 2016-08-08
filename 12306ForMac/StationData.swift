@@ -20,13 +20,14 @@ struct Station {
 }
 
 // "https://kyfw.12306.cn/otn/resources/js/framework/station_name.js"
-class StationData{
+class StationNameJs{
+    static let sharedInstance = StationNameJs()
     
     var allStation:[Station]
     
     var allStationMap:[String:Station]
     
-    init()
+    private init()
     {
         self.allStation = [Station]()
         self.allStationMap = [String:Station]()

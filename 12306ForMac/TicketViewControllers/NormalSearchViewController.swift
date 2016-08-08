@@ -15,7 +15,6 @@ class NormalSearchViewController: NSViewController {
     @IBOutlet weak var queryDate: NSDatePicker!
     
     var calendarPopover:NSPopover?
-    var stationDataService = StationData()
     var ticketTableDelegate:TicketTableDelegate?
     var lastUserDefault = UserDefaultManager()
 
@@ -39,27 +38,24 @@ class NormalSearchViewController: NSViewController {
     
     
     @IBAction func queryTicket(sender: NSButton) {
-        if !stationDataService.allStationMap.keys.contains(fromStationName.stringValue) {
+        if !StationNameJs.sharedInstance.allStationMap.keys.contains(fromStationName.stringValue) {
             print("error fromStationName: \(fromStationName.stringValue)")
             return
             
         }
         
-        if !stationDataService.allStationMap.keys.contains(toStationName.stringValue) {
+        if !StationNameJs.sharedInstance.allStationMap.keys.contains(toStationName.stringValue) {
             print("error toStationName: \(toStationName.stringValue)")
             return
         }
         
-        let fromStation = stationDataService.allStationMap[fromStationName.stringValue]?.Code
-        let toStation = stationDataService.allStationMap[toStationName.stringValue]?.Code
         let date = MainModel.getDateStr(queryDate.dateValue)
         
         lastUserDefault.lastFromStation = fromStationName.stringValue
         lastUserDefault.lastToStation = toStationName.stringValue
         lastUserDefault.lastQueryDate = queryDate.dateValue
         
-        print("\(fromStation) \(toStation) \(date)")
-        ticketTableDelegate?.queryLeftTicket(fromStation!, toStationCode: toStation!, date: date)
+        ticketTableDelegate?.queryLeftTicket(fromStationName.stringValue, toStation: toStationName.stringValue, date: date)
     }
 }
 
@@ -68,7 +64,7 @@ extension NormalSearchViewController: AutoCompleteTableViewDelegate{
     func textField(textField: NSTextField, completions words: [String], forPartialWordRange charRange: NSRange, indexOfSelectedItem index: Int) -> [String] {
         var matches = [String]()
         //先按简拼  再按全拼  并保留上一次的match
-        for station in stationDataService.allStation
+        for station in StationNameJs.sharedInstance.allStation
         {
             if let _ = station.FirstLetter.rangeOfString(textField.stringValue, options: NSStringCompareOptions.AnchoredSearch)
             {
@@ -78,7 +74,7 @@ extension NormalSearchViewController: AutoCompleteTableViewDelegate{
         
         if(matches.isEmpty)
         {
-            for station in stationDataService.allStation
+            for station in StationNameJs.sharedInstance.allStation
             {
                 if let _ = station.Spell.rangeOfString(textField.stringValue, options: NSStringCompareOptions.AnchoredSearch)
                 {
@@ -89,7 +85,7 @@ extension NormalSearchViewController: AutoCompleteTableViewDelegate{
         //再按汉字
         if(matches.isEmpty)
         {
-            for station in stationDataService.allStation
+            for station in StationNameJs.sharedInstance.allStation
             {
                 if let _ = station.Name.rangeOfString(textField.stringValue, options: NSStringCompareOptions.AnchoredSearch)
                 {
