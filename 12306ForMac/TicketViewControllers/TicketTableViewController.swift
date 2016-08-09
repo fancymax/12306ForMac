@@ -19,6 +19,8 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     
     var service = Service()
     var ticketQueryResult = [QueryLeftNewDTO]()
+    var filterQueryResult = [QueryLeftNewDTO]()
+    
     var date:String?
     var fromStationName:String?
     var toStationName:String?
@@ -64,7 +66,9 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
     
     func receiveDidSendTrainFilterMessageNotification(note: NSNotification){
         print("receiveDidSendTrainFilterMessageNotification")
-        trainFilterWindowController = TrainFilterWindowController()
+        if trainFilterKey == "" {
+            trainFilterWindowController = TrainFilterWindowController()
+        }
         trainFilterWindowController.trains = ticketQueryResult
         trainFilterWindowController.fromStationName = self.fromStationName!
         trainFilterWindowController.toStationName = self.toStationName!
@@ -76,6 +80,9 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
                     self.seatFilterKey = self.trainFilterWindowController.seatFilterKey
                     print(self.trainFilterKey)
                     print(self.seatFilterKey)
+                    
+                    self.filterQueryResult = self.ticketQueryResult.filter({item in return self.trainFilterKey.containsString(item.TrainCode!)})
+                    self.leftTicketTable.reloadData()
                 }
             })
         }
@@ -88,6 +95,13 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         
         let successHandler = { (tickets:[QueryLeftNewDTO])->()  in
             self.ticketQueryResult = tickets
+            if self.trainFilterKey != "" {
+                self.filterQueryResult = self.ticketQueryResult.filter({item in return self.trainFilterKey.containsString(item.TrainCode!)})
+            }
+            else {
+                self.filterQueryResult = tickets
+            }
+                
             self.leftTicketTable.reloadData()
             self.loadingTipController.stop()
             
@@ -107,11 +121,14 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
         
 
         
-        self.ticketQueryResult = [QueryLeftNewDTO]()
+        self.filterQueryResult = [QueryLeftNewDTO]()
         self.leftTicketTable.reloadData()
         
         self.loadingTipController.start(tip:"正在查询...")
         self.date = date
+        if fromStation != self.fromStationName || toStation != self.toStationName {
+            trainFilterKey = ""
+        }
         self.fromStationName = fromStation
         self.toStationName = toStation
         
@@ -226,18 +243,11 @@ class TicketTableViewController: NSViewController,TicketTableDelegate{
 // MARK: - NSTableViewDataSource 
 extension TicketTableViewController: NSTableViewDataSource{
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
-        return ticketQueryResult.count
+        return filterQueryResult.count
     }
     
     func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
-        if(ticketQueryResult.count - 1 >= row)
-        {
-            return ticketQueryResult[row]
-        }
-        else
-        {
-            return nil
-        }
+        return filterQueryResult[row]
     }
 }
 
@@ -253,12 +263,12 @@ extension TicketTableViewController: NSTableViewDelegate{
         let columnIdentifier = tableColumn!.identifier
         if(columnIdentifier == "余票信息"){
             let cell = view as! TrainInfoTableCellView
-            cell.ticketInfo = ticketQueryResult[row]
+            cell.ticketInfo = filterQueryResult[row]
             cell.setTarget(self, action: #selector(TicketTableViewController.submit(_:)))
         }
         else if(columnIdentifier == "发站" || columnIdentifier == "到站"){
             let cell = view as! TrainTableCellView
-            cell.ticketInfo = ticketQueryResult[row]
+            cell.ticketInfo = filterQueryResult[row]
         }
         else if(columnIdentifier == "车次"){
             let cell = view as! TrainCodeTableCellView
