@@ -23,10 +23,10 @@ class AdvancedPreferenceViewController: NSViewController {
     }
     
     var toolbarItemImage: NSImage! {
-        return NSImage(named: NSImageNamePreferencesGeneral)
+        return NSImage(named: NSImageNameAdvanced)
     }
     
     var toolbarItemLabel: String! {
-        return NSLocalizedString("Advanced", comment: "")
+        return NSLocalizedString("打码兔", comment: "")
     }
 }
