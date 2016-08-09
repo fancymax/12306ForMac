@@ -18,6 +18,15 @@ class MainWindowController: NSWindowController{
     
     var loginWindowController:LoginWindowController!
     
+    lazy var preferencesWindowController:NSWindowController = {
+        let generalViewController = GeneralPreferenceViewController()
+        let advanceViewController = AdvancedPreferenceViewController()
+        let controllers = [generalViewController,advanceViewController]
+        
+        return MASPreferencesWindowController(viewControllers:controllers,title: "Preferences")
+    }()
+    
+    
     let TrainBook = "车票预订"
     let TrainOrder = "订单查询"
     
@@ -88,11 +97,6 @@ class MainWindowController: NSWindowController{
         //login notification
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: #selector(MainWindowController.receiveDidSendLoginMessageNotification(_:)), name: DidSendLoginMessageNotification, object: nil)
-        
-//        let service = Service()
-//        service.getWanIP({ip in
-//            self.IPLabel.stringValue = ip
-//        })
     }
     
     func segmentTab(sender: NSSegmentedControl){
@@ -120,11 +124,6 @@ class MainWindowController: NSWindowController{
         login()
     }
     
-    deinit{
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.removeObserver(self)
-    }
-
     @IBAction func UserLogin(sender: NSButton){
         if !MainModel.isGetUserInfo{
             self.login()
@@ -139,6 +138,14 @@ class MainWindowController: NSWindowController{
     
     @IBAction func loginOut(sender: NSMenuItem) {
         loginOut()
+    }
+    
+    @IBAction func openPreferences(sender:AnyObject){
+        self.preferencesWindowController.showWindow(nil)
+    }
+    
+    @IBAction func showHelp(sender:AnyObject) {
+        sendEmailWithMail()
     }
     
     func loginOut(){
@@ -164,10 +171,6 @@ class MainWindowController: NSWindowController{
         }
     }
     
-    @IBAction func showHelp(sender:AnyObject) {
-        sendEmailWithMail()
-    }
-    
     func sendEmailWithMail() {
         let receiver = "lindahai_max@126.com"
         let subject = "12306ForMac Feedback"
@@ -175,6 +178,11 @@ class MainWindowController: NSWindowController{
         let mailToAddress = "mailto:\(receiver)?Subject=\(subject)"
         let mailUrl = NSURL(string: mailToAddress.stringByReplacingOccurrencesOfString(" ", withString: "%20"))
         NSWorkspace.sharedWorkspace().openURL(mailUrl!)
+    }
+    
+    deinit{
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.removeObserver(self)
     }
     
 }

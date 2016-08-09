@@ -10,5 +10,6 @@
 #define _Train12306_Swift_h
 
 #import "INAppStoreWindow.h"
+#import "MASPreferences.h"
 
 #endif

@@ -26,7 +26,11 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                            <menuItem title="偏好设置…" keyEquivalent="," id="BOF-NM-1cW"/>
+                            <menuItem title="偏好设置…" keyEquivalent="," id="BOF-NM-1cW">
+                                <connections>
+                                    <action selector="openPreferences:" target="-1" id="paS-S4-wdN"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                             <menuItem title="服务" id="NMo-om-nkz">
                                 <modifierMask key="keyEquivalentModifierMask"/>
