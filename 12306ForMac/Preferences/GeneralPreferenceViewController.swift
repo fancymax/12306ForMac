@@ -32,4 +32,13 @@ class GeneralPreferenceViewController: NSViewController, MASPreferencesViewContr
         return NSLocalizedString("通用", comment: "General")
     }
     
+    var autoQuerySeconds: Int {
+        get{
+            return GeneralPreferenceManager.sharedInstance.autoQuerySeconds
+        }
+        set{
+            GeneralPreferenceManager.sharedInstance.autoQuerySeconds = newValue
+        }
+    }
+    
 }

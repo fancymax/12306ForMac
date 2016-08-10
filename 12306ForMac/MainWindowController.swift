@@ -23,7 +23,7 @@ class MainWindowController: NSWindowController{
         let advanceViewController = AdvancedPreferenceViewController()
         let controllers = [generalViewController,advanceViewController]
         
-        return MASPreferencesWindowController(viewControllers:controllers,title: "Preferences")
+        return MASPreferencesWindowController(viewControllers:controllers,title: nil)
     }()
     
     
