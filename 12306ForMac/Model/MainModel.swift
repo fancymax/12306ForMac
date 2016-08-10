@@ -42,6 +42,9 @@ class MainModel{
             if(identifier == "无座"){
                 return MainModel.seatTypeNameDic["动车无座"]!
             }
+        }
+        
+        if (trainCode.containsString("G") || trainCode.containsString("C")) {
             if(identifier == "软卧"){
                 return MainModel.seatTypeNameDic["动车软卧"]!
             }
@@ -82,11 +85,7 @@ class MainModel{
         }
     }
     
-    static func getDateStr(date:NSDate) -> String{
-        let dateDescription = date.description
-        let dateRange = dateDescription.rangeOfString(" ")
-        return dateDescription[dateDescription.startIndex..<dateRange!.startIndex]
-    }
+
     
 }
 

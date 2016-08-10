@@ -57,6 +57,12 @@ class TicketQueryViewController: NSViewController {
     @IBOutlet weak var queryDate: NSDatePicker!
     
     var calendarPopover:NSPopover?
+   
+    private func getDateStr(date:NSDate) -> String{
+        let dateDescription = date.description
+        let dateRange = dateDescription.rangeOfString(" ")
+        return dateDescription[dateDescription.startIndex..<dateRange!.startIndex]
+    }
     
     @IBAction func convertCity(sender: NSButton) {
         let temp = self.fromStationName.stringValue
@@ -76,7 +82,7 @@ class TicketQueryViewController: NSViewController {
             return
         }
         
-        let date = MainModel.getDateStr(queryDate.dateValue)
+        let date = getDateStr(queryDate.dateValue)
         
         QueryDefaultManager.sharedInstance.lastFromStation = fromStationName.stringValue
         QueryDefaultManager.sharedInstance.lastToStation = toStationName.stringValue
