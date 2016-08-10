@@ -46,7 +46,7 @@
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="42" horizontalPageScroll="10" verticalLineScroll="42" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2Q-9N-qwe">
                     <rect key="frame" x="20" y="20" width="955" height="510"/>
                     <clipView key="contentView" drawsBackground="NO" id="aFD-Ax-dxk">
-                        <rect key="frame" x="1" y="23" width="953" height="486"/>
+                        <rect key="frame" x="1" y="0.0" width="953" height="509"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" headerView="fsm-Ot-Oy1" viewBased="YES" id="vdR-Hc-SYr">
@@ -73,7 +73,7 @@
                                                 <rect key="frame" x="1" y="1" width="80" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V9m-uH-It6" customClass="URLButton" customModule="_2306ForMac" customModuleProvider="target">
+                                                    <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V9m-uH-It6" customClass="URLButton" customModule="_2306ForMac" customModuleProvider="target">
                                                         <rect key="frame" x="2" y="21" width="43" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="lLM-e5-nYN"/>
@@ -236,7 +236,7 @@
                                                 <rect key="frame" x="340" y="1" width="110" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="9eR-Jg-Jht">
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9eR-Jg-Jht">
                                                         <rect key="frame" x="0.0" y="23" width="44" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="05:22" id="6sg-Wt-Uqf">
                                                             <font key="font" metaFont="systemLight" size="13"/>
@@ -271,7 +271,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="_2306ForMac" customModuleProvider="target">
+                                            <tableCellView misplaced="YES" id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="_2306ForMac" customModuleProvider="target">
                                                 <rect key="frame" x="453" y="1" width="997" height="63"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -509,6 +509,9 @@
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                     </datePickerCell>
+                    <connections>
+                        <action selector="showCalendar:" target="-2" id="lKN-QV-raq"/>
+                    </connections>
                 </datePicker>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4jY-s2-8Ni" customClass="AutoCompleteTextField" customModule="_2306ForMac" customModuleProvider="target">
                     <rect key="frame" x="88" y="2" width="100" height="23"/>
@@ -584,6 +587,9 @@
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="showCalendar:" target="-2" id="OxG-bo-4YB"/>
+                    </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9qi-Pb-rDH">
                     <rect key="frame" x="519" y="2" width="64" height="20"/>
