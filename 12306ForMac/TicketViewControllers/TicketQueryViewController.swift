@@ -36,10 +36,10 @@ class TicketQueryViewController: NSViewController {
         
         passengerViewControllerList = [PassengerViewController]()
         
-        let notificationCenter = NSNotificationCenter.defaultCenter()
         filterBtn.enabled = false
         filterCbx.enabled = false
         
+        let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveCheckPassengerMessageNotification(_:)), name: DidSendCheckPassengerMessageNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveLogoutMessageNotification(_:)), name: DidSendLogoutMessageNotification, object: nil)
         
@@ -467,7 +467,7 @@ extension TicketQueryViewController: NSTableViewDelegate{
         if(columnIdentifier == "余票信息"){
             let cell = view as! TrainInfoTableCellView
             cell.ticketInfo = filterQueryResult[row]
-            cell.setTarget(self, action: #selector(TicketTableViewController.submit(_:)))
+            cell.setTarget(self, action: #selector(TicketQueryViewController.submit(_:)))
         }
         else if(columnIdentifier == "发站" || columnIdentifier == "到站"){
             let cell = view as! TrainTableCellView
@@ -475,7 +475,7 @@ extension TicketQueryViewController: NSTableViewDelegate{
         }
         else if(columnIdentifier == "车次"){
             let cell = view as! TrainCodeTableCellView
-            cell.setTarget(self, action:#selector(TicketTableViewController.clickTrainCode(_:)))
+            cell.setTarget(self, action:#selector(TicketQueryViewController.clickTrainCode(_:)))
         }
         
         return view
