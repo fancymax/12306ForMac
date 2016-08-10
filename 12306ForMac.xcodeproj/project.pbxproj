@@ -102,6 +102,7 @@
 		F1F2F2C41D59BEE800EA7786 /* AdvancedPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F2C21D59BEE800EA7786 /* AdvancedPreferenceViewController.swift */; };
 		F1F2F2C51D59BEE800EA7786 /* AdvancedPreferenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F2F2C31D59BEE800EA7786 /* AdvancedPreferenceViewController.xib */; };
 		F1F2F2D01D5AB8F700EA7786 /* Dama.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F2CF1D5AB8F700EA7786 /* Dama.swift */; };
+		F1F2F2D21D5AFE7100EA7786 /* UrlLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F2D11D5AFE7100EA7786 /* UrlLabel.swift */; };
 		F1F5CE0F1CA9431D005C33BD /* SeatTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F5CE0E1CA9431D005C33BD /* SeatTypeModel.swift */; };
 		F1FCFF4B1D386F8F0070A32C /* URLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FCFF4A1D386F8F0070A32C /* URLButton.swift */; };
 /* End PBXBuildFile section */
@@ -217,6 +218,7 @@
 		F1F2F2C21D59BEE800EA7786 /* AdvancedPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedPreferenceViewController.swift; sourceTree = "<group>"; };
 		F1F2F2C31D59BEE800EA7786 /* AdvancedPreferenceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdvancedPreferenceViewController.xib; sourceTree = "<group>"; };
 		F1F2F2CF1D5AB8F700EA7786 /* Dama.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dama.swift; sourceTree = "<group>"; };
+		F1F2F2D11D5AFE7100EA7786 /* UrlLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlLabel.swift; sourceTree = "<group>"; };
 		F1F5CE0E1CA9431D005C33BD /* SeatTypeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatTypeModel.swift; sourceTree = "<group>"; };
 		F1FCFF4A1D386F8F0070A32C /* URLButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -335,6 +337,7 @@
 				F1CA120A1D113293003EFD0B /* ContentBackgroundView.swift */,
 				F1FCFF4A1D386F8F0070A32C /* URLButton.swift */,
 				F12746711D50345D00975DFA /* ClickableDatePicker.swift */,
+				F1F2F2D11D5AFE7100EA7786 /* UrlLabel.swift */,
 			);
 			name = UserControls;
 			path = 12306ForMac/UserControls;
@@ -745,6 +748,7 @@
 				F113B4FA1C8FC7930001AE09 /* ErrorTranslator.swift in Sources */,
 				F11154A21C8D929200FA6059 /* Service+QueryTicket.swift in Sources */,
 				F11154A91C8D92A700FA6059 /* LoginWindowController.swift in Sources */,
+				F1F2F2D21D5AFE7100EA7786 /* UrlLabel.swift in Sources */,
 				F12746751D50784100975DFA /* TrainFilterWindowController.swift in Sources */,
 				F11154751C8D921400FA6059 /* OrderQueueResult.swift in Sources */,
 				F13E9C981D0AA9760011F7E2 /* TrainInfoTableCellView.swift in Sources */,

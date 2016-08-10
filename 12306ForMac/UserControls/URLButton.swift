@@ -49,6 +49,11 @@ class URLButton: NSButton {
         self.needsDisplay = true
     }
     
+    override func resetCursorRects() {
+        super.resetCursorRects()
+        self.addCursorRect(self.bounds, cursor: NSCursor.pointingHandCursor())
+    }
+    
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
         
