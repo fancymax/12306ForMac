@@ -22,6 +22,10 @@
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" size="13" name=".PingFangSC-Regular"/>
                     </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="enabled" keyPath="self.isUseDama" id="zFp-JR-7SA"/>
+                        <binding destination="-2" name="value" keyPath="self.isStopDamaWhenOperate" id="7S7-Ua-34g"/>
+                    </connections>
                 </button>
                 <button id="OfI-zB-0mn">
                     <rect key="frame" x="36" y="144" width="244" height="18"/>
@@ -30,14 +34,22 @@
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" size="13" name=".PingFangSC-Regular"/>
                     </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="enabled" keyPath="self.isUseDama" id="27P-5E-Itz"/>
+                        <binding destination="-2" name="value" keyPath="self.isStopDamaWhenFail5" id="fuT-Yv-Jhx"/>
+                    </connections>
                 </button>
                 <button id="Tue-4c-V6W">
-                    <rect key="frame" x="36" y="202" width="244" height="18"/>
+                    <rect key="frame" x="36" y="201" width="244" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="启用登录自动打码" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="0hc-9D-B3C">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="enabled" keyPath="self.isUseDama" id="7wO-Z5-kd5"/>
+                        <binding destination="-2" name="value" keyPath="self.isUseDamaLogin" id="ToB-iW-nUM"/>
+                    </connections>
                 </button>
                 <textField verticalHuggingPriority="750" id="AXD-mv-hzd">
                     <rect key="frame" x="36" y="257" width="244" height="14"/>
@@ -64,12 +76,15 @@
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" size="13" name=".PingFangSC-Regular"/>
                     </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="self.isUseDama" id="B6P-q4-fgi"/>
+                    </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="dGL-rj-Cf1">
                     <rect key="frame" x="37" y="112" width="47" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="用户名" id="Mee-bZ-sbi">
-                        <font key="font" metaFont="systemThin" size="13"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -82,6 +97,10 @@
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="editable" keyPath="self.isUseDama" id="WvE-gL-l8w"/>
+                        <binding destination="-2" name="value" keyPath="self.damaUser" id="yVo-HE-fIE"/>
+                    </connections>
                 </textField>
                 <secureTextField verticalHuggingPriority="750" id="ZvA-a7-RJL">
                     <rect key="frame" x="91" y="75" width="188" height="22"/>
@@ -94,12 +113,16 @@
                             <string>NSAllRomanInputSourcesLocaleIdentifier</string>
                         </allowedInputSourceLocales>
                     </secureTextFieldCell>
+                    <connections>
+                        <binding destination="-2" name="editable" keyPath="self.isUseDama" id="zeu-aQ-Qxo"/>
+                        <binding destination="-2" name="value" keyPath="self.damaPassword" id="Fnu-1i-hHo"/>
+                    </connections>
                 </secureTextField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ZI7-CQ-93n">
                     <rect key="frame" x="37" y="78" width="47" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="密    码" id="qGR-In-U89">
-                        <font key="font" metaFont="systemThin" size="13"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -111,6 +134,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="13" name=".PingFangSC-Regular"/>
                     </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="enabled" keyPath="self.isUseDama" id="Ycf-vH-Rfx"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" id="1Bm-j6-k0Z">
                     <rect key="frame" x="118" y="13" width="81" height="32"/>
@@ -119,6 +145,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="enabled" keyPath="self.isUseDama" id="Ziu-i8-KS8"/>
+                    </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wZM-ns-NaC" customClass="UrlLabel" customModule="_2306ForMac" customModuleProvider="target">
                     <rect key="frame" x="64" y="279" width="43" height="17"/>

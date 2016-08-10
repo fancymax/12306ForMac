@@ -11,11 +11,11 @@ import Foundation
 class QueryDefaultManager {
     static let sharedInstance = QueryDefaultManager()
     
-    private var userNameKey = "userName"
-    private var userPasswordKey = "userPassword"
-    private var fromStationKey = "fromStation"
-    private var toStationKey = "toStation"
-    private var queryDateKey = "queryDate"
+    private let userNameKey = "userName"
+    private let userPasswordKey = "userPassword"
+    private let fromStationKey = "fromStation"
+    private let toStationKey = "toStation"
+    private let queryDateKey = "queryDate"
     private let userDefaults = NSUserDefaults.standardUserDefaults()
     
     private init()

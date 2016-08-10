@@ -103,6 +103,7 @@
 		F1F2F2C51D59BEE800EA7786 /* AdvancedPreferenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F2F2C31D59BEE800EA7786 /* AdvancedPreferenceViewController.xib */; };
 		F1F2F2D01D5AB8F700EA7786 /* Dama.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F2CF1D5AB8F700EA7786 /* Dama.swift */; };
 		F1F2F2D21D5AFE7100EA7786 /* UrlLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F2D11D5AFE7100EA7786 /* UrlLabel.swift */; };
+		F1F2F2D41D5B0C0C00EA7786 /* AdvancedPreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F2D31D5B0C0C00EA7786 /* AdvancedPreferenceManager.swift */; };
 		F1F5CE0F1CA9431D005C33BD /* SeatTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F5CE0E1CA9431D005C33BD /* SeatTypeModel.swift */; };
 		F1FCFF4B1D386F8F0070A32C /* URLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FCFF4A1D386F8F0070A32C /* URLButton.swift */; };
 /* End PBXBuildFile section */
@@ -219,6 +220,7 @@
 		F1F2F2C31D59BEE800EA7786 /* AdvancedPreferenceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdvancedPreferenceViewController.xib; sourceTree = "<group>"; };
 		F1F2F2CF1D5AB8F700EA7786 /* Dama.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dama.swift; sourceTree = "<group>"; };
 		F1F2F2D11D5AFE7100EA7786 /* UrlLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlLabel.swift; sourceTree = "<group>"; };
+		F1F2F2D31D5B0C0C00EA7786 /* AdvancedPreferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedPreferenceManager.swift; sourceTree = "<group>"; };
 		F1F5CE0E1CA9431D005C33BD /* SeatTypeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatTypeModel.swift; sourceTree = "<group>"; };
 		F1FCFF4A1D386F8F0070A32C /* URLButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -526,6 +528,7 @@
 				F1F2F2BF1D59AFB100EA7786 /* GeneralPreferenceViewController.xib */,
 				F1F2F2C21D59BEE800EA7786 /* AdvancedPreferenceViewController.swift */,
 				F1F2F2C31D59BEE800EA7786 /* AdvancedPreferenceViewController.xib */,
+				F1F2F2D31D5B0C0C00EA7786 /* AdvancedPreferenceManager.swift */,
 			);
 			name = Preferences;
 			path = 12306ForMac/Preferences;
@@ -721,6 +724,7 @@
 				F13B6FCD1C982A1D0095B196 /* Seat.swift in Sources */,
 				F11154C51C8D92D000FA6059 /* TicketTableViewController.swift in Sources */,
 				F11154AB1C8D92A700FA6059 /* SubmitWindowController.swift in Sources */,
+				F1F2F2D41D5B0C0C00EA7786 /* AdvancedPreferenceManager.swift in Sources */,
 				F13B6FC91C9829BD0095B196 /* Passenger.swift in Sources */,
 				F11154901C8D925200FA6059 /* GlassView.swift in Sources */,
 				F11154961C8D925200FA6059 /* RandCodeImageView.swift in Sources */,
