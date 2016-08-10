@@ -11,5 +11,6 @@
 
 #import "INAppStoreWindow.h"
 #import "MASPreferences.h"
+#import <CommonCrypto/CommonCrypto.h>
 
 #endif

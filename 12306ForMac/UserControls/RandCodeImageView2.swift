@@ -142,6 +142,48 @@ class RandCodeImageView2:NSImageView {
         return section
     }
     
+    
+    //dama to section
+    private func damaPoint2Section(X pointX:Double,Y pointY:Double) -> ImageSection{
+        var section = ImageSection(rowIndex: 1, colIndex: 1)
+        
+        if pointY > 110 {
+            section.rowIndex = 0 //从下往上
+        }
+        else{
+            section.rowIndex = 1
+        }
+        
+        if pointX < 75 {
+            section.colIndex = 0
+        }
+        else if pointX < 146 {
+            section.colIndex = 1
+        }
+        else if pointX < 220 {
+            section.colIndex = 2
+        }
+        else{
+            section.colIndex = 3
+        }
+        return section
+    }
+    
+    //119,65|24,76
+    func drawDamaCodes(damaCodes:String){
+        let damaFrameStrs = damaCodes.componentsSeparatedByString("|")
+        for damaFrameStr in damaFrameStrs {
+            let damaFramePair = damaFrameStr.componentsSeparatedByString(",")
+            let pointX = Double(damaFramePair[0])
+            let pointY = Double(damaFramePair[1])
+            
+            imageSections.append(damaPoint2Section(X:pointX!, Y: pointY!))
+        }
+        needsDisplay = true
+    }
+    
+    
+    
     //绘制特定正方形区域
     private func drawSection(section:ImageSection){
         let point = CGPoint(x: 4 + section.colIndex/2 + section.colIndex * 85,
