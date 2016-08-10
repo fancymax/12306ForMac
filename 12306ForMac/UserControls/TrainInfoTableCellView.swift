@@ -158,7 +158,7 @@ class TrainInfoTableCellView: TrainTableCellView {
             else{
                 sender.title = sender.alternateTitle + "(\(ticket)张)"
             }
-            sender.toolTip = "¥\(ticketInfo.getTicketPriceBy(sender.identifier!))"
+//            sender.toolTip = "¥\(ticketInfo.getTicketPriceBy(sender.identifier!))"
         }
         
         setTicketButton(ticketInfo.Swz_Num!, sender: SwzBtn)
