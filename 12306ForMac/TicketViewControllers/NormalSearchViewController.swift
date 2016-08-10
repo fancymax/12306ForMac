@@ -16,7 +16,6 @@ class NormalSearchViewController: NSViewController {
     
     var calendarPopover:NSPopover?
     var ticketTableDelegate:TicketTableDelegate?
-    var lastUserDefault = UserDefaultManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +23,10 @@ class NormalSearchViewController: NSViewController {
         self.fromStationName.tableViewDelegate = self
         self.toStationName.tableViewDelegate = self
         
-        self.fromStationName.stringValue = lastUserDefault.lastFromStation!
-        self.toStationName.stringValue = lastUserDefault.lastToStation!
+        self.fromStationName.stringValue = QueryDefaultManager.sharedInstance.lastFromStation!
+        self.toStationName.stringValue = QueryDefaultManager.sharedInstance.lastToStation!
         
-        self.queryDate.dateValue = lastUserDefault.lastQueryDate!.laterDate(NSDate())
+        self.queryDate.dateValue = QueryDefaultManager.sharedInstance.lastQueryDate!.laterDate(NSDate())
     }
     
     @IBAction func convertCity(sender: NSButton) {
@@ -51,9 +50,9 @@ class NormalSearchViewController: NSViewController {
         
         let date = MainModel.getDateStr(queryDate.dateValue)
         
-        lastUserDefault.lastFromStation = fromStationName.stringValue
-        lastUserDefault.lastToStation = toStationName.stringValue
-        lastUserDefault.lastQueryDate = queryDate.dateValue
+        QueryDefaultManager.sharedInstance.lastFromStation = fromStationName.stringValue
+        QueryDefaultManager.sharedInstance.lastToStation = toStationName.stringValue
+        QueryDefaultManager.sharedInstance.lastQueryDate = queryDate.dateValue
         
         ticketTableDelegate?.queryLeftTicket(fromStationName.stringValue, toStation: toStationName.stringValue, date: date)
     }

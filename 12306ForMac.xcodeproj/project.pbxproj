@@ -21,7 +21,7 @@
 		F11154791C8D921400FA6059 /* QueryOrderWaitTimeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154711C8D921400FA6059 /* QueryOrderWaitTimeResult.swift */; };
 		F111547F1C8D923C00FA6059 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111547B1C8D923C00FA6059 /* SwiftyJSON.swift */; };
 		F11154801C8D923C00FA6059 /* SwiftyRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111547C1C8D923C00FA6059 /* SwiftyRegex.swift */; };
-		F11154811C8D923C00FA6059 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111547D1C8D923C00FA6059 /* UserDefaultManager.swift */; };
+		F11154811C8D923C00FA6059 /* QueryDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111547D1C8D923C00FA6059 /* QueryDefaultManager.swift */; };
 		F11154821C8D923C00FA6059 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111547E1C8D923C00FA6059 /* XCGLogger.swift */; };
 		F111548E1C8D925200FA6059 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154841C8D925200FA6059 /* AutoCompleteTextField.swift */; };
 		F111548F1C8D925200FA6059 /* FlashLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154851C8D925200FA6059 /* FlashLabel.swift */; };
@@ -125,7 +125,7 @@
 		F11154711C8D921400FA6059 /* QueryOrderWaitTimeResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryOrderWaitTimeResult.swift; sourceTree = "<group>"; };
 		F111547B1C8D923C00FA6059 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		F111547C1C8D923C00FA6059 /* SwiftyRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyRegex.swift; sourceTree = "<group>"; };
-		F111547D1C8D923C00FA6059 /* UserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
+		F111547D1C8D923C00FA6059 /* QueryDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueryDefaultManager.swift; path = ../Utilities/QueryDefaultManager.swift; sourceTree = "<group>"; };
 		F111547E1C8D923C00FA6059 /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCGLogger.swift; sourceTree = "<group>"; };
 		F11154841C8D925200FA6059 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		F11154851C8D925200FA6059 /* FlashLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashLabel.swift; sourceTree = "<group>"; };
@@ -311,7 +311,6 @@
 			children = (
 				F111547B1C8D923C00FA6059 /* SwiftyJSON.swift */,
 				F111547C1C8D923C00FA6059 /* SwiftyRegex.swift */,
-				F111547D1C8D923C00FA6059 /* UserDefaultManager.swift */,
 				F111547E1C8D923C00FA6059 /* XCGLogger.swift */,
 			);
 			name = Utilities;
@@ -383,6 +382,7 @@
 		F11154B21C8D92D000FA6059 /* TicketQueryModule */ = {
 			isa = PBXGroup;
 			children = (
+				F111547D1C8D923C00FA6059 /* QueryDefaultManager.swift */,
 				F1BA6B291D1F883400F6EBDC /* Query */,
 				F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */,
 				F1D575751C95541D00A214B0 /* TicketQueryViewController.xib */,
@@ -730,7 +730,7 @@
 				F1E7EA311C5A2E7B007715C1 /* INWindowButton.m in Sources */,
 				F11154BF1C8D92D000FA6059 /* NormalSearchViewController.swift in Sources */,
 				F1CCA2DB1D0D42D700B6853E /* QueryByTrainCodeParam.swift in Sources */,
-				F11154811C8D923C00FA6059 /* UserDefaultManager.swift in Sources */,
+				F11154811C8D923C00FA6059 /* QueryDefaultManager.swift in Sources */,
 				F11154A01C8D929200FA6059 /* Service+Order.swift in Sources */,
 				F1D575761C95541D00A214B0 /* TicketQueryViewController.swift in Sources */,
 				F11154C31C8D92D000FA6059 /* PassengerViewController.swift in Sources */,

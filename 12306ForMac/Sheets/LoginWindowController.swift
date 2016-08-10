@@ -83,8 +83,8 @@ class LoginWindowController: NSWindowController{
     }
     
     override func windowDidLoad() {
-        let lastUserDefault = UserDefaultManager()
-        if let lastName = lastUserDefault.lastUserName,let lastPassword = lastUserDefault.lastUserPassword{
+        if let lastName = QueryDefaultManager.sharedInstance.lastUserName,
+        let lastPassword = QueryDefaultManager.sharedInstance.lastUserPassword{
             userName.stringValue = lastName
             passWord.stringValue = lastPassword
         }
@@ -105,9 +105,8 @@ class LoginWindowController: NSWindowController{
     }
    
     func handlerAfterSuccess(){
-        let lastUserDefault = UserDefaultManager()
-        lastUserDefault.lastUserName = userName.stringValue
-        lastUserDefault.lastUserPassword = passWord.stringValue
+        QueryDefaultManager.sharedInstance.lastUserName = userName.stringValue
+        QueryDefaultManager.sharedInstance.lastUserPassword = passWord.stringValue
         
         let realm = try! Realm()
         try! realm.write {
