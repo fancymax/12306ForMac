@@ -12,8 +12,11 @@ class OrderViewController: NSViewController{
     @IBOutlet weak var tips: FlashLabel!
     @IBOutlet weak var orderListTable: NSTableView!
     @IBOutlet weak var payBtn: NSButton!
+    @IBOutlet weak var cancelOrderbtn: NSButton!
     
     var hasQuery = false
+    dynamic var hasOrder = false
+    
     var orderList = [OrderDTO]()
     let service = Service()
     var loadingTipController = LoadingTipViewController(nibName:"LoadingTipViewController",bundle: nil)!
@@ -25,7 +28,9 @@ class OrderViewController: NSViewController{
         self.view.addSubview(loadingTipController.view)
         self.loadingTipController.setCenterConstrainBy(view: self.view)
         self.loadingTipController.setTipView(isHidden: true)
-        self.payBtn.enabled = false
+        
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: #selector(PassengerSelectViewController.receiveLogoutMessageNotification(_:)), name: DidSendLogoutMessageNotification, object: nil)
     }
     
     override func viewDidAppear() {
@@ -51,12 +56,18 @@ class OrderViewController: NSViewController{
         queryNoCompleteOrder()
     }
     
+    
+    func receiveLogoutMessageNotification(notification: NSNotification) {
+        <#function body#>
+    }
+    
     func initDemoOrderList(){
         var demoList = [OrderDTO]()
         for _ in 0..<5 {
             let demo = OrderDTO()
             demoList.append(demo)
         }
+        self.hasOrder = false
         self.orderList = demoList
         self.orderListTable.reloadData()
     }
@@ -65,21 +76,21 @@ class OrderViewController: NSViewController{
         NSWorkspace.sharedWorkspace().openURL(NSURL(string: "https://kyfw.12306.cn/otn/login/init")!)
     }
     
-    func queryHistoryOrder(){
-        
-        let successHandler = {
-            self.orderList = MainModel.historyOrderList
-            self.orderListTable.reloadData()
-            
-            self.loadingTipController.stop()
-        }
-
-        let failureHandler = {
-            self.loadingTipController.stop()
-            
-        }
-        service.queryHistoryOrderFlow(success: successHandler, failure: failureHandler)
-    }
+//    func queryHistoryOrder(){
+//        
+//        let successHandler = {
+//            self.orderList = MainModel.historyOrderList
+//            self.orderListTable.reloadData()
+//            
+//            self.loadingTipController.stop()
+//        }
+//
+//        let failureHandler = {
+//            self.loadingTipController.stop()
+//            
+//        }
+//        service.queryHistoryOrderFlow(success: successHandler, failure: failureHandler)
+//    }
     
     func queryNoCompleteOrder(){
         let successHandler = {
@@ -89,17 +100,16 @@ class OrderViewController: NSViewController{
             self.loadingTipController.stop()
             
             if self.orderList.count > 0 {
-                self.payBtn.enabled = true
+                self.hasOrder = true
             }
             else {
-                self.payBtn.enabled = false
+                self.hasOrder = false
             }
         }
 
         let failureHandler = {
             self.loadingTipController.stop()
-            
-            self.payBtn.enabled = false
+            self.hasOrder = false
         }
         service.queryNoCompleteOrderFlow(success: successHandler, failure: failureHandler)
     }

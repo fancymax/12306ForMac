@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="OrderViewController" customModule="_2306ForMac" customModuleProvider="target">
             <connections>
+                <outlet property="cancelOrderbtn" destination="PrQ-Zc-Oiu" id="14L-cw-zhh"/>
                 <outlet property="orderListTable" destination="Mba-dl-MeQ" id="RkP-h7-W0S"/>
                 <outlet property="payBtn" destination="1s0-kc-s4d" id="oU5-Fp-AiW"/>
                 <outlet property="tips" destination="N4e-df-tvh" id="vzk-4z-PgC"/>
@@ -162,11 +163,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="ejg-aw-Fwo">
-                                                <rect key="frame" x="1" y="1" width="-3" height="40"/>
+                                                <rect key="frame" x="1" y="1" width="0.0" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d07-26-bbj">
-                                                        <rect key="frame" x="-1.5" y="12" width="43" height="17"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="d07-26-bbj">
+                                                        <rect key="frame" x="0.0" y="12" width="43" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="长沙南" id="LCc-Vf-WqP">
                                                             <font key="font" metaFont="systemThin" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -201,11 +202,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="4m2-So-4Zt">
-                                                <rect key="frame" x="1" y="1" width="-3" height="40"/>
+                                                <rect key="frame" x="1" y="1" width="0.0" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wsg-xh-JkU">
-                                                        <rect key="frame" x="-1.5" y="12" width="43" height="17"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Wsg-xh-JkU">
+                                                        <rect key="frame" x="0.0" y="12" width="43" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="成人票" id="QFX-o3-oIa">
                                                             <font key="font" metaFont="systemThin" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -240,11 +241,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="84h-ti-CH2">
-                                                <rect key="frame" x="1" y="1" width="-3" height="40"/>
+                                                <rect key="frame" x="1" y="1" width="0.0" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="edf-m1-A7g">
-                                                        <rect key="frame" x="-1.5" y="12" width="43" height="17"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="edf-m1-A7g">
+                                                        <rect key="frame" x="0.0" y="12" width="43" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="二等座" id="pHi-Po-XNh">
                                                             <font key="font" metaFont="systemThin" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -318,11 +319,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="5lA-6N-kD8">
-                                                <rect key="frame" x="1" y="1" width="-3" height="40"/>
+                                                <rect key="frame" x="1" y="1" width="0.0" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nMX-gJ-Pt0">
-                                                        <rect key="frame" x="-1.5" y="12" width="43" height="17"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="nMX-gJ-Pt0">
+                                                        <rect key="frame" x="0.0" y="12" width="43" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="03C号" id="9KS-gG-aDd">
                                                             <font key="font" metaFont="systemThin" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -515,6 +516,17 @@
                     </buttonCell>
                     <connections>
                         <action selector="payOrder:" target="-2" id="l52-2q-lHP"/>
+                        <binding destination="-2" name="enabled" keyPath="self.hasOrder" id="xEP-dX-ec8"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PrQ-Zc-Oiu">
+                    <rect key="frame" x="196" y="358" width="81" height="32"/>
+                    <buttonCell key="cell" type="push" title="取消订单" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CDE-dY-7P7">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="enabled" keyPath="self.hasOrder" id="5tI-Py-2fi"/>
                     </connections>
                 </button>
             </subviews>
