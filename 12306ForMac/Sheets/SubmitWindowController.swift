@@ -147,7 +147,11 @@ class SubmitWindowController: NSWindowController{
             self.totalPriceLabel.stringValue = "¥\(MainModel.ticketPrice)"
         }
         
-        service.orderFlowWith(passengerImage.randCodeStr!, success: successHandler, failure: failureHandler)
+        let waitHandler = { (info:String)-> () in
+            self.startLoadingTip(info)
+        }
+        
+        service.orderFlowWith(passengerImage.randCodeStr!, success: successHandler, failure: failureHandler,wait: waitHandler)
     }
     
     @IBAction func cancelButtonClicked(button:NSButton){

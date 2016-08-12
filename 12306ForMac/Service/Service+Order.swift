@@ -28,7 +28,7 @@ extension Service{
             return self.requestDynamicJs(jsName, referHeader: ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"])
         }).then({_ -> Promise<Void> in
             return after(1)
-        }).then({_ -> Promise<String> in
+        }).then({_ -> Promise<Void> in
             return self.getPassengerDTOs()
         }).then({_ -> Promise<NSImage> in
             return self.getPassCodeNewForPassenger()
@@ -39,17 +39,17 @@ extension Service{
         })
     }
     
-    func orderFlowWith(randCodeStr:String,success:()->(),failure:(error:NSError)->()){
-        self.checkRandCodeForOrder(randCodeStr).then({_ -> Promise<String> in
+    func orderFlowWith(randCodeStr:String,success:()->(),failure:(error:NSError)->(),wait:(info:String)->()){
+        self.checkRandCodeForOrder(randCodeStr).then({_ -> Promise<Void> in
             return self.checkOrderInfo(randCodeStr)
-        }).then({_ -> Promise<String> in
+        }).then({_ -> Promise<Void> in
             return self.getQueueCount()
         }).then({_ -> Promise<Void> in
             return after(1)
-        }).then({()-> Promise<String> in
+        }).then({_ -> Promise<Void> in
             return self.confirmSingleForQueue(randCodeStr)
-        }).then({_  in
-            self.queryOrderWaitTime({}, waitMethod: {}, finishMethod: success)
+        }).then({
+            self.queryOrderWaitTime(failure, waitMethod: wait, finishMethod: success)
         }).error({error in
             failure(error: error as NSError)
         })
@@ -214,7 +214,7 @@ extension Service{
         }
     }
     
-    func getPassengerDTOs()->Promise<String>{
+    func getPassengerDTOs()->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/confirmPassenger/getPassengerDTOs"
             let params = ["_json_att":"","REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken!]
@@ -237,7 +237,7 @@ extension Service{
                         MainModel.passengers = passengers
                         MainModel.isGetPassengersInfo = true
                     }
-                    fulfill(url)
+                    fulfill()
                 }})
         }
     }
@@ -263,7 +263,7 @@ extension Service{
         }
     }
     
-    func checkRandCodeForOrder(randCodeStr:String) ->Promise<String>{
+    func checkRandCodeForOrder(randCodeStr:String) ->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/passcodeNew/checkRandCodeAnsyn"
             let params = [
@@ -278,7 +278,7 @@ extension Service{
                     reject(error)
                 case .Success(let data):
                     if JSON(data)["data"]["result"].string == "1"{
-                        fulfill(url)
+                        fulfill()
                     }
                     else {
                         logger.error("\(JSON(data))")
@@ -289,7 +289,7 @@ extension Service{
         }
     }
     
-    func checkOrderInfo(randCodeStr:String)->Promise<String>{
+    func checkOrderInfo(randCodeStr:String)->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/confirmPassenger/checkOrderInfo"
             let (passengerTicketStr,oldPassengerStr) = getPassengerStr(MainModel.passengers)
@@ -309,7 +309,7 @@ extension Service{
                     reject(error)
                 case .Success(let data):
                     if JSON(data)["data"]["submitStatus"].bool == true{
-                        fulfill(url)
+                        fulfill()
                     }else{
                         logger.error("\(JSON(data))")
                         if let errMsg = JSON(data)["data"]["errMsg"].string {
@@ -323,7 +323,7 @@ extension Service{
         }
     }
     
-    func getQueueCount()->Promise<String>{
+    func getQueueCount()->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/confirmPassenger/getQueueCount"
             let params = [
@@ -345,12 +345,12 @@ extension Service{
                 case .Success(let data):
                     let json = JSON(data)
                     logger.debug("\(json)")
-                    fulfill(url)
+                    fulfill()
                 }})
         }
     }
     
-    func confirmSingleForQueue(randCodeStr:String) ->Promise<String>{
+    func confirmSingleForQueue(randCodeStr:String) ->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/confirmPassenger/confirmSingleForQueue"
             let (passengerTicketStr,oldPassengerStr) = getPassengerStr(MainModel.passengers)
@@ -374,7 +374,7 @@ extension Service{
                 case .Success(let data):
                     if JSON(data)["data"]["submitStatus"].bool == true{
                         logger.debug("confirmSingleForQueue true")
-                        fulfill(url)
+                        fulfill()
                     }else {
                         logger.error("\(JSON(data))")
                         let error = ServiceError.errorWithCode(.ConfirmSingleForQueueFailed)
@@ -384,7 +384,7 @@ extension Service{
         }
     }
     
-    func queryOrderWaitTime(failMethod:()->(), waitMethod :() -> (),finishMethod:()->()) {
+    func queryOrderWaitTime(failMethod:(error:NSError)->(), waitMethod :(info:String) -> (),finishMethod:()->()) {
             let url = "https://kyfw.12306.cn/otn/confirmPassenger/queryOrderWaitTime?"
             let params = "random=1446560572126&tourFlag=dc&_json_att=&REPEAT_SUBMIT_TOKEN=\(MainModel.globalRepeatSubmitToken!)"
             let headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
@@ -403,25 +403,40 @@ extension Service{
                 switch (response.result){
                 case .Failure(let error):
                     print(error)
-                    failMethod()
+                    failMethod(error:error as NSError)
                 case .Success(let data):
                     print(JSON(data))
                     let waitTimeResult = QueryOrderWaitTimeResult(json: JSON(data)["data"])
                     if let submitStatus = waitTimeResult.queryOrderWaitTimeStatus where submitStatus == true {
                         if let orderId = waitTimeResult.orderId {
                             MainModel.orderId = orderId
-                            print(MainModel.orderId!)
                             finishMethod()
                         }
                         else{
-                            let waitSecond = calcWaitSecond(waitTimeResult.waitTime!)
-                            waitMethod()
-                            sleep(UInt32(waitSecond))
+                            var waitSecond = 0
+                            if let waitTime = waitTimeResult.waitTime {
+                                waitSecond = calcWaitSecond(waitTime)
+                            }
+                            else {
+//                                failMethod()
+                            }
+                            
+                            if waitSecond > 0 {
+                                if waitSecond > 5 {
+                                    let waitInfo = "提交订单成功,请等待\(waitSecond)秒"
+                                    waitMethod(info: waitInfo)
+                                }
+                                sleep(UInt32(waitSecond))
+                            }
+                            
                             self.queryOrderWaitTime(failMethod,waitMethod: waitMethod,finishMethod: finishMethod)
                         }
                     }
                     else{
+                        let error = ServiceError.errorWithCode(.ConfirmSingleForQueueFailed)
+                        failMethod(error: error)
                         //maybe login again
+                        //提交订单出错
                     }
                 }})
     }

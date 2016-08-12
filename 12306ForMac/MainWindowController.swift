@@ -42,6 +42,7 @@ class MainWindowController: NSWindowController{
             NSNotificationCenter.defaultCenter().postNotificationName(NSWindowDidMoveNotification, object:self.window)
         }
         
+        
         let titleView = aWindow.titleBarView
         let buttonPoint = NSMakePoint(85, 5)
         self.loginButton.setFrameOrigin(buttonPoint)
@@ -56,7 +57,6 @@ class MainWindowController: NSWindowController{
         segment.segmentCount = 2
         segment.setLabel(TrainBook, forSegment: 0)
         segment.setLabel(TrainOrder, forSegment: 1)
-//        segment.setLabel(TainTask, forSegment: 2)
         segment.selectedSegment = 0
         segment.segmentStyle = NSSegmentStyle.TexturedSquare
         segment.target = self
@@ -85,10 +85,6 @@ class MainWindowController: NSWindowController{
         let segmentConstraint1 = NSLayoutConstraint(item: segment, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: titleView, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0)
         let segmentConstraint2 = NSLayoutConstraint(item: segment, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: titleView, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0)
         NSLayoutConstraint.activateConstraints([segmentConstraint1,segmentConstraint2])
-        
-//	aWindow.bottomBarDrawingBlock = aWindow.titleBarDrawingBlock;
-//    	aWindow.bottomBarHeight = aWindow.titleBarHeight;
-//	NSView *titleBarView = aWindow.titleBarView;
         
         selectModule(TrainBook)
         
