@@ -42,6 +42,15 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>api.dama2.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSExceptionRequiresForwardSecrecy</key>
+				<false/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
 			<key>ifconfig.me</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>

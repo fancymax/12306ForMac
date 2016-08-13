@@ -58,7 +58,7 @@ class OrderViewController: NSViewController{
     
     
     func receiveLogoutMessageNotification(notification: NSNotification) {
-        <#function body#>
+        
     }
     
     func initDemoOrderList(){

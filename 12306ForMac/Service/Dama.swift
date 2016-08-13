@@ -64,8 +64,6 @@ class Dama: NSObject {
         let imageData = imageRep!.representationUsingType(.NSPNGFileType, properties: ["NSImageCompressionFactor":1.0])!
         
         let result = imageData.hexedString()
-        
-        print(result)
         return result
     }
     
@@ -75,7 +73,6 @@ class Dama: NSObject {
         let x1MD5 = (nameMD5 + passwordMD5).MD5()
         
         let x2MD5 = (AppKey + x1MD5).MD5()
-        //        print(x2MD5)
         return x2MD5
     }
     
@@ -83,7 +80,6 @@ class Dama: NSObject {
         let key = AppKey + user
         let x1MD5 = key.MD5()
         let x2 = x1MD5[x1MD5.startIndex...x1MD5.startIndex.advancedBy(7)]
-        print(x2)
         return x2
     }
     
@@ -101,33 +97,33 @@ class Dama: NSObject {
         
         let x1MD5 = finalData.MD5().hexedString()
         let x2 = x1MD5[x1MD5.startIndex...x1MD5.startIndex.advancedBy(7)]
-        print(x2)
         return x2
     }
     
-    func getBalance(user:String,password:String,success:()->(),failure:(error:NSError)->()){
+    func getBalance(user:String,password:String,success:(balance:String)->(),failure:(error:NSError)->()){
         
         let url = "http://api.dama2.com:7766/app/d2Balance"
         let pwd = getpwd(user,password: password)
         let sign = getsign(ofUser: user)
         
         let urlX = "\(url)?appID=\(AppId)&user=\(user)&pwd=\(pwd)&sign=\(sign)"
-        Alamofire.request(.GET, urlX)
-            .responseJSON { response in
-                print(response.request)  // original URL request
-                print(response.response) // URL response
-                print(response.data)     // server data
-                print(response.result)   // result of response serialization
-                
-                if let JSON = response.result.value {
-                    print("JSON: \(JSON)")
+        Alamofire.request(.GET, urlX).responseJSON { response in
+                switch(response.result){
+                case .Failure(let error):
+                    failure(error: error)
+                case .Success(let data):
+                    if let balanceVal = JSON(data)["balance"].string {
+                        success(balance: balanceVal)
+                    }
+                    else {
+                        if let errorCode = JSON(data)["ret"].int {
+                            failure(error: DamaError.errorWithCode(errorCode))
+                        }
+                    }
                 }
-                
-                print(response.timeline.totalDuration)
-//                self.totalTimeTxt.stringValue = String(response.timeline.totalDuration)
+                //耗时：print(response.timeline.totalDuration)
         }
     }
-    
     
     func dama(user:String,password:String,ofImage image:NSImage,success:()->(),failure:(error:NSError)->()){
         

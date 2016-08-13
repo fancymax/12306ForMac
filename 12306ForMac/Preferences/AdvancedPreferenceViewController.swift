@@ -13,6 +13,12 @@ class AdvancedPreferenceViewController: NSViewController,MASPreferencesViewContr
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        if !isUseDama {
+            logoutDama()
+        }
+        else {
+            getBalance()
+        }
     }
     
 // MARK: - MASPreferencesViewController
@@ -38,6 +44,12 @@ class AdvancedPreferenceViewController: NSViewController,MASPreferencesViewContr
         }
         set {
             AdvancedPreferenceManager.sharedInstance.isUseDama = newValue
+            if newValue {
+                getBalance()
+            }
+            else {
+                logoutDama()
+            }
         }
     }
     
@@ -86,4 +98,28 @@ class AdvancedPreferenceViewController: NSViewController,MASPreferencesViewContr
             AdvancedPreferenceManager.sharedInstance.damaPassword = newValue
         }
     }
+// MARK: - Control and action
+    @IBOutlet weak var damaUserlbl: NSTextField!
+    @IBOutlet weak var damaPasswordlbl: NSSecureTextField!
+    @IBOutlet weak var balancelbl: NSTextField!
+    @IBAction func clickGetBalanceOfDama(sender: AnyObject) {
+        getBalance()
+    }
+    
+    func getBalance() {
+        let successHandler = { (balance:String) ->() in
+            self.balancelbl.stringValue = "已登录:当前题分 \(balance)"
+        }
+        
+        let failureHandler = { (error:NSError)->() in
+            self.balancelbl.stringValue = "登录失败: \(translate(error))"
+        }
+        
+        Dama.sharedInstance.getBalance(damaUser, password: damaPassword, success: successHandler, failure: failureHandler)
+    }
+    
+    func logoutDama() {
+        self.balancelbl.stringValue = "未登录"
+    }
+    
 }

@@ -60,6 +60,7 @@
 		F113B4F81C8FBA2E0001AE09 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113B4F71C8FBA2E0001AE09 /* ServiceError.swift */; };
 		F113B4FA1C8FC7930001AE09 /* ErrorTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113B4F91C8FC7930001AE09 /* ErrorTranslator.swift */; };
 		F11E29291D2AA2B6004BE59D /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = F11E29281D2AA2B6004BE59D /* User.png */; };
+		F11FE6871D5F4EB70049F261 /* DamaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11FE6861D5F4EB70049F261 /* DamaError.swift */; };
 		F12746701D502E8100975DFA /* Filter.png in Resources */ = {isa = PBXBuildFile; fileRef = F127466F1D502E8100975DFA /* Filter.png */; };
 		F12746721D50345D00975DFA /* ClickableDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12746711D50345D00975DFA /* ClickableDatePicker.swift */; };
 		F12746751D50784100975DFA /* TrainFilterWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12746731D50784100975DFA /* TrainFilterWindowController.swift */; };
@@ -162,6 +163,7 @@
 		F113B4F91C8FC7930001AE09 /* ErrorTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTranslator.swift; sourceTree = "<group>"; };
 		F11E29281D2AA2B6004BE59D /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = User.png; path = 12306ForMac/images/User.png; sourceTree = SOURCE_ROOT; };
 		F11EB45A1B6A368E000063E4 /* 12306ForMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 12306ForMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F11FE6861D5F4EB70049F261 /* DamaError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamaError.swift; sourceTree = "<group>"; };
 		F127466F1D502E8100975DFA /* Filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Filter.png; path = 12306ForMac/images/Filter.png; sourceTree = SOURCE_ROOT; };
 		F12746711D50345D00975DFA /* ClickableDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClickableDatePicker.swift; sourceTree = "<group>"; };
 		F12746731D50784100975DFA /* TrainFilterWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainFilterWindowController.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				F113B4F91C8FC7930001AE09 /* ErrorTranslator.swift */,
 				F196445D1C9CED830097FF67 /* Service+Utilities.swift */,
 				F1F2F2CF1D5AB8F700EA7786 /* Dama.swift */,
+				F11FE6861D5F4EB70049F261 /* DamaError.swift */,
 			);
 			name = Service;
 			path = 12306ForMac/Service;
@@ -717,6 +720,7 @@
 				F11154811C8D923C00FA6059 /* QueryDefaultManager.swift in Sources */,
 				F11154A01C8D929200FA6059 /* Service+Order.swift in Sources */,
 				F1D575761C95541D00A214B0 /* TicketQueryViewController.swift in Sources */,
+				F11FE6871D5F4EB70049F261 /* DamaError.swift in Sources */,
 				F11154C31C8D92D000FA6059 /* PassengerViewController.swift in Sources */,
 				F1D390A41C8F177F000B3FD7 /* RandCodeImageView2.swift in Sources */,
 				F1E7EA2E1C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m in Sources */,

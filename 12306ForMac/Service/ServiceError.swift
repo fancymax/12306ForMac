@@ -8,10 +8,10 @@
 
 import Foundation
 
-public struct ServiceError {
-    public static let Domain = "com.12306Service.error"
+struct ServiceError {
+    static let Domain = "com.12306Service.error"
 
-    public enum Code: Int {
+    enum Code: Int {
         case LoginFailed           = -7000
         case QueryTicketFailed     = -7001
         case SumbitFailed          = -7002
@@ -23,46 +23,29 @@ public struct ServiceError {
         case ConfirmSingleForQueueFailed  = -7008
     }
     
-    public static func errorWithCode(code:Code)->NSError{
-        var failureReason = ""
-        switch code {
-            case .LoginFailed:
-                failureReason = "登录失败"
-            
-            case .QueryTicketFailed:
-                failureReason = "未能查到任何车次,请检查查询设置"
-            
-            case .SumbitFailed:
-                failureReason = "提交订单失败"
-            
-            case .GetRandCodeFailed:
-                failureReason = "获取验证码失败"
-            
-            case .CheckRandCodeFailed:
-                failureReason = "验证码错误"
-            
-            case .CheckUserFailed:
-                failureReason = "非登录状态，需要重新登录"
-            
-            case .SubmitOrderFailed:
-                failureReason = "提交订单失败"
-            
-            case .CheckOrderInfoFailed:
-                failureReason = "订单信息错误"
-            
-            case .ConfirmSingleForQueueFailed:
-                failureReason = "锁定订单失败"
+    static let errorDic = [
+        Code.LoginFailed:"登录失败",
+        Code.QueryTicketFailed:"未能查到任何车次,请检查查询设置",
+        Code.SumbitFailed: "提交订单失败",
+        Code.GetRandCodeFailed: "获取验证码失败",
+        Code.CheckRandCodeFailed: "验证码错误",
+        Code.CheckUserFailed: "非登录状态，需要重新登录",
+        Code.SubmitOrderFailed: "提交订单失败",
+        Code.CheckOrderInfoFailed: "订单信息错误",
+        Code.ConfirmSingleForQueueFailed: "锁定订单失败"]
+    
+    static func errorWithCode(code:Code)->NSError{
+        if errorDic.keys.contains(code) {
+            return errorWithCode(code, failureReason: errorDic[code]!)
         }
-        return errorWithCode(code, failureReason: failureReason)
+        else {
+            return errorWithCode(code, failureReason: "未知错误, 错误码 = \(code.rawValue)")
+        }
     }
 
-    public static func errorWithCode(code: Code, failureReason: String) -> NSError {
-        return errorWithCode(code.rawValue, failureReason: failureReason)
-    }
-
-    public static func errorWithCode(code: Int, failureReason: String) -> NSError {
+    static func errorWithCode(code: Code, failureReason: String) -> NSError {
         let userInfo = [NSLocalizedFailureReasonErrorKey: failureReason]
-        return NSError(domain: Domain, code: code, userInfo: userInfo)
+        return NSError(domain: Domain, code: code.rawValue, userInfo: userInfo)
     }
     
 }
