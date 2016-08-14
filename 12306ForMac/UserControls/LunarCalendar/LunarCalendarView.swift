@@ -92,6 +92,12 @@ class LunarCalendarView:NSViewController{
         return false
     }
     
+    private static let AvailableDays = 60.0
+    
+    static func getMostAvailableDay() -> NSDate {
+        return NSDate(timeIntervalSinceNow: (AvailableDays - 1) * 24 * 3600)
+    }
+    
     static func isDate(d1:NSDate,inLimitDays days:Double)->Bool{
         let limitedDate = NSDate(timeIntervalSinceNow: days * 24.0 * 3600)
         return LunarCalendarView.isDate(d1, beforeDate: limitedDate)
@@ -391,7 +397,7 @@ class CalendarCell:NSButton
     }
     
     private func isInLimitedDate()->Bool{
-        var days = 60.0
+        var days = LunarCalendarView.AvailableDays
         if self.owner.limitedDays != nil {
             days = self.owner.limitedDays!
         }

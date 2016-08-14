@@ -26,7 +26,7 @@ class QueryDefaultManager {
     private func registerUserDefault()
     {
         let firstDefault = [fromStationKey: "深圳",
-            toStationKey:"上海",queryDateKey:NSDate()]
+            toStationKey:"上海",queryDateKey:LunarCalendarView.getMostAvailableDay()]
         userDefaults.registerDefaults(firstDefault)
     }
     
@@ -48,27 +48,27 @@ class QueryDefaultManager {
         }
     }
     
-    var lastFromStation:String?{
+    var lastFromStation:String{
         get{
-            return userDefaults.objectForKey(fromStationKey) as? String
+            return userDefaults.objectForKey(fromStationKey) as! String
         }
         set(newValue){
             userDefaults.setObject(newValue, forKey: fromStationKey)
         }
     }
     
-    var lastToStation:String?{
+    var lastToStation:String{
         get{
-            return userDefaults.objectForKey(toStationKey) as? String
+            return userDefaults.objectForKey(toStationKey) as! String
         }
         set(newValue){
             userDefaults.setObject(newValue, forKey: toStationKey)
         }
     }
     
-    var lastQueryDate:NSDate?{
+    var lastQueryDate:NSDate{
         get{
-            return userDefaults.objectForKey(queryDateKey) as? NSDate
+            return userDefaults.objectForKey(queryDateKey) as! NSDate
         }
         set(newValue){
             userDefaults.setObject(newValue, forKey: queryDateKey)

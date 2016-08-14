@@ -29,10 +29,15 @@ class TicketQueryViewController: NSViewController {
         self.fromStationName.tableViewDelegate = self
         self.toStationName.tableViewDelegate = self
         
-        self.fromStationName.stringValue = QueryDefaultManager.sharedInstance.lastFromStation!
-        self.toStationName.stringValue = QueryDefaultManager.sharedInstance.lastToStation!
+        self.fromStationName.stringValue = QueryDefaultManager.sharedInstance.lastFromStation
+        self.toStationName.stringValue = QueryDefaultManager.sharedInstance.lastToStation
         
-        self.queryDate.dateValue = QueryDefaultManager.sharedInstance.lastQueryDate!.laterDate(NSDate())
+        if QueryDefaultManager.sharedInstance.lastQueryDate.compare(NSDate()) == .OrderedAscending {
+            self.queryDate.dateValue = LunarCalendarView.getMostAvailableDay()
+        }
+        else {
+            self.queryDate.dateValue = QueryDefaultManager.sharedInstance.lastQueryDate
+        }
         
         passengerViewControllerList = [PassengerViewController]()
         
