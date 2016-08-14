@@ -240,7 +240,7 @@ class TicketQueryViewController: NSViewController {
                     print(self.trainFilterKey)
                     print(self.seatFilterKey)
                     
-                    self.filterQueryResult = self.ticketQueryResult.filter({item in return self.trainFilterKey.containsString(item.TrainCode!)})
+                    self.filterQueryResult = self.ticketQueryResult.filter({item in return self.trainFilterKey.containsString("|" + item.TrainCode! + "|")})
                     self.leftTicketTable.reloadData()
                 }
             })
@@ -252,7 +252,7 @@ class TicketQueryViewController: NSViewController {
         let successHandler = { (tickets:[QueryLeftNewDTO])->()  in
             self.ticketQueryResult = tickets
             if self.trainFilterKey != "" {
-                self.filterQueryResult = self.ticketQueryResult.filter({item in return self.trainFilterKey.containsString(item.TrainCode!)})
+                self.filterQueryResult = self.ticketQueryResult.filter({item in return self.trainFilterKey.containsString("|" + item.TrainCode! + "|")})
             }
             else {
                 self.filterQueryResult = tickets
@@ -281,7 +281,7 @@ class TicketQueryViewController: NSViewController {
         
         self.loadingTipController.start(tip:"正在查询...")
         self.date = date
-        if fromStation != self.fromStationName || toStation != self.toStationName {
+        if fromStation != self.fromStationName.stringValue || toStation != self.toStationName.stringValue {
             trainFilterKey = ""
         }
         

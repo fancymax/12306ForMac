@@ -69,8 +69,8 @@ class TrainFilterWindowController: NSWindowController,NSTableViewDelegate,NSTabl
     }
     
     func getFilterKey(){
-        trainFilterKey = ""
-        seatFilterKey = ""
+        trainFilterKey = "|"
+        seatFilterKey = "|"
         for item in filterItems {
             if ((item.type == 4) && (item.isChecked)) {
                 trainFilterKey += "\(item.key)|"
