@@ -71,6 +71,7 @@
 		F13B6FCD1C982A1D0095B196 /* Seat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13B6FCC1C982A1D0095B196 /* Seat.swift */; };
 		F13E9C981D0AA9760011F7E2 /* TrainInfoTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13E9C971D0AA9760011F7E2 /* TrainInfoTableCellView.swift */; };
 		F13E9C9A1D0AB3310011F7E2 /* TrainTableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13E9C991D0AB3310011F7E2 /* TrainTableRowView.swift */; };
+		F147763E1D6B2B2E002FD6AF /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F147763D1D6B2B2E002FD6AF /* InfoButton.swift */; };
 		F16CB2291D312A6D0055D39D /* LoadingTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16CB2271D312A6D0055D39D /* LoadingTipViewController.swift */; };
 		F16CB22A1D312A6D0055D39D /* LoadingTipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F16CB2281D312A6D0055D39D /* LoadingTipViewController.xib */; };
 		F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F17AB1CB1C95630E00FEB221 /* Credits.rtf */; };
@@ -174,6 +175,7 @@
 		F13B6FCC1C982A1D0095B196 /* Seat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seat.swift; sourceTree = "<group>"; };
 		F13E9C971D0AA9760011F7E2 /* TrainInfoTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainInfoTableCellView.swift; sourceTree = "<group>"; };
 		F13E9C991D0AB3310011F7E2 /* TrainTableRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainTableRowView.swift; sourceTree = "<group>"; };
+		F147763D1D6B2B2E002FD6AF /* InfoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 		F16CB2271D312A6D0055D39D /* LoadingTipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingTipViewController.swift; sourceTree = "<group>"; };
 		F16CB2281D312A6D0055D39D /* LoadingTipViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingTipViewController.xib; sourceTree = "<group>"; };
 		F17AB1CB1C95630E00FEB221 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = 12306ForMac/Resources/Credits.rtf; sourceTree = SOURCE_ROOT; };
@@ -314,6 +316,7 @@
 		F11154831C8D925200FA6059 /* UserControls */ = {
 			isa = PBXGroup;
 			children = (
+				F147763D1D6B2B2E002FD6AF /* InfoButton.swift */,
 				F16CB2261D312A1F0055D39D /* LoadingTip */,
 				F1CA120C1D1135E2003EFD0B /* Theme.swift */,
 				F11154841C8D925200FA6059 /* AutoCompleteTextField.swift */,
@@ -717,6 +720,7 @@
 				F1E7EA301C5A2E7B007715C1 /* INAppStoreWindow.m in Sources */,
 				F1E7EA311C5A2E7B007715C1 /* INWindowButton.m in Sources */,
 				F1CCA2DB1D0D42D700B6853E /* QueryByTrainCodeParam.swift in Sources */,
+				F147763E1D6B2B2E002FD6AF /* InfoButton.swift in Sources */,
 				F11154811C8D923C00FA6059 /* QueryDefaultManager.swift in Sources */,
 				F11154A01C8D929200FA6059 /* Service+Order.swift in Sources */,
 				F1D575761C95541D00A214B0 /* TicketQueryViewController.swift in Sources */,
