@@ -11,11 +11,7 @@ import Cocoa
 class LoginButton: NSButton{
     private var hovered: Bool = false
     
-    var textColor: NSColor? {
-        didSet{
-            self.needsDisplay = true
-        }
-    }
+    var textColor: NSColor = NSColor.blackColor()
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -67,10 +63,7 @@ class LoginButton: NSButton{
         aParagraghStyle.lineBreakMode  = NSLineBreakMode.ByWordWrapping
         aParagraghStyle.alignment  = NSTextAlignment.Left
         
-        if nil == self.textColor {
-            self.textColor = NSColor.blackColor()
-        }
-        let attrs = [NSParagraphStyleAttributeName:aParagraghStyle, NSFontAttributeName:self.font!, NSForegroundColorAttributeName:self.textColor!]
+        let attrs = [NSParagraphStyleAttributeName:aParagraghStyle, NSFontAttributeName:self.font!, NSForegroundColorAttributeName:self.textColor]
         let size = (text as NSString).sizeWithAttributes(attrs)
         let r:NSRect = NSMakeRect(inRect.origin.x,
             inRect.origin.y + (inRect.size.height - size.height)/2.0 - 2,

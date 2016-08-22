@@ -39,7 +39,7 @@
                 <constraint firstAttribute="trailing" secondItem="Q3P-1n-q0W" secondAttribute="trailing" id="XVI-y2-Iv4"/>
             </constraints>
         </view>
-        <customView id="Pvh-ix-iH6">
+        <customView id="Pvh-ix-iH6" customClass="NSVisualEffectView">
             <rect key="frame" x="0.0" y="0.0" width="995" height="530"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -73,8 +73,8 @@
                                                 <rect key="frame" x="1" y="1" width="80" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V9m-uH-It6" customClass="URLButton" customModule="_2306ForMac" customModuleProvider="target">
-                                                        <rect key="frame" x="2" y="21" width="43" height="21"/>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V9m-uH-It6" customClass="URLButton" customModule="_2306ForMac" customModuleProvider="target">
+                                                        <rect key="frame" x="2" y="10" width="43" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="lLM-e5-nYN"/>
                                                         </constraints>
@@ -236,8 +236,8 @@
                                                 <rect key="frame" x="340" y="1" width="110" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9eR-Jg-Jht">
-                                                        <rect key="frame" x="0.0" y="23" width="44" height="17"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="9eR-Jg-Jht">
+                                                        <rect key="frame" x="0.0" y="12" width="44" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="05:22" id="6sg-Wt-Uqf">
                                                             <font key="font" metaFont="systemLight" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -271,7 +271,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView misplaced="YES" id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="_2306ForMac" customModuleProvider="target">
+                                            <tableCellView id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="_2306ForMac" customModuleProvider="target">
                                                 <rect key="frame" x="453" y="1" width="997" height="63"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -492,7 +492,7 @@
             </constraints>
             <point key="canvasLocation" x="364.5" y="1306"/>
         </customView>
-        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Pal-9i-ZzT">
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Pal-9i-ZzT" customClass="NSVisualEffectView">
             <rect key="frame" x="0.0" y="0.0" width="910" height="40"/>
             <subviews>
                 <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-M1-vtw" customClass="ClickableDatePicker" customModule="_2306ForMac" customModuleProvider="target">
@@ -655,7 +655,7 @@
             </constraints>
             <point key="canvasLocation" x="465" y="756"/>
         </customView>
-        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Dhy-j5-W4F">
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Dhy-j5-W4F" customClass="NSVisualEffectView">
             <rect key="frame" x="0.0" y="0.0" width="901" height="40"/>
             <subviews>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mmx-jz-xkG" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
