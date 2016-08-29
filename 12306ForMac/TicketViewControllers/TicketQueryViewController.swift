@@ -79,7 +79,6 @@ class TicketQueryViewController: NSViewController {
         if !StationNameJs.sharedInstance.allStationMap.keys.contains(fromStationName.stringValue) {
             print("error fromStationName: \(fromStationName.stringValue)")
             return
-            
         }
         
         if !StationNameJs.sharedInstance.allStationMap.keys.contains(toStationName.stringValue) {
