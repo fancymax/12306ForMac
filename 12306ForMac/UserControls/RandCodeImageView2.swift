@@ -182,8 +182,6 @@ class RandCodeImageView2:NSImageView {
         needsDisplay = true
     }
     
-    
-    
     //绘制特定正方形区域
     private func drawSection(section:ImageSection){
         let point = CGPoint(x: 4 + section.colIndex/2 + section.colIndex * 85,
@@ -191,7 +189,12 @@ class RandCodeImageView2:NSImageView {
         let size = CGSize(width: 85, height: 85)
         let rect = NSRect(origin: point, size: size)
         let path = NSBezierPath(rect: rect)
-        path.lineWidth = 3
+        
+        let lineDash:[CGFloat] = [4.0,2.0]
+        path.setLineDash(lineDash, count: 2, phase: 0.0)
+        path.flatness = 0.8
+        path.windingRule = NSWindingRule.EvenOddWindingRule
+        path.lineWidth = 2
         path.stroke()
     }
     
