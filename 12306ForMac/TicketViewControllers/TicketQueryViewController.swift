@@ -60,8 +60,10 @@ class TicketQueryViewController: NSViewController {
     @IBOutlet weak var fromStationName: AutoCompleteTextField!
     @IBOutlet weak var toStationName: AutoCompleteTextField!
     @IBOutlet weak var queryDate: NSDatePicker!
+    @IBOutlet weak var queryBtn: NSButton!
     
     var calendarPopover:NSPopover?
+    var repeatTimer:NSTimer?
    
     private func getDateStr(date:NSDate) -> String{
         let dateDescription = date.description
@@ -75,7 +77,7 @@ class TicketQueryViewController: NSViewController {
         self.toStationName.stringValue = temp
     }
     
-    @IBAction func queryTicket(sender: NSButton) {
+    @IBAction func clickQueryTicket(sender: NSButton) {
         if !StationNameJs.sharedInstance.allStationMap.keys.contains(fromStationName.stringValue) {
             print("error fromStationName: \(fromStationName.stringValue)")
             return
@@ -86,13 +88,28 @@ class TicketQueryViewController: NSViewController {
             return
         }
         
-        let date = getDateStr(queryDate.dateValue)
+        if hasAutoQuery {
+            repeatTimer?.invalidate()
+            repeatTimer = nil
+            self.queryBtn.title = "自动查询"
+            hasAutoQuery = false
+            return
+        }
         
         QueryDefaultManager.sharedInstance.lastFromStation = fromStationName.stringValue
         QueryDefaultManager.sharedInstance.lastToStation = toStationName.stringValue
         QueryDefaultManager.sharedInstance.lastQueryDate = queryDate.dateValue
         
-        queryLeftTicket(fromStationName.stringValue, toStation: toStationName.stringValue, date: date)
+        if autoQuery {
+            repeatTimer = NSTimer(timeInterval: 5.0, target: self, selector: #selector(TicketQueryViewController.queryTicket), userInfo: nil, repeats: true)
+            repeatTimer?.fire()
+            NSRunLoop.currentRunLoop().addTimer(repeatTimer!, forMode: NSDefaultRunLoopMode)
+            hasAutoQuery = true
+            self.queryBtn.title = "停止查询"
+        }
+        else {
+            queryTicket()
+        }
     }
     
 // MARK: - secondSearchView
@@ -103,6 +120,9 @@ class TicketQueryViewController: NSViewController {
     
     @IBOutlet weak var filterBtn: LoginButton!
     @IBOutlet weak var filterCbx: NSButton!
+    
+    var autoQuery = false
+    var hasAutoQuery = false
     
     lazy var passengersPopover: NSPopover = {
         let popover = NSPopover()
@@ -140,6 +160,17 @@ class TicketQueryViewController: NSViewController {
         passengerViewControllerList.removeAll()
         for view in passengersView.views{
             view.removeFromSuperview()
+        }
+    }
+    
+    @IBAction func clickAutoQuery(sender: NSButton) {
+        if sender.state == NSOnState {
+            queryBtn.title = "自动查询"
+            autoQuery = true
+        }
+        else {
+            queryBtn.title = "开始查询"
+            autoQuery = false
         }
     }
     
@@ -244,7 +275,11 @@ class TicketQueryViewController: NSViewController {
                 }
             })
         }
-        
+    }
+    
+    func queryTicket()  {
+        let date = getDateStr(queryDate.dateValue)
+        queryLeftTicket(fromStationName.stringValue, toStation: toStationName.stringValue, date: date)
     }
     
     func queryLeftTicket(fromStation: String, toStation: String, date: String) {
