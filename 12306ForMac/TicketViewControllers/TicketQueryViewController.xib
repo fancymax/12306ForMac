@@ -10,7 +10,7 @@
                 <outlet property="filterBtn" destination="yXT-88-gO1" id="VxI-UI-ABf"/>
                 <outlet property="filterCbx" destination="xbM-JT-Qbf" id="J2k-ah-dCP"/>
                 <outlet property="firstSearchView" destination="Pal-9i-ZzT" id="2KX-XS-lYT"/>
-                <outlet property="fromStationName" destination="4jY-s2-8Ni" id="t8d-bl-iF9"/>
+                <outlet property="fromStationNameTxt" destination="4jY-s2-8Ni" id="eqE-rB-b1W"/>
                 <outlet property="leftTicketTable" destination="vdR-Hc-SYr" id="JQG-gl-oM1"/>
                 <outlet property="passengersView" destination="gWk-xJ-t7i" id="pX7-IP-o2z"/>
                 <outlet property="queryBtn" destination="FSF-1Q-g2J" id="XwL-Q2-kSv"/>
@@ -19,7 +19,7 @@
                 <outlet property="stackContentView" destination="Q3P-1n-q0W" id="6aq-aD-dmW"/>
                 <outlet property="ticketTableView" destination="Pvh-ix-iH6" id="uEg-pc-6BX"/>
                 <outlet property="tips" destination="uQO-zF-mRc" id="WmX-rO-os4"/>
-                <outlet property="toStationName" destination="l4y-Hd-FVf" id="YTv-hP-Hf8"/>
+                <outlet property="toStationNameTxt" destination="l4y-Hd-FVf" id="FLJ-dr-euc"/>
                 <outlet property="view" destination="lnD-vo-KnU" id="OQJ-lR-XIC"/>
             </connections>
         </customObject>
@@ -496,8 +496,8 @@
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Pal-9i-ZzT" customClass="NSVisualEffectView">
             <rect key="frame" x="0.0" y="0.0" width="910" height="40"/>
             <subviews>
-                <datePicker verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-M1-vtw" customClass="ClickableDatePicker" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="589" y="1" width="90" height="23"/>
+                <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-M1-vtw" customClass="ClickableDatePicker" customModule="_2306ForMac" customModuleProvider="target">
+                    <rect key="frame" x="589" y="2" width="90" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="8Aa-Zv-hKL"/>
                         <constraint firstAttribute="width" constant="90" id="Vo0-fD-7UT"/>
@@ -514,8 +514,8 @@
                         <action selector="showCalendar:" target="-2" id="lKN-QV-raq"/>
                     </connections>
                 </datePicker>
-                <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4jY-s2-8Ni" customClass="AutoCompleteTextField" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="88" y="1" width="100" height="23"/>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4jY-s2-8Ni" customClass="AutoCompleteTextField" customModule="_2306ForMac" customModuleProvider="target">
+                    <rect key="frame" x="88" y="2" width="100" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="5RR-3h-LZM"/>
                         <constraint firstAttribute="width" constant="100" id="t04-b6-cBp"/>
@@ -534,8 +534,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l4y-Hd-FVf" customClass="AutoCompleteTextField" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="331" y="1" width="100" height="23"/>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l4y-Hd-FVf" customClass="AutoCompleteTextField" customModule="_2306ForMac" customModuleProvider="target">
+                    <rect key="frame" x="331" y="2" width="100" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="C6k-54-5Fp"/>
                         <constraint firstAttribute="width" constant="100" id="fmb-qp-YPt"/>
@@ -578,8 +578,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button misplaced="YES" tag="1" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GwK-22-gCY">
-                    <rect key="frame" x="687" y="1" width="23" height="23"/>
+                <button tag="1" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GwK-22-gCY">
+                    <rect key="frame" x="687" y="2" width="23" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="Tqy-Xx-LyN"/>
                         <constraint firstAttribute="width" constant="23" id="cDs-iR-CZT"/>
@@ -618,8 +618,8 @@
                         <action selector="clickQueryTicket:" target="-2" id="fQ9-vE-g2d"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" misplaced="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQQ-8z-kIM">
-                    <rect key="frame" x="201" y="5" width="50" height="16"/>
+                <button verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQQ-8z-kIM">
+                    <rect key="frame" x="201" y="6" width="50" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="IuX-gs-s4I"/>
                         <constraint firstAttribute="height" constant="16" id="z5f-YW-eTw"/>

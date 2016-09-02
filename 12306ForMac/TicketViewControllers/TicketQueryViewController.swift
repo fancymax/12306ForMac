@@ -26,11 +26,11 @@ class TicketQueryViewController: NSViewController {
         self.stackContentView.alignment = .CenterX
         self.stackContentView.spacing = 0
         
-        self.fromStationName.tableViewDelegate = self
-        self.toStationName.tableViewDelegate = self
+        self.fromStationNameTxt.tableViewDelegate = self
+        self.toStationNameTxt.tableViewDelegate = self
         
-        self.fromStationName.stringValue = QueryDefaultManager.sharedInstance.lastFromStation
-        self.toStationName.stringValue = QueryDefaultManager.sharedInstance.lastToStation
+        self.fromStationNameTxt.stringValue = QueryDefaultManager.sharedInstance.lastFromStation
+        self.toStationNameTxt.stringValue = QueryDefaultManager.sharedInstance.lastToStation
         
         if QueryDefaultManager.sharedInstance.lastQueryDate.compare(NSDate()) == .OrderedAscending {
             self.queryDate.dateValue = LunarCalendarView.getMostAvailableDay()
@@ -59,8 +59,8 @@ class TicketQueryViewController: NSViewController {
     }
     
 // MARK: - firstSearchView
-    @IBOutlet weak var fromStationName: AutoCompleteTextField!
-    @IBOutlet weak var toStationName: AutoCompleteTextField!
+    @IBOutlet weak var fromStationNameTxt: AutoCompleteTextField!
+    @IBOutlet weak var toStationNameTxt: AutoCompleteTextField!
     @IBOutlet weak var queryDate: NSDatePicker!
     @IBOutlet weak var queryBtn: NSButton!
     
@@ -74,19 +74,17 @@ class TicketQueryViewController: NSViewController {
     }
     
     @IBAction func convertCity(sender: NSButton) {
-        let temp = self.fromStationName.stringValue
-        self.fromStationName.stringValue = self.toStationName.stringValue
-        self.toStationName.stringValue = temp
+        let temp = self.fromStationNameTxt.stringValue
+        self.fromStationNameTxt.stringValue = self.toStationNameTxt.stringValue
+        self.toStationNameTxt.stringValue = temp
     }
     
     @IBAction func clickQueryTicket(sender: NSButton) {
-        if !StationNameJs.sharedInstance.allStationMap.keys.contains(fromStationName.stringValue) {
-            print("error fromStationName: \(fromStationName.stringValue)")
+        if !StationNameJs.sharedInstance.allStationMap.keys.contains(self.fromStationNameTxt.stringValue) {
             return
         }
         
-        if !StationNameJs.sharedInstance.allStationMap.keys.contains(toStationName.stringValue) {
-            print("error toStationName: \(toStationName.stringValue)")
+        if !StationNameJs.sharedInstance.allStationMap.keys.contains(self.toStationNameTxt.stringValue) {
             return
         }
         
@@ -97,8 +95,13 @@ class TicketQueryViewController: NSViewController {
             return
         }
         
-        QueryDefaultManager.sharedInstance.lastFromStation = fromStationName.stringValue
-        QueryDefaultManager.sharedInstance.lastToStation = toStationName.stringValue
+        if self.fromStationNameTxt.stringValue != QueryDefaultManager.sharedInstance.lastFromStation ||
+            self.toStationNameTxt.stringValue != QueryDefaultManager.sharedInstance.lastToStation {
+            trainFilterKey = ""
+        }
+        
+        QueryDefaultManager.sharedInstance.lastFromStation = self.fromStationNameTxt.stringValue
+        QueryDefaultManager.sharedInstance.lastToStation = self.toStationNameTxt.stringValue
         QueryDefaultManager.sharedInstance.lastQueryDate = queryDate.dateValue
         
         if autoQuery {
@@ -248,7 +251,15 @@ class TicketQueryViewController: NSViewController {
     
     var date:String?
     
-    var trainFilterKey = ""
+    var trainFilterKey = "" {
+        didSet {
+            if trainFilterKey == "" {
+                trainFilterWindowController = TrainFilterWindowController()
+            }
+        }
+    }
+    
+    
     var seatFilterKey = ""
     
     lazy var trainFilterWindowController:TrainFilterWindowController = TrainFilterWindowController()
@@ -276,12 +287,9 @@ class TicketQueryViewController: NSViewController {
     }
     
     func filterTrain(){
-        if trainFilterKey == "" {
-            trainFilterWindowController = TrainFilterWindowController()
-        }
         trainFilterWindowController.trains = ticketQueryResult
-        trainFilterWindowController.fromStationName = self.fromStationName.stringValue
-        trainFilterWindowController.toStationName = self.toStationName.stringValue
+        trainFilterWindowController.fromStationName = self.fromStationNameTxt.stringValue
+        trainFilterWindowController.toStationName = self.toStationNameTxt.stringValue
         trainFilterWindowController.trainDate = self.date!
         if let window = self.view.window {
             window.beginSheet(trainFilterWindowController.window!, completionHandler: {response in
@@ -303,10 +311,11 @@ class TicketQueryViewController: NSViewController {
     
     func queryTicket()  {
         let date = getDateStr(queryDate.dateValue)
-        queryLeftTicket(fromStationName.stringValue, toStation: toStationName.stringValue, date: date)
+        queryLeftTicket(self.fromStationNameTxt.stringValue, toStation: self.toStationNameTxt.stringValue, date: date)
     }
     
     func queryLeftTicket(fromStation: String, toStation: String, date: String) {
+        
         let successHandler = { (tickets:[QueryLeftNewDTO])->()  in
             self.ticketQueryResult = tickets
             if self.trainFilterKey != "" {
@@ -340,9 +349,6 @@ class TicketQueryViewController: NSViewController {
         
         self.loadingTipController.start(tip:"正在查询...")
         self.date = date
-        if fromStation != self.fromStationName.stringValue || toStation != self.toStationName.stringValue {
-            trainFilterKey = ""
-        }
         
         let fromStationCode = StationNameJs.sharedInstance.allStationMap[fromStation]?.Code
         let toStationCode = StationNameJs.sharedInstance.allStationMap[toStation]?.Code
