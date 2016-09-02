@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
@@ -496,7 +496,7 @@
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Pal-9i-ZzT" customClass="NSVisualEffectView">
             <rect key="frame" x="0.0" y="0.0" width="910" height="40"/>
             <subviews>
-                <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-M1-vtw" customClass="ClickableDatePicker" customModule="_2306ForMac" customModuleProvider="target">
+                <datePicker verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-M1-vtw" customClass="ClickableDatePicker" customModule="_2306ForMac" customModuleProvider="target">
                     <rect key="frame" x="589" y="1" width="90" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="8Aa-Zv-hKL"/>
@@ -514,7 +514,7 @@
                         <action selector="showCalendar:" target="-2" id="lKN-QV-raq"/>
                     </connections>
                 </datePicker>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4jY-s2-8Ni" customClass="AutoCompleteTextField" customModule="_2306ForMac" customModuleProvider="target">
+                <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4jY-s2-8Ni" customClass="AutoCompleteTextField" customModule="_2306ForMac" customModuleProvider="target">
                     <rect key="frame" x="88" y="1" width="100" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="5RR-3h-LZM"/>
@@ -534,7 +534,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l4y-Hd-FVf" customClass="AutoCompleteTextField" customModule="_2306ForMac" customModuleProvider="target">
+                <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l4y-Hd-FVf" customClass="AutoCompleteTextField" customModule="_2306ForMac" customModuleProvider="target">
                     <rect key="frame" x="331" y="1" width="100" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="C6k-54-5Fp"/>
@@ -578,7 +578,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button tag="1" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GwK-22-gCY">
+                <button misplaced="YES" tag="1" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GwK-22-gCY">
                     <rect key="frame" x="687" y="1" width="23" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="Tqy-Xx-LyN"/>
@@ -618,7 +618,7 @@
                         <action selector="clickQueryTicket:" target="-2" id="fQ9-vE-g2d"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQQ-8z-kIM">
+                <button verticalHuggingPriority="750" misplaced="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQQ-8z-kIM">
                     <rect key="frame" x="201" y="5" width="50" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="IuX-gs-s4I"/>

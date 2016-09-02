@@ -86,6 +86,9 @@ Set 'Show On Hover' to True</string>
                             <string>10</string>
                         </objectValues>
                     </comboBoxCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="self.autoQuerySeconds" id="ebf-2I-seA"/>
+                    </connections>
                 </comboBox>
                 <textField verticalHuggingPriority="750" id="07W-yT-XIr">
                     <rect key="frame" x="160" y="116" width="25" height="17"/>

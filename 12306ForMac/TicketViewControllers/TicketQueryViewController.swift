@@ -43,6 +43,8 @@ class TicketQueryViewController: NSViewController {
         
         filterBtn.enabled = false
         filterCbx.enabled = false
+        filterBtn.hidden = true
+        filterCbx.hidden = true
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveCheckPassengerMessageNotification(_:)), name: DidSendCheckPassengerMessageNotification, object: nil)
@@ -91,7 +93,6 @@ class TicketQueryViewController: NSViewController {
         if hasAutoQuery {
             repeatTimer?.invalidate()
             repeatTimer = nil
-            self.queryBtn.title = "自动查询"
             hasAutoQuery = false
             return
         }
@@ -101,11 +102,10 @@ class TicketQueryViewController: NSViewController {
         QueryDefaultManager.sharedInstance.lastQueryDate = queryDate.dateValue
         
         if autoQuery {
-            repeatTimer = NSTimer(timeInterval: 5.0, target: self, selector: #selector(TicketQueryViewController.queryTicket), userInfo: nil, repeats: true)
+            repeatTimer = NSTimer(timeInterval: Double(GeneralPreferenceManager.sharedInstance.autoQuerySeconds), target: self, selector: #selector(TicketQueryViewController.queryTicket), userInfo: nil, repeats: true)
             repeatTimer?.fire()
             NSRunLoop.currentRunLoop().addTimer(repeatTimer!, forMode: NSDefaultRunLoopMode)
             hasAutoQuery = true
-            self.queryBtn.title = "停止查询"
         }
         else {
             queryTicket()
@@ -121,8 +121,42 @@ class TicketQueryViewController: NSViewController {
     @IBOutlet weak var filterBtn: LoginButton!
     @IBOutlet weak var filterCbx: NSButton!
     
-    var autoQuery = false
-    var hasAutoQuery = false
+    var autoQuery = false {
+        didSet {
+            if autoQuery {
+                queryBtn.title = "自动查询"
+            }
+            else {
+                queryBtn.title = "开始查询"
+            }
+        }
+    }
+    
+    var hasAutoQuery = false {
+        didSet {
+            if hasAutoQuery {
+                queryBtn.title = "停止查询"
+            }
+            else {
+                queryBtn.title = "自动查询"
+            }
+        }
+    }
+    
+    var canFilter = false {
+        didSet {
+            if canFilter {
+                filterBtn.hidden = false
+                filterCbx.hidden = false
+                filterBtn.enabled = true
+                filterCbx.enabled = true
+            }
+            else {
+                filterBtn.enabled = false
+                filterCbx.enabled = false
+            }
+        }
+    }
     
     lazy var passengersPopover: NSPopover = {
         let popover = NSPopover()
@@ -165,23 +199,10 @@ class TicketQueryViewController: NSViewController {
     
     @IBAction func clickAutoQuery(sender: NSButton) {
         if sender.state == NSOnState {
-            queryBtn.title = "自动查询"
             autoQuery = true
         }
         else {
-            queryBtn.title = "开始查询"
             autoQuery = false
-        }
-    }
-    
-    func setCanFilter(canFilter:Bool) {
-        if canFilter {
-            filterBtn.enabled = true
-            filterCbx.enabled = true
-        }
-        else {
-            filterBtn.enabled = false
-            filterCbx.enabled = false
         }
     }
     
@@ -272,6 +293,9 @@ class TicketQueryViewController: NSViewController {
                     
                     self.filterQueryResult = self.ticketQueryResult.filter({item in return self.trainFilterKey.containsString("|" + item.TrainCode! + "|")})
                     self.leftTicketTable.reloadData()
+                    
+                    self.filterCbx.state = NSOnState
+                    self.autoQuery = true
                 }
             })
         }
@@ -295,19 +319,20 @@ class TicketQueryViewController: NSViewController {
             self.leftTicketTable.reloadData()
             self.loadingTipController.stop()
             
-            var canFilterState = false
             if tickets.count > 0 {
-                canFilterState = true
+                self.canFilter = true
             }
-            
-            self.setCanFilter(canFilterState)
+            else {
+                self.canFilter = false
+                
+            }
         }
         
         let failureHandler = {(error:NSError)->() in
             self.loadingTipController.stop()
             self.tips.show(translate(error), forDuration: 1, withFlash: false)
             
-            self.setCanFilter(false)
+            self.canFilter = false
         }
         
         self.filterQueryResult = [QueryLeftNewDTO]()
