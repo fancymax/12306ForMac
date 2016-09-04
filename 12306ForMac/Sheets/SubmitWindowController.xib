@@ -51,9 +51,9 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eXq-pb-kjT">
-                    <rect key="frame" x="99" y="17" width="76" height="29"/>
-                    <buttonCell key="cell" type="bevel" title="稍后付款" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="A0D-4d-sCi">
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eXq-pb-kjT">
+                    <rect key="frame" x="102" y="14" width="82" height="32"/>
+                    <buttonCell key="cell" type="push" title="稍后付款" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="A0D-4d-sCi">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -61,11 +61,14 @@
                         <action selector="cancelButtonClicked:" target="-2" id="xSb-Lz-muY"/>
                     </connections>
                 </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y6G-Ou-4py">
-                    <rect key="frame" x="191" y="17" width="76" height="29"/>
-                    <buttonCell key="cell" type="bevel" title="立刻付款" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RrL-4R-XMZ">
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y6G-Ou-4py">
+                    <rect key="frame" x="189" y="14" width="82" height="32"/>
+                    <buttonCell key="cell" type="push" title="立刻付款" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RrL-4R-XMZ">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
+                        <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                     </buttonCell>
                     <connections>
                         <action selector="payButtonClicked:" target="-2" id="zjx-ww-Ep3"/>
@@ -132,9 +135,9 @@
                         <action selector="FreshImage:" target="-2" id="aSb-CG-GZs"/>
                     </connections>
                 </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EWQ-MH-lbW">
-                    <rect key="frame" x="205" y="14" width="76" height="29"/>
-                    <buttonCell key="cell" type="bevel" title="取消" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ivi-qi-tVj">
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EWQ-MH-lbW">
+                    <rect key="frame" x="214" y="11" width="82" height="32"/>
+                    <buttonCell key="cell" type="push" title="取消" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ivi-qi-tVj">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -142,11 +145,14 @@
                         <action selector="cancelButtonClicked:" target="-2" id="vAU-HH-eiV"/>
                     </connections>
                 </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hLk-wf-da0">
-                    <rect key="frame" x="303" y="14" width="76" height="29"/>
-                    <buttonCell key="cell" type="bevel" title="确定" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="YDk-Cj-LoK">
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hLk-wf-da0">
+                    <rect key="frame" x="301" y="11" width="82" height="32"/>
+                    <buttonCell key="cell" type="push" title="确定" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="YDk-Cj-LoK">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
+                        <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                     </buttonCell>
                     <connections>
                         <action selector="okayButtonClicked:" target="-2" id="xlA-Zh-CLc"/>
@@ -174,7 +180,7 @@
                     </userDefinedRuntimeAttributes>
                 </customView>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWi-7O-JdJ" customClass="FlashLabel" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="3" y="293" width="403" height="32"/>
+                    <rect key="frame" x="30" y="293" width="376" height="32"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Tips" id="baD-uV-MNz">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
@@ -369,8 +375,8 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Erm-TM-IAx">
-                    <rect key="frame" x="156" y="12" width="76" height="29"/>
-                    <buttonCell key="cell" type="bevel" title="关闭" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EbN-cW-VeL">
+                    <rect key="frame" x="153" y="9" width="82" height="32"/>
+                    <buttonCell key="cell" type="push" title="关闭" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EbN-cW-VeL">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -379,10 +385,13 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jg1-2P-KG0">
-                    <rect key="frame" x="240" y="12" width="76" height="29"/>
-                    <buttonCell key="cell" type="bevel" title="提交订单" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="G3c-Jn-ATV">
+                    <rect key="frame" x="238" y="9" width="82" height="32"/>
+                    <buttonCell key="cell" type="push" title="提交订单" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="G3c-Jn-ATV">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
+                        <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                     </buttonCell>
                     <connections>
                         <action selector="clickCheckOrderBtn:" target="-2" id="Y9E-FF-KLV"/>

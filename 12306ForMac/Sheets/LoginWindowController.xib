@@ -22,14 +22,14 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="387" height="374"/>
+            <rect key="contentRect" x="196" y="240" width="412" height="374"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="387" height="374"/>
+                <rect key="frame" x="0.0" y="0.0" width="412" height="374"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eN7-g7-kPT">
-                        <rect key="frame" x="18" y="346" width="47" height="17"/>
+                        <rect key="frame" x="30" y="346" width="47" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="用户名" id="WeO-Lz-DHY">
                             <font key="font" metaFont="systemThin" size="13"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -37,7 +37,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k06-oP-ggI">
-                        <rect key="frame" x="18" y="279" width="47" height="17"/>
+                        <rect key="frame" x="30" y="279" width="47" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="验证码" id="Ha6-7k-GH7">
                             <font key="font" metaFont="systemThin" size="13"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -45,7 +45,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oyq-IG-8iP" customClass="AutoCompleteTextField" customModule="_2306ForMac" customModuleProvider="target">
-                        <rect key="frame" x="72" y="343" width="295" height="22"/>
+                        <rect key="frame" x="84" y="343" width="295" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="5QG-yE-efL">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -58,11 +58,11 @@
                         </userDefinedRuntimeAttributes>
                     </textField>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HYl-HA-qIH" customClass="RandCodeImageView2" customModule="_2306ForMac" customModuleProvider="target">
-                        <rect key="frame" x="19" y="47" width="351" height="228"/>
+                        <rect key="frame" x="31" y="47" width="351" height="228"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" imageFrameStyle="photo" id="b5Z-NX-XEL"/>
                     </imageView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LIs-2s-KNy">
-                        <rect key="frame" x="294" y="244" width="75" height="32"/>
+                        <rect key="frame" x="306" y="244" width="75" height="32"/>
                         <buttonCell key="cell" type="push" title="换一张" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6kI-PN-ZmY">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -71,9 +71,9 @@
                             <action selector="freshImage:" target="-2" id="kBf-dN-RiZ"/>
                         </connections>
                     </button>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uwf-FY-vTn">
-                        <rect key="frame" x="208" y="8" width="74" height="29"/>
-                        <buttonCell key="cell" type="bevel" title="取消" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wTk-Ln-z7B">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uwf-FY-vTn">
+                        <rect key="frame" x="220" y="5" width="82" height="32"/>
+                        <buttonCell key="cell" type="push" title="取消" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wTk-Ln-z7B">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -82,7 +82,7 @@
                         </connections>
                     </button>
                     <secureTextField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gnT-ti-hbG">
-                        <rect key="frame" x="72" y="308" width="295" height="22"/>
+                        <rect key="frame" x="84" y="308" width="295" height="22"/>
                         <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="DEf-hQ-vkm">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -93,7 +93,7 @@
                         </secureTextFieldCell>
                     </secureTextField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dVZ-7r-ebc" customClass="FlashLabel" customModule="_2306ForMac" customModuleProvider="target">
-                        <rect key="frame" x="78" y="279" width="291" height="17"/>
+                        <rect key="frame" x="90" y="279" width="291" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Tips" id="0S5-hK-gyQ">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
@@ -101,7 +101,7 @@
                         </textFieldCell>
                     </textField>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ULH-CJ-oS5" userLabel="Loading View" customClass="GlassView" customModule="_2306ForMac" customModuleProvider="target">
-                        <rect key="frame" x="133" y="146" width="120" height="30"/>
+                        <rect key="frame" x="145" y="146" width="120" height="30"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y7q-VB-u3Y" userLabel="正在查询...">
                                 <rect key="frame" x="29" y="7" width="85" height="17"/>
@@ -121,21 +121,18 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </customView>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L96-4W-Kn6">
-                        <rect key="frame" x="295" y="8" width="74" height="29"/>
-                        <buttonCell key="cell" type="bevel" title="登录" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hMI-aR-EAg">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L96-4W-Kn6">
+                        <rect key="frame" x="303" y="5" width="82" height="32"/>
+                        <buttonCell key="cell" type="push" title="登录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hMI-aR-EAg">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-IA
-</string>
                         </buttonCell>
                         <connections>
                             <action selector="okayButtonClicked:" target="-2" id="cW9-qX-GDm"/>
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z56-Qq-iru">
-                        <rect key="frame" x="18" y="310" width="47" height="17"/>
+                        <rect key="frame" x="30" y="310" width="47" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="密    码" id="0uL-Bf-XcV">
                             <font key="font" metaFont="systemThin" size="13"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -147,7 +144,7 @@ IA
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="395.5" y="233"/>
+            <point key="canvasLocation" x="396" y="233"/>
         </window>
     </objects>
 </document>
