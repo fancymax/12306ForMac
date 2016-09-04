@@ -113,7 +113,8 @@ extension Service{
                         for i in 0..<orderDBList.count {
                             let ticketNum = orderDBList[i]["tickets"].count
                             for y in 0..<ticketNum {
-                                MainModel.noCompleteOrderList.append(OrderDTO(json:orderDBList[i], ticketIdx: y))
+                                let ticketOrder = OrderDTO(json: orderDBList[i], ticketIdx: y)
+                                MainModel.noCompleteOrderList.append(ticketOrder)
                             }
                         }
                     }

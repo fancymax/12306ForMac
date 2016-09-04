@@ -16,6 +16,7 @@ class OrderViewController: NSViewController{
     
     var hasQuery = false
     dynamic var hasOrder = false
+//    dynamic var hasOrder = true
     
     var orderList = [OrderDTO]()
     let service = Service()
@@ -43,16 +44,6 @@ class OrderViewController: NSViewController{
 //        initDemoOrderList()
 //        return
         
-        self.orderList = [OrderDTO]()
-        self.orderListTable.reloadData()
-        
-        if !MainModel.isGetUserInfo {
-            NSNotificationCenter.defaultCenter().postNotificationName(DidSendLoginMessageNotification, object: nil)
-            return
-        }
-        
-        hasQuery = true
-        self.loadingTipController.start(tip:"正在查询...")
         queryNoCompleteOrder()
     }
     
@@ -70,6 +61,33 @@ class OrderViewController: NSViewController{
         self.hasOrder = false
         self.orderList = demoList
         self.orderListTable.reloadData()
+    }
+    
+    @IBAction func cancelOrder(sender: NSButton) {
+        let alert = NSAlert()
+        alert.alertStyle = NSAlertStyle.CriticalAlertStyle
+        alert.messageText = "您确认取消订单吗？"
+        alert.informativeText = "一天内3次取消订单，当日将不能再网上购票。"
+        
+        alert.addButtonWithTitle("确定")
+        alert.addButtonWithTitle("取消")
+        alert.beginSheetModalForWindow(self.view.window!, completionHandler: { reponse in
+            if reponse == NSAlertFirstButtonReturn {
+                if let sequence_no = MainModel.noCompleteOrderList[0].sequence_no {
+                    let successHandler = {
+                        MainModel.noCompleteOrderList.removeAll()
+                        self.orderList.removeAll()
+                        self.orderListTable.reloadData()
+                        self.tips.show("取消订单成功", forDuration: 1, withFlash: false)
+                        self.hasOrder = false
+                    }
+                    let failureHandler = {(error:NSError)->() in
+                        self.tips.show(translate(error), forDuration: 1, withFlash: false)
+                    }
+                    self.service.cancelOrderWith(sequence_no, success: successHandler, failure:failureHandler)
+                }
+            }
+        })
     }
     
     @IBAction func payOrder(sender: NSButton) {
@@ -93,6 +111,17 @@ class OrderViewController: NSViewController{
 //    }
     
     func queryNoCompleteOrder(){
+        self.orderList = [OrderDTO]()
+        self.orderListTable.reloadData()
+        
+        if !MainModel.isGetUserInfo {
+            NSNotificationCenter.defaultCenter().postNotificationName(DidSendLoginMessageNotification, object: nil)
+            return
+        }
+        
+        hasQuery = true
+        self.loadingTipController.start(tip:"正在查询...")
+        
         let successHandler = {
             self.orderList = MainModel.noCompleteOrderList
             self.orderListTable.reloadData()

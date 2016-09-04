@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="OrderViewController" customModule="_2306ForMac" customModuleProvider="target">
             <connections>
-                <outlet property="cancelOrderbtn" destination="PrQ-Zc-Oiu" id="14L-cw-zhh"/>
                 <outlet property="orderListTable" destination="Mba-dl-MeQ" id="RkP-h7-W0S"/>
                 <outlet property="payBtn" destination="1s0-kc-s4d" id="oU5-Fp-AiW"/>
                 <outlet property="tips" destination="N4e-df-tvh" id="vzk-4z-PgC"/>
@@ -163,7 +162,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="ejg-aw-Fwo">
-                                                <rect key="frame" x="1" y="1" width="-3" height="40"/>
+                                                <rect key="frame" x="1" y="1" width="0.0" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d07-26-bbj">
@@ -202,7 +201,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="4m2-So-4Zt">
-                                                <rect key="frame" x="1" y="1" width="-3" height="40"/>
+                                                <rect key="frame" x="1" y="1" width="0.0" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wsg-xh-JkU">
@@ -241,7 +240,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="84h-ti-CH2">
-                                                <rect key="frame" x="1" y="1" width="-3" height="40"/>
+                                                <rect key="frame" x="1" y="1" width="0.0" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="edf-m1-A7g">
@@ -319,7 +318,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="5lA-6N-kD8">
-                                                <rect key="frame" x="1" y="1" width="-3" height="40"/>
+                                                <rect key="frame" x="1" y="1" width="0.0" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nMX-gJ-Pt0">
@@ -526,6 +525,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
+                        <action selector="cancelOrder:" target="-2" id="rXX-6v-DoT"/>
                         <binding destination="-2" name="enabled" keyPath="self.hasOrder" id="5tI-Py-2fi"/>
                     </connections>
                 </button>

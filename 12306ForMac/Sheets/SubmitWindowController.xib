@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
@@ -29,7 +29,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="390" height="370"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="390" height="370"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -40,11 +40,11 @@
             <point key="canvasLocation" x="966" y="395"/>
         </window>
         <customView id="vJY-p7-r54">
-            <rect key="frame" x="0.0" y="0.0" width="273" height="244"/>
+            <rect key="frame" x="0.0" y="0.0" width="291" height="244"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="myB-rD-1e5">
-                    <rect key="frame" x="126" y="66" width="134" height="17"/>
+                    <rect key="frame" x="133" y="66" width="134" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="5Oa-qb-hRe">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
@@ -52,7 +52,7 @@
                     </textFieldCell>
                 </textField>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eXq-pb-kjT">
-                    <rect key="frame" x="92" y="17" width="76" height="29"/>
+                    <rect key="frame" x="99" y="17" width="76" height="29"/>
                     <buttonCell key="cell" type="bevel" title="稍后付款" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="A0D-4d-sCi">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -62,7 +62,7 @@
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y6G-Ou-4py">
-                    <rect key="frame" x="184" y="17" width="76" height="29"/>
+                    <rect key="frame" x="191" y="17" width="76" height="29"/>
                     <buttonCell key="cell" type="bevel" title="立刻付款" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RrL-4R-XMZ">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -72,7 +72,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hC4-Mr-zol">
-                    <rect key="frame" x="18" y="109" width="43" height="17"/>
+                    <rect key="frame" x="25" y="109" width="43" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="总票价" id="J3O-cv-U9W">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -80,7 +80,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tT3-bH-J5C">
-                    <rect key="frame" x="18" y="67" width="43" height="17"/>
+                    <rect key="frame" x="25" y="67" width="43" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="订单号" id="tJu-aH-KNS">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -88,7 +88,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gQY-Hx-eFZ">
-                    <rect key="frame" x="126" y="108" width="134" height="17"/>
+                    <rect key="frame" x="133" y="108" width="134" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="¥8721" id="6ca-Mb-GRO">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
@@ -96,7 +96,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Pw-hU-qDF">
-                    <rect key="frame" x="148" y="201" width="21" height="17"/>
+                    <rect key="frame" x="155" y="201" width="21" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="30" id="cFo-0S-YJ8">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -104,7 +104,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LG1-yb-srF">
-                    <rect key="frame" x="18" y="141" width="242" height="77"/>
+                    <rect key="frame" x="25" y="141" width="242" height="77"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="席位已经锁定，请您在     分钟内进行网上支付，否则席位将自动释放给其它旅客。付款成功后，请在开车前到售票窗换取纸质车票后乘车。" id="Xdg-6L-d2j">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -112,18 +112,18 @@
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="789.5" y="-59"/>
+            <point key="canvasLocation" x="791.5" y="-59"/>
         </customView>
         <customView id="WkC-1X-oZ2">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="333"/>
+            <rect key="frame" x="0.0" y="0.0" width="409" height="333"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DNm-pn-QOi" customClass="RandCodeImageView2" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="12" y="52" width="351" height="228"/>
+                    <rect key="frame" x="29" y="52" width="351" height="228"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" imageFrameStyle="photo" id="cqS-ac-3uM"/>
                 </imageView>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gac-he-aZq">
-                    <rect key="frame" x="288" y="246" width="75" height="32"/>
+                    <rect key="frame" x="305" y="246" width="75" height="32"/>
                     <buttonCell key="cell" type="push" title="换一张" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GRI-Pc-Ljw">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -133,7 +133,7 @@
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EWQ-MH-lbW">
-                    <rect key="frame" x="188" y="14" width="76" height="29"/>
+                    <rect key="frame" x="205" y="14" width="76" height="29"/>
                     <buttonCell key="cell" type="bevel" title="取消" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ivi-qi-tVj">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -143,7 +143,7 @@
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hLk-wf-da0">
-                    <rect key="frame" x="286" y="14" width="76" height="29"/>
+                    <rect key="frame" x="303" y="14" width="76" height="29"/>
                     <buttonCell key="cell" type="bevel" title="确定" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="YDk-Cj-LoK">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -153,7 +153,7 @@
                     </connections>
                 </button>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pov-nB-bqD" userLabel="Loading View" customClass="GlassView" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="127" y="152" width="120" height="30"/>
+                    <rect key="frame" x="144" y="152" width="120" height="30"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DWe-8V-jUQ" userLabel="正在查询...">
                             <rect key="frame" x="29" y="7" width="85" height="17"/>
@@ -174,8 +174,8 @@
                     </userDefinedRuntimeAttributes>
                 </customView>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWi-7O-JdJ" customClass="FlashLabel" customModule="_2306ForMac" customModuleProvider="target">
-                    <rect key="frame" x="13" y="296" width="349" height="32"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Tips" id="baD-uV-MNz">
+                    <rect key="frame" x="3" y="293" width="403" height="32"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Tips" id="baD-uV-MNz">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -185,11 +185,11 @@
             <point key="canvasLocation" x="1203.5" y="-55.5"/>
         </customView>
         <customView id="wUj-Nk-WKF">
-            <rect key="frame" x="0.0" y="0.0" width="314" height="325"/>
+            <rect key="frame" x="0.0" y="0.0" width="344" height="325"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6a-OO-gYj">
-                    <rect key="frame" x="15" y="53" width="284" height="157"/>
+                    <rect key="frame" x="30" y="53" width="284" height="157"/>
                     <clipView key="contentView" ambiguous="YES" id="HEb-bw-OVi">
                         <rect key="frame" x="1" y="0.0" width="282" height="156"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -329,7 +329,7 @@
                     </tableHeaderView>
                 </scrollView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ecd-8X-J61">
-                    <rect key="frame" x="58" y="273" width="243" height="18"/>
+                    <rect key="frame" x="73" y="273" width="243" height="18"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="G1002 深圳 - 福州" id="6qv-RU-k8p">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -337,7 +337,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x9s-aY-vXl">
-                    <rect key="frame" x="58" y="247" width="243" height="18"/>
+                    <rect key="frame" x="73" y="247" width="243" height="18"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="2016-03-02" id="1z2-tG-6pI">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -345,7 +345,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AkP-ak-M2v">
-                    <rect key="frame" x="58" y="219" width="243" height="18"/>
+                    <rect key="frame" x="73" y="219" width="243" height="18"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="11:35～17:16 历时05:16" id="FFW-6x-UIp">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -353,7 +353,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KKS-fd-Ws0">
-                    <rect key="frame" x="13" y="273" width="38" height="19"/>
+                    <rect key="frame" x="28" y="273" width="38" height="19"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="车次" id="1ey-gV-XxV">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -361,7 +361,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gp0-kf-513">
-                    <rect key="frame" x="13" y="246" width="38" height="19"/>
+                    <rect key="frame" x="28" y="246" width="38" height="19"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="日期" id="lqv-40-Exz">
                         <font key="font" size="13" name=".PingFangSC-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -369,7 +369,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Erm-TM-IAx">
-                    <rect key="frame" x="141" y="12" width="76" height="29"/>
+                    <rect key="frame" x="156" y="12" width="76" height="29"/>
                     <buttonCell key="cell" type="bevel" title="关闭" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EbN-cW-VeL">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -379,7 +379,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jg1-2P-KG0">
-                    <rect key="frame" x="225" y="12" width="76" height="29"/>
+                    <rect key="frame" x="240" y="12" width="76" height="29"/>
                     <buttonCell key="cell" type="bevel" title="提交订单" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="G3c-Jn-ATV">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -389,7 +389,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G7m-M5-dFw">
-                    <rect key="frame" x="13" y="218" width="38" height="19"/>
+                    <rect key="frame" x="28" y="218" width="38" height="19"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="时间" id="k5q-3B-54P">
                         <font key="font" size="13" name=".PingFangSC-Regular"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -397,7 +397,7 @@
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="452" y="-195.5"/>
+            <point key="canvasLocation" x="346" y="-181.5"/>
         </customView>
     </objects>
 </document>

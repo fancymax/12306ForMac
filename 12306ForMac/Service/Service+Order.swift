@@ -55,6 +55,14 @@ extension Service{
         })
     }
     
+    func cancelOrderWith(sequence_no:String,success:()->(),failure:(error:NSError)->()){
+        self.cancelNoCompleteOrder(sequence_no).then({
+            success()
+        }).error({error in
+            failure(error: error as NSError)
+        })
+    }
+    
     internal func getPassengerStr(passengers:[PassengerDTO]) ->(String,String){
         var passengerStr = ""
         var oldPassengerStr = ""
@@ -439,6 +447,26 @@ extension Service{
                         //提交订单出错
                     }
                 }})
+    }
+    
+    func cancelNoCompleteOrder(sequence_no:String)->Promise<Void>{
+        return Promise{ fulfill, reject in
+            let url = "https://kyfw.12306.cn/otn/queryOrder/cancelNoCompleteMyOrder"
+            let params = [
+                "sequence_no":sequence_no,
+                "cancel_flag":"cancel_order",
+                "_json_att":""]
+            let headers = ["refer": "https://kyfw.12306.cn/otn/queryOrder/initNoComplete"]
+            Service.Manager.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
+                switch (response.result){
+                case .Failure(let error):
+                    reject(error)
+                case .Success(let data):
+                    let json = JSON(data)
+                    logger.debug("\(json)")
+                    fulfill()
+                }})
+        }
     }
     
 }
