@@ -127,7 +127,7 @@ class TicketQueryViewController: NSViewController {
     var autoQuery = false {
         didSet {
             if autoQuery {
-                queryBtn.title = "自动查询"
+                queryBtn.title = "开始抢票"
             }
             else {
                 queryBtn.title = "开始查询"
@@ -138,10 +138,10 @@ class TicketQueryViewController: NSViewController {
     var hasAutoQuery = false {
         didSet {
             if hasAutoQuery {
-                queryBtn.title = "停止查询"
+                queryBtn.title = "停止抢票"
             }
             else {
-                queryBtn.title = "自动查询"
+                queryBtn.title = "开始抢票"
             }
         }
     }

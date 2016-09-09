@@ -62,6 +62,17 @@ class QueryLeftNewDTO:NSObject {
     var sale_time:String?
     var is_support_card:String?
     
+//    var hasTicket:Bool {
+//        get {
+//            if ((ticket == "--")||(ticket == "无")||(ticket == "*")){
+//                return false
+//            }
+//            else {
+//                return true
+//            }
+//        }
+//    }
+    
     var isStartStation:Bool{
         get{
             return FromStationCode == start_station_telecode
@@ -208,3 +219,69 @@ class QueryLeftNewDTO:NSObject {
         
     }
 }
+
+
+//let yp_info = "O021700228M026050032O021703072"
+//let yp_ex = "O0M0O0"
+//
+//let totalLen = yp_info.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+//
+//let oneTicketLen = 10
+//let preTicketInfoLen = 6
+//let preTicketPriceLen = 1
+//
+//let circle = totalLen / oneTicketLen
+//
+//var numberPrevPos = yp_info.startIndex
+//var numberNextPos = yp_info.startIndex
+//
+//var pricePrevPos = yp_info.startIndex
+//var priceNextPos = yp_info.startIndex
+//
+//var number = 0
+//var price = 0
+//
+//for index in 0...circle - 1 {
+//    pricePrevPos = pricePrevPos.advancedBy(preTicketPriceLen)
+//    priceNextPos = pricePrevPos.advancedBy(5)
+//    price = Int(yp_info.substringWithRange(pricePrevPos..<priceNextPos))!
+//    //    print("\(startPos1) ~ \(endPos1): \(ticketPrice) 元")
+//    
+//    numberPrevPos = numberPrevPos.advancedBy(preTicketInfoLen)
+//    numberNextPos = numberPrevPos.advancedBy(4)
+//    number = Int(yp_info.substringWithRange(numberPrevPos..<numberNextPos))!
+//    //    print("\(startPos) ~ \(endPos): \(ticketNum) 张")
+//    
+//    pricePrevPos = pricePrevPos.advancedBy(oneTicketLen - preTicketPriceLen)
+//    numberPrevPos = numberPrevPos.advancedBy(oneTicketLen - preTicketInfoLen)
+//}
+//
+////let x1 = "
+////1     02510   3186
+////4     06730   0005
+////1     02510   0519
+////3     04260   0116"
+//
+////
+////O     07650    0604
+////M     12075    0100
+////9     23895    0024
+//
+////1     01420    3000
+////4     04200   0000
+////1     01420   0000
+////3     02690   0000
+////
+//
+////O     03885   0000
+////9     11945   0000
+////O     03885   3000
+////M     06035   0000
+////
+//
+////O     03885   0154
+////9     11945   0003
+////O     03885   3024
+////M     06035   0000
+////
+////
