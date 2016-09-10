@@ -105,13 +105,13 @@ class TicketQueryViewController: NSViewController {
         QueryDefaultManager.sharedInstance.lastQueryDate = queryDate.dateValue
         
         if autoQuery {
-            repeatTimer = NSTimer(timeInterval: Double(GeneralPreferenceManager.sharedInstance.autoQuerySeconds), target: self, selector: #selector(TicketQueryViewController.queryTicket), userInfo: nil, repeats: true)
+            repeatTimer = NSTimer(timeInterval: Double(GeneralPreferenceManager.sharedInstance.autoQuerySeconds), target: self, selector: #selector(TicketQueryViewController.queryTicketAndSubmit), userInfo: nil, repeats: true)
             repeatTimer?.fire()
             NSRunLoop.currentRunLoop().addTimer(repeatTimer!, forMode: NSDefaultRunLoopMode)
             hasAutoQuery = true
         }
         else {
-            queryTicket()
+            queryLeftTicket()
         }
     }
     
@@ -309,12 +309,26 @@ class TicketQueryViewController: NSViewController {
         }
     }
     
-    func queryTicket()  {
-        let date = getDateStr(queryDate.dateValue)
-        queryLeftTicket(self.fromStationNameTxt.stringValue, toStation: self.toStationNameTxt.stringValue, date: date)
+    func queryTicketAndSubmit() {
+        let summitHandler = {
+            for ticket in self.filterQueryResult {
+                if ticket.hasTicketForSeatTypeFilterKey(self.seatFilterKey) {
+                    //停止查询
+                    self.repeatTimer?.invalidate()
+                    self.repeatTimer = nil
+                    self.hasAutoQuery = false
+                    self.autoSummit(ticket, seatTypeId: ticket.getSeatTypeNameByFilterKey(self.seatFilterKey)!)
+                    break;
+                }
+            }
+        }
+        queryLeftTicket(summitHandler)
     }
     
-    func queryLeftTicket(fromStation: String, toStation: String, date: String) {
+    func queryLeftTicket(summitHandler:()->() = {}) {
+        let fromStation = self.fromStationNameTxt.stringValue
+        let toStation = self.toStationNameTxt.stringValue
+        let date = getDateStr(queryDate.dateValue)
         
         let successHandler = { (tickets:[QueryLeftNewDTO])->()  in
             self.ticketQueryResult = tickets
@@ -333,8 +347,9 @@ class TicketQueryViewController: NSViewController {
             }
             else {
                 self.canFilter = false
-                
             }
+            
+            summitHandler()
         }
         
         let failureHandler = {(error:NSError)->() in
@@ -355,7 +370,6 @@ class TicketQueryViewController: NSViewController {
         var params = LeftTicketParam()
         params.from_stationCode = fromStationCode!
         params.to_stationCode = toStationCode!
-        
         params.train_date = date
         params.purpose_codes = "ADULT"
         
@@ -379,6 +393,46 @@ class TicketQueryViewController: NSViewController {
             passenger.seatCodeName = seatCodeName
             passenger.seatCode = QuerySeatTypeDicBy(trainCode)[seatCodeName]!
         }
+    }
+    
+    func autoSummit(ticket:QueryLeftNewDTO,seatTypeId:String){
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        
+        if !MainModel.isGetUserInfo {
+            notificationCenter.postNotificationName(DidSendLoginMessageNotification, object: nil)
+            return
+        }
+        
+        setSelectedPassenger()
+        
+        if MainModel.selectPassengers.count == 0 {
+            tips.show("请先选择乘客", forDuration: 0.1, withFlash: false)
+            return
+        }
+        
+        MainModel.selectedTicket = ticket
+        setSeatCodeForSelectedPassenger(MainModel.selectedTicket!.TrainCode! ,seatCodeName: seatTypeId)
+        
+        self.loadingTipController.start(tip:"正在提交...")
+        
+        let postSubmitWindowMessage = {
+            self.loadingTipController.stop()
+            self.tips.show("提交成功", forDuration: 0.1, withFlash: false)
+            
+            notificationCenter.postNotificationName(DidSendSubmitMessageNotification, object: nil)
+        }
+        
+        let failHandler = {(error:NSError)->() in
+            self.loadingTipController.stop()
+            
+            if error.code == ServiceError.Code.CheckUserFailed.rawValue {
+                notificationCenter.postNotificationName(DidSendLoginMessageNotification, object: nil)
+            }else{
+                self.tips.show(translate(error), forDuration: 0.1, withFlash: false)
+            }
+        }
+        
+        service.submitFlow(success: postSubmitWindowMessage, failure: failHandler)
     }
     
     func submit(sender: NSButton){

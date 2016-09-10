@@ -77,7 +77,7 @@ class TrainFilterWindowController: NSWindowController,NSTableViewDelegate,NSTabl
             }
             
             if ((item.type == 1) && (item.isChecked)) {
-                seatFilterKey += "\(item.key)|"
+                seatFilterKey += "\(item.presentation)|"
             }
         }
     }

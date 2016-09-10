@@ -207,6 +207,24 @@ class QueryLeftNewDTO:NSObject {
         setupHasTicket()
     }
     
+    func hasTicketForSeatTypeFilterKey(key:String) -> Bool {
+        for val in seatTypePairDic.values {
+            if ((key.containsString(val.id1))&&(val.number > 0)) {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func getSeatTypeNameByFilterKey(key:String) -> String? {
+        for val in seatTypePairDic.values {
+            if ((key.containsString(val.id1))&&(val.number > 0)) {
+                return val.id1
+            }
+        }
+        return nil
+    }
+    
     func setupHasTicket(){
         for val in seatTypePairDic.values {
             if val.number > 0 {
