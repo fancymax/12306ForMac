@@ -102,10 +102,12 @@ class QueryLeftNewDTO:NSObject {
     let Swz_Num:String!
     
 // MARK: Custom Property
-    var ticketTypePairs = [SeatTypePair]()
+    var seatTypePairDic = [String:SeatTypePair]()
     
     let isStartStation:Bool
     let isEndStation:Bool
+    
+    var hasTicket:Bool = false
     
     var startTrainDate:NSDate!
     private func getStartTrainDate(dateStr:String)->NSDate? {
@@ -202,6 +204,16 @@ class QueryLeftNewDTO:NSObject {
         jsStartTrainDateStr = getJsStartTrainDateStr(startTrainDate)
         
         setupSeatTypePairs()
+        setupHasTicket()
+    }
+    
+    func setupHasTicket(){
+        for val in seatTypePairDic.values {
+            if val.number > 0 {
+                hasTicket = true
+                return
+            }
+        }
     }
     
     func setupSeatTypePairs() {
@@ -263,6 +275,7 @@ M/12075/0100
             
             if number >= 3000 {
                 id1 = "无座"
+                number -= 3000
             }
             else {
                 for (seatTypeName,seatTypeId) in seatTypeDic {
@@ -272,16 +285,15 @@ M/12075/0100
                 }
             }
             
-            let seatType = SeatTypePair(id1: id1, id2: id2, number: number, price: price)
-            ticketTypePairs.append(seatType)
-            print("\(TrainCode) id1:\(id1) id:\(id2) number:\(number) price:\(price)")
-            
             pricePrevPos = pricePrevPos.advancedBy(ticketLength - priceOffset)
             numberPrevPos = numberPrevPos.advancedBy(ticketLength - numberOffset)
             idPrevPos = idPrevPos.advancedBy(ticketLength - idOffset)
+            
+            let seatType = SeatTypePair(id1: id1, id2: id2, number: number, price: price)
+            seatTypePairDic[id1] = seatType
+            print("\(TrainCode) id1:\(id1) id:\(id2) number:\(number) price:\(price)")
         }
         print("")
-        
     }
 }
 

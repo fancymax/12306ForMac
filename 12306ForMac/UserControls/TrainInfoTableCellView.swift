@@ -159,7 +159,7 @@ class TrainInfoTableCellView: TrainTableCellView {
             else{
                 sender.title = sender.alternateTitle + "(\(ticket)张)"
             }
-//            sender.toolTip = "¥\(ticketInfo.getTicketPriceBy(sender.identifier!))"
+            sender.toolTip = "¥\(ticketInfo.seatTypePairDic[sender.identifier!]!.price)"
         }
         
         setTicketButton(ticketInfo.Swz_Num, sender: SwzBtn)
@@ -181,20 +181,18 @@ class TrainInfoTableCellView: TrainTableCellView {
             messageField.hidden = false
         }
         else if ticketInfo.canWebBuy == "IS_TIME_NOT_BUY"{
+            
+            for btn in dictOfBtn.values {
+                btn.enabled = false
+            }
+            
             if ticketInfo.buttonTextInfo == "   23:00-07:00系统维护时间" {
-                for btn in dictOfBtn.values {
-                    btn.enabled = false
-                }
-                var hasNoTicket = true
-                for btn in dictOfBtn.values {
-                    hasNoTicket = hasNoTicket && btn.hidden
-                }
-                if hasNoTicket {
-                    messageField.stringValue = "   本车次暂无可售车票"
-                    messageField.hidden = false
+                if ticketInfo.hasTicket {
+                    messageField.hidden = true
                 }
                 else{
-                    messageField.hidden = true
+                    messageField.stringValue = "   本车次暂无可售车票"
+                    messageField.hidden = false
                 }
             }
             else
