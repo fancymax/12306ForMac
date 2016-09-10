@@ -9,13 +9,6 @@
 import Foundation
 
 class MainModel{
-    static let seatTypes = ["商务座", "特等座", "一等座", "二等座", "高级软卧", "软卧", "硬卧", "软座", "硬座", "无座"]
-    static let seatTypeNameDic = ["商务座": "9", "特等座": "P", "一等座": "M", "二等座": "O", "高级软卧": "6", "动车软卧": "F", "动车无座": "O", "软卧": "4", "硬卧": "3", "软座": "2", "硬座": "1", "无座": "1"]
-    
-    static let cardTypeNameDic = ["二代身份证": "1", "一代身份证": "2", "港澳通行证": "C", "台湾通行证": "G", "护照": "B"]
-    
-    static let ticketTypeNameDic = ["成人票": "1", "儿童票": "2", "学生票": "3", "残军票": "4"]
-    
     static var realName = ""
     static var userName = ""
     static var isGetUserInfo = false
@@ -37,21 +30,6 @@ class MainModel{
     static var historyOrderList:[OrderDTO] = []
     static var noCompleteOrderList:[OrderDTO] = []
     
-    static func getSeatCodeBy(identifier:String, trainCode:String)->String{
-        if (trainCode.containsString("G"))||(trainCode.containsString("D")||(trainCode.containsString("C"))) {
-            if(identifier == "无座"){
-                return MainModel.seatTypeNameDic["动车无座"]!
-            }
-        }
-        
-        if (trainCode.containsString("G") || trainCode.containsString("C")) {
-            if(identifier == "软卧"){
-                return MainModel.seatTypeNameDic["动车软卧"]!
-            }
-        }
-        
-        return MainModel.seatTypeNameDic[identifier]!
-    }
     static func ticketPriceBy(indentifier:String, ticketPriceInfo:String?, seatTypes: String?) -> Double{
         if let ticketInfo = ticketPriceInfo {
             var start = ticketInfo.startIndex

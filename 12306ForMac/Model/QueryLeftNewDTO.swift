@@ -7,158 +7,133 @@
 //
 
 import Cocoa
-import JavaScriptCore
-/*
-gg_num 	    观光
-yb_num 	    迎宾
-qt_num 	    其他
 
-swz_num     商务座
-tz_num 	    特等座
-zy_num 	    一等座
-ze_num 	    二等座
-gr_num 	    高级软卧
-rw_num      软卧
-yw_num 	    硬卧
-rz_num 	    软座
-yz_num 	    硬座
-wz_num 	    无座
-*/
+struct SeatTypePair:CustomDebugStringConvertible {
+    let id1:String
+    let id2:String
+    let number:Int
+    let price:Double
+    
+    init(id1:String,id2:String,number:Int,price:Double) {
+        self.id1 = id1
+        self.id2 = id2
+        self.number = number
+        self.price = price
+    }
+    
+    var debugDescription: String {
+        return "id1:\(id1) id:\(id2) number:\(number) price:\(price)"
+    }
+}
 
 class QueryLeftNewDTO:NSObject {
-    var train_no:String?
-    var TrainCode:String?
-    var start_station_telecode:String?
-    var start_station_name:String?
+// MARK: JSON Property
+    let train_no:String!
+    let TrainCode:String!
+    let start_station_telecode:String!
+    let start_station_name:String!
 
-    var end_station_telecode:String?
-    var end_station_name:String?
+    let end_station_telecode:String!
+    let end_station_name:String!
     
-    var FromStationCode:String?
-    var FromStationName:String?
+    let FromStationCode:String?
+    let FromStationName:String?
     
-    var ToStationName:String?
-    var ToStationCode:String?
+    let ToStationName:String?
+    let ToStationCode:String?
     
-    var start_time:String?
-    var arrive_time:String?
+    let start_time:String?
+    let arrive_time:String?
     
-    var day_difference:String?
-    var train_class_name:String?
-    var lishi:String?               //"12:01"
-    var canWebBuy:String?           //"Y"  "IS_TIME_NOT_BUY"预售期未到/系统维护时间
-    var lishiValue:String?          //721
-    var yp_info:String?             //"yp_info":"O021700228M026050032O021703072" 二等座228张 一等座32 无座72
-    var control_train_day:String?
-    var start_train_date:String?
-    var seat_feature:String?
-    var yp_ex:String?               //"yp_ex":"O0M0O0"
-    var train_seat_feature:String?
-    var seat_types:String?
-    var location_code:String?
-    var from_station_no:String?
-    var to_station_no:String?
-    var control_day:String?
-    var sale_time:String?
-    var is_support_card:String?
+    let day_difference:String?
+    let train_class_name:String?
+    //"12:01"
+    let lishi:String?
+    //"Y"  "IS_TIME_NOT_BUY"预售期未到/系统维护时间
+    let canWebBuy:String?
+    //721
+    let lishiValue:String?
     
-//    var hasTicket:Bool {
-//        get {
-//            if ((ticket == "--")||(ticket == "无")||(ticket == "*")){
-//                return false
-//            }
-//            else {
-//                return true
-//            }
-//        }
-//    }
+    //"yp_info":"O021700228M026050032O021703072" 二等座228张 一等座32 无座72
+    let yp_info:String?
+    let control_train_day:String?
+    let start_train_date:String!
+    let seat_feature:String?
     
-    var isStartStation:Bool{
-        get{
-            return FromStationCode == start_station_telecode
-        }
-    }
-    
-    var isEndStation:Bool{
-        get{
-            return ToStationCode == end_station_telecode
-        }
-    }
-    
-    var startTrainDate:NSDate?{
-        get{
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "yyyymmdd"
-            return dateFormatter.dateFromString(start_train_date!)
-        }
-    }
-    
-    //"2015-08-12"
-    var startTrainDateStr:String?{
-        get{
-            //"20150926" - > "2015-09-26"
-            func transformDateFormate(dateStr:String) -> String?
-            {
-                var formateStr = dateStr
-                var index = dateStr.startIndex.advancedBy(4)
-                formateStr.insert("-", atIndex: index)
-                index = dateStr.startIndex.advancedBy(7)
-                formateStr.insert("-", atIndex: index)
-                
-                return formateStr
-            }
-            return transformDateFormate(start_train_date!)
-        }
-    }
-    
-    //"Fri Dec 04 2015 08:00:00 GMT+0800 (中国标准时间)"
-    var jsStartTrainDateStr:String?{
-        get{
-            let dateFormateStr = "EEE MMM dd yyyy '08:00:00' 'GMT'+'0800' '(中国标准时间)'"
-            let local = NSLocale(localeIdentifier: "en-US")
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = dateFormateStr
-            dateFormatter.locale = local
-            return dateFormatter.stringFromDate(startTrainDate!)
-        }
-    }
-    
-    func getTicketPriceBy(identifier:String) -> Double {
-        let seatCode = MainModel.getSeatCodeBy(identifier, trainCode: TrainCode!)
-        let price = MainModel.ticketPriceBy(seatCode, ticketPriceInfo: yp_info, seatTypes: seat_types)
-        return price
-    }
-    
-    var isSelected = false
-    
+    //"yp_ex":"O0M0O0"
+    let yp_ex:String?
+    let train_seat_feature:String?
+    let seat_types:String?
+    let location_code:String?
+    let from_station_no:String?
+    let to_station_no:String?
+    let control_day:String?
+    let sale_time:String?
+    let is_support_card:String?
     //标识符
     var SecretStr:String?
     //票务描述
     var buttonTextInfo:String?
-    var Gg_Num:String?
+    //观光
+//    var Gg_Num:String?
+    //迎宾
+//    var Yb_Num:String!
     //高级软卧
-    var Gr_Num:String?
+    let Gr_Num:String!
     //其他
-    var Qt_Num:String?
+    let Qt_Num:String!
     //软卧
-    var Rw_Num:String?
+    let Rw_Num:String!
     //软座
-    var Rz_Num:String?
+    let Rz_Num:String!
     //特等座
-    var Tz_Num:String?
+    let Tz_Num:String!
     //无座
-    var Wz_Num:String?
-    var Yb_Num:String?
+    let Wz_Num:String!
     //硬卧
-    var Yw_Num:String?
+    let Yw_Num:String!
     //硬座
-    var Yz_Num:String?
+    let Yz_Num:String!
     //二等座
-    var Ze_Num:String?
+    let Ze_Num:String!
     //一等座
-    var Zy_Num:String?
+    let Zy_Num:String!
     //商务座
-    var Swz_Num:String?
+    let Swz_Num:String!
+    
+// MARK: Custom Property
+    var ticketTypePairs = [SeatTypePair]()
+    
+    let isStartStation:Bool
+    let isEndStation:Bool
+    
+    var startTrainDate:NSDate!
+    private func getStartTrainDate(dateStr:String)->NSDate? {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyymmdd"
+        return dateFormatter.dateFromString(dateStr)
+    }
+    
+    //"20150926" - > "2015-09-26"
+    var startTrainDateStr:String!
+    private func Convert2StartTrainDateStr(dateStr: String)->String{
+        var formateStr = dateStr
+        var index = dateStr.startIndex.advancedBy(4)
+        formateStr.insert("-", atIndex: index)
+        index = dateStr.startIndex.advancedBy(7)
+        formateStr.insert("-", atIndex: index)
+        
+        return formateStr
+    }
+    
+    //"Fri Dec 04 2015 08:00:00 GMT+0800 (中国标准时间)"
+    var jsStartTrainDateStr:String!
+    private func getJsStartTrainDateStr(date:NSDate)->String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "EEE MMM dd yyyy '08:00:00' 'GMT'+'0800' '(中国标准时间)'"
+        dateFormatter.locale = NSLocale(localeIdentifier: "en-US")
+        return dateFormatter.stringFromDate(date)
+    }
     
     init(json:JSON)
     {
@@ -181,7 +156,7 @@ class QueryLeftNewDTO:NSObject {
         lishi = ticket["lishi"].string
         start_train_date = ticket["start_train_date"].string
         
-        day_difference = ticket["start_train_date"].string
+        day_difference = ticket["day_difference"].string
         train_class_name = ticket["train_class_name"].string
         canWebBuy = ticket["canWebBuy"].string
         lishiValue = ticket["lishiValue"].string
@@ -217,71 +192,96 @@ class QueryLeftNewDTO:NSObject {
             SecretStr = SecretStr!.stringByRemovingPercentEncoding
         }
         
+        isStartStation = (FromStationCode == start_station_telecode)
+        isEndStation = (ToStationCode == end_station_telecode)
+        
+        super.init()
+        
+        startTrainDate = getStartTrainDate(start_train_date)
+        startTrainDateStr = Convert2StartTrainDateStr(start_train_date)
+        jsStartTrainDateStr = getJsStartTrainDateStr(startTrainDate)
+        
+        setupSeatTypePairs()
+    }
+    
+    func setupSeatTypePairs() {
+        if self.yp_info == nil {
+            return
+        }
+        let yp_info = self.yp_info!
+        
+        let totalLength = yp_info.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+        if totalLength == 0 {
+            return
+        }
+/*
+1/02510/3186 :  无座/251元/186张
+4/06730/0005
+1/02510/0519
+3/04260/0116
+
+O/07650/0604
+M/12075/0100
+9/23895/0024
+ */
+        let ticketLength = 10
+        let priceOffset = 1
+        let priceLength = 5
+        let numberOffset = 6
+        let numberLength = 4
+        let idOffset = 0
+        let idLength = 1
+        
+        var numberPrevPos = yp_info.startIndex
+        var numberNextPos = yp_info.startIndex
+        var pricePrevPos = yp_info.startIndex
+        var priceNextPos = yp_info.startIndex
+        var idPrevPos = yp_info.startIndex
+        var idNextPos = yp_info.startIndex
+        
+        var id1 = "无座"
+        var id2 = "1"
+        var number = 0
+        var price:Double = 0
+        
+        let seatTypeDic = QuerySeatTypeDicBy(TrainCode)
+        
+        let totalTicketNumber = totalLength / ticketLength
+        
+        for _ in 1...totalTicketNumber {
+            idPrevPos = idPrevPos.advancedBy(idOffset)
+            idNextPos = idPrevPos.advancedBy(idLength)
+            id2 = yp_info.substringWithRange(idPrevPos..<idNextPos)
+            
+            pricePrevPos = pricePrevPos.advancedBy(priceOffset)
+            priceNextPos = pricePrevPos.advancedBy(priceLength)
+            price = Double(yp_info.substringWithRange(pricePrevPos..<priceNextPos))! / 10
+        
+            numberPrevPos = numberPrevPos.advancedBy(numberOffset)
+            numberNextPos = numberPrevPos.advancedBy(numberLength)
+            number = Int(yp_info.substringWithRange(numberPrevPos..<numberNextPos))!
+            
+            if number >= 3000 {
+                id1 = "无座"
+            }
+            else {
+                for (seatTypeName,seatTypeId) in seatTypeDic {
+                    if (seatTypeId == id2) && (seatTypeName != "无座") {
+                        id1 = seatTypeName
+                    }
+                }
+            }
+            
+            let seatType = SeatTypePair(id1: id1, id2: id2, number: number, price: price)
+            ticketTypePairs.append(seatType)
+            print("\(TrainCode) id1:\(id1) id:\(id2) number:\(number) price:\(price)")
+            
+            pricePrevPos = pricePrevPos.advancedBy(ticketLength - priceOffset)
+            numberPrevPos = numberPrevPos.advancedBy(ticketLength - numberOffset)
+            idPrevPos = idPrevPos.advancedBy(ticketLength - idOffset)
+        }
+        print("")
+        
     }
 }
 
-
-//let yp_info = "O021700228M026050032O021703072"
-//let yp_ex = "O0M0O0"
-//
-//let totalLen = yp_info.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
-//
-//let oneTicketLen = 10
-//let preTicketInfoLen = 6
-//let preTicketPriceLen = 1
-//
-//let circle = totalLen / oneTicketLen
-//
-//var numberPrevPos = yp_info.startIndex
-//var numberNextPos = yp_info.startIndex
-//
-//var pricePrevPos = yp_info.startIndex
-//var priceNextPos = yp_info.startIndex
-//
-//var number = 0
-//var price = 0
-//
-//for index in 0...circle - 1 {
-//    pricePrevPos = pricePrevPos.advancedBy(preTicketPriceLen)
-//    priceNextPos = pricePrevPos.advancedBy(5)
-//    price = Int(yp_info.substringWithRange(pricePrevPos..<priceNextPos))!
-//    //    print("\(startPos1) ~ \(endPos1): \(ticketPrice) 元")
-//    
-//    numberPrevPos = numberPrevPos.advancedBy(preTicketInfoLen)
-//    numberNextPos = numberPrevPos.advancedBy(4)
-//    number = Int(yp_info.substringWithRange(numberPrevPos..<numberNextPos))!
-//    //    print("\(startPos) ~ \(endPos): \(ticketNum) 张")
-//    
-//    pricePrevPos = pricePrevPos.advancedBy(oneTicketLen - preTicketPriceLen)
-//    numberPrevPos = numberPrevPos.advancedBy(oneTicketLen - preTicketInfoLen)
-//}
-//
-////let x1 = "
-////1     02510   3186
-////4     06730   0005
-////1     02510   0519
-////3     04260   0116"
-//
-////
-////O     07650    0604
-////M     12075    0100
-////9     23895    0024
-//
-////1     01420    3000
-////4     04200   0000
-////1     01420   0000
-////3     02690   0000
-////
-//
-////O     03885   0000
-////9     11945   0000
-////O     03885   3000
-////M     06035   0000
-////
-//
-////O     03885   0154
-////9     11945   0003
-////O     03885   3024
-////M     06035   0000
-////
-////

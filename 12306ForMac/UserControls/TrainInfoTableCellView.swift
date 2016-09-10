@@ -162,16 +162,16 @@ class TrainInfoTableCellView: TrainTableCellView {
 //            sender.toolTip = "¥\(ticketInfo.getTicketPriceBy(sender.identifier!))"
         }
         
-        setTicketButton(ticketInfo.Swz_Num!, sender: SwzBtn)
-        setTicketButton(ticketInfo.Tz_Num!, sender: TzBtn)
-        setTicketButton(ticketInfo.Zy_Num!, sender: ZyBtn)
-        setTicketButton(ticketInfo.Ze_Num!, sender: ZeBtn)
-        setTicketButton(ticketInfo.Gr_Num!, sender: GrBtn)
-        setTicketButton(ticketInfo.Rw_Num!, sender: RwBtn)
-        setTicketButton(ticketInfo.Yw_Num!, sender: YwBtn)
-        setTicketButton(ticketInfo.Rz_Num!, sender: RzBtn)
-        setTicketButton(ticketInfo.Yz_Num!, sender: YzBtn)
-        setTicketButton(ticketInfo.Wz_Num!, sender: WzBtn)
+        setTicketButton(ticketInfo.Swz_Num, sender: SwzBtn)
+        setTicketButton(ticketInfo.Tz_Num, sender: TzBtn)
+        setTicketButton(ticketInfo.Zy_Num, sender: ZyBtn)
+        setTicketButton(ticketInfo.Ze_Num, sender: ZeBtn)
+        setTicketButton(ticketInfo.Gr_Num, sender: GrBtn)
+        setTicketButton(ticketInfo.Rw_Num, sender: RwBtn)
+        setTicketButton(ticketInfo.Yw_Num, sender: YwBtn)
+        setTicketButton(ticketInfo.Rz_Num, sender: RzBtn)
+        setTicketButton(ticketInfo.Yz_Num, sender: YzBtn)
+        setTicketButton(ticketInfo.Wz_Num, sender: WzBtn)
         
         if ticketInfo.canWebBuy == "Y" {
             messageField.hidden = true
