@@ -23,13 +23,15 @@ class LoginWindowController: NSWindowController{
     
     let service = Service()
     var users = [User]()
+    var isAutoLogin = false
+    var isLogin = false
     
     @IBAction func freshImage(sender: NSButton)
     {
         loadImage()
     }
     
-    @IBAction func okayButtonClicked(button:NSButton){
+    @IBAction func clickOK(sender:AnyObject?){
         if userName.stringValue == "" || passWord.stringValue == "" {
             tips.show("请先输入用户名和密码", forDuration: 0.1, withFlash: false)
             return
@@ -39,12 +41,16 @@ class LoginWindowController: NSWindowController{
             return
         }
         
-        button.enabled = false
+        if isLogin {
+            return
+        }
+        
+        isLogin = true
         self.startLoadingTip("正在登录...")
         
         let failureHandler = {(error:NSError) -> () in
             //关闭正在登录提示
-            button.enabled = true
+            self.isLogin = false
             self.stopLoadingTip()
             //显示登录失败 持续一秒
             self.tips.show(translate(error), forDuration: 0.1, withFlash: false)
@@ -54,7 +60,7 @@ class LoginWindowController: NSWindowController{
         let successHandler = {
             self.stopLoadingTip()
             self.tips.show("登录成功", forDuration: 0.1, withFlash: false)
-            button.enabled = true
+            self.isLogin = false
             self.service.postMobileGetPassengerDTOs()
             NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector:#selector(LoginWindowController.handlerAfterSuccess), userInfo: nil, repeats: false)
         }
@@ -62,7 +68,7 @@ class LoginWindowController: NSWindowController{
         service.loginFlow(user: userName.stringValue, passWord: passWord.stringValue, randCodeStr: loginImage.randCodeStr!, success: successHandler, failure: failureHandler)
     }
     
-    @IBAction func cancelButtonClicked(button:NSButton){
+    @IBAction func clickCancel(button:NSButton){
         dismissWithModalResponse(NSModalResponseCancel)
     }
     
@@ -119,9 +125,31 @@ class LoginWindowController: NSWindowController{
     func loadImage(){
         self.loginImage.clearRandCodes()
         self.startLoadingTip("正在加载...")
+        
+        let autoLoginHandler = {(image:NSImage)->() in
+            self.startLoadingTip("自动打码...")
+            
+            Dama.sharedInstance.dama(AdvancedPreferenceManager.sharedInstance.damaUser,
+                password: AdvancedPreferenceManager.sharedInstance.damaPassword,
+                ofImage: image,
+                success: {imageCode in
+                        self.stopLoadingTip()
+                        self.loginImage.drawDamaCodes(imageCode)
+                        self.clickOK(nil)
+                },
+                failure: {error in
+                        self.stopLoadingTip()
+                        self.tips.show(translate(error), forDuration: 0.1, withFlash: false)
+                })
+        }
+        
         let successHandler = {(image:NSImage) -> () in
             self.loginImage.image = image
             self.stopLoadingTip()
+            
+            if ((self.isAutoLogin)&&(AdvancedPreferenceManager.sharedInstance.isUseDama)) {
+                autoLoginHandler(image)
+            }
         }
         let failureHandler = {(error:NSError) -> () in
             self.stopLoadingTip()

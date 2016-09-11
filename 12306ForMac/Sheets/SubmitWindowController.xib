@@ -58,7 +58,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="cancelButtonClicked:" target="-2" id="xSb-Lz-muY"/>
+                        <action selector="clickCancel:" target="-2" id="WTb-VF-s08"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y6G-Ou-4py">
@@ -71,7 +71,7 @@ DQ
 </string>
                     </buttonCell>
                     <connections>
-                        <action selector="payButtonClicked:" target="-2" id="zjx-ww-Ep3"/>
+                        <action selector="clickPay:" target="-2" id="QCh-TE-xj5"/>
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hC4-Mr-zol">
@@ -142,7 +142,7 @@ DQ
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="cancelButtonClicked:" target="-2" id="vAU-HH-eiV"/>
+                        <action selector="clickCancel:" target="-2" id="mIO-eL-TbB"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hLk-wf-da0">
@@ -155,7 +155,7 @@ DQ
 </string>
                     </buttonCell>
                     <connections>
-                        <action selector="okayButtonClicked:" target="-2" id="xlA-Zh-CLc"/>
+                        <action selector="clickOK:" target="-2" id="Fvm-Dz-3Rj"/>
                     </connections>
                 </button>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pov-nB-bqD" userLabel="Loading View" customClass="GlassView" customModule="_2306ForMac" customModuleProvider="target">
@@ -381,7 +381,7 @@ DQ
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="cancelButtonClicked:" target="-2" id="ZMN-uu-hAv"/>
+                        <action selector="clickCancel:" target="-2" id="MXU-i8-0J0"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jg1-2P-KG0">
@@ -394,7 +394,7 @@ DQ
 </string>
                     </buttonCell>
                     <connections>
-                        <action selector="clickCheckOrderBtn:" target="-2" id="Y9E-FF-KLV"/>
+                        <action selector="clickCheckOrder:" target="-2" id="Z6b-v6-G4c"/>
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G7m-M5-dFw">

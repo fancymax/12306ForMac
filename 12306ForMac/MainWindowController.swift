@@ -93,6 +93,7 @@ class MainWindowController: NSWindowController{
         //login notification
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: #selector(MainWindowController.receiveDidSendLoginMessageNotification(_:)), name: DidSendLoginMessageNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(MainWindowController.receiveAutoLoginMessageNotification(_:)), name: DidSendAutoLoginMessageNotification, object: nil)
     }
     
     func segmentTab(sender: NSSegmentedControl){
@@ -117,12 +118,18 @@ class MainWindowController: NSWindowController{
     func receiveDidSendLoginMessageNotification(note: NSNotification){
         print("receiveDidSendLoginMessageNotification")
         loginOut()
-        login()
+        login(isAutoLogin: false)
+    }
+    
+    func receiveAutoLoginMessageNotification(note: NSNotification){
+        print("receiveAutoLoginMessageNotification")
+        loginOut()
+        login(isAutoLogin: true)
     }
     
     @IBAction func UserLogin(sender: NSButton){
         if !MainModel.isGetUserInfo{
-            self.login()
+            self.login(isAutoLogin: false)
         }
         else{
             var position:NSPoint = sender.bounds.origin
@@ -155,8 +162,9 @@ class MainWindowController: NSWindowController{
     }
     
     
-    func login(){
+    func login(isAutoLogin isAutoLogin :Bool){
         loginWindowController = LoginWindowController()
+        loginWindowController.isAutoLogin = isAutoLogin
         
         if let window = self.window {
             window.beginSheet(loginWindowController.window!) {

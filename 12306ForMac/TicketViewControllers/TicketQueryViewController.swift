@@ -51,6 +51,7 @@ class TicketQueryViewController: NSViewController {
         notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveLogoutMessageNotification(_:)), name: DidSendLogoutMessageNotification, object: nil)
         
         notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveDidSendSubmitMessageNotification(_:)), name: DidSendSubmitMessageNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveAutoSubmitMessageNotification(_:)), name: DidSendAutoSubmitMessageNotification, object: nil)
         
         //init loadingTipView
         self.view.addSubview(loadingTipController.view)
@@ -287,7 +288,17 @@ class TicketQueryViewController: NSViewController {
     
     func receiveDidSendSubmitMessageNotification(note: NSNotification){
         print("receiveDidSendSubmitMessageNotification")
+        openSubmitSheet(isAutoSubmit: false)
+    }
+    
+    func receiveAutoSubmitMessageNotification(note: NSNotification){
+        print("receiveAutoSubmitMessageNotification")
+        openSubmitSheet(isAutoSubmit: true)
+    }
+    
+    func openSubmitSheet(isAutoSubmit isAutoSubmit:Bool) {
         submitWindowController = SubmitWindowController()
+        submitWindowController.isAutoSubmit = isAutoSubmit
         if let window = self.view.window {
             window.beginSheet(submitWindowController.window!, completionHandler: {response in
                 if response == NSModalResponseOK{
@@ -410,7 +421,7 @@ class TicketQueryViewController: NSViewController {
         let notificationCenter = NSNotificationCenter.defaultCenter()
         
         if !MainModel.isGetUserInfo {
-            notificationCenter.postNotificationName(DidSendLoginMessageNotification, object: nil)
+            notificationCenter.postNotificationName(DidSendAutoLoginMessageNotification, object: nil)
             return
         }
         
@@ -430,7 +441,7 @@ class TicketQueryViewController: NSViewController {
             self.loadingTipController.stop()
             self.tips.show("提交成功", forDuration: 0.1, withFlash: false)
             
-            notificationCenter.postNotificationName(DidSendSubmitMessageNotification, object: nil)
+            notificationCenter.postNotificationName(DidSendAutoSubmitMessageNotification, object: nil)
         }
         
         let failHandler = {(error:NSError)->() in

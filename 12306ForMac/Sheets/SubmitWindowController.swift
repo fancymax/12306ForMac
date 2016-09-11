@@ -31,6 +31,10 @@ class SubmitWindowController: NSWindowController{
     
     @IBOutlet weak var errorFlashLabel: FlashLabel!
     
+    var isAutoSubmit = false
+    var isSubmitting = false
+    
+    
     @IBAction func FreshImage(sender: NSButton) {
         freshImage()
     }
@@ -76,10 +80,32 @@ class SubmitWindowController: NSWindowController{
     
     func loadImage(){
         self.startLoadingTip("正在加载...")
+        let autoSummitHandler = {(image:NSImage)->() in
+            self.switchViewFrom(self.orderInfoView, to: self.preOrderView)
+            self.startLoadingTip("自动打码...")
+            
+            Dama.sharedInstance.dama(AdvancedPreferenceManager.sharedInstance.damaUser,
+                password: AdvancedPreferenceManager.sharedInstance.damaPassword,
+                ofImage: image,
+                success: {imageCode in
+                    self.stopLoadingTip()
+                    self.passengerImage.drawDamaCodes(imageCode)
+                    self.clickOK(nil)
+                },
+            
+                failure: {error in
+                    self.stopLoadingTip()
+                    self.errorFlashLabel.show(translate(error), forDuration: 0.1, withFlash: false)
+                })
+            
+        }
         let successHandler = {(image:NSImage) -> () in
             self.passengerImage.clearRandCodes()
             self.passengerImage.image = image
             self.stopLoadingTip()
+            if ((self.isAutoSubmit)&&(AdvancedPreferenceManager.sharedInstance.isUseDama)) {
+                autoSummitHandler(image)
+            }
         }
         
         let failureHandler = { (error:NSError) -> () in
@@ -118,11 +144,11 @@ class SubmitWindowController: NSWindowController{
         NSWorkspace.sharedWorkspace().openURL(NSURL(string: "https://kyfw.12306.cn/otn/login/init")!)
     }
     
-    @IBAction func clickCheckOrderBtn(sender: NSButton) {
+    @IBAction func clickCheckOrder(sender: NSButton) {
         self.switchViewFrom(orderInfoView, to: preOrderView)
     }
     
-    @IBAction func okayButtonClicked(button:NSButton){
+    @IBAction func clickOK(sender:AnyObject?){
         
         if passengerImage.randCodeStr == nil {
             errorFlashLabel.show("请先选择验证码", forDuration: 0.1, withFlash: false)
@@ -130,18 +156,22 @@ class SubmitWindowController: NSWindowController{
         }
         
         self.startLoadingTip("正在提交...")
-        button.enabled = false
+        if isSubmitting {
+            return
+        }
+        
+        isSubmitting = true
         
         let failureHandler = { (error:NSError) -> () in
             self.stopLoadingTip()
-            button.enabled = true
+            self.isSubmitting = false
             self.errorFlashLabel.show(translate(error), forDuration: 0.1, withFlash: false)
             self.freshImage()
         }
         
         let successHandler = {
             self.stopLoadingTip()
-            button.enabled = true
+            self.isSubmitting = false
             self.switchViewFrom(self.preOrderView, to: self.orderIdView)
             self.orderId.stringValue = MainModel.orderId!
             self.totalPriceLabel.stringValue = "¥\(MainModel.ticketPrice)"
@@ -154,7 +184,7 @@ class SubmitWindowController: NSWindowController{
         service.orderFlowWith(passengerImage.randCodeStr!, success: successHandler, failure: failureHandler,wait: waitHandler)
     }
     
-    @IBAction func cancelButtonClicked(button:NSButton){
+    @IBAction func clickCancel(button:NSButton){
         dismissWithModalResponse(NSModalResponseCancel)
     }
     

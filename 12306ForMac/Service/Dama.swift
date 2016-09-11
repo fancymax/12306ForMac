@@ -125,7 +125,7 @@ class Dama: NSObject {
         }
     }
     
-    func dama(user:String,password:String,ofImage image:NSImage,success:()->(),failure:(error:NSError)->()){
+    func dama(user:String,password:String,ofImage image:NSImage,success:(imageCode:String)->(),failure:(error:NSError)->()){
         
         let pwd = getpwd(user,password: password)
         let sign = getFileDataSign2(ofImage: image,user: user)
@@ -139,20 +139,20 @@ class Dama: NSObject {
                       "type":type,
                       "fileData":fileData,
                       "sign":sign]
-        Alamofire.request(.POST, url,parameters: params)
-            .responseJSON { response in
-                print(response.request)  // original URL request
-                print(response.response) // URL response
-                print(response.data)     // server data
-                print(response.result)   // result of response serialization
-                
-                if let JSON = response.result.value {
-                    print("JSON: \(JSON)")
-//                    self.imageView.drawDamaCodes(JSON.objectForKey("result") as! String)
+        Alamofire.request(.POST, url,parameters: params).responseJSON { response in
+            switch(response.result) {
+            case .Failure(let error):
+                failure(error: error)
+            case .Success(let data):
+                if let imageCode = JSON(data)["result"].string {
+                    success(imageCode: imageCode)
                 }
-                
-                print(response.timeline.totalDuration)
-//                self.totalTimeTxt.stringValue = String(response.timeline.totalDuration)
+                else {
+                    if let errorCode = JSON(data)["ret"].int {
+                        failure(error: DamaError.errorWithCode(errorCode))
+                    }
+                }
+            }
         }
     }
     

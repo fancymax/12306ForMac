@@ -78,7 +78,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="cancelButtonClicked:" target="-2" id="dtU-eG-Gyp"/>
+                            <action selector="clickCancel:" target="-2" id="8XM-VO-4xF"/>
                         </connections>
                     </button>
                     <secureTextField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gnT-ti-hbG">
@@ -128,7 +128,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="okayButtonClicked:" target="-2" id="cW9-qX-GDm"/>
+                            <action selector="clickOK:" target="-2" id="Mg2-hc-mjJ"/>
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z56-Qq-iru">

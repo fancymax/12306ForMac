@@ -33,6 +33,8 @@ let DidSendSubmitMessageNotification = "com.12306.DidSendSubmitMessageNotificati
 let DidSendTrainFilterMessageNotification = "com.12306.DidSendTrainFilterMessageNotification"
 let DidSendCheckPassengerMessageNotification = "com.12306.DidSendCheckPassengerMessageNotification"
 let CanFilterTrainNotification = "com.12306.CanFilterTrainNotification"
+let DidSendAutoLoginMessageNotification = "com.12306.DidSendAutoLoginMessageNotification"
+let DidSendAutoSubmitMessageNotification = "com.12306.DidSendAutoSubmitMessageNotification"
 
 @NSApplicationMain class AppDelegate: NSObject, NSApplicationDelegate {
 
