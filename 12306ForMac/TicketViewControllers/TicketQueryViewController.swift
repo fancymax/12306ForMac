@@ -139,9 +139,20 @@ class TicketQueryViewController: NSViewController {
         didSet {
             if hasAutoQuery {
                 queryBtn.title = "停止抢票"
+                self.fromStationNameTxt.enabled = false
+                self.toStationNameTxt.enabled = false
+                self.queryDate.enabled = false
+                filterCbx.enabled = false
             }
             else {
                 queryBtn.title = "开始抢票"
+                self.fromStationNameTxt.enabled = true
+                self.toStationNameTxt.enabled = true
+                self.queryDate.enabled = true
+                filterCbx.enabled = true
+                if self.filterQueryResult.count > 0 {
+                    canFilter = true
+                }
             }
         }
     }
@@ -342,7 +353,7 @@ class TicketQueryViewController: NSViewController {
             self.leftTicketTable.reloadData()
             self.loadingTipController.stop()
             
-            if tickets.count > 0 {
+            if ((tickets.count > 0) && (!self.hasAutoQuery)) {
                 self.canFilter = true
             }
             else {

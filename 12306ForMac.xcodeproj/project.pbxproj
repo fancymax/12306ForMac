@@ -77,6 +77,7 @@
 		F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F17AB1CB1C95630E00FEB221 /* Credits.rtf */; };
 		F196445E1C9CED830097FF67 /* Service+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F196445D1C9CED830097FF67 /* Service+Utilities.swift */; };
 		F1C075211D83F97A006EFABB /* TicketConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C075201D83F97A006EFABB /* TicketConstants.swift */; };
+		F1C075231D855EE5006EFABB /* Direction.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C075221D855EE5006EFABB /* Direction.png */; };
 		F1CA12051D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA12041D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift */; };
 		F1CA120B1D113293003EFD0B /* ContentBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA120A1D113293003EFD0B /* ContentBackgroundView.swift */; };
 		F1CA120D1D1135E2003EFD0B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA120C1D1135E2003EFD0B /* Theme.swift */; };
@@ -182,6 +183,7 @@
 		F17AB1CB1C95630E00FEB221 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = 12306ForMac/Resources/Credits.rtf; sourceTree = SOURCE_ROOT; };
 		F196445D1C9CED830097FF67 /* Service+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Service+Utilities.swift"; sourceTree = "<group>"; };
 		F1C075201D83F97A006EFABB /* TicketConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketConstants.swift; sourceTree = "<group>"; };
+		F1C075221D855EE5006EFABB /* Direction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Direction.png; path = 12306ForMac/images/Direction.png; sourceTree = SOURCE_ROOT; };
 		F1CA12041D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainCodeDetailHeaderCell.swift; sourceTree = "<group>"; };
 		F1CA120A1D113293003EFD0B /* ContentBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentBackgroundView.swift; sourceTree = "<group>"; };
 		F1CA120C1D1135E2003EFD0B /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 		F1A8CCB01BA8032500B4FB03 /* Asserts */ = {
 			isa = PBXGroup;
 			children = (
+				F1C075221D855EE5006EFABB /* Direction.png */,
 				F127466F1D502E8100975DFA /* Filter.png */,
 				F11E29281D2AA2B6004BE59D /* User.png */,
 				F11154E11C8D93B300FA6059 /* Add.png */,
@@ -611,6 +614,7 @@
 				F1F2F2C11D59AFB100EA7786 /* GeneralPreferenceViewController.xib in Resources */,
 				F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */,
 				F11154C41C8D92D000FA6059 /* PassengerViewController.xib in Resources */,
+				F1C075231D855EE5006EFABB /* Direction.png in Resources */,
 				F11154E71C8D93B300FA6059 /* Group.png in Resources */,
 				F1F2F2AF1D598AB700EA7786 /* MASPreferencesWindow.xib in Resources */,
 				F12746701D502E8100975DFA /* Filter.png in Resources */,
