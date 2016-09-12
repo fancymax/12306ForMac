@@ -62,7 +62,7 @@ class TrainFilterWindowController: NSWindowController,NSTableViewDelegate,NSTabl
         
         for train in trains {
             let key = "\(train.TrainCode!)|\(train.start_time!)"
-            let presentation = "\(train.TrainCode!) \(train.FromStationName!)->\(train.ToStationName!) \(train.start_time!)~\(train.arrive_time!)"
+            let presentation = "\(train.TrainCode!) |1\(train.start_time!)~\(train.arrive_time!)  |2\(train.FromStationName!)->\(train.ToStationName!)"
             filterItems.append(FilterPresentationItem(type: 4, key: key, presentation: presentation, isChecked: true))
         }
         
@@ -133,6 +133,15 @@ class TrainFilterWindowController: NSWindowController,NSTableViewDelegate,NSTabl
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         if filterItems[row].type == 0 {
             return tableView.makeViewWithIdentifier("TextCell", owner: nil)
+        }
+        else if filterItems[row].type == 4 {
+            let mainCell = tableView.makeViewWithIdentifier("TrainInfoCell", owner: nil)
+            
+            let button = mainCell?.viewWithTag(100) as! NSButton
+            button.target = self
+            button.action = #selector(TrainFilterWindowController.checkTrainFilter(_:))
+            
+            return mainCell
         }
         else{
             let mainCell = tableView.makeViewWithIdentifier("MainCell", owner: nil)

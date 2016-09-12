@@ -72,6 +72,7 @@
 		F13E9C981D0AA9760011F7E2 /* TrainInfoTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13E9C971D0AA9760011F7E2 /* TrainInfoTableCellView.swift */; };
 		F13E9C9A1D0AB3310011F7E2 /* TrainTableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13E9C991D0AB3310011F7E2 /* TrainTableRowView.swift */; };
 		F147763E1D6B2B2E002FD6AF /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F147763D1D6B2B2E002FD6AF /* InfoButton.swift */; };
+		F14D6BE41D86E91C00CBD36C /* FilterTrainCodeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D6BE31D86E91C00CBD36C /* FilterTrainCodeTransformer.swift */; };
 		F16CB2291D312A6D0055D39D /* LoadingTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16CB2271D312A6D0055D39D /* LoadingTipViewController.swift */; };
 		F16CB22A1D312A6D0055D39D /* LoadingTipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F16CB2281D312A6D0055D39D /* LoadingTipViewController.xib */; };
 		F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F17AB1CB1C95630E00FEB221 /* Credits.rtf */; };
@@ -178,6 +179,7 @@
 		F13E9C971D0AA9760011F7E2 /* TrainInfoTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainInfoTableCellView.swift; sourceTree = "<group>"; };
 		F13E9C991D0AB3310011F7E2 /* TrainTableRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainTableRowView.swift; sourceTree = "<group>"; };
 		F147763D1D6B2B2E002FD6AF /* InfoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
+		F14D6BE31D86E91C00CBD36C /* FilterTrainCodeTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTrainCodeTransformer.swift; sourceTree = "<group>"; };
 		F16CB2271D312A6D0055D39D /* LoadingTipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingTipViewController.swift; sourceTree = "<group>"; };
 		F16CB2281D312A6D0055D39D /* LoadingTipViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingTipViewController.xib; sourceTree = "<group>"; };
 		F17AB1CB1C95630E00FEB221 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = 12306ForMac/Resources/Credits.rtf; sourceTree = SOURCE_ROOT; };
@@ -339,6 +341,7 @@
 				F1FCFF4A1D386F8F0070A32C /* URLButton.swift */,
 				F12746711D50345D00975DFA /* ClickableDatePicker.swift */,
 				F1F2F2D11D5AFE7100EA7786 /* UrlLabel.swift */,
+				F14D6BE31D86E91C00CBD36C /* FilterTrainCodeTransformer.swift */,
 			);
 			name = UserControls;
 			path = 12306ForMac/UserControls;
@@ -710,6 +713,7 @@
 				F1CCA2DE1D0D4A1400B6853E /* TrainCodeDetail.swift in Sources */,
 				F1C075211D83F97A006EFABB /* TicketConstants.swift in Sources */,
 				F11154981C8D927C00FA6059 /* StationData.swift in Sources */,
+				F14D6BE41D86E91C00CBD36C /* FilterTrainCodeTransformer.swift in Sources */,
 				F111547F1C8D923C00FA6059 /* SwiftyJSON.swift in Sources */,
 				F11154741C8D921400FA6059 /* OrderDTO.swift in Sources */,
 				F11154931C8D925200FA6059 /* LunarCalendarView.swift in Sources */,
