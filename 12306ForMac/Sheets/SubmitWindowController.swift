@@ -51,7 +51,9 @@ class SubmitWindowController: NSWindowController{
     func freshOrderInfoView(){
         let info = MainModel.selectedTicket!
         trainCodeLabel.stringValue = "\(info.TrainCode!) \(info.FromStationName!) - \(info.ToStationName!)"
-        trainDateLabel.stringValue = "\(MainModel.trainDate!)"
+        if let dateStr = MainModel.trainDate {
+            trainDateLabel.stringValue = "\(Convert2StartTrainDateStr(dateStr))"
+        }
         trainTimeLabel.stringValue = "\(info.start_time!)~\(info.arrive_time!) 历时\(info.lishi!)"
         
         passengerTable.reloadData()

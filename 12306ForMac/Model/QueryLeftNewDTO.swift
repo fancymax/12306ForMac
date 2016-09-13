@@ -118,15 +118,6 @@ class QueryLeftNewDTO:NSObject {
     
     //"20150926" - > "2015-09-26"
     var startTrainDateStr:String!
-    private func Convert2StartTrainDateStr(dateStr: String)->String{
-        var formateStr = dateStr
-        var index = dateStr.startIndex.advancedBy(4)
-        formateStr.insert("-", atIndex: index)
-        index = dateStr.startIndex.advancedBy(7)
-        formateStr.insert("-", atIndex: index)
-        
-        return formateStr
-    }
     
     //"Fri Dec 04 2015 08:00:00 GMT+0800 (中国标准时间)"
     var jsStartTrainDateStr:String!
@@ -311,7 +302,7 @@ M/12075/0100
             seatTypePairDic[id1] = seatType
 //            print("\(TrainCode) id1:\(id1) id:\(id2) number:\(number) price:\(price)")
         }
-        print("")
+//        print("")
     }
 }
 

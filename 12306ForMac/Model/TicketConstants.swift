@@ -24,6 +24,16 @@ func QuerySeatTypeDicBy(trainCode:String)->[String:String] {
     }
 }
 
+func Convert2StartTrainDateStr(dateStr: String)->String{
+    var formateStr = dateStr
+    var index = dateStr.startIndex.advancedBy(4)
+    formateStr.insert("-", atIndex: index)
+    index = dateStr.startIndex.advancedBy(7)
+    formateStr.insert("-", atIndex: index)
+    
+    return formateStr
+}
+
 
 //let cardTypeNameDic = ["二代身份证": "1", "一代身份证": "2", "港澳通行证": "C", "台湾通行证": "G", "护照": "B"]
 //
