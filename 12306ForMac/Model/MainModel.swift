@@ -26,6 +26,7 @@ class MainModel{
     static var train_location:String?
     //"'ypInfoDetail':'O047850026O047853081M059350008'"
     static var ypInfoDetail:String?
+    static var trainDate:String?
     
     static var historyOrderList:[OrderDTO] = []
     static var noCompleteOrderList:[OrderDTO] = []

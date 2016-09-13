@@ -17,6 +17,10 @@ extension Service{
         self.checkUser().then({() ->Promise<Void> in
             return self.submitOrderRequest()
         }).then({_ in
+            self.initDC()
+        }).then({jsName->Promise<Void> in
+            return self.requestDynamicJs(jsName, referHeader: ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"])
+        }).then({_ in
             success()
         }).error({error in
             failure(error: error as NSError)
@@ -24,13 +28,7 @@ extension Service{
     }
     
     func preOrderFlow(success success:(image:NSImage) -> (),failure: (error:NSError)->()){
-        self.initDC().then({jsName->Promise<Void> in
-            return self.requestDynamicJs(jsName, referHeader: ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"])
-        }).then({_ -> Promise<Void> in
-            return after(1)
-        }).then({_ -> Promise<Void> in
-            return self.getPassengerDTOs()
-        }).then({_ -> Promise<NSImage> in
+        self.getPassengerDTOs().then({_ -> Promise<NSImage> in
             return self.getPassCodeNewForPassenger()
         }).then({image in
             success(image: image)
@@ -217,6 +215,15 @@ extension Service{
                     else{
                         logger.error("fail to get ypInfoDetail:\(content)")
                     }
+                    
+                    if let matches = Regex(",'train_date':'([^']+)',").getMatches(content){
+                        MainModel.trainDate = matches[0][0]
+                    }
+                    else{
+                        logger.error("fail to get trainDate:\(content)")
+                    }
+                    
+                    //,'train_date':'20160913',
                     fulfill(dynamicJs)
                 }})
         }

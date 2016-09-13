@@ -51,7 +51,7 @@ class SubmitWindowController: NSWindowController{
     func freshOrderInfoView(){
         let info = MainModel.selectedTicket!
         trainCodeLabel.stringValue = "\(info.TrainCode!) \(info.FromStationName!) - \(info.ToStationName!)"
-        trainDateLabel.stringValue = "\(info.startTrainDateStr!)"
+        trainDateLabel.stringValue = "\(MainModel.trainDate!)"
         trainTimeLabel.stringValue = "\(info.start_time!)~\(info.arrive_time!) 历时\(info.lishi!)"
         
         passengerTable.reloadData()
@@ -140,7 +140,7 @@ class SubmitWindowController: NSWindowController{
         return "SubmitWindowController"
     }
     
-    @IBAction func payButtonClicked(sender: NSButton) {
+    @IBAction func clickPay(sender: NSButton) {
         NSWorkspace.sharedWorkspace().openURL(NSURL(string: "https://kyfw.12306.cn/otn/login/init")!)
     }
     
