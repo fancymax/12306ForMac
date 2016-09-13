@@ -16,6 +16,7 @@ class QueryOrderWaitTimeResult{
     var waitCount:Int?
     var tourFlag:String?
     var orderId:String?
+    var msg:String?
     
     init(json:JSON)
     {
@@ -25,5 +26,6 @@ class QueryOrderWaitTimeResult{
         waitCount = json["waitCount"].intValue
         tourFlag = json["tourFlag"].string
         orderId = json["orderId"].string
+        msg = json["msg"].string
     }
 }

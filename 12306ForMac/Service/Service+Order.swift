@@ -223,7 +223,6 @@ extension Service{
                         logger.error("fail to get trainDate:\(content)")
                     }
                     
-                    //,'train_date':'20160913',
                     fulfill(dynamicJs)
                 }})
         }
@@ -442,9 +441,19 @@ extension Service{
                                     waitMethod(info: waitInfo)
                                 }
                                 sleep(UInt32(waitSecond))
+                                self.queryOrderWaitTime(failMethod,waitMethod: waitMethod,finishMethod: finishMethod)
+                            }
+                            else {
+                                if let msg = waitTimeResult.msg {
+                                    let error = ServiceError.errorWithCode(.ConfirmSingleForQueueFailed,failureReason: msg)
+                                    failMethod(error: error)
+                                }
+                                else {
+                                    let error = ServiceError.errorWithCode(.ConfirmSingleForQueueFailed)
+                                    failMethod(error: error)
+                                }
                             }
                             
-                            self.queryOrderWaitTime(failMethod,waitMethod: waitMethod,finishMethod: finishMethod)
                         }
                     }
                     else{
