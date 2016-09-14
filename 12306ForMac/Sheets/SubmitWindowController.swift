@@ -13,6 +13,7 @@ class SubmitWindowController: NSWindowController{
     @IBOutlet weak var trainCodeLabel: NSTextField!
     @IBOutlet weak var trainDateLabel: NSTextField!
     @IBOutlet weak var trainTimeLabel: NSTextField!
+    @IBOutlet weak var trainPriceLabel: NSTextField!
     
     let service = Service()
     @IBOutlet weak var passengerTable: NSTableView!
@@ -55,6 +56,7 @@ class SubmitWindowController: NSWindowController{
             trainDateLabel.stringValue = "\(Convert2StartTrainDateStr(dateStr))"
         }
         trainTimeLabel.stringValue = "\(info.start_time!)~\(info.arrive_time!) 历时\(info.lishi!)"
+        trainPriceLabel.stringValue = "¥\(MainModel.ticketPrice)"
         
         passengerTable.reloadData()
     }
