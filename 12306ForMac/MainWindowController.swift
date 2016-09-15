@@ -13,8 +13,8 @@ class MainWindowController: NSWindowController{
     @IBOutlet var LoginMenu: NSMenu!
     @IBOutlet var IPLabel: NSTextField!
     
-    var orderQueryViewController:OrderViewController?
-    var ticketQueryViewController:TicketQueryViewController?
+    var orderQueryViewController = OrderViewController()
+    var ticketQueryViewController = TicketQueryViewController()
     
     var loginWindowController:LoginWindowController!
     
@@ -86,16 +86,10 @@ class MainWindowController: NSWindowController{
     
     func selectModule(moduleName:String){
         if(moduleName == TrainOrder){
-            if orderQueryViewController == nil{
-                orderQueryViewController = OrderViewController()
-            }
-            self.window?.contentView = orderQueryViewController!.view
+            self.window?.contentView = orderQueryViewController.view
         }
         else if(moduleName == TrainBook){
-            if ticketQueryViewController == nil{
-                ticketQueryViewController = TicketQueryViewController()
-            }
-            self.window?.contentView = ticketQueryViewController!.view
+            self.window?.contentView = ticketQueryViewController.view
         }
     }
     
