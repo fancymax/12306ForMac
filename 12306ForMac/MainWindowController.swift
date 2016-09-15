@@ -62,25 +62,9 @@ class MainWindowController: NSWindowController{
         segment.target = self
         segment.action = #selector(MainWindowController.segmentTab(_:))
         
-        let searchFieldSize = NSMakeSize(150, 22)
-        let searchFrame = NSMakeRect(
-            NSMaxX(titleView.bounds) - (searchFieldSize.width + 20),
-            NSMidY(titleView.bounds) - (searchFieldSize.height / 2.0),
-            searchFieldSize.width, searchFieldSize.height)
-        self.IPLabel.frame = searchFrame
-        let searchField = self.IPLabel
-        
-        
         titleView.addSubview(segment)
-        titleView.addSubview(searchField)
         
-        searchField.translatesAutoresizingMaskIntoConstraints = false
         segment.translatesAutoresizingMaskIntoConstraints = false
-        
-        let searchFieldConstraints1 = NSLayoutConstraint.constraintsWithVisualFormat("[searchField(120)]-20-|", options: .AlignAllBaseline, metrics: nil, views: ["searchField":searchField])
-        NSLayoutConstraint.activateConstraints(searchFieldConstraints1)
-        let searchFieldConstraints2 = NSLayoutConstraint.constraintsWithVisualFormat("V:[searchField(22)]-8-|", options: .AlignAllCenterX, metrics: nil, views: ["searchField":searchField])
-        NSLayoutConstraint.activateConstraints(searchFieldConstraints2)
         
         let segmentConstraint1 = NSLayoutConstraint(item: segment, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: titleView, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0)
         let segmentConstraint2 = NSLayoutConstraint(item: segment, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: titleView, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0)

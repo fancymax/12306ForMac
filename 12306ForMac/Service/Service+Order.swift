@@ -399,10 +399,10 @@ extension Service{
     }
     
     func queryOrderWaitTime(failMethod:(error:NSError)->(), waitMethod :(info:String) -> (),finishMethod:()->()) {
-            let url = "https://kyfw.12306.cn/otn/confirmPassenger/queryOrderWaitTime?"
-            let params = "random=1446560572126&tourFlag=dc&_json_att=&REPEAT_SUBMIT_TOKEN=\(MainModel.globalRepeatSubmitToken!)"
-            let headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
-        
+        let url = "https://kyfw.12306.cn/otn/confirmPassenger/queryOrderWaitTime?"
+        let params = "random=1446560572126&tourFlag=dc&_json_att=&REPEAT_SUBMIT_TOKEN=\(MainModel.globalRepeatSubmitToken!)"
+        let headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
+    
         func calcWaitSecond(waitTime:Int) -> Int {
             var p1 = waitTime * 2 / 3
             if p1 > 60 {
@@ -412,29 +412,26 @@ extension Service{
             print("calcWaitTime=\(p1)")
             return p1
         }
-        
-            Service.Manager.request(.GET, url + params, headers:headers).responseJSON(completionHandler:{response in
-                switch (response.result){
-                case .Failure(let error):
-                    print(error)
-                    failMethod(error:error as NSError)
-                case .Success(let data):
-                    print(JSON(data))
-                    let waitTimeResult = QueryOrderWaitTimeResult(json: JSON(data)["data"])
-                    if let submitStatus = waitTimeResult.queryOrderWaitTimeStatus where submitStatus == true {
-                        if let orderId = waitTimeResult.orderId {
-                            MainModel.orderId = orderId
-                            finishMethod()
-                        }
-                        else{
-                            var waitSecond = 0
-                            if let waitTime = waitTimeResult.waitTime {
-                                waitSecond = calcWaitSecond(waitTime)
-                            }
-                            else {
-//                                failMethod()
-                            }
-                            
+    
+        Service.Manager.request(.GET, url + params, headers:headers).responseJSON(completionHandler:{response in
+            switch (response.result){
+            case .Failure(let error):
+                print(error)
+                failMethod(error:error as NSError)
+            case .Success(let data):
+                print(JSON(data))
+                let waitTimeResult = QueryOrderWaitTimeResult(json: JSON(data)["data"])
+                
+                if let submitStatus = waitTimeResult.queryOrderWaitTimeStatus where submitStatus == true {
+                    if let orderId = waitTimeResult.orderId {
+                        MainModel.orderId = orderId
+                        finishMethod()
+                    }
+                    else{
+                        var waitSecond = 0
+                        if let waitTime = waitTimeResult.waitTime {
+                            waitSecond = calcWaitSecond(waitTime)
+                        
                             if waitSecond > 0 {
                                 if waitSecond > 5 {
                                     let waitInfo = "提交订单成功,请等待\(waitSecond)秒"
@@ -453,16 +450,19 @@ extension Service{
                                     failMethod(error: error)
                                 }
                             }
-                            
+                        }
+                        else {
+                            let error = ServiceError.errorWithCode(.ConfirmSingleForQueueFailed)
+                            failMethod(error: error)
                         }
                     }
-                    else{
-                        let error = ServiceError.errorWithCode(.ConfirmSingleForQueueFailed)
-                        failMethod(error: error)
-                        //maybe login again
-                        //提交订单出错
-                    }
-                }})
+                }
+                else{
+                    let error = ServiceError.errorWithCode(.ConfirmSingleForQueueFailed)
+                    failMethod(error: error)
+                    //maybe login again
+                }
+            }})
     }
     
     func cancelNoCompleteOrder(sequence_no:String)->Promise<Void>{

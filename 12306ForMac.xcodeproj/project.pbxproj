@@ -54,9 +54,6 @@
 		F11154D31C8D936300FA6059 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F11154D11C8D936300FA6059 /* MainMenu.xib */; };
 		F11154D61C8D937E00FA6059 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F11154D41C8D937E00FA6059 /* Images.xcassets */; };
 		F11154E51C8D93B300FA6059 /* Add.png in Resources */ = {isa = PBXBuildFile; fileRef = F11154E11C8D93B300FA6059 /* Add.png */; };
-		F11154E61C8D93B300FA6059 /* CalendarTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = F11154E21C8D93B300FA6059 /* CalendarTemplate.png */; };
-		F11154E71C8D93B300FA6059 /* Group.png in Resources */ = {isa = PBXBuildFile; fileRef = F11154E31C8D93B300FA6059 /* Group.png */; };
-		F11154E81C8D93B300FA6059 /* SettingsTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = F11154E41C8D93B300FA6059 /* SettingsTemplate.png */; };
 		F113B4F81C8FBA2E0001AE09 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113B4F71C8FBA2E0001AE09 /* ServiceError.swift */; };
 		F113B4FA1C8FC7930001AE09 /* ErrorTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113B4F91C8FC7930001AE09 /* ErrorTranslator.swift */; };
 		F11E29291D2AA2B6004BE59D /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = F11E29281D2AA2B6004BE59D /* User.png */; };
@@ -89,6 +86,7 @@
 		F1D390A41C8F177F000B3FD7 /* RandCodeImageView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D390A31C8F177F000B3FD7 /* RandCodeImageView2.swift */; };
 		F1D575761C95541D00A214B0 /* TicketQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */; };
 		F1D575771C95541D00A214B0 /* TicketQueryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D575751C95541D00A214B0 /* TicketQueryViewController.xib */; };
+		F1D58E9D1D8A549200CD3DA7 /* Reverse.png in Resources */ = {isa = PBXBuildFile; fileRef = F1D58E9C1D8A549200CD3DA7 /* Reverse.png */; };
 		F1E7EA2D1C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA221C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c */; };
 		F1E7EA2E1C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA251C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m */; };
 		F1E7EA2F1C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA271C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m */; };
@@ -159,9 +157,6 @@
 		F11154D21C8D936300FA6059 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = 12306ForMac/Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		F11154D41C8D937E00FA6059 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = 12306ForMac/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		F11154E11C8D93B300FA6059 /* Add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Add.png; path = 12306ForMac/images/Add.png; sourceTree = SOURCE_ROOT; };
-		F11154E21C8D93B300FA6059 /* CalendarTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CalendarTemplate.png; path = 12306ForMac/images/CalendarTemplate.png; sourceTree = SOURCE_ROOT; };
-		F11154E31C8D93B300FA6059 /* Group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Group.png; path = 12306ForMac/images/Group.png; sourceTree = SOURCE_ROOT; };
-		F11154E41C8D93B300FA6059 /* SettingsTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SettingsTemplate.png; path = 12306ForMac/images/SettingsTemplate.png; sourceTree = SOURCE_ROOT; };
 		F11154E91C8D945C00FA6059 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = 12306ForMac/Info.plist; sourceTree = SOURCE_ROOT; };
 		F113B4F71C8FBA2E0001AE09 /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		F113B4F91C8FC7930001AE09 /* ErrorTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTranslator.swift; sourceTree = "<group>"; };
@@ -197,6 +192,7 @@
 		F1D390A31C8F177F000B3FD7 /* RandCodeImageView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandCodeImageView2.swift; sourceTree = "<group>"; };
 		F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketQueryViewController.swift; sourceTree = "<group>"; };
 		F1D575751C95541D00A214B0 /* TicketQueryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketQueryViewController.xib; sourceTree = "<group>"; };
+		F1D58E9C1D8A549200CD3DA7 /* Reverse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Reverse.png; path = 12306ForMac/images/Reverse.png; sourceTree = SOURCE_ROOT; };
 		F1E7EA221C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = INAppStoreWindowSwizzling.c; sourceTree = "<group>"; };
 		F1E7EA231C5A2E7B007715C1 /* INAppStoreWindowSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindowSwizzling.h; sourceTree = "<group>"; };
 		F1E7EA241C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "INWindowBackgroundView+CoreUIRendering.h"; sourceTree = "<group>"; };
@@ -448,13 +444,11 @@
 		F1A8CCB01BA8032500B4FB03 /* Asserts */ = {
 			isa = PBXGroup;
 			children = (
+				F1D58E9C1D8A549200CD3DA7 /* Reverse.png */,
 				F1C075221D855EE5006EFABB /* Direction.png */,
 				F127466F1D502E8100975DFA /* Filter.png */,
 				F11E29281D2AA2B6004BE59D /* User.png */,
 				F11154E11C8D93B300FA6059 /* Add.png */,
-				F11154E21C8D93B300FA6059 /* CalendarTemplate.png */,
-				F11154E31C8D93B300FA6059 /* Group.png */,
-				F11154E41C8D93B300FA6059 /* SettingsTemplate.png */,
 			);
 			name = Asserts;
 			sourceTree = "<group>";
@@ -599,7 +593,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1F2F2C51D59BEE800EA7786 /* AdvancedPreferenceViewController.xib in Resources */,
-				F11154E81C8D93B300FA6059 /* SettingsTemplate.png in Resources */,
 				F11154AA1C8D92A700FA6059 /* LoginWindowController.xib in Resources */,
 				F11154C21C8D92D000FA6059 /* PassengerSelectViewController.xib in Resources */,
 				F11154B11C8D92C100FA6059 /* OrderViewController.xib in Resources */,
@@ -616,12 +609,11 @@
 				F12746761D50784100975DFA /* TrainFilterWindowController.xib in Resources */,
 				F1F2F2C11D59AFB100EA7786 /* GeneralPreferenceViewController.xib in Resources */,
 				F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */,
+				F1D58E9D1D8A549200CD3DA7 /* Reverse.png in Resources */,
 				F11154C41C8D92D000FA6059 /* PassengerViewController.xib in Resources */,
 				F1C075231D855EE5006EFABB /* Direction.png in Resources */,
-				F11154E71C8D93B300FA6059 /* Group.png in Resources */,
 				F1F2F2AF1D598AB700EA7786 /* MASPreferencesWindow.xib in Resources */,
 				F12746701D502E8100975DFA /* Filter.png in Resources */,
-				F11154E61C8D93B300FA6059 /* CalendarTemplate.png in Resources */,
 				F1CCA2D91D0D3DFA00B6853E /* TrainCodeDetailViewController.xib in Resources */,
 				F11154AC1C8D92A700FA6059 /* SubmitWindowController.xib in Resources */,
 			);

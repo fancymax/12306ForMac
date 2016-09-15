@@ -40,22 +40,23 @@
                 <constraint firstAttribute="trailing" secondItem="Q3P-1n-q0W" secondAttribute="trailing" id="XVI-y2-Iv4"/>
             </constraints>
         </view>
-        <customView id="Pvh-ix-iH6" customClass="NSVisualEffectView">
+        <customView id="Pvh-ix-iH6" customClass="GlassView" customModule="_2306ForMac" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="995" height="530"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <scrollView autohidesScrollers="YES" horizontalLineScroll="42" horizontalPageScroll="10" verticalLineScroll="42" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2Q-9N-qwe">
+                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="42" horizontalPageScroll="10" verticalLineScroll="42" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2Q-9N-qwe">
                     <rect key="frame" x="20" y="20" width="955" height="510"/>
                     <clipView key="contentView" drawsBackground="NO" id="aFD-Ax-dxk">
-                        <rect key="frame" x="1" y="0.0" width="953" height="509"/>
+                        <rect key="frame" x="0.0" y="0.0" width="955" height="510"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" headerView="fsm-Ot-Oy1" viewBased="YES" id="vdR-Hc-SYr">
-                                <rect key="frame" x="0.0" y="0.0" width="953" height="486"/>
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" headerView="mkA-fg-IPp" viewBased="YES" id="vdR-Hc-SYr">
+                                <rect key="frame" x="0.0" y="0.0" width="955" height="493"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
-                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
+                                <color key="gridColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                 <tableColumns>
                                     <tableColumn identifier="车次" width="80" minWidth="40" maxWidth="1000" id="b84-eY-1W5">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="车次">
@@ -259,7 +260,7 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="余票信息" width="498" minWidth="10" maxWidth="3.4028234663852886e+38" id="SY7-Sh-5eh">
+                                    <tableColumn identifier="余票信息" width="500" minWidth="10" maxWidth="3.4028234663852886e+38" id="SY7-Sh-5eh">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="余票信息">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -273,7 +274,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView misplaced="YES" id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="_2306ForMac" customModuleProvider="target">
-                                                <rect key="frame" x="453" y="1" width="997" height="63"/>
+                                                <rect key="frame" x="453" y="1" width="500" height="63"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oxk-Lo-fip">
@@ -460,8 +461,8 @@
                         <rect key="frame" x="853" y="17" width="16" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <tableHeaderView key="headerView" id="fsm-Ot-Oy1">
-                        <rect key="frame" x="0.0" y="0.0" width="953" height="23"/>
+                    <tableHeaderView key="headerView" id="mkA-fg-IPp">
+                        <rect key="frame" x="0.0" y="0.0" width="955" height="17"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
@@ -491,9 +492,14 @@
                 <constraint firstItem="J2Q-9N-qwe" firstAttribute="top" secondItem="Pvh-ix-iH6" secondAttribute="top" id="se6-fw-bcZ"/>
                 <constraint firstItem="J2Q-9N-qwe" firstAttribute="leading" secondItem="Pvh-ix-iH6" secondAttribute="leading" constant="20" symbolic="YES" id="tvB-Wz-u0e"/>
             </constraints>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                    <color key="value" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="364.5" y="1306"/>
         </customView>
-        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Pal-9i-ZzT" customClass="NSVisualEffectView">
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Pal-9i-ZzT" customClass="GlassView" customModule="_2306ForMac" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="910" height="40"/>
             <subviews>
                 <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-M1-vtw" customClass="ClickableDatePicker" customModule="_2306ForMac" customModuleProvider="target">
@@ -503,7 +509,7 @@
                         <constraint firstAttribute="width" constant="90" id="Vo0-fD-7UT"/>
                     </constraints>
                     <datePickerCell key="cell" enabled="NO" refusesFirstResponder="YES" borderStyle="bezel" alignment="left" drawsBackground="NO" datePickerStyle="textField" id="kDI-Qp-3fl">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="systemThin" size="13"/>
                         <date key="date" timeIntervalSinceReferenceDate="467308800">
                             <!--2015-10-23 16:00:00 +0000-->
                         </date>
@@ -521,7 +527,7 @@
                         <constraint firstAttribute="width" constant="100" id="t04-b6-cBp"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="SVV-gq-zxE">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="systemThin" size="13"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <allowedInputSourceLocales>
@@ -541,7 +547,7 @@
                         <constraint firstAttribute="width" constant="100" id="fmb-qp-YPt"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="5fr-rF-LNE">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="systemThin" size="13"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <allowedInputSourceLocales>
@@ -561,7 +567,7 @@
                         <constraint firstAttribute="width" constant="60" id="nZW-18-sCk"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="到达城市" id="axq-LA-Ebv">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="systemThin" size="13"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -573,25 +579,11 @@
                         <constraint firstAttribute="width" constant="60" id="bap-lG-NHu"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="出发城市" id="FYg-yd-3kf">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="systemThin" size="13"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button tag="1" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GwK-22-gCY">
-                    <rect key="frame" x="687" y="1" width="23" height="23"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="23" id="Tqy-Xx-LyN"/>
-                        <constraint firstAttribute="width" constant="23" id="cDs-iR-CZT"/>
-                    </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="CalendarTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="hwj-lR-RvF">
-                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="showCalendar:" target="-2" id="OxG-bo-4YB"/>
-                    </connections>
-                </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9qi-Pb-rDH">
                     <rect key="frame" x="519" y="2" width="64" height="20"/>
                     <constraints>
@@ -599,7 +591,7 @@
                         <constraint firstAttribute="width" constant="60" id="ps4-lC-VpX"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="出发日期" id="yeJ-db-y74">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="systemThin" size="13"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -612,7 +604,7 @@
                     </constraints>
                     <buttonCell key="cell" type="bevel" title="开始查询" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Kd4-Y5-8Ly">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="systemThin" size="13"/>
                     </buttonCell>
                     <connections>
                         <action selector="clickQueryTicket:" target="-2" id="fQ9-vE-g2d"/>
@@ -624,7 +616,7 @@
                         <constraint firstAttribute="width" constant="50" id="IuX-gs-s4I"/>
                         <constraint firstAttribute="height" constant="16" id="z5f-YW-eTw"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Group" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="ZDG-Jt-rxf">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Reverse" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="ZDG-Jt-rxf">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -635,17 +627,15 @@
             </subviews>
             <constraints>
                 <constraint firstItem="Be8-M1-vtw" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" constant="-1" id="1Wa-9a-0N4"/>
-                <constraint firstItem="GwK-22-gCY" firstAttribute="leading" secondItem="Be8-M1-vtw" secondAttribute="trailing" constant="8" symbolic="YES" id="3d1-e9-XWt"/>
                 <constraint firstItem="amu-Qj-Yha" firstAttribute="leading" secondItem="Pal-9i-ZzT" secondAttribute="leading" constant="20" symbolic="YES" id="40s-Lm-XYb"/>
                 <constraint firstItem="9qi-Pb-rDH" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" id="4ba-wR-dfD"/>
                 <constraint firstItem="4N3-fA-XcK" firstAttribute="leading" secondItem="4jY-s2-8Ni" secondAttribute="trailing" constant="75" id="KY1-vl-Xct"/>
                 <constraint firstItem="Be8-M1-vtw" firstAttribute="leading" secondItem="9qi-Pb-rDH" secondAttribute="trailing" constant="8" symbolic="YES" id="W29-IO-jZp"/>
                 <constraint firstItem="aQQ-8z-kIM" firstAttribute="leading" secondItem="4jY-s2-8Ni" secondAttribute="trailing" constant="13" id="YRK-jK-KDy"/>
                 <constraint firstItem="l4y-Hd-FVf" firstAttribute="leading" secondItem="4N3-fA-XcK" secondAttribute="trailing" constant="8" symbolic="YES" id="g5Y-dJ-fb2"/>
-                <constraint firstItem="FSF-1Q-g2J" firstAttribute="leading" secondItem="GwK-22-gCY" secondAttribute="trailing" constant="100" id="hm4-wH-ruc"/>
+                <constraint firstItem="9qi-Pb-rDH" firstAttribute="leading" secondItem="l4y-Hd-FVf" secondAttribute="trailing" constant="90" id="gn5-kx-tix"/>
                 <constraint firstItem="FSF-1Q-g2J" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" id="hna-g5-nGb"/>
                 <constraint firstItem="aQQ-8z-kIM" firstAttribute="centerY" secondItem="4jY-s2-8Ni" secondAttribute="centerY" id="jsi-Gf-Fmt"/>
-                <constraint firstItem="GwK-22-gCY" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" constant="-1" id="lM8-rt-bml"/>
                 <constraint firstItem="4N3-fA-XcK" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" id="nOH-lk-YH1"/>
                 <constraint firstAttribute="trailing" secondItem="FSF-1Q-g2J" secondAttribute="trailing" constant="20" symbolic="YES" id="nWj-B1-tRX"/>
                 <constraint firstAttribute="height" constant="40" id="szc-6h-AUy"/>
@@ -654,9 +644,14 @@
                 <constraint firstItem="4jY-s2-8Ni" firstAttribute="leading" secondItem="amu-Qj-Yha" secondAttribute="trailing" constant="8" symbolic="YES" id="xXB-i8-gO8"/>
                 <constraint firstItem="l4y-Hd-FVf" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" constant="-1" id="yoK-2T-CMb"/>
             </constraints>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                    <color key="value" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="465" y="756"/>
         </customView>
-        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Dhy-j5-W4F" customClass="NSVisualEffectView">
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Dhy-j5-W4F" customClass="GlassView" customModule="_2306ForMac" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="901" height="40"/>
             <subviews>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mmx-jz-xkG" customClass="LoginButton" customModule="_2306ForMac" customModuleProvider="target">
@@ -667,7 +662,7 @@
                     </constraints>
                     <buttonCell key="cell" type="bevel" title="乘客" bezelStyle="rounded" image="Add" imagePosition="left" alignment="center" imageScaling="proportionallyDown" inset="2" id="Sxh-ov-KXj">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="systemThin" size="13"/>
                     </buttonCell>
                     <connections>
                         <action selector="selectPassenger:" target="-2" id="jF1-Rg-Ny0"/>
@@ -694,7 +689,7 @@
                     </constraints>
                     <buttonCell key="cell" type="bevel" title="筛选" bezelStyle="rounded" image="Filter" imagePosition="left" alignment="center" imageScaling="proportionallyDown" inset="2" id="92i-9a-9Lg">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="systemThin" size="13"/>
                     </buttonCell>
                     <connections>
                         <action selector="clickTrainFilterBtn:" target="-2" id="ask-pl-Lyu"/>
@@ -714,13 +709,17 @@
                 <constraint firstItem="mmx-jz-xkG" firstAttribute="leading" secondItem="Dhy-j5-W4F" secondAttribute="leading" constant="18" id="uoP-Bj-xTp"/>
                 <constraint firstItem="gWk-xJ-t7i" firstAttribute="top" secondItem="Dhy-j5-W4F" secondAttribute="top" id="w63-os-Aeq"/>
             </constraints>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                    <color key="value" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="126.5" y="864"/>
         </customView>
     </objects>
     <resources>
-        <image name="Add" width="512" height="512"/>
-        <image name="CalendarTemplate" width="512" height="512"/>
+        <image name="Add" width="94" height="94"/>
         <image name="Filter" width="48" height="47"/>
-        <image name="Group" width="512" height="512"/>
+        <image name="Reverse" width="94" height="94"/>
     </resources>
 </document>

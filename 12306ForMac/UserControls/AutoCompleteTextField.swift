@@ -202,9 +202,17 @@ extension AutoCompleteTextField:NSTableViewDelegate{
             cellView!.textField = textField
             cellView!.identifier = "MyView"
         }
-        let attrs = [NSForegroundColorAttributeName:NSColor.blackColor(),NSFontAttributeName:NSFont.systemFontOfSize(13)]
-        let mutableAttriStr = NSMutableAttributedString(string: self.matches![row], attributes: attrs)
-        cellView!.textField!.attributedStringValue = mutableAttriStr
+        
+        if #available(OSX 10.11, *) {
+            let attrs = [NSForegroundColorAttributeName:NSColor.blackColor(),NSFontAttributeName:NSFont.systemFontOfSize(13,weight: NSFontWeightThin)]
+            let mutableAttriStr = NSMutableAttributedString(string: self.matches![row], attributes: attrs)
+            cellView!.textField!.attributedStringValue = mutableAttriStr
+        } else {
+            // Fallback on earlier versions
+            let attrs = [NSForegroundColorAttributeName:NSColor.blackColor(),NSFontAttributeName:NSFont.systemFontOfSize(13)]
+            let mutableAttriStr = NSMutableAttributedString(string: self.matches![row], attributes: attrs)
+            cellView!.textField!.attributedStringValue = mutableAttriStr
+        }
         
         return cellView
     }
