@@ -309,7 +309,9 @@ class TicketQueryViewController: NSViewController {
     }
     
     func filterTrain(){
-        trainFilterWindowController.trains = ticketQueryResult
+        trainFilterWindowController.trains = ticketQueryResult.filter({item in
+            return !item.isTicketInvalid()
+        })
         trainFilterWindowController.fromStationName = self.fromStationNameTxt.stringValue
         trainFilterWindowController.toStationName = self.toStationNameTxt.stringValue
         trainFilterWindowController.trainDate = self.date!
@@ -354,13 +356,22 @@ class TicketQueryViewController: NSViewController {
         
         let successHandler = { (tickets:[QueryLeftNewDTO])->()  in
             self.ticketQueryResult = tickets
-            if self.trainFilterKey != "" {
-                self.filterQueryResult = self.ticketQueryResult.filter({item in return self.trainFilterKey.containsString("|" + item.TrainCode! + "|")})
-            }
-            else {
-                self.filterQueryResult = tickets
-            }
             
+            self.filterQueryResult = self.ticketQueryResult.filter({item in
+                var isReturn = true
+                if self.trainFilterKey != "" {
+                    isReturn = self.trainFilterKey.containsString("|\(item.TrainCode)|")
+                }
+                if (item.isTicketInvalid()) && (!GeneralPreferenceManager.sharedInstance.isShowInvalidTicket) {
+                    isReturn = false
+                }
+                if (!item.hasTicket)&&(!GeneralPreferenceManager.sharedInstance.isShowNoTrainTicket){
+                    isReturn = false
+                }
+                
+                return isReturn
+            })
+        
             self.leftTicketTable.reloadData()
             self.loadingTipController.stop()
             

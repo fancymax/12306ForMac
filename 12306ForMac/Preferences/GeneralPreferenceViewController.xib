@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
@@ -41,7 +41,7 @@
                         <font key="font" size="13" name=".PingFangSC-Regular"/>
                     </buttonCell>
                     <connections>
-                        <binding destination="-2" name="value" keyPath="self.ifShowInvalidTicket" id="9tE-pZ-qPH"/>
+                        <binding destination="-2" name="value" keyPath="self.isShowInvalidTicket" id="oVh-nJ-ven"/>
                     </connections>
                 </button>
                 <button id="UBR-3P-gf0">
@@ -52,7 +52,7 @@
                         <font key="font" size="13" name=".PingFangSC-Regular"/>
                     </buttonCell>
                     <connections>
-                        <binding destination="-2" name="value" keyPath="self.ifShowNoTrainTicket" id="4cC-S9-Xnc"/>
+                        <binding destination="-2" name="value" keyPath="self.isShowNoTrainTicket" id="Vks-5I-s5Q"/>
                     </connections>
                 </button>
                 <customView hidden="YES" id="9R3-8o-tuf" customClass="InfoButton" customModule="_2306ForMac" customModuleProvider="target">

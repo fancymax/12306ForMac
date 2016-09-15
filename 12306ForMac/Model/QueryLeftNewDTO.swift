@@ -58,6 +58,7 @@ class QueryLeftNewDTO:NSObject {
     let yp_info:String?
     let control_train_day:String?
     let start_train_date:String!
+    let controlled_train_flag:String?
     let seat_feature:String?
     
     //"yp_ex":"O0M0O0"
@@ -128,6 +129,15 @@ class QueryLeftNewDTO:NSObject {
         return dateFormatter.stringFromDate(date)
     }
     
+    func isTicketInvalid() -> Bool {
+        if controlled_train_flag == "1" {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
     init(json:JSON)
     {
         let ticket = json["queryLeftNewDTO"]
@@ -148,6 +158,7 @@ class QueryLeftNewDTO:NSObject {
         arrive_time = ticket["arrive_time"].string
         lishi = ticket["lishi"].string
         start_train_date = ticket["start_train_date"].string
+        controlled_train_flag = ticket["controlled_train_flag"].string
         
         day_difference = ticket["day_difference"].string
         train_class_name = ticket["train_class_name"].string

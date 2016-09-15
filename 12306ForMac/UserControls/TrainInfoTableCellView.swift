@@ -186,7 +186,7 @@ class TrainInfoTableCellView: TrainTableCellView {
                 btn.enabled = false
             }
             
-            if ticketInfo.buttonTextInfo == "   23:00-07:00系统维护时间" {
+            if ticketInfo.buttonTextInfo == "23:00-06:00系统维护时间" {
                 if ticketInfo.hasTicket {
                     messageField.hidden = true
                 }

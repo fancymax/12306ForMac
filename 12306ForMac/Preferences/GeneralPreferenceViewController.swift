@@ -41,21 +41,31 @@ class GeneralPreferenceViewController: NSViewController, MASPreferencesViewContr
         }
     }
     
-    var ifShowInvalidTicket: Bool {
+    var isShowNoTrainTicket: Bool {
         get{
-            return GeneralPreferenceManager.sharedInstance.ifShowInvalidTicket
+            return GeneralPreferenceManager.sharedInstance.isShowNoTrainTicket
         }
         set{
-            GeneralPreferenceManager.sharedInstance.ifShowInvalidTicket = newValue
+            GeneralPreferenceManager.sharedInstance.isShowNoTrainTicket = newValue
+            if !newValue {
+                willChangeValueForKey("isShowInvalidTicket")
+                isShowInvalidTicket = false
+                didChangeValueForKey("isShowInvalidTicket")
+            }
         }
     }
     
-    var ifShowNoTrainTicket: Bool {
+    var isShowInvalidTicket: Bool {
         get{
-            return GeneralPreferenceManager.sharedInstance.ifShowNoTrainTicket
+            return GeneralPreferenceManager.sharedInstance.isShowInvalidTicket
         }
         set{
-            GeneralPreferenceManager.sharedInstance.ifShowNoTrainTicket = newValue
+            GeneralPreferenceManager.sharedInstance.isShowInvalidTicket = newValue
+            if newValue {
+                willChangeValueForKey("isShowNoTrainTicket")
+                isShowNoTrainTicket = true
+                didChangeValueForKey("isShowNoTrainTicket")
+            }
         }
     }
     

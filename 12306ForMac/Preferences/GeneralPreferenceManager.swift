@@ -13,8 +13,8 @@ class GeneralPreferenceManager {
     static let sharedInstance = GeneralPreferenceManager()
     
     private let autoQuerySecondsKey = "autoQuerySeconds"
-    private let ifShowInvalidTicketKey = "ifShowInvalidTicket"
-    private let ifShowNoTrainTicketKey = "ifShowNoTrainTicket"
+    private let isShowInvalidTicketKey = "isShowInvalidTicket"
+    private let isShowNoTrainTicketKey = "isShowNoTrainTicket"
     
     private let userDefaults = NSUserDefaults.standardUserDefaults()
     
@@ -25,7 +25,7 @@ class GeneralPreferenceManager {
     
     private func registerUserDefault()
     {
-        let firstDefault = [autoQuerySecondsKey: 5,ifShowInvalidTicketKey: true, ifShowNoTrainTicketKey:true]
+        let firstDefault = [autoQuerySecondsKey: 5,isShowInvalidTicketKey: true, isShowNoTrainTicketKey:true]
         userDefaults.registerDefaults(firstDefault)
     }
     
@@ -38,21 +38,21 @@ class GeneralPreferenceManager {
         }
     }
     
-    var ifShowInvalidTicket:Bool {
+    var isShowInvalidTicket:Bool {
         get{
-            return userDefaults.objectForKey(ifShowInvalidTicketKey) as! Bool
+            return userDefaults.objectForKey(isShowInvalidTicketKey) as! Bool
         }
         set{
-            userDefaults.setObject(newValue, forKey: ifShowInvalidTicketKey)
+            userDefaults.setObject(newValue, forKey: isShowInvalidTicketKey)
         }
     }
     
-    var ifShowNoTrainTicket:Bool {
+    var isShowNoTrainTicket:Bool {
         get{
-            return userDefaults.objectForKey(ifShowNoTrainTicketKey) as! Bool
+            return userDefaults.objectForKey(isShowNoTrainTicketKey) as! Bool
         }
         set{
-            userDefaults.setObject(newValue, forKey: ifShowNoTrainTicketKey)
+            userDefaults.setObject(newValue, forKey: isShowNoTrainTicketKey)
         }
     }
     
