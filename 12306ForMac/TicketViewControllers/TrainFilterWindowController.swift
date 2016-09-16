@@ -168,11 +168,11 @@ class TrainFilterWindowController: NSWindowController,NSTableViewDelegate,NSTabl
         return "TrainFilterWindowController"
     }
     
-    @IBAction func cancelButtonClicked(button:NSButton){
+    @IBAction func clickCancel(sender: AnyObject) {
         dismissWithModalResponse(NSModalResponseCancel)
     }
     
-    @IBAction func okButtonClicked(button:NSButton){
+    @IBAction func clickOK(sender: AnyObject) {
         getFilterKey()
         dismissWithModalResponse(NSModalResponseOK)
     }

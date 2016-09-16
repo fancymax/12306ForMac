@@ -205,7 +205,7 @@ DQ
 </string>
                         </buttonCell>
                         <connections>
-                            <action selector="okButtonClicked:" target="-2" id="nPo-Gg-7E8"/>
+                            <action selector="clickOK:" target="-2" id="7v5-UF-LJu"/>
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OUn-9d-T7P">
@@ -226,7 +226,7 @@ DQ
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="cancelButtonClicked:" target="-2" id="VWz-ek-nvc"/>
+                            <action selector="clickCancel:" target="-2" id="HDh-Jk-ZRo"/>
                         </connections>
                     </button>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dUJ-JT-Azj">

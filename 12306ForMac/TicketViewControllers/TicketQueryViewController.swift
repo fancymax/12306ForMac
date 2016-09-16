@@ -484,7 +484,7 @@ class TicketQueryViewController: NSViewController {
         }
         
         let selectedRow = leftTicketTable.rowForView(sender)
-        MainModel.selectedTicket = ticketQueryResult[selectedRow]
+        MainModel.selectedTicket = filterQueryResult[selectedRow]
         setSeatCodeForSelectedPassenger(MainModel.selectedTicket!.TrainCode! ,seatCodeName: sender.identifier!)
         
         self.loadingTipController.start(tip:"正在提交...")
@@ -521,7 +521,7 @@ class TicketQueryViewController: NSViewController {
         
         for i in 0..<ticketQueryResult.count {
             if ticketQueryResult[i].TrainCode == trainCode {
-                queryByTrainCodeParam.train_no = ticketQueryResult[i].train_no!
+                queryByTrainCodeParam.train_no = ticketQueryResult[i].train_no
                 queryByTrainCodeParam.from_station_telecode = ticketQueryResult[i].FromStationCode!
                 queryByTrainCodeParam.to_station_telecode = ticketQueryResult[i].ToStationCode!
                 break
