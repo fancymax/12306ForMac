@@ -159,7 +159,11 @@ class TrainInfoTableCellView: TrainTableCellView {
             else{
                 sender.title = sender.alternateTitle + "(\(ticket)张)"
             }
-            sender.toolTip = "¥\(ticketInfo.seatTypePairDic[sender.identifier!]!.price)"
+            
+            if let seatTypePair = ticketInfo.seatTypePairDic[sender.identifier!] {
+                sender.toolTip = "¥\(seatTypePair.price)"
+            }
+            
         }
         
         setTicketButton(ticketInfo.Swz_Num, sender: SwzBtn)
