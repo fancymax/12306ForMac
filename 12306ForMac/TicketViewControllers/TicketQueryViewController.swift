@@ -15,6 +15,10 @@ class TicketQueryViewController: NSViewController {
     @IBOutlet var secondSearchView: NSView!
     @IBOutlet var ticketTableView: NSView!
     
+    override var nibName: String? {
+        return "TicketQueryViewController"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -276,7 +280,7 @@ class TicketQueryViewController: NSViewController {
     
     lazy var trainFilterWindowController:TrainFilterWindowController = TrainFilterWindowController()
     lazy var submitWindowController:SubmitWindowController = SubmitWindowController()
-    var loadingTipController = LoadingTipViewController(nibName:"LoadingTipViewController",bundle: nil)!
+    var loadingTipController = LoadingTipViewController()
     
     lazy var trainCodeDetailViewController:TrainCodeDetailViewController = TrainCodeDetailViewController()
     lazy var trainCodeDetailPopover: NSPopover = {
@@ -485,7 +489,7 @@ class TicketQueryViewController: NSViewController {
         
         let selectedRow = leftTicketTable.rowForView(sender)
         MainModel.selectedTicket = filterQueryResult[selectedRow]
-        setSeatCodeForSelectedPassenger(MainModel.selectedTicket!.TrainCode! ,seatCodeName: sender.identifier!)
+        setSeatCodeForSelectedPassenger(MainModel.selectedTicket!.TrainCode ,seatCodeName: sender.identifier!)
         
         self.loadingTipController.start(tip:"正在提交...")
         

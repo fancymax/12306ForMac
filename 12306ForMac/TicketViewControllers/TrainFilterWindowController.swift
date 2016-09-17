@@ -31,7 +31,7 @@ class TrainFilterWindowController: NSWindowController,NSTableViewDelegate,NSTabl
     
     var trainFilterKey = ""
     var seatFilterKey = ""
-        
+    
     @IBOutlet weak var trainFilterTable: NSTableView!
     
     func createFilterItemByTrains(trains:[QueryLeftNewDTO]){

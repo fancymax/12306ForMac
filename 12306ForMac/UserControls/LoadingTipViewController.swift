@@ -12,6 +12,10 @@ class LoadingTipViewController: NSViewController {
     @IBOutlet weak var loadingView: NSView!
     @IBOutlet weak var loadingTip: NSTextField!
     @IBOutlet weak var loadingSpinner: NSProgressIndicator!
+    
+    override var nibName: String?{
+        return "LoadingTipViewController"
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -15,6 +15,10 @@ class GeneralPreferenceViewController: NSViewController, MASPreferencesViewContr
         // Do view setup here.
     }
     
+    override var nibName: String? {
+        return "GeneralPreferenceViewController"
+    }
+    
     override var identifier: String!{
         get {
             return "GeneralPreferences"

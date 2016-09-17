@@ -21,6 +21,10 @@ class AdvancedPreferenceViewController: NSViewController,MASPreferencesViewContr
         }
     }
     
+    override var nibName: String? {
+        return "AdvancedPreferenceViewController"
+    }
+    
 // MARK: - MASPreferencesViewController
     override var identifier: String!{
         get {

@@ -20,7 +20,7 @@ class OrderViewController: NSViewController{
     
     var orderList = [OrderDTO]()
     let service = Service()
-    var loadingTipController = LoadingTipViewController(nibName:"LoadingTipViewController",bundle: nil)!
+    var loadingTipController = LoadingTipViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,10 @@ class OrderViewController: NSViewController{
         notificationCenter.addObserver(self, selector: #selector(PassengerSelectViewController.receiveLogoutMessageNotification(_:)), name: DidSendLogoutMessageNotification, object: nil)
     }
     
+    override var nibName: String?{
+        return "OrderViewController"
+    }
+    
     override func viewDidAppear() {
         if ((!hasQuery) && (MainModel.isGetUserInfo)) {
             queryNoCompleteOrder()
@@ -41,9 +45,6 @@ class OrderViewController: NSViewController{
     }
     
     @IBAction func queryOrder(sender: NSButton) {
-//        initDemoOrderList()
-//        return
-        
         queryNoCompleteOrder()
     }
     
@@ -93,22 +94,6 @@ class OrderViewController: NSViewController{
     @IBAction func payOrder(sender: NSButton) {
         NSWorkspace.sharedWorkspace().openURL(NSURL(string: "https://kyfw.12306.cn/otn/login/init")!)
     }
-    
-//    func queryHistoryOrder(){
-//        
-//        let successHandler = {
-//            self.orderList = MainModel.historyOrderList
-//            self.orderListTable.reloadData()
-//            
-//            self.loadingTipController.stop()
-//        }
-//
-//        let failureHandler = {
-//            self.loadingTipController.stop()
-//            
-//        }
-//        service.queryHistoryOrderFlow(success: successHandler, failure: failureHandler)
-//    }
     
     func queryNoCompleteOrder(){
         self.orderList = [OrderDTO]()

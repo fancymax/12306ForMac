@@ -163,7 +163,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="ejg-aw-Fwo">
-                                                <rect key="frame" x="1" y="1" width="-3" height="40"/>
+                                                <rect key="frame" x="1" y="1" width="0.0" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d07-26-bbj">
@@ -202,7 +202,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="4m2-So-4Zt">
-                                                <rect key="frame" x="1" y="1" width="-3" height="40"/>
+                                                <rect key="frame" x="1" y="1" width="0.0" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wsg-xh-JkU">
@@ -241,7 +241,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="84h-ti-CH2">
-                                                <rect key="frame" x="1" y="1" width="-3" height="40"/>
+                                                <rect key="frame" x="1" y="1" width="0.0" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="edf-m1-A7g">
@@ -319,7 +319,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="5lA-6N-kD8">
-                                                <rect key="frame" x="1" y="1" width="-3" height="40"/>
+                                                <rect key="frame" x="1" y="1" width="0.0" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nMX-gJ-Pt0">
