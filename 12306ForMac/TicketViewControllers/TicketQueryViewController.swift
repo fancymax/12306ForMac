@@ -218,7 +218,12 @@ class TicketQueryViewController: NSViewController {
     
     @IBAction func clickAutoQuery(sender: NSButton) {
         if sender.state == NSOnState {
-            autoQuery = true
+            if self.seatFilterKey == "" {
+                self.filterTrain()
+            }
+            else {
+                autoQuery = true
+            }
         }
         else {
             autoQuery = false
@@ -274,7 +279,6 @@ class TicketQueryViewController: NSViewController {
             }
         }
     }
-    
     
     var seatFilterKey = ""
     
