@@ -107,8 +107,8 @@ class AutoCompleteTextField:NSTextField{
         case 36: // Return
             if isShow{
                 self.insert(self)
-                return //skip default behavior
             }
+            return 
             
         case 48: //Tab
             if isShow{

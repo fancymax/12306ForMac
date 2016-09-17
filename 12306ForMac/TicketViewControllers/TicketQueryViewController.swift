@@ -67,7 +67,7 @@ class TicketQueryViewController: NSViewController {
 // MARK: - firstSearchView
     @IBOutlet weak var fromStationNameTxt: AutoCompleteTextField!
     @IBOutlet weak var toStationNameTxt: AutoCompleteTextField!
-    @IBOutlet weak var queryDate: NSDatePicker!
+    @IBOutlet weak var queryDate: ClickableDatePicker!
     @IBOutlet weak var queryBtn: NSButton!
     @IBOutlet weak var converCityBtn: NSButton!
     
@@ -152,14 +152,14 @@ class TicketQueryViewController: NSViewController {
                 self.fromStationNameTxt.enabled = false
                 self.toStationNameTxt.enabled = false
                 self.converCityBtn.enabled = false
-                self.queryDate.enabled = false
+                self.queryDate.clickable = false
                 filterCbx.enabled = false
             }
             else {
                 queryBtn.title = "开始抢票"
                 self.fromStationNameTxt.enabled = true
                 self.toStationNameTxt.enabled = true
-                self.queryDate.enabled = true
+                self.queryDate.clickable = true
                 self.converCityBtn.enabled = true
                 filterCbx.enabled = true
                 if self.filterQueryResult.count > 0 {
@@ -326,6 +326,8 @@ class TicketQueryViewController: NSViewController {
         trainFilterWindowController.fromStationName = self.fromStationNameTxt.stringValue
         trainFilterWindowController.toStationName = self.toStationNameTxt.stringValue
         trainFilterWindowController.trainDate = self.date!
+        
+        
         if let window = self.view.window {
             window.beginSheet(trainFilterWindowController.window!, completionHandler: {response in
                 if response == NSModalResponseOK{

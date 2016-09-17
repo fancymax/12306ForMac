@@ -9,9 +9,11 @@
 import Cocoa
 
 class ClickableDatePicker: NSDatePicker {
+    
+    @IBInspectable var clickable:Bool = true
 
     override func mouseDown(theEvent: NSEvent) {
-        if self.enabled {
+        if self.clickable {
             sendAction(self.action, to: self.target)
         }
     }
