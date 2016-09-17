@@ -101,7 +101,6 @@ class TicketQueryViewController: NSViewController {
             repeatTimer?.invalidate()
             repeatTimer = nil
             hasAutoQuery = false
-            self.resetAutoQueryNumStatus()
             return
         }
         
@@ -141,6 +140,7 @@ class TicketQueryViewController: NSViewController {
             }
             else {
                 queryBtn.title = "开始查询"
+                self.resetAutoQueryNumStatus()
             }
         }
     }
