@@ -358,6 +358,7 @@ class TicketQueryViewController: NSViewController {
                     self.repeatTimer = nil
                     self.hasAutoQuery = false
                     self.autoSummit(ticket, seatTypeId: ticket.getSeatTypeNameByFilterKey(self.seatFilterKey)!)
+                    NotifySpeaker.sharedInstance.notify()
                     break;
                 }
             }

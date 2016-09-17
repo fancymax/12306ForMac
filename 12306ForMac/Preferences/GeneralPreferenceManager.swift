@@ -15,6 +15,8 @@ class GeneralPreferenceManager {
     private let autoQuerySecondsKey = "autoQuerySeconds"
     private let isShowInvalidTicketKey = "isShowInvalidTicket"
     private let isShowNoTrainTicketKey = "isShowNoTrainTicket"
+    private let isNotifyTicketKey = "isNotifyTicket"
+    private let notifyStrKey = "notifyStr"
     
     private let userDefaults = NSUserDefaults.standardUserDefaults()
     
@@ -25,7 +27,7 @@ class GeneralPreferenceManager {
     
     private func registerUserDefault()
     {
-        let firstDefault = [autoQuerySecondsKey: 5,isShowInvalidTicketKey: true, isShowNoTrainTicketKey:true]
+        let firstDefault = [autoQuerySecondsKey: 5,isShowInvalidTicketKey: true, isShowNoTrainTicketKey:true, isNotifyTicketKey:true, notifyStrKey:"订到票啦"]
         userDefaults.registerDefaults(firstDefault)
     }
     
@@ -53,6 +55,24 @@ class GeneralPreferenceManager {
         }
         set{
             userDefaults.setObject(newValue, forKey: isShowNoTrainTicketKey)
+        }
+    }
+    
+    var isNotifyTicket:Bool {
+        get{
+            return userDefaults.objectForKey(isNotifyTicketKey) as! Bool
+        }
+        set{
+            userDefaults.setObject(newValue, forKey: isNotifyTicketKey)
+        }
+    }
+    
+    var notifyStr:String {
+        get{
+            return userDefaults.objectForKey(notifyStrKey) as! String
+        }
+        set{
+            userDefaults.setObject(newValue, forKey: notifyStrKey)
         }
     }
     

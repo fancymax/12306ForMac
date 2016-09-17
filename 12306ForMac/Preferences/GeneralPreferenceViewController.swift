@@ -73,4 +73,23 @@ class GeneralPreferenceViewController: NSViewController, MASPreferencesViewContr
         }
     }
     
+    var isNotifyTicket: Bool {
+        get{
+            return GeneralPreferenceManager.sharedInstance.isNotifyTicket
+        }
+        set{
+            GeneralPreferenceManager.sharedInstance.isNotifyTicket = newValue
+            NotifySpeaker.sharedInstance.notify()
+        }
+    }
+    
+    var notifyStr: String {
+        get{
+            return GeneralPreferenceManager.sharedInstance.notifyStr
+        }
+        set{
+            GeneralPreferenceManager.sharedInstance.notifyStr = newValue
+        }
+    }
+    
 }

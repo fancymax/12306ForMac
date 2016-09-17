@@ -104,6 +104,7 @@
 		F1F2F2D61D5B283D00EA7786 /* GeneralPreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F2D51D5B283D00EA7786 /* GeneralPreferenceManager.swift */; };
 		F1F5CE0F1CA9431D005C33BD /* SeatTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F5CE0E1CA9431D005C33BD /* SeatTypeModel.swift */; };
 		F1FCFF4B1D386F8F0070A32C /* URLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FCFF4A1D386F8F0070A32C /* URLButton.swift */; };
+		F1FEE7A21D8D464900B02C84 /* NotifySpeaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FEE7A11D8D464900B02C84 /* NotifySpeaker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -219,6 +220,7 @@
 		F1F2F2D51D5B283D00EA7786 /* GeneralPreferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferenceManager.swift; sourceTree = "<group>"; };
 		F1F5CE0E1CA9431D005C33BD /* SeatTypeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatTypeModel.swift; sourceTree = "<group>"; };
 		F1FCFF4A1D386F8F0070A32C /* URLButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLButton.swift; sourceTree = "<group>"; };
+		F1FEE7A11D8D464900B02C84 /* NotifySpeaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifySpeaker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +313,7 @@
 				F111547B1C8D923C00FA6059 /* SwiftyJSON.swift */,
 				F111547C1C8D923C00FA6059 /* SwiftyRegex.swift */,
 				F111547E1C8D923C00FA6059 /* XCGLogger.swift */,
+				F1FEE7A11D8D464900B02C84 /* NotifySpeaker.swift */,
 			);
 			name = Utilities;
 			path = 12306ForMac/Utilities;
@@ -739,6 +742,7 @@
 				F11154A31C8D929200FA6059 /* Service.swift in Sources */,
 				F11154951C8D925200FA6059 /* LunarSolarConverter.swift in Sources */,
 				F11154721C8D921400FA6059 /* LeftTicketParam.swift in Sources */,
+				F1FEE7A21D8D464900B02C84 /* NotifySpeaker.swift in Sources */,
 				F1FCFF4B1D386F8F0070A32C /* URLButton.swift in Sources */,
 				F11154A11C8D929200FA6059 /* Service+QueryOrder.swift in Sources */,
 				F113B4FA1C8FC7930001AE09 /* ErrorTranslator.swift in Sources */,

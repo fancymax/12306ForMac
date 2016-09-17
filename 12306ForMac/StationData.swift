@@ -21,7 +21,10 @@ struct Station {
 
 // "https://kyfw.12306.cn/otn/resources/js/framework/station_name.js"
 class StationNameJs{
-    static let sharedInstance = StationNameJs()
+    private static let sharedManager = StationNameJs()
+    class var sharedInstance: StationNameJs {
+        return sharedManager
+    }
     
     var allStation:[Station]
     
