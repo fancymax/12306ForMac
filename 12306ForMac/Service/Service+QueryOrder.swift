@@ -59,7 +59,6 @@ extension Service{
                     let jsonData = JSON(data)["data"]
                     let orderDBList = JSON(data)["data"]["orderDBList"]
                     guard orderDBList.count > 0 else {
-                        print("queryMyOrder:\(jsonData)")
                         reject(NSError(domain: "queryMyOrderWithPageIndex:", code: 0, userInfo: nil))
                         return
                     }

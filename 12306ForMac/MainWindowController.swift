@@ -94,13 +94,11 @@ class MainWindowController: NSWindowController{
     }
     
     func receiveDidSendLoginMessageNotification(note: NSNotification){
-        print("receiveDidSendLoginMessageNotification")
         loginOut()
         login(isAutoLogin: false)
     }
     
     func receiveAutoLoginMessageNotification(note: NSNotification){
-        print("receiveAutoLoginMessageNotification")
         loginOut()
         login(isAutoLogin: true)
     }

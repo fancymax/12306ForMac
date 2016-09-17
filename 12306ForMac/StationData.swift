@@ -47,9 +47,6 @@ class StationNameJs{
                 self.allStationMap[oneStation.Name] = oneStation
             }
         }
-        else
-        {
-            print("match station fail")
-        }
+
     }
 }

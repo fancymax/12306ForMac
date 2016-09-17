@@ -136,9 +136,6 @@ class RandCodeImageView2:NSImageView {
             section.colIndex = 3
         }
         
-        Swift.print("pointX = \(pointX) pointY = \(pointY)")
-        Swift.print("rowIndex = \(section.rowIndex) colIndex = \(section.colIndex)")
-        
         return section
     }
     

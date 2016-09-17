@@ -193,7 +193,6 @@ class TicketQueryViewController: NSViewController {
     
     func receiveCheckPassengerMessageNotification(notification: NSNotification) {
         if !self.passengersPopover.shown {
-            print("not my message in DisclosureViewController")
             return
         }
         
@@ -301,12 +300,10 @@ class TicketQueryViewController: NSViewController {
     }()
     
     func receiveDidSendSubmitMessageNotification(note: NSNotification){
-        print("receiveDidSendSubmitMessageNotification")
         openSubmitSheet(isAutoSubmit: false)
     }
     
     func receiveAutoSubmitMessageNotification(note: NSNotification){
-        print("receiveAutoSubmitMessageNotification")
         openSubmitSheet(isAutoSubmit: true)
     }
     
@@ -334,8 +331,7 @@ class TicketQueryViewController: NSViewController {
                 if response == NSModalResponseOK{
                     self.trainFilterKey = self.trainFilterWindowController.trainFilterKey
                     self.seatFilterKey = self.trainFilterWindowController.seatFilterKey
-                    print(self.trainFilterKey)
-                    print(self.seatFilterKey)
+                    logger.info("trainFilterKey:\(self.trainFilterKey) seatFilterKey:\(self.seatFilterKey)")
                     
                     self.filterQueryResult = self.ticketQueryResult.filter({item in return self.trainFilterKey.containsString("|" + item.TrainCode! + "|")})
                     self.leftTicketTable.reloadData()

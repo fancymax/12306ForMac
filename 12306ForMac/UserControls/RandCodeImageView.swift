@@ -43,7 +43,6 @@ class RandCodeImageView:NSImageView {
     
     override func mouseDown(theEvent: NSEvent) {
         let frameOffsetInWindow = convertPoint(self.frame.origin, fromView: nil)
-//        Swift.print("frameInWindowX:\(frameOffsetInWindow.x) frameInWindowY:\(frameOffsetInWindow.y)")
         
         let imageOriginX = self.frame.origin.x - frameOffsetInWindow.x
         let imageOriginY = self.frame.origin.y + self.bounds.height - frameOffsetInWindow.y
@@ -53,14 +52,11 @@ class RandCodeImageView:NSImageView {
         let randCodeY = (imageOriginY - mouseY)/1.2 - 30
         
         if ((randCodeX < 0) || (randCodeY < 0)){
-            Swift.print("randCodeX:\(Int(randCodeX)),randCodeY:\(Int(randCodeY)) error")
             return
         }
         
         let pointX = mouseX - (self.frame.origin.x - frameOffsetInWindow.x)
         let pointY = mouseY - (self.frame.origin.y - frameOffsetInWindow.y)
-        
-//        Swift.print("mouseX:\(mouseX) mouseY:\(mouseY) framX:\(self.frame.origin.x) frameY:\(self.frame.origin.y) boundsX:\(self.bounds.origin.x) boundsY:\(self.bounds.origin.y)")
         
         var isAdd = true
         if imageDots.count != 0

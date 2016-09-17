@@ -51,7 +51,6 @@ extension Service {
                 case .Failure(let error):
                     reject(error)
                 case .Success(let content):
-                    print(response.request?.allHTTPHeaderFields)
                     var dynamicJs = ""
                     if let matches = Regex("src=\"/otn/dynamicJs/([^\"]+)\"").getMatches(content){
                         dynamicJs = matches[0][0]
@@ -69,7 +68,6 @@ extension Service {
     {
         let url = "https://kyfw.12306.cn/otn/login/loginOut"
         Service.Manager.request(.GET, url).responseString(completionHandler:{response in
-            print(response.result)
         })
     }
     

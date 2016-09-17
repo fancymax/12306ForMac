@@ -121,7 +121,6 @@ class Dama: NSObject {
                         }
                     }
                 }
-                //耗时：print(response.timeline.totalDuration)
         }
     }
     

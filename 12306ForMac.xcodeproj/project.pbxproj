@@ -73,7 +73,6 @@
 		F16CB2291D312A6D0055D39D /* LoadingTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16CB2271D312A6D0055D39D /* LoadingTipViewController.swift */; };
 		F16CB22A1D312A6D0055D39D /* LoadingTipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F16CB2281D312A6D0055D39D /* LoadingTipViewController.xib */; };
 		F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F17AB1CB1C95630E00FEB221 /* Credits.rtf */; };
-		F196445E1C9CED830097FF67 /* Service+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F196445D1C9CED830097FF67 /* Service+Utilities.swift */; };
 		F1C075211D83F97A006EFABB /* TicketConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C075201D83F97A006EFABB /* TicketConstants.swift */; };
 		F1C075231D855EE5006EFABB /* Direction.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C075221D855EE5006EFABB /* Direction.png */; };
 		F1CA12051D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA12041D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift */; };
@@ -179,7 +178,6 @@
 		F16CB2271D312A6D0055D39D /* LoadingTipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingTipViewController.swift; sourceTree = "<group>"; };
 		F16CB2281D312A6D0055D39D /* LoadingTipViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingTipViewController.xib; sourceTree = "<group>"; };
 		F17AB1CB1C95630E00FEB221 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = 12306ForMac/Resources/Credits.rtf; sourceTree = SOURCE_ROOT; };
-		F196445D1C9CED830097FF67 /* Service+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Service+Utilities.swift"; sourceTree = "<group>"; };
 		F1C075201D83F97A006EFABB /* TicketConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketConstants.swift; sourceTree = "<group>"; };
 		F1C075221D855EE5006EFABB /* Direction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Direction.png; path = 12306ForMac/images/Direction.png; sourceTree = SOURCE_ROOT; };
 		F1CA12041D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainCodeDetailHeaderCell.swift; sourceTree = "<group>"; };
@@ -366,7 +364,6 @@
 				F111549E1C8D929200FA6059 /* Service.swift */,
 				F113B4F71C8FBA2E0001AE09 /* ServiceError.swift */,
 				F113B4F91C8FC7930001AE09 /* ErrorTranslator.swift */,
-				F196445D1C9CED830097FF67 /* Service+Utilities.swift */,
 				F1F2F2CF1D5AB8F700EA7786 /* Dama.swift */,
 				F11FE6861D5F4EB70049F261 /* DamaError.swift */,
 			);
@@ -700,7 +697,6 @@
 				F11154731C8D921400FA6059 /* MainModel.swift in Sources */,
 				F11154791C8D921400FA6059 /* QueryOrderWaitTimeResult.swift in Sources */,
 				F11154771C8D921400FA6059 /* QueryLeftNewDTO.swift in Sources */,
-				F196445E1C9CED830097FF67 /* Service+Utilities.swift in Sources */,
 				F111549F1C8D929200FA6059 /* Service+Login.swift in Sources */,
 				F111548F1C8D925200FA6059 /* FlashLabel.swift in Sources */,
 				F1CA120D1D1135E2003EFD0B /* Theme.swift in Sources */,

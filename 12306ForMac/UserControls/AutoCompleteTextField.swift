@@ -148,7 +148,6 @@ class AutoCompleteTextField:NSTextField{
         
         //This happens when we just started a new word or if we have already typed the entire word
         if subStringRange.length == 0 || lengthOfWord == 0 {
-            Swift.print("complete lengthOfWord = \(lengthOfWord) identier = \((sender as! NSTextField).identifier)")
             self.autoCompletePopover?.close()
             return
         }

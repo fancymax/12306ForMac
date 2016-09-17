@@ -41,11 +41,9 @@ class MainModel{
                 }
                 start = start.advancedBy(10)
                 end = start.advancedBy(5)
-//                print(ticketInfo.substringWithRange(Range(start..<end)))
             }
             let priceStr = ticketInfo.substringWithRange(Range(start.advancedBy(1)..<end.advancedBy(1)))
             let price = Double(priceStr)! / 10
-//            Swift.print("indentifier = \(indentifier) price = \(price) yp = \(ticketInfo)")
             return price
         }
         else{

@@ -311,9 +311,7 @@ M/12075/0100
             
             let seatType = SeatTypePair(id1: id1, id2: id2, number: number, price: price)
             seatTypePairDic[id1] = seatType
-//            print("\(TrainCode) id1:\(id1) id:\(id2) number:\(number) price:\(price)")
         }
-//        print("")
     }
 }
 

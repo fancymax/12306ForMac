@@ -87,7 +87,7 @@ extension Service{
         Service.Manager.request(.POST, url, headers:headers).responseJSON(completionHandler:{response in
             switch (response.result){
             case .Failure(let error):
-                print(error)
+                logger.error(error.localizedDescription)
             case .Success(let data):
                 let jsonData = JSON(data)["data"]
                 guard jsonData["normal_passengers"].count > 0 else {
@@ -152,8 +152,8 @@ extension Service{
                         fulfill()
                     }
                     else {
-                        logger.error("\(JSON(data))")
-                        print(params)
+                        logger.error("params:\(params)")
+                        logger.error("JSON:\(JSON(data))")
                         let error:NSError
                         if let message = JSON(data)["messages"][0].string{
                             error = ServiceError.errorWithCode(.SubmitOrderFailed, failureReason: message)
@@ -409,17 +409,15 @@ extension Service{
                 p1 = 60
             }
             
-            print("calcWaitTime=\(p1)")
             return p1
         }
     
         Service.Manager.request(.GET, url + params, headers:headers).responseJSON(completionHandler:{response in
             switch (response.result){
             case .Failure(let error):
-                print(error)
+                logger.error(error.localizedDescription)
                 failMethod(error:error as NSError)
             case .Success(let data):
-                print(JSON(data))
                 let waitTimeResult = QueryOrderWaitTimeResult(json: JSON(data)["data"])
                 
                 if let submitStatus = waitTimeResult.queryOrderWaitTimeStatus where submitStatus == true {
