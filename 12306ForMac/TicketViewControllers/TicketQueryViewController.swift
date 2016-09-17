@@ -49,6 +49,7 @@ class TicketQueryViewController: NSViewController {
         filterCbx.enabled = false
         filterBtn.hidden = true
         filterCbx.hidden = true
+        autoQueryNumTxt.hidden = true
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveCheckPassengerMessageNotification(_:)), name: DidSendCheckPassengerMessageNotification, object: nil)
@@ -68,7 +69,10 @@ class TicketQueryViewController: NSViewController {
     @IBOutlet weak var toStationNameTxt: AutoCompleteTextField!
     @IBOutlet weak var queryDate: NSDatePicker!
     @IBOutlet weak var queryBtn: NSButton!
+    @IBOutlet weak var converCityBtn: NSButton!
     
+    @IBOutlet weak var autoQueryNumTxt: NSTextField!
+    var autoQueryNum = 0
     var calendarPopover:NSPopover?
     var repeatTimer:NSTimer?
    
@@ -78,7 +82,7 @@ class TicketQueryViewController: NSViewController {
         return dateDescription[dateDescription.startIndex..<dateRange!.startIndex]
     }
     
-    @IBAction func convertCity(sender: NSButton) {
+    @IBAction func clickConvertCity(sender: NSButton) {
         let temp = self.fromStationNameTxt.stringValue
         self.fromStationNameTxt.stringValue = self.toStationNameTxt.stringValue
         self.toStationNameTxt.stringValue = temp
@@ -97,6 +101,7 @@ class TicketQueryViewController: NSViewController {
             repeatTimer?.invalidate()
             repeatTimer = nil
             hasAutoQuery = false
+            self.resetAutoQueryNumStatus()
             return
         }
         
@@ -146,6 +151,7 @@ class TicketQueryViewController: NSViewController {
                 queryBtn.title = "停止抢票"
                 self.fromStationNameTxt.enabled = false
                 self.toStationNameTxt.enabled = false
+                self.converCityBtn.enabled = false
                 self.queryDate.enabled = false
                 filterCbx.enabled = false
             }
@@ -154,6 +160,7 @@ class TicketQueryViewController: NSViewController {
                 self.fromStationNameTxt.enabled = true
                 self.toStationNameTxt.enabled = true
                 self.queryDate.enabled = true
+                self.converCityBtn.enabled = true
                 filterCbx.enabled = true
                 if self.filterQueryResult.count > 0 {
                     canFilter = true
@@ -230,17 +237,16 @@ class TicketQueryViewController: NSViewController {
         }
     }
     
-    @IBAction func clickTrainFilterBtn(sender: AnyObject) {
+    @IBAction func clickFilterTrain(sender: AnyObject) {
         self.filterTrain()
     }
     
-    @IBAction func selectPassenger(sender: NSButton) {
+    @IBAction func clickAddPassenger(sender: NSButton) {
         let positioningView = sender
         let positioningRect = NSZeroRect
         let preferredEdge = NSRectEdge.MaxY
         
         passengersPopover.showRelativeToRect(positioningRect, ofView: positioningView, preferredEdge: preferredEdge)
-        //        initPassenger()
         passengerSelectViewController.reloadPassenger(MainModel.passengers)
     }
     
@@ -284,7 +290,7 @@ class TicketQueryViewController: NSViewController {
     
     lazy var trainFilterWindowController:TrainFilterWindowController = TrainFilterWindowController()
     lazy var submitWindowController:SubmitWindowController = SubmitWindowController()
-    var loadingTipController = LoadingTipViewController()
+    lazy var loadingTipController:LoadingTipViewController = LoadingTipViewController()
     
     lazy var trainCodeDetailViewController:TrainCodeDetailViewController = TrainCodeDetailViewController()
     lazy var trainCodeDetailPopover: NSPopover = {
@@ -343,6 +349,8 @@ class TicketQueryViewController: NSViewController {
     
     func queryTicketAndSubmit() {
         let summitHandler = {
+            self.addAutoQueryNumStatus()
+            
             for ticket in self.filterQueryResult {
                 if ticket.hasTicketForSeatTypeFilterKey(self.seatFilterKey) {
                     //停止查询
@@ -355,6 +363,17 @@ class TicketQueryViewController: NSViewController {
             }
         }
         queryLeftTicket(summitHandler)
+    }
+    
+    func addAutoQueryNumStatus() {
+        self.autoQueryNum += 1
+        self.autoQueryNumTxt.hidden = false
+        self.autoQueryNumTxt.stringValue = "已查询\(self.autoQueryNum)次"
+    }
+    
+    func resetAutoQueryNumStatus() {
+        self.autoQueryNum = 0
+        self.autoQueryNumTxt.hidden = true
     }
     
     func queryLeftTicket(summitHandler:()->() = {}) {
@@ -476,7 +495,7 @@ class TicketQueryViewController: NSViewController {
         service.submitFlow(success: postSubmitWindowMessage, failure: failHandler)
     }
     
-    func submit(sender: NSButton){
+    func clickSubmit(sender: NSButton){
         let notificationCenter = NSNotificationCenter.defaultCenter()
         
         if !MainModel.isGetUserInfo {
@@ -517,7 +536,7 @@ class TicketQueryViewController: NSViewController {
         service.submitFlow(success: postSubmitWindowMessage, failure: failHandler)
     }
     
-    func clickTrainCode(sender:NSButton) {
+    func clickShowTrainDetail(sender:NSButton) {
         let positioningView = sender
         let positioningRect = NSZeroRect
         let preferredEdge = NSRectEdge.MaxX
@@ -638,7 +657,7 @@ extension TicketQueryViewController: NSTableViewDelegate{
         if(columnIdentifier == "余票信息"){
             let cell = view as! TrainInfoTableCellView
             cell.ticketInfo = filterQueryResult[row]
-            cell.setTarget(self, action: #selector(TicketQueryViewController.submit(_:)))
+            cell.setTarget(self, action: #selector(TicketQueryViewController.clickSubmit(_:)))
         }
         else if(columnIdentifier == "发站" || columnIdentifier == "到站"){
             let cell = view as! TrainTableCellView
@@ -646,7 +665,7 @@ extension TicketQueryViewController: NSTableViewDelegate{
         }
         else if(columnIdentifier == "车次"){
             let cell = view as! TrainCodeTableCellView
-            cell.setTarget(self, action:#selector(TicketQueryViewController.clickTrainCode(_:)))
+            cell.setTarget(self, action:#selector(TicketQueryViewController.clickShowTrainDetail(_:)))
         }
         
         return view

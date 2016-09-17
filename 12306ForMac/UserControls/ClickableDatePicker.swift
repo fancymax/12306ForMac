@@ -11,7 +11,9 @@ import Cocoa
 class ClickableDatePicker: NSDatePicker {
 
     override func mouseDown(theEvent: NSEvent) {
-        sendAction(self.action, to: self.target)
+        if self.enabled {
+            sendAction(self.action, to: self.target)
+        }
     }
     
 }

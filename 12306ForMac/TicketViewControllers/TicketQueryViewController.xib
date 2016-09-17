@@ -7,6 +7,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TicketQueryViewController" customModule="_2306ForMac" customModuleProvider="target">
             <connections>
+                <outlet property="autoQueryNumTxt" destination="8dY-Wq-KeS" id="plY-vW-yvP"/>
+                <outlet property="converCityBtn" destination="aQQ-8z-kIM" id="ipp-qt-e3x"/>
                 <outlet property="filterBtn" destination="yXT-88-gO1" id="VxI-UI-ABf"/>
                 <outlet property="filterCbx" destination="xbM-JT-Qbf" id="J2k-ah-dCP"/>
                 <outlet property="firstSearchView" destination="Pal-9i-ZzT" id="2KX-XS-lYT"/>
@@ -273,8 +275,8 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView misplaced="YES" id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="_2306ForMac" customModuleProvider="target">
-                                                <rect key="frame" x="453" y="1" width="500" height="63"/>
+                                            <tableCellView id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="_2306ForMac" customModuleProvider="target">
+                                                <rect key="frame" x="453" y="1" width="997" height="63"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oxk-Lo-fip">
@@ -621,17 +623,30 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="convertCity:" target="-2" id="JIc-HQ-6qW"/>
+                        <action selector="clickConvertCity:" target="-2" id="8HO-Hd-o1u"/>
                     </connections>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8dY-Wq-KeS">
+                    <rect key="frame" x="726" y="2" width="78" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="GOO-q1-Dwl"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="已查询100次" id="ukQ-5e-1PO">
+                        <font key="font" metaFont="systemThin" size="13"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
                 <constraint firstItem="Be8-M1-vtw" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" constant="-1" id="1Wa-9a-0N4"/>
+                <constraint firstItem="FSF-1Q-g2J" firstAttribute="leading" secondItem="8dY-Wq-KeS" secondAttribute="trailing" constant="8" id="26i-g8-uui"/>
                 <constraint firstItem="amu-Qj-Yha" firstAttribute="leading" secondItem="Pal-9i-ZzT" secondAttribute="leading" constant="20" symbolic="YES" id="40s-Lm-XYb"/>
                 <constraint firstItem="9qi-Pb-rDH" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" id="4ba-wR-dfD"/>
                 <constraint firstItem="4N3-fA-XcK" firstAttribute="leading" secondItem="4jY-s2-8Ni" secondAttribute="trailing" constant="75" id="KY1-vl-Xct"/>
                 <constraint firstItem="Be8-M1-vtw" firstAttribute="leading" secondItem="9qi-Pb-rDH" secondAttribute="trailing" constant="8" symbolic="YES" id="W29-IO-jZp"/>
                 <constraint firstItem="aQQ-8z-kIM" firstAttribute="leading" secondItem="4jY-s2-8Ni" secondAttribute="trailing" constant="13" id="YRK-jK-KDy"/>
+                <constraint firstItem="8dY-Wq-KeS" firstAttribute="centerY" secondItem="FSF-1Q-g2J" secondAttribute="centerY" id="bTI-cs-KDE"/>
                 <constraint firstItem="l4y-Hd-FVf" firstAttribute="leading" secondItem="4N3-fA-XcK" secondAttribute="trailing" constant="8" symbolic="YES" id="g5Y-dJ-fb2"/>
                 <constraint firstItem="9qi-Pb-rDH" firstAttribute="leading" secondItem="l4y-Hd-FVf" secondAttribute="trailing" constant="90" id="gn5-kx-tix"/>
                 <constraint firstItem="FSF-1Q-g2J" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" id="hna-g5-nGb"/>
@@ -649,7 +664,7 @@
                     <color key="value" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="465" y="756"/>
+            <point key="canvasLocation" x="328" y="851"/>
         </customView>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Dhy-j5-W4F" customClass="GlassView" customModule="_2306ForMac" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="901" height="40"/>
@@ -665,7 +680,7 @@
                         <font key="font" metaFont="systemThin" size="13"/>
                     </buttonCell>
                     <connections>
-                        <action selector="selectPassenger:" target="-2" id="jF1-Rg-Ny0"/>
+                        <action selector="clickAddPassenger:" target="-2" id="lUg-B1-AJS"/>
                     </connections>
                 </button>
                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gWk-xJ-t7i">
@@ -692,7 +707,7 @@
                         <font key="font" metaFont="systemThin" size="13"/>
                     </buttonCell>
                     <connections>
-                        <action selector="clickTrainFilterBtn:" target="-2" id="ask-pl-Lyu"/>
+                        <action selector="clickFilterTrain:" target="-2" id="C1e-O6-nfh"/>
                     </connections>
                 </button>
             </subviews>
@@ -714,7 +729,7 @@
                     <color key="value" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="126.5" y="864"/>
+            <point key="canvasLocation" x="323.5" y="949"/>
         </customView>
     </objects>
     <resources>
