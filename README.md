@@ -14,6 +14,15 @@ OS X10.10以上
 #截图
 ![demo](screenshot/12306ForMac.png)
 
+#编译
+
+1. OS X 10.11.*
+2. Xcode 7.3.*
+3. 安装工具：[CocoaPods](https://cocoapods.org/)
+4. 复制项目：$ git clone --recursive https://github.com/fancymax/12306ForMac.git
+5. 安装依赖: $ pod install
+
+
 #感谢
 本项目基于 Alamofire、PromiseKit、Realm、INAppStoreWindow 进行开发，感谢他们对开源社区做出的贡献。
 
