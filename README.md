@@ -20,7 +20,7 @@ OS X10.10以上
 2. Xcode 7.3.*
 3. 安装工具：[CocoaPods](https://cocoapods.org/)
 4. 复制项目：$ git clone --recursive https://github.com/fancymax/12306ForMac.git
-5. 安装依赖: $ pod install
+5. 安装依赖：$ pod install
 
 
 #感谢
