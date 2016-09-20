@@ -6,6 +6,11 @@ Mac版12306 订票/捡票 软件。
 #系统
 OS X10.10以上
 
+#下载
+请查看最新的[Release](https://github.com/fancymax/12306ForMac/releases)
+
+后续会增加自动更新的功能，也会出一个Mac App store的版本。
+
 #功能
 目前仅完成了基础的订票 和 捡票 功能，后续还会继续补充功能。
 
