@@ -134,8 +134,8 @@ extension Service{
             let url = "https://kyfw.12306.cn/otn/leftTicket/submitOrderRequest"
             let params = [
                 "secretStr":MainModel.selectedTicket!.SecretStr!,
-                "train_date":MainModel.selectedTicket!.startTrainDateStr!,//2015-11-17
-                "back_train_date":MainModel.selectedTicket!.startTrainDateStr!,//2015-11-03
+                "train_date":MainModel.selectedTicket!.trainDateStr,//2015-11-17
+                "back_train_date":MainModel.selectedTicket!.trainDateStr,//2015-11-03
                 "tour_flag":"dc",
                 "purpose_codes":"ADULT",
                 "query_from_station_name":MainModel.selectedTicket!.FromStationName!,

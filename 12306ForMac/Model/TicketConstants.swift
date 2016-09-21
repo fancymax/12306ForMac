@@ -24,6 +24,7 @@ func QuerySeatTypeDicBy(trainCode:String)->[String:String] {
     }
 }
 
+//20160502->2016-05-02
 func Convert2StartTrainDateStr(dateStr: String)->String{
     var formateStr = dateStr
     var index = dateStr.startIndex.advancedBy(4)

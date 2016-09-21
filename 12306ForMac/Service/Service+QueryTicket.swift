@@ -123,7 +123,7 @@ extension Service {
                             var tickets = [QueryLeftNewDTO]()
                             for i in 0..<json.count
                             {
-                                let leftTicket = QueryLeftNewDTO(json: json[i])
+                                let leftTicket = QueryLeftNewDTO(json: json[i],dateStr: params.train_date)
                                 tickets.append(leftTicket)
                             }
                             fulfill(tickets)

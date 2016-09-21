@@ -110,25 +110,6 @@ class QueryLeftNewDTO:NSObject {
     
     var hasTicket:Bool = false
     
-    var startTrainDate:NSDate!
-    private func getStartTrainDate(dateStr:String)->NSDate? {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyymmdd"
-        return dateFormatter.dateFromString(dateStr)
-    }
-    
-    //"20150926" - > "2015-09-26"
-    var startTrainDateStr:String!
-    
-    //"Fri Dec 04 2015 08:00:00 GMT+0800 (中国标准时间)"
-    var jsStartTrainDateStr:String!
-    private func getJsStartTrainDateStr(date:NSDate)->String {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "EEE MMM dd yyyy '08:00:00' 'GMT'+'0800' '(中国标准时间)'"
-        dateFormatter.locale = NSLocale(localeIdentifier: "en-US")
-        return dateFormatter.stringFromDate(date)
-    }
-    
     func isTicketInvalid() -> Bool {
         if controlled_train_flag == "1" {
             return true
@@ -138,7 +119,33 @@ class QueryLeftNewDTO:NSObject {
         }
     }
     
-    init(json:JSON)
+//MARK: Train Date
+    var trainDate:NSDate!
+//    yyyy-MM-dd
+    let trainDateStr:String
+    
+    private func trainDateStr2Date(dateStr:String)->NSDate {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        if let date = dateFormatter.dateFromString(dateStr) {
+            return date
+        }
+        else {
+            logger.error("trainDateStr2Date dateStr = \(dateStr)")
+            return NSDate()
+        }
+    }
+    
+    //"Fri Dec 04 2015 08:00:00 GMT+0800 (中国标准时间)"
+    var jsStartTrainDateStr:String!
+    private func getJsStartTrainDateStr(date:NSDate)->String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "EEE MMM dd yyyy '00:00:00' 'GMT'+'0800' '(CST)'"
+        dateFormatter.locale = NSLocale(localeIdentifier: "en-US")
+        return dateFormatter.stringFromDate(date)
+    }
+    
+    init(json:JSON,dateStr:String)
     {
         let ticket = json["queryLeftNewDTO"]
         train_no = ticket["train_no"].string
@@ -199,12 +206,12 @@ class QueryLeftNewDTO:NSObject {
         isStartStation = (FromStationCode == start_station_telecode)
         isEndStation = (ToStationCode == end_station_telecode)
         
+        trainDateStr = dateStr
+        
         super.init()
         
-        startTrainDate = getStartTrainDate(start_train_date)
-        startTrainDateStr = Convert2StartTrainDateStr(start_train_date)
-        jsStartTrainDateStr = getJsStartTrainDateStr(startTrainDate)
-        
+        trainDate = trainDateStr2Date(dateStr)
+        jsStartTrainDateStr = getJsStartTrainDateStr(trainDate)
         setupSeatTypePairs()
         setupHasTicket()
     }

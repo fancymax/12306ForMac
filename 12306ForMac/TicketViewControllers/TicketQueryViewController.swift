@@ -249,11 +249,6 @@ class TicketQueryViewController: NSViewController {
         passengerSelectViewController.reloadPassenger(MainModel.passengers)
     }
     
-    func initPassenger(){
-        MainModel.passengers.append(PassengerDTO())
-        MainModel.passengers.append(PassengerDTO())
-    }
-    
     func passengerSelected(passenger:PassengerDTO) -> Bool{
         for controller in passengerViewControllerList where controller.passenger == passenger{
             return true
