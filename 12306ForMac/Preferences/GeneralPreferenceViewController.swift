@@ -92,4 +92,23 @@ class GeneralPreferenceViewController: NSViewController, MASPreferencesViewContr
         }
     }
     
+    var isNotifyLogin: Bool {
+        get{
+            return GeneralPreferenceManager.sharedInstance.isNotifyLogin
+        }
+        set{
+            GeneralPreferenceManager.sharedInstance.isNotifyLogin = newValue
+            NotifySpeaker.sharedInstance.notifyLogin()
+        }
+    }
+    
+    var notifyLoginStr: String {
+        get{
+            return GeneralPreferenceManager.sharedInstance.notifyLoginStr
+        }
+        set{
+            GeneralPreferenceManager.sharedInstance.notifyLoginStr = newValue
+        }
+    }
+    
 }

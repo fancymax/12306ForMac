@@ -16,7 +16,9 @@ class GeneralPreferenceManager {
     private let isShowInvalidTicketKey = "isShowInvalidTicket"
     private let isShowNoTrainTicketKey = "isShowNoTrainTicket"
     private let isNotifyTicketKey = "isNotifyTicket"
+    private let isNotifyLoginKey = "isNotifyLogin"
     private let notifyStrKey = "notifyStr"
+    private let notifyLoginStrKey = "notifyLoginStr"
     
     private let userDefaults = NSUserDefaults.standardUserDefaults()
     
@@ -27,7 +29,7 @@ class GeneralPreferenceManager {
     
     private func registerUserDefault()
     {
-        let firstDefault = [autoQuerySecondsKey: 5,isShowInvalidTicketKey: true, isShowNoTrainTicketKey:true, isNotifyTicketKey:true, notifyStrKey:"订到票啦"]
+        let firstDefault = [autoQuerySecondsKey: 5,isShowInvalidTicketKey: true, isShowNoTrainTicketKey:true, isNotifyTicketKey:true, notifyStrKey:"订到票啦",isNotifyLoginKey:true, notifyLoginStrKey:"要登录啦"]
         userDefaults.registerDefaults(firstDefault)
     }
     
@@ -73,6 +75,24 @@ class GeneralPreferenceManager {
         }
         set{
             userDefaults.setObject(newValue, forKey: notifyStrKey)
+        }
+    }
+    
+    var isNotifyLogin:Bool {
+        get{
+            return userDefaults.objectForKey(isNotifyLoginKey) as! Bool
+        }
+        set{
+            userDefaults.setObject(newValue, forKey: isNotifyLoginKey)
+        }
+    }
+    
+    var notifyLoginStr:String {
+        get{
+            return userDefaults.objectForKey(notifyLoginStrKey) as! String
+        }
+        set{
+            userDefaults.setObject(newValue, forKey: notifyLoginStrKey)
         }
     }
     

@@ -34,4 +34,10 @@ class NotifySpeaker {
         speachSynth.stopSpeaking()
     }
     
+    func notifyLogin() {
+        if GeneralPreferenceManager.sharedInstance.isNotifyLogin {
+            speachSynth.startSpeakingString(GeneralPreferenceManager.sharedInstance.notifyLoginStr)
+        }
+    }
+    
 }
