@@ -182,7 +182,7 @@ class SubmitWindowController: NSWindowController{
         }
         
         let waitHandler = { (info:String)-> () in
-            self.startLoadingTip(info)
+            self.errorFlashLabel.show(info, forDuration: 2, withFlash: false)
         }
         
         service.orderFlowWith(passengerImage.randCodeStr!, success: successHandler, failure: failureHandler,wait: waitHandler)

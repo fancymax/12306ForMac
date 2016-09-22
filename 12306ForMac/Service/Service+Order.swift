@@ -41,7 +41,7 @@ extension Service{
         self.checkRandCodeForOrder(randCodeStr).then({_ -> Promise<Void> in
             return self.checkOrderInfo(randCodeStr)
         }).then({_ -> Promise<Void> in
-            return self.getQueueCount()
+            return self.getQueueCount(wait)
         }).then({_ -> Promise<Void> in
             return after(1)
         }).then({_ -> Promise<Void> in
@@ -337,7 +337,7 @@ extension Service{
         }
     }
     
-    func getQueueCount()->Promise<Void>{
+    func getQueueCount(waitMethod :(info:String) -> ())->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/confirmPassenger/getQueueCount"
             let params = [
@@ -356,10 +356,19 @@ extension Service{
                 switch (response.result){
                 case .Failure(let error):
                     reject(error)
-                case .Success(let data):
-                    let json = JSON(data)
-                    logger.debug("\(json)")
-                    fulfill()
+                case .Success(let json):
+                    let ticketQueueCount = TicketQueueCountResult(json:JSON(json)["data"])
+                    if ticketQueueCount.shouldRelogin() {
+                        reject(ServiceError.errorWithCode(.CheckUserFailed))
+                    }
+                    let warningStr = ticketQueueCount.getWarningInfoBy(MainModel.selectPassengers[0].seatCodeName, trainCode: MainModel.selectedTicket!.TrainCode)
+                    if ticketQueueCount.isTicketSoldOut() {
+                        reject(ServiceError.errorWithCode(.ConfirmSingleForQueueFailed, failureReason: warningStr))
+                    }
+                    else {
+                        waitMethod(info: warningStr)
+                        fulfill()
+                    }
                 }})
         }
     }
