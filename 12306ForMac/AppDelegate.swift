@@ -13,7 +13,27 @@ import Cocoa
 let logger: XCGLogger = {
     // Setup XCGLogger
     let log = XCGLogger.defaultInstance()
-    let logPath: NSString = ("~/Desktop/12306ForMac_log.txt" as NSString).stringByExpandingTildeInPath
+    
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.dateFormat = "yyyyMMddhhmm"
+    let dateStr = dateFormatter.stringFromDate(NSDate())
+    
+    let bundleId = NSBundle.mainBundle().bundleIdentifier!
+    let fileName = "\(bundleId).\(dateStr).txt"
+
+    let logDirectory = "\(NSHomeDirectory())/Library/Logs/\(bundleId)/"
+    let logPath = "\(logDirectory)/\(fileName)"
+    
+    let isExistDirectory:Bool = NSFileManager.defaultManager().fileExistsAtPath(logDirectory, isDirectory: nil)
+    if !isExistDirectory {
+        do{
+            try NSFileManager.defaultManager().createDirectoryAtPath(logDirectory, withIntermediateDirectories: true, attributes: nil)
+        }
+        catch {
+            print("Creat 12306ForMac log fail")
+        }
+    }
+    
     log.xcodeColors = [
         .Verbose: .lightGrey,
         .Debug: .darkGrey,
@@ -51,7 +71,6 @@ let DidSendAutoSubmitMessageNotification = "com.12306.DidSendAutoSubmitMessageNo
         self.mainController = mainController
         
         logger.debug("application start")
-        
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -61,9 +80,6 @@ let DidSendAutoSubmitMessageNotification = "com.12306.DidSendAutoSubmitMessageNo
     func applicationShouldTerminateAfterLastWindowClosed(sender:NSApplication)->Bool {
         return true
     }
-    
-    
-
 
 }
 

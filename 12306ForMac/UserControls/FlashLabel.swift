@@ -55,7 +55,6 @@ public class FlashLabel: NSTextField {
     public func show(text: String, forDuration time: CGFloat, withFlash flash: Bool) {
         self.setVisibility(true, animated: false)
         self.stringValue = text
-        self.sizeToFit()
         if flash {
             timeSummation = 0
             showTime = time

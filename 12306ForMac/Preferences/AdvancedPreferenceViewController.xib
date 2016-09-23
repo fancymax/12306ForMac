@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
@@ -101,12 +101,12 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="editable" keyPath="self.isUseDama" id="WvE-gL-l8w"/>
                         <binding destination="-2" name="value" keyPath="self.damaUser" id="Kuj-kk-iuD">
                             <dictionary key="options">
                                 <bool key="NSContinuouslyUpdatesValue" value="YES"/>
                             </dictionary>
                         </binding>
+                        <binding destination="-2" name="editable" keyPath="self.isUseDama" id="WvE-gL-l8w"/>
                     </connections>
                 </textField>
                 <secureTextField verticalHuggingPriority="750" id="ZvA-a7-RJL">
@@ -121,12 +121,12 @@
                         </allowedInputSourceLocales>
                     </secureTextFieldCell>
                     <connections>
-                        <binding destination="-2" name="editable" keyPath="self.isUseDama" id="zeu-aQ-Qxo"/>
                         <binding destination="-2" name="value" keyPath="self.damaPassword" id="LTW-iq-8e5">
                             <dictionary key="options">
                                 <bool key="NSContinuouslyUpdatesValue" value="YES"/>
                             </dictionary>
                         </binding>
+                        <binding destination="-2" name="editable" keyPath="self.isUseDama" id="zeu-aQ-Qxo"/>
                     </connections>
                 </secureTextField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ZI7-CQ-93n">
@@ -147,7 +147,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="urlString" value="http://www.dama2.com"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="urlString" value="http://v3.dama2.com"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="QVD-49-8ie">

@@ -169,7 +169,7 @@ class SubmitWindowController: NSWindowController{
         let failureHandler = { (error:NSError) -> () in
             self.stopLoadingTip()
             self.isSubmitting = false
-            self.errorFlashLabel.show(translate(error), forDuration: 0.1, withFlash: false)
+            self.errorFlashLabel.show(translate(error), forDuration: 20, withFlash: false)
             self.freshImage()
         }
         
@@ -182,7 +182,7 @@ class SubmitWindowController: NSWindowController{
         }
         
         let waitHandler = { (info:String)-> () in
-            self.errorFlashLabel.show(info, forDuration: 2, withFlash: false)
+            self.errorFlashLabel.show(info, forDuration: 5, withFlash: false)
         }
         
         service.orderFlowWith(passengerImage.randCodeStr!, success: successHandler, failure: failureHandler,wait: waitHandler)

@@ -26,18 +26,12 @@ class UrlLabel: NSTextField {
         self.selectable = false
         self.editable = false
         self.drawsBackground = false
-        //        self.bordered =
         
-        self.textColor = NSColor.blueColor()
-//        [self setBordered:NSNoBorder];
-//        [[self cell] setControlSize:NSSmallControlSize];
-//        [[self cell] setLineBreakMode:NSLineBreakByTruncatingMiddle];
+        let attrs = [NSForegroundColorAttributeName: NSColor.blueColor(), NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue]
+        let attributeStr = NSAttributedString(string: self.stringValue, attributes: attrs)
+        self.attributedStringValue = attributeStr
     }
 
-    override func awakeFromNib() {
-        self.textColor = NSColor.blueColor()
-    }
-    
     override func mouseUp(theEvent: NSEvent) {
         var curPoint = theEvent.locationInWindow
         curPoint = self.convertPoint(curPoint, fromView: nil)
