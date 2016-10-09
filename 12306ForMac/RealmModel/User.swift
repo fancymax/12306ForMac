@@ -6,8 +6,6 @@
 //  Copyright © 2016年 fancy. All rights reserved.
 //
 
-import RealmSwift
-
 class UserX {
     var id:Int = -1
     var name = ""
