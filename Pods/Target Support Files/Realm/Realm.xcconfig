@@ -1,7 +1,0 @@
-REALM_APPLICATION_EXTENSION_API_ONLY = YES
-REALM_CLANG_CXX_LANGUAGE_STANDARD = compiler-default
-REALM_HEADER_SEARCH_PATHS = "${PODS_ROOT}/Realm/include/core" "${PODS_ROOT}/Realm/include/core"
-REALM_LIBRARY_SEARCH_PATHS = "$(PODS_ROOT)/Realm/core"
-REALM_OTHER_CPLUSPLUSFLAGS = -std=c++1y $(inherited) -std=c++1y $(inherited)
-REALM_OTHER_LDFLAGS = -l"c++" -l"realm-osx"
-REALM_USER_HEADER_SEARCH_PATHS = "${PODS_ROOT}/Realm/include" "${PODS_ROOT}/Realm/include/Realm" "${PODS_ROOT}/Realm/include" "${PODS_ROOT}/Realm/include/Realm"

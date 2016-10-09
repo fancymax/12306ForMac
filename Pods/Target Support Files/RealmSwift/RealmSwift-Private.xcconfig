@@ -1,9 +1,0 @@
-#include "RealmSwift.xcconfig"
-APPLICATION_EXTENSION_API_ONLY = ${REALMSWIFT_APPLICATION_EXTENSION_API_ONLY}
-CODE_SIGN_IDENTITY = 
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/RealmSwift" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Crashlytics" "${PODS_ROOT}/Headers/Public/Crashlytics/Crashlytics" "${PODS_ROOT}/Headers/Public/Fabric" "${PODS_ROOT}/Headers/Public/Fabric/Fabric"
-OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
-PODS_ROOT = ${SRCROOT}
-SKIP_INSTALL = YES
-SWIFT_WHOLE_MODULE_OPTIMIZATION = ${REALMSWIFT_SWIFT_WHOLE_MODULE_OPTIMIZATION}

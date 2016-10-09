@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "12306ForMac/UserControls/FlashLabel.swift"
-            timestampString = "491363012.184382"
+            timestampString = "496241746.797398"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "flashNotify()"
             landmarkType = "5">
          </BreakpointContent>
@@ -431,14 +431,14 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "496"
             endingLineNumber = "496"
-            landmarkName = "submit(_:)"
+            landmarkName = "clickSubmit(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "12306ForMac/MainWindowController.swift"
@@ -451,14 +451,14 @@
             landmarkType = "3">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "_2306ForMac.MainWindowController.orderQueryViewController.getter : _2306ForMac.OrderViewController"
                   moduleName = "12306ForMac"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lindahai/Desktop/develop/12306ForMac/12306ForMac/MainWindowController.swift"
-                  timestampString = "495733103.991258"
+                  timestampString = "496287091.608722"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "16"
@@ -466,14 +466,14 @@
                   offsetFromSymbolStart = "35">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "_2306ForMac.MainWindowController.orderQueryViewController.setter : _2306ForMac.OrderViewController"
                   moduleName = "12306ForMac"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lindahai/Desktop/develop/12306ForMac/12306ForMac/MainWindowController.swift"
-                  timestampString = "495733103.991417"
+                  timestampString = "496287091.608849"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "16"
@@ -481,14 +481,14 @@
                   offsetFromSymbolStart = "65">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "_2306ForMac.MainWindowController.init (window : Swift.Optional&lt;__ObjC.NSWindow&gt;) -&gt; _2306ForMac.MainWindowController"
                   moduleName = "12306ForMac"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lindahai/Desktop/develop/12306ForMac/12306ForMac/MainWindowController.swift"
-                  timestampString = "495733103.991558"
+                  timestampString = "496287091.608979"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "16"
@@ -496,14 +496,14 @@
                   offsetFromSymbolStart = "126">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "_2306ForMac.MainWindowController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;_2306ForMac.MainWindowController&gt;"
                   moduleName = "12306ForMac"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lindahai/Desktop/develop/12306ForMac/12306ForMac/MainWindowController.swift"
-                  timestampString = "495733103.99168"
+                  timestampString = "496287091.609089"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "16"
@@ -511,6 +511,52 @@
                   offsetFromSymbolStart = "126">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "12306ForMac/AppDelegate.swift"
+            timestampString = "496291106.66709"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "12306ForMac/Service/Service+QueryTicket.swift"
+            timestampString = "496301773.550712"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "queryTicketWith(_:queryUrl:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "12306ForMac/Service/Service+QueryTicket.swift"
+            timestampString = "496301820.980419"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "queryTicketWith(_:queryUrl:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
