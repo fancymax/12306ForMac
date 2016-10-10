@@ -12,87 +12,87 @@ class GeneralPreferenceManager {
     
     static let sharedInstance = GeneralPreferenceManager()
     
-    private let autoQuerySecondsKey = "autoQuerySeconds"
-    private let isShowInvalidTicketKey = "isShowInvalidTicket"
-    private let isShowNoTrainTicketKey = "isShowNoTrainTicket"
-    private let isNotifyTicketKey = "isNotifyTicket"
-    private let isNotifyLoginKey = "isNotifyLogin"
-    private let notifyStrKey = "notifyStr"
-    private let notifyLoginStrKey = "notifyLoginStr"
+    fileprivate let autoQuerySecondsKey = "autoQuerySeconds"
+    fileprivate let isShowInvalidTicketKey = "isShowInvalidTicket"
+    fileprivate let isShowNoTrainTicketKey = "isShowNoTrainTicket"
+    fileprivate let isNotifyTicketKey = "isNotifyTicket"
+    fileprivate let isNotifyLoginKey = "isNotifyLogin"
+    fileprivate let notifyStrKey = "notifyStr"
+    fileprivate let notifyLoginStrKey = "notifyLoginStr"
     
-    private let userDefaults = NSUserDefaults.standardUserDefaults()
+    fileprivate let userDefaults = UserDefaults.standard
     
-    private init()
+    fileprivate init()
     {
         registerUserDefault()
     }
     
-    private func registerUserDefault()
+    fileprivate func registerUserDefault()
     {
-        let firstDefault = [autoQuerySecondsKey: 5,isShowInvalidTicketKey: true, isShowNoTrainTicketKey:true, isNotifyTicketKey:true, notifyStrKey:"订到票啦",isNotifyLoginKey:true, notifyLoginStrKey:"要登录啦"]
-        userDefaults.registerDefaults(firstDefault)
+        let firstDefault = [autoQuerySecondsKey: 5,isShowInvalidTicketKey: true, isShowNoTrainTicketKey:true, isNotifyTicketKey:true, notifyStrKey:"订到票啦",isNotifyLoginKey:true, notifyLoginStrKey:"要登录啦"] as [String : Any]
+        userDefaults.register(defaults: firstDefault)
     }
     
     var autoQuerySeconds:Int {
         get{
-            return userDefaults.objectForKey(autoQuerySecondsKey) as! Int
+            return userDefaults.object(forKey: autoQuerySecondsKey) as! Int
         }
         set{
-            userDefaults.setObject(newValue, forKey: autoQuerySecondsKey)
+            userDefaults.set(newValue, forKey: autoQuerySecondsKey)
         }
     }
     
     var isShowInvalidTicket:Bool {
         get{
-            return userDefaults.objectForKey(isShowInvalidTicketKey) as! Bool
+            return userDefaults.object(forKey: isShowInvalidTicketKey) as! Bool
         }
         set{
-            userDefaults.setObject(newValue, forKey: isShowInvalidTicketKey)
+            userDefaults.set(newValue, forKey: isShowInvalidTicketKey)
         }
     }
     
     var isShowNoTrainTicket:Bool {
         get{
-            return userDefaults.objectForKey(isShowNoTrainTicketKey) as! Bool
+            return userDefaults.object(forKey: isShowNoTrainTicketKey) as! Bool
         }
         set{
-            userDefaults.setObject(newValue, forKey: isShowNoTrainTicketKey)
+            userDefaults.set(newValue, forKey: isShowNoTrainTicketKey)
         }
     }
     
     var isNotifyTicket:Bool {
         get{
-            return userDefaults.objectForKey(isNotifyTicketKey) as! Bool
+            return userDefaults.object(forKey: isNotifyTicketKey) as! Bool
         }
         set{
-            userDefaults.setObject(newValue, forKey: isNotifyTicketKey)
+            userDefaults.set(newValue, forKey: isNotifyTicketKey)
         }
     }
     
     var notifyStr:String {
         get{
-            return userDefaults.objectForKey(notifyStrKey) as! String
+            return userDefaults.object(forKey: notifyStrKey) as! String
         }
         set{
-            userDefaults.setObject(newValue, forKey: notifyStrKey)
+            userDefaults.set(newValue, forKey: notifyStrKey)
         }
     }
     
     var isNotifyLogin:Bool {
         get{
-            return userDefaults.objectForKey(isNotifyLoginKey) as! Bool
+            return userDefaults.object(forKey: isNotifyLoginKey) as! Bool
         }
         set{
-            userDefaults.setObject(newValue, forKey: isNotifyLoginKey)
+            userDefaults.set(newValue, forKey: isNotifyLoginKey)
         }
     }
     
     var notifyLoginStr:String {
         get{
-            return userDefaults.objectForKey(notifyLoginStrKey) as! String
+            return userDefaults.object(forKey: notifyLoginStrKey) as! String
         }
         set{
-            userDefaults.setObject(newValue, forKey: notifyLoginStrKey)
+            userDefaults.set(newValue, forKey: notifyLoginStrKey)
         }
     }
     

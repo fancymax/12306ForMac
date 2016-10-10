@@ -1,0 +1,13 @@
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
+CODE_SIGN_IDENTITY =
+EMBEDDED_CONTENT_CONTAINS_SWIFT = YES
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/Alamofire" "$PODS_CONFIGURATION_BUILD_DIR/FMDB" "$PODS_CONFIGURATION_BUILD_DIR/PromiseKit" "$PODS_CONFIGURATION_BUILD_DIR/SwiftyJSON" "$PODS_CONFIGURATION_BUILD_DIR/XCGLogger" "${PODS_ROOT}/Crashlytics/OSX" "${PODS_ROOT}/Fabric/OSX"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Crashlytics" "${PODS_ROOT}/Headers/Public/Fabric"
+LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/../Frameworks' '@loader_path/Frameworks'
+OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/Alamofire/Alamofire.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/FMDB/FMDB.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/PromiseKit/PromiseKit.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/SwiftyJSON/SwiftyJSON.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/XCGLogger/XCGLogger.framework/Headers" -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/Crashlytics" -isystem "${PODS_ROOT}/Headers/Public/Fabric"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"c++" -l"z" -framework "Alamofire" -framework "Crashlytics" -framework "FMDB" -framework "Fabric" -framework "PromiseKit" -framework "Security" -framework "SwiftyJSON" -framework "SystemConfiguration" -framework "XCGLogger"
+OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
+PODS_BUILD_DIR = $BUILD_DIR
+PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_ROOT = ${SRCROOT}/Pods

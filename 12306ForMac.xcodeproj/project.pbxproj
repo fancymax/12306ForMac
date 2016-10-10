@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		39A7F741AF1BBBC1B0E8B416 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E7211EBA20157CBFCD3A071 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		6FA21BFEBA2725EE68ACA9B6 /* Pods_12306ForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E653A8D7DC07114DF7DE71 /* Pods_12306ForMac.framework */; };
 		F10F47A91D409ED3004668BB /* station_name.js in Resources */ = {isa = PBXBuildFile; fileRef = F10F47A81D409ED3004668BB /* station_name.js */; };
 		F11154651C8D91F800FA6059 /* srca.cer in Resources */ = {isa = PBXBuildFile; fileRef = F11154631C8D91F800FA6059 /* srca.cer */; };
 		F11154681C8D920600FA6059 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154671C8D920600FA6059 /* User.swift */; };
@@ -19,10 +19,8 @@
 		F11154771C8D921400FA6059 /* QueryLeftNewDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111546F1C8D921400FA6059 /* QueryLeftNewDTO.swift */; };
 		F11154781C8D921400FA6059 /* QueryOrderParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154701C8D921400FA6059 /* QueryOrderParam.swift */; };
 		F11154791C8D921400FA6059 /* QueryOrderWaitTimeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154711C8D921400FA6059 /* QueryOrderWaitTimeResult.swift */; };
-		F111547F1C8D923C00FA6059 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111547B1C8D923C00FA6059 /* SwiftyJSON.swift */; };
 		F11154801C8D923C00FA6059 /* SwiftyRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111547C1C8D923C00FA6059 /* SwiftyRegex.swift */; };
 		F11154811C8D923C00FA6059 /* QueryDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111547D1C8D923C00FA6059 /* QueryDefaultManager.swift */; };
-		F11154821C8D923C00FA6059 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111547E1C8D923C00FA6059 /* XCGLogger.swift */; };
 		F111548E1C8D925200FA6059 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154841C8D925200FA6059 /* AutoCompleteTextField.swift */; };
 		F111548F1C8D925200FA6059 /* FlashLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154851C8D925200FA6059 /* FlashLabel.swift */; };
 		F11154901C8D925200FA6059 /* GlassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154861C8D925200FA6059 /* GlassView.swift */; };
@@ -104,9 +102,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		37638C4EC63999790EA677D6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		4362C8555FDE04134EAB4433 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4E7211EBA20157CBFCD3A071 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E86632C32502EAB3098A2F4 /* Pods-12306ForMac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-12306ForMac.release.xcconfig"; path = "Pods/Target Support Files/Pods-12306ForMac/Pods-12306ForMac.release.xcconfig"; sourceTree = "<group>"; };
+		84D46FC5030C2A75156CCF22 /* Pods-12306ForMac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-12306ForMac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-12306ForMac/Pods-12306ForMac.debug.xcconfig"; sourceTree = "<group>"; };
+		C8E653A8D7DC07114DF7DE71 /* Pods_12306ForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_12306ForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F10F47A81D409ED3004668BB /* station_name.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = station_name.js; path = 12306ForMac/station_name.js; sourceTree = "<group>"; };
 		F11154621C8D91F800FA6059 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F11154631C8D91F800FA6059 /* srca.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = srca.cer; sourceTree = "<group>"; };
@@ -119,10 +118,8 @@
 		F111546F1C8D921400FA6059 /* QueryLeftNewDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryLeftNewDTO.swift; sourceTree = "<group>"; };
 		F11154701C8D921400FA6059 /* QueryOrderParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryOrderParam.swift; sourceTree = "<group>"; };
 		F11154711C8D921400FA6059 /* QueryOrderWaitTimeResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryOrderWaitTimeResult.swift; sourceTree = "<group>"; };
-		F111547B1C8D923C00FA6059 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		F111547C1C8D923C00FA6059 /* SwiftyRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyRegex.swift; sourceTree = "<group>"; };
 		F111547D1C8D923C00FA6059 /* QueryDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueryDefaultManager.swift; path = ../Utilities/QueryDefaultManager.swift; sourceTree = "<group>"; };
-		F111547E1C8D923C00FA6059 /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCGLogger.swift; sourceTree = "<group>"; };
 		F11154841C8D925200FA6059 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		F11154851C8D925200FA6059 /* FlashLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashLabel.swift; sourceTree = "<group>"; };
 		F11154861C8D925200FA6059 /* GlassView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlassView.swift; sourceTree = "<group>"; };
@@ -220,18 +217,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39A7F741AF1BBBC1B0E8B416 /* Pods.framework in Frameworks */,
+				6FA21BFEBA2725EE68ACA9B6 /* Pods_12306ForMac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		261B13F41F4566381D40C5BA /* Pods */ = {
+		4436AB44B5BF84F5F6584FA4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				37638C4EC63999790EA677D6 /* Pods.debug.xcconfig */,
-				4362C8555FDE04134EAB4433 /* Pods.release.xcconfig */,
+				84D46FC5030C2A75156CCF22 /* Pods-12306ForMac.debug.xcconfig */,
+				6E86632C32502EAB3098A2F4 /* Pods-12306ForMac.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -240,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				4E7211EBA20157CBFCD3A071 /* Pods.framework */,
+				C8E653A8D7DC07114DF7DE71 /* Pods_12306ForMac.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -299,9 +297,7 @@
 		F111547A1C8D923C00FA6059 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				F111547B1C8D923C00FA6059 /* SwiftyJSON.swift */,
 				F111547C1C8D923C00FA6059 /* SwiftyRegex.swift */,
-				F111547E1C8D923C00FA6059 /* XCGLogger.swift */,
 				F1FEE7A11D8D464900B02C84 /* NotifySpeaker.swift */,
 			);
 			name = Utilities;
@@ -398,8 +394,8 @@
 				F1E7EA201C5A2E7B007715C1 /* INAppStoreWindow */,
 				F11154611C8D91B300FA6059 /* 12306ForMac */,
 				F11EB45B1B6A368E000063E4 /* Products */,
-				261B13F41F4566381D40C5BA /* Pods */,
 				7EE5AE4095B588D2CBD04072 /* Frameworks */,
+				4436AB44B5BF84F5F6584FA4 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -526,13 +522,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F11EB4741B6A368E000063E4 /* Build configuration list for PBXNativeTarget "12306ForMac" */;
 			buildPhases = (
-				01EFCD70E9D7C95CBA6F6FC8 /* Check Pods Manifest.lock */,
+				36DDD31C7916FDEE16B4A09B /* [CP] Check Pods Manifest.lock */,
 				F11EB4561B6A368E000063E4 /* Sources */,
 				F11EB4571B6A368E000063E4 /* Frameworks */,
 				F11EB4581B6A368E000063E4 /* Resources */,
-				29751BBD7219098990551AF9 /* Copy Pods Resources */,
-				F2F0DE1760B0AA8F071CBCAB /* Embed Pods Frameworks */,
 				F112059F1D1259F300F93E81 /* ShellScript */,
+				6846C6669CAB4DCA4BD1C534 /* [CP] Embed Pods Frameworks */,
+				275B226D636D82A5E08BDB3C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -557,6 +553,7 @@
 					F11EB4591B6A368E000063E4 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = B88D2XN634;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -613,34 +610,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		01EFCD70E9D7C95CBA6F6FC8 /* Check Pods Manifest.lock */ = {
+		275B226D636D82A5E08BDB3C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-12306ForMac/Pods-12306ForMac-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		29751BBD7219098990551AF9 /* Copy Pods Resources */ = {
+		36DDD31C7916FDEE16B4A09B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6846C6669CAB4DCA4BD1C534 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-12306ForMac/Pods-12306ForMac-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F112059F1D1259F300F93E81 /* ShellScript */ = {
@@ -655,21 +667,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 7f773767251f31dd54542d6b38e72c20ca29d640 1e0dbb53cb98c8975674853ab4ea266903fe9cbe537883397ded2988ec25a7ac";
-		};
-		F2F0DE1760B0AA8F071CBCAB /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -696,7 +693,6 @@
 				F1C075211D83F97A006EFABB /* TicketConstants.swift in Sources */,
 				F11154981C8D927C00FA6059 /* StationData.swift in Sources */,
 				F14D6BE41D86E91C00CBD36C /* FilterTrainCodeTransformer.swift in Sources */,
-				F111547F1C8D923C00FA6059 /* SwiftyJSON.swift in Sources */,
 				F11154741C8D921400FA6059 /* OrderDTO.swift in Sources */,
 				F11154931C8D925200FA6059 /* LunarCalendarView.swift in Sources */,
 				F1E7EA2F1C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m in Sources */,
@@ -740,7 +736,6 @@
 				F113B4F81C8FBA2E0001AE09 /* ServiceError.swift in Sources */,
 				F11154B01C8D92C100FA6059 /* OrderViewController.swift in Sources */,
 				F1F5CE0F1CA9431D005C33BD /* SeatTypeModel.swift in Sources */,
-				F11154821C8D923C00FA6059 /* XCGLogger.swift in Sources */,
 				F1CCA2D81D0D3DFA00B6853E /* TrainCodeDetailViewController.swift in Sources */,
 				F1F2F2C41D59BEE800EA7786 /* AdvancedPreferenceViewController.swift in Sources */,
 				F1F2F2D01D5AB8F700EA7786 /* Dama.swift in Sources */,
@@ -857,7 +852,7 @@
 		};
 		F11EB4751B6A368E000063E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 37638C4EC63999790EA677D6 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 84D46FC5030C2A75156CCF22 /* Pods-12306ForMac.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -875,12 +870,13 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "12306ForMac-Bridging-Header.h";
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "12306ForMac-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		F11EB4761B6A368E000063E4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4362C8555FDE04134EAB4433 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 6E86632C32502EAB3098A2F4 /* Pods-12306ForMac.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -896,6 +892,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "12306ForMac-Bridging-Header.h";
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "12306ForMac-Swift.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

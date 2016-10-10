@@ -9,14 +9,14 @@
 import Foundation
 
 class NotifySpeaker {
-    private static let sharedManager = NotifySpeaker()
+    fileprivate static let sharedManager = NotifySpeaker()
     class var sharedInstance: NotifySpeaker {
         return sharedManager
     }
     
-    private let speachSynth: NSSpeechSynthesizer
+    fileprivate let speachSynth: NSSpeechSynthesizer
     
-    private init () {
+    fileprivate init () {
         speachSynth = NSSpeechSynthesizer()
         let isSuccess = speachSynth.setVoice("com.apple.speech.synthesis.voice.mei-jia")
         if !isSuccess {
@@ -26,7 +26,7 @@ class NotifySpeaker {
     
     func notify() {
         if GeneralPreferenceManager.sharedInstance.isNotifyTicket {
-            speachSynth.startSpeakingString(GeneralPreferenceManager.sharedInstance.notifyStr)
+            speachSynth.startSpeaking(GeneralPreferenceManager.sharedInstance.notifyStr)
         }
     }
     
@@ -36,7 +36,7 @@ class NotifySpeaker {
     
     func notifyLogin() {
         if GeneralPreferenceManager.sharedInstance.isNotifyLogin {
-            speachSynth.startSpeakingString(GeneralPreferenceManager.sharedInstance.notifyLoginStr)
+            speachSynth.startSpeaking(GeneralPreferenceManager.sharedInstance.notifyLoginStr)
         }
     }
     

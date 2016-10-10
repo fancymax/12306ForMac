@@ -12,7 +12,7 @@ class ClickableDatePicker: NSDatePicker {
     
     @IBInspectable var clickable:Bool = true
 
-    override func mouseDown(theEvent: NSEvent) {
+    override func mouseDown(with theEvent: NSEvent) {
         if self.clickable {
             sendAction(self.action, to: self.target)
         }

@@ -15,8 +15,8 @@ let D_SEAT_TYPE_NAME_DIC = ["商务座": "9", "特等座": "P", "一等座": "M"
 //普通车
 let K_SEAT_TYPE_NAME_DIC = ["高级软卧": "6","软卧": "4", "硬卧": "3", "软座": "2", "硬座": "1", "无座": "1"]
 
-func QuerySeatTypeDicBy(trainCode:String)->[String:String] {
-    if (trainCode.containsString("G"))||(trainCode.containsString("D")||(trainCode.containsString("C"))) {
+func QuerySeatTypeDicBy(_ trainCode:String)->[String:String] {
+    if (trainCode.contains("G"))||(trainCode.contains("D")||(trainCode.contains("C"))) {
         return D_SEAT_TYPE_NAME_DIC;
     }
     else {
@@ -25,12 +25,12 @@ func QuerySeatTypeDicBy(trainCode:String)->[String:String] {
 }
 
 //20160502->2016-05-02
-func Convert2StartTrainDateStr(dateStr: String)->String{
+func Convert2StartTrainDateStr(_ dateStr: String)->String{
     var formateStr = dateStr
-    var index = dateStr.startIndex.advancedBy(4)
-    formateStr.insert("-", atIndex: index)
-    index = dateStr.startIndex.advancedBy(7)
-    formateStr.insert("-", atIndex: index)
+    var index = dateStr.characters.index(dateStr.startIndex, offsetBy: 4)
+    formateStr.insert("-", at: index)
+    index = dateStr.characters.index(dateStr.startIndex, offsetBy: 7)
+    formateStr.insert("-", at: index)
     
     return formateStr
 }
@@ -49,9 +49,9 @@ func Convert2StartTrainDateStr(dateStr: String)->String{
      M/12075/0100
      9/23895/0024
 */
-func getSeatInfosFrom(yp_info yp_info:String,trainCode:String)->[String:SeatTypePair] {
+func getSeatInfosFrom(yp_info: String, trainCode: String)->[String: SeatTypePair] {
     var seatInfos  = [String:SeatTypePair]()
-    let totalLength = yp_info.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+    let totalLength = yp_info.lengthOfBytes(using: String.Encoding.utf8)
     if totalLength == 0 {
         return seatInfos
     }
@@ -81,17 +81,17 @@ func getSeatInfosFrom(yp_info yp_info:String,trainCode:String)->[String:SeatType
     let totalTicketNumber = totalLength / ticketLength
     
     for _ in 1...totalTicketNumber {
-        idPrevPos = idPrevPos.advancedBy(idOffset)
-        idNextPos = idPrevPos.advancedBy(idLength)
-        id2 = yp_info.substringWithRange(idPrevPos..<idNextPos)
+        idPrevPos = yp_info.index(idPrevPos, offsetBy: idOffset)
+        idNextPos = yp_info.index(idPrevPos, offsetBy: idLength)
+        id2 = yp_info.substring(with: idPrevPos..<idNextPos)
         
-        pricePrevPos = pricePrevPos.advancedBy(priceOffset)
-        priceNextPos = pricePrevPos.advancedBy(priceLength)
-        price = Double(yp_info.substringWithRange(pricePrevPos..<priceNextPos))! / 10
+        pricePrevPos = yp_info.index(pricePrevPos, offsetBy: priceOffset)
+        priceNextPos = yp_info.index(pricePrevPos, offsetBy: priceLength)
+        price = Double(yp_info.substring(with: pricePrevPos..<priceNextPos))! / 10
         
-        numberPrevPos = numberPrevPos.advancedBy(numberOffset)
-        numberNextPos = numberPrevPos.advancedBy(numberLength)
-        number = Int(yp_info.substringWithRange(numberPrevPos..<numberNextPos))!
+        numberPrevPos = yp_info.index(numberPrevPos, offsetBy: numberOffset)
+        numberNextPos = yp_info.index(numberPrevPos, offsetBy: numberLength)
+        number = Int(yp_info.substring(with: numberPrevPos..<numberNextPos))!
         
         if number >= 3000 {
             id1 = "无座"
@@ -105,9 +105,9 @@ func getSeatInfosFrom(yp_info yp_info:String,trainCode:String)->[String:SeatType
             }
         }
         
-        pricePrevPos = pricePrevPos.advancedBy(ticketLength - priceOffset)
-        numberPrevPos = numberPrevPos.advancedBy(ticketLength - numberOffset)
-        idPrevPos = idPrevPos.advancedBy(ticketLength - idOffset)
+        pricePrevPos = yp_info.index(pricePrevPos, offsetBy: ticketLength - priceOffset)
+        numberPrevPos = yp_info.index(numberPrevPos, offsetBy: ticketLength - numberOffset)
+        idPrevPos = yp_info.index(idPrevPos, offsetBy: ticketLength - idOffset)
         
         let seatType = SeatTypePair(id1: id1, id2: id2, number: number, price: price)
         seatInfos[id1] = seatType

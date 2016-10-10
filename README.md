@@ -4,7 +4,7 @@ Mac版12306 订票/捡票 软件。
 以前要么开Windows虚拟机，要么使用极其难用的官方Web，现在可以使用12306ForMac。
 
 #系统
-*OS X10.11*以上
+OS X10.10以上
 
 #下载
 请查看最新的[Release](https://github.com/fancymax/12306ForMac/releases)

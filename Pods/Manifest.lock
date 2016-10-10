@@ -1,44 +1,45 @@
 PODS:
-  - Alamofire (3.2.0)
-  - Crashlytics (3.7.0):
+  - Alamofire (4.0.1)
+  - Crashlytics (3.8.2):
     - Fabric (~> 1.6.3)
-  - Fabric (1.6.6)
-  - FMDB (2.6):
-    - FMDB/standard (= 2.6)
-  - FMDB/standard (2.6)
-  - OMGHTTPURLRQ (3.1.1):
-    - OMGHTTPURLRQ/RQ (= 3.1.1)
-  - OMGHTTPURLRQ/FormURLEncode (3.1.1)
-  - OMGHTTPURLRQ/RQ (3.1.1):
-    - OMGHTTPURLRQ/FormURLEncode
-    - OMGHTTPURLRQ/UserAgent
-  - OMGHTTPURLRQ/UserAgent (3.1.1)
-  - PromiseKit (3.0.2):
-    - PromiseKit/Foundation (= 3.0.2)
-    - PromiseKit/QuartzCore (= 3.0.2)
-    - PromiseKit/UIKit (= 3.0.2)
-  - PromiseKit/CorePromise (3.0.2)
-  - PromiseKit/Foundation (3.0.2):
-    - OMGHTTPURLRQ (~> 3.1.0)
+  - Fabric (1.6.9)
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
+  - PromiseKit (4.0.3):
+    - PromiseKit/Foundation (= 4.0.3)
+    - PromiseKit/QuartzCore (= 4.0.3)
+    - PromiseKit/UIKit (= 4.0.3)
+  - PromiseKit/CorePromise (4.0.3)
+  - PromiseKit/Foundation (4.0.3):
     - PromiseKit/CorePromise
-  - PromiseKit/QuartzCore (3.0.2):
+  - PromiseKit/QuartzCore (4.0.3):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (3.0.2):
+  - PromiseKit/UIKit (4.0.3):
     - PromiseKit/CorePromise
+  - SwiftyJSON (3.1.1)
+  - XCGLogger (4.0.0):
+    - XCGLogger/Core (= 4.0.0)
+  - XCGLogger/Core (4.0.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 3.0)
+  - Alamofire (~> 4.0)
   - Crashlytics
   - Fabric
   - FMDB
-  - PromiseKit (~> 3.0)
+  - PromiseKit (~> 4.0)
+  - SwiftyJSON
+  - XCGLogger (~> 4.0)
 
 SPEC CHECKSUMS:
-  Alamofire: 4da478599fccddff361205c8929333d7fe18dceb
-  Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
-  Fabric: 1abc1e59f11fa39ede6f690ef7309d8563e3ec59
-  FMDB: c1968bab3ab0aed38f66cb778ae1e7fa9a652b6e
-  OMGHTTPURLRQ: 633f98ee745aeda02345935a52eec1784cddb589
-  PromiseKit: ab1a380f7a30cf8cce663a2411e8b3580b10313d
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  Crashlytics: 27acca95a01b042a8294291dd6dff27f8f6af6d7
+  Fabric: bc5bec42cef4bcf1ee3ce0e218fc518e4b44dfbb
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  PromiseKit: dfe8fcc6445674fb23378d89990838c1cbdbf05a
+  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
+  XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
 
-COCOAPODS: 0.38.2
+PODFILE CHECKSUM: 898e11f799e751228f1f9800ce08ace7d16884fe
+
+COCOAPODS: 1.1.0.beta.2

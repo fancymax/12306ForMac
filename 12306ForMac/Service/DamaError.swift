@@ -73,7 +73,7 @@ struct DamaError {
         -10028:	"extName error",
         -10029:	"fileData error/fileDataBase64 error"]
 
-    static func errorWithCode(code:Int)->NSError{
+    static func errorWithCode(_ code:Int)->NSError{
         if errorDic.keys.contains(code) {
             return errorWithCode(code, failureReason: errorDic[code]!)
         }
@@ -82,7 +82,7 @@ struct DamaError {
         }
     }
     
-    static func errorWithCode(code: Int, failureReason: String) -> NSError {
+    static func errorWithCode(_ code: Int, failureReason: String) -> NSError {
         let userInfo = [NSLocalizedFailureReasonErrorKey: failureReason]
         return NSError(domain: Domain, code: code, userInfo: userInfo)
     }

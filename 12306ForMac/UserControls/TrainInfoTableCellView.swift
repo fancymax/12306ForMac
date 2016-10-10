@@ -28,7 +28,7 @@ class TrainTableCellView: NSTableCellView {
     }
     
     internal func updateTint() {
-        if backgroundStyle == .Dark {
+        if backgroundStyle == .dark {
             setSelectedControlStyle()
         }
         else{
@@ -48,9 +48,9 @@ class TrainTableCellView: NSTableCellView {
 
 class TrainStationTableCellView: TrainTableCellView {
     
-    @IBOutlet weak private var stationMarkField: NSTextField!
-    @IBOutlet weak private var stationField: NSTextField!
-    @IBOutlet weak private var timeField: NSTextField!
+    @IBOutlet weak fileprivate var stationMarkField: NSTextField!
+    @IBOutlet weak fileprivate var stationField: NSTextField!
+    @IBOutlet weak fileprivate var timeField: NSTextField!
 
     override func setSelectedControlStyle() {
         stationMarkField.textColor = NSColor(calibratedWhite: 1.0, alpha: 0.70)
@@ -67,10 +67,10 @@ class StartStationTableCellView: TrainStationTableCellView {
         stationField.stringValue = ticketInfo.FromStationName!
         timeField.stringValue = ticketInfo.start_time!
         if ticketInfo.isStartStation {
-            stationMarkField.hidden = false
+            stationMarkField.isHidden = false
         }
         else{
-            stationMarkField.hidden = true
+            stationMarkField.isHidden = true
         }
     }
 }
@@ -81,19 +81,19 @@ class EndStationTableCellView: TrainStationTableCellView {
         stationField.stringValue = ticketInfo.ToStationName!
         timeField.stringValue = ticketInfo.arrive_time!
         if ticketInfo.isEndStation {
-            stationMarkField.hidden = false
+            stationMarkField.isHidden = false
         }
         else {
-            stationMarkField.hidden = true
+            stationMarkField.isHidden = true
         }
     }
 }
 
 // MARK: - 车次
 class TrainCodeTableCellView: TrainTableCellView {
-    @IBOutlet weak private var trainCodeBtn: NSButton!
+    @IBOutlet weak fileprivate var trainCodeBtn: NSButton!
     
-    func setTarget(target:AnyObject?, action:Selector){
+    func setTarget(_ target:AnyObject?, action:Selector){
             trainCodeBtn.target = target
             trainCodeBtn.action = action
     }
@@ -101,17 +101,17 @@ class TrainCodeTableCellView: TrainTableCellView {
 
 // MARK: - 余票信息
 class TrainInfoTableCellView: TrainTableCellView {
-    @IBOutlet weak private var messageField: NSTextField!
-    @IBOutlet weak private var SwzBtn: NSButton!
-    @IBOutlet weak private var TzBtn: NSButton!
-    @IBOutlet weak private var ZyBtn: NSButton!
-    @IBOutlet weak private var ZeBtn: NSButton!
-    @IBOutlet weak private var GrBtn: NSButton!
-    @IBOutlet weak private var RwBtn: NSButton!
-    @IBOutlet weak private var YwBtn: NSButton!
-    @IBOutlet weak private var RzBtn: NSButton!
-    @IBOutlet weak private var YzBtn: NSButton!
-    @IBOutlet weak private var WzBtn: NSButton!
+    @IBOutlet weak fileprivate var messageField: NSTextField!
+    @IBOutlet weak fileprivate var SwzBtn: NSButton!
+    @IBOutlet weak fileprivate var TzBtn: NSButton!
+    @IBOutlet weak fileprivate var ZyBtn: NSButton!
+    @IBOutlet weak fileprivate var ZeBtn: NSButton!
+    @IBOutlet weak fileprivate var GrBtn: NSButton!
+    @IBOutlet weak fileprivate var RwBtn: NSButton!
+    @IBOutlet weak fileprivate var YwBtn: NSButton!
+    @IBOutlet weak fileprivate var RzBtn: NSButton!
+    @IBOutlet weak fileprivate var YzBtn: NSButton!
+    @IBOutlet weak fileprivate var WzBtn: NSButton!
     
     var dictOfBtn:[Int:NSButton]{
         get {
@@ -119,7 +119,7 @@ class TrainInfoTableCellView: TrainTableCellView {
         }
     }
     
-    func setTarget(target:AnyObject?, action:Selector){
+    func setTarget(_ target:AnyObject?, action:Selector){
         for btn in dictOfBtn.values {
             btn.target = target
             btn.action = action
@@ -145,14 +145,14 @@ class TrainInfoTableCellView: TrainTableCellView {
     
     override func updateUI() {
         
-        func setTicketButton(ticket:String,sender:NSButton){
+        func setTicketButton(_ ticket:String,sender:NSButton){
             if ((ticket == "--")||(ticket == "无")||(ticket == "*")){
-                sender.hidden = true
+                sender.isHidden = true
                 return
             }
             
-            sender.hidden = false
-            sender.enabled = true
+            sender.isHidden = false
+            sender.isEnabled = true
             if (ticket == "有"){
                 sender.title = sender.alternateTitle + "(有票)"
             }
@@ -178,34 +178,34 @@ class TrainInfoTableCellView: TrainTableCellView {
         setTicketButton(ticketInfo.Wz_Num, sender: WzBtn)
         
         if ticketInfo.canWebBuy == "Y" {
-            messageField.hidden = true
+            messageField.isHidden = true
         }
         else if ticketInfo.canWebBuy == "N" {
             messageField.stringValue = "   本车次暂无可售车票"
-            messageField.hidden = false
+            messageField.isHidden = false
         }
         else if ticketInfo.canWebBuy == "IS_TIME_NOT_BUY"{
             
             for btn in dictOfBtn.values {
-                btn.enabled = false
+                btn.isEnabled = false
             }
             
             if ticketInfo.buttonTextInfo == "23:00-06:00系统维护时间" {
                 if ticketInfo.hasTicket {
-                    messageField.hidden = true
+                    messageField.isHidden = true
                 }
                 else{
                     messageField.stringValue = "   本车次暂无可售车票"
-                    messageField.hidden = false
+                    messageField.isHidden = false
                 }
             }
             else
             {
-                if let range = ticketInfo.buttonTextInfo!.rangeOfString("<br/>"){
-                    ticketInfo.buttonTextInfo!.removeRange(range)
+                if let range = ticketInfo.buttonTextInfo!.range(of: "<br/>"){
+                    ticketInfo.buttonTextInfo!.removeSubrange(range)
                 }
                 messageField.stringValue = "   " + ticketInfo.buttonTextInfo!
-                messageField.hidden = false
+                messageField.isHidden = false
             }
         }
     }

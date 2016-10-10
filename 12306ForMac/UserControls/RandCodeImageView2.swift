@@ -13,7 +13,7 @@ class RandCodeImageView2:NSImageView {
         var rowIndex: Int
         var colIndex: Int
         
-        func isSameSection(section:ImageSection)->Bool{
+        func isSameSection(_ section:ImageSection)->Bool{
             if (section.rowIndex == rowIndex) && (section.colIndex == colIndex){
                 return true
             }
@@ -23,8 +23,8 @@ class RandCodeImageView2:NSImageView {
         }
     }
     
-    private var imageSections = [ImageSection]()
-    private func convertSectionToRandCode(section:ImageSection)->(Int,Int){
+    fileprivate var imageSections = [ImageSection]()
+    fileprivate func convertSectionToRandCode(_ section:ImageSection)->(Int,Int){
         var randX = 0
         var randY = 0
         if section.rowIndex == 0 {
@@ -65,14 +65,14 @@ class RandCodeImageView2:NSImageView {
         }
     }
     
-    override func mouseDown(theEvent: NSEvent) {
+    override func mouseDown(with theEvent: NSEvent) {
         let section = indentifySection(theEvent)
         
         var shouldAdd = true
         if imageSections.count > 0{
             for i in 0...imageSections.count - 1 {
                 if imageSections[i].isSameSection(section){
-                    imageSections.removeAtIndex(i)
+                    imageSections.remove(at: i)
                     shouldAdd = false
                     break
                 }
@@ -86,10 +86,10 @@ class RandCodeImageView2:NSImageView {
         needsDisplay = true
     }
     
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
         
-        NSColor.redColor().set()
+        NSColor.red.set()
         
         for section in imageSections
         {
@@ -104,10 +104,10 @@ class RandCodeImageView2:NSImageView {
     }
     
     //识别点击在哪个区域
-    private func indentifySection(theEvent: NSEvent) ->ImageSection{
+    fileprivate func indentifySection(_ theEvent: NSEvent) ->ImageSection{
         var section = ImageSection(rowIndex: 1, colIndex: 1)
         
-        let frameOffsetInWindow = convertPoint(self.frame.origin, fromView: nil)
+        let frameOffsetInWindow = convert(self.frame.origin, from: nil)
         let mouseX = theEvent.locationInWindow.x
         let mouseY = theEvent.locationInWindow.y
         let pointX = mouseX - (self.frame.origin.x - frameOffsetInWindow.x)
@@ -141,7 +141,7 @@ class RandCodeImageView2:NSImageView {
     
     
     //dama to section
-    private func damaPoint2Section(X pointX:Double,Y pointY:Double) -> ImageSection{
+    fileprivate func damaPoint2Section(X pointX:Double,Y pointY:Double) -> ImageSection{
         var section = ImageSection(rowIndex: 1, colIndex: 1)
         
         if pointY > 110 {
@@ -167,10 +167,10 @@ class RandCodeImageView2:NSImageView {
     }
     
     //119,65|24,76
-    func drawDamaCodes(damaCodes:String){
-        let damaFrameStrs = damaCodes.componentsSeparatedByString("|")
+    func drawDamaCodes(_ damaCodes:String){
+        let damaFrameStrs = damaCodes.components(separatedBy: "|")
         for damaFrameStr in damaFrameStrs {
-            let damaFramePair = damaFrameStr.componentsSeparatedByString(",")
+            let damaFramePair = damaFrameStr.components(separatedBy: ",")
             let pointX = Double(damaFramePair[0])
             let pointY = Double(damaFramePair[1])
             
@@ -180,7 +180,7 @@ class RandCodeImageView2:NSImageView {
     }
     
     //绘制特定正方形区域
-    private func drawSection(section:ImageSection){
+    fileprivate func drawSection(_ section:ImageSection){
         let point = CGPoint(x: 4 + section.colIndex/2 + section.colIndex * 85,
             y: 10 + section.rowIndex + section.rowIndex * 85)
         let size = CGSize(width: 85, height: 85)
@@ -190,7 +190,7 @@ class RandCodeImageView2:NSImageView {
         let lineDash:[CGFloat] = [4.0,2.0]
         path.setLineDash(lineDash, count: 2, phase: 0.0)
         path.flatness = 0.8
-        path.windingRule = NSWindingRule.EvenOddWindingRule
+        path.windingRule = NSWindingRule.evenOddWindingRule
         path.lineWidth = 2
         path.stroke()
     }

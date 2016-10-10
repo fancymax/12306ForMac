@@ -9,17 +9,17 @@
 import Foundation
 import FMDB
 
-let DATA_DIRECTORY = "\(NSHomeDirectory())/Library/Application Support/\(NSBundle.mainBundle().bundleIdentifier!)"
+let DATA_DIRECTORY = "\(NSHomeDirectory())/Library/Application Support/\(Bundle.main.bundleIdentifier!)"
 let DATA_PATH = "\(DATA_DIRECTORY)/12306ForMac.db"
 
 class DataManger {
     static let sharedInstance = DataManger()
     
-    private init() {
-        let isExistDirectory:Bool = NSFileManager.defaultManager().fileExistsAtPath(DATA_DIRECTORY, isDirectory: nil)
+    fileprivate init() {
+        let isExistDirectory:Bool = FileManager.default.fileExists(atPath: DATA_DIRECTORY, isDirectory: nil)
         if !isExistDirectory {
             do{
-                try NSFileManager.defaultManager().createDirectoryAtPath(DATA_DIRECTORY, withIntermediateDirectories: true, attributes: nil)
+                try FileManager.default.createDirectory(atPath: DATA_DIRECTORY, withIntermediateDirectories: true, attributes: nil)
             }
             catch {
                 logger.error("Creat \(DATA_DIRECTORY) fail")
@@ -31,58 +31,58 @@ class DataManger {
         var users=[UserX]()
         let db = FMDatabase(path: DATA_PATH)
         
-        if !db.open() {
+        if !(db?.open())! {
             logger.error("Could not open db")
             return users
         }
         
-        db.executeStatements("create table if not exists 'User' ('id' INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL,user varchar, password varchar)")
+        db?.executeStatements("create table if not exists 'User' ('id' INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL,user varchar, password varchar)")
         
-        let rs = try! db.executeQuery("select * from User", values: nil)
+        let rs = try! db?.executeQuery("select * from User", values: nil)
         //if rs.counto
-        while(rs.next()){
+        while(rs?.next())!{
             let newUser = UserX()
-            newUser.id = rs.longForColumn("id")
-            newUser.name = rs.stringForColumn("user")
-            newUser.password = rs.stringForColumn("password")
+            newUser.id = (rs?.long(forColumn: "id"))!
+            newUser.name = (rs?.string(forColumn: "user"))!
+            newUser.password = (rs?.string(forColumn: "password"))!
             
             users.append(newUser)
         }
-        db.close()
+        db?.close()
         
         return users
     }
     
-    func updateUser(newUser:UserX) {
+    func updateUser(_ newUser:UserX) {
         let db = FMDatabase(path: DATA_PATH)
         
-        if !db.open() {
+        if !(db?.open())! {
             logger.error("Could not open db")
             return
         }
         
         do {
-            try db.executeUpdate("update User set password=? where id=?", values: [newUser.password, newUser.id])
+            try db?.executeUpdate("update User set password=? where id=?", values: [newUser.password, newUser.id])
         }
         catch{
             logger.error("updateUser error:\(error)")
         }
         
         defer{
-            db.close()
+            db?.close()
         }
     }
     
-    func inserUser(newUser:UserX) {
+    func inserUser(_ newUser:UserX) {
         let db = FMDatabase(path: DATA_PATH)
         
-        if !db.open() {
+        if !(db?.open())! {
             logger.error("Could not open db")
             return
         }
         
         do {
-            try db.executeUpdate("insert into User (user,password) values (?, ?)", values: [newUser.name, newUser.password])
+            try db?.executeUpdate("insert into User (user,password) values (?, ?)", values: [newUser.name, newUser.password])
         }
         catch {
             logger.error("insertUser error:\(error)")
@@ -90,7 +90,7 @@ class DataManger {
         
         defer{
             print("db close")
-            db.close()
+            db?.close()
         }
     }
     

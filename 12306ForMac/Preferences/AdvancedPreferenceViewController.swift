@@ -106,7 +106,7 @@ class AdvancedPreferenceViewController: NSViewController,MASPreferencesViewContr
     @IBOutlet weak var damaUserlbl: NSTextField!
     @IBOutlet weak var damaPasswordlbl: NSSecureTextField!
     @IBOutlet weak var balancelbl: NSTextField!
-    @IBAction func clickGetBalanceOfDama(sender: AnyObject) {
+    @IBAction func clickGetBalanceOfDama(_ sender: AnyObject) {
         getBalance()
     }
     

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class QueryOrderWaitTimeResult{
     var queryOrderWaitTimeStatus: Bool?
@@ -18,7 +19,7 @@ class QueryOrderWaitTimeResult{
     var orderId:String?
     var msg:String?
     
-    init(json:JSON)
+    init(json: JSON)
     {
         queryOrderWaitTimeStatus = json["queryOrderWaitTimeStatus"].boolValue
         count = json["count"].intValue
