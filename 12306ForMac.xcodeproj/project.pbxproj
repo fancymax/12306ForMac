@@ -168,6 +168,7 @@
 		F13E9C991D0AB3310011F7E2 /* TrainTableRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainTableRowView.swift; sourceTree = "<group>"; };
 		F147763D1D6B2B2E002FD6AF /* InfoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 		F14D6BE31D86E91C00CBD36C /* FilterTrainCodeTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTrainCodeTransformer.swift; sourceTree = "<group>"; };
+		F15277071DAB78D3002BAF17 /* 12306ForMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = 12306ForMac.entitlements; path = 12306ForMac/12306ForMac.entitlements; sourceTree = "<group>"; };
 		F16CB2271D312A6D0055D39D /* LoadingTipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingTipViewController.swift; sourceTree = "<group>"; };
 		F16CB2281D312A6D0055D39D /* LoadingTipViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingTipViewController.xib; sourceTree = "<group>"; };
 		F17AB1CB1C95630E00FEB221 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = 12306ForMac/Resources/Credits.rtf; sourceTree = SOURCE_ROOT; };
@@ -247,6 +248,7 @@
 		F11154611C8D91B300FA6059 /* 12306ForMac */ = {
 			isa = PBXGroup;
 			children = (
+				F15277071DAB78D3002BAF17 /* 12306ForMac.entitlements */,
 				F1F2F2B31D598B7800EA7786 /* Preferences */,
 				F11154B21C8D92D000FA6059 /* TicketQueryModule */,
 				F11154AD1C8D92C100FA6059 /* OrderQueryModule */,
@@ -557,6 +559,11 @@
 					F11EB4591B6A368E000063E4 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = B88D2XN634;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -861,15 +868,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
+				CODE_SIGN_ENTITLEMENTS = 12306ForMac/12306ForMac.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = 12306ForMac/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = fancymax.12306ForMac;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fancymax.12306ForMac;
 				PRODUCT_NAME = 12306ForMac;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "12306ForMac-Bridging-Header.h";
@@ -884,14 +892,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
+				CODE_SIGN_ENTITLEMENTS = 12306ForMac/12306ForMac.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = 12306ForMac/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = fancymax.12306ForMac;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fancymax.12306ForMac;
 				PRODUCT_NAME = 12306ForMac;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "12306ForMac-Bridging-Header.h";
