@@ -25,12 +25,12 @@ class LoginWindowController: NSWindowController{
     var isAutoLogin = false
     var isLogin = false
     
-    @IBAction func freshImage(sender: NSButton)
+    @IBAction func freshImage(_ sender: NSButton)
     {
         loadImage()
     }
     
-    @IBAction func clickOK(sender:AnyObject?){
+    @IBAction func clickOK(_ sender:AnyObject?){
         if userName.stringValue == "" || passWord.stringValue == "" {
             tips.show("请先输入用户名和密码", forDuration: 0.1, withFlash: false)
             return
@@ -53,7 +53,7 @@ class LoginWindowController: NSWindowController{
             self.stopLoadingTip()
             //显示登录失败 持续一秒
             self.tips.show(translate(error), forDuration: 0.1, withFlash: false)
-            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:#selector(LoginWindowController.handlerAfterFailure), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 1, target: self, selector:#selector(LoginWindowController.handlerAfterFailure), userInfo: nil, repeats: false)
         }
         
         let successHandler = {
@@ -61,13 +61,13 @@ class LoginWindowController: NSWindowController{
             self.tips.show("登录成功", forDuration: 0.1, withFlash: false)
             self.isLogin = false
             self.service.postMobileGetPassengerDTOs()
-            NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector:#selector(LoginWindowController.handlerAfterSuccess), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 0.5, target: self, selector:#selector(LoginWindowController.handlerAfterSuccess), userInfo: nil, repeats: false)
         }
         
-        service.loginFlow(user: userName.stringValue, passWord: passWord.stringValue, randCodeStr: loginImage.randCodeStr!, success: successHandler, failure: failureHandler)
+        service.loginFlow(userName.stringValue, passWord: passWord.stringValue, randCodeStr: loginImage.randCodeStr!, success: successHandler, failure: failureHandler)
     }
     
-    @IBAction func clickCancel(button:NSButton){
+    @IBAction func clickCancel(_ button:NSButton){
         dismissWithModalResponse(NSModalResponseCancel)
     }
     
@@ -75,16 +75,16 @@ class LoginWindowController: NSWindowController{
         return "LoginWindowController"
     }
     
-    func startLoadingTip(tip:String)
+    func startLoadingTip(_ tip:String)
     {
         loadingTipBar.startAnimation(nil)
         loadingTip.stringValue = tip
-        loadingTipView.hidden = false
+        loadingTipView.isHidden = false
     }
     
     func stopLoadingTip(){
         loadingTipBar.stopAnimation(nil)
-        loadingTipView.hidden = true
+        loadingTipView.isHidden = true
     }
     
     override func windowDidLoad() {
@@ -160,10 +160,10 @@ class LoginWindowController: NSWindowController{
             self.stopLoadingTip()
             self.tips.show(translate(error), forDuration: 0.1, withFlash: false)
         }
-        service.preLoginFlow(success: successHandler,failure: failureHandler)
+        service.preLoginFlow(successHandler,failure: failureHandler)
     }
     
-    func dismissWithModalResponse(response:NSModalResponse)
+    func dismissWithModalResponse(_ response:NSModalResponse)
     {
         window!.sheetParent!.endSheet(window!,returnCode: response)
     }
@@ -171,10 +171,10 @@ class LoginWindowController: NSWindowController{
 
 // MARK: - AutoCompleteTableViewDelegate
 extension LoginWindowController: AutoCompleteTableViewDelegate{
-    func textField(textField: NSTextField, completions words: [String], forPartialWordRange charRange: NSRange, indexOfSelectedItem index: Int) -> [String] {
+    func textField(_ textField: NSTextField, completions words: [String], forPartialWordRange charRange: NSRange, indexOfSelectedItem index: Int) -> [String] {
         var matches = [String]()
         for  user in self.users {
-            if let _ = user.name.rangeOfString(textField.stringValue, options: NSStringCompareOptions.AnchoredSearch)
+            if let _ = user.name.range(of: textField.stringValue, options: NSString.CompareOptions.anchored)
             {
                 matches.append(user.name)
             }
@@ -182,7 +182,7 @@ extension LoginWindowController: AutoCompleteTableViewDelegate{
         return matches
     }
     
-    func didSelectItem(selectedItem: String) {
+    func didSelectItem(_ selectedItem: String) {
         for  user in self.users where user.name == selectedItem {
             self.passWord.stringValue = user.password
         }

@@ -15,23 +15,23 @@ class Regex {
     init(_ pattern: String) {
         self.pattern = pattern
         do {
-            self.internalExpression = try NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
+            self.internalExpression = try NSRegularExpression(pattern: pattern, options: .caseInsensitive)
         } catch _ as NSError {
             self.internalExpression = nil
         }
     }
     
-    func getMatches(input: String) -> [[String]]? {
+    func getMatches(_ input: String) -> [[String]]? {
         var res = [[String]]()
         let myRange = NSMakeRange(0, input.characters.count)
-        if let matches = self.internalExpression?.matchesInString(input, options: [], range:myRange) 
+        if let matches = self.internalExpression?.matches(in: input, options: [], range:myRange) 
         {
             for match in matches
             {
                 var groupMatch = [String]()
                 for i in 1..<match.numberOfRanges
                 {
-                    let rangeText = (input as NSString).substringWithRange(match.rangeAtIndex(i))
+                    let rangeText = (input as NSString).substring(with: match.rangeAt(i))
                     groupMatch.append(rangeText)
                 }
                 res.append(groupMatch)

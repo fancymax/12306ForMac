@@ -52,9 +52,9 @@ class GeneralPreferenceViewController: NSViewController, MASPreferencesViewContr
         set{
             GeneralPreferenceManager.sharedInstance.isShowNoTrainTicket = newValue
             if !newValue {
-                willChangeValueForKey("isShowInvalidTicket")
+                willChangeValue(forKey: "isShowInvalidTicket")
                 isShowInvalidTicket = false
-                didChangeValueForKey("isShowInvalidTicket")
+                didChangeValue(forKey: "isShowInvalidTicket")
             }
         }
     }
@@ -66,9 +66,9 @@ class GeneralPreferenceViewController: NSViewController, MASPreferencesViewContr
         set{
             GeneralPreferenceManager.sharedInstance.isShowInvalidTicket = newValue
             if newValue {
-                willChangeValueForKey("isShowNoTrainTicket")
+                willChangeValue(forKey: "isShowNoTrainTicket")
                 isShowNoTrainTicket = true
-                didChangeValueForKey("isShowNoTrainTicket")
+                didChangeValue(forKey: "isShowNoTrainTicket")
             }
         }
     }

@@ -9,53 +9,53 @@
 import Foundation
 import Alamofire
 import PromiseKit
+import SwiftyJSON
 
 extension Service {
     
 // MARK: - Request Flow
-    func queryTicketFlowWith(params:LeftTicketParam,success:(tickets:[QueryLeftNewDTO])->(),failure:(error:NSError)->())
+    func queryTicketFlowWith(_ params:LeftTicketParam,success:@escaping (_ tickets:[QueryLeftNewDTO])->(),failure:@escaping (_ error:NSError)->())
     {
         var queryLog = false
         var queryUrl = ""
         
-        self.queryTicketInit().then({(isQueryLog,leftUrl,jsName) -> Promise<Void> in
+        self.queryTicketInit().then{(isQueryLog,leftUrl,jsName) -> Promise<Void> in
             queryLog = isQueryLog
             queryUrl = leftUrl
             return self.requestDynamicJs(jsName, referHeader: ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"])
-        }).then({()->Promise<Void> in
+        }.then {()->Promise<Void> in
             return self.queryTicketLogWith(params,isQueryLog: queryLog)
-        }).then({_ -> Promise<[QueryLeftNewDTO]> in
+        }.then {_ -> Promise<[QueryLeftNewDTO]> in
             return self.queryTicketWith(params,queryUrl: queryUrl)
-        }).then({tickets in
-            success(tickets: tickets)
-        }).error({error  in
-            failure(error: error as NSError)
-        })
+        }.then {tickets in
+            success(tickets)
+        }.catch { error  in
+            failure(error as NSError)
+        }
     }
     
-    func queryTrainNoFlowWith(params:QueryByTrainCodeParam,success:(trainCodeDetail:TrainCodeDetails)->(),failure:(error:NSError)->()) {
-        self.queryByTrainNo(params).then({trainCodeDetails in
-            success(trainCodeDetail: trainCodeDetails)
-        }).error({error in
-            failure(error: error as NSError)
-        })
+    func queryTrainNoFlowWith(_ params:QueryByTrainCodeParam,success:@escaping (_ trainCodeDetail:TrainCodeDetails)->(),failure:@escaping (_ error:NSError)->()) {
+        self.queryByTrainNo(params).then {trainCodeDetails in
+            success(trainCodeDetails)
+        }.catch { error in
+            failure(error as NSError)
+        }
     }
     
 // MARK: - Chainable Request
     func queryTicketInit()->Promise<(Bool,String,String)>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/leftTicket/init"
-            Service.Manager.request(.GET, url).responseString(completionHandler:{ response in
+            Service.Manager.request(url).responseString(completionHandler:{ response in
                 switch (response.result){
-                case .Failure(let error):
+                case .failure(let error):
                     reject(error)
-                case .Success(let content):
+                case .success(let content):
                     var cLeftTicketUrl:String = "leftTicket/queryT"
                     if let matches = Regex("var CLeftTicketUrl = '([^']+)'").getMatches(content){
                         cLeftTicketUrl = matches[0][0]
                         logger.debug("cLeftTicketUrl=\(cLeftTicketUrl)")
-                    }
-                    else{
+                    } else {
                         logger.error("fail to get CLeftTicketUrl:\(content)")
                     }
                 
@@ -91,14 +91,14 @@ extension Service {
                 }})}
     }
     
-    func queryTicketLogWith(params:LeftTicketParam,isQueryLog:Bool)->Promise<Void>{
+    func queryTicketLogWith(_ params:LeftTicketParam,isQueryLog:Bool)->Promise<Void>{
         return Promise{ fulfill, reject in
             let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init",
                            "If-Modified-Since":"0",
                            "Cache-Control":"no-cache"]
             if isQueryLog {
                 let url = "https://kyfw.12306.cn/otn/leftTicket/log?" + params.ToGetParams()
-                Service.Manager.request(.GET, url, headers:headers).responseString(completionHandler:{response in
+                Service.Manager.request(url, headers:headers).responseString(completionHandler:{response in
                 })
             }
             
@@ -107,17 +107,17 @@ extension Service {
         }
     }
     
-    func queryTicketWith(params:LeftTicketParam,queryUrl:String)->Promise<[QueryLeftNewDTO]>{
+    func queryTicketWith(_ params:LeftTicketParam,queryUrl:String)->Promise<[QueryLeftNewDTO]>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/" + queryUrl + "?" + params.ToGetParams()
             let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init",
                            "If-Modified-Since":"0",
                            "Cache-Control":"no-cache"]
-            Service.Manager.request(.GET, url, headers: headers).responseJSON(completionHandler:{ response in
+            Service.Manager.request(url, headers: headers).responseJSON(completionHandler:{ response in
                     switch (response.result){
-                    case .Failure(let error):
+                    case .failure(let error):
                         reject(error)
-                    case .Success(let data):
+                    case .success(let data):
                         let json = JSON(data)["data"]
                         if json.count > 0 {
                             var tickets = [QueryLeftNewDTO]()
@@ -129,7 +129,7 @@ extension Service {
                             fulfill(tickets)
                         }
                         else{
-                            let error = ServiceError.errorWithCode(.QueryTicketFailed)
+                            let error = ServiceError.errorWithCode(.queryTicketFailed)
                             reject(error)
                         }
                     }
@@ -137,29 +137,28 @@ extension Service {
     }
     
     //https://kyfw.12306.cn/otn/czxx/queryByTrainNo?train_no=6i000D232806&from_station_telecode=IOQ&to_station_telecode=FYS&depart_date=2016-06-12
-    func queryByTrainNo(params: QueryByTrainCodeParam)->Promise<TrainCodeDetails>{
+    func queryByTrainNo(_ params: QueryByTrainCodeParam)->Promise<TrainCodeDetails>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/czxx/queryByTrainNo?" + params.ToGetParams()
             let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init",
                            "If-Modified-Since":"0",
                            "Cache-Control":"no-cache"]
-            Service.Manager.request(.GET, url, headers: headers).responseJSON(completionHandler:{ response in
+            Service.Manager.request(url, headers: headers).responseJSON(completionHandler:{ response in
                     switch (response.result){
-                    case .Failure(let error):
+                    case .failure(let error):
                         reject(error)
-                    case .Success(let data):
+                    case .success(let data):
                         let json = JSON(data)["data"]["data"]
                         if json.count > 0 {
                             let trainCodeDetails = TrainCodeDetails(json: json)
                             fulfill(trainCodeDetails)
-                        }
-                        else  {
-                            let error = ServiceError.errorWithCode(.QueryTicketFailed)
+                        } else {
+                            let error = ServiceError.errorWithCode(.queryTicketFailed)
                             reject(error)
                             
                         }
                     }
-                })}
+                })
+	}
     }
-    
 }

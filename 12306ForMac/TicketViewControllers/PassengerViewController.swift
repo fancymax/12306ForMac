@@ -20,26 +20,26 @@ class PassengerViewController: NSViewController {
         passengerCheckBox.title = passenger!.passenger_name!
     }
     
-    @IBAction func unSelectPassenger(sender: NSButton) {
+    @IBAction func unSelectPassenger(_ sender: NSButton) {
         passenger?.isChecked = false
         sender.state = NSOnState
-        self.view.hidden = true
+        self.view.isHidden = true
     }
     
     func select(){
         if passenger!.isChecked {
-            self.view.hidden = false
+            self.view.isHidden = false
         }
         else{
-            self.view.hidden = true
+            self.view.isHidden = true
         }
     }
     
     func check() {
-        self.view.hidden = false
+        self.view.isHidden = false
     }
     
     func unCheck() {
-        self.view.hidden = true
+        self.view.isHidden = true
     }
 }

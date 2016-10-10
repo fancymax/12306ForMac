@@ -17,7 +17,7 @@ class RandCodeImageView:NSImageView {
         var pointY:CGFloat
     }
     
-    private var imageDots = [ImageDot]()
+    fileprivate var imageDots = [ImageDot]()
     
     var randCodeStr:String?{
         get{
@@ -41,8 +41,8 @@ class RandCodeImageView:NSImageView {
         needsDisplay = true
     }
     
-    override func mouseDown(theEvent: NSEvent) {
-        let frameOffsetInWindow = convertPoint(self.frame.origin, fromView: nil)
+    override func mouseDown(with theEvent: NSEvent) {
+        let frameOffsetInWindow = convert(self.frame.origin, from: nil)
         
         let imageOriginX = self.frame.origin.x - frameOffsetInWindow.x
         let imageOriginY = self.frame.origin.y + self.bounds.height - frameOffsetInWindow.y
@@ -65,7 +65,7 @@ class RandCodeImageView:NSImageView {
             {
                 if (abs(pointX - imageDots[i].pointX) < 10) && (abs(pointY - imageDots[i].pointY) < 10)
                 {
-                    imageDots.removeAtIndex(i)
+                    imageDots.remove(at: i)
                     isAdd = false
                     break
                 }
@@ -79,15 +79,15 @@ class RandCodeImageView:NSImageView {
         needsDisplay = true
     }
     
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
         
-        NSColor.greenColor().set()
+        NSColor.green.set()
         
-        func drawDot(pointX: CGFloat,pointY: CGFloat)
+        func drawDot(_ pointX: CGFloat,pointY: CGFloat)
         {
-            let dotRect = CGRect(origin: NSPoint(x: pointX, y: pointY), size: CGSizeZero).insetBy(dx:-10, dy:-10)
-            NSBezierPath(ovalInRect: dotRect).fill()
+            let dotRect = CGRect(origin: NSPoint(x: pointX, y: pointY), size: CGSize.zero).insetBy(dx:-10, dy:-10)
+            NSBezierPath(ovalIn: dotRect).fill()
         }
         
         for point in imageDots

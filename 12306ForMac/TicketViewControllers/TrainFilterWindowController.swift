@@ -34,7 +34,7 @@ class TrainFilterWindowController: NSWindowController,NSTableViewDelegate,NSTabl
     
     @IBOutlet weak var trainFilterTable: NSTableView!
     
-    func createFilterItemByTrains(trains:[QueryLeftNewDTO]){
+    func createFilterItemByTrains(_ trains:[QueryLeftNewDTO]){
         filterItems.append(FilterPresentationItem(type: 0,key:"",presentation: "席别类型",isChecked: false))
         filterItems.append(FilterPresentationItem(type: 1,key:"9|P|O|4|6",presentation: "商务座|特等座|软卧|高级软卧",isChecked: false))
         filterItems.append(FilterPresentationItem(type: 1,key:"M",presentation: "一等座|硬卧",isChecked: false))
@@ -74,8 +74,8 @@ class TrainFilterWindowController: NSWindowController,NSTableViewDelegate,NSTabl
         }
     }
     
-    @IBAction func checkTrainFilter(sender: NSButton) {
-        let row = trainFilterTable.rowForView(sender)
+    @IBAction func checkTrainFilter(_ sender: NSButton) {
+        let row = trainFilterTable.row(for: sender)
         let item = filterItems[row]
         
         var changeState = false
@@ -87,9 +87,9 @@ class TrainFilterWindowController: NSWindowController,NSTableViewDelegate,NSTabl
         }
         
         if item.type == 2 {
-            let filterKeys = item.key.componentsSeparatedByString("|")
+            let filterKeys = item.key.components(separatedBy: "|")
             for item in filterItems where item.type == 4 {
-                let startTime = item.key.componentsSeparatedByString("|")[1]
+                let startTime = item.key.components(separatedBy: "|")[1]
                 if ((startTime >= filterKeys[0]) && (startTime <= filterKeys[1])) {
                     item.isChecked = changeState
                 }
@@ -97,10 +97,10 @@ class TrainFilterWindowController: NSWindowController,NSTableViewDelegate,NSTabl
         }
         
         if item.type == 3 {
-            let filterKeys = item.key.componentsSeparatedByString("|")
+            let filterKeys = item.key.components(separatedBy: "|")
             for item in filterItems where item.type == 4 {
                 for filterKey in filterKeys {
-                    if item.key.containsString(filterKey) {
+                    if item.key.contains(filterKey) {
                         item.isChecked = changeState
                     }
                 }
@@ -109,11 +109,11 @@ class TrainFilterWindowController: NSWindowController,NSTableViewDelegate,NSTabl
         trainFilterTable.reloadData()
     }
     
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+    func numberOfRows(in tableView: NSTableView) -> Int {
         return filterItems.count
     }
     
-    func tableView(tableView: NSTableView, isGroupRow row: Int) -> Bool {
+    func tableView(_ tableView: NSTableView, isGroupRow row: Int) -> Bool {
         if filterItems[row].type == 0 {
             return true
         }
@@ -122,12 +122,12 @@ class TrainFilterWindowController: NSWindowController,NSTableViewDelegate,NSTabl
         }
     }
     
-    func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         if filterItems[row].type == 0 {
-            return tableView.makeViewWithIdentifier("TextCell", owner: nil)
+            return tableView.make(withIdentifier: "TextCell", owner: nil)
         }
         else if filterItems[row].type == 4 {
-            let mainCell = tableView.makeViewWithIdentifier("TrainInfoCell", owner: nil)
+            let mainCell = tableView.make(withIdentifier: "TrainInfoCell", owner: nil)
             
             let button = mainCell?.viewWithTag(100) as! NSButton
             button.target = self
@@ -136,7 +136,7 @@ class TrainFilterWindowController: NSWindowController,NSTableViewDelegate,NSTabl
             return mainCell
         }
         else{
-            let mainCell = tableView.makeViewWithIdentifier("MainCell", owner: nil)
+            let mainCell = tableView.make(withIdentifier: "MainCell", owner: nil)
             
             let button = mainCell?.viewWithTag(100) as! NSButton
             button.target = self
@@ -146,11 +146,11 @@ class TrainFilterWindowController: NSWindowController,NSTableViewDelegate,NSTabl
         }
     }
     
-    func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
+    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         return filterItems[row]
     }
     
-    func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         if filterItems[row].type == 0 {
             return 20
         }
@@ -168,16 +168,16 @@ class TrainFilterWindowController: NSWindowController,NSTableViewDelegate,NSTabl
         return "TrainFilterWindowController"
     }
     
-    @IBAction func clickCancel(sender: AnyObject) {
+    @IBAction func clickCancel(_ sender: AnyObject) {
         dismissWithModalResponse(NSModalResponseCancel)
     }
     
-    @IBAction func clickOK(sender: AnyObject) {
+    @IBAction func clickOK(_ sender: AnyObject) {
         getFilterKey()
         dismissWithModalResponse(NSModalResponseOK)
     }
     
-    func dismissWithModalResponse(response:NSModalResponse)
+    func dismissWithModalResponse(_ response:NSModalResponse)
     {
         window!.sheetParent!.endSheet(window!,returnCode: response)
     }

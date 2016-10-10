@@ -36,7 +36,7 @@ class SubmitWindowController: NSWindowController{
     var isSubmitting = false
     
     
-    @IBAction func FreshImage(sender: NSButton) {
+    @IBAction func FreshImage(_ sender: NSButton) {
         freshImage()
     }
     
@@ -61,7 +61,7 @@ class SubmitWindowController: NSWindowController{
         passengerTable.reloadData()
     }
     
-    func switchViewFrom(oldView:NSView?,to newView: NSView) {
+    func switchViewFrom(_ oldView:NSView?,to newView: NSView) {
         if oldView != nil {
             oldView!.removeFromSuperview()
         }
@@ -69,16 +69,16 @@ class SubmitWindowController: NSWindowController{
         self.window?.contentView?.addSubview(newView)
     }
     
-    func startLoadingTip(tip:String)
+    func startLoadingTip(_ tip:String)
     {
         loadingTipBar.startAnimation(nil)
         loadingTip.stringValue = tip
-        loadingTipView.hidden = false
+        loadingTipView.isHidden = false
     }
     
     func stopLoadingTip(){
         loadingTipBar.stopAnimation(nil)
-        loadingTipView.hidden = true
+        loadingTipView.isHidden = true
     }
     
     
@@ -116,7 +116,7 @@ class SubmitWindowController: NSWindowController{
             self.errorFlashLabel.show(translate(error), forDuration: 10, withFlash: false)
             self.stopLoadingTip()
         }
-        service.preOrderFlow(success: successHandler, failure: failureHandler)
+        service.preOrderFlow(successHandler, failure: failureHandler)
     }
     
     func freshImage(){
@@ -127,32 +127,32 @@ class SubmitWindowController: NSWindowController{
             self.stopLoadingTip()
         }
         
-        let failHandler = {(error:ErrorType) -> () in
+        let failHandler = {(error:Error) -> () in
             self.passengerImage.clearRandCodes()
             self.passengerImage.image = nil
             self.stopLoadingTip()
         }
         
-        service.getPassCodeNewForPassenger().then({image in
+        service.getPassCodeNewForPassenger().then{ image in
             successHandler(image)
-        }).error({error in
+        }.catch { error in
             failHandler(error)
-        })
+        }
     }
     
     override var windowNibName: String{
         return "SubmitWindowController"
     }
     
-    @IBAction func clickPay(sender: NSButton) {
-        NSWorkspace.sharedWorkspace().openURL(NSURL(string: "https://kyfw.12306.cn/otn/login/init")!)
+    @IBAction func clickPay(_ sender: NSButton) {
+        NSWorkspace.shared().open(URL(string: "https://kyfw.12306.cn/otn/login/init")!)
     }
     
-    @IBAction func clickCheckOrder(sender: NSButton) {
+    @IBAction func clickCheckOrder(_ sender: NSButton) {
         self.switchViewFrom(orderInfoView, to: preOrderView)
     }
     
-    @IBAction func clickOK(sender:AnyObject?){
+    @IBAction func clickOK(_ sender:AnyObject?){
         
         if passengerImage.randCodeStr == nil {
             errorFlashLabel.show("请先选择验证码", forDuration: 0.1, withFlash: false)
@@ -188,11 +188,11 @@ class SubmitWindowController: NSWindowController{
         service.orderFlowWith(passengerImage.randCodeStr!, success: successHandler, failure: failureHandler,wait: waitHandler)
     }
     
-    @IBAction func clickCancel(button:NSButton){
+    @IBAction func clickCancel(_ button:NSButton){
         dismissWithModalResponse(NSModalResponseCancel)
     }
     
-    func dismissWithModalResponse(response:NSModalResponse)
+    func dismissWithModalResponse(_ response:NSModalResponse)
     {
         window!.sheetParent!.endSheet(window!,returnCode: response)
     }
@@ -200,11 +200,11 @@ class SubmitWindowController: NSWindowController{
 
 // MARK: - NSTableViewDataSource
 extension SubmitWindowController:NSTableViewDataSource {
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+    func numberOfRows(in tableView: NSTableView) -> Int {
         return MainModel.selectPassengers.count
     }
     
-    func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
+    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         return MainModel.selectPassengers[row]
     }
 }

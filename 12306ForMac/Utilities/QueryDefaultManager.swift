@@ -11,67 +11,67 @@ import Foundation
 class QueryDefaultManager {
     static let sharedInstance = QueryDefaultManager()
     
-    private let userNameKey = "userName"
-    private let userPasswordKey = "userPassword"
-    private let fromStationKey = "fromStation"
-    private let toStationKey = "toStation"
-    private let queryDateKey = "queryDate"
-    private let userDefaults = NSUserDefaults.standardUserDefaults()
+    fileprivate let userNameKey = "userName"
+    fileprivate let userPasswordKey = "userPassword"
+    fileprivate let fromStationKey = "fromStation"
+    fileprivate let toStationKey = "toStation"
+    fileprivate let queryDateKey = "queryDate"
+    fileprivate let userDefaults = UserDefaults.standard
     
-    private init()
+    fileprivate init()
     {
         registerUserDefault()
     }
     
-    private func registerUserDefault()
+    fileprivate func registerUserDefault()
     {
         let firstDefault = [fromStationKey: "深圳",
-            toStationKey:"上海",queryDateKey:LunarCalendarView.getMostAvailableDay()]
-        userDefaults.registerDefaults(firstDefault)
+            toStationKey:"上海",queryDateKey:LunarCalendarView.getMostAvailableDay()] as [String : Any]
+        userDefaults.register(defaults: firstDefault)
     }
     
     var lastUserName:String?{
         get{
-            return userDefaults.objectForKey(userNameKey) as? String
+            return userDefaults.object(forKey: userNameKey) as? String
         }
         set(newValue){
-            userDefaults.setObject(newValue, forKey: userNameKey)
+            userDefaults.set(newValue, forKey: userNameKey)
         }
     }
     
     var lastUserPassword:String?{
         get{
-            return userDefaults.objectForKey(userPasswordKey) as? String
+            return userDefaults.object(forKey: userPasswordKey) as? String
         }
         set(newValue){
-            userDefaults.setObject(newValue, forKey: userPasswordKey)
+            userDefaults.set(newValue, forKey: userPasswordKey)
         }
     }
     
     var lastFromStation:String{
         get{
-            return userDefaults.objectForKey(fromStationKey) as! String
+            return userDefaults.object(forKey: fromStationKey) as! String
         }
         set(newValue){
-            userDefaults.setObject(newValue, forKey: fromStationKey)
+            userDefaults.set(newValue, forKey: fromStationKey)
         }
     }
     
     var lastToStation:String{
         get{
-            return userDefaults.objectForKey(toStationKey) as! String
+            return userDefaults.object(forKey: toStationKey) as! String
         }
         set(newValue){
-            userDefaults.setObject(newValue, forKey: toStationKey)
+            userDefaults.set(newValue, forKey: toStationKey)
         }
     }
     
-    var lastQueryDate:NSDate{
+    var lastQueryDate:Date{
         get{
-            return userDefaults.objectForKey(queryDateKey) as! NSDate
+            return userDefaults.object(forKey: queryDateKey) as! Date
         }
         set(newValue){
-            userDefaults.setObject(newValue, forKey: queryDateKey)
+            userDefaults.set(newValue, forKey: queryDateKey)
         }
     }
 }

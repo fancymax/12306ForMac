@@ -23,24 +23,24 @@ class LoadingTipViewController: NSViewController {
     }
     
     func setCenterConstrainBy(view otherView: NSView) {
-        let constraint1 = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: otherView, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0)
-        let constraint2 = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: otherView, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0)
-        NSLayoutConstraint.activateConstraints([constraint1,constraint2])
+        let constraint1 = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: otherView, attribute: NSLayoutAttribute.centerX, multiplier: 1.0, constant: 0)
+        let constraint2 = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: otherView, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0)
+        NSLayoutConstraint.activate([constraint1,constraint2])
     }
     
-    func start(tip tip:String)
+    func start(tip:String)
     {
         loadingSpinner.startAnimation(nil)
         loadingTip.stringValue = tip
-        loadingView.hidden = false
+        loadingView.isHidden = false
     }
     
     func stop(){
         loadingSpinner.stopAnimation(nil)
-        loadingView.hidden = true
+        loadingView.isHidden = true
     }
     
     func setTipView(isHidden hidden: Bool) {
-        loadingView.hidden = hidden
+        loadingView.isHidden = hidden
     }
 }

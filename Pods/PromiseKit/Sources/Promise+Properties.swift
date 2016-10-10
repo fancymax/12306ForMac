@@ -2,13 +2,13 @@ extension Promise {
     /**
      - Returns: The error with which this promise was rejected; `nil` if this promise is not rejected.
     */
-    public var error: ErrorType? {
+    public var error: Error? {
         switch state.get() {
-        case .None:
+        case .none:
             return nil
-        case .Some(.Fulfilled):
+        case .some(.fulfilled):
             return nil
-        case .Some(.Rejected(let error, _)):
+        case .some(.rejected(let error, _)):
             return error
         }
     }
@@ -16,28 +16,28 @@ extension Promise {
     /**
      - Returns: `true` if the promise has not yet resolved.
     */
-    public var pending: Bool {
+    public var isPending: Bool {
         return state.get() == nil
     }
 
     /**
      - Returns: `true` if the promise has resolved.
     */
-    public var resolved: Bool {
-        return !pending
+    public var isResolved: Bool {
+        return !isPending
     }
 
     /**
      - Returns: `true` if the promise was fulfilled.
     */
-    public var fulfilled: Bool {
+    public var isFulfilled: Bool {
         return value != nil
     }
 
     /**
      - Returns: `true` if the promise was rejected.
     */
-    public var rejected: Bool {
+    public var isRejected: Bool {
         return error != nil
     }
 
@@ -46,11 +46,11 @@ extension Promise {
     */
     public var value: T? {
         switch state.get() {
-        case .None:
+        case .none:
             return nil
-        case .Some(.Fulfilled(let value)):
+        case .some(.fulfilled(let value)):
             return value
-        case .Some(.Rejected):
+        case .some(.rejected):
             return nil
         }
     }

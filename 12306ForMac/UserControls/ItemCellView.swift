@@ -13,11 +13,11 @@ class ItemCellView:NSTableCellView{
     override var backgroundStyle: NSBackgroundStyle{
         set{
             var textColor:NSColor?
-            if newValue == NSBackgroundStyle.Dark{
-                textColor = NSColor.windowBackgroundColor()
+            if newValue == NSBackgroundStyle.dark{
+                textColor = NSColor.windowBackgroundColor
             }
             else{
-                textColor = NSColor.controlShadowColor()
+                textColor = NSColor.controlShadowColor
             }
             let mark = self.viewWithTag(11) as! NSTextField
             mark.textColor = textColor

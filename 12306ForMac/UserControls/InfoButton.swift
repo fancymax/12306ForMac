@@ -10,15 +10,15 @@ import Foundation
 import Cocoa
 
 @IBDesignable
-public class InfoButton : NSControl, NSPopoverDelegate {
+open class InfoButton : NSControl, NSPopoverDelegate {
     var mainSize: CGFloat!
 
     @IBInspectable var showOnHover: Bool = false
     @IBInspectable var fillMode: Bool = true
     @IBInspectable var animatePopover: Bool = false
     @IBInspectable var content: String = ""
-    @IBInspectable var primaryColor: NSColor = NSColor.scrollBarColor()
-    var secondaryColor: NSColor = NSColor.whiteColor()
+    @IBInspectable var primaryColor: NSColor = NSColor.scrollBarColor
+    var secondaryColor: NSColor = NSColor.white
 
     var mouseInside = false {
         didSet {
@@ -28,7 +28,7 @@ public class InfoButton : NSControl, NSPopoverDelegate {
                     popover = NSPopover(content: self.content, doesAnimate: self.animatePopover)
                 }
                 if mouseInside {
-                    popover.showRelativeToRect(self.frame, ofView: self.superview!, preferredEdge: NSRectEdge.MaxX)
+                    popover.show(relativeTo: self.frame, of: self.superview!, preferredEdge: NSRectEdge.maxX)
                 } else {
                     popover.close()
                 }
@@ -38,17 +38,17 @@ public class InfoButton : NSControl, NSPopoverDelegate {
     }
 
     var trackingArea: NSTrackingArea!
-    override public func updateTrackingAreas() {
+    override open func updateTrackingAreas() {
         super.updateTrackingAreas()
         if trackingArea != nil {
             self.removeTrackingArea(trackingArea)
         }
-        trackingArea = NSTrackingArea(rect: self.bounds, options: [NSTrackingAreaOptions.MouseEnteredAndExited, NSTrackingAreaOptions.ActiveAlways], owner: self, userInfo: nil)
+        trackingArea = NSTrackingArea(rect: self.bounds, options: [NSTrackingAreaOptions.mouseEnteredAndExited, NSTrackingAreaOptions.activeAlways], owner: self, userInfo: nil)
         self.addTrackingArea(trackingArea)
     }
     
-    private var stringAttributeDict = [String: AnyObject]()
-    private var circlePath: NSBezierPath!
+    fileprivate var stringAttributeDict = [String: AnyObject]()
+    fileprivate var circlePath: NSBezierPath!
 
     var popover: NSPopover!
 
@@ -60,20 +60,20 @@ public class InfoButton : NSControl, NSPopoverDelegate {
             self.frame.size.height = self.frame.size.width
         }
         self.mainSize = self.frame.size.height
-        stringAttributeDict[NSFontAttributeName] = NSFont.systemFontOfSize(mainSize * 0.6)
+        stringAttributeDict[NSFontAttributeName] = NSFont.systemFont(ofSize: mainSize * 0.6)
 
         let inSet: CGFloat = 2
         let rect = NSMakeRect(inSet, inSet, mainSize - inSet * 2, mainSize - inSet * 2)
-        circlePath = NSBezierPath(ovalInRect: rect)
+        circlePath = NSBezierPath(ovalIn: rect)
     }
     
     
-    override public func drawRect(dirtyRect: NSRect) {
+    override open func draw(_ dirtyRect: NSRect) {
         var activeColor: NSColor!
-        if mouseInside || (popover != nil && popover!.shown){
+        if mouseInside || (popover != nil && popover!.isShown){
             activeColor = primaryColor
         } else {
-            activeColor = primaryColor.colorWithAlphaComponent(0.35)
+            activeColor = primaryColor.withAlphaComponent(0.35)
         }
         
         if fillMode {
@@ -83,27 +83,27 @@ public class InfoButton : NSControl, NSPopoverDelegate {
         } else {
             activeColor.setStroke()
             circlePath.stroke()
-            stringAttributeDict[NSForegroundColorAttributeName] = (mouseInside ? primaryColor : primaryColor.colorWithAlphaComponent(0.35))
+            stringAttributeDict[NSForegroundColorAttributeName] = (mouseInside ? primaryColor : primaryColor.withAlphaComponent(0.35))
         }
 
         let attributedString = NSAttributedString(string: "?", attributes: stringAttributeDict)
         let stringLocation = NSMakePoint(mainSize / 2 - attributedString.size().width / 2, mainSize / 2 - attributedString.size().height / 2)
-        attributedString.drawAtPoint(stringLocation)
+        attributedString.draw(at: stringLocation)
     }
     
-    override public func mouseDown(theEvent: NSEvent) {
+    override open func mouseDown(with theEvent: NSEvent) {
         if popover == nil {
             popover = NSPopover(content: self.content, doesAnimate: self.animatePopover)
         }
-        if popover.shown {
+        if popover.isShown {
             popover.close()
         } else {
-            popover.showRelativeToRect(self.frame, ofView: self.superview!, preferredEdge: NSRectEdge.MaxX)
+            popover.show(relativeTo: self.frame, of: self.superview!, preferredEdge: NSRectEdge.maxX)
         }
     }
 
-    override public func mouseEntered(theEvent: NSEvent) { mouseInside = true }
-    override public func mouseExited(theEvent: NSEvent) { mouseInside = false }
+    override open func mouseEntered(with theEvent: NSEvent) { mouseInside = true }
+    override open func mouseExited(with theEvent: NSEvent) { mouseInside = false }
 
 }
 
@@ -113,7 +113,7 @@ extension NSPopover {
     convenience init(content: String, doesAnimate: Bool) {
         self.init()
 
-        self.behavior = NSPopoverBehavior.Transient
+        self.behavior = NSPopoverBehavior.transient
         self.animates = doesAnimate
         self.contentViewController = NSViewController()
         self.contentViewController!.view = NSView(frame: NSZeroRect)//remove this ??
@@ -123,9 +123,9 @@ extension NSPopover {
             content in
             let textField = NSTextField(frame: NSZeroRect)
 
-            textField.editable = false
+            textField.isEditable = false
             textField.stringValue = content
-            textField.bordered = false
+            textField.isBordered = false
             textField.drawsBackground = false
             textField.sizeToFit()
             textField.setFrameOrigin(NSMakePoint(popoverMargin, popoverMargin))

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class OrderDTO:NSObject{
     var sequence_no: String?
@@ -64,13 +65,13 @@ class OrderDTO:NSObject{
     
     var payStatus:String{
         var name = ""
-        if let limitTime = pay_limit_time, status = ticket_status_name{
+        if let limitTime = pay_limit_time, let status = ticket_status_name{
             name = "\(status)(请在 \(limitTime) 前支付)"
         }
         return name
     }
     
-    init(json:JSON,ticketIdx:Int)
+    init(json:JSON, ticketIdx:Int)
     {
         sequence_no = json["sequence_no"].string
         start_train_date_page = json["start_train_date_page"].string

@@ -46,7 +46,7 @@ class TrainCodeDetailViewController: NSViewController {
         // setup Table Header
         for col in trainCodeDetailTable.tableColumns {
             col.headerCell = TrainCodeDetailHeaderCell(textCell: col.headerCell.stringValue)
-            col.headerCell.alignment = .Center
+            col.headerCell.alignment = .center
         }
         
     }
@@ -55,14 +55,14 @@ class TrainCodeDetailViewController: NSViewController {
 
 // MARK: - NSTableViewDataSource 
 extension TrainCodeDetailViewController: NSTableViewDataSource{
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+    func numberOfRows(in tableView: NSTableView) -> Int {
         if trainCodeDetails == nil {
             return 0
         }
         return trainCodeDetails!.trainNos.count
     }
     
-    func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
+    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         if trainCodeDetails == nil {
             return nil
         }

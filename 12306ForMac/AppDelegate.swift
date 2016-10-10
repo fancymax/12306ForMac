@@ -7,42 +7,61 @@
 //
 import Fabric
 import Crashlytics
-
+import XCGLogger
 import Cocoa
 
 let logger: XCGLogger = {
     // Setup XCGLogger
-    let log = XCGLogger.defaultInstance()
+    let log = XCGLogger.default
     
-    let dateFormatter = NSDateFormatter()
+    let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyyMMddhhmm"
-    let dateStr = dateFormatter.stringFromDate(NSDate())
+    let dateStr = dateFormatter.string(from: Date())
     
-    let bundleId = NSBundle.mainBundle().bundleIdentifier!
+    let bundleId = Bundle.main.bundleIdentifier!
     let fileName = "\(bundleId).\(dateStr).txt"
 
     let logDirectory = "\(NSHomeDirectory())/Library/Logs/\(bundleId)/"
     let logPath = "\(logDirectory)/\(fileName)"
     
-    let isExistDirectory:Bool = NSFileManager.defaultManager().fileExistsAtPath(logDirectory, isDirectory: nil)
+    let isExistDirectory:Bool = FileManager.default.fileExists(atPath: logDirectory, isDirectory: nil)
     if !isExistDirectory {
         do{
-            try NSFileManager.defaultManager().createDirectoryAtPath(logDirectory, withIntermediateDirectories: true, attributes: nil)
-        }
-        catch {
+            try FileManager.default.createDirectory(atPath: logDirectory, withIntermediateDirectories: true, attributes: nil)
+        } catch {
             print("Creat 12306ForMac log fail")
         }
     }
     
-    log.xcodeColors = [
-        .Verbose: .lightGrey,
-        .Debug: .darkGrey,
-        .Info: .darkGreen,
-        .Warning: .orange,
-        .Error: XCGLogger.XcodeColor(fg: NSColor.redColor(), bg: NSColor.whiteColor()), // Optionally use an NSColor
-        .Severe: XCGLogger.XcodeColor(fg: (255, 255, 255), bg: (255, 0, 0)) // Optionally use RGB values directly
-    ]
-    log.setup(.Debug, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: logPath)
+
+    // Create a destination for the system console log (via NSLog)
+    let systemDestination = AppleSystemLogDestination(identifier: "advancedLogger.appleSystemLogDestination")
+    
+    // Optionally set some configuration options
+    systemDestination.outputLevel = .debug
+    systemDestination.showLogIdentifier = false
+    systemDestination.showFunctionName = true
+    systemDestination.showThreadName = true
+    systemDestination.showLevel = true
+    systemDestination.showFileName = true
+    systemDestination.showLineNumber = true
+    
+    // Add colour to the console destination.
+    // - Note: You need the XcodeColors Plug-in https://github.com/robbiehanson/XcodeColors installed in Xcode
+    // - to see colours in the Xcode console. Plug-ins have been disabled in Xcode 8, so offically you can not see
+    // - coloured logs in Xcode 8.
+    let xcodeColorsLogFormatter: XcodeColorsLogFormatter = XcodeColorsLogFormatter()
+    xcodeColorsLogFormatter.colorize(level: .verbose, with: .lightGrey)
+    xcodeColorsLogFormatter.colorize(level: .debug, with: .darkGrey)
+    xcodeColorsLogFormatter.colorize(level: .info, with: .blue)
+    xcodeColorsLogFormatter.colorize(level: .warning, with: .orange)
+    xcodeColorsLogFormatter.colorize(level: .error, with: .red)
+    xcodeColorsLogFormatter.colorize(level: .severe, with: .white, on: .red)
+    systemDestination.formatters = [xcodeColorsLogFormatter]
+    // Add the destination to the logger
+    log.add(destination: systemDestination)
+    
+    log.setup(level: .debug, showThreadName: true, showLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: logPath)
     
     return log
 }()
@@ -60,8 +79,8 @@ let DidSendAutoSubmitMessageNotification = "com.12306.DidSendAutoSubmitMessageNo
 
     var mainController:MainWindowController?
     
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
-    NSUserDefaults.standardUserDefaults().registerDefaults(["NSApplicationCrashOnExceptions":NSNumber(bool: true)])
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
+    UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions":NSNumber(value: true as Bool)])
         
         Fabric.with([Crashlytics.self])
         
@@ -73,11 +92,11 @@ let DidSendAutoSubmitMessageNotification = "com.12306.DidSendAutoSubmitMessageNo
         logger.debug("application start")
     }
 
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
     
-    func applicationShouldTerminateAfterLastWindowClosed(sender:NSApplication)->Bool {
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender:NSApplication)->Bool {
         return true
     }
 

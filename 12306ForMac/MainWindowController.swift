@@ -39,52 +39,52 @@ class MainWindowController: NSWindowController{
     	aWindow.centerTrafficLightButtons = true;
         
         aWindow.titleBarDrawingBlock = {[unowned self] drawsAsMainWindow, drawingRect, edge, clippingPath  in
-            NSNotificationCenter.defaultCenter().postNotificationName(NSWindowDidMoveNotification, object:self.window)
+            NotificationCenter.default.post(name: NSNotification.Name.NSWindowDidMove, object:self.window)
         }
         
         
         let titleView = aWindow.titleBarView
         let buttonPoint = NSMakePoint(85, 5)
         self.loginButton.setFrameOrigin(buttonPoint)
-        titleView.addSubview(self.loginButton)
+        titleView?.addSubview(self.loginButton)
         
         let segmentSize = NSMakeSize(120, 25)
         let segmentFrame = NSMakeRect(
-            NSMidX(titleView.bounds) - (segmentSize.width / 2.0),
-            NSMidY(titleView.bounds) - (segmentSize.height / 2.0),
+            NSMidX((titleView?.bounds)!) - (segmentSize.width / 2.0),
+            NSMidY((titleView?.bounds)!) - (segmentSize.height / 2.0),
             segmentSize.width, segmentSize.height)
         let segment = NSSegmentedControl(frame: segmentFrame)
         segment.segmentCount = 2
         segment.setLabel(TrainBook, forSegment: 0)
         segment.setLabel(TrainOrder, forSegment: 1)
         segment.selectedSegment = 0
-        segment.segmentStyle = NSSegmentStyle.TexturedSquare
+        segment.segmentStyle = NSSegmentStyle.texturedSquare
         segment.target = self
         segment.action = #selector(MainWindowController.segmentTab(_:))
         
-        titleView.addSubview(segment)
+        titleView?.addSubview(segment)
         
         segment.translatesAutoresizingMaskIntoConstraints = false
         
-        let segmentConstraint1 = NSLayoutConstraint(item: segment, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: titleView, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0)
-        let segmentConstraint2 = NSLayoutConstraint(item: segment, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: titleView, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0)
-        NSLayoutConstraint.activateConstraints([segmentConstraint1,segmentConstraint2])
+        let segmentConstraint1 = NSLayoutConstraint(item: segment, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: titleView, attribute: NSLayoutAttribute.centerX, multiplier: 1.0, constant: 0)
+        let segmentConstraint2 = NSLayoutConstraint(item: segment, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: titleView, attribute: NSLayoutAttribute.centerY, multiplier: 1.0, constant: 0)
+        NSLayoutConstraint.activate([segmentConstraint1,segmentConstraint2])
         
         selectModule(TrainBook)
         
         self.window?.recalculateKeyViewLoop()
         
         //login notification
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: #selector(MainWindowController.receiveDidSendLoginMessageNotification(_:)), name: DidSendLoginMessageNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(MainWindowController.receiveAutoLoginMessageNotification(_:)), name: DidSendAutoLoginMessageNotification, object: nil)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(receiveDidSendLoginMessageNotification(_:)), name: NSNotification.Name(rawValue: DidSendLoginMessageNotification), object: nil)
+        notificationCenter.addObserver(self, selector: #selector(receiveAutoLoginMessageNotification(_:)), name: NSNotification.Name(rawValue: DidSendAutoLoginMessageNotification), object: nil)
     }
     
-    func segmentTab(sender: NSSegmentedControl){
-        selectModule(sender.labelForSegment(sender.selectedSegment)!)
+    func segmentTab(_ sender: NSSegmentedControl){
+        selectModule(sender.label(forSegment: sender.selectedSegment)!)
     }
     
-    func selectModule(moduleName:String){
+    func selectModule(_ moduleName:String){
         if(moduleName == TrainOrder){
             self.window?.contentView = orderQueryViewController.view
         }
@@ -93,37 +93,36 @@ class MainWindowController: NSWindowController{
         }
     }
     
-    func receiveDidSendLoginMessageNotification(note: NSNotification){
+    func receiveDidSendLoginMessageNotification(_ note: Notification){
         loginOut()
         login(isAutoLogin: false)
     }
     
-    func receiveAutoLoginMessageNotification(note: NSNotification){
+    func receiveAutoLoginMessageNotification(_ note: Notification){
         loginOut()
         login(isAutoLogin: true)
     }
     
-    @IBAction func UserLogin(sender: NSButton){
+    @IBAction func UserLogin(_ sender: NSButton){
         if !MainModel.isGetUserInfo{
             self.login(isAutoLogin: false)
-        }
-        else{
+        } else {
             var position:NSPoint = sender.bounds.origin
             position.y += sender.bounds.size.height + 5
             self.LoginMenu.minimumWidth = sender.bounds.size.width
-            self.LoginMenu.popUpMenuPositioningItem(nil, atLocation: position, inView: sender)
+            self.LoginMenu.popUp(positioning: nil, at: position, in: sender)
         }
     }
     
-    @IBAction func loginOut(sender: NSMenuItem) {
+    @IBAction func loginOut(_ sender: NSMenuItem) {
         loginOut()
     }
     
-    @IBAction func openPreferences(sender:AnyObject){
+    @IBAction func openPreferences(_ sender:AnyObject){
         self.preferencesWindowController.showWindow(nil)
     }
     
-    @IBAction func showHelp(sender:AnyObject) {
+    @IBAction func showHelp(_ sender:AnyObject) {
         sendEmailWithMail()
     }
     
@@ -131,14 +130,14 @@ class MainWindowController: NSWindowController{
         MainModel.isGetUserInfo = false
         MainModel.isGetPassengersInfo = false
         MainModel.passengers = [PassengerDTO]()
-        NSNotificationCenter.defaultCenter().postNotificationName(DidSendLogoutMessageNotification, object:nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: DidSendLogoutMessageNotification), object:nil)
         loginButton.title = "登录 ▾"
         let service = Service()
         service.loginOut()
     }
     
     
-    func login(isAutoLogin isAutoLogin :Bool){
+    func login(isAutoLogin :Bool){
         loginWindowController = LoginWindowController()
         loginWindowController.isAutoLogin = isAutoLogin
         
@@ -156,24 +155,24 @@ class MainWindowController: NSWindowController{
         let subject = "12306ForMac Feedback"
         
         let mailToAddress = "mailto:\(receiver)?Subject=\(subject)"
-        let mailUrl = NSURL(string: mailToAddress.stringByReplacingOccurrencesOfString(" ", withString: "%20"))
-        NSWorkspace.sharedWorkspace().openURL(mailUrl!)
+        let mailUrl = URL(string: mailToAddress.replacingOccurrences(of: " ", with: "%20"))
+        NSWorkspace.shared().open(mailUrl!)
     }
     
     deinit{
-        let notificationCenter = NSNotificationCenter.defaultCenter()
+        let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self)
     }
     
 }
 
 extension MainWindowController: NSWindowDelegate {
-    func windowWillEnterFullScreen(notification: NSNotification) {
+    func windowWillEnterFullScreen(_ notification: Notification) {
         let buttonPoint = NSMakePoint(20, 5)
         self.loginButton.setFrameOrigin(buttonPoint)
     }
     
-    func windowWillExitFullScreen(notification: NSNotification) {
+    func windowWillExitFullScreen(_ notification: Notification) {
         let buttonPoint = NSMakePoint(85, 5)
         self.loginButton.setFrameOrigin(buttonPoint)
     }

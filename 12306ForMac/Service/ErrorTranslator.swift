@@ -8,7 +8,7 @@
 
 import Foundation
 
-func translate(error:NSError)->String{
+func translate(_ error:NSError)->String{
     
     if error.domain == "NSURLErrorDomain"{
         if error.code == -1009 {

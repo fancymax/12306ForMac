@@ -10,21 +10,21 @@ import Cocoa
 
 class TrainTableRowView: NSTableRowView {
     
-    private var shouldDrawAsKey = true
+    fileprivate var shouldDrawAsKey = true
     
-    override var selected: Bool {
+    override var isSelected: Bool {
         didSet {
             updateSubviewsInterestedInSelectionState()
         }
     }
 
-    private func updateSubviewsInterestedInSelectionState() {
+    fileprivate func updateSubviewsInterestedInSelectionState() {
         guard subviews.count > 0 else { return }
         
         for view in subviews {
-            if view.isKindOfClass(TrainTableCellView) {
+            if view.isKind(of: TrainTableCellView.self) {
                 let stationCellView = view as! TrainTableCellView
-                stationCellView.selected = selected
+                stationCellView.selected = isSelected
             }
         }
     }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class TrainCodeDetail: NSObject {
     var station_no: String! // = "1"
@@ -17,7 +18,7 @@ class TrainCodeDetail: NSObject {
     var isEnable: Bool! // = True
     var textColor:NSColor!
     
-    init(json:JSON) {
+    init(json: JSON) {
         station_no = json["station_no"].string
         station_name = json["station_name"].string
         arrive_time = json["arrive_time"].string
@@ -25,10 +26,9 @@ class TrainCodeDetail: NSObject {
         stopover_time = json["stopover_time"].string
         isEnable = json["isEnabled"].boolValue
         if isEnable! {
-            textColor = NSColor.blackColor()
-        }
-        else{
-            textColor = NSColor.grayColor()
+            textColor = NSColor.black
+        } else {
+            textColor = NSColor.gray
         }
     }
     
@@ -43,7 +43,7 @@ class TrainCodeDetails: NSObject {
     
     var trainNos: [TrainCodeDetail]!
     
-    init(json:JSON) {
+    init(json: JSON) {
         if json.count <= 0 {
             return
         }
