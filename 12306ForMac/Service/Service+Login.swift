@@ -13,12 +13,13 @@ import PromiseKit
 
 extension Service {
     
-    
 // MARK: - Request Flow
     func preLoginFlow(success success:(loadImage:NSImage)->(),failure:(error:NSError)->()){
         loginInit().then({dynamicJs -> Promise<Void> in
             return self.requestDynamicJs(dynamicJs, referHeader: ["refer": "https://kyfw.12306.cn/otn/login/init"])
-         }).then({_ -> Promise<NSImage> in
+        }).then({() -> Promise<Void> in
+            after(1)
+        }).then({_ -> Promise<NSImage> in
             return self.getPassCodeNewForLogin()
         }).then({ image in
             success(loadImage: image)
@@ -28,9 +29,7 @@ extension Service {
     }
     
     func loginFlow(user user:String,passWord:String,randCodeStr:String,success:()->(),failure:(error:NSError)->()){
-        after(1).then({ () -> Promise<Void> in
-            self.checkRandCodeForLogin(randCodeStr)
-        }).then({() -> Promise<Void> in
+        self.checkRandCodeForLogin(randCodeStr).then({() -> Promise<Void> in
             return self.loginUserWith(user, passWord: passWord, randCodeStr: randCodeStr)
         }).then({ () -> Promise<Void> in
             return self.initMy12306()
