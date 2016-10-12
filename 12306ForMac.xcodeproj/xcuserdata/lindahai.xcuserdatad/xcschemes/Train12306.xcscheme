@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F11EB4591B6A368E000063E4"
-               BuildableName = "12306ForMac.app"
+               BuildableName = "&#x8ba2;&#x7968;&#x52a9;&#x624b;.app"
                BlueprintName = "12306ForMac"
                ReferencedContainer = "container:12306ForMac.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F11EB4591B6A368E000063E4"
-            BuildableName = "12306ForMac.app"
+            BuildableName = "&#x8ba2;&#x7968;&#x52a9;&#x624b;.app"
             BlueprintName = "12306ForMac"
             ReferencedContainer = "container:12306ForMac.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F11EB4591B6A368E000063E4"
-            BuildableName = "12306ForMac.app"
+            BuildableName = "&#x8ba2;&#x7968;&#x52a9;&#x624b;.app"
             BlueprintName = "12306ForMac"
             ReferencedContainer = "container:12306ForMac.xcodeproj">
          </BuildableReference>
@@ -99,7 +99,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F11EB4591B6A368E000063E4"
-            BuildableName = "12306ForMac.app"
+            BuildableName = "&#x8ba2;&#x7968;&#x52a9;&#x624b;.app"
             BlueprintName = "12306ForMac"
             ReferencedContainer = "container:12306ForMac.xcodeproj">
          </BuildableReference>

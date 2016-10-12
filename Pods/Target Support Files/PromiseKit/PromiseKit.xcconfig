@@ -1,2 +1,0 @@
-PROMISEKIT_OTHER_LDFLAGS = -framework "Foundation" -framework "QuartzCore"
-PROMISEKIT_SWIFT_INSTALL_OBJC_HEADER = NO

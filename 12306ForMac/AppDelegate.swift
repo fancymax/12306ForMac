@@ -5,9 +5,6 @@
 //  Created by fancymax on 15/7/30.
 //  Copyright (c) 2015年 fancy. All rights reserved.
 //
-import Fabric
-import Crashlytics
-
 import Cocoa
 
 let logger: XCGLogger = {
@@ -62,8 +59,6 @@ let DidSendAutoSubmitMessageNotification = "com.12306.DidSendAutoSubmitMessageNo
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
     NSUserDefaults.standardUserDefaults().registerDefaults(["NSApplicationCrashOnExceptions":NSNumber(bool: true)])
-        
-        Fabric.with([Crashlytics.self])
         
         let mainController = MainWindowController(windowNibName: "MainWindowController")
         mainController.showWindow(self)
