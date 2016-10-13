@@ -10,8 +10,8 @@ import Cocoa
 
 class MainWindowController: NSWindowController{
     @IBOutlet weak var loginButton: LoginButton!
+    @IBOutlet weak var moduleSegment: NSSegmentedControl!
     @IBOutlet var LoginMenu: NSMenu!
-    @IBOutlet var IPLabel: NSTextField!
     
     var orderQueryViewController = OrderViewController()
     var ticketQueryViewController = TicketQueryViewController()
@@ -26,7 +26,6 @@ class MainWindowController: NSWindowController{
         return MASPreferencesWindowController(viewControllers:controllers,title: nil)
     }()
     
-    
     let TrainBook = "车票预订"
     let TrainOrder = "订单查询"
     
@@ -34,41 +33,18 @@ class MainWindowController: NSWindowController{
     {
         super.windowDidLoad()
         
-        let aWindow = self.window as! INAppStoreWindow
-        aWindow.titleBarHeight = 38.0
-    	aWindow.centerTrafficLightButtons = true;
+        window!.styleMask |= NSUnifiedTitleAndToolbarWindowMask
+        window!.styleMask = window!.styleMask & (~NSFullSizeContentViewWindowMask)
+        window!.styleMask |= NSTitledWindowMask
+        window!.titleVisibility = .Hidden;
         
-        aWindow.titleBarDrawingBlock = {[unowned self] drawsAsMainWindow, drawingRect, edge, clippingPath  in
-            NSNotificationCenter.defaultCenter().postNotificationName(NSWindowDidMoveNotification, object:self.window)
-        }
-        
-        
-        let titleView = aWindow.titleBarView
-        let buttonPoint = NSMakePoint(85, 5)
-        self.loginButton.setFrameOrigin(buttonPoint)
-        titleView.addSubview(self.loginButton)
-        
-        let segmentSize = NSMakeSize(120, 25)
-        let segmentFrame = NSMakeRect(
-            NSMidX(titleView.bounds) - (segmentSize.width / 2.0),
-            NSMidY(titleView.bounds) - (segmentSize.height / 2.0),
-            segmentSize.width, segmentSize.height)
-        let segment = NSSegmentedControl(frame: segmentFrame)
-        segment.segmentCount = 2
-        segment.setLabel(TrainBook, forSegment: 0)
-        segment.setLabel(TrainOrder, forSegment: 1)
-        segment.selectedSegment = 0
-        segment.segmentStyle = NSSegmentStyle.TexturedSquare
-        segment.target = self
-        segment.action = #selector(MainWindowController.segmentTab(_:))
-        
-        titleView.addSubview(segment)
-        
-        segment.translatesAutoresizingMaskIntoConstraints = false
-        
-        let segmentConstraint1 = NSLayoutConstraint(item: segment, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: titleView, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0)
-        let segmentConstraint2 = NSLayoutConstraint(item: segment, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: titleView, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0)
-        NSLayoutConstraint.activateConstraints([segmentConstraint1,segmentConstraint2])
+        moduleSegment.segmentCount = 2
+        moduleSegment.setLabel(TrainBook, forSegment: 0)
+        moduleSegment.setLabel(TrainOrder, forSegment: 1)
+        moduleSegment.selectedSegment = 0
+        moduleSegment.segmentStyle = NSSegmentStyle.TexturedSquare
+        moduleSegment.target = self
+        moduleSegment.action = #selector(MainWindowController.segmentTab(_:))
         
         selectModule(TrainBook)
         
@@ -108,8 +84,9 @@ class MainWindowController: NSWindowController{
             self.login(isAutoLogin: false)
         }
         else{
-            var position:NSPoint = sender.bounds.origin
-            position.y += sender.bounds.size.height + 5
+            var position:NSPoint = sender.convertPointToBacking(sender.frame.origin)
+            position.y += sender.bounds.size.height + 10
+            position.x -= 4
             self.LoginMenu.minimumWidth = sender.bounds.size.width
             self.LoginMenu.popUpMenuPositioningItem(nil, atLocation: position, inView: sender)
         }
@@ -165,17 +142,5 @@ class MainWindowController: NSWindowController{
         notificationCenter.removeObserver(self)
     }
     
-}
-
-extension MainWindowController: NSWindowDelegate {
-    func windowWillEnterFullScreen(notification: NSNotification) {
-        let buttonPoint = NSMakePoint(20, 5)
-        self.loginButton.setFrameOrigin(buttonPoint)
-    }
-    
-    func windowWillExitFullScreen(notification: NSNotification) {
-        let buttonPoint = NSMakePoint(85, 5)
-        self.loginButton.setFrameOrigin(buttonPoint)
-    }
 }
 

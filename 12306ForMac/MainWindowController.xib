@@ -9,12 +9,13 @@
             <connections>
                 <outlet property="LoginMenu" destination="xmP-jf-NW1" id="ab5-GD-wDK"/>
                 <outlet property="loginButton" destination="YwA-eV-Pe9" id="TVf-Hk-1W3"/>
+                <outlet property="moduleSegment" destination="vCj-83-Jcy" id="tRI-DJ-Oy4"/>
                 <outlet property="window" destination="yxO-x7-Uu9" id="OUq-e0-FVQ"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="订票助手" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="yxO-x7-Uu9" customClass="INAppStoreWindow">
+        <window title="订票助手" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="yxO-x7-Uu9">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="131" y="165" width="910" height="710"/>
@@ -24,22 +25,69 @@
                 <rect key="frame" x="0.0" y="0.0" width="910" height="710"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             </view>
+            <toolbar key="toolbar" implicitIdentifier="3FC32FD6-4686-4F85-9EA5-D32F33AD3D69" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="Phg-o7-TLd">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="sck-zW-igi"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Ohx-oh-1KW"/>
+                    <toolbarItem implicitItemIdentifier="01F497D4-9C00-4CD2-B9F2-930F9A3B47B8" label="Module" paletteLabel="Module" id="Scw-2a-OOb">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="95" height="24"/>
+                        <size key="maxSize" width="123" height="25"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="vCj-83-Jcy">
+                            <rect key="frame" x="0.0" y="14" width="123" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="Tog-3k-Hxk">
+                                <font key="font" metaFont="systemThin" size="13"/>
+                                <segments>
+                                    <segment label="车票预订" width="60"/>
+                                    <segment label="订单查询" width="60" selected="YES" tag="1"/>
+                                </segments>
+                            </segmentedCell>
+                        </segmentedControl>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="0EFA8B23-2813-4DA9-9203-8C84CC0C2D6E" label="Login" paletteLabel="Login" image="User" id="nOd-3a-zgf">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="83" height="27"/>
+                        <size key="maxSize" width="83" height="27"/>
+                        <button key="view" id="YwA-eV-Pe9" customClass="LoginButton" customModule="订票助手" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="14" width="83" height="27"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" title="登录 ▾" bezelStyle="regularSquare" image="User" imagePosition="left" alignment="left" imageScaling="proportionallyDown" inset="2" id="8bO-w1-7Z7">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="systemThin" size="13"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="UserLogin:" target="-2" id="TBR-ZU-Q1H"/>
+                            </connections>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="02C86B36-EF57-4048-8442-A801EC7B8F7B" label="space" paletteLabel="space" id="7Gs-F7-luU">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="83" height="26"/>
+                        <size key="maxSize" width="83" height="32"/>
+                        <button key="view" hidden="YES" verticalHuggingPriority="750" id="Am1-RS-8yl">
+                            <rect key="frame" x="0.0" y="14" width="83" height="26"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" title="Button" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Pq2-l1-qVA">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="nOd-3a-zgf"/>
+                    <toolbarItem reference="Ohx-oh-1KW"/>
+                    <toolbarItem reference="Scw-2a-OOb"/>
+                    <toolbarItem reference="Ohx-oh-1KW"/>
+                    <toolbarItem reference="7Gs-F7-luU"/>
+                </defaultToolbarItems>
+            </toolbar>
             <connections>
                 <outlet property="delegate" destination="-2" id="ok6-AH-STO"/>
             </connections>
             <point key="canvasLocation" x="581" y="506"/>
         </window>
-        <button id="YwA-eV-Pe9" customClass="LoginButton" customModule="订票助手" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="83" height="27"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <buttonCell key="cell" type="bevel" title="登录 ▾" bezelStyle="regularSquare" image="User" imagePosition="left" alignment="left" imageScaling="proportionallyDown" inset="2" id="8bO-w1-7Z7">
-                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                <font key="font" metaFont="systemThin" size="13"/>
-            </buttonCell>
-            <connections>
-                <action selector="UserLogin:" target="-2" id="TBR-ZU-Q1H"/>
-            </connections>
-        </button>
         <menu id="xmP-jf-NW1">
             <items>
                 <menuItem title="  注销" id="Wf7-ku-yLR">
@@ -49,7 +97,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="100.5" y="1000.5"/>
+            <point key="canvasLocation" x="253" y="978.5"/>
         </menu>
     </objects>
     <resources>

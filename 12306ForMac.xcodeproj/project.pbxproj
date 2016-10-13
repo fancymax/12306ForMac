@@ -90,11 +90,6 @@
 		F1D575761C95541D00A214B0 /* TicketQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */; };
 		F1D575771C95541D00A214B0 /* TicketQueryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D575751C95541D00A214B0 /* TicketQueryViewController.xib */; };
 		F1D58E9D1D8A549200CD3DA7 /* Reverse.png in Resources */ = {isa = PBXBuildFile; fileRef = F1D58E9C1D8A549200CD3DA7 /* Reverse.png */; };
-		F1E7EA2D1C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA221C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c */; };
-		F1E7EA2E1C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA251C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m */; };
-		F1E7EA2F1C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA271C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m */; };
-		F1E7EA301C5A2E7B007715C1 /* INAppStoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA291C5A2E7B007715C1 /* INAppStoreWindow.m */; };
-		F1E7EA311C5A2E7B007715C1 /* INWindowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F1E7EA2C1C5A2E7B007715C1 /* INWindowButton.m */; };
 		F1F2F2AF1D598AB700EA7786 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F2F2A81D598AB700EA7786 /* MASPreferencesWindow.xib */; };
 		F1F2F2B01D598AB700EA7786 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F2AD1D598AB700EA7786 /* MASPreferencesWindowController.m */; };
 		F1F2F2C01D59AFB100EA7786 /* GeneralPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F2BE1D59AFB100EA7786 /* GeneralPreferenceViewController.swift */; };
@@ -214,17 +209,6 @@
 		F1E118EB1DAC8770003133C7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/MASPreferencesWindow.xib"; sourceTree = "<group>"; };
 		F1E118ED1DAC8981003133C7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "12306ForMac/zh-Hans.lproj/MainMenu.xib"; sourceTree = "<group>"; };
 		F1E118EE1DAC89DC003133C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MASPreferencesWindow.xib; sourceTree = "<group>"; };
-		F1E7EA221C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = INAppStoreWindowSwizzling.c; sourceTree = "<group>"; };
-		F1E7EA231C5A2E7B007715C1 /* INAppStoreWindowSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindowSwizzling.h; sourceTree = "<group>"; };
-		F1E7EA241C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "INWindowBackgroundView+CoreUIRendering.h"; sourceTree = "<group>"; };
-		F1E7EA251C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "INWindowBackgroundView+CoreUIRendering.m"; sourceTree = "<group>"; };
-		F1E7EA261C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDocument+INAppStoreWindowFixes.h"; sourceTree = "<group>"; };
-		F1E7EA271C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDocument+INAppStoreWindowFixes.m"; sourceTree = "<group>"; };
-		F1E7EA281C5A2E7B007715C1 /* INAppStoreWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindow.h; sourceTree = "<group>"; };
-		F1E7EA291C5A2E7B007715C1 /* INAppStoreWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INAppStoreWindow.m; sourceTree = "<group>"; };
-		F1E7EA2A1C5A2E7B007715C1 /* INAppStoreWindowCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindowCompatibility.h; sourceTree = "<group>"; };
-		F1E7EA2B1C5A2E7B007715C1 /* INWindowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INWindowButton.h; sourceTree = "<group>"; };
-		F1E7EA2C1C5A2E7B007715C1 /* INWindowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INWindowButton.m; sourceTree = "<group>"; };
 		F1F2F2AA1D598AB700EA7786 /* MASPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferences.h; sourceTree = "<group>"; };
 		F1F2F2AB1D598AB700EA7786 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
 		F1F2F2AC1D598AB700EA7786 /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesWindowController.h; sourceTree = "<group>"; };
@@ -420,7 +404,6 @@
 			children = (
 				F1CC36461B6B244C0074A014 /* 12306ForMac-Swift.h */,
 				F1F2F2A71D598AB700EA7786 /* MASPreferences */,
-				F1E7EA201C5A2E7B007715C1 /* INAppStoreWindow */,
 				F11154611C8D91B300FA6059 /* 12306ForMac */,
 				F11EB45B1B6A368E000063E4 /* Products */,
 				7EE5AE4095B588D2CBD04072 /* Frameworks */,
@@ -489,32 +472,6 @@
 				F1CCA2DA1D0D42D700B6853E /* QueryByTrainCodeParam.swift */,
 			);
 			name = Params;
-			sourceTree = "<group>";
-		};
-		F1E7EA201C5A2E7B007715C1 /* INAppStoreWindow */ = {
-			isa = PBXGroup;
-			children = (
-				F1E7EA211C5A2E7B007715C1 /* Extensions */,
-				F1E7EA281C5A2E7B007715C1 /* INAppStoreWindow.h */,
-				F1E7EA291C5A2E7B007715C1 /* INAppStoreWindow.m */,
-				F1E7EA2A1C5A2E7B007715C1 /* INAppStoreWindowCompatibility.h */,
-				F1E7EA2B1C5A2E7B007715C1 /* INWindowButton.h */,
-				F1E7EA2C1C5A2E7B007715C1 /* INWindowButton.m */,
-			);
-			path = INAppStoreWindow;
-			sourceTree = SOURCE_ROOT;
-		};
-		F1E7EA211C5A2E7B007715C1 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				F1E7EA221C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c */,
-				F1E7EA231C5A2E7B007715C1 /* INAppStoreWindowSwizzling.h */,
-				F1E7EA241C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.h */,
-				F1E7EA251C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m */,
-				F1E7EA261C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.h */,
-				F1E7EA271C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		F1F2F2A71D598AB700EA7786 /* MASPreferences */ = {
@@ -664,8 +621,6 @@
 				F111547F1C8D923C00FA6059 /* SwiftyJSON.swift in Sources */,
 				F11154741C8D921400FA6059 /* OrderDTO.swift in Sources */,
 				F11154931C8D925200FA6059 /* LunarCalendarView.swift in Sources */,
-				F1E7EA2F1C5A2E7B007715C1 /* NSDocument+INAppStoreWindowFixes.m in Sources */,
-				F1E7EA2D1C5A2E7B007715C1 /* INAppStoreWindowSwizzling.c in Sources */,
 				F11154911C8D925200FA6059 /* ItemCellView.swift in Sources */,
 				F11154AB1C8D92A700FA6059 /* SubmitWindowController.swift in Sources */,
 				F1F2F2D41D5B0C0C00EA7786 /* AdvancedPreferenceManager.swift in Sources */,
@@ -673,8 +628,6 @@
 				F11154961C8D925200FA6059 /* RandCodeImageView.swift in Sources */,
 				F12746721D50345D00975DFA /* ClickableDatePicker.swift in Sources */,
 				F11154681C8D920600FA6059 /* User.swift in Sources */,
-				F1E7EA301C5A2E7B007715C1 /* INAppStoreWindow.m in Sources */,
-				F1E7EA311C5A2E7B007715C1 /* INWindowButton.m in Sources */,
 				F1CCA2DB1D0D42D700B6853E /* QueryByTrainCodeParam.swift in Sources */,
 				F147763E1D6B2B2E002FD6AF /* InfoButton.swift in Sources */,
 				F11154811C8D923C00FA6059 /* QueryDefaultManager.swift in Sources */,
@@ -683,7 +636,6 @@
 				F11FE6871D5F4EB70049F261 /* DamaError.swift in Sources */,
 				F11154C31C8D92D000FA6059 /* PassengerViewController.swift in Sources */,
 				F1D390A41C8F177F000B3FD7 /* RandCodeImageView2.swift in Sources */,
-				F1E7EA2E1C5A2E7B007715C1 /* INWindowBackgroundView+CoreUIRendering.m in Sources */,
 				F1F2F2D61D5B283D00EA7786 /* GeneralPreferenceManager.swift in Sources */,
 				F11154761C8D921400FA6059 /* PassengerDTO.swift in Sources */,
 				F1F2F2B01D598AB700EA7786 /* MASPreferencesWindowController.m in Sources */,

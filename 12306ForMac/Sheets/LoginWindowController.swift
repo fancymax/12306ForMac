@@ -48,10 +48,8 @@ class LoginWindowController: NSWindowController{
         self.startLoadingTip("正在登录...")
         
         let failureHandler = {(error:NSError) -> () in
-            //关闭正在登录提示
             self.isLogin = false
             self.stopLoadingTip()
-            //显示登录失败 持续一秒
             self.tips.show(translate(error), forDuration: 0.1, withFlash: false)
             NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:#selector(LoginWindowController.handlerAfterFailure), userInfo: nil, repeats: false)
         }

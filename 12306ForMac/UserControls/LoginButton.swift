@@ -9,7 +9,7 @@
 import Cocoa
 
 class LoginButton: NSButton{
-    private var hovered: Bool = false
+    var hovered: Bool = false
     
     var textColor: NSColor = NSColor.blackColor()
     
@@ -50,10 +50,6 @@ class LoginButton: NSButton{
     }
     
     override func mouseExited(theEvent: NSEvent) {
-        if !self.enabled {
-            return
-        }
-        
         self.hovered = false
         self.needsDisplay = true
     }
