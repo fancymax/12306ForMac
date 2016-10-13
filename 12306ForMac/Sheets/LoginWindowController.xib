@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="LoginWindowController" customModule="_2306ForMac" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="LoginWindowController" customModule="订票助手" customModuleProvider="target">
             <connections>
                 <outlet property="LoadingTipView" destination="ULH-CJ-oS5" id="W0m-Oi-CEB"/>
                 <outlet property="loadingTip" destination="Y7q-VB-u3Y" id="fHU-LY-l18"/>
@@ -44,7 +45,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oyq-IG-8iP" customClass="AutoCompleteTextField" customModule="_2306ForMac" customModuleProvider="target">
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oyq-IG-8iP" customClass="AutoCompleteTextField" customModule="订票助手" customModuleProvider="target">
                         <rect key="frame" x="84" y="343" width="295" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="5QG-yE-efL">
                             <font key="font" metaFont="system"/>
@@ -57,7 +58,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </textField>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HYl-HA-qIH" customClass="RandCodeImageView2" customModule="_2306ForMac" customModuleProvider="target">
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HYl-HA-qIH" customClass="RandCodeImageView2" customModule="订票助手" customModuleProvider="target">
                         <rect key="frame" x="31" y="47" width="351" height="228"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" imageFrameStyle="photo" id="b5Z-NX-XEL"/>
                     </imageView>
@@ -92,7 +93,7 @@
                             </allowedInputSourceLocales>
                         </secureTextFieldCell>
                     </secureTextField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dVZ-7r-ebc" customClass="FlashLabel" customModule="_2306ForMac" customModuleProvider="target">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dVZ-7r-ebc" customClass="FlashLabel" customModule="订票助手" customModuleProvider="target">
                         <rect key="frame" x="82" y="279" width="299" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Tips" id="0S5-hK-gyQ">
                             <font key="font" metaFont="system"/>
@@ -100,7 +101,7 @@
                             <color key="backgroundColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ULH-CJ-oS5" userLabel="Loading View" customClass="GlassView" customModule="_2306ForMac" customModuleProvider="target">
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ULH-CJ-oS5" userLabel="Loading View" customClass="GlassView" customModule="订票助手" customModuleProvider="target">
                         <rect key="frame" x="145" y="146" width="120" height="30"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y7q-VB-u3Y" userLabel="正在查询...">

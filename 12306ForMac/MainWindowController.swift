@@ -38,11 +38,7 @@ class MainWindowController: NSWindowController{
         window!.styleMask |= NSTitledWindowMask
         window!.titleVisibility = .Hidden;
         
-        moduleSegment.segmentCount = 2
-        moduleSegment.setLabel(TrainBook, forSegment: 0)
-        moduleSegment.setLabel(TrainOrder, forSegment: 1)
         moduleSegment.selectedSegment = 0
-        moduleSegment.segmentStyle = NSSegmentStyle.TexturedSquare
         moduleSegment.target = self
         moduleSegment.action = #selector(MainWindowController.segmentTab(_:))
         

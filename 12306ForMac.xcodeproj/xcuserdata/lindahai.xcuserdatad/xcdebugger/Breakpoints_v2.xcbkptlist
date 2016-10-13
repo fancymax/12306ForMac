@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "12306ForMac/MainWindowController.swift"
-            timestampString = "498036439.493469"
+            timestampString = "498039791.47024"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "UserLogin(_:)"
             landmarkType = "5">
          </BreakpointContent>
