@@ -36,13 +36,6 @@ class TicketQueryViewController: NSViewController {
         self.fromStationNameTxt.stringValue = QueryDefaultManager.sharedInstance.lastFromStation
         self.toStationNameTxt.stringValue = QueryDefaultManager.sharedInstance.lastToStation
         
-        if QueryDefaultManager.sharedInstance.lastQueryDate.compare(NSDate()) == .OrderedAscending {
-            self.queryDate.dateValue = LunarCalendarView.getMostAvailableDay()
-        }
-        else {
-            self.queryDate.dateValue = QueryDefaultManager.sharedInstance.lastQueryDate
-        }
-        
         passengerViewControllerList = [PassengerViewController]()
         
         filterBtn.enabled = false
@@ -62,6 +55,13 @@ class TicketQueryViewController: NSViewController {
         self.view.addSubview(loadingTipController.view)
         self.loadingTipController.setCenterConstrainBy(view: self.view)
         self.loadingTipController.setTipView(isHidden: true)
+        
+        if QueryDefaultManager.sharedInstance.lastQueryDate.compare(NSDate()) == .OrderedAscending {
+            self.setQueryDateValue(LunarCalendarView.getMostAvailableDay())
+        }
+        else {
+            self.setQueryDateValue(QueryDefaultManager.sharedInstance.lastQueryDate)
+        }
     }
     
 // MARK: - firstSearchView
@@ -70,8 +70,9 @@ class TicketQueryViewController: NSViewController {
     @IBOutlet weak var queryDate: ClickableDatePicker!
     @IBOutlet weak var queryBtn: NSButton!
     @IBOutlet weak var converCityBtn: NSButton!
-    
+    @IBOutlet weak var dateStepper: NSStepper!
     @IBOutlet weak var autoQueryNumTxt: NSTextField!
+    
     var autoQueryNum = 0
     var calendarPopover:NSPopover?
     var repeatTimer:NSTimer?
@@ -82,13 +83,32 @@ class TicketQueryViewController: NSViewController {
         return dateDescription[dateDescription.startIndex..<dateRange!.startIndex]
     }
     
+    private func setQueryDateValue(date:NSDate) {
+        let calender = NSCalendar.currentCalendar()
+        calender.timeZone = NSTimeZone(abbreviation: "UTC")!
+        let trunkNextDate = calender.startOfDayForDate(date)
+        let trunkOriginDate = calender.startOfDayForDate(NSDate())
+        
+        self.queryDate.dateValue = trunkNextDate
+        dateStepper.doubleValue = trunkNextDate.timeIntervalSinceDate(trunkOriginDate)/24/3600
+        
+    }
+    
     @IBAction func clickConvertCity(sender: NSButton) {
         let temp = self.fromStationNameTxt.stringValue
         self.fromStationNameTxt.stringValue = self.toStationNameTxt.stringValue
         self.toStationNameTxt.stringValue = temp
     }
     
-    @IBAction func clickQueryTicket(sender: NSButton) {
+    @IBAction func clickDateStepper(sender: NSStepper) {
+        let date = NSDate(timeIntervalSinceNow: 3600*24*sender.doubleValue)
+        self.setQueryDateValue(date)
+        
+        autoQuery = false
+        self.clickQueryTicket(nil)
+    }
+    
+    @IBAction func clickQueryTicket(sender: AnyObject?) {
         if !StationNameJs.sharedInstance.allStationMap.keys.contains(self.fromStationNameTxt.stringValue) {
             return
         }
@@ -137,10 +157,12 @@ class TicketQueryViewController: NSViewController {
         didSet {
             if autoQuery {
                 queryBtn.title = "开始抢票"
+                filterCbx.state = NSOnState
             }
             else {
                 queryBtn.title = "开始查询"
                 self.resetAutoQueryNumStatus()
+                filterCbx.state = NSOffState
             }
         }
     }
@@ -154,6 +176,7 @@ class TicketQueryViewController: NSViewController {
                 self.converCityBtn.enabled = false
                 self.queryDate.clickable = false
                 filterCbx.enabled = false
+                self.dateStepper.enabled = false
             }
             else {
                 queryBtn.title = "开始抢票"
@@ -165,6 +188,7 @@ class TicketQueryViewController: NSViewController {
                 if self.filterQueryResult.count > 0 {
                     canFilter = true
                 }
+                self.dateStepper.enabled = true
             }
         }
     }
@@ -333,8 +357,10 @@ class TicketQueryViewController: NSViewController {
                     self.filterQueryResult = self.ticketQueryResult.filter({item in return self.trainFilterKey.containsString("|" + item.TrainCode! + "|")})
                     self.leftTicketTable.reloadData()
                     
-                    self.filterCbx.state = NSOnState
                     self.autoQuery = true
+                }
+                else {
+                    self.autoQuery = false;
                 }
             })
         }
@@ -622,8 +648,11 @@ extension TicketQueryViewController: LunarCalendarViewDelegate{
     }
     
     func didSelectDate(selectedDate: NSDate) {
-        self.queryDate!.dateValue = selectedDate
+        self.setQueryDateValue(selectedDate)
         self.calendarPopover?.close()
+        
+        autoQuery = false
+        self.clickQueryTicket(nil)
     }
 }
 

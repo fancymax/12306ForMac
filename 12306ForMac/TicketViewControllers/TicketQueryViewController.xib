@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="autoQueryNumTxt" destination="8dY-Wq-KeS" id="plY-vW-yvP"/>
                 <outlet property="converCityBtn" destination="aQQ-8z-kIM" id="ipp-qt-e3x"/>
+                <outlet property="dateStepper" destination="JxS-Ab-P9F" id="x5K-56-F2S"/>
                 <outlet property="filterBtn" destination="yXT-88-gO1" id="VxI-UI-ABf"/>
                 <outlet property="filterCbx" destination="xbM-JT-Qbf" id="J2k-ah-dCP"/>
                 <outlet property="firstSearchView" destination="Pal-9i-ZzT" id="2KX-XS-lYT"/>
@@ -276,7 +277,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="订票助手" customModuleProvider="target">
+                                            <tableCellView misplaced="YES" id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="订票助手" customModuleProvider="target">
                                                 <rect key="frame" x="453" y="1" width="997" height="63"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -638,6 +639,13 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JxS-Ab-P9F">
+                    <rect key="frame" x="670" y="0.0" width="19" height="27"/>
+                    <stepperCell key="cell" continuous="YES" alignment="left" maxValue="59" id="yLD-vM-oFo"/>
+                    <connections>
+                        <action selector="clickDateStepper:" target="-2" id="IYZ-EU-1U1"/>
+                    </connections>
+                </stepper>
             </subviews>
             <constraints>
                 <constraint firstItem="Be8-M1-vtw" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" constant="-1" id="1Wa-9a-0N4"/>
@@ -648,6 +656,7 @@
                 <constraint firstItem="Be8-M1-vtw" firstAttribute="leading" secondItem="9qi-Pb-rDH" secondAttribute="trailing" constant="8" symbolic="YES" id="W29-IO-jZp"/>
                 <constraint firstItem="aQQ-8z-kIM" firstAttribute="leading" secondItem="4jY-s2-8Ni" secondAttribute="trailing" constant="13" id="YRK-jK-KDy"/>
                 <constraint firstItem="8dY-Wq-KeS" firstAttribute="centerY" secondItem="FSF-1Q-g2J" secondAttribute="centerY" id="bTI-cs-KDE"/>
+                <constraint firstItem="JxS-Ab-P9F" firstAttribute="centerY" secondItem="Be8-M1-vtw" secondAttribute="centerY" constant="-1" id="fOk-yn-ASR"/>
                 <constraint firstItem="l4y-Hd-FVf" firstAttribute="leading" secondItem="4N3-fA-XcK" secondAttribute="trailing" constant="8" symbolic="YES" id="g5Y-dJ-fb2"/>
                 <constraint firstItem="9qi-Pb-rDH" firstAttribute="leading" secondItem="l4y-Hd-FVf" secondAttribute="trailing" constant="90" id="gn5-kx-tix"/>
                 <constraint firstItem="FSF-1Q-g2J" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" id="hna-g5-nGb"/>
@@ -655,6 +664,7 @@
                 <constraint firstItem="4N3-fA-XcK" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" id="nOH-lk-YH1"/>
                 <constraint firstAttribute="trailing" secondItem="FSF-1Q-g2J" secondAttribute="trailing" constant="12" id="nWj-B1-tRX"/>
                 <constraint firstAttribute="height" constant="40" id="szc-6h-AUy"/>
+                <constraint firstItem="JxS-Ab-P9F" firstAttribute="leading" secondItem="Be8-M1-vtw" secondAttribute="trailing" constant="2" id="umB-bv-wrP"/>
                 <constraint firstItem="amu-Qj-Yha" firstAttribute="top" secondItem="Pal-9i-ZzT" secondAttribute="top" constant="18" id="v5n-Eh-4O9"/>
                 <constraint firstItem="4jY-s2-8Ni" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" constant="-1" id="vRC-O5-Jl7"/>
                 <constraint firstItem="4jY-s2-8Ni" firstAttribute="leading" secondItem="amu-Qj-Yha" secondAttribute="trailing" constant="8" symbolic="YES" id="xXB-i8-gO8"/>
