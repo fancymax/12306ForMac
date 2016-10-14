@@ -50,7 +50,10 @@ class OrderViewController: NSViewController{
     
     
     func receiveLogoutMessageNotification(notification: NSNotification) {
-        
+        MainModel.noCompleteOrderList.removeAll()
+        self.orderList.removeAll()
+        self.orderListTable.reloadData()
+        self.hasOrder = false
     }
     
     func initDemoOrderList(){
