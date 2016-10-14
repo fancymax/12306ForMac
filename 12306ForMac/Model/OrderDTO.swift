@@ -24,6 +24,7 @@ class OrderDTO:NSObject{
     var str_ticket_price_page: String? //票价  603.5
     var ticket_type_name: String? //票种  成人票
     var seat_type_name: String?  //席别  一等座
+    var ticket_status_code: String? //状态  i
     var ticket_status_name: String? //状态  待支付
     var pay_limit_time: String? //限定支付时间  2016-06-14 10:36:28
     
@@ -64,8 +65,13 @@ class OrderDTO:NSObject{
     
     var payStatus:String{
         var name = ""
-        if let limitTime = pay_limit_time, status = ticket_status_name{
-            name = "\(status)(请在 \(limitTime) 前支付)"
+        if let limitTime = pay_limit_time, status = ticket_status_name, code = ticket_status_code {
+            if code == "i" {
+                name = "\(status)(请在 \(limitTime) 前支付)"
+            }
+            else {
+                name = "\(status)"
+            }
         }
         return name
     }
@@ -83,6 +89,7 @@ class OrderDTO:NSObject{
         ticket_type_name = json["tickets"][ticketIdx]["ticket_type_name"].string
         seat_type_name = json["tickets"][ticketIdx]["seat_type_name"].string
         ticket_status_name = json["tickets"][ticketIdx]["ticket_status_name"].string
+        ticket_status_code = json["tickets"][ticketIdx]["ticket_status_code"].string
         pay_limit_time = json["tickets"][ticketIdx]["pay_limit_time"].string
         
         station_train_code = json["tickets"][ticketIdx]["stationTrainDTO"]["station_train_code"].string

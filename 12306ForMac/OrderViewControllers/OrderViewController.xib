@@ -528,7 +528,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="queryOrder:" target="-2" id="QfK-YL-h5J"/>
+                        <action selector="queryOrder:" target="-2" id="qqG-ht-dWj"/>
                     </connections>
                 </button>
             </subviews>

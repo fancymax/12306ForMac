@@ -54,7 +54,11 @@ extension Service{
     }
     
     func cancelOrderWith(sequence_no:String,success:()->(),failure:(error:NSError)->()){
-        self.cancelNoCompleteOrder(sequence_no).then({
+        self.queryOrderInitNoComplete().then({() -> Promise<Void> in
+            return self.queryMyOrderNoComplete()
+        }).then({() -> Promise<Void> in
+            self.cancelNoCompleteOrder(sequence_no)
+        }).then({
             success()
         }).error({error in
             failure(error: error as NSError)
@@ -486,8 +490,19 @@ extension Service{
                     reject(error)
                 case .Success(let data):
                     let json = JSON(data)
-                    logger.debug("\(json)")
-                    fulfill()
+                    if let existError = json["data"]["existError"].string  {
+                        logger.debug("\(json)")
+                        if existError == "Y" {
+                            let error = ServiceError.errorWithCode(.CancelOrderFailed)
+                            reject(error)
+                        }
+                        else {
+                            fulfill()
+                        }
+                    }
+                    else {
+                        fulfill()
+                    }
                 }})
         }
     }

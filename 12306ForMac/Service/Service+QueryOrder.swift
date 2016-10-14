@@ -13,19 +13,49 @@ import PromiseKit
 extension Service{
     
     func queryHistoryOrderFlow(success success:()->(), failure:()->()){
-        var promise = self.queryOrderInit().then({()->Promise<Int> in
+        self.queryOrderInit().then({()->Promise<Int> in
             MainModel.historyOrderList.removeAll()
             return self.queryMyOrderWithPageIndex(0)
-        })
-        
-        promise.then({ totalNum -> Promise<Int> in
-            let count = (totalNum - 1) / 8
-            if count > 0 {
-                for i in 1...count{
-                    promise = promise.then({_ -> Promise<Int> in self.queryMyOrderWithPageIndex(i)})
-                }
+        }).then({totalNum ->Promise<Int> in
+            let index = 1
+            if (totalNum - 1)/8 > index {
+                return self.queryMyOrderWithPageIndex(index)
             }
-            return promise
+            else {
+                return Promise{fulfill, reject in fulfill(index)}
+            }
+        }).then({totalNum ->Promise<Int> in
+            let index = 2
+            if (totalNum - 1)/8 > index {
+                return self.queryMyOrderWithPageIndex(index)
+            }
+            else {
+                return Promise{fulfill, reject in fulfill(index)}
+            }
+        }).then({totalNum ->Promise<Int> in
+            let index = 3
+            if (totalNum - 1)/8 > index {
+                return self.queryMyOrderWithPageIndex(index)
+            }
+            else {
+                return Promise{fulfill, reject in fulfill(index)}
+            }
+        }).then({totalNum ->Promise<Int> in
+            let index = 4
+            if (totalNum - 1)/8 > index {
+                return self.queryMyOrderWithPageIndex(index)
+            }
+            else {
+                return Promise{fulfill, reject in fulfill(index)}
+            }
+        }).then({totalNum ->Promise<Int> in
+            let index = 5
+            if (totalNum - 1)/8 > index {
+                return self.queryMyOrderWithPageIndex(index)
+            }
+            else {
+                return Promise{fulfill, reject in fulfill(2)}
+            }
         }).then({_ in
             success()
         }).error({_ in
@@ -57,7 +87,7 @@ extension Service{
                     reject(error)
                 case .Success(let data):
                     let jsonData = JSON(data)["data"]
-                    let orderDBList = JSON(data)["data"]["orderDBList"]
+                    let orderDBList = jsonData["OrderDTODataList"]
                     guard orderDBList.count > 0 else {
                         reject(NSError(domain: "queryMyOrderWithPageIndex:", code: 0, userInfo: nil))
                         return
@@ -76,7 +106,7 @@ extension Service{
     
     func queryNoCompleteOrderFlow(success success:()->(), failure:()->()){
         
-        self.queryOrderInitNoComplete().then({() -> Promise<String> in
+        self.queryOrderInitNoComplete().then({() -> Promise<Void> in
             return self.queryMyOrderNoComplete()
         }).then({_ in
             success()
@@ -96,7 +126,7 @@ extension Service{
         }
     }
     
-    func queryMyOrderNoComplete()->Promise<String>{
+    func queryMyOrderNoComplete()->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/queryOrder/queryMyOrderNoComplete"
             let params = ["_json_att":""]
@@ -117,7 +147,7 @@ extension Service{
                             }
                         }
                     }
-                    fulfill(url)
+                    fulfill()
             }})
         }
     }

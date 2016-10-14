@@ -10,12 +10,12 @@ import Foundation
 
 struct QueryOrderParam{
     var queryType = "1"
-    var queryStartDate = "2015-06-01"
-    var queryEndDate = "2016-02-15"
+    var queryStartDate = "2016-06-01"
+    var queryEndDate = "2020-02-15"
     var come_from_flag = "my_order"
     var pageSize = 8
     var pageIndex = 0
-    var query_where = "H"
+    var query_where = "G"
     var sequeue_train_name = ""
     
     func ToPostParams()->[String:String]{

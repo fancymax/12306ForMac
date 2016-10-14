@@ -16,7 +16,6 @@ class OrderViewController: NSViewController{
     
     var hasQuery = false
     dynamic var hasOrder = false
-//    dynamic var hasOrder = true
     
     var orderList = [OrderDTO]()
     let service = Service()
@@ -40,31 +39,19 @@ class OrderViewController: NSViewController{
     
     override func viewDidAppear() {
         if ((!hasQuery) && (MainModel.isGetUserInfo)) {
-            queryNoCompleteOrder()
+            queryAllOrder()
         }
     }
     
     @IBAction func queryOrder(sender: NSButton) {
-        queryNoCompleteOrder()
+        queryAllOrder()
     }
-    
     
     func receiveLogoutMessageNotification(notification: NSNotification) {
         MainModel.noCompleteOrderList.removeAll()
         self.orderList.removeAll()
         self.orderListTable.reloadData()
         self.hasOrder = false
-    }
-    
-    func initDemoOrderList(){
-        var demoList = [OrderDTO]()
-        for _ in 0..<5 {
-            let demo = OrderDTO()
-            demoList.append(demo)
-        }
-        self.hasOrder = false
-        self.orderList = demoList
-        self.orderListTable.reloadData()
     }
     
     @IBAction func cancelOrder(sender: NSButton) {
@@ -78,14 +65,17 @@ class OrderViewController: NSViewController{
         alert.beginSheetModalForWindow(self.view.window!, completionHandler: { reponse in
             if reponse == NSAlertFirstButtonReturn {
                 if let sequence_no = MainModel.noCompleteOrderList[0].sequence_no {
+                    self.loadingTipController.start(tip:"正在取消...")
                     let successHandler = {
                         MainModel.noCompleteOrderList.removeAll()
-                        self.orderList.removeAll()
+                        self.orderList = MainModel.historyOrderList
                         self.orderListTable.reloadData()
+                        self.loadingTipController.stop()
                         self.tips.show("取消订单成功", forDuration: 1, withFlash: false)
                         self.hasOrder = false
                     }
                     let failureHandler = {(error:NSError)->() in
+                        self.loadingTipController.stop()
                         self.tips.show(translate(error), forDuration: 1, withFlash: false)
                     }
                     self.service.cancelOrderWith(sequence_no, success: successHandler, failure:failureHandler)
@@ -98,14 +88,30 @@ class OrderViewController: NSViewController{
         NSWorkspace.sharedWorkspace().openURL(NSURL(string: "https://kyfw.12306.cn/otn/login/init")!)
     }
     
-    func queryNoCompleteOrder(){
-        self.orderList = [OrderDTO]()
-        self.orderListTable.reloadData()
+    func queryHistoryOrder(){
+        self.loadingTipController.start(tip:"正在查询...")
         
+        let successHandler = {
+            self.orderList.appendContentsOf(MainModel.historyOrderList)
+            self.orderListTable.reloadData()
+            
+            self.loadingTipController.stop()
+        }
+        
+        let failureHandler = {
+            self.loadingTipController.stop()
+        }
+        service.queryHistoryOrderFlow((success: successHandler, failure: failureHandler))
+    }
+    
+    func queryAllOrder(){
         if !MainModel.isGetUserInfo {
             NSNotificationCenter.defaultCenter().postNotificationName(DidSendLoginMessageNotification, object: nil)
             return
         }
+        
+        self.orderList = [OrderDTO]()
+        self.orderListTable.reloadData()
         
         hasQuery = true
         self.loadingTipController.start(tip:"正在查询...")
@@ -122,8 +128,10 @@ class OrderViewController: NSViewController{
             else {
                 self.hasOrder = false
             }
+            
+            self.queryHistoryOrder()
         }
-
+        
         let failureHandler = {
             self.loadingTipController.stop()
             self.hasOrder = false
