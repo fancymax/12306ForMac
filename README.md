@@ -7,9 +7,9 @@ Mac版12306 订票/捡票 助手。
 **OS X10.11**以上
 
 #下载
-请查看最新的[Release](https://github.com/fancymax/12306ForMac/releases)
+[Mac App Store](https://itunes.apple.com/us/app/ding-piao-zhu-shou/id1163682213?l=zh&ls=1&mt=12)
 
-后续会增加推出Mac App store的版本。
+
 
 #功能
 目前仅完成了基础的订票 和 捡票 功能，后续还会继续补充功能。
@@ -29,5 +29,5 @@ Mac版12306 订票/捡票 助手。
 
 
 #感谢
-本项目基于 Alamofire、PromiseKit、FMDB进行开发，在此表示感谢。
+本项目基于 Alamofire、PromiseKit、FMDB、MASPreferences等进行开发，在此表示感谢。
 
