@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="GeneralPreferenceViewController" customModule="_2306ForMac" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="GeneralPreferenceViewController" customModule="订票助手" customModuleProvider="target">
             <connections>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -55,7 +56,7 @@
                         <binding destination="-2" name="value" keyPath="self.isShowNoTrainTicket" id="Vks-5I-s5Q"/>
                     </connections>
                 </button>
-                <customView hidden="YES" id="9R3-8o-tuf" customClass="InfoButton" customModule="_2306ForMac" customModuleProvider="target">
+                <customView hidden="YES" id="9R3-8o-tuf" customClass="InfoButton" customModule="订票助手" customModuleProvider="target">
                     <rect key="frame" x="180" y="174" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <userDefinedRuntimeAttributes>
@@ -111,7 +112,7 @@ Set 'Show On Hover' to True</string>
                 <button id="THI-OB-eSh">
                     <rect key="frame" x="76" y="50" width="91" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="出票提示音:" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="dTu-md-WXS">
+                    <buttonCell key="cell" type="check" title="有票提示音:" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="dTu-md-WXS">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" size="13" name=".PingFangSC-Regular"/>
                     </buttonCell>

@@ -163,8 +163,13 @@ class LoginWindowController: NSWindowController{
     
     func dismissWithModalResponse(response:NSModalResponse)
     {
-        window!.sheetParent!.endSheet(window!,returnCode: response)
+        if window != nil {
+            if window!.sheetParent != nil {
+                window!.sheetParent!.endSheet(window!,returnCode: response)
+            }
+        }
     }
+    
 }
 
 // MARK: - AutoCompleteTableViewDelegate
