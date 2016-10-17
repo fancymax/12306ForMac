@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="LoadingTipViewController" customModule="_2306ForMac" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="LoadingTipViewController" customModule="订票助手" customModuleProvider="target">
             <connections>
                 <outlet property="loadingSpinner" destination="mXi-ep-lLP" id="WDT-lp-5he"/>
                 <outlet property="loadingTip" destination="aWk-l3-cAs" id="g5a-Xx-57c"/>
@@ -14,7 +15,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView translatesAutoresizingMaskIntoConstraints="NO" id="X1Q-st-yFu" userLabel="Loading View" customClass="GlassView" customModule="_2306ForMac" customModuleProvider="target">
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="X1Q-st-yFu" userLabel="Loading View" customClass="GlassView" customModule="订票助手" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aWk-l3-cAs" userLabel="正在查询...">

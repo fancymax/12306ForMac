@@ -32,11 +32,11 @@ class LoginWindowController: NSWindowController{
     
     @IBAction func clickOK(sender:AnyObject?){
         if userName.stringValue == "" || passWord.stringValue == "" {
-            tips.show("请先输入用户名和密码", forDuration: 0.1, withFlash: false)
+            tips.showWithDefault("请先输入用户名和密码")
             return
         }
         if loginImage.randCodeStr == nil {
-            tips.show("请先选择验证码", forDuration: 0.1, withFlash: false)
+            tips.showWithDefault("请先选择验证码")
             return
         }
         
@@ -50,13 +50,13 @@ class LoginWindowController: NSWindowController{
         let failureHandler = {(error:NSError) -> () in
             self.isLogin = false
             self.stopLoadingTip()
-            self.tips.show(translate(error), forDuration: 0.1, withFlash: false)
+            self.tips.showWithDefault(translate(error))
             NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:#selector(LoginWindowController.handlerAfterFailure), userInfo: nil, repeats: false)
         }
         
         let successHandler = {
             self.stopLoadingTip()
-            self.tips.show("登录成功", forDuration: 0.1, withFlash: false)
+            self.tips.showWithDefault("登录成功")
             self.isLogin = false
             self.service.postMobileGetPassengerDTOs()
             NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector:#selector(LoginWindowController.handlerAfterSuccess), userInfo: nil, repeats: false)
@@ -142,7 +142,7 @@ class LoginWindowController: NSWindowController{
                 },
                 failure: {error in
                         self.stopLoadingTip()
-                        self.tips.show(translate(error), forDuration: 0.1, withFlash: false)
+                        self.tips.showWithDefault(translate(error))
                 })
         }
         
@@ -156,7 +156,7 @@ class LoginWindowController: NSWindowController{
         }
         let failureHandler = {(error:NSError) -> () in
             self.stopLoadingTip()
-            self.tips.show(translate(error), forDuration: 0.1, withFlash: false)
+            self.tips.showWithDefault(translate(error))
         }
         service.preLoginFlow(success: successHandler,failure: failureHandler)
     }

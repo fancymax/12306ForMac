@@ -53,7 +53,6 @@
 		F11154D61C8D937E00FA6059 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F11154D41C8D937E00FA6059 /* Images.xcassets */; };
 		F11154E51C8D93B300FA6059 /* Add.png in Resources */ = {isa = PBXBuildFile; fileRef = F11154E11C8D93B300FA6059 /* Add.png */; };
 		F113B4F81C8FBA2E0001AE09 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113B4F71C8FBA2E0001AE09 /* ServiceError.swift */; };
-		F113B4FA1C8FC7930001AE09 /* ErrorTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113B4F91C8FC7930001AE09 /* ErrorTranslator.swift */; };
 		F11E29291D2AA2B6004BE59D /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = F11E29281D2AA2B6004BE59D /* User.png */; };
 		F11FE6871D5F4EB70049F261 /* DamaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11FE6861D5F4EB70049F261 /* DamaError.swift */; };
 		F12746701D502E8100975DFA /* Filter.png in Resources */ = {isa = PBXBuildFile; fileRef = F127466F1D502E8100975DFA /* Filter.png */; };
@@ -169,7 +168,6 @@
 		F11154E11C8D93B300FA6059 /* Add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Add.png; path = 12306ForMac/images/Add.png; sourceTree = SOURCE_ROOT; };
 		F11154E91C8D945C00FA6059 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = 12306ForMac/Info.plist; sourceTree = SOURCE_ROOT; };
 		F113B4F71C8FBA2E0001AE09 /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
-		F113B4F91C8FC7930001AE09 /* ErrorTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTranslator.swift; sourceTree = "<group>"; };
 		F11E29281D2AA2B6004BE59D /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = User.png; path = 12306ForMac/images/User.png; sourceTree = SOURCE_ROOT; };
 		F11EB45A1B6A368E000063E4 /* 订票助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "订票助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F11FE6861D5F4EB70049F261 /* DamaError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamaError.swift; sourceTree = "<group>"; };
@@ -360,7 +358,6 @@
 				F111549D1C8D929200FA6059 /* Service+QueryTicket.swift */,
 				F111549E1C8D929200FA6059 /* Service.swift */,
 				F113B4F71C8FBA2E0001AE09 /* ServiceError.swift */,
-				F113B4F91C8FC7930001AE09 /* ErrorTranslator.swift */,
 				F1F2F2CF1D5AB8F700EA7786 /* Dama.swift */,
 				F11FE6861D5F4EB70049F261 /* DamaError.swift */,
 			);
@@ -643,7 +640,6 @@
 				F1FEE7A21D8D464900B02C84 /* NotifySpeaker.swift in Sources */,
 				F1FCFF4B1D386F8F0070A32C /* URLButton.swift in Sources */,
 				F11154A11C8D929200FA6059 /* Service+QueryOrder.swift in Sources */,
-				F113B4FA1C8FC7930001AE09 /* ErrorTranslator.swift in Sources */,
 				F11154A21C8D929200FA6059 /* Service+QueryTicket.swift in Sources */,
 				F11154A91C8D92A700FA6059 /* LoginWindowController.swift in Sources */,
 				F1F2F2D21D5AFE7100EA7786 /* UrlLabel.swift in Sources */,

@@ -99,7 +99,7 @@ class SubmitWindowController: NSWindowController{
             
                 failure: {error in
                     self.stopLoadingTip()
-                    self.errorFlashLabel.show(translate(error), forDuration: 0.1, withFlash: false)
+                    self.errorFlashLabel.showWithDefault(translate(error))
                 })
             
         }
@@ -113,7 +113,7 @@ class SubmitWindowController: NSWindowController{
         }
         
         let failureHandler = { (error:NSError) -> () in
-            self.errorFlashLabel.show(translate(error), forDuration: 10, withFlash: false)
+            self.errorFlashLabel.showWithDefault(translate(error))
             self.stopLoadingTip()
         }
         service.preOrderFlow(success: successHandler, failure: failureHandler)
@@ -155,7 +155,7 @@ class SubmitWindowController: NSWindowController{
     @IBAction func clickOK(sender:AnyObject?){
         
         if passengerImage.randCodeStr == nil {
-            errorFlashLabel.show("请先选择验证码", forDuration: 0.1, withFlash: false)
+            errorFlashLabel.showWithDefault("请先选择验证码")
             return
         }
         
@@ -169,7 +169,7 @@ class SubmitWindowController: NSWindowController{
         let failureHandler = { (error:NSError) -> () in
             self.stopLoadingTip()
             self.isSubmitting = false
-            self.errorFlashLabel.show(translate(error), forDuration: 20, withFlash: false)
+            self.errorFlashLabel.showWithDefault(translate(error))
             self.freshImage()
         }
         
@@ -182,7 +182,7 @@ class SubmitWindowController: NSWindowController{
         }
         
         let waitHandler = { (info:String)-> () in
-            self.errorFlashLabel.show(info, forDuration: 5, withFlash: false)
+            self.errorFlashLabel.showWithDefault(info)
         }
         
         service.orderFlowWith(passengerImage.randCodeStr!, success: successHandler, failure: failureHandler,wait: waitHandler)

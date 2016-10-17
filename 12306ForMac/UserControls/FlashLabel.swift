@@ -64,6 +64,10 @@ public class FlashLabel: NSTextField {
         }
     }
     
+    public func showWithDefault(text: String) {
+        self.show(text, forDuration: 10, withFlash: false)
+    }
+    
     func timerNotify() {
         self.setVisibility(false, animated: true)
     }

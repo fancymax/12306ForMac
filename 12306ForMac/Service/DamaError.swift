@@ -55,8 +55,8 @@ struct DamaError {
         -406:	"用户无权使用该APP",
         -9990:	"decrypt password error",
         -9991:	"appID error",
-        -9992:	"user ame error",
-        -9993:	"pwd error",
+        -9992:	"用户不存在",
+        -9993:	"用户密码错",
         -9994:	"no file",
         -9995:	"id error",
         -9996:	"email error",
@@ -75,7 +75,7 @@ struct DamaError {
 
     static func errorWithCode(code:Int)->NSError{
         if errorDic.keys.contains(code) {
-            return errorWithCode(code, failureReason: errorDic[code]!)
+            return errorWithCode(code, failureReason: "打码兔错误: \(errorDic[code]!)")
         }
         else {
             return errorWithCode(code, failureReason: "未知错误, 错误码 = \(code)")

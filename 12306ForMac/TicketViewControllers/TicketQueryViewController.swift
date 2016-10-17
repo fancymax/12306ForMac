@@ -434,7 +434,7 @@ class TicketQueryViewController: NSViewController {
         
         let failureHandler = {(error:NSError)->() in
             self.loadingTipController.stop()
-            self.tips.show(translate(error), forDuration: 1, withFlash: false)
+            self.tips.showWithDefault(translate(error))
             
             self.canFilter = false
         }
@@ -486,7 +486,7 @@ class TicketQueryViewController: NSViewController {
         setSelectedPassenger()
         
         if MainModel.selectPassengers.count == 0 {
-            tips.show("请先选择乘客", forDuration: 0.1, withFlash: false)
+            tips.showWithDefault("请先选择乘客")
             return
         }
         
@@ -497,7 +497,7 @@ class TicketQueryViewController: NSViewController {
         
         let postSubmitWindowMessage = {
             self.loadingTipController.stop()
-            self.tips.show("提交成功", forDuration: 0.1, withFlash: false)
+            self.tips.showWithDefault("提交成功")
             
             notificationCenter.postNotificationName(DidSendAutoSubmitMessageNotification, object: nil)
         }
@@ -508,7 +508,7 @@ class TicketQueryViewController: NSViewController {
             if error.code == ServiceError.Code.CheckUserFailed.rawValue {
                 notificationCenter.postNotificationName(DidSendLoginMessageNotification, object: nil)
             }else{
-                self.tips.show(translate(error), forDuration: 0.1, withFlash: false)
+                self.tips.showWithDefault(translate(error))
             }
         }
         
@@ -526,7 +526,7 @@ class TicketQueryViewController: NSViewController {
         setSelectedPassenger()
         
         if MainModel.selectPassengers.count == 0 {
-            tips.show("请先选择乘客", forDuration: 0.1, withFlash: false)
+            tips.showWithDefault("请先选择乘客")
             return
         }
         
@@ -538,7 +538,7 @@ class TicketQueryViewController: NSViewController {
         
         let postSubmitWindowMessage = {
             self.loadingTipController.stop()
-            self.tips.show("提交成功", forDuration: 0.1, withFlash: false)
+            self.tips.showWithDefault("提交成功")
             
             notificationCenter.postNotificationName(DidSendSubmitMessageNotification, object: nil)
         }
@@ -549,7 +549,7 @@ class TicketQueryViewController: NSViewController {
             if error.code == ServiceError.Code.CheckUserFailed.rawValue {
                 notificationCenter.postNotificationName(DidSendLoginMessageNotification, object: nil)
             }else{
-                self.tips.show(translate(error), forDuration: 0.1, withFlash: false)
+                self.tips.showWithDefault(translate(error))
             }
         }
         

@@ -71,12 +71,12 @@ class OrderViewController: NSViewController{
                         self.orderList = MainModel.historyOrderList
                         self.orderListTable.reloadData()
                         self.loadingTipController.stop()
-                        self.tips.show("取消订单成功", forDuration: 1, withFlash: false)
+                        self.tips.showWithDefault("取消订单成功")
                         self.hasOrder = false
                     }
                     let failureHandler = {(error:NSError)->() in
                         self.loadingTipController.stop()
-                        self.tips.show(translate(error), forDuration: 1, withFlash: false)
+                        self.tips.showWithDefault(translate(error))
                     }
                     self.service.cancelOrderWith(sequence_no, success: successHandler, failure:failureHandler)
                 }
