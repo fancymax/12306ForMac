@@ -14,10 +14,6 @@ class LoginWindowController: NSWindowController{
     @IBOutlet weak var userName: AutoCompleteTextField!
     @IBOutlet weak var loginImage: RandCodeImageView2!
     
-    @IBOutlet weak var loadingTipBar: NSProgressIndicator!
-    @IBOutlet weak var loadingTip: NSTextField!
-    @IBOutlet weak var loadingTipView: GlassView!
-    
     @IBOutlet weak var tips: FlashLabel!
     
     let service = Service()
@@ -75,14 +71,11 @@ class LoginWindowController: NSWindowController{
     
     func startLoadingTip(tip:String)
     {
-        loadingTipBar.startAnimation(nil)
-        loadingTip.stringValue = tip
-        loadingTipView.hidden = false
+        DJProgressHUD.showStatus(tip, fromView: self.window?.contentView)
     }
     
     func stopLoadingTip(){
-        loadingTipBar.stopAnimation(nil)
-        loadingTipView.hidden = true
+        DJProgressHUD.dismiss()
     }
     
     override func windowDidLoad() {

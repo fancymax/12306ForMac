@@ -19,15 +19,9 @@ class OrderViewController: NSViewController{
     
     var orderList = [OrderDTO]()
     let service = Service()
-    var loadingTipController = LoadingTipViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //init loadingTipView
-        self.view.addSubview(loadingTipController.view)
-        self.loadingTipController.setCenterConstrainBy(view: self.view)
-        self.loadingTipController.setTipView(isHidden: true)
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: #selector(PassengerSelectViewController.receiveLogoutMessageNotification(_:)), name: DidSendLogoutMessageNotification, object: nil)
@@ -65,17 +59,18 @@ class OrderViewController: NSViewController{
         alert.beginSheetModalForWindow(self.view.window!, completionHandler: { reponse in
             if reponse == NSAlertFirstButtonReturn {
                 if let sequence_no = MainModel.noCompleteOrderList[0].sequence_no {
-                    self.loadingTipController.start(tip:"正在取消...")
+                    DJProgressHUD.showStatus("正在取消...", fromView: self.view)
+        
                     let successHandler = {
                         MainModel.noCompleteOrderList.removeAll()
                         self.orderList = MainModel.historyOrderList
                         self.orderListTable.reloadData()
-                        self.loadingTipController.stop()
+                        DJProgressHUD.dismiss()
                         self.tips.showWithDefault("取消订单成功")
                         self.hasOrder = false
                     }
                     let failureHandler = {(error:NSError)->() in
-                        self.loadingTipController.stop()
+                        DJProgressHUD.dismiss()
                         self.tips.showWithDefault(translate(error))
                     }
                     self.service.cancelOrderWith(sequence_no, success: successHandler, failure:failureHandler)
@@ -89,17 +84,17 @@ class OrderViewController: NSViewController{
     }
     
     func queryHistoryOrder(){
-        self.loadingTipController.start(tip:"正在查询...")
+        DJProgressHUD.showStatus("正在查询...", fromView: self.view)
         
         let successHandler = {
             self.orderList.appendContentsOf(MainModel.historyOrderList)
             self.orderListTable.reloadData()
             
-            self.loadingTipController.stop()
+            DJProgressHUD.dismiss()
         }
         
         let failureHandler = {
-            self.loadingTipController.stop()
+            DJProgressHUD.dismiss()
         }
         service.queryHistoryOrderFlow((success: successHandler, failure: failureHandler))
     }
@@ -114,13 +109,13 @@ class OrderViewController: NSViewController{
         self.orderListTable.reloadData()
         
         hasQuery = true
-        self.loadingTipController.start(tip:"正在查询...")
+        DJProgressHUD.showStatus("正在查询...", fromView: self.view)
         
         let successHandler = {
             self.orderList = MainModel.noCompleteOrderList
             self.orderListTable.reloadData()
             
-            self.loadingTipController.stop()
+            DJProgressHUD.dismiss()
             
             if self.orderList.count > 0 {
                 self.hasOrder = true
@@ -133,7 +128,7 @@ class OrderViewController: NSViewController{
         }
         
         let failureHandler = {
-            self.loadingTipController.stop()
+            DJProgressHUD.dismiss()
             self.hasOrder = false
         }
         service.queryNoCompleteOrderFlow(success: successHandler, failure: failureHandler)

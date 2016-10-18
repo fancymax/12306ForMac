@@ -7,10 +7,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LoginWindowController" customModule="订票助手" customModuleProvider="target">
             <connections>
-                <outlet property="LoadingTipView" destination="ULH-CJ-oS5" id="W0m-Oi-CEB"/>
-                <outlet property="loadingTip" destination="Y7q-VB-u3Y" id="fHU-LY-l18"/>
-                <outlet property="loadingTipBar" destination="zqq-w5-UrA" id="Gob-3r-Rtj"/>
-                <outlet property="loadingTipView" destination="ULH-CJ-oS5" id="IWx-C9-VZa"/>
                 <outlet property="loginImage" destination="HYl-HA-qIH" id="qxc-PX-5Qd"/>
                 <outlet property="passWord" destination="gnT-ti-hbG" id="uGZ-Lw-Zt0"/>
                 <outlet property="tips" destination="dVZ-7r-ebc" id="l1L-7x-kzB"/>
@@ -101,27 +97,6 @@
                             <color key="backgroundColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ULH-CJ-oS5" userLabel="Loading View" customClass="GlassView" customModule="订票助手" customModuleProvider="target">
-                        <rect key="frame" x="145" y="146" width="120" height="30"/>
-                        <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y7q-VB-u3Y" userLabel="正在查询...">
-                                <rect key="frame" x="29" y="7" width="85" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="正在加载..." id="FNf-uS-uha">
-                                    <font key="font" size="15" name="STHeitiSC-Light"/>
-                                    <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="zqq-w5-UrA">
-                                <rect key="frame" x="7" y="7" width="16" height="16"/>
-                            </progressIndicator>
-                        </subviews>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                                <color key="value" red="1" green="0.97048561960000002" blue="0.9787521159" alpha="0.79592483110000001" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </customView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L96-4W-Kn6">
                         <rect key="frame" x="303" y="5" width="82" height="32"/>
                         <buttonCell key="cell" type="push" title="登录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hMI-aR-EAg">

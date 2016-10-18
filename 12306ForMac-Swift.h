@@ -10,6 +10,7 @@
 #define _Train12306_Swift_h
 
 #import "MASPreferences.h"
+#import "DJProgressHUD.h"
 #import <CommonCrypto/CommonCrypto.h>
 
 #endif
