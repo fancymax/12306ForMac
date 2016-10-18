@@ -28,11 +28,14 @@ class LoginWindowController: NSWindowController{
     
     @IBAction func clickOK(sender:AnyObject?){
         if userName.stringValue == "" || passWord.stringValue == "" {
-            tips.showWithDefault("请先输入用户名和密码")
+//            tips.showWithDefault("请先输入用户名和密码")
+            DJTipHUD.showStatus("请先输入用户名和密码", fromView: self.window?.contentView)
+            
             return
         }
         if loginImage.randCodeStr == nil {
-            tips.showWithDefault("请先选择验证码")
+//            tips.showWithDefault("请先选择验证码")
+            DJTipHUD.showStatus("请先选择验证码", fromView: self.window?.contentView)
             return
         }
         

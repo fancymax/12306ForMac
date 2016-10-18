@@ -71,6 +71,7 @@
 		F13E9C9A1D0AB3310011F7E2 /* TrainTableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13E9C991D0AB3310011F7E2 /* TrainTableRowView.swift */; };
 		F14243141DB610FF0012B5E4 /* DJActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F14243111DB610FF0012B5E4 /* DJActivityIndicator.m */; };
 		F14243151DB610FF0012B5E4 /* DJProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F14243131DB610FF0012B5E4 /* DJProgressHUD.m */; };
+		F142431B1DB628CB0012B5E4 /* DJTipHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F142431A1DB628CB0012B5E4 /* DJTipHUD.m */; };
 		F147763E1D6B2B2E002FD6AF /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F147763D1D6B2B2E002FD6AF /* InfoButton.swift */; };
 		F14D6BE41D86E91C00CBD36C /* FilterTrainCodeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D6BE31D86E91C00CBD36C /* FilterTrainCodeTransformer.swift */; };
 		F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F17AB1CB1C95630E00FEB221 /* Credits.rtf */; };
@@ -185,6 +186,8 @@
 		F14243111DB610FF0012B5E4 /* DJActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJActivityIndicator.m; sourceTree = "<group>"; };
 		F14243121DB610FF0012B5E4 /* DJProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJProgressHUD.h; sourceTree = "<group>"; };
 		F14243131DB610FF0012B5E4 /* DJProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJProgressHUD.m; sourceTree = "<group>"; };
+		F14243191DB628CB0012B5E4 /* DJTipHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJTipHUD.h; sourceTree = "<group>"; };
+		F142431A1DB628CB0012B5E4 /* DJTipHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJTipHUD.m; sourceTree = "<group>"; };
 		F147763D1D6B2B2E002FD6AF /* InfoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 		F14D6BE31D86E91C00CBD36C /* FilterTrainCodeTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTrainCodeTransformer.swift; sourceTree = "<group>"; };
 		F15277071DAB78D3002BAF17 /* 12306ForMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = 12306ForMac.entitlements; path = 12306ForMac/12306ForMac.entitlements; sourceTree = "<group>"; };
@@ -429,6 +432,8 @@
 		F142430F1DB610FF0012B5E4 /* DJProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
+				F14243191DB628CB0012B5E4 /* DJTipHUD.h */,
+				F142431A1DB628CB0012B5E4 /* DJTipHUD.m */,
 				F14243101DB610FF0012B5E4 /* DJActivityIndicator.h */,
 				F14243111DB610FF0012B5E4 /* DJActivityIndicator.m */,
 				F14243121DB610FF0012B5E4 /* DJProgressHUD.h */,
@@ -598,6 +603,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11154CF1C8D931500FA6059 /* MainWindowController.swift in Sources */,
+				F142431B1DB628CB0012B5E4 /* DJTipHUD.m in Sources */,
 				F11154C11C8D92D000FA6059 /* PassengerSelectViewController.swift in Sources */,
 				F11154801C8D923C00FA6059 /* SwiftyRegex.swift in Sources */,
 				F11154781C8D921400FA6059 /* QueryOrderParam.swift in Sources */,

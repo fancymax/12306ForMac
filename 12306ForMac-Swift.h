@@ -11,6 +11,7 @@
 
 #import "MASPreferences.h"
 #import "DJProgressHUD.h"
+#import "DJTipHUD.h"
 #import <CommonCrypto/CommonCrypto.h>
 
 #endif
