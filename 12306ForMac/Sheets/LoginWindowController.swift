@@ -14,71 +14,13 @@ class LoginWindowController: NSWindowController{
     @IBOutlet weak var userName: AutoCompleteTextField!
     @IBOutlet weak var loginImage: RandCodeImageView2!
     
-    @IBOutlet weak var tips: FlashLabel!
-    
     let service = Service()
     var users = [UserX]()
     var isAutoLogin = false
     var isLogin = false
     
-    @IBAction func freshImage(sender: NSButton)
-    {
-        loadImage()
-    }
-    
-    @IBAction func clickOK(sender:AnyObject?){
-        if userName.stringValue == "" || passWord.stringValue == "" {
-//            tips.showWithDefault("请先输入用户名和密码")
-            DJTipHUD.showStatus("请先输入用户名和密码", fromView: self.window?.contentView)
-            
-            return
-        }
-        if loginImage.randCodeStr == nil {
-//            tips.showWithDefault("请先选择验证码")
-            DJTipHUD.showStatus("请先选择验证码", fromView: self.window?.contentView)
-            return
-        }
-        
-        if isLogin {
-            return
-        }
-        
-        isLogin = true
-        self.startLoadingTip("正在登录...")
-        
-        let failureHandler = {(error:NSError) -> () in
-            self.isLogin = false
-            self.stopLoadingTip()
-            self.tips.showWithDefault(translate(error))
-            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:#selector(LoginWindowController.handlerAfterFailure), userInfo: nil, repeats: false)
-        }
-        
-        let successHandler = {
-            self.stopLoadingTip()
-            self.tips.showWithDefault("登录成功")
-            self.isLogin = false
-            self.service.postMobileGetPassengerDTOs()
-            NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector:#selector(LoginWindowController.handlerAfterSuccess), userInfo: nil, repeats: false)
-        }
-        
-        service.loginFlow(user: userName.stringValue, passWord: passWord.stringValue, randCodeStr: loginImage.randCodeStr!, success: successHandler, failure: failureHandler)
-    }
-    
-    @IBAction func clickCancel(button:NSButton){
-        dismissWithModalResponse(NSModalResponseCancel)
-    }
-    
     override var windowNibName: String{
         return "LoginWindowController"
-    }
-    
-    func startLoadingTip(tip:String)
-    {
-        DJProgressHUD.showStatus(tip, fromView: self.window?.contentView)
-    }
-    
-    func stopLoadingTip(){
-        DJProgressHUD.dismiss()
     }
     
     override func windowDidLoad() {
@@ -94,6 +36,65 @@ class LoginWindowController: NSWindowController{
         
         loadImage()
     }
+    
+    @IBAction func clickNextImage(sender: NSButton)
+    {
+        loadImage()
+    }
+    
+    @IBAction func clickOK(sender:AnyObject?){
+        if userName.stringValue == "" || passWord.stringValue == "" {
+            self.showTip("请先输入用户名和密码")
+            return
+        }
+        if loginImage.randCodeStr == nil {
+            self.showTip("请先选择验证码")
+            return
+        }
+        
+        if isLogin {
+            return
+        }
+        
+        isLogin = true
+        self.startLoadingTip("正在登录...")
+        
+        let failureHandler = {(error:NSError) -> () in
+            self.isLogin = false
+            self.stopLoadingTip()
+            self.showTip(translate(error))
+            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:#selector(LoginWindowController.handlerAfterFailure), userInfo: nil, repeats: false)
+        }
+        
+        let successHandler = {
+            self.stopLoadingTip()
+            self.showTip("登录成功")
+            self.isLogin = false
+            self.service.postMobileGetPassengerDTOs()
+            NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector:#selector(LoginWindowController.handlerAfterSuccess), userInfo: nil, repeats: false)
+        }
+        
+        service.loginFlow(user: userName.stringValue, passWord: passWord.stringValue, randCodeStr: loginImage.randCodeStr!, success: successHandler, failure: failureHandler)
+    }
+    
+    @IBAction func clickCancel(button:NSButton){
+        dismissWithModalResponse(NSModalResponseCancel)
+    }
+    
+    
+    func showTip(tip:String)  {
+        DJTipHUD.showStatus(tip, fromView: self.window?.contentView)
+    }
+    
+    func startLoadingTip(tip:String)
+    {
+        DJProgressHUD.showStatus(tip, fromView: self.window?.contentView)
+    }
+    
+    func stopLoadingTip(){
+        DJProgressHUD.dismiss()
+    }
+    
     
     func handlerAfterFailure(){
         self.loadImage()
@@ -138,7 +139,7 @@ class LoginWindowController: NSWindowController{
                 },
                 failure: {error in
                         self.stopLoadingTip()
-                        self.tips.showWithDefault(translate(error))
+                        self.showTip(translate(error))
                 })
         }
         
@@ -152,7 +153,7 @@ class LoginWindowController: NSWindowController{
         }
         let failureHandler = {(error:NSError) -> () in
             self.stopLoadingTip()
-            self.tips.showWithDefault(translate(error))
+            self.showTip(translate(error))
         }
         service.preLoginFlow(success: successHandler,failure: failureHandler)
     }
@@ -165,7 +166,6 @@ class LoginWindowController: NSWindowController{
             }
         }
     }
-    
 }
 
 // MARK: - AutoCompleteTableViewDelegate

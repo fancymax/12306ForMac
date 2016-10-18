@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
@@ -7,10 +7,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SubmitWindowController" customModule="订票助手" customModuleProvider="target">
             <connections>
-                <outlet property="errorFlashLabel" destination="yWi-7O-JdJ" id="diO-JM-5sF"/>
-                <outlet property="loadingTip" destination="DWe-8V-jUQ" id="sOw-yF-kQ1"/>
-                <outlet property="loadingTipBar" destination="wCc-U1-M6E" id="XDd-0J-1AM"/>
-                <outlet property="loadingTipView" destination="pov-nB-bqD" id="FhM-lb-z52"/>
                 <outlet property="orderId" destination="myB-rD-1e5" id="fjQ-3n-Bqq"/>
                 <outlet property="orderIdView" destination="vJY-p7-r54" id="83u-Nk-Z7u"/>
                 <outlet property="orderInfoView" destination="wUj-Nk-WKF" id="sJL-qT-Bdp"/>
@@ -31,7 +27,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="390" height="370"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="390" height="370"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -128,7 +124,7 @@ DQ
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" imageFrameStyle="photo" id="cqS-ac-3uM"/>
                 </imageView>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gac-he-aZq">
-                    <rect key="frame" x="306" y="249" width="75" height="32"/>
+                    <rect key="frame" x="308" y="248" width="75" height="32"/>
                     <buttonCell key="cell" type="push" title="换一张" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GRI-Pc-Ljw">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -160,32 +156,11 @@ DQ
                         <action selector="clickOK:" target="-2" id="Fvm-Dz-3Rj"/>
                     </connections>
                 </button>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pov-nB-bqD" userLabel="Loading View" customClass="GlassView" customModule="订票助手" customModuleProvider="target">
-                    <rect key="frame" x="144" y="154" width="120" height="30"/>
-                    <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DWe-8V-jUQ" userLabel="正在查询...">
-                            <rect key="frame" x="29" y="7" width="85" height="17"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="正在加载..." id="VI3-7h-8xJ">
-                                <font key="font" size="15" name="STHeitiSC-Light"/>
-                                <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="wCc-U1-M6E">
-                            <rect key="frame" x="7" y="7" width="16" height="16"/>
-                        </progressIndicator>
-                    </subviews>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                            <color key="value" red="1" green="0.97048561960000002" blue="0.9787521159" alpha="0.79592483110000001" colorSpace="calibratedRGB"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </customView>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWi-7O-JdJ" customClass="FlashLabel" customModule="订票助手" customModuleProvider="target">
-                    <rect key="frame" x="30" y="285" width="349" height="36"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Tips" id="baD-uV-MNz">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0qY-Ml-Uuy">
+                    <rect key="frame" x="30" y="294" width="69" height="19"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="选择验证码" id="ko8-l8-oih">
+                        <font key="font" size="13" name=".PingFangSC-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
@@ -324,7 +299,7 @@ DQ
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="rg7-uQ-X5m">
-                        <rect key="frame" x="1" y="8" width="0.0" height="15"/>
+                        <rect key="frame" x="1" y="7" width="0.0" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="eNA-ql-9zG">

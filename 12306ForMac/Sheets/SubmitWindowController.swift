@@ -23,18 +23,11 @@ class SubmitWindowController: NSWindowController{
     @IBOutlet weak var preOrderView: GlassView!
     @IBOutlet weak var orderIdView: GlassView!
     
-    @IBOutlet weak var loadingTipView: GlassView!
-    @IBOutlet weak var loadingTip: NSTextField!
-    @IBOutlet weak var loadingTipBar: NSProgressIndicator!
-    
     @IBOutlet weak var orderId: NSTextField!
     @IBOutlet weak var totalPriceLabel: NSTextField!
     
-    @IBOutlet weak var errorFlashLabel: FlashLabel!
-    
     var isAutoSubmit = false
     var isSubmitting = false
-    
     
     @IBAction func FreshImage(sender: NSButton) {
         freshImage()
@@ -71,16 +64,16 @@ class SubmitWindowController: NSWindowController{
     
     func startLoadingTip(tip:String)
     {
-        loadingTipBar.startAnimation(nil)
-        loadingTip.stringValue = tip
-        loadingTipView.hidden = false
+        DJProgressHUD.showStatus(tip, fromView: self.window?.contentView)
     }
     
     func stopLoadingTip(){
-        loadingTipBar.stopAnimation(nil)
-        loadingTipView.hidden = true
+        DJProgressHUD.dismiss()
     }
     
+    func showTip(tip:String){
+        DJTipHUD.showStatus(tip, fromView: self.window?.contentView)
+    }
     
     func loadImage(){
         self.startLoadingTip("正在加载...")
@@ -99,7 +92,7 @@ class SubmitWindowController: NSWindowController{
             
                 failure: {error in
                     self.stopLoadingTip()
-                    self.errorFlashLabel.showWithDefault(translate(error))
+                    self.showTip(translate(error))
                 })
             
         }
@@ -113,7 +106,7 @@ class SubmitWindowController: NSWindowController{
         }
         
         let failureHandler = { (error:NSError) -> () in
-            self.errorFlashLabel.showWithDefault(translate(error))
+            self.showTip(translate(error))
             self.stopLoadingTip()
         }
         service.preOrderFlow(success: successHandler, failure: failureHandler)
@@ -155,7 +148,7 @@ class SubmitWindowController: NSWindowController{
     @IBAction func clickOK(sender:AnyObject?){
         
         if passengerImage.randCodeStr == nil {
-            errorFlashLabel.showWithDefault("请先选择验证码")
+            self.showTip("请先选择验证码")
             return
         }
         
@@ -169,7 +162,7 @@ class SubmitWindowController: NSWindowController{
         let failureHandler = { (error:NSError) -> () in
             self.stopLoadingTip()
             self.isSubmitting = false
-            self.errorFlashLabel.showWithDefault(translate(error))
+            self.showTip(translate(error))
             self.freshImage()
         }
         
@@ -182,7 +175,7 @@ class SubmitWindowController: NSWindowController{
         }
         
         let waitHandler = { (info:String)-> () in
-            self.errorFlashLabel.showWithDefault(info)
+            self.showTip(info)
         }
         
         service.orderFlowWith(passengerImage.randCodeStr!, success: successHandler, failure: failureHandler,wait: waitHandler)

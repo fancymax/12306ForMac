@@ -9,10 +9,8 @@
 import Cocoa
 
 class OrderViewController: NSViewController{
-    @IBOutlet weak var tips: FlashLabel!
     @IBOutlet weak var orderListTable: NSTableView!
     @IBOutlet weak var payBtn: NSButton!
-    @IBOutlet weak var cancelOrderbtn: NSButton!
     
     var hasQuery = false
     dynamic var hasOrder = false
@@ -41,6 +39,10 @@ class OrderViewController: NSViewController{
         queryAllOrder()
     }
     
+    func showTip(tip:String)  {
+        DJTipHUD.showStatus(tip, fromView: self.view)
+    }
+    
     func receiveLogoutMessageNotification(notification: NSNotification) {
         MainModel.noCompleteOrderList.removeAll()
         self.orderList.removeAll()
@@ -66,12 +68,12 @@ class OrderViewController: NSViewController{
                         self.orderList = MainModel.historyOrderList
                         self.orderListTable.reloadData()
                         DJProgressHUD.dismiss()
-                        self.tips.showWithDefault("取消订单成功")
+                        self.showTip("取消订单成功")
                         self.hasOrder = false
                     }
                     let failureHandler = {(error:NSError)->() in
                         DJProgressHUD.dismiss()
-                        self.tips.showWithDefault(translate(error))
+                        self.showTip(translate(error))
                     }
                     self.service.cancelOrderWith(sequence_no, success: successHandler, failure:failureHandler)
                 }

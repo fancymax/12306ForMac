@@ -19,8 +19,6 @@ class TicketQueryViewController: NSViewController {
         return "TicketQueryViewController"
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -286,7 +284,6 @@ class TicketQueryViewController: NSViewController {
     
 // MARK: - TicketTableView
     @IBOutlet weak var leftTicketTable: NSTableView!
-    @IBOutlet weak var tips: FlashLabel!
     
     var service = Service()
     var ticketQueryResult = [QueryLeftNewDTO]()
@@ -393,6 +390,10 @@ class TicketQueryViewController: NSViewController {
         self.autoQueryNumTxt.hidden = true
     }
     
+    func showTip(tip:String){
+        DJTipHUD.showStatus(tip, fromView: self.view)
+    }
+    
     func queryLeftTicket(summitHandler:()->() = {}) {
         let fromStation = self.fromStationNameTxt.stringValue
         let toStation = self.toStationNameTxt.stringValue
@@ -431,7 +432,7 @@ class TicketQueryViewController: NSViewController {
         
         let failureHandler = {(error:NSError)->() in
             DJProgressHUD.dismiss()
-            self.tips.showWithDefault(translate(error))
+            self.showTip(translate(error))
             
             self.canFilter = false
         }
@@ -484,7 +485,7 @@ class TicketQueryViewController: NSViewController {
         setSelectedPassenger()
         
         if MainModel.selectPassengers.count == 0 {
-            tips.showWithDefault("请先选择乘客")
+            self.showTip("请先选择乘客")
             return
         }
         
@@ -495,7 +496,7 @@ class TicketQueryViewController: NSViewController {
         
         let postSubmitWindowMessage = {
             DJProgressHUD.dismiss()
-            self.tips.showWithDefault("提交成功")
+            self.showTip("提交成功")
             
             notificationCenter.postNotificationName(DidSendAutoSubmitMessageNotification, object: nil)
         }
@@ -506,7 +507,7 @@ class TicketQueryViewController: NSViewController {
             if error.code == ServiceError.Code.CheckUserFailed.rawValue {
                 notificationCenter.postNotificationName(DidSendLoginMessageNotification, object: nil)
             }else{
-                self.tips.showWithDefault(translate(error))
+                self.showTip(translate(error))
             }
         }
         
@@ -524,7 +525,7 @@ class TicketQueryViewController: NSViewController {
         setSelectedPassenger()
         
         if MainModel.selectPassengers.count == 0 {
-            tips.showWithDefault("请先选择乘客")
+            self.showTip("请先选择乘客")
             return
         }
         
@@ -536,7 +537,7 @@ class TicketQueryViewController: NSViewController {
         
         let postSubmitWindowMessage = {
             DJProgressHUD.dismiss()
-            self.tips.showWithDefault("提交成功")
+            self.showTip("提交成功")
             
             notificationCenter.postNotificationName(DidSendSubmitMessageNotification, object: nil)
         }
@@ -547,7 +548,7 @@ class TicketQueryViewController: NSViewController {
             if error.code == ServiceError.Code.CheckUserFailed.rawValue {
                 notificationCenter.postNotificationName(DidSendLoginMessageNotification, object: nil)
             }else{
-                self.tips.showWithDefault(translate(error))
+                self.showTip(translate(error))
             }
         }
         
