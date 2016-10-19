@@ -35,46 +35,31 @@ typedef void (^CompletionHander)(void);
 
 - (void)showStatus:(NSString*)status FromView:(NSView*)view
 {
+    if (_displaying) {
+        return;
+    }
+    
     parentView = view;
     
     label.stringValue = status;
     
-    if(![self displaying])
-        [self showViewAnimated];
-    else
-        [self replaceViewQuick];
+    [self showViewAnimated];
     
-    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(hideViewAnimated) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(finishHideView) userInfo:nil repeats:NO];
 }
 
 #pragma mark -
 #pragma mark Instance Methods
 
--(void)replaceViewQuick
-{
-    [self beginShowView];
-    [self.layer setOpacity:_pAlpha];
-}
-
-- (void)beginShowView
-{
-    [self updateLayout];
-    NSRect size = [self getCenterWithinRect:parentView.frame scale:1.0];
-    
-    if(!self.superview) [parentView addSubview:self];
-    [self.layer setFrame:size];
-    
-    _displaying = true;
-    
-    [label.layer setOpacity:1.0];
-}
-
 -(void)finishHideView
 {
+    if([parentView wantsLayer])
+    {
+        [parentView setWantsLayer:NO];
+    }
     [self removeFromSuperview];
     parentView = nil;
     _displaying = false;
-    
 }
 
 - (void)showViewAnimated
@@ -85,53 +70,36 @@ typedef void (^CompletionHander)(void);
         [parentView setLayer:[CALayer layer]];
     }
     
-    [self beginShowView];
+    [self updateLayout];
+    NSRect size = [self getCenterWithinRect:parentView.frame scale:1.0];
     
-    self.layer.opacity = 0.0;
-    [self.layer setFrame:[self getCenterWithinRect:parentView.frame scale:0.25]];
+    if(!self.superview) [parentView addSubview:self];
+    [self.layer setFrame:size];
     
+    _displaying = true;
     
-    [CATransaction flush];
-    [CATransaction begin];
-    [CATransaction setValue:[NSNumber numberWithFloat:0.5f]
-                     forKey:kCATransactionAnimationDuration];
-    [CATransaction setCompletionBlock:^{
-        
-    }];
-
-    [self.layer setFrame:[self getCenterWithinRect:parentView.frame scale:1]];
-    [self.layer setOpacity:_pAlpha];
-    [CATransaction commit];
+    [label.layer setOpacity:1.0];
 
     [self setNeedsDisplay:TRUE];
 }
 
-- (void)hideViewAnimated
-{
-    if(![parentView wantsLayer])
-    {
-        [parentView setWantsLayer:TRUE];
-        [parentView setLayer:[CALayer layer]];
-    }
-    
-    NSRect newSize = [self getCenterWithinRect:parentView.frame scale:0.25];
-    
-    [CATransaction flush];
-    [CATransaction begin];
-    [CATransaction setValue:[NSNumber numberWithFloat:0.5f] forKey:kCATransactionAnimationDuration];
-    [CATransaction setCompletionBlock:^{
-        if(self.layer.opacity == 0.0)
-        {
-            [self finishHideView];
-        }
-    }];
-    [label.layer setOpacity:0.0];
-    [self.layer setFrame:newSize];
-    [self.layer setOpacity:0.0];
-    [CATransaction commit];
-
-    [self setNeedsDisplay:TRUE];
-}
+//- (void)hideViewAnimated
+//{
+//    if(![parentView wantsLayer])
+//    {
+//        [parentView setWantsLayer:TRUE];
+//        [parentView setLayer:[CALayer layer]];
+//    }
+//    
+////    NSRect newSize = [self getCenterWithinRect:parentView.frame scale:0.75];
+//
+//    [label.layer setOpacity:0.0];
+////    [self.layer setFrame:newSize];
+//    [self.layer setOpacity:0.0];
+//
+//    [self setNeedsDisplay:TRUE];
+//    [self finishHideView];
+//}
 
 #pragma mark -
 #pragma mark Laying It Out
@@ -166,9 +134,9 @@ typedef void (^CompletionHander)(void);
     
     CGFloat spaceBetween = (stringHeight != 0) ? _pPadding/3 : _pPadding;
     
-    CGFloat iW = _indicatorSize.width;
+//    CGFloat iW = _indicatorSize.width;
     CGFloat iH = _indicatorSize.height;
-    CGFloat iX = ((lW+(_pPadding*2))/2)-(iW/2); //center it
+//    CGFloat iX = ((lW+(_pPadding*2))/2)-(iW/2); //center it
     CGFloat iY = lY+lH+(spaceBetween);
     
     CGFloat spaceOnTop = (stringHeight != 0) ? _pPadding/3 : 0;
