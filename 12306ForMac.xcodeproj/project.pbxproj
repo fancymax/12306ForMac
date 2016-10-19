@@ -23,7 +23,6 @@
 		F11154811C8D923C00FA6059 /* QueryDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111547D1C8D923C00FA6059 /* QueryDefaultManager.swift */; };
 		F11154821C8D923C00FA6059 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111547E1C8D923C00FA6059 /* XCGLogger.swift */; };
 		F111548E1C8D925200FA6059 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154841C8D925200FA6059 /* AutoCompleteTextField.swift */; };
-		F111548F1C8D925200FA6059 /* FlashLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154851C8D925200FA6059 /* FlashLabel.swift */; };
 		F11154901C8D925200FA6059 /* GlassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154861C8D925200FA6059 /* GlassView.swift */; };
 		F11154921C8D925200FA6059 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154881C8D925200FA6059 /* LoginButton.swift */; };
 		F11154931C8D925200FA6059 /* LunarCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111548A1C8D925200FA6059 /* LunarCalendarView.swift */; };
@@ -138,7 +137,6 @@
 		F111547D1C8D923C00FA6059 /* QueryDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueryDefaultManager.swift; path = ../Utilities/QueryDefaultManager.swift; sourceTree = "<group>"; };
 		F111547E1C8D923C00FA6059 /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCGLogger.swift; sourceTree = "<group>"; };
 		F11154841C8D925200FA6059 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
-		F11154851C8D925200FA6059 /* FlashLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashLabel.swift; sourceTree = "<group>"; };
 		F11154861C8D925200FA6059 /* GlassView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlassView.swift; sourceTree = "<group>"; };
 		F11154881C8D925200FA6059 /* LoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		F111548A1C8D925200FA6059 /* LunarCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LunarCalendarView.swift; sourceTree = "<group>"; };
@@ -324,7 +322,6 @@
 				F147763D1D6B2B2E002FD6AF /* InfoButton.swift */,
 				F1CA120C1D1135E2003EFD0B /* Theme.swift */,
 				F11154841C8D925200FA6059 /* AutoCompleteTextField.swift */,
-				F11154851C8D925200FA6059 /* FlashLabel.swift */,
 				F11154861C8D925200FA6059 /* GlassView.swift */,
 				F11154881C8D925200FA6059 /* LoginButton.swift */,
 				F11154891C8D925200FA6059 /* LunarCalendar */,
@@ -614,7 +611,6 @@
 				F11154791C8D921400FA6059 /* QueryOrderWaitTimeResult.swift in Sources */,
 				F11154771C8D921400FA6059 /* QueryLeftNewDTO.swift in Sources */,
 				F111549F1C8D929200FA6059 /* Service+Login.swift in Sources */,
-				F111548F1C8D925200FA6059 /* FlashLabel.swift in Sources */,
 				F1CA120D1D1135E2003EFD0B /* Theme.swift in Sources */,
 				F1CA12051D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift in Sources */,
 				F1CCA2DE1D0D4A1400B6853E /* TrainCodeDetail.swift in Sources */,

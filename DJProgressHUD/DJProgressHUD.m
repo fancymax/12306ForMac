@@ -82,6 +82,10 @@ typedef void (^CompletionHander)(void);
 
 -(void)finishHideView
 {
+    if([parentView wantsLayer])
+    {
+        [parentView setWantsLayer:NO];
+    }
     [self removeFromSuperview];
     parentView = nil;
     _displaying = false;
@@ -100,7 +104,7 @@ typedef void (^CompletionHander)(void);
     [self beginShowView];
     
     self.layer.opacity = 0.0;
-    [self.layer setFrame:[self getCenterWithinRect:parentView.frame scale:0.25]];
+    [self.layer setFrame:[self getCenterWithinRect:parentView.frame scale:0.75]];
     
     
     [CATransaction flush];
@@ -120,28 +124,7 @@ typedef void (^CompletionHander)(void);
 
 - (void)hideViewAnimated
 {
-    if(![parentView wantsLayer])
-    {
-        [parentView setWantsLayer:TRUE];
-        [parentView setLayer:[CALayer layer]];
-    }
-    
-    NSRect newSize = [self getCenterWithinRect:parentView.frame scale:0.25];
-    
-    [CATransaction flush];
-    [CATransaction begin];
-    [CATransaction setValue:[NSNumber numberWithFloat:0.6f] forKey:kCATransactionAnimationDuration];
-    [CATransaction setCompletionBlock:^{
-        if(self.layer.opacity == 0.0)
-        {
-            [self finishHideView];
-        }
-    }];
-    [activityIndicator.layer setOpacity:0.0];
-    [label.layer setOpacity:0.0];
-    [self.layer setFrame:newSize];
-    [self.layer setOpacity:0.0];
-    [CATransaction commit];
+    [self finishHideView];
 
     [self setNeedsDisplay:TRUE];
 }

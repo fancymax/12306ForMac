@@ -76,7 +76,6 @@ class SubmitWindowController: NSWindowController{
     }
     
     func loadImage(){
-        self.startLoadingTip("正在加载...")
         let autoSummitHandler = {(image:NSImage)->() in
             self.switchViewFrom(self.orderInfoView, to: self.preOrderView)
             self.startLoadingTip("自动打码...")
@@ -99,7 +98,6 @@ class SubmitWindowController: NSWindowController{
         let successHandler = {(image:NSImage) -> () in
             self.passengerImage.clearRandCodes()
             self.passengerImage.image = image
-            self.stopLoadingTip()
             if ((self.isAutoSubmit)&&(AdvancedPreferenceManager.sharedInstance.isUseDama)) {
                 autoSummitHandler(image)
             }
@@ -107,23 +105,19 @@ class SubmitWindowController: NSWindowController{
         
         let failureHandler = { (error:NSError) -> () in
             self.showTip(translate(error))
-            self.stopLoadingTip()
         }
         service.preOrderFlow(success: successHandler, failure: failureHandler)
     }
     
     func freshImage(){
-        self.startLoadingTip("正在加载...")
         let successHandler = {(image:NSImage) -> () in
             self.passengerImage.clearRandCodes()
             self.passengerImage.image = image
-            self.stopLoadingTip()
         }
         
         let failHandler = {(error:ErrorType) -> () in
             self.passengerImage.clearRandCodes()
             self.passengerImage.image = nil
-            self.stopLoadingTip()
         }
         
         service.getPassCodeNewForPassenger().then({image in
@@ -175,7 +169,7 @@ class SubmitWindowController: NSWindowController{
         }
         
         let waitHandler = { (info:String)-> () in
-            self.showTip(info)
+            self.startLoadingTip(info)
         }
         
         service.orderFlowWith(passengerImage.randCodeStr!, success: successHandler, failure: failureHandler,wait: waitHandler)

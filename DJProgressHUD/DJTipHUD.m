@@ -13,7 +13,6 @@ typedef void (^CompletionHander)(void);
 @interface DJTipHUD ()
 {
     NSView* parentView;
-    
     CGSize pSize; //This is set automatically based on the content
     NSTextField* label;
 }
@@ -45,7 +44,12 @@ typedef void (^CompletionHander)(void);
     
     [self showViewAnimated];
     
-    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(finishHideView) userInfo:nil repeats:NO];
+    NSInteger interval = 2;
+    if ([status length] >= 10) {
+        interval = 10;
+    }
+    
+    [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(finishHideView) userInfo:nil repeats:NO];
 }
 
 #pragma mark -
@@ -53,10 +57,6 @@ typedef void (^CompletionHander)(void);
 
 -(void)finishHideView
 {
-    if([parentView wantsLayer])
-    {
-        [parentView setWantsLayer:NO];
-    }
     [self removeFromSuperview];
     parentView = nil;
     _displaying = false;
@@ -64,50 +64,22 @@ typedef void (^CompletionHander)(void);
 
 - (void)showViewAnimated
 {
-    if(![parentView wantsLayer])
-    {
-        [parentView setWantsLayer:TRUE];
-        [parentView setLayer:[CALayer layer]];
-    }
-    
     [self updateLayout];
     NSRect size = [self getCenterWithinRect:parentView.frame scale:1.0];
     
     if(!self.superview) [parentView addSubview:self];
-    [self.layer setFrame:size];
+    [self setFrame:size];
     
     _displaying = true;
     
-    [label.layer setOpacity:1.0];
-
     [self setNeedsDisplay:TRUE];
 }
-
-//- (void)hideViewAnimated
-//{
-//    if(![parentView wantsLayer])
-//    {
-//        [parentView setWantsLayer:TRUE];
-//        [parentView setLayer:[CALayer layer]];
-//    }
-//    
-////    NSRect newSize = [self getCenterWithinRect:parentView.frame scale:0.75];
-//
-//    [label.layer setOpacity:0.0];
-////    [self.layer setFrame:newSize];
-//    [self.layer setOpacity:0.0];
-//
-//    [self setNeedsDisplay:TRUE];
-//    [self finishHideView];
-//}
 
 #pragma mark -
 #pragma mark Laying It Out
 
 - (void)updateLayout
 {
-    [self setBackground];
-    
     CGSize maxContentSize = CGSizeMake(pMaxWidth1-(_pPadding*2), pMaxHeight1-(_pPadding*2));
     CGSize minContentSize = CGSizeMake(_indicatorSize.width, _indicatorSize.height);
     
@@ -149,22 +121,6 @@ typedef void (^CompletionHander)(void);
     [self setNeedsDisplay:TRUE];
 }
 
-- (void)setBackground
-{
-    CGColorRef bgcolor = CGColorCreateGenericRGB(0.05, 0.05, 0.05, _pAlpha);
-    
-    if(![self layer]) {
-        CALayer* bgLayer = [CALayer layer];
-        [self setLayer:bgLayer];
-        [self.layer setCornerRadius:15.0];
-        [self setWantsLayer:TRUE];
-    }
-
-    [self.layer setBackgroundColor:bgcolor];
-
-    [self setNeedsDisplay:TRUE];
-}
-
 #pragma mark -
 #pragma mark Other
 
@@ -196,6 +152,12 @@ typedef void (^CompletionHander)(void);
     result.size.height = newHeight;
     
     return result;
+}
+
+- (void)drawRect:(NSRect)frame {
+    NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:frame xRadius:6.0 yRadius:6.0];
+    [[NSColor colorWithCalibratedWhite:0.0 alpha:0.75] set];
+    [path fill];
 }
 
 #pragma mark -

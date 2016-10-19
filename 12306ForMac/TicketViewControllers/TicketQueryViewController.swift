@@ -105,6 +105,7 @@ class TicketQueryViewController: NSViewController {
     }
     
     @IBAction func clickQueryTicket(sender: AnyObject?) {
+        
         if !StationNameJs.sharedInstance.allStationMap.keys.contains(self.fromStationNameTxt.stringValue) {
             return
         }
@@ -391,7 +392,16 @@ class TicketQueryViewController: NSViewController {
     }
     
     func showTip(tip:String){
-        DJTipHUD.showStatus(tip, fromView: self.view)
+        DJTipHUD.showStatus(tip, fromView: self.secondSearchView)
+    }
+    
+    func startLoadingTip(tip:String)
+    {
+        DJProgressHUD.showStatus(tip, fromView: self.view)
+    }
+    
+    func stopLoadingTip(){
+        DJProgressHUD.dismiss()
     }
     
     func queryLeftTicket(summitHandler:()->() = {}) {
@@ -418,7 +428,7 @@ class TicketQueryViewController: NSViewController {
             })
         
             self.leftTicketTable.reloadData()
-            DJProgressHUD.dismiss()
+            self.stopLoadingTip()
             
             if ((tickets.count > 0) && (!self.hasAutoQuery)) {
                 self.canFilter = true
@@ -431,7 +441,7 @@ class TicketQueryViewController: NSViewController {
         }
         
         let failureHandler = {(error:NSError)->() in
-            DJProgressHUD.dismiss()
+            self.stopLoadingTip()
             self.showTip(translate(error))
             
             self.canFilter = false
@@ -440,7 +450,7 @@ class TicketQueryViewController: NSViewController {
         self.filterQueryResult = [QueryLeftNewDTO]()
         self.leftTicketTable.reloadData()
         
-        DJProgressHUD .showStatus("正在查询...", fromView: self.view)
+        self.startLoadingTip("正在查询...")
         
         self.date = date
         
@@ -492,17 +502,16 @@ class TicketQueryViewController: NSViewController {
         MainModel.selectedTicket = ticket
         setSeatCodeForSelectedPassenger(MainModel.selectedTicket!.TrainCode! ,seatCodeName: seatTypeId)
         
-        DJProgressHUD .showStatus("正在提交...", fromView: self.view)
+        self.startLoadingTip("正在提交...")
         
         let postSubmitWindowMessage = {
-            DJProgressHUD.dismiss()
-            self.showTip("提交成功")
+            self.stopLoadingTip()
             
             notificationCenter.postNotificationName(DidSendAutoSubmitMessageNotification, object: nil)
         }
         
         let failHandler = {(error:NSError)->() in
-            DJProgressHUD.dismiss()
+            self.stopLoadingTip()
             
             if error.code == ServiceError.Code.CheckUserFailed.rawValue {
                 notificationCenter.postNotificationName(DidSendLoginMessageNotification, object: nil)
@@ -533,17 +542,16 @@ class TicketQueryViewController: NSViewController {
         MainModel.selectedTicket = filterQueryResult[selectedRow]
         setSeatCodeForSelectedPassenger(MainModel.selectedTicket!.TrainCode ,seatCodeName: sender.identifier!)
         
-        DJProgressHUD .showStatus("正在提交...", fromView: self.view)
+        self.startLoadingTip("正在提交...")
         
         let postSubmitWindowMessage = {
-            DJProgressHUD.dismiss()
-            self.showTip("提交成功")
+            self.stopLoadingTip()
             
             notificationCenter.postNotificationName(DidSendSubmitMessageNotification, object: nil)
         }
         
         let failHandler = {(error:NSError)->() in
-            DJProgressHUD.dismiss()
+            self.stopLoadingTip()
             
             if error.code == ServiceError.Code.CheckUserFailed.rawValue {
                 notificationCenter.postNotificationName(DidSendLoginMessageNotification, object: nil)
