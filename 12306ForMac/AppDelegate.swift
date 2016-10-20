@@ -7,6 +7,9 @@
 //
 import Cocoa
 
+var APP_LOG_PATH = ""
+var APP_LOG_DIRECTORY = ""
+
 let logger: XCGLogger = {
     // Setup XCGLogger
     let log = XCGLogger.defaultInstance()
@@ -18,16 +21,16 @@ let logger: XCGLogger = {
     let bundleId = NSBundle.mainBundle().bundleIdentifier!
     let fileName = "\(bundleId).\(dateStr).txt"
 
-    let logDirectory = "\(NSHomeDirectory())/Library/Logs/\(bundleId)/"
-    let logPath = "\(logDirectory)/\(fileName)"
+    APP_LOG_DIRECTORY = "\(NSHomeDirectory())/Library/Logs/\(bundleId)/"
+    APP_LOG_PATH = "\(APP_LOG_DIRECTORY)/\(fileName)"
     
-    let isExistDirectory:Bool = NSFileManager.defaultManager().fileExistsAtPath(logDirectory, isDirectory: nil)
+    let isExistDirectory:Bool = NSFileManager.defaultManager().fileExistsAtPath(APP_LOG_DIRECTORY, isDirectory: nil)
     if !isExistDirectory {
         do{
-            try NSFileManager.defaultManager().createDirectoryAtPath(logDirectory, withIntermediateDirectories: true, attributes: nil)
+            try NSFileManager.defaultManager().createDirectoryAtPath(APP_LOG_DIRECTORY, withIntermediateDirectories: true, attributes: nil)
         }
         catch {
-            print("Creat 12306ForMac log fail")
+            print("createDirectoryAtPath fail,can't log")
         }
     }
     
@@ -39,7 +42,7 @@ let logger: XCGLogger = {
         .Error: XCGLogger.XcodeColor(fg: NSColor.redColor(), bg: NSColor.whiteColor()), // Optionally use an NSColor
         .Severe: XCGLogger.XcodeColor(fg: (255, 255, 255), bg: (255, 0, 0)) // Optionally use RGB values directly
     ]
-    log.setup(.Debug, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: logPath)
+    log.setup(.Debug, showThreadName: true, showLogLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: APP_LOG_PATH)
     
     return log
 }()
@@ -66,6 +69,14 @@ let DidSendAutoSubmitMessageNotification = "com.12306.DidSendAutoSubmitMessageNo
         self.mainController = mainController
         
         logger.debug("application start")
+    }
+    
+    @IBAction func openDebugFile(sender:AnyObject) {
+        NSWorkspace.sharedWorkspace().openFile(APP_LOG_PATH)
+    }
+    
+    @IBAction func openDebugDirectory(sender:AnyObject) {
+        NSWorkspace.sharedWorkspace().openFile(APP_LOG_DIRECTORY)
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

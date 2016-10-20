@@ -162,7 +162,6 @@
 		F11154C71C8D92FC00FA6059 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = 12306ForMac/AppDelegate.swift; sourceTree = "<group>"; };
 		F11154CB1C8D931500FA6059 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainWindowController.swift; path = 12306ForMac/MainWindowController.swift; sourceTree = "<group>"; };
 		F11154CC1C8D931500FA6059 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindowController.xib; path = 12306ForMac/MainWindowController.xib; sourceTree = "<group>"; };
-		F11154D21C8D936300FA6059 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = 12306ForMac/Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		F11154D41C8D937E00FA6059 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = 12306ForMac/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		F11154E11C8D93B300FA6059 /* Add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Add.png; path = 12306ForMac/images/Add.png; sourceTree = SOURCE_ROOT; };
 		F11154E91C8D945C00FA6059 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = 12306ForMac/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -207,7 +206,6 @@
 		F1D58E9C1D8A549200CD3DA7 /* Reverse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Reverse.png; path = 12306ForMac/images/Reverse.png; sourceTree = SOURCE_ROOT; };
 		F1E118EB1DAC8770003133C7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/MASPreferencesWindow.xib"; sourceTree = "<group>"; };
 		F1E118ED1DAC8981003133C7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "12306ForMac/zh-Hans.lproj/MainMenu.xib"; sourceTree = "<group>"; };
-		F1E118EE1DAC89DC003133C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MASPreferencesWindow.xib; sourceTree = "<group>"; };
 		F1F2F2AA1D598AB700EA7786 /* MASPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferences.h; sourceTree = "<group>"; };
 		F1F2F2AB1D598AB700EA7786 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
 		F1F2F2AC1D598AB700EA7786 /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesWindowController.h; sourceTree = "<group>"; };
@@ -549,7 +547,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				"zh-Hans",
-				Base,
 			);
 			mainGroup = F11EB4511B6A368E000063E4;
 			productRefGroup = F11EB45B1B6A368E000063E4 /* Products */;
@@ -671,7 +668,6 @@
 		F11154D11C8D936300FA6059 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F11154D21C8D936300FA6059 /* Base */,
 				F1E118ED1DAC8981003133C7 /* zh-Hans */,
 			);
 			name = MainMenu.xib;
@@ -681,7 +677,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				F1E118EB1DAC8770003133C7 /* zh-Hans */,
-				F1E118EE1DAC89DC003133C7 /* Base */,
 			);
 			name = MASPreferencesWindow.xib;
 			sourceTree = "<group>";

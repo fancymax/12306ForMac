@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
@@ -83,6 +84,25 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="arrangeInFront:" target="-1" id="DRN-fu-gQh"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="调试" id="y5H-wR-1j9">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="调试" id="JFg-va-igG">
+                        <items>
+                            <menuItem title="打开调试信息" id="3e4-VH-YCS">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="openDebugFile:" target="-1" id="PaF-i8-b9Z"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="打开所在位置" id="bVP-Nz-wEq">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="openDebugDirectory:" target="-1" id="5Br-Sl-aPE"/>
                                 </connections>
                             </menuItem>
                         </items>
