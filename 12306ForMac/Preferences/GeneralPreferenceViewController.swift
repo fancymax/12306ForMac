@@ -73,6 +73,15 @@ class GeneralPreferenceViewController: NSViewController, MASPreferencesViewContr
         }
     }
     
+    var isAutoQueryAfterFilter: Bool {
+        get{
+            return GeneralPreferenceManager.sharedInstance.isAutoQueryAfterFilter
+        }
+        set{
+            GeneralPreferenceManager.sharedInstance.isAutoQueryAfterFilter = newValue
+        }
+    }
+    
     var isNotifyTicket: Bool {
         get{
             return GeneralPreferenceManager.sharedInstance.isNotifyTicket

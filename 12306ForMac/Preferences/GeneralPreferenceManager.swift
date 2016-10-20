@@ -19,6 +19,7 @@ class GeneralPreferenceManager {
     private let isNotifyLoginKey = "isNotifyLogin"
     private let notifyStrKey = "notifyStr"
     private let notifyLoginStrKey = "notifyLoginStr"
+    private let isAutoQueryAfterFilterKey = "isAutoQueryAfterFilter"
     
     private let userDefaults = NSUserDefaults.standardUserDefaults()
     
@@ -29,7 +30,7 @@ class GeneralPreferenceManager {
     
     private func registerUserDefault()
     {
-        let firstDefault = [autoQuerySecondsKey: 5,isShowInvalidTicketKey: true, isShowNoTrainTicketKey:true, isNotifyTicketKey:true, notifyStrKey:"订到票啦",isNotifyLoginKey:true, notifyLoginStrKey:"要登录啦"]
+        let firstDefault = [autoQuerySecondsKey: 5,isShowInvalidTicketKey: true, isShowNoTrainTicketKey:true, isNotifyTicketKey:true, notifyStrKey:"订到票啦",isNotifyLoginKey:true, notifyLoginStrKey:"要登录啦",isAutoQueryAfterFilterKey:true]
         userDefaults.registerDefaults(firstDefault)
     }
     
@@ -93,6 +94,15 @@ class GeneralPreferenceManager {
         }
         set{
             userDefaults.setObject(newValue, forKey: notifyLoginStrKey)
+        }
+    }
+    
+    var isAutoQueryAfterFilter:Bool {
+        get{
+            return userDefaults.objectForKey(isAutoQueryAfterFilterKey) as! Bool
+        }
+        set{
+            userDefaults.setObject(newValue, forKey: isAutoQueryAfterFilterKey)
         }
     }
     

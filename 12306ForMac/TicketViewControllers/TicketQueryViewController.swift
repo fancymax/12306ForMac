@@ -352,7 +352,9 @@ class TicketQueryViewController: NSViewController {
                     self.filterQueryResult = self.ticketQueryResult.filter({item in return self.trainFilterKey.containsString("|" + item.TrainCode! + "|")})
                     self.leftTicketTable.reloadData()
                     
-                    self.autoQuery = true
+                    if GeneralPreferenceManager.sharedInstance.isAutoQueryAfterFilter {
+                        self.autoQuery = true
+                    }
                 }
                 else {
                     self.autoQuery = false;
