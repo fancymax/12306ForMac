@@ -87,7 +87,12 @@ class TicketQueryViewController: NSViewController {
         
         self.queryDate.dateValue = trunkNextDate
         dateStepper.doubleValue = trunkNextDate.timeIntervalSinceDate(trunkOriginDate)/24/3600
-        
+    }
+    
+    private func stopAutoQuery(){
+        repeatTimer?.invalidate()
+        repeatTimer = nil
+        hasAutoQuery = false
     }
     
     @IBAction func clickConvertCity(sender: NSButton) {
@@ -115,9 +120,7 @@ class TicketQueryViewController: NSViewController {
         }
         
         if hasAutoQuery {
-            repeatTimer?.invalidate()
-            repeatTimer = nil
-            hasAutoQuery = false
+            self.stopAutoQuery()
             return
         }
         
@@ -527,6 +530,8 @@ class TicketQueryViewController: NSViewController {
     
     func clickSubmit(sender: NSButton){
         let notificationCenter = NSNotificationCenter.defaultCenter()
+        
+        self.stopAutoQuery()
         
         if !MainModel.isGetUserInfo {
             notificationCenter.postNotificationName(DidSendLoginMessageNotification, object: nil)
