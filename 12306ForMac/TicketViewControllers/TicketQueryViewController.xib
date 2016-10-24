@@ -50,11 +50,11 @@
                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="42" horizontalPageScroll="10" verticalLineScroll="42" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2Q-9N-qwe">
                     <rect key="frame" x="12" y="20" width="971" height="510"/>
                     <clipView key="contentView" drawsBackground="NO" id="aFD-Ax-dxk">
-                        <rect key="frame" x="0.0" y="0.0" width="971" height="510"/>
+                        <rect key="frame" x="0.5" y="0.0" width="971" height="495"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" headerView="mkA-fg-IPp" viewBased="YES" id="vdR-Hc-SYr">
-                                <rect key="frame" x="0.0" y="0.0" width="971" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="974" height="487"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
@@ -277,7 +277,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView misplaced="YES" id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="订票助手" customModuleProvider="target">
-                                                <rect key="frame" x="453" y="1" width="997" height="63"/>
+                                                <rect key="frame" x="453" y="1" width="516" height="63"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oxk-Lo-fip">
@@ -456,8 +456,8 @@
                         </subviews>
                         <nil key="backgroundColor"/>
                     </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="JOr-0W-gEZ">
-                        <rect key="frame" x="1" y="493" width="953" height="16"/>
+                    <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.16666666666666666" horizontal="YES" id="JOr-0W-gEZ">
+                        <rect key="frame" x="0.0" y="495" width="971" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="1ht-FE-jVM">
@@ -465,7 +465,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="mkA-fg-IPp">
-                        <rect key="frame" x="0.0" y="0.0" width="971" height="23"/>
+                        <rect key="frame" x="0.0" y="0.0" width="974" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
