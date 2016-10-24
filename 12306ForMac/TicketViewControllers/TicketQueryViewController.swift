@@ -394,16 +394,16 @@ class TicketQueryViewController: NSViewController {
     }
     
     func showTip(tip:String){
-        DJTipHUD.showStatus(tip, fromView: self.secondSearchView)
+        DJTipHUD.showStatus(tip, fromView: self.view)
     }
     
     func startLoadingTip(tip:String)
     {
-        DJProgressHUD.showStatus(tip, fromView: self.view)
+        DJLayerView.showStatus(tip, fromView: self.view)
     }
     
     func stopLoadingTip(){
-        DJProgressHUD.dismiss()
+        DJLayerView.dismiss()
     }
     
     func queryLeftTicket(summitHandler:()->() = {}) {

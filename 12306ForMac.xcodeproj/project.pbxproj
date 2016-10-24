@@ -69,10 +69,10 @@
 		F13E9C981D0AA9760011F7E2 /* TrainInfoTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13E9C971D0AA9760011F7E2 /* TrainInfoTableCellView.swift */; };
 		F13E9C9A1D0AB3310011F7E2 /* TrainTableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13E9C991D0AB3310011F7E2 /* TrainTableRowView.swift */; };
 		F14243141DB610FF0012B5E4 /* DJActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F14243111DB610FF0012B5E4 /* DJActivityIndicator.m */; };
-		F14243151DB610FF0012B5E4 /* DJProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F14243131DB610FF0012B5E4 /* DJProgressHUD.m */; };
 		F142431B1DB628CB0012B5E4 /* DJTipHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F142431A1DB628CB0012B5E4 /* DJTipHUD.m */; };
 		F147763E1D6B2B2E002FD6AF /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F147763D1D6B2B2E002FD6AF /* InfoButton.swift */; };
 		F14D6BE41D86E91C00CBD36C /* FilterTrainCodeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D6BE31D86E91C00CBD36C /* FilterTrainCodeTransformer.swift */; };
+		F159C9D51DBDD76A00202143 /* DJLayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F159C9D41DBDD76A00202143 /* DJLayerView.m */; };
 		F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F17AB1CB1C95630E00FEB221 /* Credits.rtf */; };
 		F1AF72B81DAA24FB0047486B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF72B71DAA24FB0047486B /* DataManager.swift */; };
 		F1C075211D83F97A006EFABB /* TicketConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C075201D83F97A006EFABB /* TicketConstants.swift */; };
@@ -181,13 +181,13 @@
 		F13E9C991D0AB3310011F7E2 /* TrainTableRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainTableRowView.swift; sourceTree = "<group>"; };
 		F14243101DB610FF0012B5E4 /* DJActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJActivityIndicator.h; sourceTree = "<group>"; };
 		F14243111DB610FF0012B5E4 /* DJActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJActivityIndicator.m; sourceTree = "<group>"; };
-		F14243121DB610FF0012B5E4 /* DJProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJProgressHUD.h; sourceTree = "<group>"; };
-		F14243131DB610FF0012B5E4 /* DJProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJProgressHUD.m; sourceTree = "<group>"; };
 		F14243191DB628CB0012B5E4 /* DJTipHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJTipHUD.h; sourceTree = "<group>"; };
 		F142431A1DB628CB0012B5E4 /* DJTipHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJTipHUD.m; sourceTree = "<group>"; };
 		F147763D1D6B2B2E002FD6AF /* InfoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 		F14D6BE31D86E91C00CBD36C /* FilterTrainCodeTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTrainCodeTransformer.swift; sourceTree = "<group>"; };
 		F15277071DAB78D3002BAF17 /* 12306ForMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = 12306ForMac.entitlements; path = 12306ForMac/12306ForMac.entitlements; sourceTree = "<group>"; };
+		F159C9D31DBDD76A00202143 /* DJLayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJLayerView.h; sourceTree = "<group>"; };
+		F159C9D41DBDD76A00202143 /* DJLayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJLayerView.m; sourceTree = "<group>"; };
 		F17AB1CB1C95630E00FEB221 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = 12306ForMac/Resources/Credits.rtf; sourceTree = SOURCE_ROOT; };
 		F1AF72B71DAA24FB0047486B /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		F1C075201D83F97A006EFABB /* TicketConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketConstants.swift; sourceTree = "<group>"; };
@@ -427,12 +427,12 @@
 		F142430F1DB610FF0012B5E4 /* DJProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
+				F159C9D31DBDD76A00202143 /* DJLayerView.h */,
+				F159C9D41DBDD76A00202143 /* DJLayerView.m */,
 				F14243191DB628CB0012B5E4 /* DJTipHUD.h */,
 				F142431A1DB628CB0012B5E4 /* DJTipHUD.m */,
 				F14243101DB610FF0012B5E4 /* DJActivityIndicator.h */,
 				F14243111DB610FF0012B5E4 /* DJActivityIndicator.m */,
-				F14243121DB610FF0012B5E4 /* DJProgressHUD.h */,
-				F14243131DB610FF0012B5E4 /* DJProgressHUD.m */,
 			);
 			path = DJProgressHUD;
 			sourceTree = "<group>";
@@ -610,6 +610,7 @@
 				F111549F1C8D929200FA6059 /* Service+Login.swift in Sources */,
 				F1CA120D1D1135E2003EFD0B /* Theme.swift in Sources */,
 				F1CA12051D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift in Sources */,
+				F159C9D51DBDD76A00202143 /* DJLayerView.m in Sources */,
 				F1CCA2DE1D0D4A1400B6853E /* TrainCodeDetail.swift in Sources */,
 				F1C075211D83F97A006EFABB /* TicketConstants.swift in Sources */,
 				F11154981C8D927C00FA6059 /* StationData.swift in Sources */,
@@ -642,7 +643,6 @@
 				F11154721C8D921400FA6059 /* LeftTicketParam.swift in Sources */,
 				F1FEE7A21D8D464900B02C84 /* NotifySpeaker.swift in Sources */,
 				F1FCFF4B1D386F8F0070A32C /* URLButton.swift in Sources */,
-				F14243151DB610FF0012B5E4 /* DJProgressHUD.m in Sources */,
 				F11154A11C8D929200FA6059 /* Service+QueryOrder.swift in Sources */,
 				F11154A21C8D929200FA6059 /* Service+QueryTicket.swift in Sources */,
 				F11154A91C8D92A700FA6059 /* LoginWindowController.swift in Sources */,

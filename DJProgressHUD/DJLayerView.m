@@ -1,18 +1,15 @@
 //
-//  CPProgressView.m
-//  Cloud Play OSX
+//  DJLayerView.m
+//  Playground
 //
-//  Created by Daniel Jackson on 4/22/14.
-//  Copyright (c) 2014 Daniel Jackson. All rights reserved.
+//  Created by fancymax on 16/10/24.
+//  Copyright © 2016年 Daniel Jackson. All rights reserved.
 //
 
-#import "DJProgressHUD.h"
+#import "DJLayerView.h"
 #import "DJActivityIndicator.h"
 
-typedef void (^CompletionHander)(void);
-
-@interface DJProgressHUD ()
-{
+@interface DJLayerView(){
     NSView* parentView;
     
     CGSize pSize; //This is set automatically based on the content
@@ -20,122 +17,58 @@ typedef void (^CompletionHander)(void);
     NSTextField* label;
 }
 
-@property CGFloat backgroundAlpha;
-
 @end
 
-@implementation DJProgressHUD
+@implementation DJLayerView
 
-#pragma mark -
-#pragma mark Class Methods
-
-+ (void)showStatus:(NSString*)status FromView:(NSView*)view
-{
-    [[self instance] showStatus:status FromView:view];
++(void)showStatus:(NSString *)status FromView:(NSView *)parentView{
+    [[self instance] showStatus:status FromView:parentView];
 }
 
-+ (void)dismiss
-{
-    [[self instance] hideViewAnimated];
-}
-
-#pragma mark -
-#pragma mark Master Methods
-
-- (void)showStatus:(NSString*)status FromView:(NSView*)view
-{
-    parentView = view;
-    
-    label.stringValue = status;
-    
-    [activityIndicator setHidden:FALSE];
-    [activityIndicator startAnimation:nil];
-
-    if(![self displaying])
-        [self showViewAnimated];
-    else
-        [self replaceViewQuick];
-}
-
-#pragma mark -
-#pragma mark Instance Methods
-
--(void)replaceViewQuick
-{
-    [self beginShowView];
-    [self.layer setOpacity:_pAlpha];
-}
-
-- (void)beginShowView
-{
-    [self updateLayout];
-    NSRect size = [self getCenterWithinRect:parentView.frame scale:1.0];
-    
-    if(!self.superview) [parentView addSubview:self];
-    [self.layer setFrame:size];
-    
-    _displaying = true;
-    
-    [activityIndicator.layer setOpacity:1.0];
-    [label.layer setOpacity:1.0];
++(void)dismiss {
+    [[self instance] finishHideView];
 }
 
 -(void)finishHideView
 {
-    if([parentView wantsLayer])
-    {
-        [parentView setWantsLayer:NO];
-    }
     [self removeFromSuperview];
     parentView = nil;
-    _displaying = false;
     
     [activityIndicator stopAnimation:nil];
 }
 
-- (void)showViewAnimated
-{
-    if(![parentView wantsLayer])
-    {
-        [parentView setWantsLayer:TRUE];
-        [parentView setLayer:[CALayer layer]];
+-(void)showStatus:(NSString*)status FromView:(NSView *)view {
+    parentView = view;
+    label.stringValue = status;
+    [activityIndicator startAnimation:nil];
+    
+    if (!self.superview) {
+        [parentView addSubview:self];
     }
-    
-    [self beginShowView];
-    
-    self.layer.opacity = 0.0;
-    [self.layer setFrame:[self getCenterWithinRect:parentView.frame scale:0.75]];
-    
-    
-    [CATransaction flush];
-    [CATransaction begin];
-    [CATransaction setValue:[NSNumber numberWithFloat:0.6f]
-                     forKey:kCATransactionAnimationDuration];
-    [CATransaction setCompletionBlock:^{
-        
-    }];
 
-    [self.layer setFrame:[self getCenterWithinRect:parentView.frame scale:1]];
-    [self.layer setOpacity:_pAlpha];
-    [CATransaction commit];
-
-    [self setNeedsDisplay:TRUE];
+    [self updateLayout];
+    
+    CGColorRef bgcolor = CGColorCreateGenericRGB(0.05, 0.05, 0.05, 0.8);
+    self.layer.backgroundColor = bgcolor;
+    self.layer.cornerRadius = 15.0;
+    [self setFrame:[self getCenterWithinRect:parentView.frame scale:1]];
 }
 
-- (void)hideViewAnimated
+- (NSRect)getCenterWithinRect:(NSRect)parentFrame scale:(CGFloat)scale
 {
-    [self finishHideView];
-
-    [self setNeedsDisplay:TRUE];
+    NSRect result;
+    CGFloat newWidth = pSize.width*scale;
+    CGFloat newHeight = pSize.height*scale;
+    result.origin.x = parentFrame.size.width/2 - newWidth/2 + _pOffset.dx;
+    result.origin.y = parentFrame.size.height/2 - newHeight/2 + _pOffset.dy;
+    result.size.width = newWidth;
+    result.size.height = newHeight;
+    
+    return result;
 }
-
-#pragma mark -
-#pragma mark Laying It Out
 
 - (void)updateLayout
 {
-    [self setBackground];
-    
     CGSize maxContentSize = CGSizeMake(pMaxWidth1-(_pPadding*2), pMaxHeight1-(_pPadding*2));
     CGSize minContentSize = CGSizeMake(_indicatorSize.width, _indicatorSize.height);
     
@@ -170,35 +103,14 @@ typedef void (^CompletionHander)(void);
     activityIndicator.frame = indicatorRect;
     
     CGFloat spaceOnTop = (stringHeight != 0) ? _pPadding/3 : 0;
-
+    
     [activityIndicator setColor:[NSColor whiteColor]];
     
     pSize.width = popupWidth;
     pSize.height = iY+iH+_pPadding+spaceOnTop;//+(_pPadding/2);
     
     [self setAutoresizesSubviews:YES];
-    
-    [self setNeedsDisplay:TRUE];
 }
-
-- (void)setBackground
-{
-    CGColorRef bgcolor = CGColorCreateGenericRGB(0.05, 0.05, 0.05, _pAlpha);
-    
-    if(![self layer]) {
-        CALayer* bgLayer = [CALayer layer];
-        [self setLayer:bgLayer];
-        [self.layer setCornerRadius:15.0];
-        [self setWantsLayer:TRUE];
-    }
-
-    [self.layer setBackgroundColor:bgcolor];
-
-    [self setNeedsDisplay:TRUE];
-}
-
-#pragma mark -
-#pragma mark Other
 
 -(CGFloat) heightForString:(NSString *)myString font:(NSFont*) myFont width:(CGFloat)myWidth
 {
@@ -217,35 +129,19 @@ typedef void (^CompletionHander)(void);
             usedRectForTextContainer:textContainer].size.height;
 }
 
-- (NSRect)getCenterWithinRect:(NSRect)parentFrame scale:(CGFloat)scale
-{
-    NSRect result;
-    CGFloat newWidth = pSize.width*scale;
-    CGFloat newHeight = pSize.height*scale;
-    result.origin.x = parentFrame.size.width/2 - newWidth/2 + _pOffset.dx;
-    result.origin.y = parentFrame.size.height/2 - newHeight/2 + _pOffset.dy;
-    result.size.width = newWidth;
-    result.size.height = newHeight;
-    
-    return result;
-}
-
-#pragma mark -
-
 - (void)initializePopup
 {
+    [self setWantsLayer:YES];
+    
     self.autoresizingMask = NSViewMaxXMargin | NSViewMaxYMargin | NSViewMinXMargin | NSViewMinYMargin;
     
     activityIndicator = [[DJActivityIndicator alloc] init];
     label = [[NSTextField alloc] init];
     
-
     [self addSubview:label];
     [self addSubview:activityIndicator];
     
     //----DEFAULT VALUES----
-    
-    _backgroundAlpha = 0.4;
     
     _pOffset = CGVectorMake(0, 0);
     _pAlpha = 0.9;
@@ -259,14 +155,14 @@ typedef void (^CompletionHander)(void);
     [label setEditable:NO];
     [label setSelectable:NO];
     
-    label.font = [NSFont systemFontOfSize:12];
+    label.font = [NSFont systemFontOfSize:13.0];
     [label setTextColor:[NSColor colorWithCalibratedWhite:1.0 alpha:0.85]];
 }
 
-+ (DJProgressHUD *) instance
++ (DJLayerView *) instance
 {
     static dispatch_once_t once;
-    static DJProgressHUD *sharedView;
+    static DJLayerView *sharedView;
     dispatch_once(&once, ^ {
         sharedView = [[self alloc] init];
         [sharedView initializePopup];

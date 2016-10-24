@@ -39,16 +39,26 @@ typedef void (^CompletionHander)(void);
     }
     
     parentView = view;
-    
     label.stringValue = status;
     
-    [self showViewAnimated];
+    if(!self.superview) {
+        [parentView addSubview:self];
+        _displaying = true;
+    }
+    
+    CGColorRef bgcolor = CGColorCreateGenericRGB(0.05, 0.05, 0.05, 0.8);
+    self.layer.backgroundColor = bgcolor;
+    self.layer.cornerRadius = 15.0;
+    
+    [self updateLayout];
+    NSRect size = [self getCenterWithinRect:parentView.frame scale:1.0];
+    [self setFrame:size];
+    //    [self setFrame:[self getCenterWithinRect:parentView.frame scale:1.0]];
     
     NSInteger interval = 2;
     if ([status length] >= 10) {
         interval = 10;
     }
-    
     [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(finishHideView) userInfo:nil repeats:NO];
 }
 
@@ -60,19 +70,6 @@ typedef void (^CompletionHander)(void);
     [self removeFromSuperview];
     parentView = nil;
     _displaying = false;
-}
-
-- (void)showViewAnimated
-{
-    [self updateLayout];
-    NSRect size = [self getCenterWithinRect:parentView.frame scale:1.0];
-    
-    if(!self.superview) [parentView addSubview:self];
-    [self setFrame:size];
-    
-    _displaying = true;
-    
-    [self setNeedsDisplay:TRUE];
 }
 
 #pragma mark -
@@ -117,8 +114,6 @@ typedef void (^CompletionHander)(void);
     pSize.height = iY+iH+_pPadding+spaceOnTop;//+(_pPadding/2);
     
     [self setAutoresizesSubviews:YES];
-    
-    [self setNeedsDisplay:TRUE];
 }
 
 #pragma mark -
@@ -154,16 +149,12 @@ typedef void (^CompletionHander)(void);
     return result;
 }
 
-- (void)drawRect:(NSRect)frame {
-    NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:frame xRadius:6.0 yRadius:6.0];
-    [[NSColor colorWithCalibratedWhite:0.0 alpha:0.75] set];
-    [path fill];
-}
-
 #pragma mark -
 
 - (void)initializePopup
 {
+    [self setWantsLayer:YES];
+    
     self.autoresizingMask = NSViewMaxXMargin | NSViewMaxYMargin | NSViewMinXMargin | NSViewMinYMargin;
     
     label = [[NSTextField alloc] init];
@@ -185,7 +176,7 @@ typedef void (^CompletionHander)(void);
     [label setEditable:NO];
     [label setSelectable:NO];
     
-    label.font = [NSFont systemFontOfSize:12.0];
+    label.font = [NSFont systemFontOfSize:13.0];
     [label setTextColor:[NSColor colorWithCalibratedWhite:1.0 alpha:0.85]];
 }
 

@@ -64,11 +64,11 @@ class SubmitWindowController: NSWindowController{
     
     func startLoadingTip(tip:String)
     {
-        DJProgressHUD.showStatus(tip, fromView: self.window?.contentView)
+        DJLayerView.showStatus(tip, fromView: self.window?.contentView)
     }
     
     func stopLoadingTip(){
-        DJProgressHUD.dismiss()
+        DJLayerView.dismiss()
     }
     
     func showTip(tip:String){
