@@ -23,21 +23,12 @@ class GlassView: NSView{
     
     func commonInit(){
         self.backgroundColor = NSColor.clearColor()
-
     }
     
     override func drawRect(dirtyRect: NSRect) {
         NSGraphicsContext.saveGraphicsState()
-        let bounds = self.bounds
-        var upperBounds = bounds
-        
-        upperBounds.size.height -= 10
-        upperBounds.origin.y += 10
-        
-        let borderPath = NSBezierPath(roundedRect: bounds, xRadius: 5, yRadius: 5)
-        borderPath.appendBezierPathWithRect(upperBounds)
         self.backgroundColor?.set()
-        borderPath.fill()
+        NSRectFill(dirtyRect)
         NSGraphicsContext.restoreGraphicsState()
     }
     
