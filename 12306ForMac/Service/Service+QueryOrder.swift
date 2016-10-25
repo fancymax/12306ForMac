@@ -12,7 +12,7 @@ import PromiseKit
 
 extension Service{
     
-    func queryHistoryOrderFlow(success success:()->(), failure:()->()){
+    func queryHistoryOrderFlow(success success:()->(), failure:(error:NSError)->()){
         self.queryOrderInit().then({()->Promise<Int> in
             MainModel.historyOrderList.removeAll()
             return self.queryMyOrderWithPageIndex(0)
@@ -58,8 +58,8 @@ extension Service{
             }
         }).then({_ in
             success()
-        }).error({_ in
-            failure()
+        }).error({error in
+            failure(error: error as NSError)
         })
     }
     
@@ -89,7 +89,8 @@ extension Service{
                     let jsonData = JSON(data)["data"]
                     let orderDBList = jsonData["OrderDTODataList"]
                     guard orderDBList.count > 0 else {
-                        reject(NSError(domain: "queryMyOrderWithPageIndex:", code: 0, userInfo: nil))
+                        let error = ServiceError.errorWithCode(.ZeroOrderFailed)
+                        reject(error)
                         return
                     }
                     let total = jsonData["order_total_number"].string

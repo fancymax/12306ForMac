@@ -581,7 +581,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FSF-1Q-g2J">
-                    <rect key="frame" x="816" y="-3" width="84" height="28"/>
+                    <rect key="frame" x="816" y="-2" width="84" height="28"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="8jc-vo-KYI"/>
                         <constraint firstAttribute="width" constant="80" id="aUA-lE-bMU"/>

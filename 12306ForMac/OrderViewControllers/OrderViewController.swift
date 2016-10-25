@@ -104,10 +104,11 @@ class OrderViewController: NSViewController{
             self.stopLoadingTip()
         }
         
-        let failureHandler = {
+        let failureHandler = {(error:NSError) -> () in
             self.stopLoadingTip()
+            self.showTip(translate(error))
         }
-        service.queryHistoryOrderFlow((success: successHandler, failure: failureHandler))
+        service.queryHistoryOrderFlow(success: successHandler, failure: failureHandler)
     }
     
     func queryAllOrder(){
