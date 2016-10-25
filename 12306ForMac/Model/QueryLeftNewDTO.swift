@@ -26,7 +26,15 @@ struct SeatTypePair:CustomDebugStringConvertible {
     }
 }
 
+enum TicketOrder:String {
+    case StartTime
+    case ArriveTime
+    case Lishi
+}
+
 class QueryLeftNewDTO:NSObject {
+
+    
 // MARK: JSON Property
     let train_no:String!
     let TrainCode:String!

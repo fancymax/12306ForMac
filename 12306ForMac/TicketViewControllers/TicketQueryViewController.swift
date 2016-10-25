@@ -57,7 +57,13 @@ class TicketQueryViewController: NSViewController {
         else {
             self.setQueryDateValue(QueryDefaultManager.sharedInstance.lastQueryDate)
         }
-
+        
+        let descriptorStartTime = NSSortDescriptor(key: TicketOrder.StartTime.rawValue, ascending: true)
+        let descriptorArriveTime = NSSortDescriptor(key: TicketOrder.ArriveTime.rawValue, ascending: true)
+        let descriptorLishi = NSSortDescriptor(key: TicketOrder.Lishi.rawValue, ascending: true)
+        leftTicketTable.tableColumns[1].sortDescriptorPrototype = descriptorStartTime
+        leftTicketTable.tableColumns[2].sortDescriptorPrototype = descriptorArriveTime
+        leftTicketTable.tableColumns[3].sortDescriptorPrototype = descriptorLishi
     }
     
 // MARK: - firstSearchView
@@ -295,6 +301,9 @@ class TicketQueryViewController: NSViewController {
     
     var date:String?
     
+    var ticketOrder:TicketOrder?
+    var ticketAscending:Bool?
+    
     var trainFilterKey = "" {
         didSet {
             if trainFilterKey == "" {
@@ -336,6 +345,30 @@ class TicketQueryViewController: NSViewController {
         }
     }
     
+    func ticketOrderedBy(tickets:[QueryLeftNewDTO], orderedBy:TicketOrder, ascending:Bool) -> [QueryLeftNewDTO] {
+        let sortedTickets:[QueryLeftNewDTO] = tickets.sort{
+            var isOriginAscending = true
+            switch orderedBy
+            {
+            case .StartTime:
+                isOriginAscending = $0.start_time < $1.start_time
+            case .ArriveTime:
+                isOriginAscending = $0.arrive_time < $1.arrive_time
+            case .Lishi:
+                isOriginAscending = $0.lishi < $1.lishi
+            }
+                
+            if ascending {
+                return isOriginAscending
+            }
+            else {
+                return !isOriginAscending
+            }
+        }
+        
+        return sortedTickets
+    }
+    
     func filterTrain(){
         trainFilterWindowController.trains = ticketQueryResult.filter({item in
             return !item.isTicketInvalid()
@@ -353,6 +386,11 @@ class TicketQueryViewController: NSViewController {
                     logger.info("trainFilterKey:\(self.trainFilterKey) seatFilterKey:\(self.seatFilterKey)")
                     
                     self.filterQueryResult = self.ticketQueryResult.filter({item in return self.trainFilterKey.containsString("|" + item.TrainCode! + "|")})
+                    
+                    if let ticketOrderX = self.ticketOrder, let ticketAscendingX = self.ticketAscending {
+                        self.filterQueryResult = self.ticketOrderedBy(self.filterQueryResult, orderedBy: ticketOrderX, ascending: ticketAscendingX)
+                    }
+                    
                     self.leftTicketTable.reloadData()
                     
                     if GeneralPreferenceManager.sharedInstance.isAutoQueryAfterFilter {
@@ -431,6 +469,10 @@ class TicketQueryViewController: NSViewController {
                 
                 return isReturn
             })
+            
+            if let ticketOrderX = self.ticketOrder, let ticketAscendingX = self.ticketAscending {
+                self.filterQueryResult = self.ticketOrderedBy(self.filterQueryResult, orderedBy: ticketOrderX, ascending: ticketAscendingX)
+            }
         
             self.leftTicketTable.reloadData()
             self.stopLoadingTip()
@@ -678,6 +720,19 @@ extension TicketQueryViewController: NSTableViewDataSource{
     
     func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
         return filterQueryResult[row]
+    }
+    
+    func tableView(tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
+        guard let sortDescriptor = tableView.sortDescriptors.first else {
+            return
+        }
+        
+        if let ticketOrder = TicketOrder(rawValue: sortDescriptor.key!) {
+            self.filterQueryResult = self.ticketOrderedBy(self.filterQueryResult, orderedBy: ticketOrder, ascending: sortDescriptor.ascending)
+            self.ticketOrder = ticketOrder
+            self.ticketAscending = sortDescriptor.ascending
+            self.leftTicketTable.reloadData()
+        }
     }
 }
 
