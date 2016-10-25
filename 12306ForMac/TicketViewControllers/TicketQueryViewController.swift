@@ -252,6 +252,19 @@ class TicketQueryViewController: NSViewController {
         }
     }
     
+    func passengerSelected(passenger:PassengerDTO) -> Bool{
+        for controller in passengerViewControllerList where controller.passenger == passenger{
+            return true
+        }
+        return false
+    }
+    
+    func checkPassenger(passenger:PassengerDTO){
+        for controller in passengerViewControllerList where controller.passenger == passenger{
+            controller.select()
+        }
+    }
+    
     @IBAction func clickAutoQuery(sender: NSButton) {
         if sender.state == NSOnState {
             if self.seatFilterKey == "" {
@@ -277,19 +290,6 @@ class TicketQueryViewController: NSViewController {
         
         passengersPopover.showRelativeToRect(positioningRect, ofView: positioningView, preferredEdge: preferredEdge)
         passengerSelectViewController.reloadPassenger(MainModel.passengers)
-    }
-    
-    func passengerSelected(passenger:PassengerDTO) -> Bool{
-        for controller in passengerViewControllerList where controller.passenger == passenger{
-            return true
-        }
-        return false
-    }
-    
-    func checkPassenger(passenger:PassengerDTO){
-        for controller in passengerViewControllerList where controller.passenger == passenger{
-            controller.select()
-        }
     }
     
 // MARK: - TicketTableView
@@ -410,11 +410,8 @@ class TicketQueryViewController: NSViewController {
             
             for ticket in self.filterQueryResult {
                 if ticket.hasTicketForSeatTypeFilterKey(self.seatFilterKey) {
-                    //停止查询
-                    self.repeatTimer?.invalidate()
-                    self.repeatTimer = nil
-                    self.hasAutoQuery = false
-                    self.autoSummit(ticket, seatTypeId: ticket.getSeatTypeNameByFilterKey(self.seatFilterKey)!)
+                    self.stopAutoQuery()
+                    self.summitTicket(ticket, seatTypeId: ticket.getSeatTypeNameByFilterKey(self.seatFilterKey)!,isAuto: true)
                     NotifySpeaker.sharedInstance.notify()
                     break;
                 }
@@ -488,17 +485,16 @@ class TicketQueryViewController: NSViewController {
         }
         
         let failureHandler = {(error:NSError)->() in
+            self.filterQueryResult = [QueryLeftNewDTO]()
+            self.leftTicketTable.reloadData()
+            
             self.stopLoadingTip()
             self.showTip(translate(error))
             
             self.canFilter = false
         }
         
-        self.filterQueryResult = [QueryLeftNewDTO]()
-        self.leftTicketTable.reloadData()
-        
         self.startLoadingTip("正在查询...")
-        
         self.date = date
         
         let fromStationCode = StationNameJs.sharedInstance.allStationMap[fromStation]?.Code
@@ -531,7 +527,7 @@ class TicketQueryViewController: NSViewController {
         }
     }
     
-    func autoSummit(ticket:QueryLeftNewDTO,seatTypeId:String){
+    func summitTicket(ticket:QueryLeftNewDTO,seatTypeId:String,isAuto:Bool){
         let notificationCenter = NSNotificationCenter.defaultCenter()
         
         if !MainModel.isGetUserInfo {
@@ -554,7 +550,12 @@ class TicketQueryViewController: NSViewController {
         let postSubmitWindowMessage = {
             self.stopLoadingTip()
             
-            notificationCenter.postNotificationName(DidSendAutoSubmitMessageNotification, object: nil)
+            if isAuto {
+                notificationCenter.postNotificationName(DidSendAutoSubmitMessageNotification, object: nil)
+            }
+            else {
+                notificationCenter.postNotificationName(DidSendSubmitMessageNotification, object: nil)
+            }
         }
         
         let failHandler = {(error:NSError)->() in
@@ -571,45 +572,12 @@ class TicketQueryViewController: NSViewController {
     }
     
     func clickSubmit(sender: NSButton){
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        
         self.stopAutoQuery()
-        
-        if !MainModel.isGetUserInfo {
-            notificationCenter.postNotificationName(DidSendLoginMessageNotification, object: nil)
-            return
-        }
-        
-        setSelectedPassenger()
-        
-        if MainModel.selectPassengers.count == 0 {
-            self.showTip("请先选择乘客")
-            return
-        }
-        
         let selectedRow = leftTicketTable.rowForView(sender)
-        MainModel.selectedTicket = filterQueryResult[selectedRow]
-        setSeatCodeForSelectedPassenger(MainModel.selectedTicket!.TrainCode ,seatCodeName: sender.identifier!)
+        let ticket = filterQueryResult[selectedRow]
+        let seatTypeId = sender.identifier!
         
-        self.startLoadingTip("正在提交...")
-        
-        let postSubmitWindowMessage = {
-            self.stopLoadingTip()
-            
-            notificationCenter.postNotificationName(DidSendSubmitMessageNotification, object: nil)
-        }
-        
-        let failHandler = {(error:NSError)->() in
-            self.stopLoadingTip()
-            
-            if error.code == ServiceError.Code.CheckUserFailed.rawValue {
-                notificationCenter.postNotificationName(DidSendLoginMessageNotification, object: nil)
-            }else{
-                self.showTip(translate(error))
-            }
-        }
-        
-        service.submitFlow(success: postSubmitWindowMessage, failure: failHandler)
+        self.summitTicket(ticket, seatTypeId: seatTypeId,isAuto: false)
     }
     
     func clickShowTrainDetail(sender:NSButton) {
