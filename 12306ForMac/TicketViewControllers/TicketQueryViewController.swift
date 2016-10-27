@@ -411,8 +411,15 @@ class TicketQueryViewController: NSViewController {
             for ticket in self.filterQueryResult {
                 if ticket.hasTicketForSeatTypeFilterKey(self.seatFilterKey) {
                     self.stopAutoQuery()
-                    self.summitTicket(ticket, seatTypeId: ticket.getSeatTypeNameByFilterKey(self.seatFilterKey)!,isAuto: true)
+                    
+                    let seatTypeId = ticket.getSeatTypeNameByFilterKey(self.seatFilterKey)!
+                    self.summitTicket(ticket, seatTypeId: seatTypeId,isAuto: true)
+                    
                     NotifySpeaker.sharedInstance.notify()
+                    
+                    let informativeText = "\(self.date!) \(self.fromStationNameTxt.stringValue)->\(self.toStationNameTxt.stringValue) \(seatTypeId)"
+                    self.pushUserNotification("有票提醒",informativeText: informativeText)
+                    
                     break;
                 }
             }
@@ -527,6 +534,18 @@ class TicketQueryViewController: NSViewController {
         }
     }
     
+    func pushUserNotification(title:String, informativeText:String){
+        let notification:NSUserNotification = NSUserNotification()
+        notification.title = title
+        notification.informativeText = informativeText
+        notification.deliveryDate = NSDate()
+        notification.soundName = NSUserNotificationDefaultSoundName
+        
+        let center = NSUserNotificationCenter.defaultUserNotificationCenter()
+        center.scheduleNotification(notification)
+        center.delegate = self
+    }
+    
     func summitTicket(ticket:QueryLeftNewDTO,seatTypeId:String,isAuto:Bool){
         let notificationCenter = NSNotificationCenter.defaultCenter()
         
@@ -572,7 +591,9 @@ class TicketQueryViewController: NSViewController {
     }
     
     func clickSubmit(sender: NSButton){
-        self.stopAutoQuery()
+        if hasAutoQuery {
+            self.stopAutoQuery()
+        }
         let selectedRow = leftTicketTable.rowForView(sender)
         let ticket = filterQueryResult[selectedRow]
         let seatTypeId = sender.identifier!
@@ -730,5 +751,14 @@ extension TicketQueryViewController: NSTableViewDelegate{
         
         return view
     }
+}
+
+// MARK: - NSUserNotificationCenterDelegate
+extension TicketQueryViewController:NSUserNotificationCenterDelegate {
     
+    func userNotificationCenter(center: NSUserNotificationCenter, didActivateNotification notification: NSUserNotification) {
+        self.view.window?.makeKeyAndOrderFront(nil)
+//        NSApp.activateIgnoringOtherApps(false)
+        center.removeDeliveredNotification(notification)
+    }
 }
