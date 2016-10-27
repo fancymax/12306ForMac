@@ -44,6 +44,15 @@ class TicketQueryViewController: NSViewController {
         filterCbx.hidden = true
         autoQueryNumTxt.hidden = true
         
+        let menu = NSMenu()
+        let item1 = NSMenuItem(title: "成人", action: #selector(TicketQueryViewController.clickTicketTypeSetting(_:)), keyEquivalent: "")
+        item1.target = self
+        let item2 = NSMenuItem(title: "学生", action: #selector(TicketQueryViewController.clickTicketTypeSetting(_:)), keyEquivalent: "")
+        item2.target = self
+        menu.addItem(item1)
+        menu.addItem(item2)
+        ticketTypePopupBtn.menu = menu
+        
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveCheckPassengerMessageNotification(_:)), name: DidSendCheckPassengerMessageNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveLogoutMessageNotification(_:)), name: DidSendLogoutMessageNotification, object: nil)
@@ -74,6 +83,7 @@ class TicketQueryViewController: NSViewController {
     @IBOutlet weak var converCityBtn: NSButton!
     @IBOutlet weak var dateStepper: NSStepper!
     @IBOutlet weak var autoQueryNumTxt: NSTextField!
+    @IBOutlet weak var ticketTypePopupBtn: NSPopUpButton!
     
     var autoQueryNum = 0
     var calendarPopover:NSPopover?
@@ -93,6 +103,15 @@ class TicketQueryViewController: NSViewController {
         
         self.queryDate.dateValue = trunkNextDate
         dateStepper.doubleValue = trunkNextDate.timeIntervalSinceDate(trunkOriginDate)/24/3600
+    }
+    
+    func clickTicketTypeSetting(item:NSMenuItem){
+//        NSDictionary *dic = [self getVideoModeDic];
+//        for (NSNumber* key in [dic allKeys]) {
+//            if ([[menuItem title]isEqualToString:[dic objectForKey:key]]) {
+//                [mediaItem_ setVRMode: (VR_MODE)[key integerValue]];
+//            }
+//        }
     }
     
     private func stopAutoQuery(){
