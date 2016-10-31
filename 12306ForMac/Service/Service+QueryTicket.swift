@@ -129,7 +129,19 @@ extension Service {
                             fulfill(tickets)
                         }
                         else{
-                            let error = ServiceError.errorWithCode(.QueryTicketFailed)
+                            let error:NSError
+                            let jsonMessage = JSON(data)["messages"]
+                            if jsonMessage.count != 0 {
+                                if let errorMessage = jsonMessage[0].string {
+                                    error = ServiceError.errorWithCode(.QueryTicketFailed, failureReason: errorMessage)
+                                }
+                                else {
+                                    error = ServiceError.errorWithCode(.QueryTicketFailed)
+                                }
+                            }
+                            else {
+                                error = ServiceError.errorWithCode(.QueryTicketFailed)
+                            }
                             reject(error)
                         }
                     }

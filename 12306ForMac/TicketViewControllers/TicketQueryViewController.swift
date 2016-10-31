@@ -88,6 +88,7 @@ class TicketQueryViewController: NSViewController {
     var autoQueryNum = 0
     var calendarPopover:NSPopover?
     var repeatTimer:NSTimer?
+    var ticketType:TicketType = .Normal
    
     private func getDateStr(date:NSDate) -> String{
         let dateDescription = date.description
@@ -106,12 +107,12 @@ class TicketQueryViewController: NSViewController {
     }
     
     func clickTicketTypeSetting(item:NSMenuItem){
-//        NSDictionary *dic = [self getVideoModeDic];
-//        for (NSNumber* key in [dic allKeys]) {
-//            if ([[menuItem title]isEqualToString:[dic objectForKey:key]]) {
-//                [mediaItem_ setVRMode: (VR_MODE)[key integerValue]];
-//            }
-//        }
+        if item.title == TicketType.Normal.description {
+            ticketType = .Normal
+        }
+        else {
+            ticketType = .Student
+        }
     }
     
     private func stopAutoQuery(){
@@ -529,7 +530,7 @@ class TicketQueryViewController: NSViewController {
         params.from_stationCode = fromStationCode!
         params.to_stationCode = toStationCode!
         params.train_date = date
-        params.purpose_codes = "ADULT"
+        params.purpose_codes = ticketType.rawValue
         
         service.queryTicketFlowWith(params, success: successHandler,failure: failureHandler)
     }
@@ -581,7 +582,7 @@ class TicketQueryViewController: NSViewController {
         }
         
         MainModel.selectedTicket = ticket
-        setSeatCodeForSelectedPassenger(MainModel.selectedTicket!.TrainCode! ,seatCodeName: seatTypeId)
+        setSeatCodeForSelectedPassenger(ticket.TrainCode ,seatCodeName: seatTypeId)
         
         self.startLoadingTip("正在提交...")
         
@@ -606,7 +607,8 @@ class TicketQueryViewController: NSViewController {
             }
         }
         
-        service.submitFlow(success: postSubmitWindowMessage, failure: failHandler)
+        let submitParams = SubmitOrderParams(with: ticket,purposeCode: self.ticketType.rawValue)
+        service.submitFlow(submitParams, success: postSubmitWindowMessage, failure: failHandler)
     }
     
     func clickSubmit(sender: NSButton){

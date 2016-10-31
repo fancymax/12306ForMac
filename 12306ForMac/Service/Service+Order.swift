@@ -13,9 +13,9 @@ import PromiseKit
 extension Service{
     
 // MARK: - Request Flow
-    func submitFlow(success success:() -> (),failure:(error:NSError)->()){
+    func submitFlow(params:SubmitOrderParams,success:() -> (),failure:(error:NSError)->()){
         self.checkUser().then({() ->Promise<Void> in
-            return self.submitOrderRequest()
+            return self.submitOrderRequest(params)
         }).then({_ in
             self.initDC()
         }).then({jsName->Promise<Void> in
@@ -133,21 +133,12 @@ extension Service{
         }
     }
     
-    func submitOrderRequest()->Promise<Void>{
+    func submitOrderRequest(params:SubmitOrderParams)->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/leftTicket/submitOrderRequest"
-            let params = [
-                "secretStr":MainModel.selectedTicket!.SecretStr!,
-                "train_date":MainModel.selectedTicket!.trainDateStr,//2015-11-17
-                "back_train_date":MainModel.selectedTicket!.trainDateStr,//2015-11-03
-                "tour_flag":"dc",
-                "purpose_codes":"ADULT",
-                "query_from_station_name":MainModel.selectedTicket!.FromStationName!,
-                "query_to_station_name":MainModel.selectedTicket!.ToStationName!,
-                "undefined":""]
-            
+
             let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
-            Service.Manager.request(.POST, url, parameters: params, headers:headers).responseJSON(completionHandler:{response in
+            Service.Manager.request(.POST, url, parameters: params.ToPostParams(), headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
                 case .Failure(let error):
                     reject(error)

@@ -120,8 +120,8 @@
                                                 <rect key="frame" x="84" y="1" width="125" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fsU-7y-O5J" userLabel="StartStation">
-                                                        <rect key="frame" x="0.0" y="21" width="43" height="17"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="fsU-7y-O5J" userLabel="StartStation">
+                                                        <rect key="frame" x="0.0" y="21" width="44" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="深圳北" id="MAF-Eo-3Is">
                                                             <font key="font" metaFont="systemLight" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -136,8 +136,8 @@
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField verticalHuggingPriority="749" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KXl-rV-WOi" userLabel="StartMark">
-                                                        <rect key="frame" x="40" y="21" width="24" height="14"/>
+                                                    <textField verticalHuggingPriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="KXl-rV-WOi" userLabel="StartMark">
+                                                        <rect key="frame" x="41" y="21" width="24" height="14"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" state="on" title="[始]" id="99N-WJ-Slu">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" white="0.0" alpha="0.45394320100000002" colorSpace="deviceWhite"/>
@@ -183,8 +183,8 @@
                                                 <rect key="frame" x="212" y="1" width="125" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cbJ-cj-6HW" userLabel="endStation">
-                                                        <rect key="frame" x="0.0" y="21" width="30" height="17"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="cbJ-cj-6HW" userLabel="endStation">
+                                                        <rect key="frame" x="0.0" y="21" width="31" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="福州" id="eaq-9t-hRq">
                                                             <font key="font" metaFont="systemLight" size="13"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -199,8 +199,8 @@
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="18A-nZ-Cd4" userLabel="endMark">
-                                                        <rect key="frame" x="27" y="21" width="24" height="14"/>
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="18A-nZ-Cd4" userLabel="endMark">
+                                                        <rect key="frame" x="28" y="21" width="24" height="14"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" state="on" title="[终]" id="b1A-Wy-b1x">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.45000000000000001" colorSpace="calibratedRGB"/>
@@ -277,8 +277,8 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView misplaced="YES" id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="订票助手" customModuleProvider="target">
-                                                <rect key="frame" x="453" y="1" width="997" height="63"/>
+                                            <tableCellView id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="订票助手" customModuleProvider="target">
+                                                <rect key="frame" x="453" y="1" width="1000" height="63"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oxk-Lo-fip">
@@ -627,17 +627,17 @@
                         <action selector="clickDateStepper:" target="-2" id="IYZ-EU-1U1"/>
                     </connections>
                 </stepper>
-                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="teM-1Q-tgM">
+                <popUpButton hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="teM-1Q-tgM">
                     <rect key="frame" x="666" y="-1" width="61" height="26"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="55" id="UXl-4V-5ye"/>
                     </constraints>
-                    <popUpButtonCell key="cell" type="push" title="成人" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" inset="2" pullsDown="YES" arrowPosition="arrowAtCenter" id="iwj-6s-dh7">
+                    <popUpButtonCell key="cell" type="push" title="成人" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" arrowPosition="arrowAtCenter" selectedItem="7FH-nN-BG4" id="iwj-6s-dh7">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" showsStateColumn="NO" id="4AS-tx-z4T">
                             <items>
-                                <menuItem title="成人" hidden="YES" id="7FH-nN-BG4">
+                                <menuItem title="成人" state="on" id="7FH-nN-BG4">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                 </menuItem>
                                 <menuItem title="学生" state="on" tag="1" indentationLevel="1" id="1W2-VB-wt7">

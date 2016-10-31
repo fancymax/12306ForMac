@@ -88,6 +88,7 @@
 		F1D575761C95541D00A214B0 /* TicketQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */; };
 		F1D575771C95541D00A214B0 /* TicketQueryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D575751C95541D00A214B0 /* TicketQueryViewController.xib */; };
 		F1D58E9D1D8A549200CD3DA7 /* Reverse.png in Resources */ = {isa = PBXBuildFile; fileRef = F1D58E9C1D8A549200CD3DA7 /* Reverse.png */; };
+		F1DDD8A61DC72ECF00879D44 /* SubmitOrderParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DDD8A51DC72ECF00879D44 /* SubmitOrderParams.swift */; };
 		F1F2F2AF1D598AB700EA7786 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F2F2A81D598AB700EA7786 /* MASPreferencesWindow.xib */; };
 		F1F2F2B01D598AB700EA7786 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F2AD1D598AB700EA7786 /* MASPreferencesWindowController.m */; };
 		F1F2F2C01D59AFB100EA7786 /* GeneralPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F2BE1D59AFB100EA7786 /* GeneralPreferenceViewController.swift */; };
@@ -204,6 +205,7 @@
 		F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketQueryViewController.swift; sourceTree = "<group>"; };
 		F1D575751C95541D00A214B0 /* TicketQueryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketQueryViewController.xib; sourceTree = "<group>"; };
 		F1D58E9C1D8A549200CD3DA7 /* Reverse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Reverse.png; path = 12306ForMac/images/Reverse.png; sourceTree = SOURCE_ROOT; };
+		F1DDD8A51DC72ECF00879D44 /* SubmitOrderParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitOrderParams.swift; sourceTree = "<group>"; };
 		F1E118EB1DAC8770003133C7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/MASPreferencesWindow.xib"; sourceTree = "<group>"; };
 		F1E118ED1DAC8981003133C7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "12306ForMac/zh-Hans.lproj/MainMenu.xib"; sourceTree = "<group>"; };
 		F1F2F2AA1D598AB700EA7786 /* MASPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferences.h; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 				F111546A1C8D921400FA6059 /* LeftTicketParam.swift */,
 				F11154701C8D921400FA6059 /* QueryOrderParam.swift */,
 				F1CCA2DA1D0D42D700B6853E /* QueryByTrainCodeParam.swift */,
+				F1DDD8A51DC72ECF00879D44 /* SubmitOrderParams.swift */,
 			);
 			name = Params;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				F11154801C8D923C00FA6059 /* SwiftyRegex.swift in Sources */,
 				F11154781C8D921400FA6059 /* QueryOrderParam.swift in Sources */,
 				F13E9C9A1D0AB3310011F7E2 /* TrainTableRowView.swift in Sources */,
+				F1DDD8A61DC72ECF00879D44 /* SubmitOrderParams.swift in Sources */,
 				F11154C81C8D92FC00FA6059 /* AppDelegate.swift in Sources */,
 				F111548E1C8D925200FA6059 /* AutoCompleteTextField.swift in Sources */,
 				F11154731C8D921400FA6059 /* MainModel.swift in Sources */,

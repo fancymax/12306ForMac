@@ -32,6 +32,20 @@ enum TicketOrder:String {
     case Lishi
 }
 
+enum TicketType:String,CustomStringConvertible {
+    case Student = "0X00"
+    case Normal = "ADULT"
+    
+    var description: String {
+        switch self {
+        case .Student:
+            return "学生"
+        case .Normal:
+            return "成人"
+        }
+    }
+}
+
 class QueryLeftNewDTO:NSObject {
 
     
