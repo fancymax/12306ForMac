@@ -25,10 +25,10 @@ class TrainCodeDetail: NSObject {
         stopover_time = json["stopover_time"].string
         isEnable = json["isEnabled"].boolValue
         if isEnable! {
-            textColor = NSColor.blackColor()
+            textColor = NSColor.black
         }
         else{
-            textColor = NSColor.grayColor()
+            textColor = NSColor.gray
         }
     }
     

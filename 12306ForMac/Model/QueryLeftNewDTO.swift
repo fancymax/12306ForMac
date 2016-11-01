@@ -64,13 +64,13 @@ class QueryLeftNewDTO:NSObject {
     let ToStationName:String?
     let ToStationCode:String?
     
-    let start_time:String?
-    let arrive_time:String?
+    let start_time:String!
+    let arrive_time:String!
     
     let day_difference:String?
     let train_class_name:String?
     //"12:01"
-    let lishi:String?
+    let lishi:String!
     //"Y"  "IS_TIME_NOT_BUY"预售期未到/系统维护时间
     let canWebBuy:String?
     //721
@@ -146,44 +146,44 @@ class QueryLeftNewDTO:NSObject {
     }
     
 //MARK: Train Date
-    var trainDate:NSDate!
+    var trainDate:Date!
 //    yyyy-MM-dd
     let trainDateStr:String
     
-    private func trainDateStr2Date(dateStr:String)->NSDate {
-        let dateFormatter = NSDateFormatter()
+    fileprivate func trainDateStr2Date(_ dateStr:String)->Date {
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        if let date = dateFormatter.dateFromString(dateStr) {
+        if let date = dateFormatter.date(from: dateStr) {
             return date
         }
         else {
             logger.error("trainDateStr2Date dateStr = \(dateStr)")
-            return NSDate()
+            return Date()
         }
     }
     
     //"Fri Dec 04 2015 08:00:00 GMT+0800 (中国标准时间)"
     var jsStartTrainDateStr:String!
-    private func getJsStartTrainDateStr(date:NSDate)->String {
-        let dateFormatter = NSDateFormatter()
+    fileprivate func getJsStartTrainDateStr(_ date:Date)->String {
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEE MMM dd yyyy '00:00:00' 'GMT'+'0800' '(CST)'"
-        dateFormatter.locale = NSLocale(localeIdentifier: "en-US")
-        return dateFormatter.stringFromDate(date)
+        dateFormatter.locale = Locale(identifier: "en-US")
+        return dateFormatter.string(from: date)
     }
     
 //MARK: Seat and Ticket
-    func hasTicketForSeatTypeFilterKey(key:String) -> Bool {
+    func hasTicketForSeatTypeFilterKey(_ key:String) -> Bool {
         for val in seatTypePairDic.values {
-            if ((key.containsString(val.id1))&&(val.number > 0)) {
+            if ((key.contains(val.id1))&&(val.number > 0)) {
                 return true
             }
         }
         return false
     }
     
-    func getSeatTypeNameByFilterKey(key:String) -> String? {
+    func getSeatTypeNameByFilterKey(_ key:String) -> String? {
         for val in seatTypePairDic.values {
-            if ((key.containsString(val.id1))&&(val.number > 0)) {
+            if ((key.contains(val.id1))&&(val.number > 0)) {
                 return val.id1
             }
         }
@@ -254,7 +254,7 @@ class QueryLeftNewDTO:NSObject {
         buttonTextInfo = json["buttonTextInfo"].string
         
         if SecretStr != nil{
-            SecretStr = SecretStr!.stringByRemovingPercentEncoding
+            SecretStr = SecretStr!.removingPercentEncoding
         }
         
         isStartStation = (FromStationCode == start_station_telecode)

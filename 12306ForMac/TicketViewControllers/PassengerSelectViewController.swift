@@ -16,29 +16,29 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: #selector(PassengerSelectViewController.receiveLogoutMessageNotification(_:)), name: DidSendLogoutMessageNotification, object: nil)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(PassengerSelectViewController.receiveLogoutMessageNotification(_:)), name: NSNotification.Name(rawValue: DidSendLogoutMessageNotification), object: nil)
     }
     
-    func reloadPassenger(passengersToShow:[PassengerDTO]){
+    func reloadPassenger(_ passengersToShow:[PassengerDTO]){
         self.passengers = passengersToShow
         self.passengerTable.reloadData()
     }
     
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+    func numberOfRows(in tableView: NSTableView) -> Int {
         return self.passengers.count
     }
     
-    func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
+    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         return self.passengers[row]
     }
     
-    func receiveLogoutMessageNotification(notification: NSNotification) {
+    func receiveLogoutMessageNotification(_ notification: Notification) {
         passengers.removeAll()
         passengerTable.reloadData()
     }
     
-    @IBAction func checkPassenger(sender:NSButton){
+    @IBAction func checkPassenger(_ sender:NSButton){
         if isMaxPassengerNumber(exclude:sender.title) {
             sender.state = NSOffState
             
@@ -52,8 +52,8 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
             return
         }
         
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.postNotificationName(DidSendCheckPassengerMessageNotification, object: sender.title)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.post(name: Notification.Name(rawValue: DidSendCheckPassengerMessageNotification), object: sender.title)
     }
     
     func isMaxPassengerNumber(exclude excludePassenger:String)->Bool {
@@ -72,12 +72,12 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
         }
     }
     
-    func tableView(tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+    func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
         return AutoCompleteTableRowView()
     }
     
     deinit{
-        let notificationCenter = NSNotificationCenter.defaultCenter()
+        let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self)
     }
     

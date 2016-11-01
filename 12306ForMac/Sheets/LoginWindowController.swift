@@ -37,12 +37,12 @@ class LoginWindowController: NSWindowController{
         loadImage()
     }
     
-    @IBAction func clickNextImage(sender: NSButton)
+    @IBAction func clickNextImage(_ sender: NSButton)
     {
         loadImage()
     }
     
-    @IBAction func clickOK(sender:AnyObject?){
+    @IBAction func clickOK(_ sender:AnyObject?){
         if userName.stringValue == "" || passWord.stringValue == "" {
             self.showTip("请先输入用户名和密码")
             return
@@ -63,7 +63,7 @@ class LoginWindowController: NSWindowController{
             self.isLogin = false
             self.stopLoadingTip()
             self.showTip(translate(error))
-            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector:#selector(LoginWindowController.handlerAfterFailure), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 1, target: self, selector:#selector(LoginWindowController.handlerAfterFailure), userInfo: nil, repeats: false)
         }
         
         let successHandler = {
@@ -71,24 +71,24 @@ class LoginWindowController: NSWindowController{
             self.showTip("登录成功")
             self.isLogin = false
             self.service.postMobileGetPassengerDTOs()
-            NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector:#selector(LoginWindowController.handlerAfterSuccess), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 0.5, target: self, selector:#selector(LoginWindowController.handlerAfterSuccess), userInfo: nil, repeats: false)
         }
         
         service.loginFlow(user: userName.stringValue, passWord: passWord.stringValue, randCodeStr: loginImage.randCodeStr!, success: successHandler, failure: failureHandler)
     }
     
-    @IBAction func clickCancel(button:NSButton){
+    @IBAction func clickCancel(_ button:NSButton){
         dismissWithModalResponse(NSModalResponseCancel)
     }
     
     
-    func showTip(tip:String)  {
-        DJTipHUD.showStatus(tip, fromView: self.window?.contentView)
+    func showTip(_ tip:String)  {
+        DJTipHUD.showStatus(tip, from: self.window?.contentView)
     }
     
-    func startLoadingTip(tip:String)
+    func startLoadingTip(_ tip:String)
     {
-        DJLayerView.showStatus(tip, fromView: self.window?.contentView)
+        DJLayerView.showStatus(tip, from: self.window?.contentView)
     }
     
     func stopLoadingTip(){
@@ -158,7 +158,7 @@ class LoginWindowController: NSWindowController{
         service.preLoginFlow(success: successHandler,failure: failureHandler)
     }
     
-    func dismissWithModalResponse(response:NSModalResponse)
+    func dismissWithModalResponse(_ response:NSModalResponse)
     {
         if window != nil {
             if window!.sheetParent != nil {
@@ -170,10 +170,10 @@ class LoginWindowController: NSWindowController{
 
 // MARK: - AutoCompleteTableViewDelegate
 extension LoginWindowController: AutoCompleteTableViewDelegate{
-    func textField(textField: NSTextField, completions words: [String], forPartialWordRange charRange: NSRange, indexOfSelectedItem index: Int) -> [String] {
+    func textField(_ textField: NSTextField, completions words: [String], forPartialWordRange charRange: NSRange, indexOfSelectedItem index: Int) -> [String] {
         var matches = [String]()
         for  user in self.users {
-            if let _ = user.name.rangeOfString(textField.stringValue, options: NSStringCompareOptions.AnchoredSearch)
+            if let _ = user.name.range(of: textField.stringValue, options: NSString.CompareOptions.anchored)
             {
                 matches.append(user.name)
             }
@@ -181,7 +181,7 @@ extension LoginWindowController: AutoCompleteTableViewDelegate{
         return matches
     }
     
-    func didSelectItem(selectedItem: String) {
+    func didSelectItem(_ selectedItem: String) {
         for  user in self.users where user.name == selectedItem {
             self.passWord.stringValue = user.password
         }

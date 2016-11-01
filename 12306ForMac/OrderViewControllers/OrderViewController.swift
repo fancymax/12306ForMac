@@ -21,8 +21,8 @@ class OrderViewController: NSViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: #selector(PassengerSelectViewController.receiveLogoutMessageNotification(_:)), name: DidSendLogoutMessageNotification, object: nil)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(PassengerSelectViewController.receiveLogoutMessageNotification(_:)), name: NSNotification.Name(rawValue: DidSendLogoutMessageNotification), object: nil)
     }
     
     override var nibName: String?{
@@ -35,39 +35,39 @@ class OrderViewController: NSViewController{
         }
     }
     
-    @IBAction func queryOrder(sender: NSButton) {
+    @IBAction func queryOrder(_ sender: NSButton) {
         queryAllOrder()
     }
     
-    func showTip(tip:String)  {
-        DJTipHUD.showStatus(tip, fromView: self.view)
+    func showTip(_ tip:String)  {
+        DJTipHUD.showStatus(tip, from: self.view)
     }
     
-    func startLoadingTip(tip:String)
+    func startLoadingTip(_ tip:String)
     {
-        DJLayerView.showStatus(tip, fromView: self.view)
+        DJLayerView.showStatus(tip, from: self.view)
     }
     
     func stopLoadingTip(){
         DJLayerView.dismiss()
     }
     
-    func receiveLogoutMessageNotification(notification: NSNotification) {
+    func receiveLogoutMessageNotification(_ notification: Notification) {
         MainModel.noCompleteOrderList.removeAll()
         self.orderList.removeAll()
         self.orderListTable.reloadData()
         self.hasOrder = false
     }
     
-    @IBAction func cancelOrder(sender: NSButton) {
+    @IBAction func cancelOrder(_ sender: NSButton) {
         let alert = NSAlert()
-        alert.alertStyle = NSAlertStyle.CriticalAlertStyle
+        alert.alertStyle = NSAlertStyle.critical
         alert.messageText = "您确认取消订单吗？"
         alert.informativeText = "一天内3次取消订单，当日将不能再网上购票。"
         
-        alert.addButtonWithTitle("确定")
-        alert.addButtonWithTitle("取消")
-        alert.beginSheetModalForWindow(self.view.window!, completionHandler: { reponse in
+        alert.addButton(withTitle: "确定")
+        alert.addButton(withTitle: "取消")
+        alert.beginSheetModal(for: self.view.window!, completionHandler: { reponse in
             if reponse == NSAlertFirstButtonReturn {
                 if let sequence_no = MainModel.noCompleteOrderList[0].sequence_no {
                     self.startLoadingTip("正在取消...")
@@ -90,15 +90,15 @@ class OrderViewController: NSViewController{
         })
     }
     
-    @IBAction func payOrder(sender: NSButton) {
-        NSWorkspace.sharedWorkspace().openURL(NSURL(string: "https://kyfw.12306.cn/otn/login/init")!)
+    @IBAction func payOrder(_ sender: NSButton) {
+        NSWorkspace.shared().open(URL(string: "https://kyfw.12306.cn/otn/login/init")!)
     }
     
     func queryHistoryOrder(){
         self.startLoadingTip("正在查询...")
         
         let successHandler = {
-            self.orderList.appendContentsOf(MainModel.historyOrderList)
+            self.orderList.append(contentsOf: MainModel.historyOrderList)
             self.orderListTable.reloadData()
             
             self.stopLoadingTip()
@@ -113,7 +113,7 @@ class OrderViewController: NSViewController{
     
     func queryAllOrder(){
         if !MainModel.isGetUserInfo {
-            NSNotificationCenter.defaultCenter().postNotificationName(DidSendLoginMessageNotification, object: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: DidSendLoginMessageNotification), object: nil)
             return
         }
         
@@ -149,11 +149,11 @@ class OrderViewController: NSViewController{
 
 // MARK: - NSTableViewDataSource for MenuList and OrderList
 extension OrderViewController: NSTableViewDataSource{
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+    func numberOfRows(in tableView: NSTableView) -> Int {
             return orderList.count
     }
     
-    func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
+    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
             return orderList[row]
     }
 }

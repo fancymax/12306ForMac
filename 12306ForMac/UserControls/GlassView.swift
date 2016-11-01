@@ -22,10 +22,10 @@ class GlassView: NSView{
     }
     
     func commonInit(){
-        self.backgroundColor = NSColor.clearColor()
+        self.backgroundColor = NSColor.clear
     }
     
-    override func drawRect(dirtyRect: NSRect) {
+    override func draw(_ dirtyRect: NSRect) {
         NSGraphicsContext.saveGraphicsState()
         self.backgroundColor?.set()
         NSRectFill(dirtyRect)

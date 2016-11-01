@@ -7,6 +7,17 @@
 //
 
 import Cocoa
+//fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+//  switch (lhs, rhs) {
+//  case let (l?, r?):
+//    return l < r
+//  case (nil, _?):
+//    return true
+//  default:
+//    return false
+//  }
+//}
+
 
 class TicketQueryViewController: NSViewController {
     @IBOutlet weak var stackContentView: NSStackView!
@@ -22,12 +33,12 @@ class TicketQueryViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.stackContentView.addView(firstSearchView, inGravity:.Top)
-        self.stackContentView.addView(secondSearchView, inGravity: .Top)
-        self.stackContentView.addView(ticketTableView, inGravity: .Top)
+        self.stackContentView.addView(firstSearchView, in:.top)
+        self.stackContentView.addView(secondSearchView, in: .top)
+        self.stackContentView.addView(ticketTableView, in: .top)
         
-        self.stackContentView.orientation = .Vertical
-        self.stackContentView.alignment = .CenterX
+        self.stackContentView.orientation = .vertical
+        self.stackContentView.alignment = .centerX
         self.stackContentView.spacing = 0
         
         self.fromStationNameTxt.tableViewDelegate = self
@@ -38,11 +49,11 @@ class TicketQueryViewController: NSViewController {
         
         passengerViewControllerList = [PassengerViewController]()
         
-        filterBtn.enabled = false
-        filterCbx.enabled = false
-        filterBtn.hidden = true
-        filterCbx.hidden = true
-        autoQueryNumTxt.hidden = true
+        filterBtn.isEnabled = false
+        filterCbx.isEnabled = false
+        filterBtn.isHidden = true
+        filterCbx.isHidden = true
+        autoQueryNumTxt.isHidden = true
         
         let menu = NSMenu()
         let item1 = NSMenuItem(title: "成人", action: #selector(TicketQueryViewController.clickTicketTypeSetting(_:)), keyEquivalent: "")
@@ -53,18 +64,18 @@ class TicketQueryViewController: NSViewController {
         menu.addItem(item2)
         ticketTypePopupBtn.menu = menu
         
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveCheckPassengerMessageNotification(_:)), name: DidSendCheckPassengerMessageNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveLogoutMessageNotification(_:)), name: DidSendLogoutMessageNotification, object: nil)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveCheckPassengerMessageNotification(_:)), name: NSNotification.Name(rawValue: DidSendCheckPassengerMessageNotification), object: nil)
+        notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveLogoutMessageNotification(_:)), name: NSNotification.Name(rawValue: DidSendLogoutMessageNotification), object: nil)
         
-        notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveDidSendSubmitMessageNotification(_:)), name: DidSendSubmitMessageNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveAutoSubmitMessageNotification(_:)), name: DidSendAutoSubmitMessageNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveDidSendSubmitMessageNotification(_:)), name: NSNotification.Name(rawValue: DidSendSubmitMessageNotification), object: nil)
+        notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveAutoSubmitMessageNotification(_:)), name: NSNotification.Name(rawValue: DidSendAutoSubmitMessageNotification), object: nil)
         
-        if QueryDefaultManager.sharedInstance.lastQueryDate.compare(NSDate()) == .OrderedAscending {
-            self.setQueryDateValue(LunarCalendarView.getMostAvailableDay())
+        if QueryDefaultManager.sharedInstance.lastQueryDate.compare(Date()) == .orderedAscending {
+            self.setQueryDateValue(LunarCalendarView.getMostAvailableDay() as Date)
         }
         else {
-            self.setQueryDateValue(QueryDefaultManager.sharedInstance.lastQueryDate)
+            self.setQueryDateValue(QueryDefaultManager.sharedInstance.lastQueryDate as Date)
         }
         
         let descriptorStartTime = NSSortDescriptor(key: TicketOrder.StartTime.rawValue, ascending: true)
@@ -87,26 +98,26 @@ class TicketQueryViewController: NSViewController {
     
     var autoQueryNum = 0
     var calendarPopover:NSPopover?
-    var repeatTimer:NSTimer?
+    var repeatTimer:Timer?
     var ticketType:TicketType = .Normal
    
-    private func getDateStr(date:NSDate) -> String{
+    fileprivate func getDateStr(_ date:Date) -> String{
         let dateDescription = date.description
-        let dateRange = dateDescription.rangeOfString(" ")
-        return dateDescription[dateDescription.startIndex..<dateRange!.startIndex]
+        let dateRange = dateDescription.range(of: " ")
+        return dateDescription[dateDescription.startIndex..<dateRange!.lowerBound]
     }
     
-    private func setQueryDateValue(date:NSDate) {
-        let calender = NSCalendar.currentCalendar()
-        calender.timeZone = NSTimeZone(abbreviation: "UTC")!
-        let trunkNextDate = calender.startOfDayForDate(date)
-        let trunkOriginDate = calender.startOfDayForDate(NSDate())
+    fileprivate func setQueryDateValue(_ date:Date) {
+        var calender = Calendar.current
+        calender.timeZone = TimeZone(abbreviation: "UTC")!
+        let trunkNextDate = calender.startOfDay(for: date)
+        let trunkOriginDate = calender.startOfDay(for: Date())
         
         self.queryDate.dateValue = trunkNextDate
-        dateStepper.doubleValue = trunkNextDate.timeIntervalSinceDate(trunkOriginDate)/24/3600
+        dateStepper.doubleValue = trunkNextDate.timeIntervalSince(trunkOriginDate)/24/3600
     }
     
-    func clickTicketTypeSetting(item:NSMenuItem){
+    func clickTicketTypeSetting(_ item:NSMenuItem){
         if item.title == TicketType.Normal.description {
             ticketType = .Normal
         }
@@ -115,27 +126,27 @@ class TicketQueryViewController: NSViewController {
         }
     }
     
-    private func stopAutoQuery(){
+    fileprivate func stopAutoQuery(){
         repeatTimer?.invalidate()
         repeatTimer = nil
         hasAutoQuery = false
     }
     
-    @IBAction func clickConvertCity(sender: NSButton) {
+    @IBAction func clickConvertCity(_ sender: NSButton) {
         let temp = self.fromStationNameTxt.stringValue
         self.fromStationNameTxt.stringValue = self.toStationNameTxt.stringValue
         self.toStationNameTxt.stringValue = temp
     }
     
-    @IBAction func clickDateStepper(sender: NSStepper) {
-        let date = NSDate(timeIntervalSinceNow: 3600*24*sender.doubleValue)
+    @IBAction func clickDateStepper(_ sender: NSStepper) {
+        let date = Date(timeIntervalSinceNow: 3600*24*sender.doubleValue)
         self.setQueryDateValue(date)
         
         autoQuery = false
         self.clickQueryTicket(nil)
     }
     
-    @IBAction func clickQueryTicket(sender: AnyObject?) {
+    @IBAction func clickQueryTicket(_ sender: AnyObject?) {
         
         if !StationNameJs.sharedInstance.allStationMap.keys.contains(self.fromStationNameTxt.stringValue) {
             return
@@ -160,9 +171,9 @@ class TicketQueryViewController: NSViewController {
         QueryDefaultManager.sharedInstance.lastQueryDate = queryDate.dateValue
         
         if autoQuery {
-            repeatTimer = NSTimer(timeInterval: Double(GeneralPreferenceManager.sharedInstance.autoQuerySeconds), target: self, selector: #selector(TicketQueryViewController.queryTicketAndSubmit), userInfo: nil, repeats: true)
+            repeatTimer = Timer(timeInterval: Double(GeneralPreferenceManager.sharedInstance.autoQuerySeconds), target: self, selector: #selector(TicketQueryViewController.queryTicketAndSubmit), userInfo: nil, repeats: true)
             repeatTimer?.fire()
-            NSRunLoop.currentRunLoop().addTimer(repeatTimer!, forMode: NSDefaultRunLoopMode)
+            RunLoop.current.add(repeatTimer!, forMode: RunLoopMode.defaultRunLoopMode)
             hasAutoQuery = true
         }
         else {
@@ -197,24 +208,24 @@ class TicketQueryViewController: NSViewController {
         didSet {
             if hasAutoQuery {
                 queryBtn.title = "停止抢票"
-                self.fromStationNameTxt.enabled = false
-                self.toStationNameTxt.enabled = false
-                self.converCityBtn.enabled = false
+                self.fromStationNameTxt.isEnabled = false
+                self.toStationNameTxt.isEnabled = false
+                self.converCityBtn.isEnabled = false
                 self.queryDate.clickable = false
-                filterCbx.enabled = false
-                self.dateStepper.enabled = false
+                filterCbx.isEnabled = false
+                self.dateStepper.isEnabled = false
             }
             else {
                 queryBtn.title = "开始抢票"
-                self.fromStationNameTxt.enabled = true
-                self.toStationNameTxt.enabled = true
+                self.fromStationNameTxt.isEnabled = true
+                self.toStationNameTxt.isEnabled = true
                 self.queryDate.clickable = true
-                self.converCityBtn.enabled = true
-                filterCbx.enabled = true
+                self.converCityBtn.isEnabled = true
+                filterCbx.isEnabled = true
                 if self.filterQueryResult.count > 0 {
                     canFilter = true
                 }
-                self.dateStepper.enabled = true
+                self.dateStepper.isEnabled = true
             }
         }
     }
@@ -222,27 +233,27 @@ class TicketQueryViewController: NSViewController {
     var canFilter = false {
         didSet {
             if canFilter {
-                filterBtn.hidden = false
-                filterCbx.hidden = false
-                filterBtn.enabled = true
-                filterCbx.enabled = true
+                filterBtn.isHidden = false
+                filterCbx.isHidden = false
+                filterBtn.isEnabled = true
+                filterCbx.isEnabled = true
             }
             else {
-                filterBtn.enabled = false
-                filterCbx.enabled = false
+                filterBtn.isEnabled = false
+                filterCbx.isEnabled = false
             }
         }
     }
     
     lazy var passengersPopover: NSPopover = {
         let popover = NSPopover()
-        popover.behavior = .Semitransient
+        popover.behavior = .semitransient
         popover.contentViewController = self.passengerSelectViewController
         return popover
     }()
     
-    func receiveCheckPassengerMessageNotification(notification: NSNotification) {
-        if !self.passengersPopover.shown {
+    func receiveCheckPassengerMessageNotification(_ notification: Notification) {
+        if !self.passengersPopover.isShown {
             return
         }
         
@@ -257,7 +268,7 @@ class TicketQueryViewController: NSViewController {
                     let p = PassengerViewController()
                     p.passenger = MainModel.passengers[i]
                     passengerViewControllerList.append(p)
-                    self.passengersView.addView(p.view, inGravity:.Top)
+                    self.passengersView.addView(p.view, in:.top)
                 }
                 
                 break
@@ -265,27 +276,27 @@ class TicketQueryViewController: NSViewController {
         }
     }
     
-    func receiveLogoutMessageNotification(notification: NSNotification) {
+    func receiveLogoutMessageNotification(_ notification: Notification) {
         passengerViewControllerList.removeAll()
         for view in passengersView.views{
             view.removeFromSuperview()
         }
     }
     
-    func passengerSelected(passenger:PassengerDTO) -> Bool{
+    func passengerSelected(_ passenger:PassengerDTO) -> Bool{
         for controller in passengerViewControllerList where controller.passenger == passenger{
             return true
         }
         return false
     }
     
-    func checkPassenger(passenger:PassengerDTO){
+    func checkPassenger(_ passenger:PassengerDTO){
         for controller in passengerViewControllerList where controller.passenger == passenger{
             controller.select()
         }
     }
     
-    @IBAction func clickAutoQuery(sender: NSButton) {
+    @IBAction func clickAutoQuery(_ sender: NSButton) {
         if sender.state == NSOnState {
             if self.seatFilterKey == "" {
                 self.filterTrain()
@@ -299,16 +310,16 @@ class TicketQueryViewController: NSViewController {
         }
     }
     
-    @IBAction func clickFilterTrain(sender: AnyObject) {
+    @IBAction func clickFilterTrain(_ sender: AnyObject) {
         self.filterTrain()
     }
     
-    @IBAction func clickAddPassenger(sender: NSButton) {
+    @IBAction func clickAddPassenger(_ sender: NSButton) {
         let positioningView = sender
         let positioningRect = NSZeroRect
-        let preferredEdge = NSRectEdge.MaxY
+        let preferredEdge = NSRectEdge.maxY
         
-        passengersPopover.showRelativeToRect(positioningRect, ofView: positioningView, preferredEdge: preferredEdge)
+        passengersPopover.show(relativeTo: positioningRect, of: positioningView, preferredEdge: preferredEdge)
         passengerSelectViewController.reloadPassenger(MainModel.passengers)
     }
     
@@ -340,20 +351,20 @@ class TicketQueryViewController: NSViewController {
     lazy var trainCodeDetailViewController:TrainCodeDetailViewController = TrainCodeDetailViewController()
     lazy var trainCodeDetailPopover: NSPopover = {
         let popover = NSPopover()
-        popover.behavior = .Semitransient
+        popover.behavior = .semitransient
         popover.contentViewController = self.trainCodeDetailViewController
         return popover
     }()
     
-    func receiveDidSendSubmitMessageNotification(note: NSNotification){
+    func receiveDidSendSubmitMessageNotification(_ note: Notification){
         openSubmitSheet(isAutoSubmit: false)
     }
     
-    func receiveAutoSubmitMessageNotification(note: NSNotification){
+    func receiveAutoSubmitMessageNotification(_ note: Notification){
         openSubmitSheet(isAutoSubmit: true)
     }
     
-    func openSubmitSheet(isAutoSubmit isAutoSubmit:Bool) {
+    func openSubmitSheet(isAutoSubmit:Bool) {
         submitWindowController = SubmitWindowController()
         submitWindowController.isAutoSubmit = isAutoSubmit
         if let window = self.view.window {
@@ -365,8 +376,8 @@ class TicketQueryViewController: NSViewController {
         }
     }
     
-    func ticketOrderedBy(tickets:[QueryLeftNewDTO], orderedBy:TicketOrder, ascending:Bool) -> [QueryLeftNewDTO] {
-        let sortedTickets:[QueryLeftNewDTO] = tickets.sort{
+    func ticketOrderedBy(_ tickets:[QueryLeftNewDTO], orderedBy:TicketOrder, ascending:Bool) -> [QueryLeftNewDTO] {
+        let sortedTickets:[QueryLeftNewDTO] = tickets.sorted{
             var isOriginAscending = true
             switch orderedBy
             {
@@ -405,7 +416,7 @@ class TicketQueryViewController: NSViewController {
                     self.seatFilterKey = self.trainFilterWindowController.seatFilterKey
                     logger.info("trainFilterKey:\(self.trainFilterKey) seatFilterKey:\(self.seatFilterKey)")
                     
-                    self.filterQueryResult = self.ticketQueryResult.filter({item in return self.trainFilterKey.containsString("|" + item.TrainCode! + "|")})
+                    self.filterQueryResult = self.ticketQueryResult.filter({item in return self.trainFilterKey.contains("|" + item.TrainCode! + "|")})
                     
                     if let ticketOrderX = self.ticketOrder, let ticketAscendingX = self.ticketAscending {
                         self.filterQueryResult = self.ticketOrderedBy(self.filterQueryResult, orderedBy: ticketOrderX, ascending: ticketAscendingX)
@@ -449,29 +460,29 @@ class TicketQueryViewController: NSViewController {
     
     func addAutoQueryNumStatus() {
         self.autoQueryNum += 1
-        self.autoQueryNumTxt.hidden = false
+        self.autoQueryNumTxt.isHidden = false
         self.autoQueryNumTxt.stringValue = "已查询\(self.autoQueryNum)次"
     }
     
     func resetAutoQueryNumStatus() {
         self.autoQueryNum = 0
-        self.autoQueryNumTxt.hidden = true
+        self.autoQueryNumTxt.isHidden = true
     }
     
-    func showTip(tip:String){
-        DJTipHUD.showStatus(tip, fromView: self.view)
+    func showTip(_ tip:String){
+        DJTipHUD.showStatus(tip, from: self.view)
     }
     
-    func startLoadingTip(tip:String)
+    func startLoadingTip(_ tip:String)
     {
-        DJLayerView.showStatus(tip, fromView: self.view)
+        DJLayerView.showStatus(tip, from: self.view)
     }
     
     func stopLoadingTip(){
         DJLayerView.dismiss()
     }
     
-    func queryLeftTicket(summitHandler:()->() = {}) {
+    func queryLeftTicket(_ summitHandler:@escaping ()->() = {}) {
         let fromStation = self.fromStationNameTxt.stringValue
         let toStation = self.toStationNameTxt.stringValue
         let date = getDateStr(queryDate.dateValue)
@@ -482,7 +493,7 @@ class TicketQueryViewController: NSViewController {
             self.filterQueryResult = self.ticketQueryResult.filter({item in
                 var isReturn = true
                 if self.trainFilterKey != "" {
-                    isReturn = self.trainFilterKey.containsString("|\(item.TrainCode)|")
+                    isReturn = self.trainFilterKey.contains("|\(item.TrainCode!)|")
                 }
                 if (item.isTicketInvalid()) && (!GeneralPreferenceManager.sharedInstance.isShowInvalidTicket) {
                     isReturn = false
@@ -547,30 +558,30 @@ class TicketQueryViewController: NSViewController {
         }
     }
     
-    func setSeatCodeForSelectedPassenger(trainCode:String, seatCodeName:String){
+    func setSeatCodeForSelectedPassenger(_ trainCode:String, seatCodeName:String){
         for passenger in MainModel.selectPassengers{
             passenger.seatCodeName = seatCodeName
             passenger.seatCode = QuerySeatTypeDicBy(trainCode)[seatCodeName]!
         }
     }
     
-    func pushUserNotification(title:String, informativeText:String){
+    func pushUserNotification(_ title:String, informativeText:String){
         let notification:NSUserNotification = NSUserNotification()
         notification.title = title
         notification.informativeText = informativeText
-        notification.deliveryDate = NSDate()
+        notification.deliveryDate = Date()
         notification.soundName = NSUserNotificationDefaultSoundName
         
-        let center = NSUserNotificationCenter.defaultUserNotificationCenter()
+        let center = NSUserNotificationCenter.default
         center.scheduleNotification(notification)
         center.delegate = self
     }
     
-    func summitTicket(ticket:QueryLeftNewDTO,seatTypeId:String,isAuto:Bool){
-        let notificationCenter = NSNotificationCenter.defaultCenter()
+    func summitTicket(_ ticket:QueryLeftNewDTO,seatTypeId:String,isAuto:Bool){
+        let notificationCenter = NotificationCenter.default
         
         if !MainModel.isGetUserInfo {
-            notificationCenter.postNotificationName(DidSendAutoLoginMessageNotification, object: nil)
+            notificationCenter.post(name: Notification.Name(rawValue: DidSendAutoLoginMessageNotification), object: nil)
             return
         }
         
@@ -590,18 +601,18 @@ class TicketQueryViewController: NSViewController {
             self.stopLoadingTip()
             
             if isAuto {
-                notificationCenter.postNotificationName(DidSendAutoSubmitMessageNotification, object: nil)
+                notificationCenter.post(name: Notification.Name(rawValue: DidSendAutoSubmitMessageNotification), object: nil)
             }
             else {
-                notificationCenter.postNotificationName(DidSendSubmitMessageNotification, object: nil)
+                notificationCenter.post(name: Notification.Name(rawValue: DidSendSubmitMessageNotification), object: nil)
             }
         }
         
         let failHandler = {(error:NSError)->() in
             self.stopLoadingTip()
             
-            if error.code == ServiceError.Code.CheckUserFailed.rawValue {
-                notificationCenter.postNotificationName(DidSendLoginMessageNotification, object: nil)
+            if error.code == ServiceError.Code.checkUserFailed.rawValue {
+                notificationCenter.post(name: Notification.Name(rawValue: DidSendLoginMessageNotification), object: nil)
             }else{
                 self.showTip(translate(error))
             }
@@ -611,22 +622,22 @@ class TicketQueryViewController: NSViewController {
         service.submitFlow(submitParams, success: postSubmitWindowMessage, failure: failHandler)
     }
     
-    func clickSubmit(sender: NSButton){
+    func clickSubmit(_ sender: NSButton){
         if hasAutoQuery {
             self.stopAutoQuery()
         }
-        let selectedRow = leftTicketTable.rowForView(sender)
+        let selectedRow = leftTicketTable.row(for: sender)
         let ticket = filterQueryResult[selectedRow]
         let seatTypeId = sender.identifier!
         
         self.summitTicket(ticket, seatTypeId: seatTypeId,isAuto: false)
     }
     
-    func clickShowTrainDetail(sender:NSButton) {
+    func clickShowTrainDetail(_ sender:NSButton) {
         let positioningView = sender
         let positioningRect = NSZeroRect
-        let preferredEdge = NSRectEdge.MaxX
-        trainCodeDetailPopover.showRelativeToRect(positioningRect, ofView: positioningView, preferredEdge: preferredEdge)
+        let preferredEdge = NSRectEdge.maxX
+        trainCodeDetailPopover.show(relativeTo: positioningRect, of: positioningView, preferredEdge: preferredEdge)
         
         let trainCode = sender.title
         var queryByTrainCodeParam = QueryByTrainCodeParam()
@@ -645,19 +656,19 @@ class TicketQueryViewController: NSViewController {
     }
     
     deinit{
-        let notificationCenter = NSNotificationCenter.defaultCenter()
+        let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self)
     }
 }
 
 // MARK: - AutoCompleteTableViewDelegate
 extension TicketQueryViewController: AutoCompleteTableViewDelegate{
-    func textField(textField: NSTextField, completions words: [String], forPartialWordRange charRange: NSRange, indexOfSelectedItem index: Int) -> [String] {
+    func textField(_ textField: NSTextField, completions words: [String], forPartialWordRange charRange: NSRange, indexOfSelectedItem index: Int) -> [String] {
         var matches = [String]()
         //先按简拼  再按全拼  并保留上一次的match
         for station in StationNameJs.sharedInstance.allStation
         {
-            if let _ = station.FirstLetter.rangeOfString(textField.stringValue, options: NSStringCompareOptions.AnchoredSearch)
+            if let _ = station.FirstLetter.range(of: textField.stringValue, options: NSString.CompareOptions.anchored)
             {
                 matches.append(station.Name)
             }
@@ -667,7 +678,7 @@ extension TicketQueryViewController: AutoCompleteTableViewDelegate{
         {
             for station in StationNameJs.sharedInstance.allStation
             {
-                if let _ = station.Spell.rangeOfString(textField.stringValue, options: NSStringCompareOptions.AnchoredSearch)
+                if let _ = station.Spell.range(of: textField.stringValue, options: NSString.CompareOptions.anchored)
                 {
                     matches.append(station.Name)
                 }
@@ -678,7 +689,7 @@ extension TicketQueryViewController: AutoCompleteTableViewDelegate{
         {
             for station in StationNameJs.sharedInstance.allStation
             {
-                if let _ = station.Name.rangeOfString(textField.stringValue, options: NSStringCompareOptions.AnchoredSearch)
+                if let _ = station.Name.range(of: textField.stringValue, options: NSString.CompareOptions.anchored)
                 {
                     matches.append(station.Name)
                 }
@@ -702,18 +713,18 @@ extension TicketQueryViewController: LunarCalendarViewDelegate{
             myPopover!.contentViewController = cp
             myPopover!.appearance = NSAppearance(named: "NSAppearanceNameAqua")
             myPopover!.animates = true
-            myPopover!.behavior = NSPopoverBehavior.Transient
+            myPopover!.behavior = NSPopoverBehavior.transient
         }
         self.calendarPopover = myPopover
     }
     
-    @IBAction func showCalendar(sender: AnyObject){
+    @IBAction func showCalendar(_ sender: AnyObject){
         self.createCalenderPopover()
         let cellRect = sender.bounds
-        self.calendarPopover?.showRelativeToRect(cellRect, ofView: sender as! NSView, preferredEdge: .MaxY)
+        self.calendarPopover?.show(relativeTo: cellRect!, of: sender as! NSView, preferredEdge: .maxY)
     }
     
-    func didSelectDate(selectedDate: NSDate) {
+    func didSelectDate(_ selectedDate: Date) {
         self.setQueryDateValue(selectedDate)
         self.calendarPopover?.close()
         
@@ -724,15 +735,15 @@ extension TicketQueryViewController: LunarCalendarViewDelegate{
 
 // MARK: - NSTableViewDataSource
 extension TicketQueryViewController: NSTableViewDataSource{
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+    func numberOfRows(in tableView: NSTableView) -> Int {
         return filterQueryResult.count
     }
     
-    func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
+    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         return filterQueryResult[row]
     }
     
-    func tableView(tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
+    func tableView(_ tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
         guard let sortDescriptor = tableView.sortDescriptors.first else {
             return
         }
@@ -748,12 +759,12 @@ extension TicketQueryViewController: NSTableViewDataSource{
 
 // MARK: - NSTableViewDelegate
 extension TicketQueryViewController: NSTableViewDelegate{
-    func tableView(tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
-        return tableView.makeViewWithIdentifier("row", owner: tableView) as? NSTableRowView
+    func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+        return tableView.make(withIdentifier: "row", owner: tableView) as? NSTableRowView
     }
     
-    func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let view = tableView.makeViewWithIdentifier(tableColumn!.identifier, owner: nil) as! NSTableCellView
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        let view = tableView.make(withIdentifier: tableColumn!.identifier, owner: nil) as! NSTableCellView
         
         let columnIdentifier = tableColumn!.identifier
         if(columnIdentifier == "余票信息"){
@@ -777,7 +788,7 @@ extension TicketQueryViewController: NSTableViewDelegate{
 // MARK: - NSUserNotificationCenterDelegate
 extension TicketQueryViewController:NSUserNotificationCenterDelegate {
     
-    func userNotificationCenter(center: NSUserNotificationCenter, didActivateNotification notification: NSUserNotification) {
+    func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
         self.view.window?.makeKeyAndOrderFront(nil)
 //        NSApp.activateIgnoringOtherApps(false)
         center.removeDeliveredNotification(notification)

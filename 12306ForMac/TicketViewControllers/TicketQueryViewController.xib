@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
+        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TicketQueryViewController" customModule="订票助手" customModuleProvider="target">
@@ -466,7 +467,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="mkA-fg-IPp">
-                        <rect key="frame" x="0.0" y="0.0" width="974" height="23"/>
+                        <rect key="frame" x="0.0" y="0.0" width="971" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
@@ -488,7 +489,7 @@
             <rect key="frame" x="0.0" y="0.0" width="910" height="40"/>
             <subviews>
                 <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-M1-vtw" customClass="ClickableDatePicker" customModule="订票助手" customModuleProvider="target">
-                    <rect key="frame" x="556" y="2" width="90" height="23"/>
+                    <rect key="frame" x="566" y="2" width="90" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="8Aa-Zv-hKL"/>
                         <constraint firstAttribute="width" constant="90" id="Vo0-fD-7UT"/>
@@ -570,7 +571,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9qi-Pb-rDH">
-                    <rect key="frame" x="486" y="2" width="64" height="20"/>
+                    <rect key="frame" x="496" y="2" width="64" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="BZV-gj-Tnd"/>
                         <constraint firstAttribute="width" constant="60" id="ps4-lC-VpX"/>
@@ -582,9 +583,8 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FSF-1Q-g2J">
-                    <rect key="frame" x="816" y="-2" width="84" height="28"/>
+                    <rect key="frame" x="816" y="-2" width="84" height="29"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="23" id="8jc-vo-KYI"/>
                         <constraint firstAttribute="width" constant="80" id="aUA-lE-bMU"/>
                     </constraints>
                     <buttonCell key="cell" type="bevel" title="开始查询" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Kd4-Y5-8Ly">
@@ -610,7 +610,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8dY-Wq-KeS">
-                    <rect key="frame" x="733" y="2" width="79" height="20"/>
+                    <rect key="frame" x="733" y="3" width="79" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="GOO-q1-Dwl"/>
                     </constraints>
@@ -621,14 +621,14 @@
                     </textFieldCell>
                 </textField>
                 <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JxS-Ab-P9F">
-                    <rect key="frame" x="645" y="1" width="19" height="27"/>
+                    <rect key="frame" x="655" y="1" width="19" height="27"/>
                     <stepperCell key="cell" continuous="YES" alignment="left" maxValue="59" id="yLD-vM-oFo"/>
                     <connections>
                         <action selector="clickDateStepper:" target="-2" id="IYZ-EU-1U1"/>
                     </connections>
                 </stepper>
                 <popUpButton hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="teM-1Q-tgM">
-                    <rect key="frame" x="666" y="-1" width="61" height="26"/>
+                    <rect key="frame" x="677" y="-1" width="60" height="26"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="55" id="UXl-4V-5ye"/>
                     </constraints>
@@ -661,8 +661,8 @@
                 <constraint firstItem="8dY-Wq-KeS" firstAttribute="centerY" secondItem="FSF-1Q-g2J" secondAttribute="centerY" id="bTI-cs-KDE"/>
                 <constraint firstItem="JxS-Ab-P9F" firstAttribute="centerY" secondItem="Be8-M1-vtw" secondAttribute="centerY" constant="-1" id="fOk-yn-ASR"/>
                 <constraint firstItem="l4y-Hd-FVf" firstAttribute="leading" secondItem="4N3-fA-XcK" secondAttribute="trailing" constant="8" symbolic="YES" id="g5Y-dJ-fb2"/>
-                <constraint firstItem="9qi-Pb-rDH" firstAttribute="leading" secondItem="l4y-Hd-FVf" secondAttribute="trailing" constant="65" id="gn5-kx-tix"/>
-                <constraint firstItem="FSF-1Q-g2J" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" id="hna-g5-nGb"/>
+                <constraint firstItem="9qi-Pb-rDH" firstAttribute="leading" secondItem="l4y-Hd-FVf" secondAttribute="trailing" constant="75" id="gn5-kx-tix"/>
+                <constraint firstItem="FSF-1Q-g2J" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" constant="-1" id="hna-g5-nGb"/>
                 <constraint firstItem="aQQ-8z-kIM" firstAttribute="centerY" secondItem="4jY-s2-8Ni" secondAttribute="centerY" id="jsi-Gf-Fmt"/>
                 <constraint firstItem="4N3-fA-XcK" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" id="nOH-lk-YH1"/>
                 <constraint firstAttribute="trailing" secondItem="FSF-1Q-g2J" secondAttribute="trailing" constant="12" id="nWj-B1-tRX"/>

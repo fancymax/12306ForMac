@@ -1,5 +1,5 @@
 framework module Alamofire {
-  umbrella header "Alamofire-umbrella.h"
+  umbrella header "Alamofire.h"
 
   export *
   module * { export * }

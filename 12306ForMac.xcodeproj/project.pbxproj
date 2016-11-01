@@ -21,7 +21,6 @@
 		F111547F1C8D923C00FA6059 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111547B1C8D923C00FA6059 /* SwiftyJSON.swift */; };
 		F11154801C8D923C00FA6059 /* SwiftyRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111547C1C8D923C00FA6059 /* SwiftyRegex.swift */; };
 		F11154811C8D923C00FA6059 /* QueryDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111547D1C8D923C00FA6059 /* QueryDefaultManager.swift */; };
-		F11154821C8D923C00FA6059 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111547E1C8D923C00FA6059 /* XCGLogger.swift */; };
 		F111548E1C8D925200FA6059 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154841C8D925200FA6059 /* AutoCompleteTextField.swift */; };
 		F11154901C8D925200FA6059 /* GlassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154861C8D925200FA6059 /* GlassView.swift */; };
 		F11154921C8D925200FA6059 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154881C8D925200FA6059 /* LoginButton.swift */; };
@@ -85,6 +84,8 @@
 		F1CCA2DB1D0D42D700B6853E /* QueryByTrainCodeParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCA2DA1D0D42D700B6853E /* QueryByTrainCodeParam.swift */; };
 		F1CCA2DE1D0D4A1400B6853E /* TrainCodeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCA2DD1D0D4A1400B6853E /* TrainCodeDetail.swift */; };
 		F1D390A41C8F177F000B3FD7 /* RandCodeImageView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D390A31C8F177F000B3FD7 /* RandCodeImageView2.swift */; };
+		F1D3FED71DC84892008638AE /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D3FED61DC84892008638AE /* XCGLogger.framework */; };
+		F1D3FED81DC84AFD008638AE /* XCGLogger.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D3FED61DC84892008638AE /* XCGLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F1D575761C95541D00A214B0 /* TicketQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */; };
 		F1D575771C95541D00A214B0 /* TicketQueryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D575751C95541D00A214B0 /* TicketQueryViewController.xib */; };
 		F1D58E9D1D8A549200CD3DA7 /* Reverse.png in Resources */ = {isa = PBXBuildFile; fileRef = F1D58E9C1D8A549200CD3DA7 /* Reverse.png */; };
@@ -111,6 +112,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F1D3FED81DC84AFD008638AE /* XCGLogger.framework in CopyFiles */,
 				F13D9A731DADCAF200A49F1A /* Alamofire.framework in CopyFiles */,
 				F13D9A741DADCAF200A49F1A /* FMDB.framework in CopyFiles */,
 				F13D9A751DADCAF200A49F1A /* OMGHTTPURLRQ.framework in CopyFiles */,
@@ -136,7 +138,6 @@
 		F111547B1C8D923C00FA6059 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		F111547C1C8D923C00FA6059 /* SwiftyRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyRegex.swift; sourceTree = "<group>"; };
 		F111547D1C8D923C00FA6059 /* QueryDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueryDefaultManager.swift; path = ../Utilities/QueryDefaultManager.swift; sourceTree = "<group>"; };
-		F111547E1C8D923C00FA6059 /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCGLogger.swift; sourceTree = "<group>"; };
 		F11154841C8D925200FA6059 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		F11154861C8D925200FA6059 /* GlassView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlassView.swift; sourceTree = "<group>"; };
 		F11154881C8D925200FA6059 /* LoginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
@@ -202,6 +203,7 @@
 		F1CCA2DA1D0D42D700B6853E /* QueryByTrainCodeParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryByTrainCodeParam.swift; sourceTree = "<group>"; };
 		F1CCA2DD1D0D4A1400B6853E /* TrainCodeDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainCodeDetail.swift; sourceTree = "<group>"; };
 		F1D390A31C8F177F000B3FD7 /* RandCodeImageView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandCodeImageView2.swift; sourceTree = "<group>"; };
+		F1D3FED61DC84892008638AE /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = Frameworks/XCGLogger.framework; sourceTree = "<group>"; };
 		F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketQueryViewController.swift; sourceTree = "<group>"; };
 		F1D575751C95541D00A214B0 /* TicketQueryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketQueryViewController.xib; sourceTree = "<group>"; };
 		F1D58E9C1D8A549200CD3DA7 /* Reverse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Reverse.png; path = 12306ForMac/images/Reverse.png; sourceTree = SOURCE_ROOT; };
@@ -230,6 +232,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1D3FED71DC84892008638AE /* XCGLogger.framework in Frameworks */,
 				F13D9A6E1DADC8E800A49F1A /* Alamofire.framework in Frameworks */,
 				F13D9A6F1DADC8E800A49F1A /* FMDB.framework in Frameworks */,
 				F13D9A701DADC8E800A49F1A /* OMGHTTPURLRQ.framework in Frameworks */,
@@ -243,6 +246,7 @@
 		7EE5AE4095B588D2CBD04072 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1D3FED61DC84892008638AE /* XCGLogger.framework */,
 				F13D9A6A1DADC8E800A49F1A /* Alamofire.framework */,
 				F13D9A6B1DADC8E800A49F1A /* FMDB.framework */,
 				F13D9A6C1DADC8E800A49F1A /* OMGHTTPURLRQ.framework */,
@@ -309,7 +313,6 @@
 			children = (
 				F111547B1C8D923C00FA6059 /* SwiftyJSON.swift */,
 				F111547C1C8D923C00FA6059 /* SwiftyRegex.swift */,
-				F111547E1C8D923C00FA6059 /* XCGLogger.swift */,
 				F1FEE7A11D8D464900B02C84 /* NotifySpeaker.swift */,
 			);
 			name = Utilities;
@@ -530,12 +533,13 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = fancy;
 				TargetAttributes = {
 					F11EB4591B6A368E000063E4 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = B88D2XN634;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -657,7 +661,6 @@
 				F113B4F81C8FBA2E0001AE09 /* ServiceError.swift in Sources */,
 				F11154B01C8D92C100FA6059 /* OrderViewController.swift in Sources */,
 				F1F5CE0F1CA9431D005C33BD /* SeatTypeModel.swift in Sources */,
-				F11154821C8D923C00FA6059 /* XCGLogger.swift in Sources */,
 				F1CCA2D81D0D3DFA00B6853E /* TrainCodeDetailViewController.swift in Sources */,
 				F1F2F2C41D59BEE800EA7786 /* AdvancedPreferenceViewController.swift in Sources */,
 				F1F2F2D01D5AB8F700EA7786 /* Dama.swift in Sources */,
@@ -701,8 +704,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -747,8 +752,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -768,6 +775,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -796,6 +804,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "12306ForMac-Bridging-Header.h";
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "12306ForMac-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -822,6 +831,7 @@
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "12306ForMac-Bridging-Header.h";
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "12306ForMac-Swift.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

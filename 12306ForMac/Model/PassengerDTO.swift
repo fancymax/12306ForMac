@@ -43,16 +43,6 @@ class PassengerDTO:NSObject {
     var ticketCodeName = "成人票";
     
     
-    //测试方法
-    override init(){
-        isChecked = false
-        
-        let x=random()%5
-        let nameArr = ["lin1","lin2","lin3","lin4","lin5"]
-        passenger_name = nameArr[x]
-        
-    }
-    
     init(json:JSON)
     {
         isChecked = false

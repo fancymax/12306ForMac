@@ -31,18 +31,18 @@ class MainModel{
     static var historyOrderList:[OrderDTO] = []
     static var noCompleteOrderList:[OrderDTO] = []
     
-    static func ticketPriceBy(indentifier:String, ticketPriceInfo:String?, seatTypes: String?) -> Double{
+    static func ticketPriceBy(_ indentifier:String, ticketPriceInfo:String?, seatTypes: String?) -> Double{
         if let ticketInfo = ticketPriceInfo {
             var start = ticketInfo.startIndex
-            var end = start.advancedBy(5)
+            var end = ticketInfo.index(start, offsetBy: 5)
             for seatType in seatTypes!.characters{
                 if seatType == indentifier.characters[indentifier.startIndex] {
                     break;
                 }
-                start = start.advancedBy(10)
-                end = start.advancedBy(5)
+                start = ticketInfo.index(start, offsetBy: 10)
+                end = ticketInfo.index(start, offsetBy: 5)
             }
-            let priceStr = ticketInfo.substringWithRange(Range(start.advancedBy(1)..<end.advancedBy(1)))
+            let priceStr = ticketInfo.substring(with: Range(ticketInfo.index(start, offsetBy: 1)..<ticketInfo.index(end, offsetBy: 1)))
             let price = Double(priceStr)! / 10
             return price
         }

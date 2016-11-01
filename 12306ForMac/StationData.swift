@@ -21,7 +21,7 @@ struct Station {
 
 // "https://kyfw.12306.cn/otn/resources/js/framework/station_name.js"
 class StationNameJs{
-    private static let sharedManager = StationNameJs()
+    fileprivate static let sharedManager = StationNameJs()
     class var sharedInstance: StationNameJs {
         return sharedManager
     }
@@ -30,13 +30,13 @@ class StationNameJs{
     
     var allStationMap:[String:Station]
     
-    private init()
+    fileprivate init()
     {
         self.allStation = [Station]()
         self.allStationMap = [String:Station]()
         
-        let path = NSBundle.mainBundle().pathForResource("station_name", ofType: "js")
-        let stationInfo = try! NSString(contentsOfFile: path!, encoding: NSUTF8StringEncoding) as String
+        let path = Bundle.main.path(forResource: "station_name", ofType: "js")
+        let stationInfo = try! NSString(contentsOfFile: path!, encoding: String.Encoding.utf8.rawValue) as String
         
         if let matches = Regex("@[a-z]+\\|([^\\|]+)\\|([a-z]+)\\|([a-z]+)\\|([a-z]+)\\|").getMatches(stationInfo)
         {

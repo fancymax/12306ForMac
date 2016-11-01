@@ -20,13 +20,14 @@ Mac版12306 订票/捡票 助手。
 ![demo](screenshot/12306ForMac.png)
 
 #开发
-1. OS X 10.11.*
-2. Xcode 7.3.*
-3. Swift 2.2
-4. 复制项目：$ git clone --recursive https://github.com/fancymax/12306ForMac.git
+1. OS X 10.12
+2. Xcode 8.0
+3. Swift 3
+4. 复制项目：$ git clone --recursive https://github.com/fancymax/12306ForMac.git 
 
-**为了简单起见，移除了CocoaPods管理方式，直接下载项目即可编译**
+**为了简单起见，移除了CocoaPods管理方式，直接下载项目即可编译** 
 
+[Swift2.2](https://github.com/fancymax/12306ForMac/releases/tag/1.2)
 
 #感谢
 本项目基于 Alamofire、PromiseKit、FMDB、MASPreferences等进行开发，在此表示感谢。

@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController" customModule="订票助手" customModuleProvider="target">
@@ -19,7 +20,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="131" y="165" width="910" height="710"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
             <value key="minSize" type="size" width="910" height="710"/>
             <view key="contentView" id="agO-Wm-PyO">
                 <rect key="frame" x="0.0" y="0.0" width="910" height="710"/>
@@ -31,8 +32,8 @@
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Ohx-oh-1KW"/>
                     <toolbarItem implicitItemIdentifier="01F497D4-9C00-4CD2-B9F2-930F9A3B47B8" label="Module" paletteLabel="Module" id="Scw-2a-OOb">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="95" height="24"/>
-                        <size key="maxSize" width="123" height="25"/>
+                        <size key="minSize" width="125" height="25"/>
+                        <size key="maxSize" width="125" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="vCj-83-Jcy">
                             <rect key="frame" x="0.0" y="14" width="123" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>

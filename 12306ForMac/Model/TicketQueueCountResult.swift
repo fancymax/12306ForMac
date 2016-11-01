@@ -28,7 +28,7 @@ class TicketQueueCountResult{
     }
     
     func shouldRelogin()->Bool {
-        if let reloginStr = isRelogin where reloginStr == "Y" {
+        if let reloginStr = isRelogin , reloginStr == "Y" {
             return true;
         }
         else {
@@ -37,7 +37,7 @@ class TicketQueueCountResult{
     }
     
     func isTicketSoldOut() -> Bool {
-        if let status = op_2 where status == "true" {
+        if let status = op_2 , status == "true" {
             return true;
         }
         else {
@@ -45,7 +45,7 @@ class TicketQueueCountResult{
         }
     }
     
-    func getWarningInfoBy(seatCodeName:String,trainCode:String) -> String {
+    func getWarningInfoBy(_ seatCodeName:String,trainCode:String) -> String {
         var warningStr = ""
         if let yp_info = ticket {
             let seatInfos = getSeatInfosFrom(yp_info: yp_info, trainCode: trainCode)
@@ -53,11 +53,11 @@ class TicketQueueCountResult{
                 warningStr += "本次列车 剩余\(seatCodeName) \(seatTypePair.number) 张"
             }
         }
-        if let status = op_2 where status == "true" {
+        if let status = op_2 , status == "true" {
             warningStr += ",目前排队人数已经超过余票张数，请您选择其他席别或车次"
         }
         else {
-            if let queueNum = countT where queueNum != "0" {
+            if let queueNum = countT , queueNum != "0" {
                 warningStr += ",目前排队人数 \(queueNum)"
             }
         }

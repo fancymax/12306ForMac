@@ -10,7 +10,7 @@ import Cocoa
 
 class URLButton: NSButton {
 
-    private var hovered: Bool = false
+    fileprivate var hovered: Bool = false
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -28,39 +28,39 @@ class URLButton: NSButton {
         self.hovered = false
     }
     
-    private var trackingArea: NSTrackingArea!
+    fileprivate var trackingArea: NSTrackingArea!
     func createTrackingArea(){
         if(self.trackingArea != nil){
             self.removeTrackingArea(self.trackingArea!)
         }
         let circleRect = self.bounds
-        let flag = NSTrackingAreaOptions.MouseEnteredAndExited.rawValue + NSTrackingAreaOptions.ActiveInActiveApp.rawValue
+        let flag = NSTrackingAreaOptions.mouseEnteredAndExited.rawValue + NSTrackingAreaOptions.activeInActiveApp.rawValue
         self.trackingArea = NSTrackingArea(rect: circleRect, options: NSTrackingAreaOptions(rawValue: flag), owner: self, userInfo: nil)
         self.addTrackingArea(self.trackingArea)
     }
     
-    override func mouseEntered(theEvent: NSEvent) {
+    override func mouseEntered(with theEvent: NSEvent) {
         self.hovered = true
         self.needsDisplay = true
     }
     
-    override func mouseExited(theEvent: NSEvent) {
+    override func mouseExited(with theEvent: NSEvent) {
         self.hovered = false
         self.needsDisplay = true
     }
     
     override func resetCursorRects() {
         super.resetCursorRects()
-        self.addCursorRect(self.bounds, cursor: NSCursor.pointingHandCursor())
+        self.addCursorRect(self.bounds, cursor: NSCursor.pointingHand())
     }
     
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
         
         if (hovered){
             let bottomLine = NSBezierPath()
-            bottomLine.moveToPoint(NSMakePoint(NSMinX(bounds), NSMaxY(bounds)))
-            bottomLine.lineToPoint(NSMakePoint(NSMaxX(bounds), NSMaxY(bounds)))
+            bottomLine.move(to: NSMakePoint(NSMinX(bounds), NSMaxY(bounds)))
+            bottomLine.line(to: NSMakePoint(NSMaxX(bounds), NSMaxY(bounds)))
             bottomLine.lineWidth = 2.0
             bottomLine.stroke()
         }

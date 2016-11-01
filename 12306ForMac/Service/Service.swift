@@ -12,10 +12,10 @@ import PromiseKit
 
 class Service {
     
-    static var Manager : Alamofire.Manager = {
+    static var Manager : Alamofire.SessionManager = {
         // Create the server trust policies
-        let serverTrustPolicies: [String: ServerTrustPolicy] = ["kyfw.12306.cn": ServerTrustPolicy.PinCertificates(
-                certificates:ServerTrustPolicy.certificatesInBundle(),
+        let serverTrustPolicies: [String: ServerTrustPolicy] = ["kyfw.12306.cn": ServerTrustPolicy.pinCertificates(
+                certificates:ServerTrustPolicy.certificates(),
                 validateCertificateChain: true,
                 validateHost: true)]
         
@@ -25,24 +25,24 @@ class Service {
             "Host": "kyfw.12306.cn",
             "User-Agent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:36.0) Gecko/20100101 Firefox/36.0",
             "Connection" : "keep-alive"]
-        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let configuration = URLSessionConfiguration.default
         
-        configuration.HTTPCookieAcceptPolicy = .Always
-        configuration.HTTPAdditionalHeaders = headers
+        configuration.httpCookieAcceptPolicy = .always
+        configuration.httpAdditionalHeaders = headers
         configuration.timeoutIntervalForRequest = 5
         
-        let manager = Alamofire.Manager(
+        let manager = Alamofire.SessionManager(
             configuration: configuration,
             serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
         )
         return manager
     }()
 
-    func requestDynamicJs(jsName:String,referHeader:[String:String])->Promise<Void>{
+    func requestDynamicJs(_ jsName:String,referHeader:[String:String])->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/dynamicJs/" + jsName
             Service.Manager
-                .request(.GET, url, headers:referHeader)
+                .request(url, headers:referHeader)
                 .response(completionHandler:{
                     _ in fulfill()
             })
