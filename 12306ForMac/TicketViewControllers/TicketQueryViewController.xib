@@ -23,7 +23,6 @@
                 <outlet property="secondSearchView" destination="Dhy-j5-W4F" id="OyI-vg-5xp"/>
                 <outlet property="stackContentView" destination="Q3P-1n-q0W" id="6aq-aD-dmW"/>
                 <outlet property="ticketTableView" destination="Pvh-ix-iH6" id="uEg-pc-6BX"/>
-                <outlet property="ticketTypePopupBtn" destination="teM-1Q-tgM" id="aEg-8V-z4p"/>
                 <outlet property="toStationNameTxt" destination="l4y-Hd-FVf" id="FLJ-dr-euc"/>
                 <outlet property="view" destination="lnD-vo-KnU" id="OQJ-lR-XIC"/>
             </connections>
@@ -50,13 +49,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="42" horizontalPageScroll="10" verticalLineScroll="42" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2Q-9N-qwe">
-                    <rect key="frame" x="12" y="20" width="971" height="510"/>
+                    <rect key="frame" x="12" y="0.0" width="971" height="530"/>
                     <clipView key="contentView" drawsBackground="NO" id="aFD-Ax-dxk">
-                        <rect key="frame" x="0.0" y="0.0" width="971" height="510"/>
+                        <rect key="frame" x="0.0" y="0.0" width="971" height="530"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" headerView="mkA-fg-IPp" viewBased="YES" id="vdR-Hc-SYr">
-                                <rect key="frame" x="0.0" y="0.0" width="971" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="971" height="507"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
@@ -473,7 +472,7 @@
                 </scrollView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="J2Q-9N-qwe" secondAttribute="bottom" constant="20" id="Moa-BF-6TC"/>
+                <constraint firstAttribute="bottom" secondItem="J2Q-9N-qwe" secondAttribute="bottom" id="Moa-BF-6TC"/>
                 <constraint firstAttribute="trailing" secondItem="J2Q-9N-qwe" secondAttribute="trailing" constant="12" id="Ybe-DQ-COj"/>
                 <constraint firstItem="J2Q-9N-qwe" firstAttribute="top" secondItem="Pvh-ix-iH6" secondAttribute="top" id="se6-fw-bcZ"/>
                 <constraint firstItem="J2Q-9N-qwe" firstAttribute="leading" secondItem="Pvh-ix-iH6" secondAttribute="leading" constant="12" id="tvB-Wz-u0e"/>
@@ -627,35 +626,13 @@
                         <action selector="clickDateStepper:" target="-2" id="IYZ-EU-1U1"/>
                     </connections>
                 </stepper>
-                <popUpButton hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="teM-1Q-tgM">
-                    <rect key="frame" x="677" y="-1" width="60" height="26"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="55" id="UXl-4V-5ye"/>
-                    </constraints>
-                    <popUpButtonCell key="cell" type="push" title="成人" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" arrowPosition="arrowAtCenter" selectedItem="7FH-nN-BG4" id="iwj-6s-dh7">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
-                        <menu key="menu" showsStateColumn="NO" id="4AS-tx-z4T">
-                            <items>
-                                <menuItem title="成人" state="on" id="7FH-nN-BG4">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="学生" state="on" tag="1" indentationLevel="1" id="1W2-VB-wt7">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
             </subviews>
             <constraints>
                 <constraint firstItem="Be8-M1-vtw" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" constant="-1" id="1Wa-9a-0N4"/>
-                <constraint firstItem="teM-1Q-tgM" firstAttribute="leading" secondItem="JxS-Ab-P9F" secondAttribute="trailing" constant="8" symbolic="YES" id="22U-81-SeR"/>
                 <constraint firstItem="FSF-1Q-g2J" firstAttribute="leading" secondItem="8dY-Wq-KeS" secondAttribute="trailing" constant="8" id="26i-g8-uui"/>
                 <constraint firstItem="amu-Qj-Yha" firstAttribute="leading" secondItem="Pal-9i-ZzT" secondAttribute="leading" constant="12" id="40s-Lm-XYb"/>
                 <constraint firstItem="9qi-Pb-rDH" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" id="4ba-wR-dfD"/>
                 <constraint firstItem="4N3-fA-XcK" firstAttribute="leading" secondItem="4jY-s2-8Ni" secondAttribute="trailing" constant="75" id="KY1-vl-Xct"/>
-                <constraint firstItem="teM-1Q-tgM" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" id="McA-S7-4bp"/>
                 <constraint firstItem="Be8-M1-vtw" firstAttribute="leading" secondItem="9qi-Pb-rDH" secondAttribute="trailing" constant="8" symbolic="YES" id="W29-IO-jZp"/>
                 <constraint firstItem="aQQ-8z-kIM" firstAttribute="leading" secondItem="4jY-s2-8Ni" secondAttribute="trailing" constant="13" id="YRK-jK-KDy"/>
                 <constraint firstItem="8dY-Wq-KeS" firstAttribute="centerY" secondItem="FSF-1Q-g2J" secondAttribute="centerY" id="bTI-cs-KDE"/>

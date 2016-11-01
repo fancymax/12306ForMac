@@ -7,17 +7,6 @@
 //
 
 import Cocoa
-//fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-//  switch (lhs, rhs) {
-//  case let (l?, r?):
-//    return l < r
-//  case (nil, _?):
-//    return true
-//  default:
-//    return false
-//  }
-//}
-
 
 class TicketQueryViewController: NSViewController {
     @IBOutlet weak var stackContentView: NSStackView!
@@ -55,15 +44,6 @@ class TicketQueryViewController: NSViewController {
         filterCbx.isHidden = true
         autoQueryNumTxt.isHidden = true
         
-        let menu = NSMenu()
-        let item1 = NSMenuItem(title: "成人", action: #selector(TicketQueryViewController.clickTicketTypeSetting(_:)), keyEquivalent: "")
-        item1.target = self
-        let item2 = NSMenuItem(title: "学生", action: #selector(TicketQueryViewController.clickTicketTypeSetting(_:)), keyEquivalent: "")
-        item2.target = self
-        menu.addItem(item1)
-        menu.addItem(item2)
-        ticketTypePopupBtn.menu = menu
-        
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveCheckPassengerMessageNotification(_:)), name: NSNotification.Name(rawValue: DidSendCheckPassengerMessageNotification), object: nil)
         notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveLogoutMessageNotification(_:)), name: NSNotification.Name(rawValue: DidSendLogoutMessageNotification), object: nil)
@@ -94,7 +74,6 @@ class TicketQueryViewController: NSViewController {
     @IBOutlet weak var converCityBtn: NSButton!
     @IBOutlet weak var dateStepper: NSStepper!
     @IBOutlet weak var autoQueryNumTxt: NSTextField!
-    @IBOutlet weak var ticketTypePopupBtn: NSPopUpButton!
     
     var autoQueryNum = 0
     var calendarPopover:NSPopover?
@@ -115,15 +94,6 @@ class TicketQueryViewController: NSViewController {
         
         self.queryDate.dateValue = trunkNextDate
         dateStepper.doubleValue = trunkNextDate.timeIntervalSince(trunkOriginDate)/24/3600
-    }
-    
-    func clickTicketTypeSetting(_ item:NSMenuItem){
-        if item.title == TicketType.Normal.description {
-            ticketType = .Normal
-        }
-        else {
-            ticketType = .Student
-        }
     }
     
     fileprivate func stopAutoQuery(){

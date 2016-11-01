@@ -26,7 +26,7 @@ extension Data {
         return hexadecimalString
     }
     
-    func MD5() throws -> Data {
+    func MD5() -> Data {
         var hash = [UInt8](repeating: 0,  count: Int(CC_SHA256_DIGEST_LENGTH))
         self.withUnsafeBytes {
             _ = CC_MD5($0, CC_LONG(self.count), &hash)
@@ -34,7 +34,7 @@ extension Data {
         return Data(bytes: hash)
     }
     
-    func SHA1() throws -> Data {
+    func SHA1() -> Data {
         var hash = [UInt8](repeating: 0,  count: Int(CC_SHA256_DIGEST_LENGTH))
         self.withUnsafeBytes {
             _ = CC_SHA1($0, CC_LONG(self.count), &hash)
@@ -45,19 +45,11 @@ extension Data {
 
 extension String {
     func MD5() -> String {
-        do {
-            return try self.data(using: String.Encoding.utf8)!.MD5().hexedString()
-        } catch {
-        }
-        return ""
+        return self.data(using: String.Encoding.utf8)!.MD5().hexedString()
     }
     
     func SHA1() -> String {
-        do {
-            return try self.data(using: String.Encoding.utf8)!.SHA1().hexedString()
-        } catch {
-        }
-        return ""
+        return self.data(using: String.Encoding.utf8)!.SHA1().hexedString()
     }
 }
 
@@ -68,11 +60,11 @@ class Dama: NSObject {
     let AppId:String = "43327"
     let AppKey:String = "36f3ff0b2f66f2b3f1cd9b5953095858"
     
-    fileprivate override init() {
+    private override init() {
         super.init()
     }
     
-    fileprivate func getCurrentFileHex(ofImage image:NSImage)->String {
+    private func getCurrentFileHex(ofImage image:NSImage)->String {
         let originData = image.tiffRepresentation
         let imageRep = NSBitmapImageRep(data: originData!)
         let imageData = imageRep!.representation(using: .PNG, properties: ["NSImageCompressionFactor":1.0])!
@@ -81,7 +73,7 @@ class Dama: NSObject {
         return result
     }
     
-    fileprivate func getpwd(_ user:String,password:String) -> String{
+    private func getpwd(_ user:String,password:String) -> String{
         let nameMD5 = user.MD5()
         let passwordMD5 = password.MD5()
         let x1MD5 = (nameMD5 + passwordMD5).MD5()
@@ -90,14 +82,14 @@ class Dama: NSObject {
         return x2MD5
     }
     
-    fileprivate func getsign(ofUser user:String) ->String {
+    private func getsign(ofUser user:String) ->String {
         let key = AppKey + user
         let x1MD5 = key.MD5()
         let x2 = x1MD5[x1MD5.startIndex...x1MD5.characters.index(x1MD5.startIndex, offsetBy: 7)]
         return x2
     }
     
-    fileprivate func getFileDataSign2(ofImage image:NSImage,user:String)->String{
+    private func getFileDataSign2(ofImage image:NSImage,user:String)->String{
         let originData = image.tiffRepresentation
         let imageRep = NSBitmapImageRep(data: originData!)
         let imageData = imageRep!.representation(using: .PNG, properties: ["NSImageCompressionFactor":1.0])!
@@ -110,15 +102,9 @@ class Dama: NSObject {
         finalData.append(AppUserData!)
         finalData.append(imageData)
         
-        do {
-            let x1MD5 = try finalData.MD5().hexedString()
-            let startIndex = x1MD5.startIndex
-            let x2 = x1MD5[startIndex...x1MD5.index(startIndex, offsetBy: 7)]
-            return x2
-        } catch {
-            
-        }
-        return ""
+        let x1MD5 = finalData.MD5().hexedString()
+        let startIndex = x1MD5.startIndex
+        return x1MD5[startIndex...x1MD5.index(startIndex, offsetBy: 7)]
     }
     
     func getBalance(_ user:String,password:String,success:@escaping (_ balance:String)->(),failure:@escaping (_ error:NSError)->()){
