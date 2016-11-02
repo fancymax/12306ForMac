@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AdvancedPreferenceViewController">
@@ -15,57 +15,12 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="316" height="269"/>
+        <customView misplaced="YES" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="316" height="170"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button id="jAt-b6-JXC">
-                    <rect key="frame" x="37" y="170" width="244" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="用户操作时停止打码" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tMZ-vt-LaE">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" size="13" name=".PingFangSC-Regular"/>
-                    </buttonCell>
-                    <connections>
-                        <binding destination="-2" name="value" keyPath="self.isStopDamaWhenOperate" id="7S7-Ua-34g"/>
-                        <binding destination="-2" name="enabled" keyPath="self.isUseDama" id="zFp-JR-7SA"/>
-                    </connections>
-                </button>
-                <button id="OfI-zB-0mn">
-                    <rect key="frame" x="36" y="140" width="244" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="连续失败5次尝试下一订单" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="gdX-xl-Qk9">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" size="13" name=".PingFangSC-Regular"/>
-                    </buttonCell>
-                    <connections>
-                        <binding destination="-2" name="value" keyPath="self.isStopDamaWhenFail5" id="fuT-Yv-Jhx"/>
-                        <binding destination="-2" name="enabled" keyPath="self.isUseDama" id="27P-5E-Itz"/>
-                    </connections>
-                </button>
-                <button id="Tue-4c-V6W">
-                    <rect key="frame" x="36" y="200" width="244" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="启用登录自动打码" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="0hc-9D-B3C">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <binding destination="-2" name="enabled" keyPath="self.isUseDama" id="7wO-Z5-kd5"/>
-                        <binding destination="-2" name="value" keyPath="self.isUseDamaLogin" id="ToB-iW-nUM"/>
-                    </connections>
-                </button>
-                <textField verticalHuggingPriority="750" id="gzv-bf-qZB">
-                    <rect key="frame" x="89" y="46" width="192" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="未登录" id="q2t-D4-zqD">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <button id="oV2-vl-8q1">
-                    <rect key="frame" x="18" y="230" width="53" height="18"/>
+                    <rect key="frame" x="18" y="131" width="53" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="启用" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="CNr-7m-WEH">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -75,8 +30,8 @@
                         <binding destination="-2" name="value" keyPath="self.isUseDama" id="B6P-q4-fgi"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="dGL-rj-Cf1">
-                    <rect key="frame" x="37" y="105" width="47" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="dGL-rj-Cf1">
+                    <rect key="frame" x="36" y="99" width="47" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="用户名" id="Mee-bZ-sbi">
                         <font key="font" metaFont="system"/>
@@ -84,25 +39,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="e9c-S6-ACk">
-                    <rect key="frame" x="91" y="102" width="188" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="Knt-ma-p3N">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <binding destination="-2" name="value" keyPath="self.damaUser" id="Kuj-kk-iuD">
-                            <dictionary key="options">
-                                <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                            </dictionary>
-                        </binding>
-                        <binding destination="-2" name="editable" keyPath="self.isUseDama" id="WvE-gL-l8w"/>
-                    </connections>
-                </textField>
-                <secureTextField verticalHuggingPriority="750" id="ZvA-a7-RJL">
-                    <rect key="frame" x="91" y="68" width="188" height="22"/>
+                <secureTextField verticalHuggingPriority="750" misplaced="YES" id="ZvA-a7-RJL">
+                    <rect key="frame" x="90" y="62" width="188" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="ysv-bp-95V">
                         <font key="font" metaFont="system"/>
@@ -121,8 +59,8 @@
                         <binding destination="-2" name="editable" keyPath="self.isUseDama" id="zeu-aQ-Qxo"/>
                     </connections>
                 </secureTextField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ZI7-CQ-93n">
-                    <rect key="frame" x="37" y="71" width="47" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="ZI7-CQ-93n">
+                    <rect key="frame" x="36" y="65" width="47" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="密    码" id="qGR-In-U89">
                         <font key="font" metaFont="system"/>
@@ -131,7 +69,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wZM-ns-NaC" customClass="UrlLabel" customModule="订票助手" customModuleProvider="target">
-                    <rect key="frame" x="64" y="230" width="43" height="17"/>
+                    <rect key="frame" x="64" y="131" width="43" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="打码兔" id="toI-no-Qii">
                         <font key="font" metaFont="system"/>
@@ -142,8 +80,8 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="urlString" value="http://v3.dama2.com"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <button verticalHuggingPriority="750" id="1Bm-j6-k0Z">
-                    <rect key="frame" x="204" y="13" width="81" height="32"/>
+                <button verticalHuggingPriority="750" misplaced="YES" id="1Bm-j6-k0Z">
+                    <rect key="frame" x="203" y="7" width="81" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="登录" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xfC-r2-jpD">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -155,7 +93,7 @@
                     </connections>
                 </button>
                 <customView id="wOC-A9-S2e" customClass="InfoButton" customModule="订票助手" customModuleProvider="target">
-                    <rect key="frame" x="110" y="229" width="20" height="20"/>
+                    <rect key="frame" x="110" y="130" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="content">
@@ -168,8 +106,34 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </customView>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="e9c-S6-ACk">
+                    <rect key="frame" x="90" y="96" width="188" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="Knt-ma-p3N">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="self.damaUser" id="Kuj-kk-iuD">
+                            <dictionary key="options">
+                                <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                            </dictionary>
+                        </binding>
+                        <binding destination="-2" name="editable" keyPath="self.isUseDama" id="WvE-gL-l8w"/>
+                    </connections>
+                </textField>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="gzv-bf-qZB">
+                    <rect key="frame" x="88" y="43" width="192" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="未登录" id="q2t-D4-zqD">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="266" y="459.5"/>
+            <point key="canvasLocation" x="266" y="410"/>
         </customView>
     </objects>
 </document>
