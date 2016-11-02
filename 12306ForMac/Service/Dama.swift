@@ -9,47 +9,34 @@
 import Foundation
 import Alamofire
 
-extension Int {
-    func hexedString() -> String {
-        return NSString(format:"%02x", self) as String
+fileprivate func md5(_ string: String) -> String {
+    let context = UnsafeMutablePointer<CC_MD5_CTX>.allocate(capacity: 1)
+    var digest = Array<UInt8>(repeating:0, count:Int(CC_MD5_DIGEST_LENGTH))
+    CC_MD5_Init(context)
+    CC_MD5_Update(context, string, CC_LONG(string.lengthOfBytes(using: String.Encoding.utf8)))
+    CC_MD5_Final(&digest, context)
+    context.deallocate(capacity: 1)
+    var hexString = ""
+    for byte in digest {
+        hexString += String(format:"%02x", byte)
     }
+    
+    return hexString
 }
 
 extension Data {
     func hexedString() -> String {
-        let buffer = (self as NSData).bytes.bindMemory(to: UInt8.self, capacity: self.count)
-        
-        var hexadecimalString = ""
-        for i in 0..<self.count {
-            hexadecimalString += String(format: "%02x", buffer.advanced(by: i).pointee)
-        }
-        return hexadecimalString
+        return reduce("") {$0 + String(format: "%02x", $1)}
     }
     
     func MD5() -> Data {
-        var hash = [UInt8](repeating: 0,  count: Int(CC_SHA256_DIGEST_LENGTH))
-        self.withUnsafeBytes {
-            _ = CC_MD5($0, CC_LONG(self.count), &hash)
+        var result = Data(count: Int(CC_MD5_DIGEST_LENGTH))
+        _ = result.withUnsafeMutableBytes {resultPtr in
+            self.withUnsafeBytes {(bytes: UnsafePointer<UInt8>) in
+                CC_MD5(bytes, CC_LONG(count), resultPtr)
+            }
         }
-        return Data(bytes: hash)
-    }
-    
-    func SHA1() -> Data {
-        var hash = [UInt8](repeating: 0,  count: Int(CC_SHA256_DIGEST_LENGTH))
-        self.withUnsafeBytes {
-            _ = CC_SHA1($0, CC_LONG(self.count), &hash)
-        }
-        return Data(bytes: hash)
-    }
-}
-
-extension String {
-    func MD5() -> String {
-        return self.data(using: String.Encoding.utf8)!.MD5().hexedString()
-    }
-    
-    func SHA1() -> String {
-        return self.data(using: String.Encoding.utf8)!.SHA1().hexedString()
+        return result
     }
 }
 
@@ -74,18 +61,17 @@ class Dama: NSObject {
     }
     
     private func getpwd(_ user:String,password:String) -> String{
-        let nameMD5 = user.MD5()
-        let passwordMD5 = password.MD5()
-        let x1MD5 = (nameMD5 + passwordMD5).MD5()
-        
-        let x2MD5 = (AppKey + x1MD5).MD5()
+        let nameMD5 = md5(user)
+        let passwordMD5 = md5(password)
+        let x1MD5 = md5(nameMD5 + passwordMD5)
+        let x2MD5 = md5(AppKey + x1MD5)
         return x2MD5
     }
     
     private func getsign(ofUser user:String) ->String {
         let key = AppKey + user
-        let x1MD5 = key.MD5()
-        let x2 = x1MD5[x1MD5.startIndex...x1MD5.characters.index(x1MD5.startIndex, offsetBy: 7)]
+        let x1MD5 = md5(key)
+        let x2 = x1MD5[x1MD5.startIndex...x1MD5.index(x1MD5.startIndex, offsetBy: 7)]
         return x2
     }
     
