@@ -17,7 +17,7 @@ class PassengerViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        passengerCheckBox.title = passenger!.passenger_name!
+        passengerCheckBox.title = passenger!.passenger_name
     }
     
     @IBAction func unSelectPassenger(_ sender: NSButton) {
