@@ -76,6 +76,10 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
         return AutoCompleteTableRowView()
     }
     
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        return false
+    }
+    
     deinit{
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self)
