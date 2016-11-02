@@ -441,8 +441,11 @@ extension Service{
                                     let waitInfo = "提交订单成功,请等待\(waitSecond)秒"
                                     waitMethod(waitInfo)
                                 }
-                                sleep(UInt32(waitSecond))
-                                self.queryOrderWaitTime(failMethod,waitMethod: waitMethod,finishMethod: finishMethod)
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + Double(waitSecond)) {
+                                    self.queryOrderWaitTime(failMethod,waitMethod: waitMethod,finishMethod: finishMethod)
+                                }
+                                
                             }
                             else {
                                 if let msg = waitTimeResult.msg {
