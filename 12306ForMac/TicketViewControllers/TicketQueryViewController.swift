@@ -673,18 +673,16 @@ extension TicketQueryViewController: AutoCompleteTableViewDelegate{
 // MARK: - LunarCalendarViewDelegate
 extension TicketQueryViewController: LunarCalendarViewDelegate{
     func createCalenderPopover(){
-        var myPopover = self.calendarPopover
-        if(myPopover == nil){
-            myPopover = NSPopover()
-            let cp = LunarCalendarView()
-            cp.delegate = self
-            cp.date = self.queryDate.dateValue
-            cp.selectedDate = self.queryDate.dateValue
-            myPopover!.contentViewController = cp
-            myPopover!.appearance = NSAppearance(named: "NSAppearanceNameAqua")
-            myPopover!.animates = true
-            myPopover!.behavior = NSPopoverBehavior.transient
-        }
+        let myPopover = NSPopover()
+        let cp = LunarCalendarView()
+        cp.delegate = self
+        cp.date = self.queryDate.dateValue
+        cp.selectedDate = self.queryDate.dateValue
+        myPopover.contentViewController = cp
+        myPopover.appearance = NSAppearance(named: "NSAppearanceNameAqua")
+        myPopover.animates = true
+        myPopover.behavior = NSPopoverBehavior.transient
+        
         self.calendarPopover = myPopover
     }
     
