@@ -46,7 +46,7 @@ class SubmitWindowController: NSWindowController{
         let info = MainModel.selectedTicket!
         trainCodeLabel.stringValue = "\(info.TrainCode!) \(info.FromStationName!) - \(info.ToStationName!)"
         if let dateStr = MainModel.trainDate {
-            trainDateLabel.stringValue = "\(Convert2StartTrainDateStr(dateStr))"
+            trainDateLabel.stringValue = "\(G_Convert2StartTrainDateStr(dateStr))"
         }
         trainTimeLabel.stringValue = "\(info.start_time!)~\(info.arrive_time!) 历时\(info.lishi!)"
         trainPriceLabel.stringValue = "¥\(MainModel.ticketPrice)"

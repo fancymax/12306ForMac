@@ -48,7 +48,7 @@ class TicketQueueCountResult{
     func getWarningInfoBy(_ seatCodeName:String,trainCode:String) -> String {
         var warningStr = ""
         if let yp_info = ticket {
-            let seatInfos = getSeatInfosFrom(yp_info: yp_info, trainCode: trainCode)
+            let seatInfos = G_GetSeatInfosFrom(yp_info: yp_info, trainCode: trainCode)
             if let seatTypePair = seatInfos[seatCodeName] {
                 warningStr += "本次列车 剩余\(seatCodeName) \(seatTypePair.number) 张"
             }

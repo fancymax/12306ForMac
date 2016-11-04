@@ -71,7 +71,7 @@ extension Service{
         var i = 0
         for p in passengers {
             if p.isChecked{
-                passengerStr += "\(p.seatCode),\(p.passenger_type),\(p.passenger_type),\(p.passenger_name),\(p.passenger_id_type_code),\(p.passenger_id_no),\(p.mobile_no!),N"
+                passengerStr += "\(p.seatCode),0,\(p.passenger_type),\(p.passenger_name),\(p.passenger_id_type_code),\(p.passenger_id_no),\(p.mobile_no!),N"
                 
                 oldPassengerStr += "\(p.passenger_name),\(p.passenger_id_type_code),\(p.passenger_id_no),\(p.passenger_type)_"
                 

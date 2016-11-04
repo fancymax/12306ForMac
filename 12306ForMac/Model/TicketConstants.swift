@@ -25,7 +25,7 @@ func QuerySeatTypeDicBy(_ trainCode:String)->[String:String] {
 }
 
 //20160502->2016-05-02
-func Convert2StartTrainDateStr(_ dateStr: String)->String{
+func G_Convert2StartTrainDateStr(_ dateStr: String)->String{
     var formateStr = dateStr
     var index = dateStr.characters.index(dateStr.startIndex, offsetBy: 4)
     formateStr.insert("-", at: index)
@@ -49,7 +49,7 @@ func Convert2StartTrainDateStr(_ dateStr: String)->String{
      M/12075/0100
      9/23895/0024
 */
-func getSeatInfosFrom(yp_info:String,trainCode:String)->[String:SeatTypePair] {
+func G_GetSeatInfosFrom(yp_info:String,trainCode:String)->[String:SeatTypePair] {
     var seatInfos  = [String:SeatTypePair]()
     let totalLength = yp_info.lengthOfBytes(using: String.Encoding.utf8)
     if totalLength == 0 {
@@ -115,8 +115,4 @@ func getSeatInfosFrom(yp_info:String,trainCode:String)->[String:SeatTypePair] {
     return seatInfos
 }
 
-
 //let cardTypeNameDic = ["二代身份证": "1", "一代身份证": "2", "港澳通行证": "C", "台湾通行证": "G", "护照": "B"]
-//
-//let ticketTypeNameDic = ["成人票": "1", "儿童票": "2", "学生票": "3", "残军票": "4"]
-

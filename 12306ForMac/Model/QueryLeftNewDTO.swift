@@ -32,19 +32,6 @@ enum TicketOrder:String {
     case Lishi
 }
 
-enum TicketType:String,CustomStringConvertible {
-    case Student = "0X00"
-    case Normal = "ADULT"
-    
-    var description: String {
-        switch self {
-        case .Student:
-            return "学生"
-        case .Normal:
-            return "成人"
-        }
-    }
-}
 
 class QueryLeftNewDTO:NSObject {
 
@@ -266,7 +253,7 @@ class QueryLeftNewDTO:NSObject {
         
         trainDate = trainDateStr2Date(dateStr)
         jsStartTrainDateStr = getJsStartTrainDateStr(trainDate)
-        seatTypePairDic = getSeatInfosFrom(yp_info: yp_info!, trainCode: TrainCode)
+        seatTypePairDic = G_GetSeatInfosFrom(yp_info: yp_info!, trainCode: TrainCode)
         setupHasTicket()
     }
     
