@@ -93,8 +93,16 @@ class MainWindowController: NSWindowController{
         self.preferencesWindowController.showWindow(nil)
     }
     
-    @IBAction func showHelp(_ sender:AnyObject) {
+    @IBAction func EmailAuthor(_ sender:AnyObject) {
         sendEmailWithMail()
+    }
+    
+    @IBAction func reportIssue(_ sender:AnyObject) {
+        NSWorkspace.shared().open(URL(string: "https://github.com/fancymax/12306ForMac/issues")!)
+    }
+    
+    @IBAction func rateInAppstore(_ sender:AnyObject){
+        NSWorkspace.shared().open(URL(string: "macappstore://itunes.apple.com/us/app/ding-piao-zhu-shou/id1163682213?l=zh&ls=1&mt=12")!)
     }
     
     func loginOut(){
