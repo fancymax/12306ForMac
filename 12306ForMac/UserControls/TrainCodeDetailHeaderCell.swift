@@ -14,7 +14,7 @@ class TrainCodeDetailHeaderCell: NSTableHeaderCell {
         let (borderRect, fillRect) = cellFrame.divided(atDistance: 1.0, from: .maxYEdge)
         
         //header bottom line
-        NSColor.gray.set()
+        NSColor(calibratedRed: 0.850887, green: 0.851034, blue: 0.850878, alpha: 1.0).set()
         NSRectFill(borderRect)
         
         Theme.GobalTheme.backgroundColor.set()

@@ -10,35 +10,38 @@ import Cocoa
 
 class TrainCodeDetailViewController: NSViewController {
     var service = Service()
-    
-    var queryByTrainCodeParam: QueryByTrainCodeParam? {
-        didSet{
+    @IBOutlet weak var priceLbl: NSTextField!
+    var trainCodeDetails: TrainCodeDetails?
+    var ticket:QueryLeftNewDTO? {
+        didSet {
             if oldValue != nil {
-                if oldValue!.ToGetParams() == queryByTrainCodeParam!.ToGetParams() {
+                if oldValue!.train_no == ticket!.train_no {
                     return
                 }
             }
             
+            let queryByTrainCodeParam = QueryByTrainCodeParam(ticket!)
             if self.trainCodeDetails != nil {
                 self.trainCodeDetails!.trainNos!.removeAll()
                 self.trainCodeDetailTable.reloadData()
             }
-            
             let successHandler = { (trainDetails:TrainCodeDetails)->()  in
                 self.trainCodeDetails = trainDetails
                 self.trainCodeDetailTable.reloadData()
-                self.trainCodeDetailTable.scrollRowToVisible(0)
             }
+            let failureHandler = {(error:NSError)->() in }
+            service.queryTrainDetailFlowWith(queryByTrainCodeParam, success: successHandler, failure: failureHandler)
             
-            let failureHandler = {(error:NSError)->() in
+            let queryTrainPriceParam = QueryTrainPriceParam(ticket!)
+            let priceSuccessHandler = { (trainPrice:TrainPrice)->()  in
+                self.priceLbl.stringValue = trainPrice.trainPriceStr
+               
             }
-            
-            service.queryTrainNoFlowWith(queryByTrainCodeParam!, success: successHandler, failure: failureHandler)
+            service.queryTrainPriceFlowWith(queryTrainPriceParam, success: priceSuccessHandler, failure: failureHandler)
         }
     }
-    @IBOutlet weak var trainCodeDetailTable: NSTableView!
     
-    var trainCodeDetails: TrainCodeDetails?
+    @IBOutlet weak var trainCodeDetailTable: NSTableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,9 +51,7 @@ class TrainCodeDetailViewController: NSViewController {
             col.headerCell = TrainCodeDetailHeaderCell(textCell: col.headerCell.stringValue)
             col.headerCell.alignment = .center
         }
-        
     }
-    
 }
 
 // MARK: - NSTableViewDataSource 
@@ -63,9 +64,13 @@ extension TrainCodeDetailViewController: NSTableViewDataSource{
     }
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        if trainCodeDetails == nil {
-            return nil
-        }
         return trainCodeDetails!.trainNos[row]
+    }
+}
+
+// MARK: - NSTableViewDelegate
+extension TrainCodeDetailViewController:NSTableViewDelegate {
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        return false
     }
 }

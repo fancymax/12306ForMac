@@ -610,20 +610,9 @@ class TicketQueryViewController: NSViewController {
         let preferredEdge = NSRectEdge.maxX
         trainCodeDetailPopover.show(relativeTo: positioningRect, of: positioningView, preferredEdge: preferredEdge)
         
-        let trainCode = sender.title
-        var queryByTrainCodeParam = QueryByTrainCodeParam()
-        queryByTrainCodeParam.depart_date = self.date!
-        
-        for i in 0..<ticketQueryResult.count {
-            if ticketQueryResult[i].TrainCode == trainCode {
-                queryByTrainCodeParam.train_no = ticketQueryResult[i].train_no
-                queryByTrainCodeParam.from_station_telecode = ticketQueryResult[i].FromStationCode!
-                queryByTrainCodeParam.to_station_telecode = ticketQueryResult[i].ToStationCode!
-                break
-            }
+        for queryTicket in ticketQueryResult where queryTicket.TrainCode == sender.title {
+            self.trainCodeDetailViewController.ticket = queryTicket
         }
-        
-        self.trainCodeDetailViewController.queryByTrainCodeParam = queryByTrainCodeParam
     }
     
     deinit{

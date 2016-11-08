@@ -33,9 +33,17 @@ extension Service {
         }
     }
     
-    func queryTrainNoFlowWith(_ params:QueryByTrainCodeParam,success:@escaping (_ trainCodeDetail:TrainCodeDetails)->(),failure:@escaping (_ error:NSError)->()) {
+    func queryTrainDetailFlowWith(_ params:QueryByTrainCodeParam,success:@escaping (_ trainCodeDetail:TrainCodeDetails)->(),failure:@escaping (_ error:NSError)->()) {
         self.queryByTrainNo(params).then{trainCodeDetails in
             success(trainCodeDetails)
+        }.catch {error in
+            failure(error as NSError)
+        }
+    }
+    
+    func queryTrainPriceFlowWith(_ params:QueryTrainPriceParam,success:@escaping (_ trainPrice:TrainPrice)->(),failure:@escaping (_ error:NSError)->()) {
+        self.queryTicketPrice(params).then{trainPrice in
+            success(trainPrice)
         }.catch {error in
             failure(error as NSError)
         }
@@ -172,6 +180,24 @@ extension Service {
                         }
                     }
                 })}
+    }
+    
+    func queryTicketPrice(_ params:QueryTrainPriceParam)->Promise<TrainPrice> {
+        return Promise{ fulfill, reject in
+            let url = "https://kyfw.12306.cn/otn/leftTicket/queryTicketPrice?" + params.ToGetParams()
+            let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init",
+                           "If-Modified-Since":"0",
+                           "Cache-Control":"no-cache"]
+            Service.Manager.request(url, headers: headers).responseJSON(completionHandler:{ response in
+                switch (response.result){
+                case .failure(let error):
+                    reject(error)
+                case .success(let data):
+                    let json = JSON(data)["data"]
+                    let trainPrice = TrainPrice(json: json)
+                    fulfill(trainPrice)
+                }
+            })}
     }
     
 }

@@ -60,12 +60,37 @@ class TrainCodeDetails: NSObject {
             let trainNo = TrainCodeDetail(json: json[i])
             self.trainNos.append(trainNo)
         }
-        
-//        self.trainNos = json.map { (string,json) in
-//            TrainCodeDetail(json: json)
-//        }
     }
-    
+}
+
+class TrainPrice: NSObject {
+    //动车
+    let SEAT_TYPE_NAME_DIC = ["9":"商务座", "P":"特等座", "M":"一等座",  "O":"二等座", "F":"动车软卧", "6":"高级软卧", "4":"软卧",  "3":"硬卧",  "2":"软座",  "1":"硬座"]
+    var train_no: String!
+    var trainPriceStr = ""
+    init(json:JSON) {
+        train_no = json["train_no"].string
+        
+        for key in SEAT_TYPE_NAME_DIC.keys {
+            var onePriceStr = ""
+            let price = json[key].string
+            if price == nil || price == "" {
+                continue
+            }
+            print("price = \(price)")
+            if price!.contains("¥") {
+                onePriceStr = "\(SEAT_TYPE_NAME_DIC[key]!):\(price!)    "
+            }
+            else {
+                let priceNum = Double(price!)!/10.0
+                onePriceStr = "\(SEAT_TYPE_NAME_DIC[key]!):¥\(priceNum)    "
+            }
+            trainPriceStr += onePriceStr
+            print(trainPriceStr)
+        }
+        
+        
+    }
 }
 
 
