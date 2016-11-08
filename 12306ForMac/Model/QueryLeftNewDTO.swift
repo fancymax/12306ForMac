@@ -137,7 +137,19 @@ class QueryLeftNewDTO:NSObject {
 //    yyyy-MM-dd
     let trainDateStr:String
     
-    fileprivate func trainDateStr2Date(_ dateStr:String)->Date {
+    var start_train_date_formatStr:String!
+    
+    private func getFormatStartTrainStr(_ dateStr:String)->String {
+        let startIndex = dateStr.startIndex
+        
+        var resStr = dateStr
+        resStr.insert("-", at: resStr.index(startIndex, offsetBy: 4))
+        resStr.insert("-", at: resStr.index(startIndex, offsetBy: 7))
+        
+        return resStr
+    }
+    
+    private func trainDateStr2Date(_ dateStr:String)->Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         if let date = dateFormatter.date(from: dateStr) {
@@ -250,6 +262,8 @@ class QueryLeftNewDTO:NSObject {
         trainDateStr = dateStr
         
         super.init()
+        
+        start_train_date_formatStr = getFormatStartTrainStr(start_train_date)
         
         trainDate = trainDateStr2Date(dateStr)
         jsStartTrainDateStr = getJsStartTrainDateStr(trainDate)

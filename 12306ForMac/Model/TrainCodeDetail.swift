@@ -77,7 +77,6 @@ class TrainPrice: NSObject {
             if price == nil || price == "" {
                 continue
             }
-            print("price = \(price)")
             if price!.contains("¥") {
                 onePriceStr = "\(SEAT_TYPE_NAME_DIC[key]!):\(price!)    "
             }
@@ -86,10 +85,7 @@ class TrainPrice: NSObject {
                 onePriceStr = "\(SEAT_TYPE_NAME_DIC[key]!):¥\(priceNum)    "
             }
             trainPriceStr += onePriceStr
-            print(trainPriceStr)
         }
-        
-        
     }
 }
 
