@@ -9,7 +9,6 @@
 import Cocoa
 
 class TrainCodeDetailViewController: NSViewController {
-    var service = Service()
     @IBOutlet weak var priceLbl: NSTextField!
     var trainCodeDetails: TrainCodeDetails?
     var ticket:QueryLeftNewDTO? {
@@ -30,14 +29,14 @@ class TrainCodeDetailViewController: NSViewController {
                 self.trainCodeDetailTable.reloadData()
             }
             let failureHandler = {(error:NSError)->() in }
-            service.queryTrainDetailFlowWith(queryByTrainCodeParam, success: successHandler, failure: failureHandler)
+            Service.sharedInstance.queryTrainDetailFlowWith(queryByTrainCodeParam, success: successHandler, failure: failureHandler)
             
             let queryTrainPriceParam = QueryTrainPriceParam(ticket!)
             let priceSuccessHandler = { (trainPrice:TrainPrice)->()  in
                 self.priceLbl.stringValue = trainPrice.trainPriceStr
                
             }
-            service.queryTrainPriceFlowWith(queryTrainPriceParam, success: priceSuccessHandler, failure: failureHandler)
+            Service.sharedInstance.queryTrainPriceFlowWith(queryTrainPriceParam, success: priceSuccessHandler, failure: failureHandler)
         }
     }
     

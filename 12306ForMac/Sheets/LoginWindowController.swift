@@ -14,7 +14,6 @@ class LoginWindowController: NSWindowController{
     @IBOutlet weak var userName: AutoCompleteTextField!
     @IBOutlet weak var loginImage: RandCodeImageView2!
     
-    let service = Service()
     var users = [UserX]()
     var isAutoLogin = false
     var isLogin = false
@@ -71,7 +70,7 @@ class LoginWindowController: NSWindowController{
             self.handlerAfterSuccess()
         }
         
-        service.loginFlow(user: userName.stringValue, passWord: passWord.stringValue, randCodeStr: loginImage.randCodeStr!, success: successHandler, failure: failureHandler)
+        Service.sharedInstance.loginFlow(user: userName.stringValue, passWord: passWord.stringValue, randCodeStr: loginImage.randCodeStr!, success: successHandler, failure: failureHandler)
     }
     
     @IBAction func clickCancel(_ button:NSButton){
@@ -152,7 +151,7 @@ class LoginWindowController: NSWindowController{
             self.stopLoadingTip()
             self.showTip(translate(error))
         }
-        service.preLoginFlow(success: successHandler,failure: failureHandler)
+        Service.sharedInstance.preLoginFlow(success: successHandler,failure: failureHandler)
     }
     
     func dismissWithModalResponse(_ response:NSModalResponse)

@@ -12,6 +12,10 @@ import PromiseKit
 
 class Service {
     
+    static let sharedInstance = Service()
+    
+    private init(){ }
+    
     static var Manager : Alamofire.SessionManager = {
         // Create the server trust policies
         let serverTrustPolicies: [String: ServerTrustPolicy] = ["kyfw.12306.cn": ServerTrustPolicy.pinCertificates(

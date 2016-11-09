@@ -316,7 +316,6 @@ class TicketQueryViewController: NSViewController {
 // MARK: - TicketTableView
     @IBOutlet weak var leftTicketTable: NSTableView!
     
-    var service = Service()
     var ticketQueryResult = [QueryLeftNewDTO]()
     var filterQueryResult = [QueryLeftNewDTO]()
     
@@ -533,7 +532,7 @@ class TicketQueryViewController: NSViewController {
         params.train_date = date
         params.purpose_codes = ticketType.rawValue
         
-        service.queryTicketFlowWith(params, success: successHandler,failure: failureHandler)
+        Service.sharedInstance.queryTicketFlowWith(params, success: successHandler,failure: failureHandler)
     }
     
     func setSelectedPassenger(){
@@ -618,7 +617,7 @@ class TicketQueryViewController: NSViewController {
         }
         
         let submitParams = SubmitOrderParams(with: ticket,purposeCode: self.ticketType.rawValue)
-        service.submitFlow(submitParams, success: postSubmitWindowMessage, failure: failHandler)
+        Service.sharedInstance.submitFlow(submitParams, success: postSubmitWindowMessage, failure: failHandler)
     }
     
     func clickSubmit(_ sender: NSButton){

@@ -111,8 +111,7 @@ class MainWindowController: NSWindowController{
         MainModel.passengers = [PassengerDTO]()
         NotificationCenter.default.post(name: Notification.Name(rawValue: DidSendLogoutMessageNotification), object:nil)
         loginButton.title = "登录 ▾"
-        let service = Service()
-        service.loginOut()
+        Service.sharedInstance.loginOut()
     }
     
     

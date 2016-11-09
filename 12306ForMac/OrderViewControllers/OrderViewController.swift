@@ -16,7 +16,6 @@ class OrderViewController: NSViewController{
     dynamic var hasOrder = false
     
     var orderList = [OrderDTO]()
-    let service = Service()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +83,7 @@ class OrderViewController: NSViewController{
                         self.stopLoadingTip()
                         self.showTip(translate(error))
                     }
-                    self.service.cancelOrderWith(sequence_no, success: successHandler, failure:failureHandler)
+                    Service.sharedInstance.cancelOrderWith(sequence_no, success: successHandler, failure:failureHandler)
                 }
             }
         })
@@ -108,7 +107,7 @@ class OrderViewController: NSViewController{
             self.stopLoadingTip()
             self.showTip(translate(error))
         }
-        service.queryHistoryOrderFlow(success: successHandler, failure: failureHandler)
+        Service.sharedInstance.queryHistoryOrderFlow(success: successHandler, failure: failureHandler)
     }
     
     func queryAllOrder(){
@@ -143,7 +142,7 @@ class OrderViewController: NSViewController{
             self.stopLoadingTip()
             self.hasOrder = false
         }
-        service.queryNoCompleteOrderFlow(success: successHandler, failure: failureHandler)
+        Service.sharedInstance.queryNoCompleteOrderFlow(success: successHandler, failure: failureHandler)
     }
 }
 

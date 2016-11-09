@@ -15,7 +15,6 @@ class SubmitWindowController: NSWindowController{
     @IBOutlet weak var trainTimeLabel: NSTextField!
     @IBOutlet weak var trainPriceLabel: NSTextField!
     
-    let service = Service()
     @IBOutlet weak var passengerTable: NSTableView!
     @IBOutlet weak var passengerImage: RandCodeImageView2!
     
@@ -106,24 +105,25 @@ class SubmitWindowController: NSWindowController{
         let failureHandler = { (error:NSError) -> () in
             self.showTip(translate(error))
         }
-        service.preOrderFlow(success: successHandler, failure: failureHandler)
+        Service.sharedInstance.preOrderFlow(success: successHandler, failure: failureHandler)
     }
     
     func freshImage(){
+        
+        self.passengerImage.clearRandCodes()
+        
         let successHandler = {(image:NSImage) -> () in
-            self.passengerImage.clearRandCodes()
             self.passengerImage.image = image
         }
         
-        let failHandler = {(error:Error) -> () in
-            self.passengerImage.clearRandCodes()
-            self.passengerImage.image = nil
+        let failHandler = {(error:NSError) -> () in
+            self.showTip(translate(error as NSError))
         }
         
-        service.getPassCodeNewForPassenger().then{ image in
+        Service.sharedInstance.getPassCodeNewForPassenger().then{ image in
             successHandler(image)
         }.catch{ error in
-            failHandler(error)
+            failHandler(error as NSError)
         }
     }
     
@@ -172,7 +172,7 @@ class SubmitWindowController: NSWindowController{
             self.startLoadingTip(info)
         }
         
-        service.orderFlowWith(passengerImage.randCodeStr!, success: successHandler, failure: failureHandler,wait: waitHandler)
+        Service.sharedInstance.orderFlowWith(passengerImage.randCodeStr!, success: successHandler, failure: failureHandler,wait: waitHandler)
     }
     
     @IBAction func clickCancel(_ button:NSButton){
