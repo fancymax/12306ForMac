@@ -51,6 +51,8 @@ class TicketQueryViewController: NSViewController {
         notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveDidSendSubmitMessageNotification(_:)), name: NSNotification.Name(rawValue: DidSendSubmitMessageNotification), object: nil)
         notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveAutoSubmitMessageNotification(_:)), name: NSNotification.Name(rawValue: DidSendAutoSubmitMessageNotification), object: nil)
         
+        notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveAddDefaultPassengerNotification(_:)), name: NSNotification.Name(rawValue: DidSendAddDefaultPassengerNotification), object: nil)
+        
         if QueryDefaultManager.sharedInstance.lastQueryDate.compare(Date()) == .orderedAscending {
             self.setQueryDateValue(LunarCalendarView.getMostAvailableDay() as Date)
         }
@@ -140,6 +142,8 @@ class TicketQueryViewController: NSViewController {
         QueryDefaultManager.sharedInstance.lastToStation = self.toStationNameTxt.stringValue
         QueryDefaultManager.sharedInstance.lastQueryDate = queryDate.dateValue
         
+        self.saveLastSelectdPassengerIdToDefault()
+        
         if autoQuery {
             repeatTimer = Timer(timeInterval: Double(GeneralPreferenceManager.sharedInstance.autoQuerySeconds), target: self, selector: #selector(TicketQueryViewController.queryTicketAndSubmit), userInfo: nil, repeats: true)
             repeatTimer?.fire()
@@ -223,25 +227,41 @@ class TicketQueryViewController: NSViewController {
     }()
     
     func receiveCheckPassengerMessageNotification(_ notification: Notification) {
-        if !self.passengersPopover.isShown {
+        let passengerId = notification.object as! String
+        
+        for passenger in MainModel.passengers where passenger.passenger_id_no == passengerId {
+            if passengerSelected(passenger){
+                checkPassenger(passenger)
+            }
+            else{
+                let passengerViewController = PassengerViewController()
+                passengerViewController.passenger = passenger
+                passengerViewControllerList.append(passengerViewController)
+                self.passengersView.addView(passengerViewController.view, in:.top)
+            }
+            
+            break
+        }
+    }
+    
+    func receiveAddDefaultPassengerNotification(_ notification: Notification) {
+        if MainModel.passengers.count == 0 {
             return
         }
-        
-        let name = notification.object as! String
-        
-        for i in 0..<MainModel.passengers.count {
-            if MainModel.passengers[i].passenger_name == name{
-                if passengerSelected(MainModel.passengers[i]){
-                    checkPassenger(MainModel.passengers[i])
+        if let lastPassengers = QueryDefaultManager.sharedInstance.lastSelectedPassenger {
+            if lastPassengers == "" {
+                return
+            }
+            
+            let passengerIds = lastPassengers.components(separatedBy: ",")
+            for passengerId in passengerIds {
+                for passenger in MainModel.passengers where passenger.passenger_id_no == passengerId {
+                    passenger.isChecked = true
+                    let passengerViewController = PassengerViewController()
+                    passengerViewController.passenger = passenger
+                    passengerViewControllerList.append(passengerViewController)
+                    self.passengersView.addView(passengerViewController.view, in:.top)
                 }
-                else{
-                    let p = PassengerViewController()
-                    p.passenger = MainModel.passengers[i]
-                    passengerViewControllerList.append(p)
-                    self.passengersView.addView(p.view, in:.top)
-                }
-                
-                break
             }
         }
     }
@@ -519,12 +539,20 @@ class TicketQueryViewController: NSViewController {
     func setSelectedPassenger(){
         MainModel.selectPassengers = [PassengerDTO]()
         
-        for i in 0..<MainModel.passengers.count{
-            let p = MainModel.passengers[i]
-            if (p.isChecked && !MainModel.selectPassengers.contains(p)){
-                MainModel.selectPassengers.append(p)
-                
-            }
+        for p in MainModel.passengers where p.isChecked {
+            MainModel.selectPassengers.append(p)
+        }
+    }
+    
+    func saveLastSelectdPassengerIdToDefault(){
+        var lastSelectedPassengerId = ""
+        
+        for p in MainModel.passengers where p.isChecked {
+            lastSelectedPassengerId += "\(p.passenger_id_no),"
+        }
+        
+        if lastSelectedPassengerId != "" {
+            QueryDefaultManager.sharedInstance.lastSelectedPassenger = lastSelectedPassengerId
         }
     }
     

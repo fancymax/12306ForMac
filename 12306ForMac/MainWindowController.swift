@@ -124,6 +124,7 @@ class MainWindowController: NSWindowController{
             window.beginSheet(loginWindowController.window!) {
                 if $0 == NSModalResponseOK{
                     self.loginButton.title = MainModel.realName
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: DidSendAddDefaultPassengerNotification), object:nil)
                 }
             }
         }

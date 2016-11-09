@@ -52,8 +52,9 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
             return
         }
         
+        let row = passengerTable.row(for: sender)
         let notificationCenter = NotificationCenter.default
-        notificationCenter.post(name: Notification.Name(rawValue: DidSendCheckPassengerMessageNotification), object: sender.title)
+        notificationCenter.post(name: Notification.Name(rawValue: DidSendCheckPassengerMessageNotification), object: passengers[row].passenger_id_no)
     }
     
     func isMaxPassengerNumber(exclude excludePassenger:String)->Bool {

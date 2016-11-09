@@ -34,12 +34,4 @@ class PassengerViewController: NSViewController {
             self.view.isHidden = true
         }
     }
-    
-    func check() {
-        self.view.isHidden = false
-    }
-    
-    func unCheck() {
-        self.view.isHidden = true
-    }
 }

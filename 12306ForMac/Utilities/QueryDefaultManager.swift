@@ -11,19 +11,20 @@ import Foundation
 class QueryDefaultManager {
     static let sharedInstance = QueryDefaultManager()
     
-    fileprivate let userNameKey = "userName"
-    fileprivate let userPasswordKey = "userPassword"
-    fileprivate let fromStationKey = "fromStation"
-    fileprivate let toStationKey = "toStation"
-    fileprivate let queryDateKey = "queryDate"
-    fileprivate let userDefaults = UserDefaults.standard
+    private let userNameKey = "userName"
+    private let userPasswordKey = "userPassword"
+    private let fromStationKey = "fromStation"
+    private let toStationKey = "toStation"
+    private let queryDateKey = "queryDate"
+    private let selectedPassenger = "selectedPassenger"
+    private let userDefaults = UserDefaults.standard
     
-    fileprivate init()
+    private init()
     {
         registerUserDefault()
     }
     
-    fileprivate func registerUserDefault()
+    private func registerUserDefault()
     {
         let firstDefault = [fromStationKey: "深圳",
             toStationKey:"上海",queryDateKey:LunarCalendarView.getMostAvailableDay()] as [String : Any]
@@ -72,6 +73,15 @@ class QueryDefaultManager {
         }
         set(newValue){
             userDefaults.set(newValue, forKey: queryDateKey)
+        }
+    }
+    
+    var lastSelectedPassenger:String? {
+        get {
+            return userDefaults.object(forKey: selectedPassenger) as? String
+        }
+        set(newValue) {
+            userDefaults.set(newValue,forKey: selectedPassenger)
         }
     }
 }

@@ -84,32 +84,6 @@ extension Service{
         return (passengerStr,oldPassengerStr)
     }
     
-    func postMobileGetPassengerDTOs()
-    {
-        let url = "https://kyfw.12306.cn/otn/confirmPassenger/getPassengerDTOs"
-        let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
-        Service.Manager.request(url, method:.post, headers:headers).responseJSON(completionHandler:{response in
-            switch (response.result){
-            case .failure(let error):
-                logger.error(error.localizedDescription)
-            case .success(let data):
-                let jsonData = JSON(data)["data"]
-                guard jsonData["normal_passengers"].count > 0 else {
-                    logger.error("\(jsonData)")
-                    return
-                }
-                var passengers = [PassengerDTO]()
-                for i in 0...jsonData["normal_passengers"].count - 1{
-                    passengers.append(PassengerDTO(json:jsonData["normal_passengers"][i]))
-                }
-                if !MainModel.isGetPassengersInfo {
-                    MainModel.passengers = passengers
-                    MainModel.isGetPassengersInfo = true
-                }
-            }})
-    }
-    
-    
 // MARK: - Chainable Request
     func checkUser()->Promise<Void>{
         return Promise{ fulfill, reject in
@@ -223,11 +197,19 @@ extension Service{
         }
     }
     
-    func getPassengerDTOs()->Promise<Void>{
+    func getPassengerDTOs(isSubmit:Bool = true)->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/confirmPassenger/getPassengerDTOs"
-            let params = ["_json_att":"","REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken!]
-            let headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
+            let params:[String:String]
+            let headers:[String:String]
+            if !isSubmit {
+                params = ["_json_att":""]
+                headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
+            }
+            else {
+                params = ["_json_att":"","REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken!]
+                headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
+            }
             Service.Manager.request(url, method:.post, parameters: params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
                 case .failure(let error):
@@ -236,7 +218,9 @@ extension Service{
                     let json = JSON(data)["data"]
                     if json["normal_passengers"].count == 0 {
                         logger.error("\(json)")
-                        reject(NSError(domain: "getPassengerDTOs", code: 0, userInfo: nil))
+                        if isSubmit {
+                            reject(NSError(domain: "getPassengerDTOs", code: 0, userInfo: nil))
+                        }
                     }
                     var passengers = [PassengerDTO]()
                     for i in 0...json["normal_passengers"].count - 1{

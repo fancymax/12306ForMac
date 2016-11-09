@@ -98,25 +98,5 @@ class OrderDTO:NSObject{
         
         passenger_name = json["tickets"][ticketIdx]["passengerDTO"]["passenger_name"].string
     }
-    
-    override init() {
-        start_train_date_page = "2016-7-30 15:40"
-        train_code_page = "D2612"
-        
-        coach_no = "08"
-        seat_name = "06A号"
-        str_ticket_price_page = "1024"
-        ticket_type_name = "儿童票"
-        seat_type_name = "商务座"
-        
-        station_train_code = "G6012"
-        from_station_name =  "深圳北"
-        to_station_name =  "长沙南"
-    
-        passenger_name = "小明"
-//        return_flag = ""
-//        resign_flag = ""
-//        arrive_time_page = "19:09"
-    }
-    
+
 }

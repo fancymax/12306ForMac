@@ -33,6 +33,8 @@ extension Service {
             return self.loginUserWith(user, passWord: passWord, randCodeStr: randCodeStr)
         }.then{ () -> Promise<Void> in
             return self.initMy12306()
+        }.then{ () -> Promise<Void> in
+            return self.getPassengerDTOs(isSubmit: false)
         }.then{_ in
             success()
         }.catch { error in

@@ -68,10 +68,7 @@ class LoginWindowController: NSWindowController{
         
         let successHandler = {
             self.stopLoadingTip()
-            self.showTip("登录成功")
-            self.isLogin = false
-            self.service.postMobileGetPassengerDTOs()
-            Timer.scheduledTimer(timeInterval: 0.5, target: self, selector:#selector(LoginWindowController.handlerAfterSuccess), userInfo: nil, repeats: false)
+            self.handlerAfterSuccess()
         }
         
         service.loginFlow(user: userName.stringValue, passWord: passWord.stringValue, randCodeStr: loginImage.randCodeStr!, success: successHandler, failure: failureHandler)
