@@ -42,6 +42,7 @@ class TicketQueryViewController: NSViewController {
         filterCbx.isEnabled = false
         filterBtn.isHidden = true
         filterCbx.isHidden = true
+        addPassengerBtn.isHidden = true
         autoQueryNumTxt.isHidden = true
         
         let notificationCenter = NotificationCenter.default
@@ -163,6 +164,7 @@ class TicketQueryViewController: NSViewController {
     
     @IBOutlet weak var filterBtn: LoginButton!
     @IBOutlet weak var filterCbx: NSButton!
+    @IBOutlet weak var addPassengerBtn: LoginButton!
     
     var autoQuery = false {
         didSet {
@@ -245,6 +247,7 @@ class TicketQueryViewController: NSViewController {
     }
     
     func receiveAddDefaultPassengerNotification(_ notification: Notification) {
+        self.addPassengerBtn.isHidden = false
         if MainModel.passengers.count == 0 {
             return
         }
@@ -271,6 +274,7 @@ class TicketQueryViewController: NSViewController {
         for view in passengersView.views{
             view.removeFromSuperview()
         }
+        addPassengerBtn.isHidden = true
     }
     
     func passengerSelected(_ passenger:PassengerDTO) -> Bool{

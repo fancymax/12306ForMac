@@ -9,6 +9,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TicketQueryViewController" customModule="订票助手" customModuleProvider="target">
             <connections>
+                <outlet property="addPassengerBtn" destination="mmx-jz-xkG" id="Gnp-WC-xFh"/>
                 <outlet property="autoQueryNumTxt" destination="8dY-Wq-KeS" id="plY-vW-yvP"/>
                 <outlet property="converCityBtn" destination="aQQ-8z-kIM" id="ipp-qt-e3x"/>
                 <outlet property="dateStepper" destination="JxS-Ab-P9F" id="x5K-56-F2S"/>
@@ -277,8 +278,8 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="订票助手" customModuleProvider="target">
-                                                <rect key="frame" x="453" y="1" width="1000" height="63"/>
+                                            <tableCellView misplaced="YES" id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="订票助手" customModuleProvider="target">
+                                                <rect key="frame" x="453" y="1" width="516" height="63"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oxk-Lo-fip">

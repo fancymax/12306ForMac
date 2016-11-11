@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rhv-3U-zL6">
-                    <rect key="frame" x="13" y="341" width="324" height="17"/>
+                    <rect key="frame" x="-2" y="341" width="354" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="一等:¥234   二等:¥345  特等:¥343   商务:¥343" id="d5a-eQ-65w">
                         <font key="font" metaFont="systemThin" size="11"/>
@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="30" headerView="YOC-Au-eRF" viewBased="YES" id="gBO-jh-gDl">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="307"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="301"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
@@ -260,7 +260,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="YOC-Au-eRF">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="17"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
