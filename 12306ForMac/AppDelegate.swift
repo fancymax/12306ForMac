@@ -35,7 +35,7 @@ let logger: XCGLogger = {
         }
     }
     
-    log.setup(level: .debug, showThreadName: true, showLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: APP_LOG_PATH as AnyObject?)
+    log.setup(level: .debug, showThreadName: false, showLevel: true, showFileNames: false, showLineNumbers: false, writeToFile: APP_LOG_PATH as AnyObject?)
     
     return log
 }()
@@ -55,14 +55,13 @@ let DidSendAddDefaultPassengerNotification = "com.12306.DidSendAddDefaultPasseng
     var mainController:MainWindowController?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-    UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions":NSNumber(value: true as Bool)])
         
         let mainController = MainWindowController(windowNibName: "MainWindowController")
         mainController.showWindow(self)
         
         self.mainController = mainController
-        
-        logger.debug("application start")
+        logger.info("Application start")
+        logger.info("dama = \(AdvancedPreferenceManager.sharedInstance.isUseDama)")
     }
     
     @IBAction func openDebugFile(_ sender:AnyObject) {

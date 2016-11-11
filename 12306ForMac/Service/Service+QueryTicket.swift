@@ -61,7 +61,6 @@ extension Service {
                     var cLeftTicketUrl:String = "leftTicket/queryT"
                     if let matches = Regex("var CLeftTicketUrl = '([^']+)'").getMatches(content){
                         cLeftTicketUrl = matches[0][0]
-                        logger.debug("cLeftTicketUrl=\(cLeftTicketUrl)")
                     }
                     else{
                         logger.error("fail to get CLeftTicketUrl:\(content)")
@@ -86,7 +85,6 @@ extension Service {
                     var dynamicJs = ""
                     if let matches = Regex("src=\"/otn/dynamicJs/([^\"]+)\"").getMatches(content){
                         dynamicJs = matches[0][0]
-                        logger.debug("dynamicJs = \(dynamicJs)")
                     }
                     else{
                         logger.error("fail to get dynamicJs:\(content)")

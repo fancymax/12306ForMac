@@ -48,6 +48,7 @@ class AdvancedPreferenceViewController: NSViewController,MASPreferencesViewContr
         }
         set {
             AdvancedPreferenceManager.sharedInstance.isUseDama = newValue
+            logger.info("dama = \(newValue)")
             if newValue {
                 getBalance()
             }

@@ -118,12 +118,14 @@ class MainWindowController: NSWindowController{
     func login(isAutoLogin :Bool){
         loginWindowController = LoginWindowController()
         loginWindowController.isAutoLogin = isAutoLogin
+        logger.info("-> login isAuto=\(isAutoLogin)")
         
         if let window = self.window {
             window.beginSheet(loginWindowController.window!) {
                 if $0 == NSModalResponseOK{
                     self.loginButton.title = MainModel.realName
                     NotificationCenter.default.post(name: Notification.Name(rawValue: DidSendAddDefaultPassengerNotification), object:nil)
+                    logger.info("<- login")
                 }
             }
         }

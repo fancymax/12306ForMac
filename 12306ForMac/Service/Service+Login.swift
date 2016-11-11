@@ -55,7 +55,6 @@ extension Service {
                     var dynamicJs = ""
                     if let matches = Regex("src=\"/otn/dynamicJs/([^\"]+)\"").getMatches(content){
                         dynamicJs = matches[0][0]
-                        logger.debug("dynamicJs = \(dynamicJs)")
                     }
                     else{
                         logger.error("fail to get dynamicJs:\(content)")

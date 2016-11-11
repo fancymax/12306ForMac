@@ -9,6 +9,7 @@
 import Foundation
 
 func translate(_ error:NSError)->String{
+    logger.error(error)
     
     if error.domain == "NSURLErrorDomain"{
         if error.code == -1009 {

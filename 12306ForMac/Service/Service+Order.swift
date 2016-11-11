@@ -148,7 +148,6 @@ extension Service{
                 case .success(let content):
                     if let matches = Regex("var globalRepeatSubmitToken = '([^']+)'").getMatches(content){
                         MainModel.globalRepeatSubmitToken = matches[0][0]
-                        logger.debug("globalRepeatSubmitToken:\(MainModel.globalRepeatSubmitToken!)")
                     }
                     else{
                         logger.error("fail to get globalRepeatSubmitToken:\(content)")
@@ -157,7 +156,6 @@ extension Service{
                     var dynamicJs = ""
                     if let matches = Regex("src=\"/otn/dynamicJs/([^\"]+)\"").getMatches(content){
                         dynamicJs = matches[0][0]
-                        logger.debug("dynamicJs = \(dynamicJs)")
                     }
                     else{
                         logger.error("fail to get dynamicJs:\(content)")
@@ -377,7 +375,6 @@ extension Service{
                     reject(error)
                 case .success(let data):
                     if JSON(data)["data"]["submitStatus"].bool == true{
-                        logger.debug("confirmSingleForQueue true")
                         fulfill()
                     }else {
                         logger.error("\(JSON(data))")

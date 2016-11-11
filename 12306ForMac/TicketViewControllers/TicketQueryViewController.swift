@@ -139,6 +139,7 @@ class TicketQueryViewController: NSViewController {
             trainFilterKey = ""
         }
         
+        
         QueryDefaultManager.sharedInstance.lastFromStation = self.fromStationNameTxt.stringValue
         QueryDefaultManager.sharedInstance.lastToStation = self.toStationNameTxt.stringValue
         QueryDefaultManager.sharedInstance.lastQueryDate = queryDate.dateValue
@@ -152,7 +153,7 @@ class TicketQueryViewController: NSViewController {
             hasAutoQuery = true
         }
         else {
-            queryLeftTicket()
+            queryTicket()
         }
     }
     
@@ -407,7 +408,8 @@ class TicketQueryViewController: NSViewController {
                 if response == NSModalResponseOK{
                     self.trainFilterKey = self.trainFilterWindowController.trainFilterKey
                     self.seatFilterKey = self.trainFilterWindowController.seatFilterKey
-                    logger.info("trainFilterKey:\(self.trainFilterKey) seatFilterKey:\(self.seatFilterKey)")
+                    logger.info("trainFilterKey:\(self.trainFilterKey)")
+                    logger.info("seatFilterKey:\(self.seatFilterKey)")
                     
                     self.filterQueryResult = self.ticketQueryResult.filter({item in return self.trainFilterKey.contains("|" + item.TrainCode! + "|")})
                     
@@ -448,7 +450,7 @@ class TicketQueryViewController: NSViewController {
                 }
             }
         }
-        queryLeftTicket(summitHandler)
+        queryTicket(summitHandler)
     }
     
     func addAutoQueryNumStatus() {
@@ -475,10 +477,12 @@ class TicketQueryViewController: NSViewController {
         DJLayerView.dismiss()
     }
     
-    func queryLeftTicket(_ summitHandler:@escaping ()->() = {}) {
+    func queryTicket(_ summitHandler:@escaping ()->() = {}) {
         let fromStation = self.fromStationNameTxt.stringValue
         let toStation = self.toStationNameTxt.stringValue
         let date = getDateStr(queryDate.dateValue)
+        
+        logger.info("\(fromStation) -> \(toStation) \(date)  \(self.autoQueryNum)")
         
         let successHandler = { (tickets:[QueryLeftNewDTO])->()  in
             self.ticketQueryResult = tickets
@@ -619,6 +623,7 @@ class TicketQueryViewController: NSViewController {
                 self.showTip(translate(error))
             }
         }
+        logger.info("\(ticket.TrainCode!) \(ticket.trainDateStr) \(ticket.FromStationName!) -> \(ticket.ToStationName!)  \(seatTypeId) isAuto=\(isAuto)")
         
         let submitParams = SubmitOrderParams(with: ticket,purposeCode: self.ticketType.rawValue)
         Service.sharedInstance.submitFlow(submitParams, success: postSubmitWindowMessage, failure: failHandler)
