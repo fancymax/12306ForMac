@@ -45,14 +45,13 @@ class TicketQueryViewController: NSViewController {
         addPassengerBtn.isHidden = true
         autoQueryNumTxt.isHidden = true
         
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveCheckPassengerMessageNotification(_:)), name: NSNotification.Name.App.DidCheckPassenger, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveLogoutMessageNotification(_:)), name: NSNotification.Name.App.DidLogout, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvCheckPassengerNotification(_:)), name: NSNotification.Name.App.DidCheckPassenger, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvLogoutNotification(_:)), name: NSNotification.Name.App.DidLogout, object: nil)
         
-        notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveDidSendSubmitMessageNotification(_:)), name: NSNotification.Name.App.DidSubmit, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveAutoSubmitMessageNotification(_:)), name: NSNotification.Name.App.DidAutoSubmit, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvDidSubmitNotification(_:)), name: NSNotification.Name.App.DidSubmit, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvAutoSubmitNotification(_:)), name: NSNotification.Name.App.DidAutoSubmit, object: nil)
         
-        notificationCenter.addObserver(self, selector: #selector(TicketQueryViewController.receiveAddDefaultPassengerNotification(_:)), name: NSNotification.Name.App.DidAddDefaultPassenger, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvAddDefaultPassengerNotification(_:)), name: NSNotification.Name.App.DidAddDefaultPassenger, object: nil)
         
         if QueryDefaultManager.sharedInstance.lastQueryDate.compare(Date()) == .orderedAscending {
             self.setQueryDateValue(LunarCalendarView.getMostAvailableDay() as Date)
@@ -229,7 +228,7 @@ class TicketQueryViewController: NSViewController {
         return popover
     }()
     
-    func receiveCheckPassengerMessageNotification(_ notification: Notification) {
+    func recvCheckPassengerNotification(_ notification: Notification) {
         let passengerId = notification.object as! String
         
         for passenger in MainModel.passengers where passenger.passenger_id_no == passengerId {
@@ -247,7 +246,7 @@ class TicketQueryViewController: NSViewController {
         }
     }
     
-    func receiveAddDefaultPassengerNotification(_ notification: Notification) {
+    func recvAddDefaultPassengerNotification(_ notification: Notification) {
         self.addPassengerBtn.isHidden = false
         if MainModel.passengers.count == 0 {
             return
@@ -270,7 +269,7 @@ class TicketQueryViewController: NSViewController {
         }
     }
     
-    func receiveLogoutMessageNotification(_ notification: Notification) {
+    func recvLogoutNotification(_ notification: Notification) {
         passengerViewControllerList.removeAll()
         for view in passengersView.views{
             view.removeFromSuperview()
@@ -350,11 +349,11 @@ class TicketQueryViewController: NSViewController {
         return popover
     }()
     
-    func receiveDidSendSubmitMessageNotification(_ note: Notification){
+    func recvDidSubmitNotification(_ note: Notification){
         openSubmitSheet(isAutoSubmit: false)
     }
     
-    func receiveAutoSubmitMessageNotification(_ note: Notification){
+    func recvAutoSubmitNotification(_ note: Notification){
         openSubmitSheet(isAutoSubmit: true)
     }
     

@@ -20,8 +20,7 @@ class OrderViewController: NSViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(PassengerSelectViewController.receiveLogoutMessageNotification(_:)), name: NSNotification.Name.App.DidLogout, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(OrderViewController.recvLogoutNotification(_:)), name: NSNotification.Name.App.DidLogout, object: nil)
     }
     
     override var nibName: String?{
@@ -51,7 +50,7 @@ class OrderViewController: NSViewController{
         DJLayerView.dismiss()
     }
     
-    func receiveLogoutMessageNotification(_ notification: Notification) {
+    func recvLogoutNotification(_ notification: Notification) {
         MainModel.noCompleteOrderList.removeAll()
         self.orderList.removeAll()
         self.orderListTable.reloadData()

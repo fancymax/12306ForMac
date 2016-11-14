@@ -15,9 +15,6 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(PassengerSelectViewController.receiveLogoutMessageNotification(_:)), name: NSNotification.Name.App.DidLogout, object: nil)
     }
     
     func reloadPassenger(_ passengersToShow:[PassengerDTO]){
@@ -31,11 +28,6 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         return self.passengers[row]
-    }
-    
-    func receiveLogoutMessageNotification(_ notification: Notification) {
-        passengers.removeAll()
-        passengerTable.reloadData()
     }
     
     @IBAction func checkPassenger(_ sender:NSButton){
@@ -53,8 +45,7 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
         }
         
         let row = passengerTable.row(for: sender)
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.post(name: Notification.Name.App.DidCheckPassenger, object: passengers[row].passenger_id_no)
+        NotificationCenter.default.post(name: Notification.Name.App.DidCheckPassenger, object: passengers[row].passenger_id_no)
     }
     
     func isMaxPassengerNumber(exclude excludePassenger:String)->Bool {
@@ -82,8 +73,7 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
     }
     
     deinit{
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
 }

@@ -43,10 +43,8 @@ class MainWindowController: NSWindowController{
         
         self.window?.recalculateKeyViewLoop()
         
-        //login notification
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(MainWindowController.receiveDidSendLoginMessageNotification(_:)), name: NSNotification.Name.App.DidLogin, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(MainWindowController.receiveAutoLoginMessageNotification(_:)), name: NSNotification.Name.App.DidAutoLogin, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainWindowController.recvLoginNotification(_:)), name: NSNotification.Name.App.DidLogin, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainWindowController.recvAutoLoginNotification(_:)), name: NSNotification.Name.App.DidAutoLogin, object: nil)
     }
     
     func segmentTab(_ sender: NSSegmentedControl){
@@ -62,12 +60,12 @@ class MainWindowController: NSWindowController{
         }
     }
     
-    func receiveDidSendLoginMessageNotification(_ note: Notification){
+    func recvLoginNotification(_ note: Notification){
         loginOut()
         login(isAutoLogin: false)
     }
     
-    func receiveAutoLoginMessageNotification(_ note: Notification){
+    func recvAutoLoginNotification(_ note: Notification){
         loginOut()
         login(isAutoLogin: true)
     }

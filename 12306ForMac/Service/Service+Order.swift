@@ -468,7 +468,6 @@ extension Service{
                 case .success(let data):
                     let json = JSON(data)
                     if let existError = json["data"]["existError"].string  {
-                        logger.debug("\(json)")
                         if existError == "Y" {
                             let error = ServiceError.errorWithCode(.cancelOrderFailed)
                             reject(error)
