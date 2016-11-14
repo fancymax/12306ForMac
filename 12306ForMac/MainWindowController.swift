@@ -45,8 +45,8 @@ class MainWindowController: NSWindowController{
         
         //login notification
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(MainWindowController.receiveDidSendLoginMessageNotification(_:)), name: NSNotification.Name(rawValue: DidSendLoginMessageNotification), object: nil)
-        notificationCenter.addObserver(self, selector: #selector(MainWindowController.receiveAutoLoginMessageNotification(_:)), name: NSNotification.Name(rawValue: DidSendAutoLoginMessageNotification), object: nil)
+        notificationCenter.addObserver(self, selector: #selector(MainWindowController.receiveDidSendLoginMessageNotification(_:)), name: NSNotification.Name.App.DidLogin, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(MainWindowController.receiveAutoLoginMessageNotification(_:)), name: NSNotification.Name.App.DidAutoLogin, object: nil)
     }
     
     func segmentTab(_ sender: NSSegmentedControl){
@@ -109,7 +109,7 @@ class MainWindowController: NSWindowController{
         MainModel.isGetUserInfo = false
         MainModel.isGetPassengersInfo = false
         MainModel.passengers = [PassengerDTO]()
-        NotificationCenter.default.post(name: Notification.Name(rawValue: DidSendLogoutMessageNotification), object:nil)
+        NotificationCenter.default.post(name: Notification.Name.App.DidLogout, object:nil)
         loginButton.title = "登录 ▾"
         Service.sharedInstance.loginOut()
     }
@@ -124,7 +124,7 @@ class MainWindowController: NSWindowController{
             window.beginSheet(loginWindowController.window!) {
                 if $0 == NSModalResponseOK{
                     self.loginButton.title = MainModel.realName
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: DidSendAddDefaultPassengerNotification), object:nil)
+                    NotificationCenter.default.post(name: Notification.Name.App.DidAddDefaultPassenger, object:nil)
                     logger.info("<- login")
                 }
             }

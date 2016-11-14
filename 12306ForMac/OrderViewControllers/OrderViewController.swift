@@ -21,7 +21,7 @@ class OrderViewController: NSViewController{
         super.viewDidLoad()
         
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(PassengerSelectViewController.receiveLogoutMessageNotification(_:)), name: NSNotification.Name(rawValue: DidSendLogoutMessageNotification), object: nil)
+        notificationCenter.addObserver(self, selector: #selector(PassengerSelectViewController.receiveLogoutMessageNotification(_:)), name: NSNotification.Name.App.DidLogout, object: nil)
     }
     
     override var nibName: String?{
@@ -112,7 +112,7 @@ class OrderViewController: NSViewController{
     
     func queryAllOrder(){
         if !MainModel.isGetUserInfo {
-            NotificationCenter.default.post(name: Notification.Name(rawValue: DidSendLoginMessageNotification), object: nil)
+            NotificationCenter.default.post(name: Notification.Name.App.DidLogin, object: nil)
             return
         }
         

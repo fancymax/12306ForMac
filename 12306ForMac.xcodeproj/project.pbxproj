@@ -53,6 +53,7 @@
 		F113B4F81C8FBA2E0001AE09 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113B4F71C8FBA2E0001AE09 /* ServiceError.swift */; };
 		F11E29291D2AA2B6004BE59D /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = F11E29281D2AA2B6004BE59D /* User.png */; };
 		F11FE6871D5F4EB70049F261 /* DamaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11FE6861D5F4EB70049F261 /* DamaError.swift */; };
+		F121FC9A1DD987E100CA05F3 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = F121FC991DD987E100CA05F3 /* Notifications.swift */; };
 		F12746701D502E8100975DFA /* Filter.png in Resources */ = {isa = PBXBuildFile; fileRef = F127466F1D502E8100975DFA /* Filter.png */; };
 		F12746721D50345D00975DFA /* ClickableDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12746711D50345D00975DFA /* ClickableDatePicker.swift */; };
 		F12746751D50784100975DFA /* TrainFilterWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12746731D50784100975DFA /* TrainFilterWindowController.swift */; };
@@ -171,6 +172,7 @@
 		F11E29281D2AA2B6004BE59D /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = User.png; path = 12306ForMac/images/User.png; sourceTree = SOURCE_ROOT; };
 		F11EB45A1B6A368E000063E4 /* 订票助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "订票助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F11FE6861D5F4EB70049F261 /* DamaError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamaError.swift; sourceTree = "<group>"; };
+		F121FC991DD987E100CA05F3 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		F127466F1D502E8100975DFA /* Filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Filter.png; path = 12306ForMac/images/Filter.png; sourceTree = SOURCE_ROOT; };
 		F12746711D50345D00975DFA /* ClickableDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClickableDatePicker.swift; sourceTree = "<group>"; };
 		F12746731D50784100975DFA /* TrainFilterWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainFilterWindowController.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				F11154D11C8D936300FA6059 /* MainMenu.xib */,
 				F11154C71C8D92FC00FA6059 /* AppDelegate.swift */,
 				F11154CB1C8D931500FA6059 /* MainWindowController.swift */,
+				F121FC991DD987E100CA05F3 /* Notifications.swift */,
 				F11154CC1C8D931500FA6059 /* MainWindowController.xib */,
 				F10F47A81D409ED3004668BB /* station_name.js */,
 				F11154971C8D927C00FA6059 /* StationData.swift */,
@@ -611,6 +614,7 @@
 				F13E9C9A1D0AB3310011F7E2 /* TrainTableRowView.swift in Sources */,
 				F14EBEC41DD1AEED002B2B83 /* QueryTrainPriceParam.swift in Sources */,
 				F1DDD8A61DC72ECF00879D44 /* SubmitOrderParams.swift in Sources */,
+				F121FC9A1DD987E100CA05F3 /* Notifications.swift in Sources */,
 				F11154C81C8D92FC00FA6059 /* AppDelegate.swift in Sources */,
 				F111548E1C8D925200FA6059 /* AutoCompleteTextField.swift in Sources */,
 				F11154731C8D921400FA6059 /* MainModel.swift in Sources */,

@@ -17,7 +17,7 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
         super.viewDidLoad()
         
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(PassengerSelectViewController.receiveLogoutMessageNotification(_:)), name: NSNotification.Name(rawValue: DidSendLogoutMessageNotification), object: nil)
+        notificationCenter.addObserver(self, selector: #selector(PassengerSelectViewController.receiveLogoutMessageNotification(_:)), name: NSNotification.Name.App.DidLogout, object: nil)
     }
     
     func reloadPassenger(_ passengersToShow:[PassengerDTO]){
@@ -54,7 +54,7 @@ class PassengerSelectViewController: NSViewController,NSTableViewDataSource,NSTa
         
         let row = passengerTable.row(for: sender)
         let notificationCenter = NotificationCenter.default
-        notificationCenter.post(name: Notification.Name(rawValue: DidSendCheckPassengerMessageNotification), object: passengers[row].passenger_id_no)
+        notificationCenter.post(name: Notification.Name.App.DidCheckPassenger, object: passengers[row].passenger_id_no)
     }
     
     func isMaxPassengerNumber(exclude excludePassenger:String)->Bool {
