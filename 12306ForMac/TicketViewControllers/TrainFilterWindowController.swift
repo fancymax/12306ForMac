@@ -22,7 +22,7 @@ class FilterItem: NSObject {
 }
 
 enum FilterItemType:Int {
-    case Group = 0, SeatType, StartTime, TrainType, Train
+    case Group = 0, SeatType, StartTime, TrainType, Train, FromStation, ToStation
 }
 
 class TrainFilterWindowController: NSWindowController {
@@ -40,32 +40,49 @@ class TrainFilterWindowController: NSWindowController {
     
     override func windowDidLoad() {
         super.windowDidLoad()
-        createFilterItemByTrains(trains!)
+        createFilterItemBy(trains!)
     }
     
     override var windowNibName: String{
         return "TrainFilterWindowController"
     }
     
-    func createFilterItemByTrains(_ trains:[QueryLeftNewDTO]){
+    
+    func createFilterItemBy(_ trains:[QueryLeftNewDTO]){
         filterItems.append(FilterItem(type: .Group,key:"",presentation: "席别类型",isChecked: false))
         filterItems.append(FilterItem(type: .SeatType,key:"9|P|O|4|6",presentation: "商务座|特等座|软卧|高级软卧",isChecked: false))
         filterItems.append(FilterItem(type: .SeatType,key:"M",presentation: "一等座|硬卧",isChecked: false))
         filterItems.append(FilterItem(type: .SeatType,key:"O|1",presentation: "二等座|硬座",isChecked: true))
         filterItems.append(FilterItem(type: .SeatType,key:"1|O",presentation: "无座",isChecked: false))
+        
         filterItems.append(FilterItem(type: .Group,key:"",presentation: "出发时段",isChecked: false))
         filterItems.append(FilterItem(type: .StartTime,key:"00:00|06:00",presentation: "00:00--06:00",isChecked: true))
         filterItems.append(FilterItem(type: .StartTime,key:"06:00|12:00",presentation: "06:00--12:00",isChecked: true))
         filterItems.append(FilterItem(type: .StartTime,key:"12:00|18:00",presentation: "12:00--18:00",isChecked: true))
         filterItems.append(FilterItem(type: .StartTime,key:"18:00|24:00",presentation: "18:00--24:00",isChecked: true))
+        
         filterItems.append(FilterItem(type: .Group,key:"",presentation: "车次类型",isChecked: false))
         filterItems.append(FilterItem(type: .TrainType,key:"G|C|D",presentation: "G高铁|C城际|D动车",isChecked: true))
         filterItems.append(FilterItem(type: .TrainType,key:"Z|T",presentation: "Z直达|T特快",isChecked: true))
         filterItems.append(FilterItem(type: .TrainType,key:"K|L|Y",presentation: "K快车|LY临客",isChecked: true))
-        filterItems.append(FilterItem(type: .Group,key:"",presentation: "指定车次",isChecked: true))
         
+        filterItems.append(FilterItem(type: .Group,key:"",presentation: "出发车站",isChecked: true))
+        var fromStations = [String]()
+        for train in trains where !fromStations.contains(train.FromStationName!) {
+            fromStations.append(train.FromStationName!)
+            filterItems.append(FilterItem(type: .FromStation, key: train.FromStationCode!, presentation: train.FromStationName!, isChecked: true))
+        }
+        
+        filterItems.append(FilterItem(type: .Group,key:"",presentation: "到达车站",isChecked: true))
+        var toStations = [String]()
+        for train in trains where !toStations.contains(train.ToStationName!){
+            toStations.append(train.ToStationName!)
+            filterItems.append(FilterItem(type: .ToStation, key: train.ToStationCode!, presentation: train.ToStationName!, isChecked: true))
+        }
+        
+        filterItems.append(FilterItem(type: .Group,key:"",presentation: "指定车次",isChecked: true))
         for train in trains {
-            let key = "\(train.TrainCode!)|\(train.start_time!)"
+            let key = "\(train.TrainCode!)|\(train.start_time!)|\(train.FromStationCode!)|\(train.ToStationCode!)"
             let presentation = "\(train.TrainCode!) |1\(train.start_time!)~\(train.arrive_time!)  |2\(train.FromStationName!)->\(train.ToStationName!)"
             filterItems.append(FilterItem(type: .Train, key: key, presentation: presentation, isChecked: true))
         }
@@ -114,14 +131,26 @@ class TrainFilterWindowController: NSWindowController {
         
         if item.type == .TrainType {
             let filterKeys = item.key.components(separatedBy: "|")
+            
             for item in filterItems where item.type == .Train {
                 for filterKey in filterKeys {
-                    if item.key.contains(filterKey) {
+                    if item.key.contains(filterKey)  {
                         item.isChecked = changeState
                     }
                 }
             }
         }
+        
+        if  item.type == .FromStation || item.type == .ToStation {
+            let filterKey = item.key
+            
+            for item in filterItems where item.type == .Train {
+                if item.key.contains(filterKey) {
+                    item.isChecked = changeState
+                }
+            }
+        }
+        
         trainFilterTable.reloadData()
     }
     

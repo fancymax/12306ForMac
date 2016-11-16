@@ -8,7 +8,8 @@
 
 import Cocoa
 
-@objc(FilterTrainCodeTransformer) class FilterTrainCodeTransformer: ValueTransformer {
+@objc(FilterTrainCodeTransformer)
+class FilterTrainCodeTransformer: ValueTransformer {
     
     override class func allowsReverseTransformation()->Bool {
         return false
@@ -29,7 +30,8 @@ import Cocoa
 
 }
 
-@objc(FilterTrainTimeTransformer) class FilterTrainTimeTransformer: ValueTransformer {
+@objc(FilterTrainTimeTransformer)
+class FilterTrainTimeTransformer: ValueTransformer {
     
     override class func allowsReverseTransformation()->Bool {
         return false
@@ -50,7 +52,8 @@ import Cocoa
     }
 }
 
-@objc(FilterTrainStationTransformer) class FilterTrainStationTransformer: ValueTransformer {
+@objc(FilterTrainStationTransformer)
+class FilterTrainStationTransformer: ValueTransformer {
     
     override class func allowsReverseTransformation()->Bool {
         return false
