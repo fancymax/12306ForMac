@@ -45,10 +45,8 @@ class Service {
     func requestDynamicJs(_ jsName:String,referHeader:[String:String])->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/dynamicJs/" + jsName
-            Service.Manager
-                .request(url, headers:referHeader)
-                .response(completionHandler:{
-                    _ in fulfill()
+            Service.Manager.request(url, headers:referHeader).response(completionHandler:{ _ in
+                fulfill()
             })
         }
     }

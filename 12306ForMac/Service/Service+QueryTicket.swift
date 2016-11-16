@@ -13,7 +13,7 @@ import PromiseKit
 extension Service {
     
 // MARK: - Request Flow
-    func queryTicketFlowWith(_ params:LeftTicketParam,success:@escaping (_ tickets:[QueryLeftNewDTO])->(),failure:@escaping (_ error:NSError)->())
+    func queryTicketFlowWith(_ params:LeftTicketParam,success:@escaping ([QueryLeftNewDTO])->Void,failure:@escaping (NSError)->Void)
     {
         var queryLog = false
         var queryUrl = ""
@@ -33,7 +33,7 @@ extension Service {
         }
     }
     
-    func queryTrainDetailFlowWith(_ params:QueryByTrainCodeParam,success:@escaping (_ trainCodeDetail:TrainCodeDetails)->(),failure:@escaping (_ error:NSError)->()) {
+    func queryTrainDetailFlowWith(_ params:QueryByTrainCodeParam,success:@escaping (TrainCodeDetails)->Void,failure:@escaping (NSError)->Void) {
         self.queryByTrainNo(params).then{trainCodeDetails in
             success(trainCodeDetails)
         }.catch {error in
@@ -41,7 +41,7 @@ extension Service {
         }
     }
     
-    func queryTrainPriceFlowWith(_ params:QueryTrainPriceParam,success:@escaping (_ trainPrice:TrainPrice)->(),failure:@escaping (_ error:NSError)->()) {
+    func queryTrainPriceFlowWith(_ params:QueryTrainPriceParam,success:@escaping (TrainPrice)->Void,failure:@escaping (NSError)->Void) {
         self.queryTicketPrice(params).then{trainPrice in
             success(trainPrice)
         }.catch {error in

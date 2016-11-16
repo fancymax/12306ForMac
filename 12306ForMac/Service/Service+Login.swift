@@ -14,7 +14,7 @@ import PromiseKit
 extension Service {
     
 // MARK: - Request Flow
-    func preLoginFlow(success:@escaping (_ loadImage:NSImage)->(),failure:@escaping (_ error:NSError)->()){
+    func preLoginFlow(success:@escaping (NSImage)->Void,failure:@escaping (NSError)->Void){
         loginInit().then{dynamicJs -> Promise<Void> in
             return self.requestDynamicJs(dynamicJs, referHeader: ["refer": "https://kyfw.12306.cn/otn/login/init"])
         }.then{() -> Promise<Void> in
@@ -28,7 +28,7 @@ extension Service {
         }
     }
     
-    func loginFlow(user:String,passWord:String,randCodeStr:String,success:@escaping ()->(),failure:@escaping (_ error:NSError)->()){
+    func loginFlow(user:String,passWord:String,randCodeStr:String,success:@escaping ()->Void,failure:@escaping (NSError)->Void){
         self.checkRandCodeForLogin(randCodeStr).then{() -> Promise<Void> in
             return self.loginUserWith(user, passWord: passWord, randCodeStr: randCodeStr)
         }.then{ () -> Promise<Void> in

@@ -12,7 +12,8 @@ import PromiseKit
 
 extension Service{
     
-    func queryHistoryOrderFlow(success:@escaping ()->(), failure:@escaping (_ error:NSError)->()){
+// MARK: - Request Flow
+    func queryHistoryOrderFlow(success:@escaping ()->Void, failure:@escaping (NSError)->Void){
         self.queryOrderInit().then{()->Promise<Int> in
             MainModel.historyOrderList.removeAll()
             return self.queryMyOrderWithPageIndex(0)
@@ -63,6 +64,17 @@ extension Service{
         }
     }
     
+    func queryNoCompleteOrderFlow(success:@escaping ()->Void, failure:@escaping ()->Void){
+        
+        self.queryOrderInitNoComplete().then{() -> Promise<Void> in
+            return self.queryMyOrderNoComplete()
+        }.then{_ in
+            success()
+        }.catch {_ in
+            failure()
+        }
+    }
+// MARK: - Chainable Request
     func queryOrderInit()->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/queryOrder/init"
@@ -102,17 +114,6 @@ extension Service{
                     }
                     fulfill(Int(total!)!)
             }})
-        }
-    }
-    
-    func queryNoCompleteOrderFlow(success:@escaping ()->(), failure:@escaping ()->()){
-        
-        self.queryOrderInitNoComplete().then{() -> Promise<Void> in
-            return self.queryMyOrderNoComplete()
-        }.then{_ in
-            success()
-        }.catch {_ in
-            failure()
         }
     }
     

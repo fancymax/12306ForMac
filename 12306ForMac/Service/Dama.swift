@@ -93,7 +93,7 @@ class Dama: NSObject {
         return x1MD5[startIndex...x1MD5.index(startIndex, offsetBy: 7)]
     }
     
-    func getBalance(_ user:String,password:String,success:@escaping (_ balance:String)->(),failure:@escaping (_ error:NSError)->()){
+    func getBalance(_ user:String,password:String,success:@escaping (String)->Void,failure:@escaping (NSError)->Void){
         
         let url = "http://api.dama2.com:7766/app/d2Balance"
         let pwd = getpwd(user,password: password)
@@ -117,7 +117,7 @@ class Dama: NSObject {
         }
     }
     
-    func dama(_ user:String,password:String,ofImage image:NSImage,success:@escaping (_ imageCode:String)->(),failure:@escaping (_ error:NSError)->()){
+    func dama(_ user:String,password:String,ofImage image:NSImage,success:@escaping (String)->Void,failure:@escaping (NSError)->Void){
         
         let pwd = getpwd(user,password: password)
         let sign = getFileDataSign2(ofImage: image,user: user)

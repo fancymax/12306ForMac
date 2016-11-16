@@ -13,7 +13,7 @@ import PromiseKit
 extension Service{
     
 // MARK: - Request Flow
-    func submitFlow(_ params:SubmitOrderParams,success:@escaping () -> (),failure:@escaping (_ error:NSError)->()){
+    func submitFlow(_ params:SubmitOrderParams,success:@escaping ()->Void,failure:@escaping (NSError)->Void){
         self.checkUser().then{() ->Promise<Void> in
             return self.submitOrderRequest(params)
         }.then{_ in
@@ -27,7 +27,7 @@ extension Service{
         }
     }
     
-    func preOrderFlow(success:@escaping (_ image:NSImage) -> (),failure: @escaping (_ error:NSError)->()){
+    func preOrderFlow(success:@escaping (NSImage)->Void,failure: @escaping (NSError)->Void){
         self.getPassengerDTOs().then{_ -> Promise<NSImage> in
             return self.getPassCodeNewForPassenger()
         }.then{image in
@@ -37,7 +37,7 @@ extension Service{
         }
     }
     
-    func orderFlowWith(_ randCodeStr:String,success:@escaping ()->(),failure:@escaping (_ error:NSError)->(),wait:@escaping (_ info:String)->()){
+    func orderFlowWith(_ randCodeStr:String,success:@escaping ()->Void,failure:@escaping (NSError)->Void,wait:@escaping (String)->Void){
         self.checkRandCodeForOrder(randCodeStr).then{_ -> Promise<Void> in
             return self.checkOrderInfo(randCodeStr)
         }.then{_ -> Promise<Void> in
@@ -53,7 +53,7 @@ extension Service{
         }
     }
     
-    func cancelOrderWith(_ sequence_no:String,success:@escaping ()->(),failure:@escaping (_ error:NSError)->()){
+    func cancelOrderWith(_ sequence_no:String,success:@escaping ()->Void,failure:@escaping (NSError)->Void){
         self.queryOrderInitNoComplete().then{() -> Promise<Void> in
             return self.queryMyOrderNoComplete()
         }.then{() -> Promise<Void> in
