@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
@@ -31,11 +31,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <view id="lnD-vo-KnU">
-            <rect key="frame" x="0.0" y="0.0" width="910" height="710"/>
+            <rect key="frame" x="0.0" y="0.0" width="910" height="680"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView orientation="vertical" alignment="leading" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Q3P-1n-q0W">
-                    <rect key="frame" x="0.0" y="0.0" width="910" height="710"/>
+                    <rect key="frame" x="0.0" y="0.0" width="910" height="680"/>
                 </stackView>
             </subviews>
             <constraints>
@@ -46,17 +46,17 @@
             </constraints>
         </view>
         <customView id="Pvh-ix-iH6" customClass="GlassView" customModule="订票助手" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="995" height="530"/>
+            <rect key="frame" x="0.0" y="0.0" width="910" height="530"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="42" horizontalPageScroll="10" verticalLineScroll="42" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2Q-9N-qwe">
-                    <rect key="frame" x="12" y="0.0" width="971" height="530"/>
+                    <rect key="frame" x="12" y="0.0" width="886" height="530"/>
                     <clipView key="contentView" drawsBackground="NO" id="aFD-Ax-dxk">
-                        <rect key="frame" x="0.0" y="0.0" width="971" height="530"/>
+                        <rect key="frame" x="0.0" y="0.0" width="886" height="530"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" headerView="mkA-fg-IPp" viewBased="YES" id="vdR-Hc-SYr">
-                                <rect key="frame" x="0.0" y="0.0" width="971" height="507"/>
+                                <rect key="frame" x="0.0" y="0.0" width="886" height="507"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
@@ -265,7 +265,7 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="余票信息" width="516" minWidth="10" maxWidth="3.4028234663852886e+38" id="SY7-Sh-5eh">
+                                    <tableColumn identifier="余票信息" width="431" minWidth="10" maxWidth="3.4028234663852886e+38" id="SY7-Sh-5eh">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="余票信息">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -278,8 +278,8 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView misplaced="YES" id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="订票助手" customModuleProvider="target">
-                                                <rect key="frame" x="453" y="1" width="516" height="63"/>
+                                            <tableCellView id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="订票助手" customModuleProvider="target">
+                                                <rect key="frame" x="453" y="1" width="1000" height="63"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oxk-Lo-fip">
@@ -459,7 +459,7 @@
                         <nil key="backgroundColor"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="0.16666666666666666" horizontal="YES" id="JOr-0W-gEZ">
-                        <rect key="frame" x="0.0" y="495" width="971" height="15"/>
+                        <rect key="frame" x="0.0" y="514" width="886" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="1ht-FE-jVM">
@@ -467,7 +467,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="mkA-fg-IPp">
-                        <rect key="frame" x="0.0" y="0.0" width="971" height="23"/>
+                        <rect key="frame" x="0.0" y="0.0" width="886" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
@@ -489,7 +489,7 @@
             <rect key="frame" x="0.0" y="0.0" width="910" height="40"/>
             <subviews>
                 <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-M1-vtw" customClass="ClickableDatePicker" customModule="订票助手" customModuleProvider="target">
-                    <rect key="frame" x="566" y="2" width="90" height="23"/>
+                    <rect key="frame" x="566" y="1.5" width="90" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="8Aa-Zv-hKL"/>
                         <constraint firstAttribute="width" constant="90" id="Vo0-fD-7UT"/>
@@ -507,7 +507,7 @@
                     </connections>
                 </datePicker>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4jY-s2-8Ni" customClass="AutoCompleteTextField" customModule="订票助手" customModuleProvider="target">
-                    <rect key="frame" x="80" y="2" width="100" height="23"/>
+                    <rect key="frame" x="80" y="1.5" width="100" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="5RR-3h-LZM"/>
                         <constraint firstAttribute="width" constant="100" id="t04-b6-cBp"/>
@@ -527,7 +527,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l4y-Hd-FVf" customClass="AutoCompleteTextField" customModule="订票助手" customModuleProvider="target">
-                    <rect key="frame" x="323" y="2" width="100" height="23"/>
+                    <rect key="frame" x="323" y="1.5" width="100" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="C6k-54-5Fp"/>
                         <constraint firstAttribute="width" constant="100" id="fmb-qp-YPt"/>
@@ -596,7 +596,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQQ-8z-kIM">
-                    <rect key="frame" x="193" y="6" width="50" height="16"/>
+                    <rect key="frame" x="193" y="5.5" width="50" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="IuX-gs-s4I"/>
                         <constraint firstAttribute="height" constant="16" id="z5f-YW-eTw"/>
@@ -621,7 +621,7 @@
                     </textFieldCell>
                 </textField>
                 <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JxS-Ab-P9F">
-                    <rect key="frame" x="655" y="1" width="19" height="27"/>
+                    <rect key="frame" x="655" y="0.5" width="19" height="27"/>
                     <stepperCell key="cell" continuous="YES" alignment="left" maxValue="59" id="yLD-vM-oFo"/>
                     <connections>
                         <action selector="clickDateStepper:" target="-2" id="IYZ-EU-1U1"/>
@@ -656,10 +656,10 @@
                     <color key="value" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="328" y="851"/>
+            <point key="canvasLocation" x="364" y="851"/>
         </customView>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Dhy-j5-W4F" customClass="GlassView" customModule="订票助手" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="901" height="40"/>
+            <rect key="frame" x="0.0" y="0.0" width="910" height="40"/>
             <subviews>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mmx-jz-xkG" customClass="LoginButton" customModule="订票助手" customModuleProvider="target">
                     <rect key="frame" x="12" y="7" width="60" height="25"/>
@@ -679,7 +679,7 @@
                     <rect key="frame" x="77" y="0.0" width="0.0" height="40"/>
                 </stackView>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="xbM-JT-Qbf">
-                    <rect key="frame" x="869" y="11" width="22" height="18"/>
+                    <rect key="frame" x="878" y="11" width="22" height="18"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Fyp-O0-a2q">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -689,7 +689,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yXT-88-gO1" customClass="LoginButton" customModule="订票助手" customModuleProvider="target">
-                    <rect key="frame" x="809" y="7" width="60" height="25"/>
+                    <rect key="frame" x="818" y="7" width="60" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="LZa-AR-v9w"/>
                         <constraint firstAttribute="height" constant="25" id="QGF-bR-ZTF"/>
@@ -721,7 +721,7 @@
                     <color key="value" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="323.5" y="949"/>
+            <point key="canvasLocation" x="364" y="956"/>
         </customView>
     </objects>
     <resources>
