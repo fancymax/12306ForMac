@@ -46,10 +46,13 @@ class FilterItem: NSObject {
         assert(self.type == .Train)
         assert(self.keyType == .multi)
         
+        let trainCode = self.key.components(separatedBy: "|")[0]
+        let startTime = self.key.components(separatedBy: "|")[1]
+        
         if filterItem.keyType == .multi {
             let filterKeys = filterItem.key.components(separatedBy: "|")
             for filterKey in filterKeys {
-                if self.key.contains(filterKey) {
+                if trainCode.contains(filterKey) {
                     return true
                 }
             }
@@ -61,10 +64,9 @@ class FilterItem: NSObject {
         }
         else if filterItem.keyType == .section {
             let filterKeys = filterItem.key.components(separatedBy: "~")
-            let startTime = self.key.components(separatedBy: "|")[1]
-            if ((startTime >= filterKeys[0]) && (startTime <= filterKeys[1])) {
-                return true
-            }
+                if ((startTime >= filterKeys[0]) && (startTime <= filterKeys[1])) {
+                    return true
+                }
         }
         
         return false
@@ -96,8 +98,8 @@ class TrainFilterWindowController: NSWindowController {
     
     func createFilterItemBy(_ trains:[QueryLeftNewDTO]){
         filterItems.append(FilterItem(type: .Group,presentation: "席别类型"))
-        filterItems.append(FilterItem(type: .SeatType,key:"9|P|O|4|6",presentation: "商务座|特等座|软卧|高级软卧",isChecked: false))
-        filterItems.append(FilterItem(type: .SeatType,key:"M",presentation: "一等座|硬卧",isChecked: false))
+        filterItems.append(FilterItem(type: .SeatType,key:"9|P|4|6",presentation: "商务座|特等座|软卧|高级软卧",isChecked: false))
+        filterItems.append(FilterItem(type: .SeatType,key:"M|3",presentation: "一等座|硬卧",isChecked: false))
         filterItems.append(FilterItem(type: .SeatType,key:"O|1",presentation: "二等座|硬座",isChecked: true))
         filterItems.append(FilterItem(type: .SeatType,key:"1|O",presentation: "无座",isChecked: false))
         
