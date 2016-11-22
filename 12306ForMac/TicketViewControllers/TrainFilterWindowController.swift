@@ -179,7 +179,8 @@ class TrainFilterWindowController: NSWindowController {
                 }
             }//0 -> 1
             else {
-                var canChange = true
+                //检查其他筛选条件
+                var otherItemCanChange = true
                 for filterItem in filterItems where ((filterItem.type == .FromStation) || (filterItem.type == .ToStation) || (filterItem.type == .StartTime) || (filterItem.type == .TrainType)) && (filterItem != selectedItem) {
                     
                     if filterItem.isChecked == true {
@@ -187,11 +188,12 @@ class TrainFilterWindowController: NSWindowController {
                     }
                     
                     if item.IsMatchKey(of: filterItem) {
-                        canChange = false
+                        otherItemCanChange = false
                         break
                     }
                 }
-                if canChange {
+                //若满足其他筛选条件 则进行本次筛选判断
+                if otherItemCanChange {
                     if item.IsMatchKey(of: selectedItem) {
                         item.isChecked = changeState
                     }
