@@ -679,17 +679,6 @@ extension TicketQueryViewController: AutoCompleteTableViewDelegate{
                 }
             }
         }
-        //再按汉字
-        if(matches.isEmpty)
-        {
-            for station in StationNameJs.sharedInstance.allStation
-            {
-                if let _ = station.Name.range(of: textField.stringValue, options: NSString.CompareOptions.anchored)
-                {
-                    matches.append(station.Name)
-                }
-            }
-        }
         
         return matches
     }
