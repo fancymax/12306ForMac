@@ -159,7 +159,11 @@ class TrainFilterWindowController: NSWindowController {
         let row = trainFilterTable.row(for: sender)
         let selectedItem = filterItems[row]
 
-        let changeState:Bool
+        if selectedItem.type == .Train || selectedItem.type == .SeatType {
+            return
+        }
+        
+        var changeState:Bool
         if sender.state == NSOnState {
             changeState = true
         }
@@ -167,12 +171,35 @@ class TrainFilterWindowController: NSWindowController {
             changeState = false
         }
         
-        for item in filterItems where item.type == .Train {
-            if item.IsMatchKey(of: selectedItem) {
-                item.isChecked = changeState
+        for item in filterItems where (item.type == .Train && item.isChecked != changeState) {
+            //1 -> 0
+            if changeState == false {
+                if item.IsMatchKey(of: selectedItem) {
+                    item.isChecked = changeState
+                }
+            }//0 -> 1
+            else {
+                var canChange = true
+                for filterItem in filterItems where ((filterItem.type == .FromStation) || (filterItem.type == .ToStation) || (filterItem.type == .StartTime) || (filterItem.type == .TrainType)) && (filterItem != selectedItem) {
+                    
+                    if filterItem.isChecked == true {
+                        continue
+                    }
+                    
+                    if item.IsMatchKey(of: filterItem) {
+                        canChange = false
+                        break
+                    }
+                }
+                if canChange {
+                    if item.IsMatchKey(of: selectedItem) {
+                        item.isChecked = changeState
+                    }
+                }
+                
             }
         }
-        
+
         trainFilterTable.reloadData()
     }
     
