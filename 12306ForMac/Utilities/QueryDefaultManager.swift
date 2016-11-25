@@ -27,7 +27,7 @@ class QueryDefaultManager {
     private func registerUserDefault()
     {
         let firstDefault = [fromStationKey: "深圳",
-            toStationKey:"上海",queryDateKey:LunarCalendarView.getMostAvailableDay()] as [String : Any]
+            toStationKey:"上海",queryDateKey:Date()] as [String : Any]
         userDefaults.register(defaults: firstDefault)
     }
     

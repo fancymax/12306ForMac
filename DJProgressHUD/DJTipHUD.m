@@ -56,8 +56,11 @@ typedef void (^CompletionHander)(void);
     //    [self setFrame:[self getCenterWithinRect:parentView.frame scale:1.0]];
     
     NSInteger interval = 2;
-    if ([status length] >= 10) {
-        interval = 10;
+    if ([status length] >= 20) {
+        interval = 4;
+    }
+    if ([status length] >= 30) {
+        interval = 6;
     }
     [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(finishHideView) userInfo:nil repeats:NO];
 }

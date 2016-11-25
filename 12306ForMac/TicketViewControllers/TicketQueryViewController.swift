@@ -54,7 +54,7 @@ class TicketQueryViewController: NSViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvAddDefaultPassengerNotification(_:)), name: NSNotification.Name.App.DidAddDefaultPassenger, object: nil)
         
         if QueryDefaultManager.sharedInstance.lastQueryDate.compare(Date()) == .orderedAscending {
-            self.setQueryDateValue(LunarCalendarView.getMostAvailableDay() as Date)
+            self.setQueryDateValue(Date())
         }
         else {
             self.setQueryDateValue(QueryDefaultManager.sharedInstance.lastQueryDate as Date)
