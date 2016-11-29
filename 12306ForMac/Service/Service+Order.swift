@@ -216,9 +216,8 @@ extension Service{
                     let json = JSON(data)["data"]
                     if json["normal_passengers"].count == 0 {
                         logger.error("\(json)")
-                        if isSubmit {
-                            reject(NSError(domain: "getPassengerDTOs", code: 0, userInfo: nil))
-                        }
+                        reject(NSError(domain: "getPassengerDTOs", code: 0, userInfo: nil))
+                        return
                     }
                     var passengers = [PassengerDTO]()
                     for i in 0...json["normal_passengers"].count - 1{
