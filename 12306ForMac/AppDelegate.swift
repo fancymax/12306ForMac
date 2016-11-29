@@ -69,6 +69,14 @@ let logger: XCGLogger = {
     func applicationShouldTerminateAfterLastWindowClosed(_ sender:NSApplication)->Bool {
         return true
     }
+    
+    func applicationWillResignActive(_ notification: Notification) {
+        print("applicationWillResignActive")
+    }
+    
+    func applicationWillBecomeActive(_ notification: Notification) {
+        print("applicationWillBecomeActive")
+    }
 
 }
 
