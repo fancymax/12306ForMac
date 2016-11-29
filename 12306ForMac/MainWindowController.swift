@@ -123,6 +123,7 @@ class MainWindowController: NSWindowController{
                 if $0 == NSModalResponseOK{
                     self.loginButton.title = MainModel.realName
                     NotificationCenter.default.post(name: Notification.Name.App.DidAddDefaultPassenger, object:nil)
+                    MainModel.isGetUserInfo = true
                     logger.info("<- login")
                 }
             }

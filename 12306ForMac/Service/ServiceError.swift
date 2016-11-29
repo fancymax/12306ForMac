@@ -41,6 +41,7 @@ struct ServiceError {
         case zeroOrderFailed = -7010
         case queryTicketNoFailed     = -7011
         case queryTicketPriceFailed     = -7012
+        case getPassengerFailed     = -7013
     }
     
     static let errorDic = [
@@ -56,6 +57,7 @@ struct ServiceError {
         Code.cancelOrderFailed: "取消订单失败",
         Code.zeroOrderFailed:"您没有历史订单",
         Code.queryTicketNoFailed:"查询车次详细信息失败",
+        Code.getPassengerFailed:"查询乘客信息失败",
         Code.queryTicketPriceFailed:"查询票价失败"]
     
     static func errorWithCode(_ code:Code)->NSError{

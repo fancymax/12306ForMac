@@ -442,7 +442,7 @@ class TicketQueryViewController: NSViewController {
                     
                     NotifySpeaker.sharedInstance.notify()
                     
-                    let informativeText = "\(self.date!) \(self.fromStationNameTxt.stringValue)->\(self.toStationNameTxt.stringValue) \(seatTypeId)"
+                    let informativeText = "\(self.date!) \(self.fromStationNameTxt.stringValue)->\(self.toStationNameTxt.stringValue) \(ticket.TrainCode!) \(seatTypeId)"
                     self.pushUserNotification("有票提醒",informativeText: informativeText)
                     
                     break;

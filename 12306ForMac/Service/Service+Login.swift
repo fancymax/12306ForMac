@@ -124,7 +124,6 @@ extension Service {
                     reject(error)
                 case .success(let data):
                     if let loginCheck = JSON(data)["data"]["loginCheck"].string , loginCheck == "Y"{
-                        MainModel.isGetUserInfo = true
                         MainModel.userName = user
                         fulfill()
                     }

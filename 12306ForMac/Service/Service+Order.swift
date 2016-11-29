@@ -216,7 +216,14 @@ extension Service{
                     let json = JSON(data)["data"]
                     if json["normal_passengers"].count == 0 {
                         logger.error("\(json)")
-                        reject(NSError(domain: "getPassengerDTOs", code: 0, userInfo: nil))
+                        let error:NSError
+                        if let errorMsg = json["exMsg"].string {
+                            error = ServiceError.errorWithCode(.getPassengerFailed, failureReason: errorMsg)
+                        }
+                        else {
+                            error = ServiceError.errorWithCode(.getPassengerFailed)
+                        }
+                        reject(error)
                         return
                     }
                     var passengers = [PassengerDTO]()
