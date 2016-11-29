@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
@@ -98,7 +98,8 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="content">
                             <string key="value">1.远程打码仅适用于无法守在电脑前的值守购票。
-2.打码为付费服务,请自行解决帐号的注册和充值操作。</string>
+2.打码为付费服务,请自行解决帐号的注册和充值操作。
+3.开启打码兔后,会在抢票模式下自动识别登录和订票的验证码。</string>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="showOnHover" value="YES"/>
                         <userDefinedRuntimeAttribute type="color" keyPath="primaryColor">
