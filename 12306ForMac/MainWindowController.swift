@@ -12,6 +12,7 @@ class MainWindowController: NSWindowController{
     @IBOutlet weak var loginButton: LoginButton!
     @IBOutlet weak var moduleSegment: NSSegmentedControl!
     @IBOutlet var LoginMenu: NSMenu!
+    @IBOutlet weak var pageBox: NSBox!
     
     var orderQueryViewController = OrderViewController()
     var ticketQueryViewController = TicketQueryViewController()
@@ -53,10 +54,10 @@ class MainWindowController: NSWindowController{
     
     func selectModule(_ moduleName:String){
         if(moduleName == TrainOrder){
-            self.window?.contentView = orderQueryViewController.view
+            self.pageBox.contentView = orderQueryViewController.view
         }
         else if(moduleName == TrainBook){
-            self.window?.contentView = ticketQueryViewController.view
+            self.pageBox.contentView = ticketQueryViewController.view
         }
     }
     
