@@ -78,6 +78,9 @@
 		F1AF72B81DAA24FB0047486B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF72B71DAA24FB0047486B /* DataManager.swift */; };
 		F1C075211D83F97A006EFABB /* TicketConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C075201D83F97A006EFABB /* TicketConstants.swift */; };
 		F1C075231D855EE5006EFABB /* Direction.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C075221D855EE5006EFABB /* Direction.png */; };
+		F1C8BC4D1DEEA548005A922B /* PaycheckNewParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C8BC4C1DEEA548005A922B /* PaycheckNewParam.swift */; };
+		F1C8BC581DEECACB005A922B /* PayWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C8BC561DEECACB005A922B /* PayWindowController.swift */; };
+		F1C8BC591DEECACB005A922B /* PayWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1C8BC571DEECACB005A922B /* PayWindowController.xib */; };
 		F1CA12051D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA12041D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift */; };
 		F1CA120B1D113293003EFD0B /* ContentBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA120A1D113293003EFD0B /* ContentBackgroundView.swift */; };
 		F1CA120D1D1135E2003EFD0B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA120C1D1135E2003EFD0B /* Theme.swift */; };
@@ -197,6 +200,9 @@
 		F1AF72B71DAA24FB0047486B /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		F1C075201D83F97A006EFABB /* TicketConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketConstants.swift; sourceTree = "<group>"; };
 		F1C075221D855EE5006EFABB /* Direction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Direction.png; path = 12306ForMac/images/Direction.png; sourceTree = SOURCE_ROOT; };
+		F1C8BC4C1DEEA548005A922B /* PaycheckNewParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaycheckNewParam.swift; sourceTree = "<group>"; };
+		F1C8BC561DEECACB005A922B /* PayWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayWindowController.swift; sourceTree = "<group>"; };
+		F1C8BC571DEECACB005A922B /* PayWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayWindowController.xib; sourceTree = "<group>"; };
 		F1CA12041D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainCodeDetailHeaderCell.swift; sourceTree = "<group>"; };
 		F1CA120A1D113293003EFD0B /* ContentBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentBackgroundView.swift; sourceTree = "<group>"; };
 		F1CA120C1D1135E2003EFD0B /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -376,6 +382,8 @@
 			children = (
 				F11154AE1C8D92C100FA6059 /* OrderViewController.swift */,
 				F11154AF1C8D92C100FA6059 /* OrderViewController.xib */,
+				F1C8BC561DEECACB005A922B /* PayWindowController.swift */,
+				F1C8BC571DEECACB005A922B /* PayWindowController.xib */,
 			);
 			name = "OrderQuery\U001bModule";
 			path = 12306ForMac/OrderViewControllers;
@@ -477,6 +485,7 @@
 				F1CCA2DA1D0D42D700B6853E /* QueryByTrainCodeParam.swift */,
 				F1DDD8A51DC72ECF00879D44 /* SubmitOrderParams.swift */,
 				F14EBEC31DD1AEED002B2B83 /* QueryTrainPriceParam.swift */,
+				F1C8BC4C1DEEA548005A922B /* PaycheckNewParam.swift */,
 			);
 			name = Params;
 			sourceTree = "<group>";
@@ -579,6 +588,7 @@
 				F11154B11C8D92C100FA6059 /* OrderViewController.xib in Resources */,
 				F10F47A91D409ED3004668BB /* station_name.js in Resources */,
 				F11154D31C8D936300FA6059 /* MainMenu.xib in Resources */,
+				F1C8BC591DEECACB005A922B /* PayWindowController.xib in Resources */,
 				F11154651C8D91F800FA6059 /* srca.cer in Resources */,
 				F11154941C8D925200FA6059 /* LunarCalendarView.xib in Resources */,
 				F11154D01C8D931500FA6059 /* MainWindowController.xib in Resources */,
@@ -630,6 +640,7 @@
 				F14D6BE41D86E91C00CBD36C /* FilterTrainCodeTransformer.swift in Sources */,
 				F14243141DB610FF0012B5E4 /* DJActivityIndicator.m in Sources */,
 				F111547F1C8D923C00FA6059 /* SwiftyJSON.swift in Sources */,
+				F1C8BC581DEECACB005A922B /* PayWindowController.swift in Sources */,
 				F11154741C8D921400FA6059 /* OrderDTO.swift in Sources */,
 				F11154931C8D925200FA6059 /* LunarCalendarView.swift in Sources */,
 				F11154AB1C8D92A700FA6059 /* SubmitWindowController.swift in Sources */,
@@ -653,6 +664,7 @@
 				F1AF72B81DAA24FB0047486B /* DataManager.swift in Sources */,
 				F11154A31C8D929200FA6059 /* Service.swift in Sources */,
 				F11154951C8D925200FA6059 /* LunarSolarConverter.swift in Sources */,
+				F1C8BC4D1DEEA548005A922B /* PaycheckNewParam.swift in Sources */,
 				F11154721C8D921400FA6059 /* LeftTicketParam.swift in Sources */,
 				F1FEE7A21D8D464900B02C84 /* NotifySpeaker.swift in Sources */,
 				F1FCFF4B1D386F8F0070A32C /* URLButton.swift in Sources */,

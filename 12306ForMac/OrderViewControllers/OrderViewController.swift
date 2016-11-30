@@ -14,6 +14,7 @@ class OrderViewController: NSViewController{
     
     var hasQuery = false
     dynamic var hasOrder = false
+    lazy var payWindowController:PayWindowController = PayWindowController()
     
     var orderList = [OrderDTO]()
 
@@ -89,7 +90,14 @@ class OrderViewController: NSViewController{
     }
     
     @IBAction func payOrder(_ sender: NSButton) {
-        NSWorkspace.shared().open(URL(string: "https://kyfw.12306.cn/otn/login/init")!)
+//        NSWorkspace.shared().open(URL(string: "https://kyfw.12306.cn/otn/login/init")!)
+        
+        let successHandler = {(request:URLRequest) in
+            
+            let result = self.payWindowController.runModalby(parentWnd: self.view.window!, withRequest: request)
+        }
+        
+        Service.sharedInstance.payFlow(success: successHandler, failure: {})
     }
     
     func queryHistoryOrder(){

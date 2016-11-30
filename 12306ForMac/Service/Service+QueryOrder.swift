@@ -74,6 +74,22 @@ extension Service{
             failure()
         }
     }
+    
+    func payFlow(success:@escaping (_ request:URLRequest)->Void, failure:@escaping ()->Void) {
+        self.queryOrderInitNoComplete().then{() -> Promise<Void> in
+            return self.queryMyOrderNoComplete()
+        }.then{() -> Promise<Void> in
+            return self.continuePayNoCompleteMyOrder()
+        }.then{() -> Promise<Void> in
+            return self.payOrderInit()
+        }.then{()->Promise<URLRequest> in
+            return self.paycheckNew()
+        }.then{request in
+            success(request)
+        }.catch {_ in
+            failure()
+        }
+    }
 // MARK: - Chainable Request
     func queryOrderInit()->Promise<Void>{
         return Promise{ fulfill, reject in
@@ -142,6 +158,7 @@ extension Service{
                     MainModel.noCompleteOrderList = [OrderDTO]()
                     if orderDBList.count > 0{
                         for i in 0..<orderDBList.count {
+                            MainModel.orderId = orderDBList[i]["sequence_no"].string
                             let ticketNum = orderDBList[i]["tickets"].count
                             for y in 0..<ticketNum {
                                 let ticketOrder = OrderDTO(json: orderDBList[i], ticketIdx: y)
@@ -153,5 +170,69 @@ extension Service{
             }})
         }
     }
+    
+    func continuePayNoCompleteMyOrder()->Promise<Void>{
+        return Promise{ fulfill, reject in
+            let url = "https://kyfw.12306.cn/otn/queryOrder/continuePayNoCompleteMyOrder"
+            let params = ["sequence_no":"\(MainModel.orderId!)",
+                          "pay_flag":"pay",
+                          "_json_att":""]
+            print(params)
+            let headers = ["refer": "https://kyfw.12306.cn/otn/queryOrder/initNoComplete"]
+            Service.Manager.request(url, method:.post, parameters: params, headers:headers).responseJSON(completionHandler:{response in
+                print(response)
+                fulfill()
+            })
+        }
+    }
+    
+    func payOrderInit()->Promise<Void>{
+        return Promise{ fulfill, reject in
+            let url = "https://kyfw.12306.cn/otn/payOrder/init"
+            let params = ["_json_att":""]
+            let headers = ["refer": "https://kyfw.12306.cn/otn/queryOrder/initNoComplete"]
+            Service.Manager.request(url, method:.post, parameters: params, headers:headers).responseString(completionHandler:{response in
+                fulfill()
+            })
+        }
+    }
+    
+    func paycheckNew()->Promise<URLRequest>{
+        return Promise{ fulfill, reject in
+            let url = "https://kyfw.12306.cn/otn/payOrder/paycheckNew"
+            let params = PaycheckNewParam().ToPostParams()
+            let headers = ["refer": "https://kyfw.12306.cn/otn/queryOrder/initNoComplete"]
+            Service.Manager.request(url, method:.post, parameters: params, headers:headers).responseJSON(completionHandler:{response in
+                switch (response.result){
+                case .failure(let error):
+                    reject(error)
+                case .success(let data):
+                    let json = JSON(data)["data"]
+                    print(json)
+                    if let flag =  json["flag"].bool {
+                        if flag {
+                            //make the request
+                            let urlStr = "https://epay.12306.cn/pay/payGateway"
+                            let headers = ["refer": "https://kyfw.12306.cn/otn/payOrder/init"]
+                            let params = ["json_att":"",
+                                          "interfaceName":"PAY_SERVLET",
+                                          "interfaceVersion":"PAY_SERVLET",
+                                          "tranData":json["payForm"]["tranData"].string!,
+                                          "merSignMsg":json["payForm"]["merSignMsg"].string!,
+                                          "appId":"0001",
+                                          "transType":"01"
+                                          ]
+                            
+                            print(params)
+                            let request = Alamofire.request(urlStr, method: .post, parameters:params, headers: headers).request
+                            
+                            fulfill(request!)
+                        }
+                    }
+                }})
+        }
+    }
+    
+    
     
 }

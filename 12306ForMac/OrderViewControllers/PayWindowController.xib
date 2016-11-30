@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="11201"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="PayWindowController" customModule="订票助手" customModuleProvider="target">
+            <connections>
+                <outlet property="payWeb" destination="Wmr-Wp-yp9" id="g3u-Yr-YOh"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="910" height="655"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
+            <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="910" height="655"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <webView translatesAutoresizingMaskIntoConstraints="NO" id="Wmr-Wp-yp9">
+                        <rect key="frame" x="0.0" y="52" width="910" height="603"/>
+                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" minimumFontSize="7" plugInsEnabled="NO" javaEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO">
+                            <nil key="identifier"/>
+                        </webPreferences>
+                    </webView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9mL-0q-rg8">
+                        <rect key="frame" x="20" y="17" width="173" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="仅支持支付宝这种付款方式!" id="yAO-EJ-CkM">
+                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u88-0g-vfc">
+                        <rect key="frame" x="787" y="10" width="109" height="32"/>
+                        <buttonCell key="cell" type="push" title="跳转到12306" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IXb-e3-Zh9">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Wmr-Wp-yp9" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="GAH-2P-w9L"/>
+                    <constraint firstItem="Wmr-Wp-yp9" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="GjX-Bn-x49"/>
+                    <constraint firstAttribute="bottom" secondItem="Wmr-Wp-yp9" secondAttribute="bottom" constant="52" id="S8b-XQ-lo5"/>
+                    <constraint firstAttribute="trailing" secondItem="u88-0g-vfc" secondAttribute="trailing" constant="20" id="TEj-LO-SSZ"/>
+                    <constraint firstAttribute="bottom" secondItem="u88-0g-vfc" secondAttribute="bottom" constant="17" id="VkK-cd-mdb"/>
+                    <constraint firstItem="9mL-0q-rg8" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="22" id="cfs-uH-loo"/>
+                    <constraint firstAttribute="trailing" secondItem="Wmr-Wp-yp9" secondAttribute="trailing" id="d1v-e3-Af3"/>
+                    <constraint firstAttribute="bottom" secondItem="9mL-0q-rg8" secondAttribute="bottom" constant="17" id="qKS-4l-KwY"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="113" y="-267"/>
+        </window>
+    </objects>
+</document>
