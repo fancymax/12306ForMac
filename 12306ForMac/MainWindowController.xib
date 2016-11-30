@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
@@ -11,6 +12,7 @@
                 <outlet property="LoginMenu" destination="xmP-jf-NW1" id="ab5-GD-wDK"/>
                 <outlet property="loginButton" destination="YwA-eV-Pe9" id="TVf-Hk-1W3"/>
                 <outlet property="moduleSegment" destination="vCj-83-Jcy" id="tRI-DJ-Oy4"/>
+                <outlet property="pageBox" destination="e1c-jb-NdY" id="Dx3-8b-hF2"/>
                 <outlet property="window" destination="yxO-x7-Uu9" id="OUq-e0-FVQ"/>
             </connections>
         </customObject>
@@ -20,11 +22,26 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="215" y="139" width="910" height="680"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
             <value key="minSize" type="size" width="910" height="600"/>
             <view key="contentView" id="agO-Wm-PyO">
                 <rect key="frame" x="0.0" y="0.0" width="910" height="680"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <box title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="e1c-jb-NdY">
+                        <rect key="frame" x="-3" y="-4" width="916" height="686"/>
+                        <view key="contentView" id="ldz-Nz-lZr">
+                            <rect key="frame" x="2" y="2" width="912" height="682"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </view>
+                    </box>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="e1c-jb-NdY" firstAttribute="top" secondItem="agO-Wm-PyO" secondAttribute="top" id="2Hk-cG-QmY"/>
+                    <constraint firstAttribute="trailing" secondItem="e1c-jb-NdY" secondAttribute="trailing" id="MdF-Js-YgV"/>
+                    <constraint firstAttribute="bottom" secondItem="e1c-jb-NdY" secondAttribute="bottom" id="nWV-es-POh"/>
+                    <constraint firstItem="e1c-jb-NdY" firstAttribute="leading" secondItem="agO-Wm-PyO" secondAttribute="leading" id="qlB-wK-e6K"/>
+                </constraints>
             </view>
             <toolbar key="toolbar" implicitIdentifier="3FC32FD6-4686-4F85-9EA5-D32F33AD3D69" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="Phg-o7-TLd">
                 <allowedToolbarItems>
