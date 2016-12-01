@@ -12,17 +12,15 @@ struct SeatTypePair:CustomDebugStringConvertible {
     let id1:String //无座
     let id2:String // 1
     let number:Int
-    let price:Double
     
     init(id1:String,id2:String,number:Int,price:Double) {
         self.id1 = id1
         self.id2 = id2
         self.number = number
-        self.price = price
     }
     
     var debugDescription: String {
-        return "id1:\(id1) id:\(id2) number:\(number) price:\(price)"
+        return "id1:\(id1) id:\(id2) number:\(number)"
     }
 }
 
@@ -267,7 +265,7 @@ class QueryLeftNewDTO:NSObject {
         
         trainDate = trainDateStr2Date(dateStr)
         jsStartTrainDateStr = getJsStartTrainDateStr(trainDate)
-        seatTypePairDic = G_GetSeatInfosFrom(yp_info: yp_info!, trainCode: TrainCode)
+//        seatTypePairDic = G_GetSeatInfosFrom(yp_info: yp_info!, trainCode: TrainCode)
         setupHasTicket()
     }
     

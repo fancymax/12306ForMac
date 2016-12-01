@@ -27,7 +27,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="390" height="370"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="390" height="370"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -301,9 +301,9 @@ DQ
                                                             </menu>
                                                         </popUpButtonCell>
                                                         <connections>
-                                                            <binding destination="Mbc-Ex-e7P" name="contentValues" keyPath="objectValue.passenger_type_name_Dic" id="iVt-Ip-IIb"/>
                                                             <binding destination="Mbc-Ex-e7P" name="enabled" keyPath="objectValue.canSelectTicketType" id="53r-SP-pmG"/>
                                                             <binding destination="Mbc-Ex-e7P" name="selectedIndex" keyPath="objectValue.passenger_id_type_select_index" previousBinding="iVt-Ip-IIb" id="LnF-u2-ZPc"/>
+                                                            <binding destination="Mbc-Ex-e7P" name="contentValues" keyPath="objectValue.passenger_type_name_Dic" id="iVt-Ip-IIb"/>
                                                         </connections>
                                                     </popUpButton>
                                                 </subviews>
@@ -319,7 +319,7 @@ DQ
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="rg7-uQ-X5m">
-                        <rect key="frame" x="1" y="8" width="0.0" height="15"/>
+                        <rect key="frame" x="1" y="7" width="0.0" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="eNA-ql-9zG">
@@ -410,7 +410,7 @@ DQ
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ur7-VP-dFP">
+                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ur7-VP-dFP">
                     <rect key="frame" x="70" y="215" width="243" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="¥434" id="pp9-xb-xDx">
@@ -419,7 +419,7 @@ DQ
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x3t-ZT-OcC">
+                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x3t-ZT-OcC">
                     <rect key="frame" x="28" y="214" width="38" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="总价" id="zdQ-XM-92F">

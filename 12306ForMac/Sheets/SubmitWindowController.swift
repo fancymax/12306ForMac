@@ -48,7 +48,7 @@ class SubmitWindowController: NSWindowController{
             trainDateLabel.stringValue = "\(G_Convert2StartTrainDateStr(dateStr))"
         }
         trainTimeLabel.stringValue = "\(info.start_time!)~\(info.arrive_time!) 历时\(info.lishi!)"
-        trainPriceLabel.stringValue = "¥\(MainModel.ticketPrice)"
+//        trainPriceLabel.stringValue = "¥\(MainModel.ticketPrice)"
         
         passengerTable.reloadData()
     }
@@ -165,7 +165,7 @@ class SubmitWindowController: NSWindowController{
             self.isSubmitting = false
             self.switchViewFrom(self.preOrderView, to: self.orderIdView)
             self.orderId.stringValue = MainModel.orderId!
-            self.totalPriceLabel.stringValue = "¥\(MainModel.ticketPrice)"
+//            self.totalPriceLabel.stringValue = "¥\(MainModel.ticketPrice)"
         }
         
         let waitHandler = { (info:String)-> () in

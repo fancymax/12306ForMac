@@ -332,6 +332,7 @@ extension Service{
                 "toStationTelecode":MainModel.selectedTicket!.ToStationCode!,
                 "leftTicket":MainModel.selectedTicket!.yp_info!,
                 "purpose_codes":"00",//注意这里是00
+                "train_location":MainModel.train_location!,
                 "_json_att":"",
                 "REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken!]
             let headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
@@ -344,7 +345,8 @@ extension Service{
                     if ticketQueueCount.shouldRelogin() {
                         reject(ServiceError.errorWithCode(.checkUserFailed))
                     }
-                    let warningStr = ticketQueueCount.getWarningInfoBy(MainModel.selectPassengers[0].seatCodeName, trainCode: MainModel.selectedTicket!.TrainCode)
+//                    let warningStr = ticketQueueCount.getWarningInfoBy(MainModel.selectPassengers[0].seatCodeName, trainCode: MainModel.selectedTicket!.TrainCode)
+                    let warningStr = "正在提交"
                     if ticketQueueCount.isTicketSoldOut() {
                         reject(ServiceError.errorWithCode(.confirmSingleForQueueFailed, failureReason: warningStr))
                     }
@@ -370,6 +372,8 @@ extension Service{
                 "key_check_isChange":MainModel.key_check_isChange!,
                 "leftTicketStr":MainModel.selectedTicket!.yp_info!,
                 "train_location":MainModel.train_location!,
+                "choose_seats":"",
+                "seatDetailType":"000",
                 "roomType":"00",
                 "dwAll":"N",
                 "_json_att":"",
