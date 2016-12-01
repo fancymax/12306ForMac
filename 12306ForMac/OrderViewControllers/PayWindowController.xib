@@ -18,7 +18,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="910" height="680"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="910" height="680"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -33,7 +33,7 @@
                         <rect key="frame" x="20" y="17" width="168" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="仅支持支付宝这种付款方式!" id="yAO-EJ-CkM">
                             <font key="font" size="13" name=".PingFangSC-Regular"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
@@ -69,6 +69,7 @@
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="9mL-0q-rg8" firstAttribute="centerY" secondItem="6ej-fa-RAh" secondAttribute="centerY" id="07e-5Q-SKm"/>
                     <constraint firstAttribute="trailing" secondItem="eqi-HC-GFK" secondAttribute="trailing" constant="20" id="1ht-5O-bfd"/>
                     <constraint firstItem="6ej-fa-RAh" firstAttribute="leading" secondItem="9mL-0q-rg8" secondAttribute="trailing" constant="20" id="2Rh-cy-Avj"/>
                     <constraint firstItem="Wmr-Wp-yp9" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="GAH-2P-w9L"/>
@@ -81,7 +82,6 @@
                     <constraint firstAttribute="bottom" secondItem="6ej-fa-RAh" secondAttribute="bottom" constant="15" id="baB-SH-1Mj"/>
                     <constraint firstItem="9mL-0q-rg8" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="22" id="cfs-uH-loo"/>
                     <constraint firstAttribute="trailing" secondItem="Wmr-Wp-yp9" secondAttribute="trailing" id="d1v-e3-Af3"/>
-                    <constraint firstAttribute="bottom" secondItem="9mL-0q-rg8" secondAttribute="bottom" constant="17" id="qKS-4l-KwY"/>
                 </constraints>
             </view>
             <connections>

@@ -128,10 +128,6 @@ class SubmitWindowController: NSWindowController{
         return "SubmitWindowController"
     }
     
-    @IBAction func clickPay(_ sender: NSButton) {
-        NSWorkspace.shared().open(URL(string: "https://kyfw.12306.cn/otn/login/init")!)
-    }
-    
     @IBAction func clickCheckOrder(_ sender: NSButton) {
         self.switchViewFrom(orderInfoView, to: preOrderView)
     }
@@ -172,6 +168,11 @@ class SubmitWindowController: NSWindowController{
     }
     
     @IBAction func clickCancel(_ button:NSButton){
+        dismissWithModalResponse(NSModalResponseCancel)
+    }
+    
+    @IBAction func clickRateInAppstore(_ button:NSButton){
+        NSWorkspace.shared().open(URL(string: "macappstore://itunes.apple.com/us/app/ding-piao-zhu-shou/id1163682213?l=zh&ls=1&mt=12")!)
         dismissWithModalResponse(NSModalResponseCancel)
     }
     
