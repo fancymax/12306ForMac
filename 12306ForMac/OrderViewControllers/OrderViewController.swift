@@ -92,13 +92,14 @@ class OrderViewController: NSViewController{
     @IBAction func payOrder(_ sender: NSButton) {
         logger.info("-> pay")
         
+        payWindowController = PayWindowController()
+        
         if let window = self.view.window {
-            window.beginSheet(payWindowController.window!) {
-                if $0 == NSModalResponseOK{
-                    
+            window.beginSheet(payWindowController.window!, completionHandler: {response in
+                if response == NSModalResponseOK{
                     logger.info("<- pay")
                 }
-            }
+            })
         }
     }
     
