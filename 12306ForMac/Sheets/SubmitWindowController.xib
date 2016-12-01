@@ -13,10 +13,8 @@
                 <outlet property="passengerImage" destination="DNm-pn-QOi" id="nAB-3v-OSM"/>
                 <outlet property="passengerTable" destination="IjT-wy-Jy5" id="XuS-Ma-rDA"/>
                 <outlet property="preOrderView" destination="WkC-1X-oZ2" id="wlg-LP-U9S"/>
-                <outlet property="totalPriceLabel" destination="gQY-Hx-eFZ" id="H1y-S2-ggj"/>
                 <outlet property="trainCodeLabel" destination="ecd-8X-J61" id="Wff-hy-bOF"/>
                 <outlet property="trainDateLabel" destination="x9s-aY-vXl" id="3mg-W2-WvV"/>
-                <outlet property="trainPriceLabel" destination="Ur7-VP-dFP" id="V5j-aI-DjA"/>
                 <outlet property="trainTimeLabel" destination="AkP-ak-M2v" id="4Wd-84-Q6B"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -42,7 +40,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="myB-rD-1e5">
-                    <rect key="frame" x="133" y="66" width="134" height="17"/>
+                    <rect key="frame" x="133" y="84" width="134" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="5Oa-qb-hRe">
                         <font key="font" metaFont="system"/>
@@ -75,30 +73,12 @@ DQ
                         <action selector="clickPay:" target="-2" id="QCh-TE-xj5"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hC4-Mr-zol">
-                    <rect key="frame" x="25" y="109" width="43" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="总票价" id="J3O-cv-U9W">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tT3-bH-J5C">
-                    <rect key="frame" x="25" y="67" width="43" height="17"/>
+                    <rect key="frame" x="25" y="85" width="43" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="订单号" id="tJu-aH-KNS">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gQY-Hx-eFZ">
-                    <rect key="frame" x="133" y="108" width="134" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="¥8721" id="6ca-Mb-GRO">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
@@ -181,11 +161,11 @@ DQ
             <point key="canvasLocation" x="401.5" y="292"/>
         </customView>
         <customView id="wUj-Nk-WKF">
-            <rect key="frame" x="0.0" y="0.0" width="344" height="351"/>
+            <rect key="frame" x="0.0" y="0.0" width="344" height="343"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6a-OO-gYj">
-                    <rect key="frame" x="30" y="48" width="284" height="157"/>
+                    <rect key="frame" x="30" y="55" width="284" height="157"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" ambiguous="YES" id="HEb-bw-OVi">
                         <rect key="frame" x="1" y="0.0" width="282" height="156"/>
@@ -332,7 +312,7 @@ DQ
                     </tableHeaderView>
                 </scrollView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ecd-8X-J61">
-                    <rect key="frame" x="70" y="294" width="243" height="18"/>
+                    <rect key="frame" x="70" y="282" width="243" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="G1002 深圳 - 福州" id="6qv-RU-k8p">
                         <font key="font" metaFont="system"/>
@@ -341,7 +321,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x9s-aY-vXl">
-                    <rect key="frame" x="70" y="268" width="243" height="18"/>
+                    <rect key="frame" x="70" y="256" width="243" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="2016-03-02" id="1z2-tG-6pI">
                         <font key="font" metaFont="system"/>
@@ -350,7 +330,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AkP-ak-M2v">
-                    <rect key="frame" x="70" y="241" width="243" height="18"/>
+                    <rect key="frame" x="70" y="229" width="243" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="11:35～17:16 历时05:16" id="FFW-6x-UIp">
                         <font key="font" metaFont="system"/>
@@ -359,7 +339,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KKS-fd-Ws0">
-                    <rect key="frame" x="28" y="294" width="38" height="19"/>
+                    <rect key="frame" x="28" y="282" width="38" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="车次" id="1ey-gV-XxV">
                         <font key="font" metaFont="system"/>
@@ -368,7 +348,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gp0-kf-513">
-                    <rect key="frame" x="28" y="267" width="38" height="19"/>
+                    <rect key="frame" x="28" y="255" width="38" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="日期" id="lqv-40-Exz">
                         <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -377,7 +357,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Erm-TM-IAx">
-                    <rect key="frame" x="153" y="7" width="82" height="32"/>
+                    <rect key="frame" x="153" y="14" width="82" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="关闭" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EbN-cW-VeL">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -388,7 +368,7 @@ DQ
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jg1-2P-KG0">
-                    <rect key="frame" x="238" y="7" width="82" height="32"/>
+                    <rect key="frame" x="238" y="14" width="82" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="提交订单" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="G3c-Jn-ATV">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -402,7 +382,7 @@ DQ
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G7m-M5-dFw">
-                    <rect key="frame" x="28" y="240" width="38" height="19"/>
+                    <rect key="frame" x="28" y="228" width="38" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="时间" id="k5q-3B-54P">
                         <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -410,26 +390,8 @@ DQ
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ur7-VP-dFP">
-                    <rect key="frame" x="70" y="215" width="243" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="¥434" id="pp9-xb-xDx">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x3t-ZT-OcC">
-                    <rect key="frame" x="28" y="214" width="38" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="总价" id="zdQ-XM-92F">
-                        <font key="font" size="13" name=".PingFangSC-Regular"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
             </subviews>
-            <point key="canvasLocation" x="346" y="-153.5"/>
+            <point key="canvasLocation" x="1174" y="-146.5"/>
         </customView>
     </objects>
 </document>

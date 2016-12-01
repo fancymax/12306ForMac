@@ -176,13 +176,6 @@ extension Service{
                         logger.error("fail to get train_location:\(content)")
                     }
                     
-                    if let matches = Regex("'ypInfoDetail':'([^']+)'").getMatches(content){
-                        MainModel.ypInfoDetail = matches[0][0]
-                    }
-                    else{
-                        logger.error("fail to get ypInfoDetail:\(content)")
-                    }
-                    
                     if let matches = Regex(",'train_date':'([^']+)',").getMatches(content){
                         MainModel.trainDate = matches[0][0]
                     }
@@ -345,8 +338,7 @@ extension Service{
                     if ticketQueueCount.shouldRelogin() {
                         reject(ServiceError.errorWithCode(.checkUserFailed))
                     }
-//                    let warningStr = ticketQueueCount.getWarningInfoBy(MainModel.selectPassengers[0].seatCodeName, trainCode: MainModel.selectedTicket!.TrainCode)
-                    let warningStr = "正在提交"
+                    let warningStr = ticketQueueCount.getWarningInfoBy(MainModel.selectPassengers[0].seatCodeName)
                     if ticketQueueCount.isTicketSoldOut() {
                         reject(ServiceError.errorWithCode(.confirmSingleForQueueFailed, failureReason: warningStr))
                     }
