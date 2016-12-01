@@ -9,18 +9,18 @@
 import Cocoa
 
 struct SeatTypePair:CustomDebugStringConvertible {
-    let id1:String //无座
-    let id2:String // 1
-    let number:Int
+    let seatName:String //无座
+    let seatCode:String // 1
+    let hasTicket:Bool
     
-    init(id1:String,id2:String,number:Int,price:Double) {
-        self.id1 = id1
-        self.id2 = id2
-        self.number = number
+    init(seatName:String,seatCode:String,hasTicket:Bool) {
+        self.seatName = seatName
+        self.seatCode = seatCode
+        self.hasTicket = hasTicket
     }
     
     var debugDescription: String {
-        return "id1:\(id1) id:\(id2) number:\(number)"
+        return "seatName:\(seatName) seatCode:\(seatCode) hasTicket:\(hasTicket)"
     }
 }
 
@@ -29,7 +29,6 @@ enum TicketOrder:String {
     case ArriveTime
     case Lishi
 }
-
 
 class QueryLeftNewDTO:NSObject {
 
@@ -61,11 +60,6 @@ class QueryLeftNewDTO:NSObject {
     //721
     let lishiValue:String?
     
-    //"yp_info":"O021700228M026050032O021703072" 二等座228张 一等座32 无座72
-    //1016303004
-    //4047100000
-    //1016300000
-    //3030400000
     let yp_info:String?
     let control_train_day:String?
     let start_train_date:String!
@@ -171,7 +165,7 @@ class QueryLeftNewDTO:NSObject {
 //MARK: Seat and Ticket
     func hasTicketForSeatTypeFilterKey(_ key:String) -> Bool {
         for val in seatTypePairDic.values {
-            if ((key.contains(val.id1))&&(val.number > 0)) {
+            if ((key.contains(val.seatName))&&(val.hasTicket)) {
                 return true
             }
         }
@@ -180,8 +174,8 @@ class QueryLeftNewDTO:NSObject {
     
     func getSeatTypeNameByFilterKey(_ key:String) -> String? {
         for val in seatTypePairDic.values {
-            if ((key.contains(val.id1))&&(val.number > 0)) {
-                return val.id1
+            if ((key.contains(val.seatName))&&(val.hasTicket)) {
+                return val.seatName
             }
         }
         return nil
@@ -189,12 +183,30 @@ class QueryLeftNewDTO:NSObject {
     
     func setupHasTicket(){
         for val in seatTypePairDic.values {
-            if val.number > 0 {
+            if val.hasTicket {
                 hasTicket = true
                 return
             }
         }
     }
+    
+    
+func getSeatInfosFrom(trainCode:String)->[String:SeatTypePair] {
+    var seatInfos  = [String:SeatTypePair]()
+    
+    let seatTypeNameDic = G_QuerySeatTypeNameDicBy(trainCode)
+    let seatTypeKeyPathDic = G_QuerySeatTypeKeyPathDicBy(trainCode)
+    for seatName in seatTypeNameDic.keys {
+        if let keyPath = seatTypeKeyPathDic[seatName] {
+            let seatVal = self.value(forKey: keyPath) as! String
+            if (seatVal != "--") && (seatVal != "无") {
+                seatInfos[seatName] = SeatTypePair(seatName: seatName, seatCode: seatTypeNameDic[seatName]!, hasTicket: true)
+            }
+        }
+    }
+
+    return seatInfos
+}
     
     init(json:JSON,dateStr:String)
     {
@@ -265,7 +277,7 @@ class QueryLeftNewDTO:NSObject {
         
         trainDate = trainDateStr2Date(dateStr)
         jsStartTrainDateStr = getJsStartTrainDateStr(trainDate)
-//        seatTypePairDic = G_GetSeatInfosFrom(yp_info: yp_info!, trainCode: TrainCode)
+        seatTypePairDic = getSeatInfosFrom(trainCode: TrainCode)
         setupHasTicket()
     }
     

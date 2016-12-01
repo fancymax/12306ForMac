@@ -48,10 +48,10 @@ class TicketQueueCountResult{
     func getWarningInfoBy(_ seatCodeName:String,trainCode:String) -> String {
         var warningStr = ""
         if let yp_info = ticket {
-            let seatInfos = G_GetSeatInfosFrom(yp_info: yp_info, trainCode: trainCode)
-            if let seatTypePair = seatInfos[seatCodeName] {
-                warningStr += "本次列车 剩余\(seatCodeName) \(seatTypePair.number) 张"
-            }
+//            let seatInfos = G_GetSeatInfosFrom(yp_info: yp_info, trainCode: trainCode)
+//            if let seatTypePair = seatInfos[seatCodeName] {
+//                warningStr += "本次列车 剩余\(seatCodeName) \(seatTypePair.number) 张"
+//            }
         }
         if let status = op_2 , status == "true" {
             warningStr += ",目前排队人数已经超过余票张数，请您选择其他席别或车次"

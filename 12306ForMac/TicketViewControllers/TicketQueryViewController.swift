@@ -565,7 +565,7 @@ class TicketQueryViewController: NSViewController {
     func setSeatCodeForSelectedPassenger(_ trainCode:String, seatCodeName:String){
         for passenger in MainModel.selectPassengers{
             passenger.seatCodeName = seatCodeName
-            passenger.seatCode = QuerySeatTypeDicBy(trainCode)[seatCodeName]!
+            passenger.seatCode = G_QuerySeatTypeNameDicBy(trainCode)[seatCodeName]!
             passenger.setDefaultTicketType(date: self.queryDate.dateValue)
         }
     }
