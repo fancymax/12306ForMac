@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class OrderViewController: NSViewController{
+class OrderViewController: BaseViewController{
     @IBOutlet weak var orderListTable: NSTableView!
     @IBOutlet weak var payBtn: NSButton!
     
@@ -36,19 +36,6 @@ class OrderViewController: NSViewController{
     
     @IBAction func queryOrder(_ sender: NSButton) {
         queryAllOrder()
-    }
-    
-    func showTip(_ tip:String)  {
-        DJTipHUD.showStatus(tip, from: self.view)
-    }
-    
-    func startLoadingTip(_ tip:String)
-    {
-        DJLayerView.showStatus(tip, from: self.view)
-    }
-    
-    func stopLoadingTip(){
-        DJLayerView.dismiss()
     }
     
     func recvLogoutNotification(_ notification: Notification) {
@@ -98,6 +85,7 @@ class OrderViewController: NSViewController{
             window.beginSheet(payWindowController.window!, completionHandler: {response in
                 if response == NSModalResponseOK{
                     logger.info("<- pay")
+                    self.queryAllOrder()
                 }
             })
         }

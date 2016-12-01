@@ -9,7 +9,7 @@
 import Cocoa
 import WebKit
 
-class PayWindowController: NSWindowController {
+class PayWindowController: BaseWindowController {
 
     var request:URLRequest?
     @IBOutlet weak var payWeb: WebView!
@@ -21,15 +21,6 @@ class PayWindowController: NSWindowController {
         super.windowDidLoad()
 
         refreshPay()
-    }
-    
-    func dismissWithModalResponse(_ response:NSModalResponse)
-    {
-        if window != nil {
-            if window!.sheetParent != nil {
-                window!.sheetParent!.endSheet(window!,returnCode: response)
-            }
-        }
     }
     
     func refreshPay()  {
@@ -46,19 +37,6 @@ class PayWindowController: NSWindowController {
         self.startLoadingTip("正在加载...")
         
         Service.sharedInstance.payFlow(success: successHandler, failure: failureHandler)
-    }
-    
-    func showTip(_ tip:String)  {
-        DJTipHUD.showStatus(tip, from: self.window?.contentView)
-    }
-    
-    func startLoadingTip(_ tip:String)
-    {
-        DJLayerView.showStatus(tip, from: self.window?.contentView)
-    }
-    
-    func stopLoadingTip(){
-        DJLayerView.dismiss()
     }
     
     @IBAction func clickRefreshPay(_ button:NSButton) {

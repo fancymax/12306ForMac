@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class LoginWindowController: NSWindowController{
+class LoginWindowController: BaseWindowController{
 
     @IBOutlet weak var passWord: NSSecureTextField!
     @IBOutlet weak var userName: AutoCompleteTextField!
@@ -77,21 +77,6 @@ class LoginWindowController: NSWindowController{
         dismissWithModalResponse(NSModalResponseCancel)
     }
     
-    
-    func showTip(_ tip:String)  {
-        DJTipHUD.showStatus(tip, from: self.window?.contentView)
-    }
-    
-    func startLoadingTip(_ tip:String)
-    {
-        DJLayerView.showStatus(tip, from: self.window?.contentView)
-    }
-    
-    func stopLoadingTip(){
-        DJLayerView.dismiss()
-    }
-    
-    
     func handlerAfterFailure(){
         self.loadImage()
     }
@@ -152,15 +137,6 @@ class LoginWindowController: NSWindowController{
             self.showTip(translate(error))
         }
         Service.sharedInstance.preLoginFlow(success: successHandler,failure: failureHandler)
-    }
-    
-    func dismissWithModalResponse(_ response:NSModalResponse)
-    {
-        if window != nil {
-            if window!.sheetParent != nil {
-                window!.sheetParent!.endSheet(window!,returnCode: response)
-            }
-        }
     }
 }
 

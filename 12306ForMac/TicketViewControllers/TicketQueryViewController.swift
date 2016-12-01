@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class TicketQueryViewController: NSViewController {
+class TicketQueryViewController: BaseViewController {
     @IBOutlet weak var stackContentView: NSStackView!
 
     @IBOutlet var firstSearchView: NSView!
@@ -461,19 +461,6 @@ class TicketQueryViewController: NSViewController {
     func resetAutoQueryNumStatus() {
         self.autoQueryNum = 0
         self.autoQueryNumTxt.isHidden = true
-    }
-    
-    func showTip(_ tip:String){
-        DJTipHUD.showStatus(tip, from: self.view)
-    }
-    
-    func startLoadingTip(_ tip:String)
-    {
-        DJLayerView.showStatus(tip, from: self.view)
-    }
-    
-    func stopLoadingTip(){
-        DJLayerView.dismiss()
     }
     
     func queryTicket(_ summitHandler:@escaping ()->() = {}) {

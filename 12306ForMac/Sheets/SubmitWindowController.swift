@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class SubmitWindowController: NSWindowController{
+class SubmitWindowController: BaseWindowController{
 
     @IBOutlet weak var trainCodeLabel: NSTextField!
     @IBOutlet weak var trainDateLabel: NSTextField!
@@ -56,19 +56,6 @@ class SubmitWindowController: NSWindowController{
         }
         self.window?.setFrame(newView.frame, display: true, animate: true)
         self.window?.contentView?.addSubview(newView)
-    }
-    
-    func startLoadingTip(_ tip:String)
-    {
-        DJLayerView.showStatus(tip, from: self.window?.contentView)
-    }
-    
-    func stopLoadingTip(){
-        DJLayerView.dismiss()
-    }
-    
-    func showTip(_ tip:String){
-        DJTipHUD.showStatus(tip, from: self.window?.contentView)
     }
     
     func loadImage(){
@@ -174,11 +161,6 @@ class SubmitWindowController: NSWindowController{
     @IBAction func clickRateInAppstore(_ button:NSButton){
         NSWorkspace.shared().open(URL(string: "macappstore://itunes.apple.com/us/app/ding-piao-zhu-shou/id1163682213?l=zh&ls=1&mt=12")!)
         dismissWithModalResponse(NSModalResponseCancel)
-    }
-    
-    func dismissWithModalResponse(_ response:NSModalResponse)
-    {
-        window!.sheetParent!.endSheet(window!,returnCode: response)
     }
 }
 

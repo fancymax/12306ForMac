@@ -74,7 +74,7 @@ class FilterItem: NSObject {
 }
 
 
-class TrainFilterWindowController: NSWindowController {
+class TrainFilterWindowController: BaseWindowController {
     
     var trains:[QueryLeftNewDTO]?
     var filterItems = [FilterItem]()
@@ -148,11 +148,6 @@ class TrainFilterWindowController: NSWindowController {
                 seatFilterKey += "\(item.presentation)|"
             }
         }
-    }
-    
-    func dismissWithModalResponse(_ response:NSModalResponse)
-    {
-        window!.sheetParent!.endSheet(window!,returnCode: response)
     }
     
     @IBAction func clickTrainFilterBtn(_ sender: NSButton) {
