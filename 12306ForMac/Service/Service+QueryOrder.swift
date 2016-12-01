@@ -75,7 +75,7 @@ extension Service{
         }
     }
     
-    func payFlow(success:@escaping (_ request:URLRequest)->Void, failure:@escaping ()->Void) {
+    func payFlow(success:@escaping (_ request:URLRequest)->Void, failure:@escaping (NSError)->Void) {
         self.queryOrderInitNoComplete().then{() -> Promise<Void> in
             return self.queryMyOrderNoComplete()
         }.then{() -> Promise<Void> in
@@ -86,8 +86,8 @@ extension Service{
             return self.paycheckNew()
         }.then{request in
             success(request)
-        }.catch {_ in
-            failure()
+        }.catch {error in
+            failure(error as NSError)
         }
     }
 // MARK: - Chainable Request

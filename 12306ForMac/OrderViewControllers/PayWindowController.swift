@@ -9,29 +9,68 @@
 import Cocoa
 import WebKit
 
-class PayWindowController: NSWindowController,NSWindowDelegate {
+class PayWindowController: NSWindowController {
 
-    @IBOutlet weak var payWeb: WebView!
     var request:URLRequest?
+    @IBOutlet weak var payWeb: WebView!
     override var windowNibName: String{
         return "PayWindowController"
     }
+    
     override func windowDidLoad() {
         super.windowDidLoad()
 
-        payWeb.mainFrame.load(request)
-        print("windowDidLoad")
+        refreshPay()
     }
     
-    func runModalby(parentWnd:NSWindow,withRequest request:URLRequest)->Int {
-        self.request = request
-        return NSApp.runModal(for: window!)
+    func dismissWithModalResponse(_ response:NSModalResponse)
+    {
+        if window != nil {
+            if window!.sheetParent != nil {
+                window!.sheetParent!.endSheet(window!,returnCode: response)
+            }
+        }
     }
     
-    func windowShouldClose(_ sender: Any) -> Bool {
-        NSApp.abortModal()
-        self.window?.orderOut(nil)
-        return true
+    func refreshPay()  {
+        let successHandler = {(request:URLRequest) in
+            self.payWeb.mainFrame.load(request)
+            self.stopLoadingTip()
+        }
+        
+        let failureHandler = {(error:NSError) -> () in
+            self.stopLoadingTip()
+            self.showTip(translate(error))
+        }
+        
+        self.startLoadingTip("正在加载...")
+        
+        Service.sharedInstance.payFlow(success: successHandler, failure: failureHandler)
+    }
+    
+    func showTip(_ tip:String)  {
+        DJTipHUD.showStatus(tip, from: self.window?.contentView)
+    }
+    
+    func startLoadingTip(_ tip:String)
+    {
+        DJLayerView.showStatus(tip, from: self.window?.contentView)
+    }
+    
+    func stopLoadingTip(){
+        DJLayerView.dismiss()
+    }
+    
+    @IBAction func clickRefreshPay(_ button:NSButton) {
+        self.refreshPay()
+    }
+    
+    @IBAction func clickCancel(_ button:NSButton){
+        dismissWithModalResponse(NSModalResponseOK)
+    }
+    
+    @IBAction func open12306(_ sender: NSButton) {
+        NSWorkspace.shared().open(URL(string: "https://kyfw.12306.cn/otn/login/init")!)
     }
     
 }

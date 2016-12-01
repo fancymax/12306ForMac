@@ -29,28 +29,56 @@
                             <nil key="identifier"/>
                         </webPreferences>
                     </webView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9mL-0q-rg8">
-                        <rect key="frame" x="20" y="17" width="173" height="17"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9mL-0q-rg8">
+                        <rect key="frame" x="20" y="17" width="168" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="仅支持支付宝这种付款方式!" id="yAO-EJ-CkM">
                             <font key="font" size="13" name=".PingFangSC-Regular"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u88-0g-vfc">
-                        <rect key="frame" x="787" y="10" width="109" height="32"/>
-                        <buttonCell key="cell" type="push" title="跳转到12306" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IXb-e3-Zh9">
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u88-0g-vfc">
+                        <rect key="frame" x="721" y="10" width="94" height="28"/>
+                        <buttonCell key="cell" type="push" title="重新提交" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IXb-e3-Zh9">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="clickRefreshPay:" target="-2" id="bFK-Pk-8aD"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eqi-HC-GFK">
+                        <rect key="frame" x="829" y="8" width="67" height="32"/>
+                        <buttonCell key="cell" type="push" title="返回" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xS6-qg-6FT">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="clickCancel:" target="-2" id="z89-E3-c3o"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="6ej-fa-RAh">
+                        <rect key="frame" x="200" y="8" width="118" height="32"/>
+                        <buttonCell key="cell" type="push" title="跳转到12306" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JU0-Fa-BfK">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="open12306:" target="-2" id="cDh-u7-xN1"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="eqi-HC-GFK" secondAttribute="trailing" constant="20" id="1ht-5O-bfd"/>
+                    <constraint firstItem="6ej-fa-RAh" firstAttribute="leading" secondItem="9mL-0q-rg8" secondAttribute="trailing" constant="20" id="2Rh-cy-Avj"/>
                     <constraint firstItem="Wmr-Wp-yp9" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="GAH-2P-w9L"/>
+                    <constraint firstItem="eqi-HC-GFK" firstAttribute="leading" secondItem="u88-0g-vfc" secondAttribute="trailing" constant="26" id="GH7-VT-LUB"/>
                     <constraint firstItem="Wmr-Wp-yp9" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="GjX-Bn-x49"/>
+                    <constraint firstItem="u88-0g-vfc" firstAttribute="centerY" secondItem="6ej-fa-RAh" secondAttribute="centerY" id="Lfb-Fv-K8y"/>
                     <constraint firstAttribute="bottom" secondItem="Wmr-Wp-yp9" secondAttribute="bottom" constant="52" id="S8b-XQ-lo5"/>
-                    <constraint firstAttribute="trailing" secondItem="u88-0g-vfc" secondAttribute="trailing" constant="20" id="TEj-LO-SSZ"/>
                     <constraint firstAttribute="bottom" secondItem="u88-0g-vfc" secondAttribute="bottom" constant="17" id="VkK-cd-mdb"/>
+                    <constraint firstItem="eqi-HC-GFK" firstAttribute="centerY" secondItem="6ej-fa-RAh" secondAttribute="centerY" id="Zao-pc-Ca3"/>
+                    <constraint firstAttribute="bottom" secondItem="6ej-fa-RAh" secondAttribute="bottom" constant="15" id="baB-SH-1Mj"/>
                     <constraint firstItem="9mL-0q-rg8" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="22" id="cfs-uH-loo"/>
                     <constraint firstAttribute="trailing" secondItem="Wmr-Wp-yp9" secondAttribute="trailing" id="d1v-e3-Af3"/>
                     <constraint firstAttribute="bottom" secondItem="9mL-0q-rg8" secondAttribute="bottom" constant="17" id="qKS-4l-KwY"/>
@@ -59,7 +87,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="113" y="-267"/>
+            <point key="canvasLocation" x="-354" y="-310"/>
         </window>
     </objects>
 </document>

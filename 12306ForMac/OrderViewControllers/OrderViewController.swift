@@ -90,14 +90,16 @@ class OrderViewController: NSViewController{
     }
     
     @IBAction func payOrder(_ sender: NSButton) {
-//        NSWorkspace.shared().open(URL(string: "https://kyfw.12306.cn/otn/login/init")!)
+        logger.info("-> pay")
         
-        let successHandler = {(request:URLRequest) in
-            
-            let result = self.payWindowController.runModalby(parentWnd: self.view.window!, withRequest: request)
+        if let window = self.view.window {
+            window.beginSheet(payWindowController.window!) {
+                if $0 == NSModalResponseOK{
+                    
+                    logger.info("<- pay")
+                }
+            }
         }
-        
-        Service.sharedInstance.payFlow(success: successHandler, failure: {})
     }
     
     func queryHistoryOrder(){
