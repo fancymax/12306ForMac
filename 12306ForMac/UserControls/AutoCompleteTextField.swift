@@ -38,8 +38,9 @@ class AutoCompleteTableRowView:NSTableRowView{
 }
 
 class AutoCompleteTextField:NSTextField{
+    @IBInspectable var popOverWidth:CGFloat = 110.0
+    
     weak var tableViewDelegate:AutoCompleteTableViewDelegate?
-    var popOverWidth:NSNumber = 110
     let popOverPadding:CGFloat = 0.0
     let maxResults = 10
     
@@ -50,7 +51,7 @@ class AutoCompleteTextField:NSTextField{
     override func awakeFromNib() {
         let column1 = NSTableColumn(identifier: "text")
         column1.isEditable = false
-        column1.width = CGFloat(popOverWidth.floatValue) - 2 * popOverPadding
+        column1.width = popOverWidth - 2 * popOverPadding
         
         let tableView = NSTableView(frame: NSZeroRect)
         tableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.regular
@@ -71,7 +72,8 @@ class AutoCompleteTextField:NSTextField{
         tableSrollView.documentView = tableView
         tableSrollView.hasVerticalScroller = true
         
-        let contentView:NSView = NSView(frame: NSZeroRect)
+        // see issue #1, popover throws when contentView's height=0, CoreGraphics bug?
+        let contentView:NSView = NSView(frame: NSRect.init(x: 0, y: 0, width: popOverWidth, height: 1))
         contentView.addSubview(tableSrollView)
         
         let contentViewController = NSViewController()
@@ -81,6 +83,7 @@ class AutoCompleteTextField:NSTextField{
         self.autoCompletePopover?.appearance = NSAppearance(named: NSAppearanceNameVibrantLight)
         self.autoCompletePopover?.animates = false
         self.autoCompletePopover?.contentViewController = contentViewController
+        self.autoCompletePopover?.delegate = self
         
         self.matches = [String]()
     }
@@ -103,19 +106,19 @@ class AutoCompleteTextField:NSTextField{
                 self.autoCompleteTableView?.scrollRowToVisible((self.autoCompleteTableView?.selectedRow)!)
                 return //skip default behavior
             }
-        
+            
         case 36: // Return
             if isShow{
                 self.insert(self)
             }
-            return 
+            return //skip default behavior
             
         case 48: //Tab
             if isShow{
                 self.insert(self)
             }
             return
-        
+            
         case 49: //Space
             if isShow {
                 self.insert(self)
@@ -129,7 +132,7 @@ class AutoCompleteTextField:NSTextField{
         super.keyUp(with: theEvent)
         self.complete(self)
     }
-
+    
     func insert(_ sender:AnyObject){
         let selectedRow = self.autoCompleteTableView!.selectedRow
         let matchCount = self.matches!.count
@@ -160,12 +163,6 @@ class AutoCompleteTextField:NSTextField{
             self.autoCompleteTableView?.selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
             self.autoCompleteTableView?.scrollRowToVisible(index)
             
-            let numberOfRows = min(self.autoCompleteTableView!.numberOfRows, maxResults)
-            let height = (self.autoCompleteTableView!.rowHeight + self.autoCompleteTableView!.intercellSpacing.height) * CGFloat(numberOfRows) + 2 * 0.0
-            let frame = NSMakeRect(0, 0, CGFloat(popOverWidth.floatValue), height)
-            self.autoCompleteTableView?.enclosingScrollView?.frame = NSInsetRect(frame, popOverPadding, popOverPadding)
-            self.autoCompletePopover?.contentSize = NSMakeSize(NSWidth(frame), NSHeight(frame))
-            
             let rect = self.visibleRect
             self.autoCompletePopover?.show(relativeTo: rect, of: self, preferredEdge: NSRectEdge.maxY)
         }
@@ -180,6 +177,23 @@ class AutoCompleteTextField:NSTextField{
         }
         return []
     }
+}
+
+
+// MARK: - NSPopoverDelegate
+extension AutoCompleteTextField: NSPopoverDelegate{
+    
+    // caclulate contentSize only before it will show, to make it more stable
+    func popoverWillShow(_ notification: Notification) {
+        
+        let numberOfRows = min(self.autoCompleteTableView!.numberOfRows, maxResults)
+        let height = (self.autoCompleteTableView!.rowHeight + self.autoCompleteTableView!.intercellSpacing.height) * CGFloat(numberOfRows) + 2 * 0.0
+        let frame = NSMakeRect(0, 0, popOverWidth, height)
+        self.autoCompleteTableView?.enclosingScrollView?.frame = NSInsetRect(frame, popOverPadding, popOverPadding)
+        self.autoCompletePopover?.contentSize = NSMakeSize(NSWidth(frame), NSHeight(frame))
+        
+    }
+    
 }
 
 // MARK: - NSTableViewDelegate
@@ -201,8 +215,7 @@ extension AutoCompleteTextField:NSTableViewDelegate{
             cellView!.textField = textField
             cellView!.identifier = "MyView"
         }
-        
-        let attrs = [NSForegroundColorAttributeName:NSColor.black,NSFontAttributeName:NSFont.systemFont(ofSize: 13,weight: NSFontWeightThin)]
+        let attrs = [NSForegroundColorAttributeName:NSColor.black,NSFontAttributeName:NSFont.systemFont(ofSize: 13)]
         let mutableAttriStr = NSMutableAttributedString(string: self.matches![row], attributes: attrs)
         cellView!.textField!.attributedStringValue = mutableAttriStr
         

@@ -89,6 +89,50 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="编辑" id="Hsf-I0-CoD">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="编辑" id="IPf-AL-N9z">
+                        <items>
+                            <menuItem title="撤销键入" keyEquivalent="z" id="aIY-sh-rYC">
+                                <connections>
+                                    <action selector="undo:" target="-1" id="2gY-eC-yy4"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="重做" keyEquivalent="Z" id="4XN-MU-CCc">
+                                <connections>
+                                    <action selector="redo:" target="-1" id="N9a-YR-ZtU"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="LDj-rY-rjp"/>
+                            <menuItem title="剪切" keyEquivalent="x" id="A5C-WQ-L4T">
+                                <connections>
+                                    <action selector="cut:" target="-1" id="y8j-xF-3G9"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="拷贝" keyEquivalent="c" id="bHp-uT-yG7">
+                                <connections>
+                                    <action selector="copy:" target="-1" id="lXh-zD-zDg"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="粘贴" keyEquivalent="v" id="d77-JF-juU">
+                                <connections>
+                                    <action selector="paste:" target="-1" id="dF9-1z-Zm0"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="删除" id="JGR-WR-c7t">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="delete:" target="-1" id="nv3-hg-mlk"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="全选" keyEquivalent="a" id="etH-ld-311">
+                                <connections>
+                                    <action selector="selectAll:" target="-1" id="FJs-qP-488"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="调试" id="y5H-wR-1j9">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="调试" id="JFg-va-igG">
