@@ -13,11 +13,6 @@ class TrainCodeDetailViewController: NSViewController {
     var trainCodeDetails: TrainCodeDetails?
     var ticket:QueryLeftNewDTO? {
         didSet {
-            if oldValue != nil {
-                if oldValue!.train_no == ticket!.train_no {
-                    return
-                }
-            }
             
             let queryByTrainCodeParam = QueryByTrainCodeParam(ticket!)
             if self.trainCodeDetails != nil {
