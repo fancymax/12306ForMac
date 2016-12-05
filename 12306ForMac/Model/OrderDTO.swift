@@ -46,6 +46,21 @@ class OrderDTO:NSObject{
         return name
     }
     
+    var startTrainDate:Date? {
+        if start_train_date_page == nil {
+            return nil
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        if let date = dateFormatter.date(from: start_train_date_page!) {
+            return date
+        }
+        else {
+            logger.error("trainDateStr2Date dateStr = \(self.start_train_date_page)")
+            return nil
+        }
+    }
+    
     var startEndStation:String {
         return "\(from_station_name!)->\(to_station_name!)"
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F10F003B1DF581420023DE68 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10F003A1DF581420023DE68 /* CalendarManager.swift */; };
 		F10F47A91D409ED3004668BB /* station_name.js in Resources */ = {isa = PBXBuildFile; fileRef = F10F47A81D409ED3004668BB /* station_name.js */; };
 		F11154651C8D91F800FA6059 /* srca.cer in Resources */ = {isa = PBXBuildFile; fileRef = F11154631C8D91F800FA6059 /* srca.cer */; };
 		F11154681C8D920600FA6059 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154671C8D920600FA6059 /* User.swift */; };
@@ -128,6 +129,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F10F003A1DF581420023DE68 /* CalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		F10F47A81D409ED3004668BB /* station_name.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = station_name.js; path = 12306ForMac/station_name.js; sourceTree = "<group>"; };
 		F11154621C8D91F800FA6059 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F11154631C8D91F800FA6059 /* srca.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = srca.cer; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				F111547B1C8D923C00FA6059 /* SwiftyJSON.swift */,
 				F111547C1C8D923C00FA6059 /* SwiftyRegex.swift */,
 				F1FEE7A11D8D464900B02C84 /* NotifySpeaker.swift */,
+				F10F003A1DF581420023DE68 /* CalendarManager.swift */,
 			);
 			name = Utilities;
 			path = 12306ForMac/Utilities;
@@ -652,6 +655,7 @@
 				F11154961C8D925200FA6059 /* RandCodeImageView.swift in Sources */,
 				F12746721D50345D00975DFA /* ClickableDatePicker.swift in Sources */,
 				F11154681C8D920600FA6059 /* User.swift in Sources */,
+				F10F003B1DF581420023DE68 /* CalendarManager.swift in Sources */,
 				F1CCA2DB1D0D42D700B6853E /* QueryByTrainCodeParam.swift in Sources */,
 				F147763E1D6B2B2E002FD6AF /* InfoButton.swift in Sources */,
 				F11154811C8D923C00FA6059 /* QueryDefaultManager.swift in Sources */,

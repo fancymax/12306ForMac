@@ -148,8 +148,9 @@ class OrderViewController: BaseViewController{
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         if orderList.count == 0 {
-            return true
+            return false
         }
+        
         return true
     }
     
@@ -164,7 +165,18 @@ class OrderViewController: BaseViewController{
     }
     
     @IBAction func clickAdd2Calendar(_ sender:AnyObject?){
+        let ticket = orderList[orderListTable.selectedRow]
         
+        let eventTitle = "\(ticket.train_code_page!) \(ticket.startEndStation) \(ticket.seat_type_name!)(\(ticket.whereToSeat))"
+        let endDate = ticket.startTrainDate!
+        let startDate = endDate.addingTimeInterval(-7200)
+        
+        let isSuccess = CalendarManager.sharedInstance.createEvent(title:eventTitle,startDate:startDate,endDate:endDate)
+        
+        if !isSuccess {
+            self.showTip("添加日历失败,请到 系统偏好设置->安全性与隐私->隐私->日历 允许本程序的访问权限。")
+            
+        }
     }
     
     @IBAction func clickRefund(_ sender:AnyObject?){

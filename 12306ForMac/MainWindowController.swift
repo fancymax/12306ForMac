@@ -46,6 +46,9 @@ class MainWindowController: NSWindowController{
         
         NotificationCenter.default.addObserver(self, selector: #selector(MainWindowController.recvLoginNotification(_:)), name: NSNotification.Name.App.DidLogin, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(MainWindowController.recvAutoLoginNotification(_:)), name: NSNotification.Name.App.DidAutoLogin, object: nil)
+        
+        //申请日历权限
+        CalendarManager.sharedInstance.updateAuthorizationStatus()
     }
     
     func segmentTab(_ sender: NSSegmentedControl){
