@@ -223,7 +223,6 @@ extension Service{
                                           "transType":"01"
                                           ]
                             
-                            print(params)
                             let request = Alamofire.request(urlStr, method: .post, parameters:params, headers: headers).request
                             
                             fulfill(request!)

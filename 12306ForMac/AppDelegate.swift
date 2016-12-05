@@ -70,13 +70,13 @@ let logger: XCGLogger = {
         return true
     }
     
-    func applicationWillResignActive(_ notification: Notification) {
-        print("applicationWillResignActive")
-    }
-    
-    func applicationWillBecomeActive(_ notification: Notification) {
-        print("applicationWillBecomeActive")
-    }
+//    func applicationWillResignActive(_ notification: Notification) {
+//        print("applicationWillResignActive")
+//    }
+//    
+//    func applicationWillBecomeActive(_ notification: Notification) {
+//        print("applicationWillBecomeActive")
+//    }
 
 }
 

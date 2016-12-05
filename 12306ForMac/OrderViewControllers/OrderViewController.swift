@@ -91,6 +91,7 @@ class OrderViewController: BaseViewController{
         }
     }
     
+    
     func queryHistoryOrder(){
         self.startLoadingTip("正在查询...")
         
@@ -141,6 +142,33 @@ class OrderViewController: BaseViewController{
             self.hasOrder = false
         }
         Service.sharedInstance.queryNoCompleteOrderFlow(success: successHandler, failure: failureHandler)
+    }
+    
+// MARK: - NSTableViewDataSource for MenuList and OrderList
+    
+    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        if orderList.count == 0 {
+            return true
+        }
+        return true
+    }
+    
+    @IBAction func clickShareInfo(_ sender:AnyObject?) {
+        let generalPasteboard = NSPasteboard.general()
+        generalPasteboard.clearContents()
+        let ticket = orderList[orderListTable.selectedRow]
+        let shareInfo = "我已预订 \(ticket.start_train_date_page!) \(ticket.train_code_page!) \(ticket.startEndStation) \(ticket.seat_type_name!)(\(ticket.whereToSeat))"
+        generalPasteboard.setString(shareInfo, forType:NSStringPboardType)
+        
+        showTip("车票信息已生成,可复制到其他App")
+    }
+    
+    @IBAction func clickAdd2Calendar(_ sender:AnyObject?){
+        
+    }
+    
+    @IBAction func clickRefund(_ sender:AnyObject?){
+        
     }
 }
 

@@ -35,6 +35,7 @@ class StationNameJs{
         self.allStation = [Station]()
         self.allStationMap = [String:Station]()
         
+        //1.8983
         let path = Bundle.main.path(forResource: "station_name", ofType: "js")
         let stationInfo = try! NSString(contentsOfFile: path!, encoding: String.Encoding.utf8.rawValue) as String
         

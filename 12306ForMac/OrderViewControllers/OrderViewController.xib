@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="OrderViewController" customModule="订票助手" customModuleProvider="target">
@@ -27,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="890" height="335"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <tableView identifier="OrderList" verticalHuggingPriority="750" tag="2" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" headerView="8iI-88-9of" viewBased="YES" id="Mba-dl-MeQ">
+                                    <tableView identifier="OrderList" verticalHuggingPriority="750" tag="2" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="40" headerView="8iI-88-9of" viewBased="YES" id="Mba-dl-MeQ">
                                         <rect key="frame" x="0.0" y="0.0" width="890" height="312"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <size key="intercellSpacing" width="3" height="2"/>
@@ -53,7 +54,7 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="dZX-3m-GwH">
-                                                                <rect key="frame" x="0.0" y="12" width="108" height="17"/>
+                                                                <rect key="frame" x="0.0" y="12" width="104" height="17"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="2016/6/30 15:40" id="MS9-Vj-a14">
                                                                     <font key="font" metaFont="systemThin" size="13"/>
                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -131,7 +132,7 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="HBu-Ao-bXK">
-                                                                <rect key="frame" x="0.0" y="12" width="43" height="17"/>
+                                                                <rect key="frame" x="0.0" y="12" width="44" height="17"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="深圳北" id="J5l-o2-MFP">
                                                                     <font key="font" metaFont="systemThin" size="13"/>
                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -170,7 +171,7 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d07-26-bbj">
-                                                                <rect key="frame" x="-1.5" y="12" width="43" height="17"/>
+                                                                <rect key="frame" x="-1" y="12" width="43" height="17"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="长沙南" id="LCc-Vf-WqP">
                                                                     <font key="font" metaFont="systemThin" size="13"/>
                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -209,7 +210,7 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wsg-xh-JkU">
-                                                                <rect key="frame" x="-1.5" y="12" width="43" height="17"/>
+                                                                <rect key="frame" x="-1" y="12" width="43" height="17"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="成人票" id="QFX-o3-oIa">
                                                                     <font key="font" metaFont="systemThin" size="13"/>
                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -248,7 +249,7 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="edf-m1-A7g">
-                                                                <rect key="frame" x="-1.5" y="12" width="43" height="17"/>
+                                                                <rect key="frame" x="-1" y="12" width="43" height="17"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="二等座" id="pHi-Po-XNh">
                                                                     <font key="font" metaFont="systemThin" size="13"/>
                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -287,7 +288,7 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="RxA-H1-GeU">
-                                                                <rect key="frame" x="0.0" y="12" width="44" height="17"/>
+                                                                <rect key="frame" x="0.0" y="12" width="45" height="17"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="01车厢" id="Gyd-tJ-k4c">
                                                                     <font key="font" metaFont="systemThin" size="13"/>
                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -326,7 +327,7 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nMX-gJ-Pt0">
-                                                                <rect key="frame" x="-1.5" y="12" width="43" height="17"/>
+                                                                <rect key="frame" x="-1" y="12" width="43" height="17"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="03C号" id="9KS-gG-aDd">
                                                                     <font key="font" metaFont="systemThin" size="13"/>
                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -404,7 +405,7 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="IZD-KB-Ac8">
-                                                                <rect key="frame" x="0.0" y="12" width="43" height="17"/>
+                                                                <rect key="frame" x="0.0" y="12" width="44" height="17"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="林大海" id="fnx-WU-mKw">
                                                                     <font key="font" metaFont="systemThin" size="13"/>
                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -443,7 +444,7 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="MZf-8q-r6E">
-                                                                <rect key="frame" x="0.0" y="12" width="157" height="17"/>
+                                                                <rect key="frame" x="0.0" y="12" width="160" height="17"/>
                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="待支付(请在 19:20 前支付)" id="B6i-2S-AZa">
                                                                     <font key="font" metaFont="systemThin" size="13"/>
                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -468,10 +469,10 @@
                                         <accessibility identifier="OrderList"/>
                                         <connections>
                                             <outlet property="dataSource" destination="-2" id="inO-Zd-UBe"/>
+                                            <outlet property="menu" destination="eWD-Lh-F7A" id="2d8-JK-5bQ"/>
                                         </connections>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </clipView>
                             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="0.125" horizontal="YES" id="nYZ-lC-U4L">
                                 <rect key="frame" x="0.0" y="310" width="886" height="15"/>
@@ -486,19 +487,9 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </tableHeaderView>
                         </scrollView>
-                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1s0-kc-s4d">
-                            <rect key="frame" x="93" y="352" width="81" height="32"/>
-                            <buttonCell key="cell" type="push" title="付款" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ur0-WH-1wD">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="payOrder:" target="-2" id="l52-2q-lHP"/>
-                                <binding destination="-2" name="enabled" keyPath="self.hasOrder" id="xEP-dX-ec8"/>
-                            </connections>
-                        </button>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MFd-Gi-kIH">
                             <rect key="frame" x="4" y="352" width="81" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="push" title="刷新" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5WU-x5-Vr0">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -509,6 +500,7 @@
                         </button>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PrQ-Zc-Oiu">
                             <rect key="frame" x="174" y="352" width="81" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="push" title="取消订单" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CDE-dY-7P7">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -516,6 +508,18 @@
                             <connections>
                                 <action selector="cancelOrder:" target="-2" id="rXX-6v-DoT"/>
                                 <binding destination="-2" name="enabled" keyPath="self.hasOrder" id="5tI-Py-2fi"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1s0-kc-s4d">
+                            <rect key="frame" x="93" y="352" width="81" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="push" title="支付订单" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ur0-WH-1wD">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" size="13" name=".PingFangSC-Regular"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="payOrder:" target="-2" id="l52-2q-lHP"/>
+                                <binding destination="-2" name="enabled" keyPath="self.hasOrder" id="xEP-dX-ec8"/>
                             </connections>
                         </button>
                     </subviews>
@@ -538,7 +542,31 @@
                 <constraint firstAttribute="trailing" secondItem="Anw-mp-uIe" secondAttribute="trailing" id="dC5-F3-KMj"/>
                 <constraint firstItem="Anw-mp-uIe" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="rSA-0E-x41"/>
             </constraints>
-            <point key="canvasLocation" x="439" y="464"/>
+            <point key="canvasLocation" x="207" y="379"/>
         </customView>
+        <menu id="eWD-Lh-F7A">
+            <items>
+                <menuItem title="添加日历" id="LCc-9w-v8T">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="clickAdd2Calendar:" target="-2" id="XgX-0t-SS3"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="复制车票信息" id="T4J-cU-aha">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="clickShareInfo:" target="-2" id="HYl-aD-nXo"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="VEa-uJ-D27"/>
+                <menuItem title="车票退款" id="Bwj-qs-Bci">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="clickRefund:" target="-2" id="uef-At-anN"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="172" y="25"/>
+        </menu>
     </objects>
 </document>

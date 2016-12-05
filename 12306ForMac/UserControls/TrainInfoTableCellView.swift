@@ -138,7 +138,6 @@ class TrainInfoTableCellView: TrainTableCellView {
         messageField.textColor = NSColor(calibratedWhite: 0.0, alpha: 0.45)
         
         for btn in dictOfBtn.values {
-//            (btn as! LoginButton).textColor = NSColor(calibratedWhite: 0.0, alpha: 1)
             (btn as! LoginButton).textColor = NSColor(calibratedRed: 0.270588, green: 0.541176, blue: 0.913725, alpha: 1.0)
         }
     }
