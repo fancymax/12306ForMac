@@ -92,8 +92,26 @@ class CalendarManager:NSObject {
                 }
             }
             else {
-                self.createCalendar()
                 logger.error("Calendar = nil,create")
+                self.createCalendar()
+                
+                if let calendarId = UserDefaults.standard.string(forKey: "calendarId") {
+                    if let calendar = eventStore.calendar(withIdentifier: calendarId) {
+                        let event = EKEvent(eventStore: self.eventStore)
+                        event.title = title
+                        event.startDate = startDate
+                        event.endDate = endDate
+                        event.calendar = calendar
+                        do {
+                            try self.eventStore.save(event, span: .thisEvent, commit: true)
+                        } catch {
+                            logger.error(error)
+                        }
+                    }
+                    else{
+                        logger.error("Calendar = nil,again")
+                    }
+                }
             }
         }
         return true
