@@ -144,7 +144,7 @@ class OrderViewController: BaseViewController{
         Service.sharedInstance.queryNoCompleteOrderFlow(success: successHandler, failure: failureHandler)
     }
     
-// MARK: - NSTableViewDataSource for MenuList and OrderList
+// MARK: - Menu Action
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         if orderList.count == 0 {
@@ -175,7 +175,9 @@ class OrderViewController: BaseViewController{
         
         if !isSuccess {
             self.showTip("添加日历失败,请到 系统偏好设置->安全性与隐私->隐私->日历 允许本程序的访问权限。")
-            
+        }
+        else {
+            self.showTip("添加日历成功。")
         }
     }
     
@@ -184,7 +186,7 @@ class OrderViewController: BaseViewController{
     }
 }
 
-// MARK: - NSTableViewDataSource for MenuList and OrderList
+// MARK: - NSTableViewDataSource
 extension OrderViewController: NSTableViewDataSource{
     func numberOfRows(in tableView: NSTableView) -> Int {
             return orderList.count

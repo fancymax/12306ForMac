@@ -78,18 +78,22 @@ class CalendarManager:NSObject {
             return false
         }
         
+        let createEventHandler = {(calendar:EKCalendar) -> () in
+            let event = EKEvent(eventStore: self.eventStore)
+            event.title = title
+            event.startDate = startDate
+            event.endDate = endDate
+            event.calendar = calendar
+            do {
+                try self.eventStore.save(event, span: .thisEvent, commit: true)
+            } catch {
+                logger.error(error)
+            }
+        }
+        
         if let calendarId = UserDefaults.standard.string(forKey: "calendarId") {
             if let calendar = eventStore.calendar(withIdentifier: calendarId) {
-                let event = EKEvent(eventStore: self.eventStore)
-                event.title = title
-                event.startDate = startDate
-                event.endDate = endDate
-                event.calendar = calendar
-                do {
-                    try self.eventStore.save(event, span: .thisEvent, commit: true)
-                } catch {
-                    logger.error(error)
-                }
+                createEventHandler(calendar)
             }
             else {
                 logger.error("Calendar = nil,create")
@@ -97,16 +101,7 @@ class CalendarManager:NSObject {
                 
                 if let calendarId = UserDefaults.standard.string(forKey: "calendarId") {
                     if let calendar = eventStore.calendar(withIdentifier: calendarId) {
-                        let event = EKEvent(eventStore: self.eventStore)
-                        event.title = title
-                        event.startDate = startDate
-                        event.endDate = endDate
-                        event.calendar = calendar
-                        do {
-                            try self.eventStore.save(event, span: .thisEvent, commit: true)
-                        } catch {
-                            logger.error(error)
-                        }
+                        createEventHandler(calendar)
                     }
                     else{
                         logger.error("Calendar = nil,again")

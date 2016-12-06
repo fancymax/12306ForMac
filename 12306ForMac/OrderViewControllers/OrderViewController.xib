@@ -558,13 +558,6 @@
                         <action selector="clickShareInfo:" target="-2" id="HYl-aD-nXo"/>
                     </connections>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="VEa-uJ-D27"/>
-                <menuItem title="车票退款" id="Bwj-qs-Bci">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="clickRefund:" target="-2" id="uef-At-anN"/>
-                    </connections>
-                </menuItem>
             </items>
             <point key="canvasLocation" x="172" y="25"/>
         </menu>
