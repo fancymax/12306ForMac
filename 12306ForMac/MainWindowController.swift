@@ -81,20 +81,26 @@ class MainWindowController: NSWindowController{
     }
     
     func recvDamaSuccessNotification(_ note: Notification){
-        damaBtn.title = "🐰🔵"
+        if let isSuccess = note.object as? Bool {
+            if isSuccess {
+                damaBtn.title = "打码兔🔵"
+            }
+            else {
+                damaBtn.title = "打码兔🔴"
+            }
+        }
+        else {
+            damaBtn.title = "打码兔🔵"
+            
+        }
     }
     
     func setupDamaBtn() {
         if AdvancedPreferenceManager.sharedInstance.isUseDama {
-            Dama.sharedInstance.getBalance(AdvancedPreferenceManager.sharedInstance.damaUser, password: AdvancedPreferenceManager.sharedInstance.damaPassword, success: { _ in
-                    NotificationCenter.default.post(name: Notification.Name.App.DidDamaGetBalance, object:nil)
-                }, failure: { _ in
-                    
-            })
-
+            damaBtn.title = "打码兔🔵"
         }
         else {
-            damaBtn.title = "🐰🔴"
+            damaBtn.title = "打码兔🔴"
         }
     }
     
