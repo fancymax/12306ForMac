@@ -73,7 +73,7 @@ class QueryLeftNewDTO:NSObject {
     let location_code:String?
     let from_station_no:String?
     let to_station_no:String?
-    let control_day:String?
+    let control_day:Int?
     let sale_time:String?
     let is_support_card:String?
     //标识符
@@ -122,6 +122,26 @@ class QueryLeftNewDTO:NSObject {
         else {
             return false
         }
+    }
+    
+    func getSaleTime() -> Date {
+        let beforeDays = control_day ?? 30
+        let offsetHour = Int(sale_time!) ?? 0
+        
+        let offsetDay = 3600 * 24 * beforeDays
+        let seconds = offsetHour / 100 * 3600
+        let saleTime = trainDate.addingTimeInterval(-(Double)(offsetDay)).addingTimeInterval((Double)(seconds))
+        
+        return saleTime
+    }
+    
+    func canTicketAdd2Calendar() -> Bool {
+        if let str = buttonTextInfo {
+            if str.contains("起售") {
+                return true
+            }
+        }
+        return false
     }
     
 //MARK: Train Date
@@ -199,7 +219,7 @@ func getSeatInfosFrom(trainCode:String)->[String:SeatTypePair] {
     for seatName in seatTypeNameDic.keys {
         if let keyPath = seatTypeKeyPathDic[seatName] {
             let seatVal = self.value(forKey: keyPath) as! String
-            if (seatVal != "--") && (seatVal != "无") {
+            if (seatVal != "--") && (seatVal != "无") && (seatVal != "*"){
                 seatInfos[seatName] = SeatTypePair(seatName: seatName, seatCode: seatTypeNameDic[seatName]!, hasTicket: true)
             }
         }
@@ -243,7 +263,7 @@ func getSeatInfosFrom(trainCode:String)->[String:SeatTypePair] {
         location_code = ticket["location_code"].string
         from_station_no = ticket["from_station_no"].string
         to_station_no = ticket["to_station_no"].string
-        control_day = ticket["control_day"].string
+        control_day = ticket["control_day"].int
         sale_time = ticket["sale_time"].string
         is_support_card = ticket["is_support_card"].string
         

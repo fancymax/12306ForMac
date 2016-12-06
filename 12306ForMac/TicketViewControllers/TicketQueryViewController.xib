@@ -55,7 +55,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="886" height="530"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" headerView="mkA-fg-IPp" viewBased="YES" id="vdR-Hc-SYr">
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="40" headerView="mkA-fg-IPp" viewBased="YES" id="vdR-Hc-SYr">
                                 <rect key="frame" x="0.0" y="0.0" width="886" height="507"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -278,8 +278,8 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView misplaced="YES" id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="订票助手" customModuleProvider="target">
-                                                <rect key="frame" x="453" y="1" width="431" height="63"/>
+                                            <tableCellView id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="订票助手" customModuleProvider="target">
+                                                <rect key="frame" x="453" y="1" width="1000" height="63"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oxk-Lo-fip">
@@ -453,6 +453,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="-2" id="dxU-1b-LC4"/>
                                     <outlet property="delegate" destination="-2" id="uMG-pa-01W"/>
+                                    <outlet property="menu" destination="BOj-Rm-dNy" id="Ew4-HN-XUM"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -723,6 +724,23 @@
             </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="364" y="956"/>
         </customView>
+        <menu id="BOj-Rm-dNy">
+            <items>
+                <menuItem title="添加日历提醒" id="YMf-X8-txQ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="clickAdd2Calendar:" target="-2" id="nhc-Wi-Heh"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="复制车票信息" tag="1" id="OBm-bv-XKz">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="clickShareInfo:" target="-2" id="AZV-Wf-Ija"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="101" y="-239"/>
+        </menu>
     </objects>
     <resources>
         <image name="Add" width="94" height="94"/>

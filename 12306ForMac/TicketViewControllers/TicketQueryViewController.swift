@@ -641,6 +641,47 @@ class TicketQueryViewController: BaseViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self)
     }
+// MARK: - Menu Action
+    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        if filterQueryResult.count <= 0 {
+            return false
+        }
+        
+        let selectedRow = leftTicketTable.selectedRow
+        let ticket = filterQueryResult[selectedRow]
+        //calendar
+        if (menuItem.tag == 0) && !ticket.canTicketAdd2Calendar() {
+            return false
+        }
+        
+        return true
+    }
+    
+    @IBAction func clickShareInfo(_ sender:AnyObject?) {
+        let generalPasteboard = NSPasteboard.general()
+        generalPasteboard.clearContents()
+        let ticket = filterQueryResult[leftTicketTable.selectedRow]
+        let shareInfo = "\(ticket.TrainCode!) \(ticket.FromStationName!)->\(ticket.ToStationName!) \(ticket.trainDateStr) \(ticket.start_time!)->\(ticket.arrive_time!)"
+        generalPasteboard.setString(shareInfo, forType:NSStringPboardType)
+        
+        showTip("车票信息已生成,可复制到其他App")
+    }
+    
+    @IBAction func clickAdd2Calendar(_ sender:AnyObject?){
+        let ticket = filterQueryResult[leftTicketTable.selectedRow]
+        
+        let eventTitle = "预售提醒: \(ticket.TrainCode!) \(ticket.FromStationName!)->\(ticket.ToStationName!)"
+        let endDate = ticket.getSaleTime()
+        let startDate = endDate.addingTimeInterval(-3600)
+        let isSuccess = CalendarManager.sharedInstance.createEvent(title:eventTitle,startDate:startDate,endDate:endDate)
+
+        if !isSuccess {
+            self.showTip("添加日历失败,请到 系统偏好设置->安全性与隐私->隐私->日历 允许本程序的访问权限。")
+        }
+        else {
+            self.showTip("添加日历成功。")
+        }
+    }
 }
 
 // MARK: - AutoCompleteTableViewDelegate

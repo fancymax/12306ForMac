@@ -52,6 +52,7 @@
 		F11154D61C8D937E00FA6059 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F11154D41C8D937E00FA6059 /* Images.xcassets */; };
 		F11154E51C8D93B300FA6059 /* Add.png in Resources */ = {isa = PBXBuildFile; fileRef = F11154E11C8D93B300FA6059 /* Add.png */; };
 		F113B4F81C8FBA2E0001AE09 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113B4F71C8FBA2E0001AE09 /* ServiceError.swift */; };
+		F118AC451DF6656400B7EECE /* NSTableView+ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F118AC441DF6656400B7EECE /* NSTableView+ContextMenu.swift */; };
 		F11E29291D2AA2B6004BE59D /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = F11E29281D2AA2B6004BE59D /* User.png */; };
 		F11FE6871D5F4EB70049F261 /* DamaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11FE6861D5F4EB70049F261 /* DamaError.swift */; };
 		F121FC9A1DD987E100CA05F3 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = F121FC991DD987E100CA05F3 /* Notifications.swift */; };
@@ -175,6 +176,7 @@
 		F11154E11C8D93B300FA6059 /* Add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Add.png; path = 12306ForMac/images/Add.png; sourceTree = SOURCE_ROOT; };
 		F11154E91C8D945C00FA6059 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = 12306ForMac/Info.plist; sourceTree = SOURCE_ROOT; };
 		F113B4F71C8FBA2E0001AE09 /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		F118AC441DF6656400B7EECE /* NSTableView+ContextMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTableView+ContextMenu.swift"; sourceTree = "<group>"; };
 		F11E29281D2AA2B6004BE59D /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = User.png; path = 12306ForMac/images/User.png; sourceTree = SOURCE_ROOT; };
 		F11EB45A1B6A368E000063E4 /* 订票助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "订票助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F11FE6861D5F4EB70049F261 /* DamaError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamaError.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				F12746711D50345D00975DFA /* ClickableDatePicker.swift */,
 				F1F2F2D11D5AFE7100EA7786 /* UrlLabel.swift */,
 				F14D6BE31D86E91C00CBD36C /* FilterTrainCodeTransformer.swift */,
+				F118AC441DF6656400B7EECE /* NSTableView+ContextMenu.swift */,
 			);
 			name = UserControls;
 			path = 12306ForMac/UserControls;
@@ -624,6 +627,7 @@
 			files = (
 				F11154CF1C8D931500FA6059 /* MainWindowController.swift in Sources */,
 				F142431B1DB628CB0012B5E4 /* DJTipHUD.m in Sources */,
+				F118AC451DF6656400B7EECE /* NSTableView+ContextMenu.swift in Sources */,
 				F11154C11C8D92D000FA6059 /* PassengerSelectViewController.swift in Sources */,
 				F11154801C8D923C00FA6059 /* SwiftyRegex.swift in Sources */,
 				F11154781C8D921400FA6059 /* QueryOrderParam.swift in Sources */,
