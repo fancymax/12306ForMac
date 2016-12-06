@@ -643,6 +643,10 @@ class TicketQueryViewController: BaseViewController {
     }
 // MARK: - Menu Action
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        if menuItem.title.contains("刷新") {
+            return true
+        }
+    
         if filterQueryResult.count <= 0 {
             return false
         }
@@ -650,7 +654,7 @@ class TicketQueryViewController: BaseViewController {
         let selectedRow = leftTicketTable.selectedRow
         let ticket = filterQueryResult[selectedRow]
         //calendar
-        if (menuItem.tag == 0) && !ticket.canTicketAdd2Calendar() {
+        if (menuItem.title.contains("日历")) && !ticket.canTicketAdd2Calendar() {
             return false
         }
         

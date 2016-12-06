@@ -152,6 +152,20 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="操作" id="Pc1-zk-zAM">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="操作" id="gYs-60-cgM">
+                        <items>
+                            <menuItem title="刷新余票" keyEquivalent="r" id="dUM-Nj-mdp">
+                                <connections>
+                                    <action selector="clickQueryTicket:" target="-1" id="3SL-1j-erW"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="eG2-hD-Zgi"/>
+                            <menuItem title="切换Tab" keyEquivalent="" id="dh2-67-kXh"/>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="用户帮助" id="wpr-3q-Mcd">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="用户帮助" systemMenu="help" id="F2S-fz-NVQ">

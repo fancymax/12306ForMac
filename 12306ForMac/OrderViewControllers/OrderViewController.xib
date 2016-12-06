@@ -495,7 +495,7 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
-                                <action selector="queryOrder:" target="-2" id="qqG-ht-dWj"/>
+                                <action selector="clickQueryOrder:" target="-2" id="XyY-4j-ovh"/>
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PrQ-Zc-Oiu">

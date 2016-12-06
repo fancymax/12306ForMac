@@ -34,7 +34,7 @@ class OrderViewController: BaseViewController{
         }
     }
     
-    @IBAction func queryOrder(_ sender: NSButton) {
+    @IBAction func clickQueryOrder(_ sender: AnyObject?) {
         queryAllOrder()
     }
     
@@ -147,6 +147,9 @@ class OrderViewController: BaseViewController{
 // MARK: - Menu Action
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        if menuItem.title.contains("刷新") {
+            return true
+        }
         if orderList.count == 0 {
             return false
         }

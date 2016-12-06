@@ -67,6 +67,7 @@ class MainWindowController: NSWindowController{
         else if(moduleName == TrainBook){
             self.pageBox.contentView = ticketQueryViewController.view
         }
+        self.window?.makeFirstResponder(self.pageBox.contentView)
     }
     
     func recvLoginNotification(_ note: Notification){
