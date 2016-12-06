@@ -546,7 +546,7 @@
         </customView>
         <menu id="eWD-Lh-F7A">
             <items>
-                <menuItem title="添加日历" id="LCc-9w-v8T">
+                <menuItem title="添加日历提醒" id="LCc-9w-v8T">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="clickAdd2Calendar:" target="-2" id="XgX-0t-SS3"/>

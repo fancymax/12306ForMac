@@ -622,7 +622,7 @@
                 </textField>
                 <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JxS-Ab-P9F">
                     <rect key="frame" x="655" y="1" width="19" height="27"/>
-                    <stepperCell key="cell" continuous="YES" alignment="left" maxValue="30" id="yLD-vM-oFo"/>
+                    <stepperCell key="cell" continuous="YES" alignment="left" maxValue="59" id="yLD-vM-oFo"/>
                     <connections>
                         <action selector="clickDateStepper:" target="-2" id="IYZ-EU-1U1"/>
                     </connections>

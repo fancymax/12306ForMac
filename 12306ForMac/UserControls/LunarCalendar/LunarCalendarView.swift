@@ -92,7 +92,7 @@ class LunarCalendarView:NSViewController{
         return false
     }
     
-    fileprivate static let AvailableDays = 31.0
+    fileprivate static let AvailableDays = 60.0
     
     static func getMostAvailableDay() -> Date {
         return Date(timeIntervalSinceNow: (AvailableDays - 1) * 24 * 3600)
