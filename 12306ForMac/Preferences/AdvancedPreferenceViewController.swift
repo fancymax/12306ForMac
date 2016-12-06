@@ -114,6 +114,7 @@ class AdvancedPreferenceViewController: NSViewController,MASPreferencesViewContr
     func getBalance() {
         let successHandler = { (balance:String) ->() in
             self.balancelbl.stringValue = "已登录:当前题分 \(balance)"
+            NotificationCenter.default.post(name: Notification.Name.App.DidDamaGetBalance, object:nil)
         }
         
         let failureHandler = { (error:NSError)->() in

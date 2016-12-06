@@ -10,6 +10,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController" customModule="订票助手" customModuleProvider="target">
             <connections>
                 <outlet property="LoginMenu" destination="xmP-jf-NW1" id="ab5-GD-wDK"/>
+                <outlet property="damaBtn" destination="Am1-RS-8yl" id="Ziu-3V-kE9"/>
                 <outlet property="loginButton" destination="YwA-eV-Pe9" id="TVf-Hk-1W3"/>
                 <outlet property="moduleSegment" destination="vCj-83-Jcy" id="tRI-DJ-Oy4"/>
                 <outlet property="pageBox" destination="e1c-jb-NdY" id="Dx3-8b-hF2"/>
@@ -49,7 +50,7 @@
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Ohx-oh-1KW"/>
                     <toolbarItem implicitItemIdentifier="01F497D4-9C00-4CD2-B9F2-930F9A3B47B8" label="Module" paletteLabel="Module" id="Scw-2a-OOb">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="125" height="25"/>
+                        <size key="minSize" width="123" height="25"/>
                         <size key="maxSize" width="125" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="vCj-83-Jcy">
                             <rect key="frame" x="0.0" y="14" width="123" height="25"/>
@@ -83,13 +84,16 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="83" height="26"/>
                         <size key="maxSize" width="83" height="32"/>
-                        <button key="view" hidden="YES" verticalHuggingPriority="750" id="Am1-RS-8yl">
+                        <button key="view" verticalHuggingPriority="750" id="Am1-RS-8yl" customClass="URLButton" customModule="订票助手" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="14" width="83" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="bevel" title="Button" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Pq2-l1-qVA">
+                            <buttonCell key="cell" type="squareTextured" title="🐰🔴" bezelStyle="texturedSquare" alignment="center" imageScaling="proportionallyDown" inset="2" id="Pq2-l1-qVA">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="systemThin" size="13"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="openDamaSetting:" target="-2" id="Oo9-7m-yXc"/>
+                            </connections>
                         </button>
                     </toolbarItem>
                 </allowedToolbarItems>
@@ -104,7 +108,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="ok6-AH-STO"/>
             </connections>
-            <point key="canvasLocation" x="581" y="506"/>
+            <point key="canvasLocation" x="268" y="500"/>
         </window>
         <menu id="xmP-jf-NW1">
             <items>

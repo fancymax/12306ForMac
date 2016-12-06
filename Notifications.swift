@@ -23,5 +23,7 @@ extension Notification.Name {
         public static let DidAutoSubmit = Notification.Name(rawValue: "com.12306ForMac.App.DidAutoSubmit")
         
         public static let DidAddDefaultPassenger = Notification.Name(rawValue: "com.12306ForMac.App.DidAddDefaultPassenger")
+        
+        public static let DidDamaGetBalance = Notification.Name(rawValue: "com.12306ForMac.App.DidDamaGetBalance")
     }
 }

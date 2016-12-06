@@ -10,6 +10,7 @@ import Cocoa
 
 class MainWindowController: NSWindowController{
     @IBOutlet weak var loginButton: LoginButton!
+    @IBOutlet weak var damaBtn: URLButton!
     @IBOutlet weak var moduleSegment: NSSegmentedControl!
     @IBOutlet var LoginMenu: NSMenu!
     @IBOutlet weak var pageBox: NSBox!
@@ -19,7 +20,7 @@ class MainWindowController: NSWindowController{
     
     var loginWindowController:LoginWindowController!
     
-    lazy var preferencesWindowController:NSWindowController = {
+    lazy var preferencesWindowController:MASPreferencesWindowController = {
         let generalViewController = GeneralPreferenceViewController()
         let advanceViewController = AdvancedPreferenceViewController()
         let controllers = [generalViewController,advanceViewController]
@@ -47,8 +48,12 @@ class MainWindowController: NSWindowController{
         NotificationCenter.default.addObserver(self, selector: #selector(MainWindowController.recvLoginNotification(_:)), name: NSNotification.Name.App.DidLogin, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(MainWindowController.recvAutoLoginNotification(_:)), name: NSNotification.Name.App.DidAutoLogin, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(MainWindowController.recvDamaSuccessNotification(_:)), name: NSNotification.Name.App.DidDamaGetBalance, object: nil)
+        
         //申请日历权限
         CalendarManager.sharedInstance.updateAuthorizationStatus()
+        
+        self.setupDamaBtn()
     }
     
     func segmentTab(_ sender: NSSegmentedControl){
@@ -74,6 +79,24 @@ class MainWindowController: NSWindowController{
         login(isAutoLogin: true)
     }
     
+    func recvDamaSuccessNotification(_ note: Notification){
+        damaBtn.title = "🐰🔵"
+    }
+    
+    func setupDamaBtn() {
+        if AdvancedPreferenceManager.sharedInstance.isUseDama {
+            Dama.sharedInstance.getBalance(AdvancedPreferenceManager.sharedInstance.damaUser, password: AdvancedPreferenceManager.sharedInstance.damaPassword, success: { _ in
+                    NotificationCenter.default.post(name: Notification.Name.App.DidDamaGetBalance, object:nil)
+                }, failure: { _ in
+                    
+            })
+
+        }
+        else {
+            damaBtn.title = "🐰🔴"
+        }
+    }
+    
     @IBAction func UserLogin(_ sender: NSButton){
         if !MainModel.isGetUserInfo{
             self.login(isAutoLogin: false)
@@ -89,6 +112,11 @@ class MainWindowController: NSWindowController{
     
     @IBAction func loginOut(_ sender: NSMenuItem) {
         loginOut()
+    }
+    
+    @IBAction func openDamaSetting(_ sender: NSButton) {
+        self.preferencesWindowController.select(withIdentifier: "AdvancedPreferences")
+        self.preferencesWindowController.showWindow(nil)
     }
     
     @IBAction func openPreferences(_ sender:AnyObject){
