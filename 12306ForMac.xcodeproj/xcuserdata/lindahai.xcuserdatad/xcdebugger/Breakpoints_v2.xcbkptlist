@@ -79,8 +79,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "342"
             endingLineNumber = "342"
-            landmarkName = "openSubmitSheet(isAutoSubmit:)"
-            landmarkType = "7">
+            landmarkName = "TicketQueryViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -111,7 +111,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "535"
             endingLineNumber = "535"
-            landmarkName = "setSeatCodeForSelectedPassenger(_:seatCodeName:)"
+            landmarkName = "setSelectedPassenger()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
