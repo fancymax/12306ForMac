@@ -156,13 +156,22 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="操作" id="gYs-60-cgM">
                         <items>
-                            <menuItem title="刷新余票" keyEquivalent="r" id="dUM-Nj-mdp">
+                            <menuItem title="刷新" keyEquivalent="r" id="dUM-Nj-mdp">
                                 <connections>
                                     <action selector="clickQueryTicket:" target="-1" id="3SL-1j-erW"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="eG2-hD-Zgi"/>
-                            <menuItem title="切换Tab" keyEquivalent="" id="dh2-67-kXh"/>
+                            <menuItem title="向右切换Tab" keyEquivalent="" id="dh2-67-kXh">
+                                <connections>
+                                    <action selector="goRightTab:" target="-1" id="R3O-OO-sAN"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="向左切换Tab" keyEquivalent="" id="NnR-of-iDx">
+                                <connections>
+                                    <action selector="goLeftTab:" target="-1" id="Hlu-sA-SLo"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>

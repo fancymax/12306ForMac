@@ -65,6 +65,18 @@ class RandCodeImageView2:NSImageView {
         }
     }
     
+    override var acceptsFirstResponder: Bool {
+        return true
+    }
+    
+    override func becomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    override func resignFirstResponder() -> Bool {
+        return true
+    }
+    
     override func mouseDown(with theEvent: NSEvent) {
         let section = indentifySection(theEvent)
         

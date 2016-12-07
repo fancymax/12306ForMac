@@ -56,6 +56,16 @@ class MainWindowController: NSWindowController{
         self.setupDamaBtn()
     }
     
+    @IBAction func goRightTab(_ sender:AnyObject?) {
+        selectModule(TrainOrder)
+        moduleSegment.setSelected(true, forSegment: 1)
+    }
+    
+    @IBAction func goLeftTab(_ sender:AnyObject?) {
+        selectModule(TrainBook)
+        moduleSegment.setSelected(true, forSegment: 0)
+    }
+    
     func segmentTab(_ sender: NSSegmentedControl){
         selectModule(sender.label(forSegment: sender.selectedSegment)!)
     }

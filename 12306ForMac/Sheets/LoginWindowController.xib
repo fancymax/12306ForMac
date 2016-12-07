@@ -20,7 +20,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="412" height="374"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="412" height="374"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -63,7 +63,7 @@
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HYl-HA-qIH" customClass="RandCodeImageView2" customModule="订票助手" customModuleProvider="target">
                         <rect key="frame" x="31" y="47" width="351" height="228"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" imageFrameStyle="photo" id="b5Z-NX-XEL"/>
+                        <imageCell key="cell" alignment="left" imageScaling="axesIndependently" imageFrameStyle="photo" id="b5Z-NX-XEL"/>
                     </imageView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LIs-2s-KNy">
                         <rect key="frame" x="306" y="244" width="75" height="32"/>
