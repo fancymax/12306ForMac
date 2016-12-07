@@ -161,6 +161,11 @@
                                     <action selector="clickQueryTicket:" target="-1" id="3SL-1j-erW"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="筛选" keyEquivalent="f" id="k36-tW-xbE">
+                                <connections>
+                                    <action selector="clickFilterTrain:" target="-1" id="Kwm-Kb-IsZ"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="eG2-hD-Zgi"/>
                             <menuItem title="向右切换Tab" keyEquivalent="" id="dh2-67-kXh">
                                 <connections>
