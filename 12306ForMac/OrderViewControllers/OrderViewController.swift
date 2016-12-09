@@ -165,7 +165,7 @@ class OrderViewController: BaseViewController{
         let generalPasteboard = NSPasteboard.general()
         generalPasteboard.clearContents()
         let ticket = orderList[orderListTable.selectedRow]
-        let shareInfo = "我已预订 \(ticket.start_train_date_page!) \(ticket.train_code_page!) \(ticket.startEndStation) \(ticket.seat_type_name!)(\(ticket.whereToSeat))"
+        let shareInfo = "我已预订 \(ticket.start_train_date_page!) \(ticket.station_train_code!) \(ticket.startEndStation) \(ticket.seat_type_name!)(\(ticket.whereToSeat))"
         generalPasteboard.setString(shareInfo, forType:NSStringPboardType)
         
         showTip("车票信息已生成,可复制到其他App")
@@ -174,7 +174,7 @@ class OrderViewController: BaseViewController{
     @IBAction func clickAdd2Calendar(_ sender:AnyObject?){
         let ticket = orderList[orderListTable.selectedRow]
         
-        let eventTitle = "\(ticket.train_code_page!) \(ticket.startEndStation) \(ticket.seat_type_name!)(\(ticket.whereToSeat))"
+        let eventTitle = "\(ticket.station_train_code!) \(ticket.startEndStation) \(ticket.seat_type_name!)(\(ticket.whereToSeat))"
         let endDate = ticket.startTrainDate!
         let startDate = endDate.addingTimeInterval(-7200)
         

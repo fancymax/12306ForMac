@@ -100,7 +100,7 @@
                                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                                 <connections>
-                                                                    <binding destination="lIU-Ao-SBf" name="value" keyPath="objectValue.train_code_page" id="hwX-Sv-NFd"/>
+                                                                    <binding destination="lIU-Ao-SBf" name="value" keyPath="objectValue.station_train_code" id="uWf-m7-JPZ"/>
                                                                 </connections>
                                                             </textField>
                                                         </subviews>

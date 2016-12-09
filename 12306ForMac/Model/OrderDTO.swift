@@ -12,7 +12,7 @@ class OrderDTO:NSObject{
     var sequence_no: String?
     
     var start_train_date_page: String?
-    var train_code_page: String?
+//    var train_code_page: String?
     var ticket_total_price_page: String?
     var return_flag: String?
     var resign_flag: String?
@@ -94,9 +94,9 @@ class OrderDTO:NSObject{
     init(json:JSON,ticketIdx:Int)
     {
         sequence_no = json["sequence_no"].string
-        start_train_date_page = json["start_train_date_page"].string
-        train_code_page = json["train_code_page"].string
         arrive_time_page = json["arrive_time_page"].string
+        
+        start_train_date_page = json["tickets"][ticketIdx]["start_train_date_page"].string
         
         coach_no = json["tickets"][ticketIdx]["coach_no"].string
         seat_name = json["tickets"][ticketIdx]["seat_name"].string
