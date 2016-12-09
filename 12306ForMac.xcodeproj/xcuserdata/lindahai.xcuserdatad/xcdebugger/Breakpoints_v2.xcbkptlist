@@ -70,7 +70,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "12306ForMac/TicketViewControllers/TicketQueryViewController.swift"
@@ -81,6 +81,71 @@
             endingLineNumber = "342"
             landmarkName = "TicketQueryViewController"
             landmarkType = "3">
+<<<<<<< Updated upstream
+=======
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x8ba2;&#x7968;&#x52a9;&#x624b;.TicketQueryViewController.submitWindowController.getter : &#x8ba2;&#x7968;&#x52a9;&#x624b;.SubmitWindowController"
+                  moduleName = "&#x8ba2;&#x7968;&#x52a9;&#x624b;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lindahai/Desktop/develop/12306ForMac/12306ForMac/TicketViewControllers/TicketQueryViewController.swift"
+                  timestampString = "502714249.967631"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "342"
+                  endingLineNumber = "342"
+                  offsetFromSymbolStart = "179">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x8ba2;&#x7968;&#x52a9;&#x624b;.TicketQueryViewController.submitWindowController.setter : &#x8ba2;&#x7968;&#x52a9;&#x624b;.SubmitWindowController"
+                  moduleName = "&#x8ba2;&#x7968;&#x52a9;&#x624b;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lindahai/Desktop/develop/12306ForMac/12306ForMac/TicketViewControllers/TicketQueryViewController.swift"
+                  timestampString = "502714249.969814"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "342"
+                  endingLineNumber = "342"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x8ba2;&#x7968;&#x52a9;&#x624b;.TicketQueryViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Swift.Optional&lt;&#x8ba2;&#x7968;&#x52a9;&#x624b;.TicketQueryViewController&gt;"
+                  moduleName = "&#x8ba2;&#x7968;&#x52a9;&#x624b;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lindahai/Desktop/develop/12306ForMac/12306ForMac/TicketViewControllers/TicketQueryViewController.swift"
+                  timestampString = "502714249.971937"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "342"
+                  endingLineNumber = "342"
+                  offsetFromSymbolStart = "1559">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x8ba2;&#x7968;&#x52a9;&#x624b;.TicketQueryViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;&#x8ba2;&#x7968;&#x52a9;&#x624b;.TicketQueryViewController&gt;"
+                  moduleName = "&#x8ba2;&#x7968;&#x52a9;&#x624b;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lindahai/Desktop/develop/12306ForMac/12306ForMac/TicketViewControllers/TicketQueryViewController.swift"
+                  timestampString = "502714249.974059"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "342"
+                  endingLineNumber = "342"
+                  offsetFromSymbolStart = "1454">
+               </Location>
+            </Locations>
+>>>>>>> Stashed changes
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -176,6 +241,38 @@
             startingLineNumber = "172"
             endingLineNumber = "172"
             landmarkName = "queryByTrainNo(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "12306ForMac/TicketViewControllers/TicketQueryViewController.swift"
+            timestampString = "502713781.987061"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "646"
+            endingLineNumber = "646"
+            landmarkName = "validateMenuItem(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "12306ForMac/OrderViewControllers/OrderViewController.swift"
+            timestampString = "502766632.522461"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "clickQueryOrder(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
