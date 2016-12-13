@@ -37,8 +37,31 @@ extension Service{
         }
     }
     
+    func checkOrderFlow(success:@escaping (_ ifShowRandCode: Bool)->Void,failure:@escaping (NSError)->Void) {
+        self.checkOrderInfo("").then{ifshowRandCode in
+            success(ifshowRandCode)
+        }.catch{error in
+            failure(error as NSError)
+        }
+    }
+    
+    func orderFlowWithoutRandCode(success:@escaping ()->Void,failure:@escaping (NSError)->Void,wait:@escaping (String)->Void){
+            let randCodeStr = ""
+            self.checkOrderInfo(randCodeStr).then{_ -> Promise<Void> in
+                return self.getQueueCount(wait)
+            }.then{_ -> Promise<Void> in
+                return after(interval: 1)
+            }.then{_ -> Promise<Void> in
+                return self.confirmSingleForQueue(randCodeStr)
+            }.then{
+                self.queryOrderWaitTime(failure, waitMethod: wait, finishMethod: success)
+            }.catch{error in
+                failure(error as NSError)
+        }
+    }
+
     func orderFlowWith(_ randCodeStr:String,success:@escaping ()->Void,failure:@escaping (NSError)->Void,wait:@escaping (String)->Void){
-        self.checkRandCodeForOrder(randCodeStr).then{_ -> Promise<Void> in
+        self.checkRandCodeForOrder(randCodeStr).then{_ -> Promise<Bool> in
             return self.checkOrderInfo(randCodeStr)
         }.then{_ -> Promise<Void> in
             return self.getQueueCount(wait)
@@ -279,7 +302,7 @@ extension Service{
         }
     }
     
-    func checkOrderInfo(_ randCodeStr:String)->Promise<Void>{
+    func checkOrderInfo(_ randCodeStr:String)->Promise<Bool>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/confirmPassenger/checkOrderInfo"
             let (passengerTicketStr,oldPassengerStr) = getPassengerStr(MainModel.passengers)
@@ -299,7 +322,12 @@ extension Service{
                     reject(error)
                 case .success(let data):
                     if JSON(data)["data"]["submitStatus"].bool == true{
-                        fulfill()
+                        if let ifShowPassCode = JSON(data)["data"]["ifShowPassCode"].bool {
+                            fulfill(ifShowPassCode)
+                        }
+                        else {
+                            fulfill(false)
+                        }
                     }else{
                         logger.error("\(JSON(data))")
                         if let errMsg = JSON(data)["data"]["errMsg"].string {

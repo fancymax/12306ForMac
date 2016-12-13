@@ -26,6 +26,10 @@ class SubmitWindowController: BaseWindowController{
     var isAutoSubmit = false
     var isSubmitting = false
     
+    override var windowNibName: String{
+        return "SubmitWindowController"
+    }
+    
     @IBAction func FreshImage(_ sender: NSButton) {
         freshImage()
     }
@@ -93,7 +97,6 @@ class SubmitWindowController: BaseWindowController{
     }
     
     func freshImage(){
-        
         self.passengerImage.clearRandCodes()
         
         let successHandler = {(image:NSImage) -> () in
@@ -111,12 +114,50 @@ class SubmitWindowController: BaseWindowController{
         }
     }
     
-    override var windowNibName: String{
-        return "SubmitWindowController"
+    func orderFlowWithoutRandCode() {
+        let failureHandler = { (error:NSError) -> () in
+            self.stopLoadingTip()
+            self.isSubmitting = false
+            self.showTip(translate(error))
+        }
+        
+        let successHandler = {
+            self.stopLoadingTip()
+            self.isSubmitting = false
+            self.switchViewFrom(self.orderInfoView, to: self.orderIdView)
+            self.orderId.stringValue = MainModel.orderId!
+        }
+        
+        let waitHandler = { (info:String)-> () in
+            self.startLoadingTip(info)
+        }
+        
+        Service.sharedInstance.orderFlowWithoutRandCode(success: successHandler, failure: failureHandler,wait: waitHandler)
     }
     
     @IBAction func clickCheckOrder(_ sender: NSButton) {
-        self.switchViewFrom(orderInfoView, to: preOrderView)
+        self.startLoadingTip("正在提交...")
+        if isSubmitting {
+            return
+        }
+        isSubmitting = true
+        
+        let failureHandler = { (error:NSError) -> () in
+            self.stopLoadingTip()
+            self.showTip(translate(error))
+        }
+        
+        let successHandler = {(ifShowRandCode:Bool)->() in
+            if ifShowRandCode {
+                self.stopLoadingTip()
+                self.isSubmitting = false
+                self.switchViewFrom(self.orderInfoView, to: self.preOrderView)
+            }
+            else {
+                self.orderFlowWithoutRandCode()
+            }
+        }
+        Service.sharedInstance.checkOrderFlow(success: successHandler, failure: failureHandler)
     }
     
     @IBAction func clickOK(_ sender:AnyObject?){
