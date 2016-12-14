@@ -50,6 +50,7 @@ class TicketQueryViewController: BaseViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvDidSubmitNotification(_:)), name: NSNotification.Name.App.DidSubmit, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvAutoSubmitNotification(_:)), name: NSNotification.Name.App.DidAutoSubmit, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvAutoSubmitWithoutRandCodeNotification(_:)), name: NSNotification.Name.App.DidAutoSubmitWithoutRandCode, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvAddDefaultPassengerNotification(_:)), name: NSNotification.Name.App.DidAddDefaultPassenger, object: nil)
         
@@ -357,9 +358,14 @@ class TicketQueryViewController: BaseViewController {
         openSubmitSheet(isAutoSubmit: true)
     }
     
-    func openSubmitSheet(isAutoSubmit:Bool) {
+    func recvAutoSubmitWithoutRandCodeNotification(_ note: Notification){
+        openSubmitSheet(isAutoSubmit: true,ifShowCode: false)
+    }
+    
+    func openSubmitSheet(isAutoSubmit:Bool,ifShowCode:Bool = true) {
         submitWindowController = SubmitWindowController()
         submitWindowController.isAutoSubmit = isAutoSubmit
+        submitWindowController.ifShowCode = ifShowCode
         if let window = self.view.window {
             window.beginSheet(submitWindowController.window!, completionHandler: {response in
                 if response == NSModalResponseOK{
@@ -591,12 +597,17 @@ class TicketQueryViewController: BaseViewController {
         
         let postSubmitWindowMessage = {
             self.stopLoadingTip()
+            notificationCenter.post(name: Notification.Name.App.DidSubmit, object: nil)
+        }
+        
+        let postSubmitWindowMessageAuto = { (ifShowRandCode:Bool)->Void in
+            self.stopLoadingTip()
             
-            if isAuto {
+            if ifShowRandCode {
                 notificationCenter.post(name: Notification.Name.App.DidAutoSubmit, object: nil)
             }
             else {
-                notificationCenter.post(name: Notification.Name.App.DidSubmit, object: nil)
+                notificationCenter.post(name: Notification.Name.App.DidAutoSubmitWithoutRandCode, object: nil)
             }
         }
         
@@ -611,8 +622,13 @@ class TicketQueryViewController: BaseViewController {
         }
         logger.info("\(ticket.TrainCode!) \(ticket.trainDateStr) \(ticket.FromStationName!) -> \(ticket.ToStationName!)  \(seatTypeId) isAuto=\(isAuto)")
         
-        let submitParams = SubmitOrderParams(with: ticket,purposeCode: self.ticketType.rawValue)
-        Service.sharedInstance.submitFlow(submitParams, success: postSubmitWindowMessage, failure: failHandler)
+        if isAuto {
+            Service.sharedInstance.autoSubmitFlow(ticket: ticket,purposeCode: self.ticketType.rawValue, success: postSubmitWindowMessageAuto, failure: failHandler)
+        }
+        else {
+            let submitParams = SubmitOrderParams(with: ticket,purposeCode: self.ticketType.rawValue)
+            Service.sharedInstance.submitFlow(submitParams, success: postSubmitWindowMessage, failure: failHandler)
+        }
     }
     
     func clickSubmit(_ sender: NSButton){

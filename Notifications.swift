@@ -21,6 +21,7 @@ extension Notification.Name {
         public static let DidAutoLogin = Notification.Name(rawValue: "com.12306ForMac.App.DidAutoLogin")
         
         public static let DidAutoSubmit = Notification.Name(rawValue: "com.12306ForMac.App.DidAutoSubmit")
+        public static let DidAutoSubmitWithoutRandCode = Notification.Name(rawValue: "com.12306ForMac.App.DidAutoSubmitWithoutRandCode")
         
         public static let DidAddDefaultPassenger = Notification.Name(rawValue: "com.12306ForMac.App.DidAddDefaultPassenger")
         

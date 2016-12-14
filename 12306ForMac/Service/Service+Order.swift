@@ -27,8 +27,8 @@ extension Service{
         }
     }
     
-    func preOrderFlow(success:@escaping (NSImage)->Void,failure: @escaping (NSError)->Void){
-        self.getPassengerDTOs().then{_ -> Promise<NSImage> in
+    func preOrderFlow(isAuto:Bool,success:@escaping (NSImage)->Void,failure: @escaping (NSError)->Void){
+        self.getPassengerDTOs(isAuto: isAuto).then{_ -> Promise<NSImage> in
             return self.getPassCodeNewForPassenger()
         }.then{image in
             success(image)
@@ -45,30 +45,63 @@ extension Service{
         }
     }
     
-    func orderFlowWithoutRandCode(success:@escaping ()->Void,failure:@escaping (NSError)->Void,wait:@escaping (String)->Void){
-            let randCodeStr = ""
-            self.checkOrderInfo(randCodeStr).then{_ -> Promise<Void> in
-                return self.getQueueCount(wait)
-            }.then{_ -> Promise<Void> in
-                return after(interval: 1)
-            }.then{_ -> Promise<Void> in
-                return self.confirmSingleForQueue(randCodeStr)
-            }.then{
-                self.queryOrderWaitTime(failure, waitMethod: wait, finishMethod: success)
-            }.catch{error in
-                failure(error as NSError)
+    func autoSubmitFlow(ticket:QueryLeftNewDTO,purposeCode:String, success:@escaping (_ ifShowRandCode: Bool)->Void,failure:@escaping (NSError)->Void) {
+        self.autoSubmitOrderRequest(ticket, purposeCode: purposeCode).then{ifshowRandCode in
+            success(ifshowRandCode)
+        }.catch{error in
+            failure(error as NSError)
         }
     }
-
-    func orderFlowWith(_ randCodeStr:String,success:@escaping ()->Void,failure:@escaping (NSError)->Void,wait:@escaping (String)->Void){
+    
+    func orderFlowNoRandCode(success:@escaping ()->Void,failure:@escaping (NSError)->Void,wait:@escaping (String)->Void){
+        let randCodeStr = ""
+        self.getQueueCount(wait).then{_ -> Promise<Void> in
+            return after(interval: 2)
+        }.then{_ -> Promise<Void> in
+            return self.confirmSingleForQueue(randCodeStr)
+        }.then{
+            self.queryOrderWaitTime(failure, waitMethod: wait, finishMethod: success)
+        }.catch{error in
+            failure(error as NSError)
+        }
+    }
+    
+    func orderFlowWithRandCode(_ randCodeStr:String,success:@escaping ()->Void,failure:@escaping (NSError)->Void,wait:@escaping (String)->Void){
         self.checkRandCodeForOrder(randCodeStr).then{_ -> Promise<Bool> in
             return self.checkOrderInfo(randCodeStr)
         }.then{_ -> Promise<Void> in
             return self.getQueueCount(wait)
         }.then{_ -> Promise<Void> in
-            return after(interval: 1)
+            return after(interval: 2)
         }.then{_ -> Promise<Void> in
             return self.confirmSingleForQueue(randCodeStr)
+        }.then{
+            self.queryOrderWaitTime(failure, waitMethod: wait, finishMethod: success)
+        }.catch{error in
+            failure(error as NSError)
+        }
+    }
+    
+    func autoOrderFlowNoRandCode(success:@escaping ()->Void,failure:@escaping (NSError)->Void,wait:@escaping (String)->Void){
+        let randCodeStr = ""
+        self.getQueueCount(isAsys: true, wait).then{_ -> Promise<Void> in
+            return after(interval: 2)
+        }.then{_ -> Promise<Void> in
+            return self.confirmSingleForQueue(isAsys: true, randCodeStr)
+        }.then{
+            self.queryOrderWaitTime(failure, waitMethod: wait, finishMethod: success)
+        }.catch{error in
+            failure(error as NSError)
+        }
+    }
+    
+    func autoOrderFlowWithRandCode(_ randCodeStr:String,success:@escaping ()->Void,failure:@escaping (NSError)->Void,wait:@escaping (String)->Void){
+        self.checkRandCodeForOrder(randCodeStr).then{_ -> Promise<Void> in
+            return self.getQueueCount(isAsys: true, wait)
+        }.then{_ -> Promise<Void> in
+            return after(interval: 2)
+        }.then{_ -> Promise<Void> in
+            return self.confirmSingleForQueue(isAsys: true, randCodeStr)
         }.then{
             self.queryOrderWaitTime(failure, waitMethod: wait, finishMethod: success)
         }.catch{error in
@@ -87,6 +120,8 @@ extension Service{
             failure(error as NSError)
         }
     }
+    
+// MARK: - Chainable Request
     
     internal func getPassengerStr(_ passengers:[PassengerDTO]) ->(String,String){
         var passengerStr = ""
@@ -107,7 +142,6 @@ extension Service{
         return (passengerStr,oldPassengerStr)
     }
     
-// MARK: - Chainable Request
     func checkUser()->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/login/checkUser"
@@ -154,6 +188,59 @@ extension Service{
                             error = ServiceError.errorWithCode(.submitOrderFailed)
                         }
                         reject(error)
+                    }
+                }})
+        }
+    }
+    
+    func autoSubmitOrderRequest(_ ticket:QueryLeftNewDTO,purposeCode:String)->Promise<Bool>{
+        return Promise{ fulfill, reject in
+            let url = "https://kyfw.12306.cn/otn/confirmPassenger/autoSubmitOrderRequest"
+            
+            let (passengerTicketStr,oldPassengerStr) = getPassengerStr(MainModel.passengers)
+            let params = AutoSubmitParams(with: ticket, purposeCode: purposeCode, passengerTicket: passengerTicketStr, oldPassenger: oldPassengerStr)
+            
+            let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
+            Service.Manager.request(url, method:.post, parameters: params.ToPostParams(), headers:headers).responseJSON(completionHandler:{response in
+                switch (response.result){
+                case .failure(let error):
+                    reject(error)
+                case .success(let data):
+                    let jsonData = JSON(data)["data"]
+                    if jsonData["submitStatus"].bool == true{
+                        if let result = jsonData["result"].string {
+                            let matches = result.components(separatedBy: "#")
+                            if matches.count < 3 {
+                                logger.error("fail to get key_check_isChange from result:\(result)")
+                                reject(ServiceError.errorWithCode(.autoSumbitOrderFailed))
+                            }
+                            MainModel.train_location = matches[0]
+                            MainModel.key_check_isChange = matches[1]
+                        }
+                        
+                        if let ifShowPassCode = jsonData["ifShowPassCode"].bool {
+                            fulfill(ifShowPassCode)
+                        }
+                        else {
+                            fulfill(false)
+                        }
+                    }else{
+                        logger.error("\(JSON(data))")
+                        logger.error("\(params.ToPostParams())")
+                        if let smokeStr = jsonData["smokeStr"].string {
+                            reject(ServiceError.errorWithCode(.autoSumbitOrderFailed,failureReason: smokeStr))
+                            return
+                        }
+                        if let errMsg = jsonData["errMsg"].string {
+                            reject(ServiceError.errorWithCode(.autoSumbitOrderFailed,failureReason: errMsg))
+                            return
+                        }
+                        if let message = JSON(data)["messages"][0].string{
+                            reject(ServiceError.errorWithCode(.autoSumbitOrderFailed, failureReason: message))
+                            return
+                        }
+                        
+                        reject(ServiceError.errorWithCode(.autoSumbitOrderFailed))
                     }
                 }})
         }
@@ -211,7 +298,7 @@ extension Service{
         }
     }
     
-    func getPassengerDTOs(isSubmit:Bool = true)->Promise<Void>{
+    func getPassengerDTOs(isAuto:Bool = false, isSubmit:Bool = true)->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/confirmPassenger/getPassengerDTOs"
             let params:[String:String]
@@ -221,8 +308,14 @@ extension Service{
                 headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
             }
             else {
-                params = ["_json_att":"","REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken!]
-                headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
+                if !isAuto {
+                    params = ["_json_att":"","REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken!]
+                    headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
+                }
+                else {
+                    params = ["_json_att":""]
+                    headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
+                }
             }
             Service.Manager.request(url, method:.post, parameters: params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
@@ -331,7 +424,11 @@ extension Service{
                     }else{
                         logger.error("\(JSON(data))")
                         if let errMsg = JSON(data)["data"]["errMsg"].string {
-                            reject(ServiceError.errorWithCode(.checkOrderInfoFailed,failureReason: errMsg))
+                            reject(ServiceError.errorWithCode(.confirmSingleForQueueFailed,failureReason: errMsg))
+                            return
+                        }
+                        if let smokeStr = JSON(data)["data"]["smokeStr"].string {
+                            reject(ServiceError.errorWithCode(.checkOrderInfoFailed,failureReason: smokeStr))
                         }
                         else{
                             reject(ServiceError.errorWithCode(.checkOrderInfoFailed))
@@ -341,22 +438,23 @@ extension Service{
         }
     }
     
-    func getQueueCount(_ waitMethod :@escaping (_ info:String) -> ())->Promise<Void>{
+    func getQueueCount(isAsys:Bool = false,_ waitMethod:@escaping (_ info:String)->Void )->Promise<Void>{
         return Promise{ fulfill, reject in
-            let url = "https://kyfw.12306.cn/otn/confirmPassenger/getQueueCount"
-            let params = [
-                "train_date":MainModel.selectedTicket!.jsStartTrainDateStr!,//Tue+Nov+17+2015+00%3A00%3A00+GMT%2B0800
-                "train_no":MainModel.selectedTicket!.train_no!,
-                "stationTrainCode":MainModel.selectedTicket!.TrainCode!,
-                "seatType":MainModel.selectPassengers[0].seatCode,
-                "fromStationTelecode":MainModel.selectedTicket!.FromStationCode!,
-                "toStationTelecode":MainModel.selectedTicket!.ToStationCode!,
-                "leftTicket":MainModel.selectedTicket!.yp_info!,
-                "purpose_codes":"00",//注意这里是00
-                "train_location":MainModel.train_location!,
-                "_json_att":"",
-                "REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken!]
-            let headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
+            var url = "https://kyfw.12306.cn/otn/confirmPassenger/getQueueCount"
+            var params:[String:String] 
+            
+            var headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
+            let seatCode = MainModel.selectPassengers[0].seatCode
+            
+            if isAsys {
+                url += "Async"
+                headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
+                params = GetQueueCountParamAsys(with: MainModel.selectedTicket!, seatCode: seatCode).ToPostParams()
+            }
+            else {
+                params = GetQueueCountParam(with: MainModel.selectedTicket!, seatCode: seatCode, trainLocation: MainModel.train_location!, globalSubmitToken: MainModel.globalRepeatSubmitToken!).ToPostParams()
+            }
+            
             Service.Manager.request(url, method:.post, parameters: params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
                 case .failure(let error):
@@ -380,25 +478,21 @@ extension Service{
         }
     }
     
-    func confirmSingleForQueue(_ randCodeStr:String) ->Promise<Void>{
+    func confirmSingleForQueue(isAsys:Bool = false,_ randCodeStr:String) ->Promise<Void>{
         return Promise{ fulfill, reject in
-            let url = "https://kyfw.12306.cn/otn/confirmPassenger/confirmSingleForQueue"
+            var url = "https://kyfw.12306.cn/otn/confirmPassenger/confirmSingleForQueue"
             let (passengerTicketStr,oldPassengerStr) = getPassengerStr(MainModel.passengers)
-            let params = [
-                "passengerTicketStr":passengerTicketStr,
-                "oldPassengerStr":oldPassengerStr,
-                "randCode":randCodeStr,
-                "purpose_codes":"00",
-                "key_check_isChange":MainModel.key_check_isChange!,
-                "leftTicketStr":MainModel.selectedTicket!.yp_info!,
-                "train_location":MainModel.train_location!,
-                "choose_seats":"",
-                "seatDetailType":"000",
-                "roomType":"00",
-                "dwAll":"N",
-                "_json_att":"",
-                "REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken!]
-            let headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
+            var params:[String:String]
+         
+            var headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
+            if isAsys {
+                url += "Asys"
+                headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
+                params = ConfirmSingleForQueueParamAsys(randCodeStr: randCodeStr, passengerTicket: passengerTicketStr, oldPassenger: oldPassengerStr).ToPostParams()
+            }
+            else {
+                params = ConfirmSingleForQueueParam(randCodeStr: randCodeStr, passengerTicket: passengerTicketStr, oldPassenger: oldPassengerStr).ToPostParams()
+            }
             Service.Manager.request(url, method:.post, parameters: params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
                 case .failure(let error):
@@ -408,8 +502,12 @@ extension Service{
                         fulfill()
                     }else {
                         logger.error("\(JSON(data))")
-                        let error = ServiceError.errorWithCode(.confirmSingleForQueueFailed)
-                        reject(error)
+                        logger.error("\(params)")
+                        if let errMsg = JSON(data)["data"]["errMsg"].string {
+                            reject(ServiceError.errorWithCode(.confirmSingleForQueueFailed,failureReason: errMsg))
+                            return
+                        }
+                        reject(ServiceError.errorWithCode(.confirmSingleForQueueFailed))
                     }
                 }})
         }
@@ -417,7 +515,13 @@ extension Service{
     
     func queryOrderWaitTime(_ failMethod:@escaping (_ error:NSError)->(), waitMethod :@escaping (_ info:String) -> (),finishMethod:@escaping ()->()) {
         let url = "https://kyfw.12306.cn/otn/confirmPassenger/queryOrderWaitTime?"
-        let params = "random=1446560572126&tourFlag=dc&_json_att=&REPEAT_SUBMIT_TOKEN=\(MainModel.globalRepeatSubmitToken!)"
+        let params:String
+        if MainModel.globalRepeatSubmitToken == nil {
+            params = "random=1446560572126&tourFlag=dc&_json_att="
+        }
+        else {
+            params = "random=1446560572126&tourFlag=dc&_json_att=&REPEAT_SUBMIT_TOKEN=\(MainModel.globalRepeatSubmitToken!)"
+        }
         let headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
     
         func calcWaitSecond(_ waitTime:Int) -> Int {

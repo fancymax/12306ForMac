@@ -17,8 +17,6 @@ extension Service {
     func preLoginFlow(success:@escaping (NSImage)->Void,failure:@escaping (NSError)->Void){
         loginInit().then{dynamicJs -> Promise<Void> in
             return self.requestDynamicJs(dynamicJs, referHeader: ["refer": "https://kyfw.12306.cn/otn/login/init"])
-        }.then{() -> Promise<Void> in
-            after(interval: 1)
         }.then{_ -> Promise<NSImage> in
             return self.getPassCodeNewForLogin()
         }.then{ image in
@@ -29,7 +27,9 @@ extension Service {
     }
     
     func loginFlow(user:String,passWord:String,randCodeStr:String,success:@escaping ()->Void,failure:@escaping (NSError)->Void){
-        self.checkRandCodeForLogin(randCodeStr).then{() -> Promise<Void> in
+        after(interval: 2).then{
+            self.checkRandCodeForLogin(randCodeStr)
+        }.then{() -> Promise<Void> in
             return self.loginUserWith(user, passWord: passWord, randCodeStr: randCodeStr)
         }.then{ () -> Promise<Void> in
             return self.initMy12306()
@@ -130,10 +130,10 @@ extension Service {
                     else{
                         let error:NSError
                         if let errorStr = JSON(data)["messages"][0].string{
-                            error = ServiceError.errorWithCode(.checkRandCodeFailed, failureReason: errorStr)
+                            error = ServiceError.errorWithCode(.loginUserFailed, failureReason: errorStr)
                         }
                         else{
-                            error = ServiceError.errorWithCode(.checkRandCodeFailed)
+                            error = ServiceError.errorWithCode(.loginUserFailed)
                         }
                         reject(error)
                     }

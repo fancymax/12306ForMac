@@ -20,11 +20,13 @@ class SubmitWindowController: BaseWindowController{
     @IBOutlet var orderInfoView: NSView!
     @IBOutlet weak var preOrderView: GlassView!
     @IBOutlet weak var orderIdView: GlassView!
+    @IBOutlet weak var submitOrderBtn: NSButton!
     
     @IBOutlet weak var orderId: NSTextField!
     
     var isAutoSubmit = false
     var isSubmitting = false
+    var ifShowCode = true
     
     override var windowNibName: String{
         return "SubmitWindowController"
@@ -64,28 +66,52 @@ class SubmitWindowController: BaseWindowController{
     
     func loadImage(){
         let autoSummitHandler = {(image:NSImage)->() in
-            self.switchViewFrom(self.orderInfoView, to: self.preOrderView)
-            self.startLoadingTip("自动打码...")
-            
-            Dama.sharedInstance.dama(AdvancedPreferenceManager.sharedInstance.damaUser,
-                password: AdvancedPreferenceManager.sharedInstance.damaPassword,
-                ofImage: image,
-                success: {imageCode in
-                    self.stopLoadingTip()
-                    self.passengerImage.drawDamaCodes(imageCode)
-                    self.clickOK(nil)
-                },
-            
-                failure: {error in
+            if self.ifShowCode {
+                self.switchViewFrom(self.orderInfoView, to: self.preOrderView)
+            }
+            else {
+                self.submitOrderBtn.isEnabled = false
+                self.startLoadingTip("正在提交...")
+                let failureHandler = { (error:NSError) -> () in
                     self.stopLoadingTip()
                     self.showTip(translate(error))
-                })
+                }
+                
+                let successHandler = {
+                    self.stopLoadingTip()
+                    self.switchViewFrom(self.orderInfoView, to: self.orderIdView)
+                    self.orderId.stringValue = MainModel.orderId!
+                }
+                
+                let waitHandler = { (info:String)-> () in
+                    self.startLoadingTip(info)
+                }
+                
+                Service.sharedInstance.autoOrderFlowNoRandCode(success: successHandler, failure: failureHandler,wait: waitHandler)
+            }
+            
+            if AdvancedPreferenceManager.sharedInstance.isUseDama {
+                self.startLoadingTip("自动打码...")
+                Dama.sharedInstance.dama(AdvancedPreferenceManager.sharedInstance.damaUser,
+                    password: AdvancedPreferenceManager.sharedInstance.damaPassword,
+                    ofImage: image,
+                    success: {imageCode in
+                        self.stopLoadingTip()
+                        self.passengerImage.drawDamaCodes(imageCode)
+                        self.clickOK(nil)
+                    },
+                
+                    failure: {error in
+                        self.stopLoadingTip()
+                        self.showTip(translate(error))
+                    })
+            }
             
         }
         let successHandler = {(image:NSImage) -> () in
             self.passengerImage.clearRandCodes()
             self.passengerImage.image = image
-            if ((self.isAutoSubmit)&&(AdvancedPreferenceManager.sharedInstance.isUseDama)) {
+            if self.isAutoSubmit {
                 autoSummitHandler(image)
             }
         }
@@ -93,7 +119,8 @@ class SubmitWindowController: BaseWindowController{
         let failureHandler = { (error:NSError) -> () in
             self.showTip(translate(error))
         }
-        Service.sharedInstance.preOrderFlow(success: successHandler, failure: failureHandler)
+        
+        Service.sharedInstance.preOrderFlow(isAuto: self.isAutoSubmit,success: successHandler, failure: failureHandler)
     }
     
     func freshImage(){
@@ -114,7 +141,7 @@ class SubmitWindowController: BaseWindowController{
         }
     }
     
-    func orderFlowWithoutRandCode() {
+    func orderFlowNoRandCode() {
         let failureHandler = { (error:NSError) -> () in
             self.stopLoadingTip()
             self.isSubmitting = false
@@ -132,7 +159,7 @@ class SubmitWindowController: BaseWindowController{
             self.startLoadingTip(info)
         }
         
-        Service.sharedInstance.orderFlowWithoutRandCode(success: successHandler, failure: failureHandler,wait: waitHandler)
+        Service.sharedInstance.orderFlowNoRandCode(success: successHandler, failure: failureHandler,wait: waitHandler)
     }
     
     @IBAction func clickCheckOrder(_ sender: NSButton) {
@@ -154,7 +181,7 @@ class SubmitWindowController: BaseWindowController{
                 self.switchViewFrom(self.orderInfoView, to: self.preOrderView)
             }
             else {
-                self.orderFlowWithoutRandCode()
+                self.orderFlowNoRandCode()
             }
         }
         Service.sharedInstance.checkOrderFlow(success: successHandler, failure: failureHandler)
@@ -162,37 +189,43 @@ class SubmitWindowController: BaseWindowController{
     
     @IBAction func clickOK(_ sender:AnyObject?){
         
-        if passengerImage.randCodeStr == nil {
+        if let randCode = passengerImage.randCodeStr {
+            self.startLoadingTip("正在提交...")
+            if isSubmitting {
+                return
+            }
+            
+            isSubmitting = true
+            
+            let failureHandler = { (error:NSError) -> () in
+                self.stopLoadingTip()
+                self.isSubmitting = false
+                self.showTip(translate(error))
+                self.freshImage()
+            }
+            
+            let successHandler = {
+                self.stopLoadingTip()
+                self.isSubmitting = false
+                self.switchViewFrom(self.preOrderView, to: self.orderIdView)
+                self.orderId.stringValue = MainModel.orderId!
+            }
+            
+            let waitHandler = { (info:String)-> () in
+                self.startLoadingTip(info)
+            }
+            
+            if isAutoSubmit {
+                Service.sharedInstance.autoOrderFlowWithRandCode(randCode, success: successHandler, failure: failureHandler,wait: waitHandler)
+            }
+            else {
+                Service.sharedInstance.orderFlowWithRandCode(randCode, success: successHandler, failure: failureHandler,wait: waitHandler)
+            }
+        }
+        else {
             self.showTip("请先选择验证码")
             return
         }
-        
-        self.startLoadingTip("正在提交...")
-        if isSubmitting {
-            return
-        }
-        
-        isSubmitting = true
-        
-        let failureHandler = { (error:NSError) -> () in
-            self.stopLoadingTip()
-            self.isSubmitting = false
-            self.showTip(translate(error))
-            self.freshImage()
-        }
-        
-        let successHandler = {
-            self.stopLoadingTip()
-            self.isSubmitting = false
-            self.switchViewFrom(self.preOrderView, to: self.orderIdView)
-            self.orderId.stringValue = MainModel.orderId!
-        }
-        
-        let waitHandler = { (info:String)-> () in
-            self.startLoadingTip(info)
-        }
-        
-        Service.sharedInstance.orderFlowWith(passengerImage.randCodeStr!, success: successHandler, failure: failureHandler,wait: waitHandler)
     }
     
     @IBAction func clickCancel(_ button:NSButton){

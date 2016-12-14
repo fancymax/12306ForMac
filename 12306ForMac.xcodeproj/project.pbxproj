@@ -108,6 +108,11 @@
 		F1F2F2D21D5AFE7100EA7786 /* UrlLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F2D11D5AFE7100EA7786 /* UrlLabel.swift */; };
 		F1F2F2D41D5B0C0C00EA7786 /* AdvancedPreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F2D31D5B0C0C00EA7786 /* AdvancedPreferenceManager.swift */; };
 		F1F2F2D61D5B283D00EA7786 /* GeneralPreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F2D51D5B283D00EA7786 /* GeneralPreferenceManager.swift */; };
+		F1F926881E0110BA00FE4229 /* GetQueueCountParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F926871E0110BA00FE4229 /* GetQueueCountParam.swift */; };
+		F1F9268A1E0114A900FE4229 /* GetQueueCountAsysParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F926891E0114A900FE4229 /* GetQueueCountAsysParam.swift */; };
+		F1F9268C1E0116AC00FE4229 /* ConfirmSingleForQueueParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F9268B1E0116AC00FE4229 /* ConfirmSingleForQueueParam.swift */; };
+		F1F9268E1E0116C500FE4229 /* ConfirmSingleForQueueAsysParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F9268D1E0116C500FE4229 /* ConfirmSingleForQueueAsysParam.swift */; };
+		F1FC57B01E001B7300157967 /* AutoSubmitParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FC57AF1E001B7300157967 /* AutoSubmitParams.swift */; };
 		F1FCFF4B1D386F8F0070A32C /* URLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FCFF4A1D386F8F0070A32C /* URLButton.swift */; };
 		F1FEE7A21D8D464900B02C84 /* NotifySpeaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FEE7A11D8D464900B02C84 /* NotifySpeaker.swift */; };
 /* End PBXBuildFile section */
@@ -237,6 +242,11 @@
 		F1F2F2D11D5AFE7100EA7786 /* UrlLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlLabel.swift; sourceTree = "<group>"; };
 		F1F2F2D31D5B0C0C00EA7786 /* AdvancedPreferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedPreferenceManager.swift; sourceTree = "<group>"; };
 		F1F2F2D51D5B283D00EA7786 /* GeneralPreferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferenceManager.swift; sourceTree = "<group>"; };
+		F1F926871E0110BA00FE4229 /* GetQueueCountParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetQueueCountParam.swift; sourceTree = "<group>"; };
+		F1F926891E0114A900FE4229 /* GetQueueCountAsysParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetQueueCountAsysParam.swift; sourceTree = "<group>"; };
+		F1F9268B1E0116AC00FE4229 /* ConfirmSingleForQueueParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmSingleForQueueParam.swift; sourceTree = "<group>"; };
+		F1F9268D1E0116C500FE4229 /* ConfirmSingleForQueueAsysParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmSingleForQueueAsysParam.swift; sourceTree = "<group>"; };
+		F1FC57AF1E001B7300157967 /* AutoSubmitParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoSubmitParams.swift; sourceTree = "<group>"; };
 		F1FCFF4A1D386F8F0070A32C /* URLButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLButton.swift; sourceTree = "<group>"; };
 		F1FEE7A11D8D464900B02C84 /* NotifySpeaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifySpeaker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -495,6 +505,11 @@
 				F1DDD8A51DC72ECF00879D44 /* SubmitOrderParams.swift */,
 				F14EBEC31DD1AEED002B2B83 /* QueryTrainPriceParam.swift */,
 				F1C8BC4C1DEEA548005A922B /* PaycheckNewParam.swift */,
+				F1FC57AF1E001B7300157967 /* AutoSubmitParams.swift */,
+				F1F926871E0110BA00FE4229 /* GetQueueCountParam.swift */,
+				F1F926891E0114A900FE4229 /* GetQueueCountAsysParam.swift */,
+				F1F9268B1E0116AC00FE4229 /* ConfirmSingleForQueueParam.swift */,
+				F1F9268D1E0116C500FE4229 /* ConfirmSingleForQueueAsysParam.swift */,
 			);
 			name = Params;
 			sourceTree = "<group>";
@@ -629,6 +644,7 @@
 				F142431B1DB628CB0012B5E4 /* DJTipHUD.m in Sources */,
 				F118AC451DF6656400B7EECE /* NSTableView+ContextMenu.swift in Sources */,
 				F11154C11C8D92D000FA6059 /* PassengerSelectViewController.swift in Sources */,
+				F1FC57B01E001B7300157967 /* AutoSubmitParams.swift in Sources */,
 				F11154801C8D923C00FA6059 /* SwiftyRegex.swift in Sources */,
 				F11154781C8D921400FA6059 /* QueryOrderParam.swift in Sources */,
 				F13E9C9A1D0AB3310011F7E2 /* TrainTableRowView.swift in Sources */,
@@ -645,6 +661,8 @@
 				F1CA12051D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift in Sources */,
 				F159C9D51DBDD76A00202143 /* DJLayerView.m in Sources */,
 				F1CCA2DE1D0D4A1400B6853E /* TrainCodeDetail.swift in Sources */,
+				F1F926881E0110BA00FE4229 /* GetQueueCountParam.swift in Sources */,
+				F1F9268E1E0116C500FE4229 /* ConfirmSingleForQueueAsysParam.swift in Sources */,
 				F1C075211D83F97A006EFABB /* TicketConstants.swift in Sources */,
 				F11154981C8D927C00FA6059 /* StationData.swift in Sources */,
 				F14D6BE41D86E91C00CBD36C /* FilterTrainCodeTransformer.swift in Sources */,
@@ -662,6 +680,7 @@
 				F10F003B1DF581420023DE68 /* CalendarManager.swift in Sources */,
 				F1CCA2DB1D0D42D700B6853E /* QueryByTrainCodeParam.swift in Sources */,
 				F147763E1D6B2B2E002FD6AF /* InfoButton.swift in Sources */,
+				F1F9268C1E0116AC00FE4229 /* ConfirmSingleForQueueParam.swift in Sources */,
 				F11154811C8D923C00FA6059 /* QueryDefaultManager.swift in Sources */,
 				F11154A01C8D929200FA6059 /* Service+Order.swift in Sources */,
 				F1D575761C95541D00A214B0 /* TicketQueryViewController.swift in Sources */,
@@ -693,6 +712,7 @@
 				F1F2F2C41D59BEE800EA7786 /* AdvancedPreferenceViewController.swift in Sources */,
 				F1F2F2D01D5AB8F700EA7786 /* Dama.swift in Sources */,
 				F1CA120B1D113293003EFD0B /* ContentBackgroundView.swift in Sources */,
+				F1F9268A1E0114A900FE4229 /* GetQueueCountAsysParam.swift in Sources */,
 				F11154921C8D925200FA6059 /* LoginButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

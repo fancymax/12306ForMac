@@ -30,7 +30,6 @@ struct ServiceError {
     enum Code: Int {
         case loginFailed           = -7000
         case queryTicketFailed     = -7001
-        case sumbitFailed          = -7002
         case getRandCodeFailed     = -7003
         case checkRandCodeFailed   = -7004
         case checkUserFailed       = -7005
@@ -42,12 +41,14 @@ struct ServiceError {
         case queryTicketNoFailed     = -7011
         case queryTicketPriceFailed     = -7012
         case getPassengerFailed     = -7013
+        case loginUserFailed   = -7014
+        case autoSumbitOrderFailed   = -7015
     }
     
     static let errorDic = [
         Code.loginFailed:"登录失败",
         Code.queryTicketFailed:"未能查到任何车次,请检查查询设置",
-        Code.sumbitFailed: "提交订单失败",
+        Code.autoSumbitOrderFailed: "自动提交订单失败",
         Code.getRandCodeFailed: "获取验证码失败",
         Code.checkRandCodeFailed: "验证码错误",
         Code.checkUserFailed: "非登录状态，需要重新登录",
@@ -58,7 +59,8 @@ struct ServiceError {
         Code.zeroOrderFailed:"您没有历史订单",
         Code.queryTicketNoFailed:"查询车次详细信息失败",
         Code.getPassengerFailed:"查询乘客信息失败",
-        Code.queryTicketPriceFailed:"查询票价失败"]
+        Code.queryTicketPriceFailed:"查询票价失败",
+        Code.loginUserFailed:"登录用户失败"]
     
     static func errorWithCode(_ code:Code)->NSError{
         if errorDic.keys.contains(code) {

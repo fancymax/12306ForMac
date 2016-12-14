@@ -176,7 +176,12 @@ class TrainInfoTableCellView: TrainTableCellView {
             messageField.isHidden = true
         }
         else if ticketInfo.canWebBuy == "N" {
-            messageField.stringValue = "   本车次暂无可售车票"
+            if ticketInfo.hasTicket {
+                messageField.stringValue = "   本车次无法购买,可重新查询"
+            }
+            else {
+                messageField.stringValue = "   本车次暂无可售车票"
+            }
             messageField.isHidden = false
         }
         else if ticketInfo.canWebBuy == "IS_TIME_NOT_BUY"{

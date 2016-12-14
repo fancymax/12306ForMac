@@ -13,6 +13,7 @@
                 <outlet property="passengerImage" destination="DNm-pn-QOi" id="nAB-3v-OSM"/>
                 <outlet property="passengerTable" destination="IjT-wy-Jy5" id="XuS-Ma-rDA"/>
                 <outlet property="preOrderView" destination="WkC-1X-oZ2" id="wlg-LP-U9S"/>
+                <outlet property="submitOrderBtn" destination="Jg1-2P-KG0" id="eL6-8E-WP0"/>
                 <outlet property="trainCodeLabel" destination="ecd-8X-J61" id="Wff-hy-bOF"/>
                 <outlet property="trainDateLabel" destination="x9s-aY-vXl" id="3mg-W2-WvV"/>
                 <outlet property="trainTimeLabel" destination="AkP-ak-M2v" id="4Wd-84-Q6B"/>
@@ -25,7 +26,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="390" height="370"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="390" height="370"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -122,7 +123,7 @@ CA
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="791.5" y="-59"/>
+            <point key="canvasLocation" x="352" y="-105"/>
         </customView>
         <customView id="WkC-1X-oZ2">
             <rect key="frame" x="0.0" y="0.0" width="409" height="330"/>
@@ -412,7 +413,7 @@ DQ
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="1174" y="-146.5"/>
+            <point key="canvasLocation" x="874" y="-155"/>
         </customView>
     </objects>
 </document>
