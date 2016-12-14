@@ -19,7 +19,7 @@ let D_SEAT_TYPE_KEYPATH_DIC = ["商务座": "Swz_Num", "特等座": "Tz_Num", "�
 
 //普通车
 let K_SEAT_TYPE_NAME_DIC = ["高级软卧": "6","软卧": "4", "硬卧": "3", "软座": "2", "硬座": "1", "无座": "1"]
-let K_SEAT_TYPE_KEYPATH_DIC = ["高级软卧": "Gr_Num","软卧": "Rw_Num", "硬卧": "Yw_Num", "软座": "Rz_Num", "硬座": "Yw_Num", "无座": "Wz_Num"]
+let K_SEAT_TYPE_KEYPATH_DIC = ["高级软卧": "Gr_Num","软卧": "Rw_Num", "硬卧": "Yw_Num", "软座": "Rz_Num", "硬座": "Yz_Num", "无座": "Wz_Num"]
 
 func G_QuerySeatTypeNameDicBy(_ trainCode:String)->[String:String] {
     if (trainCode.contains("G"))||(trainCode.contains("D")||(trainCode.contains("C"))) {
