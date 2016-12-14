@@ -171,6 +171,7 @@ class SubmitWindowController: BaseWindowController{
         
         let failureHandler = { (error:NSError) -> () in
             self.stopLoadingTip()
+            self.isSubmitting = false
             self.showTip(translate(error))
         }
         

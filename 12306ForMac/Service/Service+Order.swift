@@ -85,7 +85,7 @@ extension Service{
     func autoOrderFlowNoRandCode(success:@escaping ()->Void,failure:@escaping (NSError)->Void,wait:@escaping (String)->Void){
         let randCodeStr = ""
         self.getQueueCount(isAsys: true, wait).then{_ -> Promise<Void> in
-            return after(interval: 2)
+            return after(interval: 3)
         }.then{_ -> Promise<Void> in
             return self.confirmSingleForQueue(isAsys: true, randCodeStr)
         }.then{

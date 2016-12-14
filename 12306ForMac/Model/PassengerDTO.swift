@@ -113,7 +113,7 @@ class PassengerDTO:NSObject {
         }
         
         let isSeatAvailable:Bool
-        if ((seatCode == "O") || (seatCode == "1")) {
+        if ((seatCode == "O") || (seatCode == "1") || (seatCode == "3")) {
             isSeatAvailable = true
         }
         else {
