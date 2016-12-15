@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="LoginWindowController" customModule="订票助手" customModuleProvider="target">
             <connections>
                 <outlet property="loginImage" destination="HYl-HA-qIH" id="qxc-PX-5Qd"/>
+                <outlet property="nextImageBtn" destination="LIs-2s-KNy" id="BQR-gf-74f"/>
                 <outlet property="passWord" destination="gnT-ti-hbG" id="uGZ-Lw-Zt0"/>
                 <outlet property="userName" destination="Oyq-IG-8iP" id="S5v-Cg-SZD"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -20,7 +21,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="412" height="374"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="412" height="374"/>
                 <autoresizingMask key="autoresizingMask"/>

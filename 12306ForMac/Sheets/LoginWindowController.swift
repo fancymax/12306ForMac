@@ -13,6 +13,7 @@ class LoginWindowController: BaseWindowController{
     @IBOutlet weak var passWord: NSSecureTextField!
     @IBOutlet weak var userName: AutoCompleteTextField!
     @IBOutlet weak var loginImage: RandCodeImageView2!
+    @IBOutlet weak var nextImageBtn: NSButton!
     
     var users = [UserX]()
     var isAutoLogin = false
@@ -106,6 +107,7 @@ class LoginWindowController: BaseWindowController{
     func loadImage(){
         self.loginImage.clearRandCodes()
         self.startLoadingTip("正在加载...")
+        self.nextImageBtn.isEnabled = false
         
         let autoLoginHandler = {(image:NSImage)->() in
             self.startLoadingTip("自动打码...")
@@ -127,6 +129,7 @@ class LoginWindowController: BaseWindowController{
         let successHandler = {(image:NSImage) -> () in
             self.loginImage.image = image
             self.stopLoadingTip()
+            self.nextImageBtn.isEnabled = true
             
             if ((self.isAutoLogin)&&(AdvancedPreferenceManager.sharedInstance.isUseDama)) {
                 autoLoginHandler(image)
@@ -134,6 +137,7 @@ class LoginWindowController: BaseWindowController{
         }
         let failureHandler = {(error:NSError) -> () in
             self.stopLoadingTip()
+            self.nextImageBtn.isEnabled = true
             self.showTip(translate(error))
         }
         Service.sharedInstance.preLoginFlow(success: successHandler,failure: failureHandler)

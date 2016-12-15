@@ -33,7 +33,7 @@ class Service {
         
         configuration.httpCookieAcceptPolicy = .always
         configuration.httpAdditionalHeaders = headers
-        configuration.timeoutIntervalForRequest = 8
+        configuration.timeoutIntervalForRequest = 10
         
         let manager = Alamofire.SessionManager(
             configuration: configuration,

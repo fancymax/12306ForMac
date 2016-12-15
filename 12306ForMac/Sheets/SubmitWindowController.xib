@@ -3,10 +3,12 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SubmitWindowController" customModule="订票助手" customModuleProvider="target">
             <connections>
+                <outlet property="isAutoSubmitLabel" destination="Bhg-Ay-dy5" id="cxe-4r-zF5"/>
                 <outlet property="orderId" destination="myB-rD-1e5" id="fjQ-3n-Bqq"/>
                 <outlet property="orderIdView" destination="vJY-p7-r54" id="83u-Nk-Z7u"/>
                 <outlet property="orderInfoView" destination="wUj-Nk-WKF" id="sJL-qT-Bdp"/>
@@ -26,7 +28,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="390" height="370"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="390" height="370"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -142,7 +144,7 @@ CA
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="FreshImage:" target="-2" id="aSb-CG-GZs"/>
+                        <action selector="clickNextImage:" target="-2" id="XUC-rz-QAK"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EWQ-MH-lbW">
@@ -180,7 +182,7 @@ DQ
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="401.5" y="292"/>
+            <point key="canvasLocation" x="1300" y="-54"/>
         </customView>
         <customView id="wUj-Nk-WKF">
             <rect key="frame" x="0.0" y="0.0" width="344" height="343"/>
@@ -412,8 +414,17 @@ DQ
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bhg-Ay-dy5">
+                    <rect key="frame" x="28" y="23" width="103" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="正在自动提交..." id="ecK-Fo-yYU">
+                        <font key="font" metaFont="systemThin" size="13"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="874" y="-155"/>
+            <point key="canvasLocation" x="874" y="-155.5"/>
         </customView>
     </objects>
 </document>
