@@ -218,8 +218,13 @@ extension Service{
                             MainModel.key_check_isChange = matches[1]
                         }
                         
-                        if let ifShowPassCode = jsonData["ifShowPassCode"].bool {
-                            fulfill(ifShowPassCode)
+                        if let ifShowPassCode = jsonData["ifShowPassCode"].string {
+                            if ifShowPassCode == "Y" {
+                                fulfill(true)
+                            }
+                            else {
+                                fulfill(false)
+                            }
                         }
                         else {
                             fulfill(false)
@@ -415,8 +420,13 @@ extension Service{
                     reject(error)
                 case .success(let data):
                     if JSON(data)["data"]["submitStatus"].bool == true{
-                        if let ifShowPassCode = JSON(data)["data"]["ifShowPassCode"].bool {
-                            fulfill(ifShowPassCode)
+                        if let ifShowPassCode = JSON(data)["data"]["ifShowPassCode"].string {
+                            if ifShowPassCode == "Y" {
+                                fulfill(true) //ifShowPassCode
+                            }
+                            else {
+                                fulfill(false)
+                            }
                         }
                         else {
                             fulfill(false)
