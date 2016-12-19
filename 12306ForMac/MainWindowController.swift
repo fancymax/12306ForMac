@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import MASPreferences
 
 class MainWindowController: NSWindowController{
     @IBOutlet weak var loginButton: LoginButton!

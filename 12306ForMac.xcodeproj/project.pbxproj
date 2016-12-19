@@ -61,22 +61,14 @@
 		F12746721D50345D00975DFA /* ClickableDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12746711D50345D00975DFA /* ClickableDatePicker.swift */; };
 		F12746751D50784100975DFA /* TrainFilterWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12746731D50784100975DFA /* TrainFilterWindowController.swift */; };
 		F12746761D50784100975DFA /* TrainFilterWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F12746741D50784100975DFA /* TrainFilterWindowController.xib */; };
-		F13D9A6E1DADC8E800A49F1A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F13D9A6A1DADC8E800A49F1A /* Alamofire.framework */; };
-		F13D9A6F1DADC8E800A49F1A /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F13D9A6B1DADC8E800A49F1A /* FMDB.framework */; };
-		F13D9A701DADC8E800A49F1A /* OMGHTTPURLRQ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F13D9A6C1DADC8E800A49F1A /* OMGHTTPURLRQ.framework */; };
-		F13D9A711DADC8E800A49F1A /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F13D9A6D1DADC8E800A49F1A /* PromiseKit.framework */; };
-		F13D9A731DADCAF200A49F1A /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F13D9A6A1DADC8E800A49F1A /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F13D9A741DADCAF200A49F1A /* FMDB.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F13D9A6B1DADC8E800A49F1A /* FMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F13D9A751DADCAF200A49F1A /* OMGHTTPURLRQ.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F13D9A6C1DADC8E800A49F1A /* OMGHTTPURLRQ.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F13D9A761DADCAF200A49F1A /* PromiseKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F13D9A6D1DADC8E800A49F1A /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F13E9C981D0AA9760011F7E2 /* TrainInfoTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13E9C971D0AA9760011F7E2 /* TrainInfoTableCellView.swift */; };
 		F13E9C9A1D0AB3310011F7E2 /* TrainTableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13E9C991D0AB3310011F7E2 /* TrainTableRowView.swift */; };
-		F14243141DB610FF0012B5E4 /* DJActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F14243111DB610FF0012B5E4 /* DJActivityIndicator.m */; };
-		F142431B1DB628CB0012B5E4 /* DJTipHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F142431A1DB628CB0012B5E4 /* DJTipHUD.m */; };
 		F147763E1D6B2B2E002FD6AF /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F147763D1D6B2B2E002FD6AF /* InfoButton.swift */; };
 		F14D6BE41D86E91C00CBD36C /* FilterTrainCodeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D6BE31D86E91C00CBD36C /* FilterTrainCodeTransformer.swift */; };
 		F14EBEC41DD1AEED002B2B83 /* QueryTrainPriceParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14EBEC31DD1AEED002B2B83 /* QueryTrainPriceParam.swift */; };
-		F159C9D51DBDD76A00202143 /* DJLayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F159C9D41DBDD76A00202143 /* DJLayerView.m */; };
+		F170C0D51E07CAAD0047C547 /* DJActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F170C0D01E07CAAD0047C547 /* DJActivityIndicator.m */; };
+		F170C0D61E07CAAD0047C547 /* DJLayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F170C0D21E07CAAD0047C547 /* DJLayerView.m */; };
+		F170C0D71E07CAAD0047C547 /* DJTipHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F170C0D41E07CAAD0047C547 /* DJTipHUD.m */; };
 		F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F17AB1CB1C95630E00FEB221 /* Credits.rtf */; };
 		F1AF72B81DAA24FB0047486B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF72B71DAA24FB0047486B /* DataManager.swift */; };
 		F1C075211D83F97A006EFABB /* TicketConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C075201D83F97A006EFABB /* TicketConstants.swift */; };
@@ -92,14 +84,10 @@
 		F1CCA2DB1D0D42D700B6853E /* QueryByTrainCodeParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCA2DA1D0D42D700B6853E /* QueryByTrainCodeParam.swift */; };
 		F1CCA2DE1D0D4A1400B6853E /* TrainCodeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CCA2DD1D0D4A1400B6853E /* TrainCodeDetail.swift */; };
 		F1D390A41C8F177F000B3FD7 /* RandCodeImageView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D390A31C8F177F000B3FD7 /* RandCodeImageView2.swift */; };
-		F1D3FED71DC84892008638AE /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D3FED61DC84892008638AE /* XCGLogger.framework */; };
-		F1D3FED81DC84AFD008638AE /* XCGLogger.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1D3FED61DC84892008638AE /* XCGLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F1D575761C95541D00A214B0 /* TicketQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */; };
 		F1D575771C95541D00A214B0 /* TicketQueryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D575751C95541D00A214B0 /* TicketQueryViewController.xib */; };
 		F1D58E9D1D8A549200CD3DA7 /* Reverse.png in Resources */ = {isa = PBXBuildFile; fileRef = F1D58E9C1D8A549200CD3DA7 /* Reverse.png */; };
 		F1DDD8A61DC72ECF00879D44 /* SubmitOrderParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DDD8A51DC72ECF00879D44 /* SubmitOrderParams.swift */; };
-		F1F2F2AF1D598AB700EA7786 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F2F2A81D598AB700EA7786 /* MASPreferencesWindow.xib */; };
-		F1F2F2B01D598AB700EA7786 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F2AD1D598AB700EA7786 /* MASPreferencesWindowController.m */; };
 		F1F2F2C01D59AFB100EA7786 /* GeneralPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F2BE1D59AFB100EA7786 /* GeneralPreferenceViewController.swift */; };
 		F1F2F2C11D59AFB100EA7786 /* GeneralPreferenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F2F2BF1D59AFB100EA7786 /* GeneralPreferenceViewController.xib */; };
 		F1F2F2C41D59BEE800EA7786 /* AdvancedPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F2C21D59BEE800EA7786 /* AdvancedPreferenceViewController.swift */; };
@@ -115,6 +103,7 @@
 		F1FC57B01E001B7300157967 /* AutoSubmitParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FC57AF1E001B7300157967 /* AutoSubmitParams.swift */; };
 		F1FCFF4B1D386F8F0070A32C /* URLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FCFF4A1D386F8F0070A32C /* URLButton.swift */; };
 		F1FEE7A21D8D464900B02C84 /* NotifySpeaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FEE7A11D8D464900B02C84 /* NotifySpeaker.swift */; };
+		F5ED31ECF7AF140146322D43 /* Pods_12306ForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE13485B5745361514B3A60D /* Pods_12306ForMac.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -124,17 +113,15 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F1D3FED81DC84AFD008638AE /* XCGLogger.framework in CopyFiles */,
-				F13D9A731DADCAF200A49F1A /* Alamofire.framework in CopyFiles */,
-				F13D9A741DADCAF200A49F1A /* FMDB.framework in CopyFiles */,
-				F13D9A751DADCAF200A49F1A /* OMGHTTPURLRQ.framework in CopyFiles */,
-				F13D9A761DADCAF200A49F1A /* PromiseKit.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A8D3F0F3BEAE3A2A4587E202 /* Pods-12306ForMac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-12306ForMac.release.xcconfig"; path = "Pods/Target Support Files/Pods-12306ForMac/Pods-12306ForMac.release.xcconfig"; sourceTree = "<group>"; };
+		AE70F375EE0543FBC436A6A4 /* Pods-12306ForMac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-12306ForMac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-12306ForMac/Pods-12306ForMac.debug.xcconfig"; sourceTree = "<group>"; };
+		BE13485B5745361514B3A60D /* Pods_12306ForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_12306ForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F10F003A1DF581420023DE68 /* CalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		F10F47A81D409ED3004668BB /* station_name.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = station_name.js; path = 12306ForMac/station_name.js; sourceTree = "<group>"; };
 		F11154621C8D91F800FA6059 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -191,22 +178,18 @@
 		F12746711D50345D00975DFA /* ClickableDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClickableDatePicker.swift; sourceTree = "<group>"; };
 		F12746731D50784100975DFA /* TrainFilterWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainFilterWindowController.swift; sourceTree = "<group>"; };
 		F12746741D50784100975DFA /* TrainFilterWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrainFilterWindowController.xib; sourceTree = "<group>"; };
-		F13D9A6A1DADC8E800A49F1A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Frameworks/Alamofire.framework; sourceTree = "<group>"; };
-		F13D9A6B1DADC8E800A49F1A /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = Frameworks/FMDB.framework; sourceTree = "<group>"; };
-		F13D9A6C1DADC8E800A49F1A /* OMGHTTPURLRQ.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OMGHTTPURLRQ.framework; path = Frameworks/OMGHTTPURLRQ.framework; sourceTree = "<group>"; };
-		F13D9A6D1DADC8E800A49F1A /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Frameworks/PromiseKit.framework; sourceTree = "<group>"; };
 		F13E9C971D0AA9760011F7E2 /* TrainInfoTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainInfoTableCellView.swift; sourceTree = "<group>"; };
 		F13E9C991D0AB3310011F7E2 /* TrainTableRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainTableRowView.swift; sourceTree = "<group>"; };
-		F14243101DB610FF0012B5E4 /* DJActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJActivityIndicator.h; sourceTree = "<group>"; };
-		F14243111DB610FF0012B5E4 /* DJActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJActivityIndicator.m; sourceTree = "<group>"; };
-		F14243191DB628CB0012B5E4 /* DJTipHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJTipHUD.h; sourceTree = "<group>"; };
-		F142431A1DB628CB0012B5E4 /* DJTipHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJTipHUD.m; sourceTree = "<group>"; };
 		F147763D1D6B2B2E002FD6AF /* InfoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 		F14D6BE31D86E91C00CBD36C /* FilterTrainCodeTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTrainCodeTransformer.swift; sourceTree = "<group>"; };
 		F14EBEC31DD1AEED002B2B83 /* QueryTrainPriceParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryTrainPriceParam.swift; sourceTree = "<group>"; };
 		F15277071DAB78D3002BAF17 /* 12306ForMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = 12306ForMac.entitlements; path = 12306ForMac/12306ForMac.entitlements; sourceTree = "<group>"; };
-		F159C9D31DBDD76A00202143 /* DJLayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJLayerView.h; sourceTree = "<group>"; };
-		F159C9D41DBDD76A00202143 /* DJLayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJLayerView.m; sourceTree = "<group>"; };
+		F170C0CF1E07CAAD0047C547 /* DJActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJActivityIndicator.h; sourceTree = "<group>"; };
+		F170C0D01E07CAAD0047C547 /* DJActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJActivityIndicator.m; sourceTree = "<group>"; };
+		F170C0D11E07CAAD0047C547 /* DJLayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJLayerView.h; sourceTree = "<group>"; };
+		F170C0D21E07CAAD0047C547 /* DJLayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJLayerView.m; sourceTree = "<group>"; };
+		F170C0D31E07CAAD0047C547 /* DJTipHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJTipHUD.h; sourceTree = "<group>"; };
+		F170C0D41E07CAAD0047C547 /* DJTipHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJTipHUD.m; sourceTree = "<group>"; };
 		F17AB1CB1C95630E00FEB221 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = 12306ForMac/Resources/Credits.rtf; sourceTree = SOURCE_ROOT; };
 		F1AF72B71DAA24FB0047486B /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		F1C075201D83F97A006EFABB /* TicketConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketConstants.swift; sourceTree = "<group>"; };
@@ -223,17 +206,11 @@
 		F1CCA2DA1D0D42D700B6853E /* QueryByTrainCodeParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryByTrainCodeParam.swift; sourceTree = "<group>"; };
 		F1CCA2DD1D0D4A1400B6853E /* TrainCodeDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainCodeDetail.swift; sourceTree = "<group>"; };
 		F1D390A31C8F177F000B3FD7 /* RandCodeImageView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandCodeImageView2.swift; sourceTree = "<group>"; };
-		F1D3FED61DC84892008638AE /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = Frameworks/XCGLogger.framework; sourceTree = "<group>"; };
 		F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketQueryViewController.swift; sourceTree = "<group>"; };
 		F1D575751C95541D00A214B0 /* TicketQueryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketQueryViewController.xib; sourceTree = "<group>"; };
 		F1D58E9C1D8A549200CD3DA7 /* Reverse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Reverse.png; path = 12306ForMac/images/Reverse.png; sourceTree = SOURCE_ROOT; };
 		F1DDD8A51DC72ECF00879D44 /* SubmitOrderParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitOrderParams.swift; sourceTree = "<group>"; };
-		F1E118EB1DAC8770003133C7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/MASPreferencesWindow.xib"; sourceTree = "<group>"; };
 		F1E118ED1DAC8981003133C7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "12306ForMac/zh-Hans.lproj/MainMenu.xib"; sourceTree = "<group>"; };
-		F1F2F2AA1D598AB700EA7786 /* MASPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferences.h; sourceTree = "<group>"; };
-		F1F2F2AB1D598AB700EA7786 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
-		F1F2F2AC1D598AB700EA7786 /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesWindowController.h; sourceTree = "<group>"; };
-		F1F2F2AD1D598AB700EA7786 /* MASPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASPreferencesWindowController.m; sourceTree = "<group>"; };
 		F1F2F2BE1D59AFB100EA7786 /* GeneralPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferenceViewController.swift; sourceTree = "<group>"; };
 		F1F2F2BF1D59AFB100EA7786 /* GeneralPreferenceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPreferenceViewController.xib; sourceTree = "<group>"; };
 		F1F2F2C21D59BEE800EA7786 /* AdvancedPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedPreferenceViewController.swift; sourceTree = "<group>"; };
@@ -256,11 +233,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1D3FED71DC84892008638AE /* XCGLogger.framework in Frameworks */,
-				F13D9A6E1DADC8E800A49F1A /* Alamofire.framework in Frameworks */,
-				F13D9A6F1DADC8E800A49F1A /* FMDB.framework in Frameworks */,
-				F13D9A701DADC8E800A49F1A /* OMGHTTPURLRQ.framework in Frameworks */,
-				F13D9A711DADC8E800A49F1A /* PromiseKit.framework in Frameworks */,
+				F5ED31ECF7AF140146322D43 /* Pods_12306ForMac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,18 +243,24 @@
 		7EE5AE4095B588D2CBD04072 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F1D3FED61DC84892008638AE /* XCGLogger.framework */,
-				F13D9A6A1DADC8E800A49F1A /* Alamofire.framework */,
-				F13D9A6B1DADC8E800A49F1A /* FMDB.framework */,
-				F13D9A6C1DADC8E800A49F1A /* OMGHTTPURLRQ.framework */,
-				F13D9A6D1DADC8E800A49F1A /* PromiseKit.framework */,
+				BE13485B5745361514B3A60D /* Pods_12306ForMac.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CECE5E43E43A66DF77FC4D18 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AE70F375EE0543FBC436A6A4 /* Pods-12306ForMac.debug.xcconfig */,
+				A8D3F0F3BEAE3A2A4587E202 /* Pods-12306ForMac.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		F11154611C8D91B300FA6059 /* 12306ForMac */ = {
 			isa = PBXGroup;
 			children = (
+				F170C0CE1E07CAAD0047C547 /* DJProgressHUD */,
 				F15277071DAB78D3002BAF17 /* 12306ForMac.entitlements */,
 				F1F2F2B31D598B7800EA7786 /* Preferences */,
 				F11154B21C8D92D000FA6059 /* TicketQueryModule */,
@@ -430,11 +409,10 @@
 			isa = PBXGroup;
 			children = (
 				F1CC36461B6B244C0074A014 /* 12306ForMac-Swift.h */,
-				F142430F1DB610FF0012B5E4 /* DJProgressHUD */,
-				F1F2F2A71D598AB700EA7786 /* MASPreferences */,
 				F11154611C8D91B300FA6059 /* 12306ForMac */,
 				F11EB45B1B6A368E000063E4 /* Products */,
 				7EE5AE4095B588D2CBD04072 /* Frameworks */,
+				CECE5E43E43A66DF77FC4D18 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -458,15 +436,15 @@
 			path = Train12306;
 			sourceTree = "<group>";
 		};
-		F142430F1DB610FF0012B5E4 /* DJProgressHUD */ = {
+		F170C0CE1E07CAAD0047C547 /* DJProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				F159C9D31DBDD76A00202143 /* DJLayerView.h */,
-				F159C9D41DBDD76A00202143 /* DJLayerView.m */,
-				F14243191DB628CB0012B5E4 /* DJTipHUD.h */,
-				F142431A1DB628CB0012B5E4 /* DJTipHUD.m */,
-				F14243101DB610FF0012B5E4 /* DJActivityIndicator.h */,
-				F14243111DB610FF0012B5E4 /* DJActivityIndicator.m */,
+				F170C0CF1E07CAAD0047C547 /* DJActivityIndicator.h */,
+				F170C0D01E07CAAD0047C547 /* DJActivityIndicator.m */,
+				F170C0D11E07CAAD0047C547 /* DJLayerView.h */,
+				F170C0D21E07CAAD0047C547 /* DJLayerView.m */,
+				F170C0D31E07CAAD0047C547 /* DJTipHUD.h */,
+				F170C0D41E07CAAD0047C547 /* DJTipHUD.m */,
 			);
 			path = DJProgressHUD;
 			sourceTree = "<group>";
@@ -514,18 +492,6 @@
 			name = Params;
 			sourceTree = "<group>";
 		};
-		F1F2F2A71D598AB700EA7786 /* MASPreferences */ = {
-			isa = PBXGroup;
-			children = (
-				F1F2F2A81D598AB700EA7786 /* MASPreferencesWindow.xib */,
-				F1F2F2AA1D598AB700EA7786 /* MASPreferences.h */,
-				F1F2F2AB1D598AB700EA7786 /* MASPreferencesViewController.h */,
-				F1F2F2AC1D598AB700EA7786 /* MASPreferencesWindowController.h */,
-				F1F2F2AD1D598AB700EA7786 /* MASPreferencesWindowController.m */,
-			);
-			path = MASPreferences;
-			sourceTree = "<group>";
-		};
 		F1F2F2B31D598B7800EA7786 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
@@ -547,10 +513,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F11EB4741B6A368E000063E4 /* Build configuration list for PBXNativeTarget "12306ForMac" */;
 			buildPhases = (
+				104DA8247AC5F5E7E9ECFB5D /* [CP] Check Pods Manifest.lock */,
 				F11EB4561B6A368E000063E4 /* Sources */,
 				F11EB4571B6A368E000063E4 /* Frameworks */,
 				F11EB4581B6A368E000063E4 /* Resources */,
 				F13D9A721DADCAE900A49F1A /* CopyFiles */,
+				75DC5FDD691B5ED5734CF978 /* [CP] Embed Pods Frameworks */,
+				89A1448D317B9DFF92C45661 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -626,7 +595,6 @@
 				F1D58E9D1D8A549200CD3DA7 /* Reverse.png in Resources */,
 				F11154C41C8D92D000FA6059 /* PassengerViewController.xib in Resources */,
 				F1C075231D855EE5006EFABB /* Direction.png in Resources */,
-				F1F2F2AF1D598AB700EA7786 /* MASPreferencesWindow.xib in Resources */,
 				F12746701D502E8100975DFA /* Filter.png in Resources */,
 				F1CCA2D91D0D3DFA00B6853E /* TrainCodeDetailViewController.xib in Resources */,
 				F11154AC1C8D92A700FA6059 /* SubmitWindowController.xib in Resources */,
@@ -635,19 +603,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		104DA8247AC5F5E7E9ECFB5D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		75DC5FDD691B5ED5734CF978 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-12306ForMac/Pods-12306ForMac-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89A1448D317B9DFF92C45661 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-12306ForMac/Pods-12306ForMac-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F11EB4561B6A368E000063E4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F11154CF1C8D931500FA6059 /* MainWindowController.swift in Sources */,
-				F142431B1DB628CB0012B5E4 /* DJTipHUD.m in Sources */,
 				F118AC451DF6656400B7EECE /* NSTableView+ContextMenu.swift in Sources */,
 				F11154C11C8D92D000FA6059 /* PassengerSelectViewController.swift in Sources */,
 				F1FC57B01E001B7300157967 /* AutoSubmitParams.swift in Sources */,
 				F11154801C8D923C00FA6059 /* SwiftyRegex.swift in Sources */,
 				F11154781C8D921400FA6059 /* QueryOrderParam.swift in Sources */,
 				F13E9C9A1D0AB3310011F7E2 /* TrainTableRowView.swift in Sources */,
+				F170C0D51E07CAAD0047C547 /* DJActivityIndicator.m in Sources */,
 				F14EBEC41DD1AEED002B2B83 /* QueryTrainPriceParam.swift in Sources */,
 				F1DDD8A61DC72ECF00879D44 /* SubmitOrderParams.swift in Sources */,
 				F121FC9A1DD987E100CA05F3 /* Notifications.swift in Sources */,
@@ -659,14 +675,12 @@
 				F111549F1C8D929200FA6059 /* Service+Login.swift in Sources */,
 				F1CA120D1D1135E2003EFD0B /* Theme.swift in Sources */,
 				F1CA12051D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift in Sources */,
-				F159C9D51DBDD76A00202143 /* DJLayerView.m in Sources */,
 				F1CCA2DE1D0D4A1400B6853E /* TrainCodeDetail.swift in Sources */,
 				F1F926881E0110BA00FE4229 /* GetQueueCountParam.swift in Sources */,
 				F1F9268E1E0116C500FE4229 /* ConfirmSingleForQueueAsysParam.swift in Sources */,
 				F1C075211D83F97A006EFABB /* TicketConstants.swift in Sources */,
 				F11154981C8D927C00FA6059 /* StationData.swift in Sources */,
 				F14D6BE41D86E91C00CBD36C /* FilterTrainCodeTransformer.swift in Sources */,
-				F14243141DB610FF0012B5E4 /* DJActivityIndicator.m in Sources */,
 				F111547F1C8D923C00FA6059 /* SwiftyJSON.swift in Sources */,
 				F1C8BC581DEECACB005A922B /* PayWindowController.swift in Sources */,
 				F11154741C8D921400FA6059 /* OrderDTO.swift in Sources */,
@@ -676,9 +690,11 @@
 				F11154901C8D925200FA6059 /* GlassView.swift in Sources */,
 				F11154961C8D925200FA6059 /* RandCodeImageView.swift in Sources */,
 				F12746721D50345D00975DFA /* ClickableDatePicker.swift in Sources */,
+				F170C0D61E07CAAD0047C547 /* DJLayerView.m in Sources */,
 				F11154681C8D920600FA6059 /* User.swift in Sources */,
 				F10F003B1DF581420023DE68 /* CalendarManager.swift in Sources */,
 				F1CCA2DB1D0D42D700B6853E /* QueryByTrainCodeParam.swift in Sources */,
+				F170C0D71E07CAAD0047C547 /* DJTipHUD.m in Sources */,
 				F147763E1D6B2B2E002FD6AF /* InfoButton.swift in Sources */,
 				F1F9268C1E0116AC00FE4229 /* ConfirmSingleForQueueParam.swift in Sources */,
 				F11154811C8D923C00FA6059 /* QueryDefaultManager.swift in Sources */,
@@ -689,7 +705,6 @@
 				F1D390A41C8F177F000B3FD7 /* RandCodeImageView2.swift in Sources */,
 				F1F2F2D61D5B283D00EA7786 /* GeneralPreferenceManager.swift in Sources */,
 				F11154761C8D921400FA6059 /* PassengerDTO.swift in Sources */,
-				F1F2F2B01D598AB700EA7786 /* MASPreferencesWindowController.m in Sources */,
 				F1F2F2C01D59AFB100EA7786 /* GeneralPreferenceViewController.swift in Sources */,
 				F1AF72B81DAA24FB0047486B /* DataManager.swift in Sources */,
 				F123E8281DF00BBC003C06A8 /* BaseWindowController.swift in Sources */,
@@ -726,14 +741,6 @@
 				F1E118ED1DAC8981003133C7 /* zh-Hans */,
 			);
 			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		F1F2F2A81D598AB700EA7786 /* MASPreferencesWindow.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F1E118EB1DAC8770003133C7 /* zh-Hans */,
-			);
-			name = MASPreferencesWindow.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -829,6 +836,7 @@
 		};
 		F11EB4751B6A368E000063E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE70F375EE0543FBC436A6A4 /* Pods-12306ForMac.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -858,6 +866,7 @@
 		};
 		F11EB4761B6A368E000063E4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A8D3F0F3BEAE3A2A4587E202 /* Pods-12306ForMac.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
