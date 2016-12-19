@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cocoa
 
 //user define Context Menu
 protocol ContextMenuDelegate: NSObjectProtocol {

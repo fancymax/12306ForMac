@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import MASPreferences
 
 class GeneralPreferenceViewController: NSViewController, MASPreferencesViewController {
 

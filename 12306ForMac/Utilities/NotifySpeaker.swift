@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AppKit
 
 class NotifySpeaker {
     fileprivate static let sharedManager = NotifySpeaker()

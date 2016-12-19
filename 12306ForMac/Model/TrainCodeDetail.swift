@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cocoa
 
 class TrainCodeDetail: NSObject {
     var station_no: String! // = "1"
