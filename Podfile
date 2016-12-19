@@ -11,7 +11,6 @@ target '12306ForMac' do
   pod 'OMGHTTPURLRQ', '~> 3.2.2'
   pod 'PromiseKit', '~> 4.1.0'
   pod 'XCGLogger', '~> 4.0.0'
-  pod 'DJProgressHUD_OSX', '~> 0.0.1'
   pod 'MASPreferences', '~> 1.1.4'
 
 end

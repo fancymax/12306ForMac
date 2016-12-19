@@ -6,16 +6,16 @@ Mac版12306 订票/捡票 助手。
 注意系统要求  **OS X10.11**  以上
 
 #下载
-[Mac App Store](https://itunes.apple.com/us/app/ding-piao-zhu-shou/id1163682213?l=zh&ls=1&mt=12)
+[Mac App Store](https://itunes.apple.com/cn/app/ding-piao-zhu-shou/id1163682213?l=zh&ls=1&mt=12)
 
 
 ![demo](screenshot/12306ForMac.jpg)
 
 #开发
-1. OS X 10.12
-2. Xcode 8.0
-3. Swift 3.0
-4. 复制项目：$ git clone --recursive https://github.com/fancymax/12306ForMac.git 
+1. OS X 10.12/Xcode 8.0/Swift 3.0
+2. $ git clone --recursive https://github.com/fancymax/12306ForMac.git 
+3. $ pod install
+4. open 12306ForMac.xcworkspace
 
 #感谢
 本项目基于 Alamofire、PromiseKit、FMDB、MASPreferences等进行开发，在此表示感谢。

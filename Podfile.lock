@@ -1,6 +1,5 @@
 PODS:
   - Alamofire (4.0.1)
-  - DJProgressHUD_OSX (0.0.1)
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
@@ -29,7 +28,6 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.0.0)
-  - DJProgressHUD_OSX (~> 0.0.1)
   - FMDB (~> 2.6.2)
   - MASPreferences (~> 1.1.4)
   - OMGHTTPURLRQ (~> 3.2.2)
@@ -38,13 +36,12 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
-  DJProgressHUD_OSX: a8de6d2da8750dbf671fcddc649a44a9cd2807c4
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   MASPreferences: 7bdcfe891d7840453cf48f95fa866c3e152ace7a
   OMGHTTPURLRQ: edb14c7d28add69226b79d826f930805927a0ffa
   PromiseKit: c98453ff78544c0ad5bb0ea980782e6875f47978
   XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
 
-PODFILE CHECKSUM: 915a259cbd83d188f4f7e15e233266600812a387
+PODFILE CHECKSUM: 85d723e71bfbd83d7d08321cbc9dcb9e3175ae56
 
 COCOAPODS: 1.1.1
