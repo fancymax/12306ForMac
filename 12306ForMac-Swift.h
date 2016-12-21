@@ -13,5 +13,6 @@
 #import "DJTipHUD.h"
 #import "DJLayerView.h"
 #import <CommonCrypto/CommonCrypto.h>
+#import "ModifyHosts.h"
 
 #endif

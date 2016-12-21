@@ -1,5 +1,5 @@
-source 'https://git.coding.net/CocoaPods/Specs.git'
-platform :osx, '10.11'
+#source 'https://git.coding.net/CocoaPods/Specs.git'
+#platform :osx, '10.11'
 
 target '12306ForMac' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks

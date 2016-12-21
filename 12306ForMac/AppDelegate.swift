@@ -64,6 +64,7 @@ let logger: XCGLogger = {
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+        ModifyHosts.sharedInstance().udpateHostsFor12306(nil)
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender:NSApplication)->Bool {

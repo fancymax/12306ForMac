@@ -80,7 +80,7 @@ class TicketQueryViewController: BaseViewController {
     
     var autoQueryNum = 0
     var calendarPopover:NSPopover?
-    var repeatTimer:Timer?
+//    var repeatTimer:Timer?
     var ticketType:TicketType = .Normal
    
     fileprivate func getDateStr(_ date:Date) -> String{
@@ -100,8 +100,8 @@ class TicketQueryViewController: BaseViewController {
     }
     
     fileprivate func stopAutoQuery(){
-        repeatTimer?.invalidate()
-        repeatTimer = nil
+//        repeatTimer?.invalidate()
+//        repeatTimer = nil
         hasAutoQuery = false
     }
     
@@ -147,10 +147,15 @@ class TicketQueryViewController: BaseViewController {
         self.saveLastSelectdPassengerIdToDefault()
         
         if autoQuery {
-            repeatTimer = Timer(timeInterval: Double(GeneralPreferenceManager.sharedInstance.autoQuerySeconds), target: self, selector: #selector(TicketQueryViewController.queryTicketAndSubmit), userInfo: nil, repeats: true)
-            repeatTimer?.fire()
-            RunLoop.current.add(repeatTimer!, forMode: RunLoopMode.defaultRunLoopMode)
+//            repeatTimer = Timer(timeInterval: Double(GeneralPreferenceManager.sharedInstance.autoQuerySeconds), target: self, selector: #selector(TicketQueryViewController.queryTicketAndSubmit), userInfo: nil, repeats: true)
+//            repeatTimer?.fire()
+//            RunLoop.current.add(repeatTimer!, forMode: RunLoopMode.defaultRunLoopMode)
             hasAutoQuery = true
+            
+            // 因为 Hosts 对所有的 request 都有影响，所以一次查询的生命周期是:
+            // query-->filter-->submit, 在生命周期内需要确保对应的 cdn ip 不变换，
+            // 等待 query 若无票或者失败就 refresh cdn 并重新发起请求
+            queryTicketAndSubmit()
         }
         else {
             queryTicket()
@@ -166,6 +171,7 @@ class TicketQueryViewController: BaseViewController {
     @IBOutlet weak var filterBtn: LoginButton!
     @IBOutlet weak var filterCbx: NSButton!
     @IBOutlet weak var addPassengerBtn: LoginButton!
+    @IBOutlet weak var cdnIpLabel: NSTextField!
     
     var autoQuery = false {
         didSet {
@@ -454,6 +460,12 @@ class TicketQueryViewController: BaseViewController {
                     break;
                 }
             }
+            
+            if self.hasAutoQuery { // 没有票
+                let ip = Refresh12306CDN.sharedInstance.refresh()
+                self.cdnIpLabel.stringValue = "cdn ip:\(ip)"
+                self.queryTicketAndSubmit()
+            }
         }
         queryTicket(summitHandler)
     }
@@ -519,6 +531,8 @@ class TicketQueryViewController: BaseViewController {
             self.showTip(translate(error))
             
             self.canFilter = false
+            // 失败后切 cdn 查询
+            self.queryTicketAndSubmit()
         }
         
         self.startLoadingTip("正在查询...")

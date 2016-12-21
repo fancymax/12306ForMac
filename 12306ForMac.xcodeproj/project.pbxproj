@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59A0F4711E0A6EE2002AD7F3 /* ModifyHosts.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A0F4701E0A6EE2002AD7F3 /* ModifyHosts.m */; };
+		59A0F4731E0A84D8002AD7F3 /* Refresh12306CDN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A0F4721E0A84D8002AD7F3 /* Refresh12306CDN.swift */; };
 		F10F003B1DF581420023DE68 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10F003A1DF581420023DE68 /* CalendarManager.swift */; };
 		F10F47A91D409ED3004668BB /* station_name.js in Resources */ = {isa = PBXBuildFile; fileRef = F10F47A81D409ED3004668BB /* station_name.js */; };
 		F11154651C8D91F800FA6059 /* srca.cer in Resources */ = {isa = PBXBuildFile; fileRef = F11154631C8D91F800FA6059 /* srca.cer */; };
@@ -119,6 +121,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		59A0F46F1E0A6EE2002AD7F3 /* ModifyHosts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyHosts.h; sourceTree = "<group>"; };
+		59A0F4701E0A6EE2002AD7F3 /* ModifyHosts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyHosts.m; sourceTree = "<group>"; };
+		59A0F4721E0A84D8002AD7F3 /* Refresh12306CDN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Refresh12306CDN.swift; sourceTree = "<group>"; };
 		A8D3F0F3BEAE3A2A4587E202 /* Pods-12306ForMac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-12306ForMac.release.xcconfig"; path = "Pods/Target Support Files/Pods-12306ForMac/Pods-12306ForMac.release.xcconfig"; sourceTree = "<group>"; };
 		AE70F375EE0543FBC436A6A4 /* Pods-12306ForMac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-12306ForMac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-12306ForMac/Pods-12306ForMac.debug.xcconfig"; sourceTree = "<group>"; };
 		BE13485B5745361514B3A60D /* Pods_12306ForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_12306ForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,7 +188,6 @@
 		F147763D1D6B2B2E002FD6AF /* InfoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 		F14D6BE31D86E91C00CBD36C /* FilterTrainCodeTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTrainCodeTransformer.swift; sourceTree = "<group>"; };
 		F14EBEC31DD1AEED002B2B83 /* QueryTrainPriceParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryTrainPriceParam.swift; sourceTree = "<group>"; };
-		F15277071DAB78D3002BAF17 /* 12306ForMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = 12306ForMac.entitlements; path = 12306ForMac/12306ForMac.entitlements; sourceTree = "<group>"; };
 		F170C0CF1E07CAAD0047C547 /* DJActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJActivityIndicator.h; sourceTree = "<group>"; };
 		F170C0D01E07CAAD0047C547 /* DJActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJActivityIndicator.m; sourceTree = "<group>"; };
 		F170C0D11E07CAAD0047C547 /* DJLayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJLayerView.h; sourceTree = "<group>"; };
@@ -261,7 +265,6 @@
 			isa = PBXGroup;
 			children = (
 				F170C0CE1E07CAAD0047C547 /* DJProgressHUD */,
-				F15277071DAB78D3002BAF17 /* 12306ForMac.entitlements */,
 				F1F2F2B31D598B7800EA7786 /* Preferences */,
 				F11154B21C8D92D000FA6059 /* TicketQueryModule */,
 				F11154AD1C8D92C100FA6059 /* OrderQueryModule */,
@@ -319,6 +322,9 @@
 				F111547C1C8D923C00FA6059 /* SwiftyRegex.swift */,
 				F1FEE7A11D8D464900B02C84 /* NotifySpeaker.swift */,
 				F10F003A1DF581420023DE68 /* CalendarManager.swift */,
+				59A0F46F1E0A6EE2002AD7F3 /* ModifyHosts.h */,
+				59A0F4701E0A6EE2002AD7F3 /* ModifyHosts.m */,
+				59A0F4721E0A84D8002AD7F3 /* Refresh12306CDN.swift */,
 			);
 			name = Utilities;
 			path = 12306ForMac/Utilities;
@@ -696,6 +702,7 @@
 				F1CCA2DB1D0D42D700B6853E /* QueryByTrainCodeParam.swift in Sources */,
 				F170C0D71E07CAAD0047C547 /* DJTipHUD.m in Sources */,
 				F147763E1D6B2B2E002FD6AF /* InfoButton.swift in Sources */,
+				59A0F4731E0A84D8002AD7F3 /* Refresh12306CDN.swift in Sources */,
 				F1F9268C1E0116AC00FE4229 /* ConfirmSingleForQueueParam.swift in Sources */,
 				F11154811C8D923C00FA6059 /* QueryDefaultManager.swift in Sources */,
 				F11154A01C8D929200FA6059 /* Service+Order.swift in Sources */,
@@ -703,6 +710,7 @@
 				F11FE6871D5F4EB70049F261 /* DamaError.swift in Sources */,
 				F11154C31C8D92D000FA6059 /* PassengerViewController.swift in Sources */,
 				F1D390A41C8F177F000B3FD7 /* RandCodeImageView2.swift in Sources */,
+				59A0F4711E0A6EE2002AD7F3 /* ModifyHosts.m in Sources */,
 				F1F2F2D61D5B283D00EA7786 /* GeneralPreferenceManager.swift in Sources */,
 				F11154761C8D921400FA6059 /* PassengerDTO.swift in Sources */,
 				F1F2F2C01D59AFB100EA7786 /* GeneralPreferenceViewController.swift in Sources */,
@@ -841,7 +849,6 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = 12306ForMac/12306ForMac.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -869,7 +876,6 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = 12306ForMac/12306ForMac.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				COMBINE_HIDPI_IMAGES = YES;
