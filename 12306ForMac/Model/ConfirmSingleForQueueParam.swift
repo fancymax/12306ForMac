@@ -19,7 +19,7 @@ struct ConfirmSingleForQueueParam{
         leftTicketStr = MainModel.selectedTicket?.yp_info ?? ""
         train_location = MainModel.train_location ?? ""
         
-        REPEAT_SUBMIT_TOKEN = MainModel.globalRepeatSubmitToken ?? ""
+        REPEAT_SUBMIT_TOKEN = MainModel.globalRepeatSubmitToken 
     }
     
     var passengerTicketStr = ""
