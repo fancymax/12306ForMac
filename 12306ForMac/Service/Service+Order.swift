@@ -314,7 +314,7 @@ extension Service{
             }
             else {
                 if !isAuto {
-                    params = ["_json_att":"","REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken!]
+                    params = ["_json_att":"","REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken]
                     headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
                 }
                 else {
@@ -374,15 +374,26 @@ extension Service{
         }
     }
     
-    func checkRandCodeForOrder(_ randCodeStr:String) ->Promise<Void>{
+    func checkRandCodeForOrder(_ randCodeStr:String, isAuto:Bool = false) ->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/passcodeNew/checkRandCodeAnsyn"
-            let params = [
-                "randCode":randCodeStr,
-                "rand":"randp",
-                "_json_att":"",
-                "REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken!]
-            let headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
+            let params:[String:String]
+            var headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
+            if isAuto {
+                params = [
+                    "randCode":randCodeStr,
+                    "rand":"randp",
+                    "_json_att":""]
+                headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
+            }
+            else {
+                params = [
+                    "randCode":randCodeStr,
+                    "rand":"randp",
+                    "_json_att":"",
+                    "REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken]
+            }
+
             Service.Manager.request(url, method:.post, parameters: params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
                 case .failure(let error):
@@ -412,7 +423,7 @@ extension Service{
                 "tour_flag":"dc",
                 "randCode":randCodeStr,
                 "_json_att":"",
-                "REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken!]
+                "REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken]
             let headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
             Service.Manager.request(url, method:.post, parameters: params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
@@ -462,7 +473,7 @@ extension Service{
                 params = GetQueueCountParamAsys(with: MainModel.selectedTicket!, seatCode: seatCode).ToPostParams()
             }
             else {
-                params = GetQueueCountParam(with: MainModel.selectedTicket!, seatCode: seatCode, trainLocation: MainModel.train_location!, globalSubmitToken: MainModel.globalRepeatSubmitToken!).ToPostParams()
+                params = GetQueueCountParam(with: MainModel.selectedTicket!, seatCode: seatCode, trainLocation: MainModel.train_location!, globalSubmitToken: MainModel.globalRepeatSubmitToken).ToPostParams()
             }
             
             Service.Manager.request(url, method:.post, parameters: params, headers:headers).responseJSON(completionHandler:{response in
@@ -526,11 +537,11 @@ extension Service{
     func queryOrderWaitTime(_ failMethod:@escaping (_ error:NSError)->(), waitMethod :@escaping (_ info:String) -> (),finishMethod:@escaping ()->()) {
         let url = "https://kyfw.12306.cn/otn/confirmPassenger/queryOrderWaitTime?"
         let params:String
-        if MainModel.globalRepeatSubmitToken == nil {
+        if MainModel.globalRepeatSubmitToken == "" {
             params = "random=1446560572126&tourFlag=dc&_json_att="
         }
         else {
-            params = "random=1446560572126&tourFlag=dc&_json_att=&REPEAT_SUBMIT_TOKEN=\(MainModel.globalRepeatSubmitToken!)"
+            params = "random=1446560572126&tourFlag=dc&_json_att=&REPEAT_SUBMIT_TOKEN=\(MainModel.globalRepeatSubmitToken)"
         }
         let headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
     

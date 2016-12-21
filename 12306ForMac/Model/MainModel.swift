@@ -21,7 +21,7 @@ class MainModel{
     
     static var orderId:String?
     
-    static var globalRepeatSubmitToken:String?
+    static var globalRepeatSubmitToken:String = ""
     static var key_check_isChange:String?
     static var train_location:String?
     static var trainDate:String?
