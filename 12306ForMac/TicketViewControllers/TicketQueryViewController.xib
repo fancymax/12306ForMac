@@ -278,8 +278,8 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="订票助手" customModuleProvider="target">
-                                                <rect key="frame" x="453" y="1" width="1000" height="63"/>
+                                            <tableCellView misplaced="YES" id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="订票助手" customModuleProvider="target">
+                                                <rect key="frame" x="453" y="1" width="431" height="63"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oxk-Lo-fip">
@@ -593,7 +593,7 @@
                         <font key="font" metaFont="systemThin" size="13"/>
                     </buttonCell>
                     <connections>
-                        <action selector="clickQueryTicket:" target="-2" id="fQ9-vE-g2d"/>
+                        <action selector="clickQueryTicketBtn:" target="-2" id="aeU-cU-iNh"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQQ-8z-kIM">
@@ -657,7 +657,7 @@
                     <color key="value" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="364" y="851"/>
+            <point key="canvasLocation" x="170" y="855"/>
         </customView>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Dhy-j5-W4F" customClass="GlassView" customModule="订票助手" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="910" height="40"/>
@@ -686,7 +686,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="clickAutoQuery:" target="-2" id="SoS-o4-Hzh"/>
+                        <action selector="clickAutoQueryCbx:" target="-2" id="0cK-hZ-iP4"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yXT-88-gO1" customClass="LoginButton" customModule="订票助手" customModuleProvider="target">
@@ -722,7 +722,7 @@
                     <color key="value" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="364" y="956"/>
+            <point key="canvasLocation" x="181" y="967"/>
         </customView>
         <menu id="BOj-Rm-dNy">
             <items>

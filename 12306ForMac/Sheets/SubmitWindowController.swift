@@ -173,13 +173,18 @@ class SubmitWindowController: BaseWindowController{
         let failureHandler = { (error:NSError) -> () in
             self.stopLoadingTip()
             self.isSubmitting = false
-            self.showTip(translate(error))
-            if (ifShowRandCode) && (ServiceError.isCheckRandCodeError(error)) {
+            if ServiceError.isCheckRandCodeError(error) {
+                self.showTip(translate(error))
                 self.freshImage()
                 //if isAuto and use Dama, then should try to use Dama
             }
             else {
-                //if isAuto, then close window and should resubmit the ticket
+                self.showTip(translate(error) + " 可尝试重新查询车票并提交！")
+                //if isAuto and not CheckRandCodeError, then close window and retry
+                if isAuto {
+                    self.dismissWithModalResponse(NSModalResponseCancel)
+                    NotificationCenter.default.post(name: Notification.Name.App.DidStartQueryTicket, object:nil)
+                }
             }
         }
         

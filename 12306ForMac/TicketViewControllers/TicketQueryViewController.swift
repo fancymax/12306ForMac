@@ -45,14 +45,7 @@ class TicketQueryViewController: BaseViewController {
         addPassengerBtn.isHidden = true
         autoQueryNumTxt.isHidden = true
         
-        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvCheckPassengerNotification(_:)), name: NSNotification.Name.App.DidCheckPassenger, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvLogoutNotification(_:)), name: NSNotification.Name.App.DidLogout, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvDidSubmitNotification(_:)), name: NSNotification.Name.App.DidSubmit, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvAutoSubmitNotification(_:)), name: NSNotification.Name.App.DidAutoSubmit, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvAutoSubmitWithoutRandCodeNotification(_:)), name: NSNotification.Name.App.DidAutoSubmitWithoutRandCode, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvAddDefaultPassengerNotification(_:)), name: NSNotification.Name.App.DidAddDefaultPassenger, object: nil)
+        self.registerAllNotification()
         
         if QueryDefaultManager.sharedInstance.lastQueryDate.compare(Date()) == .orderedAscending {
             self.setQueryDateValue(Date())
@@ -116,10 +109,10 @@ class TicketQueryViewController: BaseViewController {
         self.setQueryDateValue(date)
         
         autoQuery = false
-        self.clickQueryTicket(nil)
+        self.clickQueryTicketBtn(nil)
     }
     
-    @IBAction func clickQueryTicket(_ sender: AnyObject?) {
+    @IBAction func clickQueryTicketBtn(_ sender: AnyObject?) {
         
         if !StationNameJs.sharedInstance.allStationMap.keys.contains(self.fromStationNameTxt.stringValue) {
             return
@@ -229,54 +222,7 @@ class TicketQueryViewController: BaseViewController {
         return popover
     }()
     
-    func recvCheckPassengerNotification(_ notification: Notification) {
-        let passengerId = notification.object as! String
-        
-        for passenger in MainModel.passengers where passenger.passenger_id_no == passengerId {
-            if passengerSelected(passenger){
-                checkPassenger(passenger)
-            }
-            else{
-                let passengerViewController = PassengerViewController()
-                passengerViewController.passenger = passenger
-                passengerViewControllerList.append(passengerViewController)
-                self.passengersView.addView(passengerViewController.view, in:.top)
-            }
-            
-            break
-        }
-    }
-    
-    func recvAddDefaultPassengerNotification(_ notification: Notification) {
-        self.addPassengerBtn.isHidden = false
-        if MainModel.passengers.count == 0 {
-            return
-        }
-        if let lastPassengers = QueryDefaultManager.sharedInstance.lastSelectedPassenger {
-            if lastPassengers == "" {
-                return
-            }
-            
-            let passengerIds = lastPassengers.components(separatedBy: ",")
-            for passengerId in passengerIds {
-                for passenger in MainModel.passengers where passenger.passenger_id_no == passengerId {
-                    passenger.isChecked = true
-                    let passengerViewController = PassengerViewController()
-                    passengerViewController.passenger = passenger
-                    passengerViewControllerList.append(passengerViewController)
-                    self.passengersView.addView(passengerViewController.view, in:.top)
-                }
-            }
-        }
-    }
-    
-    func recvLogoutNotification(_ notification: Notification) {
-        passengerViewControllerList.removeAll()
-        for view in passengersView.views{
-            view.removeFromSuperview()
-        }
-        addPassengerBtn.isHidden = true
-    }
+
     
     func passengerSelected(_ passenger:PassengerDTO) -> Bool{
         for controller in passengerViewControllerList where controller.passenger == passenger{
@@ -291,7 +237,7 @@ class TicketQueryViewController: BaseViewController {
         }
     }
     
-    @IBAction func clickAutoQuery(_ sender: NSButton) {
+    @IBAction func clickAutoQueryCbx(_ sender: NSButton) {
         if sender.state == NSOnState {
             if self.seatFilterKey == "" {
                 self.filterTrain()
@@ -350,17 +296,7 @@ class TicketQueryViewController: BaseViewController {
         return popover
     }()
     
-    func recvDidSubmitNotification(_ note: Notification){
-        openSubmitSheet(isAutoSubmit: false)
-    }
-    
-    func recvAutoSubmitNotification(_ note: Notification){
-        openSubmitSheet(isAutoSubmit: true)
-    }
-    
-    func recvAutoSubmitWithoutRandCodeNotification(_ note: Notification){
-        openSubmitSheet(isAutoSubmit: true,ifShowCode: false)
-    }
+
     
     func openSubmitSheet(isAutoSubmit:Bool,ifShowCode:Bool = true) {
         submitWindowController = SubmitWindowController()
@@ -657,6 +593,90 @@ class TicketQueryViewController: BaseViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self)
     }
+    
+// MARK: - notification
+    func registerAllNotification() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvCheckPassengerNotification(_:)), name: NSNotification.Name.App.DidCheckPassenger, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvLogoutNotification(_:)), name: NSNotification.Name.App.DidLogout, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvDidSubmitNotification(_:)), name: NSNotification.Name.App.DidSubmit, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvAutoSubmitNotification(_:)), name: NSNotification.Name.App.DidAutoSubmit, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvAutoSubmitWithoutRandCodeNotification(_:)), name: NSNotification.Name.App.DidAutoSubmitWithoutRandCode, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvAddDefaultPassengerNotification(_:)), name: NSNotification.Name.App.DidAddDefaultPassenger, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvStartQueryTicketNotification(_:)), name: NSNotification.Name.App.DidStartQueryTicket, object: nil)
+    }
+    
+    func recvStartQueryTicketNotification(_ notification:Notification) {
+        self.clickQueryTicketBtn(nil)
+    }
+    
+    func recvCheckPassengerNotification(_ notification: Notification) {
+        let passengerId = notification.object as! String
+        
+        for passenger in MainModel.passengers where passenger.passenger_id_no == passengerId {
+            if passengerSelected(passenger){
+                checkPassenger(passenger)
+            }
+            else{
+                let passengerViewController = PassengerViewController()
+                passengerViewController.passenger = passenger
+                passengerViewControllerList.append(passengerViewController)
+                self.passengersView.addView(passengerViewController.view, in:.top)
+            }
+            
+            break
+        }
+    }
+    
+    func recvAddDefaultPassengerNotification(_ notification: Notification) {
+        self.addPassengerBtn.isHidden = false
+        if MainModel.passengers.count == 0 {
+            return
+        }
+        if let lastPassengers = QueryDefaultManager.sharedInstance.lastSelectedPassenger {
+            if lastPassengers == "" {
+                return
+            }
+            
+            let passengerIds = lastPassengers.components(separatedBy: ",")
+            for passengerId in passengerIds {
+                for passenger in MainModel.passengers where passenger.passenger_id_no == passengerId {
+                    passenger.isChecked = true
+                    let passengerViewController = PassengerViewController()
+                    passengerViewController.passenger = passenger
+                    passengerViewControllerList.append(passengerViewController)
+                    self.passengersView.addView(passengerViewController.view, in:.top)
+                }
+            }
+        }
+    }
+    
+    func recvLogoutNotification(_ notification: Notification) {
+        passengerViewControllerList.removeAll()
+        for view in passengersView.views{
+            view.removeFromSuperview()
+        }
+        addPassengerBtn.isHidden = true
+    }
+    
+    func recvDidSubmitNotification(_ note: Notification){
+        openSubmitSheet(isAutoSubmit: false)
+    }
+    
+    func recvAutoSubmitNotification(_ note: Notification){
+        openSubmitSheet(isAutoSubmit: true)
+    }
+    
+    func recvAutoSubmitWithoutRandCodeNotification(_ note: Notification){
+        openSubmitSheet(isAutoSubmit: true,ifShowCode: false)
+    }
+    
 // MARK: - Menu Action
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         if menuItem.title.contains("刷新") {
@@ -759,7 +779,7 @@ extension TicketQueryViewController: LunarCalendarViewDelegate{
         self.calendarPopover?.close()
         
         autoQuery = false
-        self.clickQueryTicket(nil)
+        self.clickQueryTicketBtn(nil)
     }
 }
 
