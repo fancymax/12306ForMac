@@ -445,7 +445,7 @@ extension Service{
                     }else{
                         logger.error("\(JSON(data))")
                         if let errMsg = JSON(data)["data"]["errMsg"].string {
-                            reject(ServiceError.errorWithCode(.confirmSingleForQueueFailed,failureReason: errMsg))
+                            reject(ServiceError.errorWithCode(.checkOrderInfoFailed,failureReason: errMsg))
                             return
                         }
                         if let smokeStr = JSON(data)["data"]["smokeStr"].string {

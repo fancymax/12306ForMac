@@ -76,4 +76,13 @@ struct ServiceError {
         return NSError(domain: Domain, code: code.rawValue, userInfo: userInfo)
     }
     
+    static func isCheckRandCodeError(_ error:NSError)->Bool {
+        if error.code == Code.checkRandCodeFailed.rawValue {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
 }

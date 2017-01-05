@@ -100,6 +100,7 @@ class SubmitWindowController: BaseWindowController{
     }
     
     func preOrderFlow(){
+        self.startLoadingTip("获取验证码...")
         if isSubmitting {
             return
         }
@@ -131,12 +132,14 @@ class SubmitWindowController: BaseWindowController{
                 self.isSubmitting = false
             }
             self.isAutoSubmitLabel.isHidden = true
+            self.stopLoadingTip()
         }
         
         let failureHandler = { (error:NSError) -> () in
             self.showTip(translate(error))
             self.isSubmitting = false
             self.isAutoSubmitLabel.isHidden = true
+            self.stopLoadingTip()
         }
         
         Service.sharedInstance.preOrderFlow(isAuto: self.isAutoSubmit,success: successHandler, failure: failureHandler)
@@ -171,8 +174,12 @@ class SubmitWindowController: BaseWindowController{
             self.stopLoadingTip()
             self.isSubmitting = false
             self.showTip(translate(error))
-            if ifShowRandCode {
+            if (ifShowRandCode) && (ServiceError.isCheckRandCodeError(error)) {
                 self.freshImage()
+                //if isAuto and use Dama, then should try to use Dama
+            }
+            else {
+                //if isAuto, then close window and should resubmit the ticket
             }
         }
         
