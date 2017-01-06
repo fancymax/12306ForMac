@@ -201,10 +201,10 @@ class TrainInfoTableCellView: TrainTableCellView {
             }
             else
             {
-                if let range = ticketInfo.buttonTextInfo!.range(of: "<br/>"){
-                    ticketInfo.buttonTextInfo!.removeSubrange(range)
+                if let range = ticketInfo.buttonTextInfo.range(of: "<br/>"){
+                    ticketInfo.buttonTextInfo.removeSubrange(range)
                 }
-                messageField.stringValue = "   " + ticketInfo.buttonTextInfo!
+                messageField.stringValue = "   " + ticketInfo.buttonTextInfo
                 messageField.isHidden = false
             }
         }

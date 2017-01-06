@@ -1,6 +1,6 @@
 //
-//  Passenger.swift
-//  Train12306
+//  PassengerDTO.swift
+//  12306ForMac
 //
 //  Created by fancymax on 15/8/24.
 //  Copyright (c) 2015年 fancy. All rights reserved.

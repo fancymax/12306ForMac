@@ -1,6 +1,6 @@
 //
-//  OrderDTOData.swift
-//  Train12306
+//  OrderDTO.swift
+//  12306ForMac
 //
 //  Created by fancymax on 16/2/16.
 //  Copyright © 2016年 fancy. All rights reserved.

@@ -1,6 +1,6 @@
 //
-//  TicketQueryResult.swift
-//  Train12306
+//  QueryLeftNewDTO.swift
+//  12306ForMac
 //
 //  Created by fancymax on 15/8/1.
 //  Copyright (c) 2015年 fancy. All rights reserved.
@@ -79,7 +79,7 @@ class QueryLeftNewDTO:NSObject {
     //标识符
     var SecretStr:String?
     //票务描述
-    var buttonTextInfo:String?
+    var buttonTextInfo:String
     //观光
 //    var Gg_Num:String?
     //迎宾
@@ -136,12 +136,12 @@ class QueryLeftNewDTO:NSObject {
     }
     
     func canTicketAdd2Calendar() -> Bool {
-        if let str = buttonTextInfo {
-            if str.contains("起售") {
-                return true
-            }
+        if buttonTextInfo.contains("起售") {
+            return true
         }
-        return false
+        else {
+            return false
+        }
     }
     
 //MARK: Train Date
@@ -280,7 +280,7 @@ func getSeatInfosFrom(trainCode:String)->[String:SeatTypePair] {
         Qt_Num = ticket["qt_num"].string
         
         SecretStr = json["secretStr"].string
-        buttonTextInfo = json["buttonTextInfo"].string
+        buttonTextInfo = json["buttonTextInfo"].string ?? ""
         
         if SecretStr != nil{
             SecretStr = SecretStr!.removingPercentEncoding

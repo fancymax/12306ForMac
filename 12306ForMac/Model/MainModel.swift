@@ -1,6 +1,6 @@
 //
 //  MainModel.swift
-//  Train12306
+//  12306ForMac
 //
 //  Created by fancymax on 15/10/6.
 //  Copyright © 2015年 fancy. All rights reserved.
