@@ -98,57 +98,6 @@ class TicketQueryViewController: BaseViewController {
         hasAutoQuery = false
     }
     
-    @IBAction func clickConvertCity(_ sender: NSButton) {
-        let temp = self.fromStationNameTxt.stringValue
-        self.fromStationNameTxt.stringValue = self.toStationNameTxt.stringValue
-        self.toStationNameTxt.stringValue = temp
-    }
-    
-    @IBAction func clickDateStepper(_ sender: NSStepper) {
-        let date = Date(timeIntervalSinceNow: 3600*24*sender.doubleValue)
-        self.setQueryDateValue(date)
-        
-        autoQuery = false
-        self.clickQueryTicketBtn(nil)
-    }
-    
-    @IBAction func clickQueryTicketBtn(_ sender: AnyObject?) {
-        
-        if !StationNameJs.sharedInstance.allStationMap.keys.contains(self.fromStationNameTxt.stringValue) {
-            return
-        }
-        
-        if !StationNameJs.sharedInstance.allStationMap.keys.contains(self.toStationNameTxt.stringValue) {
-            return
-        }
-        
-        if hasAutoQuery {
-            self.stopAutoQuery()
-            return
-        }
-        
-        if self.fromStationNameTxt.stringValue != QueryDefaultManager.sharedInstance.lastFromStation ||
-            self.toStationNameTxt.stringValue != QueryDefaultManager.sharedInstance.lastToStation {
-            trainFilterKey = ""
-        }
-        
-        
-        QueryDefaultManager.sharedInstance.lastFromStation = self.fromStationNameTxt.stringValue
-        QueryDefaultManager.sharedInstance.lastToStation = self.toStationNameTxt.stringValue
-        QueryDefaultManager.sharedInstance.lastQueryDate = queryDate.dateValue
-        
-        self.saveLastSelectdPassengerIdToDefault()
-        
-        if autoQuery {
-            repeatTimer = Timer(timeInterval: Double(GeneralPreferenceManager.sharedInstance.autoQuerySeconds), target: self, selector: #selector(TicketQueryViewController.queryTicketAndSubmit), userInfo: nil, repeats: true)
-            repeatTimer?.fire()
-            RunLoop.current.add(repeatTimer!, forMode: RunLoopMode.defaultRunLoopMode)
-            hasAutoQuery = true
-        }
-        else {
-            queryTicket()
-        }
-    }
     
 // MARK: - secondSearchView
     @IBOutlet weak var passengersView: NSStackView!
@@ -237,32 +186,6 @@ class TicketQueryViewController: BaseViewController {
         }
     }
     
-    @IBAction func clickAutoQueryCbx(_ sender: NSButton) {
-        if sender.state == NSOnState {
-            if self.seatFilterKey == "" {
-                self.filterTrain()
-            }
-            else {
-                autoQuery = true
-            }
-        }
-        else {
-            autoQuery = false
-        }
-    }
-    
-    @IBAction func clickFilterTrain(_ sender: AnyObject) {
-        self.filterTrain()
-    }
-    
-    @IBAction func clickAddPassenger(_ sender: NSButton) {
-        let positioningView = sender
-        let positioningRect = NSZeroRect
-        let preferredEdge = NSRectEdge.maxY
-        
-        passengersPopover.show(relativeTo: positioningRect, of: positioningView, preferredEdge: preferredEdge)
-        passengerSelectViewController.reloadPassenger(MainModel.passengers)
-    }
     
 // MARK: - TicketTableView
     @IBOutlet weak var leftTicketTable: NSTableView!
@@ -567,27 +490,6 @@ class TicketQueryViewController: BaseViewController {
         }
     }
     
-    func clickSubmit(_ sender: NSButton){
-        if hasAutoQuery {
-            self.stopAutoQuery()
-        }
-        let selectedRow = leftTicketTable.row(for: sender)
-        let ticket = filterQueryResult[selectedRow]
-        let seatTypeId = sender.identifier!
-        
-        self.summitTicket(ticket, seatTypeId: seatTypeId,isAuto: false)
-    }
-    
-    func clickShowTrainDetail(_ sender:NSButton) {
-        let positioningView = sender
-        let positioningRect = NSZeroRect
-        let preferredEdge = NSRectEdge.maxX
-        trainCodeDetailPopover.show(relativeTo: positioningRect, of: positioningView, preferredEdge: preferredEdge)
-        
-        for queryTicket in ticketQueryResult where queryTicket.TrainCode == sender.title {
-            self.trainCodeDetailViewController.ticket = queryTicket
-        }
-    }
     
     deinit{
         let notificationCenter = NotificationCenter.default
@@ -675,6 +577,109 @@ class TicketQueryViewController: BaseViewController {
     
     func recvAutoSubmitWithoutRandCodeNotification(_ note: Notification){
         openSubmitSheet(isAutoSubmit: true,ifShowCode: false)
+    }
+    
+// MARK: - Click Action
+    
+    @IBAction func clickConvertCity(_ sender: NSButton) {
+        let temp = self.fromStationNameTxt.stringValue
+        self.fromStationNameTxt.stringValue = self.toStationNameTxt.stringValue
+        self.toStationNameTxt.stringValue = temp
+    }
+    
+    @IBAction func clickDateStepper(_ sender: NSStepper) {
+        let date = Date(timeIntervalSinceNow: 3600*24*sender.doubleValue)
+        self.setQueryDateValue(date)
+        
+        autoQuery = false
+        self.clickQueryTicketBtn(nil)
+    }
+    
+    @IBAction func clickQueryTicketBtn(_ sender: AnyObject?) {
+        
+        if !StationNameJs.sharedInstance.allStationMap.keys.contains(self.fromStationNameTxt.stringValue) {
+            return
+        }
+        
+        if !StationNameJs.sharedInstance.allStationMap.keys.contains(self.toStationNameTxt.stringValue) {
+            return
+        }
+        
+        if hasAutoQuery {
+            self.stopAutoQuery()
+            return
+        }
+        
+        if self.fromStationNameTxt.stringValue != QueryDefaultManager.sharedInstance.lastFromStation ||
+            self.toStationNameTxt.stringValue != QueryDefaultManager.sharedInstance.lastToStation {
+            trainFilterKey = ""
+        }
+        
+        
+        QueryDefaultManager.sharedInstance.lastFromStation = self.fromStationNameTxt.stringValue
+        QueryDefaultManager.sharedInstance.lastToStation = self.toStationNameTxt.stringValue
+        QueryDefaultManager.sharedInstance.lastQueryDate = queryDate.dateValue
+        
+        self.saveLastSelectdPassengerIdToDefault()
+        
+        if autoQuery {
+            repeatTimer = Timer(timeInterval: Double(GeneralPreferenceManager.sharedInstance.autoQuerySeconds), target: self, selector: #selector(TicketQueryViewController.queryTicketAndSubmit), userInfo: nil, repeats: true)
+            repeatTimer?.fire()
+            RunLoop.current.add(repeatTimer!, forMode: RunLoopMode.defaultRunLoopMode)
+            hasAutoQuery = true
+        }
+        else {
+            queryTicket()
+        }
+    }
+    
+    @IBAction func clickAutoQueryCbx(_ sender: NSButton) {
+        if sender.state == NSOnState {
+            if self.seatFilterKey == "" {
+                self.filterTrain()
+            }
+            else {
+                autoQuery = true
+            }
+        }
+        else {
+            autoQuery = false
+        }
+    }
+    
+    @IBAction func clickFilterTrain(_ sender: AnyObject) {
+        self.filterTrain()
+    }
+    
+    @IBAction func clickAddPassenger(_ sender: NSButton) {
+        let positioningView = sender
+        let positioningRect = NSZeroRect
+        let preferredEdge = NSRectEdge.maxY
+        
+        passengersPopover.show(relativeTo: positioningRect, of: positioningView, preferredEdge: preferredEdge)
+        passengerSelectViewController.reloadPassenger(MainModel.passengers)
+    }
+    
+    func clickSubmit(_ sender: NSButton){
+        if hasAutoQuery {
+            self.stopAutoQuery()
+        }
+        let selectedRow = leftTicketTable.row(for: sender)
+        let ticket = filterQueryResult[selectedRow]
+        let seatTypeId = sender.identifier!
+        
+        self.summitTicket(ticket, seatTypeId: seatTypeId,isAuto: false)
+    }
+    
+    func clickShowTrainDetail(_ sender:NSButton) {
+        let positioningView = sender
+        let positioningRect = NSZeroRect
+        let preferredEdge = NSRectEdge.maxX
+        trainCodeDetailPopover.show(relativeTo: positioningRect, of: positioningView, preferredEdge: preferredEdge)
+        
+        for queryTicket in ticketQueryResult where queryTicket.TrainCode == sender.title {
+            self.trainCodeDetailViewController.ticket = queryTicket
+        }
     }
     
 // MARK: - Menu Action

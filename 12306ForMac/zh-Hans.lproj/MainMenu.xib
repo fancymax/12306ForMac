@@ -158,7 +158,7 @@
                         <items>
                             <menuItem title="刷新" keyEquivalent="r" id="dUM-Nj-mdp">
                                 <connections>
-                                    <action selector="clickQueryTicket:" target="-1" id="3SL-1j-erW"/>
+                                    <action selector="clickQueryTicketBtn:" target="-1" id="c5J-yo-6yI"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="筛选" keyEquivalent="f" id="k36-tW-xbE">

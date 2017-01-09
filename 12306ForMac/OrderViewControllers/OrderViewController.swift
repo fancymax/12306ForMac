@@ -34,10 +34,6 @@ class OrderViewController: BaseViewController{
         }
     }
     
-    @IBAction func clickQueryTicket(_ sender: AnyObject?) {
-        queryAllOrder()
-    }
-    
     @IBAction func clickQueryOrder(_ sender: AnyObject?) {
         queryAllOrder()
     }
