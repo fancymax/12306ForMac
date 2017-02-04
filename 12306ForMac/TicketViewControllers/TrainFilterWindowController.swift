@@ -52,14 +52,21 @@ class FilterItem: NSObject {
         if filterItem.keyType == .multi {
             let filterKeys = filterItem.key.components(separatedBy: "|")
             for filterKey in filterKeys {
-                if trainCode.contains(filterKey) {
+                if trainCode.hasPrefix(filterKey) {
                     return true
                 }
             }
         }
         else if filterItem.keyType == .single {
-            if self.key.contains(filterItem.key) {
-                return true
+            if filterItem.type == .TrainType {
+                if self.key.hasPrefix(filterItem.key) {
+                    return true
+                }
+            }
+            else {
+                if self.key.contains(filterItem.key) {
+                    return true
+                }
             }
         }
         else if filterItem.keyType == .section {
@@ -110,9 +117,67 @@ class TrainFilterWindowController: BaseWindowController {
         filterItems.append(FilterItem(type: .StartTime,key:"18:00~24:00",presentation: "18:00--24:00",isChecked: true))
         
         filterItems.append(FilterItem(type: .Group,presentation: "车次类型"))
-        filterItems.append(FilterItem(type: .TrainType,key:"G|C|D",presentation: "G高铁|C城际|D动车",isChecked: true))
-        filterItems.append(FilterItem(type: .TrainType,key:"Z|T",presentation: "Z直达|T特快",isChecked: true))
-        filterItems.append(FilterItem(type: .TrainType,key:"K|L|Y",presentation: "K快车|LY临客",isChecked: true))
+        var hasTrainG = false
+        var hasTrainC = false
+        var hasTrainD = false
+        var hasTrainZ = false
+        var hasTrainT = false
+        var hasTrainK = false
+        var hasTrainL = false
+        for train in trains {
+            if train.TrainCode.hasPrefix("G") {
+                hasTrainG = true
+                continue
+            }
+            if train.TrainCode.hasPrefix("C") {
+                hasTrainC = true
+                continue
+            }
+            if train.TrainCode.hasPrefix("D") {
+                hasTrainD = true
+                continue
+            }
+            if train.TrainCode.hasPrefix("Z") {
+                hasTrainZ = true
+                continue
+            }
+            if train.TrainCode.hasPrefix("T") {
+                hasTrainT = true
+                continue
+            }
+            if train.TrainCode.hasPrefix("K") {
+                hasTrainK = true
+                continue
+            }
+            let keys = ["L","Y","1","2","3","4","5","6","7","8","9"]
+            for key in keys {
+                if train.TrainCode.hasPrefix(key) {
+                    hasTrainL = true
+                    break
+                }
+            }
+        }
+        if hasTrainG {
+            filterItems.append(FilterItem(type: .TrainType,key:"G",presentation: "G高铁",isChecked: true))
+        }
+        if hasTrainC {
+            filterItems.append(FilterItem(type: .TrainType,key:"C",presentation: "C城际",isChecked: true))
+        }
+        if hasTrainD {
+            filterItems.append(FilterItem(type: .TrainType,key:"D",presentation: "D动车",isChecked: true))
+        }
+        if hasTrainZ {
+            filterItems.append(FilterItem(type: .TrainType,key:"Z",presentation: "Z直达",isChecked: true))
+        }
+        if hasTrainT {
+            filterItems.append(FilterItem(type: .TrainType,key:"T",presentation: "T特快",isChecked: true))
+        }
+        if hasTrainK {
+            filterItems.append(FilterItem(type: .TrainType,key:"K",presentation: "K快车",isChecked: true))
+        }
+        if hasTrainL {
+            filterItems.append(FilterItem(type: .TrainType,key:"L|Y|1|2|3|4|5|6|7|8|9",presentation: "LY临客|纯数字",isChecked: true))
+        }
         
         filterItems.append(FilterItem(type: .Group,presentation: "出发车站"))
         var fromStations = [String]()
