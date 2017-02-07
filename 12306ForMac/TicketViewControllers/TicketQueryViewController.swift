@@ -68,7 +68,6 @@ class TicketQueryViewController: BaseViewController {
     @IBOutlet weak var queryDate: ClickableDatePicker!
     @IBOutlet weak var queryBtn: NSButton!
     @IBOutlet weak var converCityBtn: NSButton!
-    @IBOutlet weak var dateStepper: NSStepper!
     @IBOutlet weak var autoQueryNumTxt: NSTextField!
     
     var autoQueryNum = 0
@@ -86,10 +85,8 @@ class TicketQueryViewController: BaseViewController {
         var calender = Calendar.current
         calender.timeZone = TimeZone(abbreviation: "UTC")!
         let trunkNextDate = calender.startOfDay(for: date)
-        let trunkOriginDate = calender.startOfDay(for: Date())
         
         self.queryDate.dateValue = trunkNextDate
-        dateStepper.doubleValue = trunkNextDate.timeIntervalSince(trunkOriginDate)/24/3600
     }
     
     fileprivate func stopAutoQuery(){
@@ -132,7 +129,6 @@ class TicketQueryViewController: BaseViewController {
                 self.converCityBtn.isEnabled = false
                 self.queryDate.clickable = false
                 filterCbx.isEnabled = false
-                self.dateStepper.isEnabled = false
             }
             else {
                 queryBtn.title = "开始抢票"
@@ -144,7 +140,6 @@ class TicketQueryViewController: BaseViewController {
                 if self.filterQueryResult.count > 0 {
                     canFilter = true
                 }
-                self.dateStepper.isEnabled = true
             }
         }
     }
@@ -585,14 +580,6 @@ class TicketQueryViewController: BaseViewController {
         let temp = self.fromStationNameTxt.stringValue
         self.fromStationNameTxt.stringValue = self.toStationNameTxt.stringValue
         self.toStationNameTxt.stringValue = temp
-    }
-    
-    @IBAction func clickDateStepper(_ sender: NSStepper) {
-        let date = Date(timeIntervalSinceNow: 3600*24*sender.doubleValue)
-        self.setQueryDateValue(date)
-        
-        autoQuery = false
-        self.clickQueryTicketBtn(nil)
     }
     
     @IBAction func clickQueryTicketBtn(_ sender: AnyObject?) {
