@@ -14,7 +14,7 @@ protocol LunarCalendarViewDelegate:NSObjectProtocol{
 
 class LunarCalendarView:NSViewController{
     
-// MARK: - Static
+// MARK: - static
      static func toUTCDateComponent(_ d:Date) -> DateComponents {
         var cal  = Calendar.current
         cal.timeZone = TimeZone(abbreviation: "UTC")!
@@ -65,33 +65,9 @@ class LunarCalendarView:NSViewController{
         return LunarCalendarView.isDate(d1, beforeDate: limitedDate)
     }
     
-//MARK: - Public Properties
+//MARK: - public
     weak var delegate:LunarCalendarViewDelegate?
     
-    var date:Date?{
-        didSet{
-            date = self.toUTC(date!)
-            
-            if !self.isViewLoaded {
-                return
-            }
-            
-            self.layoutCalendar()
-            self.setMonthYearTitle()
-        }
-    }
-    
-    var selectedDate:Date?{
-        didSet {
-            selectedDate = self.toUTC(selectedDate!)
-            
-            if !self.isViewLoaded {
-                return
-            }
-        }
-    }
-    
-//MARK: - IBOutlet&&IBAction
     @IBOutlet weak var calendarTittle: NSTextField!
     
     @IBAction func clickNextMonth(_ sender: NSButton){
@@ -111,24 +87,44 @@ class LunarCalendarView:NSViewController{
     fileprivate var dayCells:[[CalendarCell]]!
     fileprivate var dayLabels:[NSTextField]!
     
-    init(){
+    fileprivate var selectedDate:Date!{
+        didSet {
+            selectedDate = self.toUTC(selectedDate!)
+        }
+    }
+    
+    fileprivate var currentMonth:Date!{
+        didSet{
+            currentMonth = self.toUTC(currentMonth!)
+            
+            if !self.isViewLoaded {
+                return
+            }
+            
+            self.layoutCalendar()
+            self.setMonthYearTitle()
+        }
+    }
+    
+    init(with date:Date){
         super.init(nibName: "LunarCalendarView", bundle: nil)!
-        commonInit()
+        commonInit(with: date)
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        commonInit()
+        commonInit(with: Date())
     }
     
-    private func commonInit(){
+    private func commonInit(with date:Date){
         self.backgroundColor = NSColor.white
         self.textColor = NSColor.black
         self.selectionColor = NSColor.red
         self.todayMarkerColor = NSColor.green
         self.dayMakerColor = NSColor.darkGray
         
-        self.date = Date()
+        selectedDate = date
+        currentMonth = date
     }
     
     override func viewDidLoad() {
@@ -138,8 +134,8 @@ class LunarCalendarView:NSViewController{
         self.setWeekDayLabels()
         self.setMonthDayCell()
         
-        self.setMonthYearTitle()
         self.layoutCalendar()
+        self.setMonthYearTitle()
     }
     
     func cellClicked(_ sender: NSButton){
@@ -165,7 +161,7 @@ class LunarCalendarView:NSViewController{
     }
     
     private func setMonthYearTitle(){
-        let components = LunarCalendarView.toUTCDateComponent(self.date!)
+        let components = LunarCalendarView.toUTCDateComponent(self.currentMonth)
         
         let df = DateFormatter()
         let monthName = df.standaloneMonthSymbols[components.month! - 1]
@@ -195,7 +191,6 @@ class LunarCalendarView:NSViewController{
     }
     
     private func setMonthDayCell() {
-        print("setMonthDayCell")
         
         self.dayCells = [[CalendarCell]]()
         for _ in 0...5 {
@@ -265,7 +260,7 @@ class LunarCalendarView:NSViewController{
         var cal = Calendar.current
         cal.timeZone = TimeZone(abbreviation: "UTC")!
         let unitFlag = NSCalendar.Unit.day.rawValue | NSCalendar.Unit.month.rawValue | NSCalendar.Unit.year.rawValue
-        let components = (cal as NSCalendar).components(NSCalendar.Unit(rawValue: unitFlag), from: self.date!)
+        let components = (cal as NSCalendar).components(NSCalendar.Unit(rawValue: unitFlag), from: currentMonth)
         var comps = DateComponents()
         comps.day = day
         comps.year = components.year
@@ -276,7 +271,7 @@ class LunarCalendarView:NSViewController{
     private func lastDayOfTheMonth() -> Int{
         var cal = Calendar.current
         cal.timeZone = TimeZone(abbreviation: "UTC")!
-        let daysRange = (cal as NSCalendar).range(of: .day, in: .month, for: self.date!)
+        let daysRange = (cal as NSCalendar).range(of: .day, in: .month, for: currentMonth)
         return daysRange.length
     }
     
@@ -295,7 +290,7 @@ class LunarCalendarView:NSViewController{
         var cal = Calendar.current
         cal.timeZone = TimeZone(abbreviation: "UTC")!
         let unitFlag = NSCalendar.Unit.day.rawValue | NSCalendar.Unit.month.rawValue | NSCalendar.Unit.year.rawValue
-        var components = (cal as NSCalendar).components(NSCalendar.Unit(rawValue: unitFlag), from: self.date!)
+        var components = (cal as NSCalendar).components(NSCalendar.Unit(rawValue: unitFlag), from: currentMonth)
         var month = components.month! + dm
         var year = components.year!
         if month > 12 {
@@ -308,7 +303,7 @@ class LunarCalendarView:NSViewController{
         }
     	components.year = year;
     	components.month = month;
-    	self.date = cal.date(from: components)
+    	currentMonth = cal.date(from: components)
     }
 }
 
@@ -345,9 +340,9 @@ class CalendarCell:NSButton
             self.needsDisplay = true
         }
         willSet(newValue){
-            if let date = newValue {
-                let components = LunarCalendarView.toUTCDateComponent(date)
-                self.lunarStr = LunarSolarConverter.Conventer2lunarStr(date)
+            if let newDate = newValue {
+                let components = LunarCalendarView.toUTCDateComponent(newDate)
+                self.lunarStr = LunarSolarConverter.Conventer2lunarStr(newDate)
                 self.solarStr = "\(components.day!)"
             }
         }

@@ -595,7 +595,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pyj-xy-PMy">
-                    <rect key="frame" x="4" y="3" width="258" height="17"/>
+                    <rect key="frame" x="32" y="3" width="258" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="按住Ctrl多选，在抢票模式下多个日期串行查询" id="FJS-gF-XUR">
                         <font key="font" size="12" name=".PingFangSC-Light"/>
