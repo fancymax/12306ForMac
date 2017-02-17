@@ -71,7 +71,7 @@ class TicketQueryViewController: BaseViewController {
     @IBOutlet weak var autoQueryNumTxt: NSTextField!
     
     var autoQueryNum = 0
-    var calendarPopover:NSPopover?
+    var calendarViewController:LunarCalendarView?
     var repeatTimer:Timer?
     var ticketType:TicketType = .Normal
    
@@ -744,29 +744,25 @@ extension TicketQueryViewController: AutoCompleteTableViewDelegate{
     }
 }
 
-// MARK: - LunarCalendarViewDelegate
-extension TicketQueryViewController: LunarCalendarViewDelegate{
-    func createCalenderPopover(){
-        let myPopover = NSPopover()
-        let cp = LunarCalendarView(with:self.queryDate.dateValue)
-        cp.delegate = self
-        myPopover.contentViewController = cp
-        myPopover.appearance = NSAppearance(named: "NSAppearanceNameAqua")
-        myPopover.animates = true
-        myPopover.behavior = NSPopoverBehavior.transient
-        
-        self.calendarPopover = myPopover
-    }
+// MARK: - LunarCalendarView
+extension TicketQueryViewController:NSPopoverDelegate {
     
     @IBAction func showCalendar(_ sender: AnyObject){
-        self.createCalenderPopover()
+        let calendarPopover = NSPopover()
+        let cp = LunarCalendarView(with:self.queryDate.dateValue)
+        calendarPopover.contentViewController = cp
+        calendarPopover.appearance = NSAppearance(named: "NSAppearanceNameAqua")
+        calendarPopover.animates = true
+        calendarPopover.behavior = NSPopoverBehavior.transient
+        calendarPopover.delegate = self
+        
+        self.calendarViewController = cp
         let cellRect = sender.bounds
-        self.calendarPopover?.show(relativeTo: cellRect!, of: sender as! NSView, preferredEdge: .maxY)
+        calendarPopover.show(relativeTo: cellRect!, of: sender as! NSView, preferredEdge: .maxY)
     }
     
-    func didSelectDate(_ selectedDate: Date) {
-        self.setQueryDateValue(selectedDate)
-        self.calendarPopover?.close()
+    func popoverDidClose(_ notification: Notification) {
+        self.setQueryDateValue(calendarViewController!.selectedDate)
         
         autoQuery = false
         self.clickQueryTicketBtn(nil)

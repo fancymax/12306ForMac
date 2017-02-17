@@ -8,10 +8,6 @@
 
 import Cocoa
 
-protocol LunarCalendarViewDelegate:NSObjectProtocol{
-    func didSelectDate(_ selectedDate:Date)
-}
-
 class LunarCalendarView:NSViewController{
     
 // MARK: - static
@@ -66,7 +62,11 @@ class LunarCalendarView:NSViewController{
     }
     
 //MARK: - public
-    weak var delegate:LunarCalendarViewDelegate?
+    var selectedDate:Date!{
+        didSet {
+            selectedDate = self.toUTC(selectedDate!)
+        }
+    }
     
     @IBOutlet weak var calendarTittle: NSTextField!
     
@@ -86,12 +86,6 @@ class LunarCalendarView:NSViewController{
     fileprivate var dayMakerColor:NSColor?
     fileprivate var dayCells:[[CalendarCell]]!
     fileprivate var dayLabels:[NSTextField]!
-    
-    fileprivate var selectedDate:Date!{
-        didSet {
-            selectedDate = self.toUTC(selectedDate!)
-        }
-    }
     
     fileprivate var currentMonth:Date!{
         didSet{
@@ -149,11 +143,6 @@ class LunarCalendarView:NSViewController{
             
             cell.selected = true
             self.selectedDate = cell.representedDate
-            if self.delegate != nil{
-                if self.delegate!.responds(to: Selector(("didSelectDate:"))){
-                    self.delegate!.didSelectDate(self.selectedDate!)
-                }
-            }
         }
         else {
             cell.selected = !cell.selected
