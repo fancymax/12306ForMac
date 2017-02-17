@@ -62,11 +62,7 @@ class LunarCalendarView:NSViewController{
     }
     
 //MARK: - public
-    var selectedDate:Date!{
-        didSet {
-            selectedDate = self.toUTC(selectedDate!)
-        }
-    }
+    var allSelectedDates: [Date] = [Date]()
     
     @IBOutlet weak var calendarTittle: NSTextField!
     
@@ -89,7 +85,6 @@ class LunarCalendarView:NSViewController{
     
     fileprivate var currentMonth:Date!{
         didSet{
-            currentMonth = self.toUTC(currentMonth!)
             
             if !self.isViewLoaded {
                 return
@@ -117,8 +112,9 @@ class LunarCalendarView:NSViewController{
         self.todayMarkerColor = NSColor.green
         self.dayMakerColor = NSColor.darkGray
         
-        selectedDate = date
-        currentMonth = date
+        currentMonth = self.toUTC(date)
+        
+        allSelectedDates.append(currentMonth)
     }
     
     override func viewDidLoad() {
@@ -142,10 +138,19 @@ class LunarCalendarView:NSViewController{
             }
             
             cell.selected = true
-            self.selectedDate = cell.representedDate
+            allSelectedDates.removeAll()
+            allSelectedDates.append(cell.representedDate!)
         }
         else {
             cell.selected = !cell.selected
+            if cell.selected && !allSelectedDates.contains(cell.representedDate!) {
+                allSelectedDates.append(cell.representedDate!)
+            }
+            if !cell.selected && allSelectedDates.contains(cell.representedDate!) {
+                if let index = allSelectedDates.index(of: cell.representedDate!) {
+                    allSelectedDates.remove(at: index)
+                }
+            }
         }
     }
     
@@ -220,7 +225,14 @@ class LunarCalendarView:NSViewController{
                     let cell = self.dayCells[row][col]
                     let d = self.monthDay(day)
                     cell.representedDate = d
-                    cell.selected = LunarCalendarView.isSameDate(d!, d2: self.selectedDate!)
+                    var shouldSelected = false
+                    for date in self.allSelectedDates {
+                        shouldSelected = LunarCalendarView.isSameDate(d!, d2: date)
+                        if shouldSelected {
+                            break
+                        }
+                    }
+                    cell.selected = shouldSelected
                     day += 1
                 }
             }

@@ -762,7 +762,7 @@ extension TicketQueryViewController:NSPopoverDelegate {
     }
     
     func popoverDidClose(_ notification: Notification) {
-        self.setQueryDateValue(calendarViewController!.selectedDate)
+        self.setQueryDateValue(calendarViewController!.allSelectedDates[0])
         
         autoQuery = false
         self.clickQueryTicketBtn(nil)
