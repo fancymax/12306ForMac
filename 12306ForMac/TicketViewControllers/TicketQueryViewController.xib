@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
@@ -19,6 +19,7 @@
                 <outlet property="leftTicketTable" destination="vdR-Hc-SYr" id="JQG-gl-oM1"/>
                 <outlet property="passengersView" destination="gWk-xJ-t7i" id="pX7-IP-o2z"/>
                 <outlet property="queryBtn" destination="FSF-1Q-g2J" id="XwL-Q2-kSv"/>
+                <outlet property="queryDataLabel" destination="9qi-Pb-rDH" id="2EQ-8F-Wok"/>
                 <outlet property="queryDate" destination="Be8-M1-vtw" id="WeT-Ds-CdC"/>
                 <outlet property="secondSearchView" destination="Dhy-j5-W4F" id="OyI-vg-5xp"/>
                 <outlet property="stackContentView" destination="Q3P-1n-q0W" id="6aq-aD-dmW"/>
@@ -489,7 +490,7 @@
             <rect key="frame" x="0.0" y="0.0" width="910" height="40"/>
             <subviews>
                 <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-M1-vtw" customClass="ClickableDatePicker" customModule="订票助手" customModuleProvider="target">
-                    <rect key="frame" x="566" y="2" width="90" height="23"/>
+                    <rect key="frame" x="593" y="1.5" width="90" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="8Aa-Zv-hKL"/>
                         <constraint firstAttribute="width" constant="90" id="Vo0-fD-7UT"/>
@@ -507,7 +508,7 @@
                     </connections>
                 </datePicker>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4jY-s2-8Ni" customClass="AutoCompleteTextField" customModule="订票助手" customModuleProvider="target">
-                    <rect key="frame" x="80" y="2" width="100" height="23"/>
+                    <rect key="frame" x="80" y="1.5" width="100" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="5RR-3h-LZM"/>
                         <constraint firstAttribute="width" constant="100" id="t04-b6-cBp"/>
@@ -527,7 +528,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l4y-Hd-FVf" customClass="AutoCompleteTextField" customModule="订票助手" customModuleProvider="target">
-                    <rect key="frame" x="323" y="2" width="100" height="23"/>
+                    <rect key="frame" x="323" y="1.5" width="100" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="C6k-54-5Fp"/>
                         <constraint firstAttribute="width" constant="100" id="fmb-qp-YPt"/>
@@ -571,10 +572,10 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9qi-Pb-rDH">
-                    <rect key="frame" x="496" y="2" width="64" height="20"/>
+                    <rect key="frame" x="506" y="2" width="84" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="BZV-gj-Tnd"/>
-                        <constraint firstAttribute="width" constant="60" id="ps4-lC-VpX"/>
+                        <constraint firstAttribute="width" constant="80" id="ps4-lC-VpX"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="出发日期" id="yeJ-db-y74">
                         <font key="font" metaFont="systemThin" size="13"/>
@@ -596,7 +597,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQQ-8z-kIM">
-                    <rect key="frame" x="193" y="6" width="50" height="16"/>
+                    <rect key="frame" x="193" y="5.5" width="50" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="IuX-gs-s4I"/>
                         <constraint firstAttribute="height" constant="16" id="z5f-YW-eTw"/>
@@ -627,11 +628,11 @@
                 <constraint firstItem="amu-Qj-Yha" firstAttribute="leading" secondItem="Pal-9i-ZzT" secondAttribute="leading" constant="12" id="40s-Lm-XYb"/>
                 <constraint firstItem="9qi-Pb-rDH" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" id="4ba-wR-dfD"/>
                 <constraint firstItem="4N3-fA-XcK" firstAttribute="leading" secondItem="4jY-s2-8Ni" secondAttribute="trailing" constant="75" id="KY1-vl-Xct"/>
-                <constraint firstItem="Be8-M1-vtw" firstAttribute="leading" secondItem="9qi-Pb-rDH" secondAttribute="trailing" constant="8" symbolic="YES" id="W29-IO-jZp"/>
+                <constraint firstItem="Be8-M1-vtw" firstAttribute="leading" secondItem="9qi-Pb-rDH" secondAttribute="trailing" constant="5" id="W29-IO-jZp"/>
                 <constraint firstItem="aQQ-8z-kIM" firstAttribute="leading" secondItem="4jY-s2-8Ni" secondAttribute="trailing" constant="13" id="YRK-jK-KDy"/>
                 <constraint firstItem="8dY-Wq-KeS" firstAttribute="centerY" secondItem="FSF-1Q-g2J" secondAttribute="centerY" id="bTI-cs-KDE"/>
                 <constraint firstItem="l4y-Hd-FVf" firstAttribute="leading" secondItem="4N3-fA-XcK" secondAttribute="trailing" constant="8" symbolic="YES" id="g5Y-dJ-fb2"/>
-                <constraint firstItem="9qi-Pb-rDH" firstAttribute="leading" secondItem="l4y-Hd-FVf" secondAttribute="trailing" constant="75" id="gn5-kx-tix"/>
+                <constraint firstItem="9qi-Pb-rDH" firstAttribute="leading" secondItem="l4y-Hd-FVf" secondAttribute="trailing" constant="85" id="gn5-kx-tix"/>
                 <constraint firstItem="FSF-1Q-g2J" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" constant="-1" id="hna-g5-nGb"/>
                 <constraint firstItem="aQQ-8z-kIM" firstAttribute="centerY" secondItem="4jY-s2-8Ni" secondAttribute="centerY" id="jsi-Gf-Fmt"/>
                 <constraint firstItem="4N3-fA-XcK" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" id="nOH-lk-YH1"/>

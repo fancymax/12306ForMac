@@ -25,18 +25,9 @@ class TicketQueryViewController: BaseViewController {
         self.stackContentView.addView(firstSearchView, in:.top)
         self.stackContentView.addView(secondSearchView, in: .top)
         self.stackContentView.addView(ticketTableView, in: .top)
-        
         self.stackContentView.orientation = .vertical
         self.stackContentView.alignment = .centerX
         self.stackContentView.spacing = 0
-        
-        self.fromStationNameTxt.tableViewDelegate = self
-        self.toStationNameTxt.tableViewDelegate = self
-        
-        self.fromStationNameTxt.stringValue = QueryDefaultManager.sharedInstance.lastFromStation
-        self.toStationNameTxt.stringValue = QueryDefaultManager.sharedInstance.lastToStation
-        
-        passengerViewControllerList = [PassengerViewController]()
         
         filterBtn.isEnabled = false
         filterCbx.isEnabled = false
@@ -46,14 +37,27 @@ class TicketQueryViewController: BaseViewController {
         autoQueryNumTxt.isHidden = true
         
         self.registerAllNotification()
+        self.initQueryParams()
+        self.initSortParams()
+    }
+    
+    private func initQueryParams() {
+        self.fromStationNameTxt.tableViewDelegate = self
+        self.toStationNameTxt.tableViewDelegate = self
+        
+        self.fromStationNameTxt.stringValue = QueryDefaultManager.sharedInstance.lastFromStation
+        self.toStationNameTxt.stringValue = QueryDefaultManager.sharedInstance.lastToStation
         
         if QueryDefaultManager.sharedInstance.lastQueryDate.compare(Date()) == .orderedAscending {
-            self.setQueryDateValue(Date())
+            self.allSelectedDates.append(Date())
         }
         else {
-            self.setQueryDateValue(QueryDefaultManager.sharedInstance.lastQueryDate as Date)
+            self.allSelectedDates.append(QueryDefaultManager.sharedInstance.lastQueryDate as Date)
         }
-        
+        self.setQueryDateValue(allSelectedDates,index:self.queryDateIndex)
+    }
+    
+    private func initSortParams(){
         let descriptorStartTime = NSSortDescriptor(key: TicketOrder.StartTime.rawValue, ascending: true)
         let descriptorArriveTime = NSSortDescriptor(key: TicketOrder.ArriveTime.rawValue, ascending: true)
         let descriptorLishi = NSSortDescriptor(key: TicketOrder.Lishi.rawValue, ascending: true)
@@ -69,11 +73,14 @@ class TicketQueryViewController: BaseViewController {
     @IBOutlet weak var queryBtn: NSButton!
     @IBOutlet weak var converCityBtn: NSButton!
     @IBOutlet weak var autoQueryNumTxt: NSTextField!
+    @IBOutlet weak var queryDataLabel: NSTextField!
     
     var autoQueryNum = 0
     var calendarViewController:LunarCalendarView?
     var repeatTimer:Timer?
     var ticketType:TicketType = .Normal
+    var allSelectedDates:[Date] = [Date]()
+    var queryDateIndex = 0
    
     fileprivate func getDateStr(_ date:Date) -> String{
         let dateDescription = date.description
@@ -81,12 +88,23 @@ class TicketQueryViewController: BaseViewController {
         return dateDescription[dateDescription.startIndex..<dateRange!.lowerBound]
     }
     
-    fileprivate func setQueryDateValue(_ date:Date) {
+    fileprivate func setQueryDateValue(_ dates:[Date], index:Int) {
         var calender = Calendar.current
         calender.timeZone = TimeZone(abbreviation: "UTC")!
-        let trunkNextDate = calender.startOfDay(for: date)
         
-        self.queryDate.dateValue = trunkNextDate
+        if dates.count > 1 {
+            self.queryDataLabel.stringValue = "出发日期 \(dates.count)-\(index + 1)"
+        }
+        else {
+            self.queryDataLabel.stringValue = "出发日期"
+        }
+        
+        self.queryDate.dateValue = calender.startOfDay(for: dates[index])
+        self.queryDateIndex = index + 1
+        if self.queryDateIndex >= self.allSelectedDates.count {
+            self.queryDateIndex = 0
+        }
+        
     }
     
     fileprivate func stopAutoQuery(){
@@ -214,21 +232,6 @@ class TicketQueryViewController: BaseViewController {
         return popover
     }()
     
-
-    
-    func openSubmitSheet(isAutoSubmit:Bool,ifShowCode:Bool = true) {
-        submitWindowController = SubmitWindowController()
-        submitWindowController.isAutoSubmit = isAutoSubmit
-        submitWindowController.ifShowCode = ifShowCode
-        if let window = self.view.window {
-            window.beginSheet(submitWindowController.window!, completionHandler: {response in
-                if response == NSModalResponseOK{
-                    ///
-                }
-            })
-        }
-    }
-    
     func ticketOrderedBy(_ tickets:[QueryLeftNewDTO], orderedBy:TicketOrder, ascending:Bool) -> [QueryLeftNewDTO] {
         let sortedTickets:[QueryLeftNewDTO] = tickets.sorted{
             var isOriginAscending = true
@@ -251,42 +254,6 @@ class TicketQueryViewController: BaseViewController {
         }
         
         return sortedTickets
-    }
-    
-    func filterTrain(){
-        trainFilterWindowController.trains = ticketQueryResult.filter({item in
-            return !item.isTicketInvalid()
-        })
-        trainFilterWindowController.fromStationName = self.fromStationNameTxt.stringValue
-        trainFilterWindowController.toStationName = self.toStationNameTxt.stringValue
-        trainFilterWindowController.trainDate = self.date!
-        
-        
-        if let window = self.view.window {
-            window.beginSheet(trainFilterWindowController.window!, completionHandler: {response in
-                if response == NSModalResponseOK{
-                    self.trainFilterKey = self.trainFilterWindowController.trainFilterKey
-                    self.seatFilterKey = self.trainFilterWindowController.seatFilterKey
-                    logger.info("trainFilterKey:\(self.trainFilterKey)")
-                    logger.info("seatFilterKey:\(self.seatFilterKey)")
-                    
-                    self.filterQueryResult = self.ticketQueryResult.filter({item in return self.trainFilterKey.contains("|" + item.TrainCode! + "|")})
-                    
-                    if let ticketOrderX = self.ticketOrder, let ticketAscendingX = self.ticketAscending {
-                        self.filterQueryResult = self.ticketOrderedBy(self.filterQueryResult, orderedBy: ticketOrderX, ascending: ticketAscendingX)
-                    }
-                    
-                    self.leftTicketTable.reloadData()
-                    
-                    if GeneralPreferenceManager.sharedInstance.isAutoQueryAfterFilter {
-                        self.autoQuery = true
-                    }
-                }
-                else {
-                    self.autoQuery = false;
-                }
-            })
-        }
     }
     
     func queryTicketAndSubmit() {
@@ -326,6 +293,10 @@ class TicketQueryViewController: BaseViewController {
     func queryTicket(_ summitHandler:@escaping ()->() = {}) {
         let fromStation = self.fromStationNameTxt.stringValue
         let toStation = self.toStationNameTxt.stringValue
+        
+        
+        self.setQueryDateValue(allSelectedDates,index:self.queryDateIndex)
+        
         let date = getDateStr(queryDate.dateValue)
         
         logger.info("\(fromStation) -> \(toStation) \(date)  \(self.autoQueryNum)")
@@ -485,10 +456,59 @@ class TicketQueryViewController: BaseViewController {
         }
     }
     
-    
     deinit{
         let notificationCenter = NotificationCenter.default
         notificationCenter.removeObserver(self)
+    }
+
+// MARK: - open sheet
+    func openfilterTrainSheet(){
+        trainFilterWindowController.trains = ticketQueryResult.filter({item in
+            return !item.isTicketInvalid()
+        })
+        trainFilterWindowController.fromStationName = self.fromStationNameTxt.stringValue
+        trainFilterWindowController.toStationName = self.toStationNameTxt.stringValue
+        trainFilterWindowController.trainDate = self.date!
+        
+        
+        if let window = self.view.window {
+            window.beginSheet(trainFilterWindowController.window!, completionHandler: {response in
+                if response == NSModalResponseOK{
+                    self.trainFilterKey = self.trainFilterWindowController.trainFilterKey
+                    self.seatFilterKey = self.trainFilterWindowController.seatFilterKey
+                    logger.info("trainFilterKey:\(self.trainFilterKey)")
+                    logger.info("seatFilterKey:\(self.seatFilterKey)")
+                    
+                    self.filterQueryResult = self.ticketQueryResult.filter({item in return self.trainFilterKey.contains("|" + item.TrainCode! + "|")})
+                    
+                    if let ticketOrderX = self.ticketOrder, let ticketAscendingX = self.ticketAscending {
+                        self.filterQueryResult = self.ticketOrderedBy(self.filterQueryResult, orderedBy: ticketOrderX, ascending: ticketAscendingX)
+                    }
+                    
+                    self.leftTicketTable.reloadData()
+                    
+                    if GeneralPreferenceManager.sharedInstance.isAutoQueryAfterFilter {
+                        self.autoQuery = true
+                    }
+                }
+                else {
+                    self.autoQuery = false;
+                }
+            })
+        }
+    }
+    
+    func openSubmitTicketSheet(isAutoSubmit:Bool,ifShowCode:Bool = true) {
+        submitWindowController = SubmitWindowController()
+        submitWindowController.isAutoSubmit = isAutoSubmit
+        submitWindowController.ifShowCode = ifShowCode
+        if let window = self.view.window {
+            window.beginSheet(submitWindowController.window!, completionHandler: {response in
+                if response == NSModalResponseOK{
+                    ///
+                }
+            })
+        }
     }
     
 // MARK: - notification
@@ -563,15 +583,15 @@ class TicketQueryViewController: BaseViewController {
     }
     
     func recvDidSubmitNotification(_ note: Notification){
-        openSubmitSheet(isAutoSubmit: false)
+        openSubmitTicketSheet(isAutoSubmit: false)
     }
     
     func recvAutoSubmitNotification(_ note: Notification){
-        openSubmitSheet(isAutoSubmit: true)
+        openSubmitTicketSheet(isAutoSubmit: true)
     }
     
     func recvAutoSubmitWithoutRandCodeNotification(_ note: Notification){
-        openSubmitSheet(isAutoSubmit: true,ifShowCode: false)
+        openSubmitTicketSheet(isAutoSubmit: true,ifShowCode: false)
     }
     
 // MARK: - Click Action
@@ -623,7 +643,7 @@ class TicketQueryViewController: BaseViewController {
     @IBAction func clickAutoQueryCbx(_ sender: NSButton) {
         if sender.state == NSOnState {
             if self.seatFilterKey == "" {
-                self.filterTrain()
+                self.openfilterTrainSheet()
             }
             else {
                 autoQuery = true
@@ -635,7 +655,7 @@ class TicketQueryViewController: BaseViewController {
     }
     
     @IBAction func clickFilterTrain(_ sender: AnyObject) {
-        self.filterTrain()
+        self.openfilterTrainSheet()
     }
     
     @IBAction func clickAddPassenger(_ sender: NSButton) {
@@ -750,6 +770,7 @@ extension TicketQueryViewController:NSPopoverDelegate {
     @IBAction func showCalendar(_ sender: AnyObject){
         let calendarPopover = NSPopover()
         let cp = LunarCalendarView(with:self.queryDate.dateValue)
+        cp.allSelectedDates = self.allSelectedDates
         calendarPopover.contentViewController = cp
         calendarPopover.appearance = NSAppearance(named: "NSAppearanceNameAqua")
         calendarPopover.animates = true
@@ -762,7 +783,8 @@ extension TicketQueryViewController:NSPopoverDelegate {
     }
     
     func popoverDidClose(_ notification: Notification) {
-        self.setQueryDateValue(calendarViewController!.allSelectedDates[0])
+        self.allSelectedDates = calendarViewController!.allSelectedDates
+        self.queryDateIndex = 0
         
         autoQuery = false
         self.clickQueryTicketBtn(nil)

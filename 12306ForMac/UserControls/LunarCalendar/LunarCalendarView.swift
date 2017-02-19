@@ -113,8 +113,6 @@ class LunarCalendarView:NSViewController{
         self.dayMakerColor = NSColor.darkGray
         
         currentMonth = self.toUTC(date)
-        
-        allSelectedDates.append(currentMonth)
     }
     
     override func viewDidLoad() {
