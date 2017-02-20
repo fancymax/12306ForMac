@@ -17,7 +17,9 @@ class LoginWindowController: BaseWindowController{
     
     var users = [UserX]()
     var isAutoLogin = false
-    var isLogin = false
+    
+    private var isLogin = false
+    private var spaceKeyboardMonitor:Any!
     
     override var windowNibName: String{
         return "LoginWindowController"
@@ -35,6 +37,91 @@ class LoginWindowController: BaseWindowController{
         users = DataManger.sharedInstance.queryAllUsers()
         
         loadImage()
+        
+        //增加对Space按键的支持
+        spaceKeyboardMonitor = NSEvent.addLocalMonitorForEvents(matching: NSKeyDownMask) { (theEvent) -> NSEvent? in
+            //Space Key
+            if (theEvent.keyCode == 49){
+                self.clickOK(nil)
+                return nil
+            }
+            return theEvent
+        }
+    }
+    
+    func handlerAfterFailure(){
+        self.loadImage()
+    }
+   
+    private func handlerAfterSuccess(){
+        QueryDefaultManager.sharedInstance.lastUserName = userName.stringValue
+        QueryDefaultManager.sharedInstance.lastUserPassword = passWord.stringValue
+        
+        //save user
+        let updateUser = users.filter({$0.name == userName.stringValue})
+        if updateUser.count > 0 {
+            for user in updateUser where user.password != passWord.stringValue {
+                user.password = passWord.stringValue
+                DataManger.sharedInstance.updateUser(user)
+            }
+        }
+        else {
+            let user = UserX()
+            user.name = userName.stringValue
+            user.password = passWord.stringValue
+            DataManger.sharedInstance.inserUser(user)
+        }
+        
+        self.dismissWithModalResponse(NSModalResponseOK)
+    }
+    
+    private func loadImage(){
+        self.loginImage.clearRandCodes()
+        self.startLoadingTip("正在加载...")
+        self.nextImageBtn.isEnabled = false
+        
+        let autoLoginHandler = {(image:NSImage)->() in
+            self.startLoadingTip("自动打码...")
+            
+            Dama.sharedInstance.dama(AdvancedPreferenceManager.sharedInstance.damaUser,
+                password: AdvancedPreferenceManager.sharedInstance.damaPassword,
+                ofImage: image,
+                success: {imageCode in
+                        self.stopLoadingTip()
+                        self.loginImage.drawDamaCodes(imageCode)
+                        self.clickOK(nil)
+                },
+                failure: {error in
+                        self.stopLoadingTip()
+                        self.showTip(translate(error))
+                })
+        }
+        
+        let successHandler = {(image:NSImage) -> () in
+            self.loginImage.image = image
+            self.stopLoadingTip()
+            self.nextImageBtn.isEnabled = true
+            
+            if ((self.isAutoLogin)&&(AdvancedPreferenceManager.sharedInstance.isUseDama)) {
+                autoLoginHandler(image)
+            }
+        }
+        let failureHandler = {(error:NSError) -> () in
+            self.stopLoadingTip()
+            self.nextImageBtn.isEnabled = true
+            self.showTip(translate(error))
+        }
+        Service.sharedInstance.preLoginFlow(success: successHandler,failure: failureHandler)
+    }
+    
+    override func dismissWithModalResponse(_ response:NSModalResponse)
+    {
+        if window != nil {
+            if window!.sheetParent != nil {
+                window!.sheetParent!.endSheet(window!,returnCode: response)
+                NSEvent.removeMonitor(spaceKeyboardMonitor!)
+            }
+        }
     }
     
     @IBAction func clickNextImage(_ sender: NSButton)
@@ -76,71 +163,6 @@ class LoginWindowController: BaseWindowController{
     
     @IBAction func clickCancel(_ button:NSButton){
         dismissWithModalResponse(NSModalResponseCancel)
-    }
-    
-    func handlerAfterFailure(){
-        self.loadImage()
-    }
-   
-    func handlerAfterSuccess(){
-        QueryDefaultManager.sharedInstance.lastUserName = userName.stringValue
-        QueryDefaultManager.sharedInstance.lastUserPassword = passWord.stringValue
-        
-        //save user
-        let updateUser = users.filter({$0.name == userName.stringValue})
-        if updateUser.count > 0 {
-            for user in updateUser where user.password != passWord.stringValue {
-                user.password = passWord.stringValue
-                DataManger.sharedInstance.updateUser(user)
-            }
-        }
-        else {
-            let user = UserX()
-            user.name = userName.stringValue
-            user.password = passWord.stringValue
-            DataManger.sharedInstance.inserUser(user)
-        }
-        
-        self.dismissWithModalResponse(NSModalResponseOK)
-    }
-    
-    func loadImage(){
-        self.loginImage.clearRandCodes()
-        self.startLoadingTip("正在加载...")
-        self.nextImageBtn.isEnabled = false
-        
-        let autoLoginHandler = {(image:NSImage)->() in
-            self.startLoadingTip("自动打码...")
-            
-            Dama.sharedInstance.dama(AdvancedPreferenceManager.sharedInstance.damaUser,
-                password: AdvancedPreferenceManager.sharedInstance.damaPassword,
-                ofImage: image,
-                success: {imageCode in
-                        self.stopLoadingTip()
-                        self.loginImage.drawDamaCodes(imageCode)
-                        self.clickOK(nil)
-                },
-                failure: {error in
-                        self.stopLoadingTip()
-                        self.showTip(translate(error))
-                })
-        }
-        
-        let successHandler = {(image:NSImage) -> () in
-            self.loginImage.image = image
-            self.stopLoadingTip()
-            self.nextImageBtn.isEnabled = true
-            
-            if ((self.isAutoLogin)&&(AdvancedPreferenceManager.sharedInstance.isUseDama)) {
-                autoLoginHandler(image)
-            }
-        }
-        let failureHandler = {(error:NSError) -> () in
-            self.stopLoadingTip()
-            self.nextImageBtn.isEnabled = true
-            self.showTip(translate(error))
-        }
-        Service.sharedInstance.preLoginFlow(success: successHandler,failure: failureHandler)
     }
 }
 
