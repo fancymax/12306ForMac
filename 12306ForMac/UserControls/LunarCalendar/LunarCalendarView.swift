@@ -408,7 +408,7 @@ class CalendarCell:NSButton
             
             //lunar
             if !self.selected {
-                let lunarFont = NSFont(name: self.font!.fontName, size: 8)!
+                let lunarFont = NSFont(name: self.font!.fontName, size: 10)!
                 let attrs = [NSParagraphStyleAttributeName:paragraphStyle,
                     NSFontAttributeName:lunarFont,
                     NSForegroundColorAttributeName:NSColor.gray]
