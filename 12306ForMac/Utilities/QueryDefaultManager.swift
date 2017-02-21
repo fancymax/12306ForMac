@@ -17,6 +17,7 @@ class QueryDefaultManager {
     private let toStationKey = "toStation"
     private let queryDateKey = "queryDate"
     private let selectedPassenger = "selectedPassenger"
+    private let allSelectedDate = "allSelectedDate"
     private let userDefaults = UserDefaults.standard
     
     private init()
@@ -82,6 +83,15 @@ class QueryDefaultManager {
         }
         set(newValue) {
             userDefaults.set(newValue,forKey: selectedPassenger)
+        }
+    }
+    
+    var lastAllSelectedDates:[Date]? {
+        get {
+            return userDefaults.array(forKey: allSelectedDate) as? [Date]
+        }
+        set(newValue) {
+            userDefaults.set(newValue,forKey: allSelectedDate)
         }
     }
 }

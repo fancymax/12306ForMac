@@ -48,11 +48,18 @@ class TicketQueryViewController: BaseViewController {
         self.fromStationNameTxt.stringValue = QueryDefaultManager.sharedInstance.lastFromStation
         self.toStationNameTxt.stringValue = QueryDefaultManager.sharedInstance.lastToStation
         
+        var lastDate:Date!
         if QueryDefaultManager.sharedInstance.lastQueryDate.compare(Date()) == .orderedAscending {
-            self.allSelectedDates.append(Date())
+            lastDate = Date()
         }
         else {
-            self.allSelectedDates.append(QueryDefaultManager.sharedInstance.lastQueryDate as Date)
+            lastDate = QueryDefaultManager.sharedInstance.lastQueryDate as Date
+        }
+        if QueryDefaultManager.sharedInstance.lastAllSelectedDates != nil {
+            self.allSelectedDates = QueryDefaultManager.sharedInstance.lastAllSelectedDates!
+        }
+        else {
+            self.allSelectedDates.append(lastDate)
         }
         self.setQueryDateValue(allSelectedDates,index:self.queryDateIndex)
     }
@@ -626,6 +633,7 @@ class TicketQueryViewController: BaseViewController {
         QueryDefaultManager.sharedInstance.lastFromStation = self.fromStationNameTxt.stringValue
         QueryDefaultManager.sharedInstance.lastToStation = self.toStationNameTxt.stringValue
         QueryDefaultManager.sharedInstance.lastQueryDate = queryDate.dateValue
+        QueryDefaultManager.sharedInstance.lastAllSelectedDates = self.allSelectedDates
         
         self.saveLastSelectdPassengerIdToDefault()
         
