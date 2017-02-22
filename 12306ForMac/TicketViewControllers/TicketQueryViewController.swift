@@ -106,12 +106,17 @@ class TicketQueryViewController: BaseViewController {
             self.queryDataLabel.stringValue = "出发日期"
         }
         
-        self.queryDate.dateValue = calender.startOfDay(for: dates[index])
-        self.queryDateIndex = index + 1
-        if self.queryDateIndex >= self.allSelectedDates.count {
+        if dates.count == 0 {
+            self.queryDate.dateValue = Date()
             self.queryDateIndex = 0
         }
-        
+        else {
+            self.queryDate.dateValue = calender.startOfDay(for: dates[index])
+            self.queryDateIndex = index + 1
+            if self.queryDateIndex >= self.allSelectedDates.count {
+                self.queryDateIndex = 0
+            }
+        }
     }
     
     fileprivate func stopAutoQuery(){
