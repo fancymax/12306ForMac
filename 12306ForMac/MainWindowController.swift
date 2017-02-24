@@ -53,6 +53,7 @@ class MainWindowController: NSWindowController{
         
         //申请日历权限
         CalendarManager.sharedInstance.updateAuthorizationStatus()
+//        ReminderManager.sharedInstance.updateAuthorizationStatus()
         
         self.setupDamaBtn()
     }

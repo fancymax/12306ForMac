@@ -87,6 +87,7 @@
 		F1D575761C95541D00A214B0 /* TicketQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */; };
 		F1D575771C95541D00A214B0 /* TicketQueryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D575751C95541D00A214B0 /* TicketQueryViewController.xib */; };
 		F1D58E9D1D8A549200CD3DA7 /* Reverse.png in Resources */ = {isa = PBXBuildFile; fileRef = F1D58E9C1D8A549200CD3DA7 /* Reverse.png */; };
+		F1D906101E5FCD8100D3B35F /* ReminderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9060F1E5FCD8100D3B35F /* ReminderManager.swift */; };
 		F1DDD8A61DC72ECF00879D44 /* SubmitOrderParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DDD8A51DC72ECF00879D44 /* SubmitOrderParams.swift */; };
 		F1F2F2C01D59AFB100EA7786 /* GeneralPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F2BE1D59AFB100EA7786 /* GeneralPreferenceViewController.swift */; };
 		F1F2F2C11D59AFB100EA7786 /* GeneralPreferenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F2F2BF1D59AFB100EA7786 /* GeneralPreferenceViewController.xib */; };
@@ -209,6 +210,7 @@
 		F1D575741C95541D00A214B0 /* TicketQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketQueryViewController.swift; sourceTree = "<group>"; };
 		F1D575751C95541D00A214B0 /* TicketQueryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketQueryViewController.xib; sourceTree = "<group>"; };
 		F1D58E9C1D8A549200CD3DA7 /* Reverse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Reverse.png; path = 12306ForMac/images/Reverse.png; sourceTree = SOURCE_ROOT; };
+		F1D9060F1E5FCD8100D3B35F /* ReminderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderManager.swift; sourceTree = "<group>"; };
 		F1DDD8A51DC72ECF00879D44 /* SubmitOrderParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitOrderParams.swift; sourceTree = "<group>"; };
 		F1E118ED1DAC8981003133C7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "12306ForMac/zh-Hans.lproj/MainMenu.xib"; sourceTree = "<group>"; };
 		F1F2F2BE1D59AFB100EA7786 /* GeneralPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferenceViewController.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 				F111547C1C8D923C00FA6059 /* SwiftyRegex.swift */,
 				F1FEE7A11D8D464900B02C84 /* NotifySpeaker.swift */,
 				F10F003A1DF581420023DE68 /* CalendarManager.swift */,
+				F1D9060F1E5FCD8100D3B35F /* ReminderManager.swift */,
 			);
 			name = Utilities;
 			path = 12306ForMac/Utilities;
@@ -671,6 +674,7 @@
 				F111548E1C8D925200FA6059 /* AutoCompleteTextField.swift in Sources */,
 				F11154731C8D921400FA6059 /* MainModel.swift in Sources */,
 				F11154791C8D921400FA6059 /* QueryOrderWaitTimeResult.swift in Sources */,
+				F1D906101E5FCD8100D3B35F /* ReminderManager.swift in Sources */,
 				F11154771C8D921400FA6059 /* QueryLeftNewDTO.swift in Sources */,
 				F111549F1C8D929200FA6059 /* Service+Login.swift in Sources */,
 				F1CA120D1D1135E2003EFD0B /* Theme.swift in Sources */,
