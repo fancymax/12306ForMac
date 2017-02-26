@@ -210,8 +210,6 @@ class TicketQueryViewController: BaseViewController {
         return popover
     }()
     
-
-    
     func passengerSelected(_ passenger:PassengerDTO) -> Bool{
         for controller in passengerViewControllerList where controller.passenger == passenger{
             return true
@@ -224,7 +222,6 @@ class TicketQueryViewController: BaseViewController {
             controller.select()
         }
     }
-    
     
 // MARK: - TicketTableView
     @IBOutlet weak var leftTicketTable: NSTableView!
@@ -249,14 +246,6 @@ class TicketQueryViewController: BaseViewController {
     
     lazy var trainFilterWindowController:TrainFilterWindowController = TrainFilterWindowController()
     lazy var submitWindowController:SubmitWindowController = SubmitWindowController()
-    
-    lazy var trainCodeDetailViewController:TrainCodeDetailViewController = TrainCodeDetailViewController()
-    lazy var trainCodeDetailPopover: NSPopover = {
-        let popover = NSPopover()
-        popover.behavior = .semitransient
-        popover.contentViewController = self.trainCodeDetailViewController
-        return popover
-    }()
     
     func ticketOrderedBy(_ tickets:[QueryLeftNewDTO], orderedBy:TicketOrder, ascending:Bool) -> [QueryLeftNewDTO] {
         let sortedTickets:[QueryLeftNewDTO] = tickets.sorted{
@@ -709,14 +698,14 @@ class TicketQueryViewController: BaseViewController {
     }
     
     func clickShowTrainDetail(_ sender:NSButton) {
-        let positioningView = sender
-        let positioningRect = NSZeroRect
-        let preferredEdge = NSRectEdge.maxX
-        trainCodeDetailPopover.show(relativeTo: positioningRect, of: positioningView, preferredEdge: preferredEdge)
+        let selectedRow = leftTicketTable.row(for: sender)
+        let ticket = filterQueryResult[selectedRow]
+        let trainCodeDetailViewController = TrainCodeDetailViewController(trainDetailParams: QueryTrainCodeParam(ticket), trainPriceParams: QueryTrainPriceParam(ticket))
         
-        for queryTicket in ticketQueryResult where queryTicket.TrainCode == sender.title {
-            self.trainCodeDetailViewController.ticket = queryTicket
-        }
+        let trainCodeDetailpopover = NSPopover()
+        trainCodeDetailpopover.behavior = .semitransient
+        trainCodeDetailpopover.contentViewController = trainCodeDetailViewController
+        trainCodeDetailpopover.show(relativeTo: NSZeroRect, of: sender, preferredEdge: NSRectEdge.maxX)
     }
     
 // MARK: - Menu Action

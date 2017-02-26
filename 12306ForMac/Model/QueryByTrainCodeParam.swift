@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct QueryByTrainCodeParam {
+struct QueryTrainCodeParam {
     let train_no:String //6i000D232806"
     let from_station_telecode:String // "IOQ"
     let to_station_telecode:String //"FYS"

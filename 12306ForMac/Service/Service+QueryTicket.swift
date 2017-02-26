@@ -33,7 +33,7 @@ extension Service {
         }
     }
     
-    func queryTrainDetailFlowWith(_ params:QueryByTrainCodeParam,success:@escaping (TrainCodeDetails)->Void,failure:@escaping (NSError)->Void) {
+    func queryTrainDetailFlowWith(_ params:QueryTrainCodeParam,success:@escaping (TrainCodeDetails)->Void,failure:@escaping (NSError)->Void) {
         self.queryByTrainNo(params).then{trainCodeDetails in
             success(trainCodeDetails)
         }.catch {error in
@@ -155,7 +155,7 @@ extension Service {
     }
     
     //https://kyfw.12306.cn/otn/czxx/queryByTrainNo?train_no=6i000D232806&from_station_telecode=IOQ&to_station_telecode=FYS&depart_date=2016-06-12
-    func queryByTrainNo(_ params: QueryByTrainCodeParam)->Promise<TrainCodeDetails>{
+    func queryByTrainNo(_ params: QueryTrainCodeParam)->Promise<TrainCodeDetails>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/czxx/queryByTrainNo?" + params.ToGetParams()
             let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init",
