@@ -739,6 +739,10 @@ class TicketQueryViewController: BaseViewController {
         return true
     }
     
+    @IBAction func clickRefresh(_ sender:AnyObject?) {
+        self.clickQueryTicketBtn(nil)
+    }
+    
     @IBAction func clickShareInfo(_ sender:AnyObject?) {
         let generalPasteboard = NSPasteboard.general()
         generalPasteboard.clearContents()

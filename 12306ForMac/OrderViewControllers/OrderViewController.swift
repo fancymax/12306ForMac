@@ -157,6 +157,10 @@ class OrderViewController: BaseViewController{
         return true
     }
     
+    @IBAction func clickRefresh(_ sender:AnyObject?) {
+        self.queryAllOrder()
+    }
+    
     @IBAction func clickShareInfo(_ sender:AnyObject?) {
         let generalPasteboard = NSPasteboard.general()
         generalPasteboard.clearContents()
