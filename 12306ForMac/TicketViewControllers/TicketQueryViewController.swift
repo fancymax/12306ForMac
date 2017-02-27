@@ -58,7 +58,7 @@ class TicketQueryViewController: BaseViewController {
         if QueryDefaultManager.sharedInstance.lastAllSelectedDates != nil {
             var shouldReset = false
             for date in QueryDefaultManager.sharedInstance.lastAllSelectedDates! {
-                if date.compare(Date()) == .orderedAscending {
+                if date.compare(Date().addingTimeInterval(-24*3600)) == .orderedAscending {
                     shouldReset = true
                     break;
                 }
@@ -281,14 +281,15 @@ class TicketQueryViewController: BaseViewController {
                     
                     let seatTypeId = ticket.getSeatTypeNameByFilterKey(self.seatFilterKey)!
                     self.summitTicket(ticket, seatTypeId: seatTypeId,isAuto: true)
-                    
-                    NotifySpeaker.sharedInstance.notify()
-                    
-                    let informativeText = "\(self.date!) \(self.fromStationNameTxt.stringValue)->\(self.toStationNameTxt.stringValue) \(ticket.TrainCode!) \(seatTypeId)"
-                    self.pushUserNotification("有票提醒",informativeText: informativeText)
-                    
-                    let reminderStr = informativeText + " 有票提醒"
-                    ReminderManager.sharedInstance.createReminder(reminderStr, startDate: Date())
+                    if !NSApp.isActive {
+                        NotifySpeaker.sharedInstance.notify()
+                        
+                        let informativeText = "\(self.date!) \(self.fromStationNameTxt.stringValue)->\(self.toStationNameTxt.stringValue) \(ticket.TrainCode!) \(seatTypeId)"
+                        self.pushUserNotification("有票提醒",informativeText: informativeText)
+                        
+                        let reminderStr = informativeText + " 有票提醒"
+                        ReminderManager.sharedInstance.createReminder(reminderStr, startDate: Date())
+                    }
                     
                     break;
                 }

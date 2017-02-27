@@ -23,6 +23,8 @@ class SubmitWindowController: BaseWindowController{
     @IBOutlet weak var submitOrderBtn: NSButton!
     @IBOutlet weak var isAutoSubmitLabel: NSTextField!
     
+    private var spaceKeyboardMonitor:Any!
+    
     @IBOutlet weak var orderId: NSTextField!
     
     var isAutoSubmit = false
@@ -40,9 +42,29 @@ class SubmitWindowController: BaseWindowController{
         self.freshOrderInfoView()
         
         self.preOrderFlow()
+        
+        //增加对Space按键的支持
+        spaceKeyboardMonitor = NSEvent.addLocalMonitorForEvents(matching: NSKeyDownMask) { (theEvent) -> NSEvent? in
+            //Space Key
+            if (theEvent.keyCode == 49){
+                self.clickNext(nil)
+                return nil
+            }
+            return theEvent
+        }
     }
     
 // MARK: - custom function
+    
+    override func dismissWithModalResponse(_ response:NSModalResponse)
+    {
+        if window != nil {
+            if window!.sheetParent != nil {
+                window!.sheetParent!.endSheet(window!,returnCode: response)
+                NSEvent.removeMonitor(spaceKeyboardMonitor!)
+            }
+        }
+    }
     
     func freshOrderInfoView(){
         let info = MainModel.selectedTicket!
@@ -230,12 +252,23 @@ class SubmitWindowController: BaseWindowController{
     }
     
 // MARK: - click Action
+    @IBAction func clickNext(_ sender: AnyObject?) {
+        if self.window!.contentView!.subviews.contains(orderInfoView) {
+            self.clickCheckOrder(nil)
+        }
+        else if self.window!.contentView!.subviews.contains(preOrderView) {
+            self.clickOK(nil)
+        }
+        else {
+            self.clickRateInAppstore(nil)
+        }
+    }
     
     @IBAction func clickNextImage(_ sender: NSButton) {
         freshImage()
     }
     
-    @IBAction func clickCheckOrder(_ sender: NSButton) {
+    @IBAction func clickCheckOrder(_ sender: AnyObject?) {
         if isSubmitting {
             return
         }
@@ -268,7 +301,7 @@ class SubmitWindowController: BaseWindowController{
         dismissWithModalResponse(NSModalResponseCancel)
     }
     
-    @IBAction func clickRateInAppstore(_ button:NSButton){
+    @IBAction func clickRateInAppstore(_ button:AnyObject?){
         NSWorkspace.shared().open(URL(string: "macappstore://itunes.apple.com/us/app/ding-piao-zhu-shou/id1163682213?l=zh&ls=1&mt=12")!)
         dismissWithModalResponse(NSModalResponseCancel)
     }

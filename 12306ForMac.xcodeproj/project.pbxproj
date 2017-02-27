@@ -201,7 +201,7 @@
 		F1CA12041D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainCodeDetailHeaderCell.swift; sourceTree = "<group>"; };
 		F1CA120A1D113293003EFD0B /* ContentBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentBackgroundView.swift; sourceTree = "<group>"; };
 		F1CA120C1D1135E2003EFD0B /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		F1CC36461B6B244C0074A014 /* 12306ForMac-Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "12306ForMac-Swift.h"; sourceTree = "<group>"; };
+		F1CC36461B6B244C0074A014 /* 12306ForMac-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "12306ForMac-Bridging-Header.h"; sourceTree = "<group>"; };
 		F1CCA2D61D0D3DFA00B6853E /* TrainCodeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainCodeDetailViewController.swift; sourceTree = "<group>"; };
 		F1CCA2D71D0D3DFA00B6853E /* TrainCodeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrainCodeDetailViewController.xib; sourceTree = "<group>"; };
 		F1CCA2DA1D0D42D700B6853E /* QueryByTrainCodeParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryByTrainCodeParam.swift; sourceTree = "<group>"; };
@@ -411,7 +411,7 @@
 		F11EB4511B6A368E000063E4 = {
 			isa = PBXGroup;
 			children = (
-				F1CC36461B6B244C0074A014 /* 12306ForMac-Swift.h */,
+				F1CC36461B6B244C0074A014 /* 12306ForMac-Bridging-Header.h */,
 				F11154611C8D91B300FA6059 /* 12306ForMac */,
 				F11EB45B1B6A368E000063E4 /* Products */,
 				7EE5AE4095B588D2CBD04072 /* Frameworks */,
@@ -860,7 +860,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "12306ForMac-Bridging-Header.h";
-				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "12306ForMac-Swift.h";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "12306ForMac-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -887,7 +887,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "12306ForMac-Bridging-Header.h";
-				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "12306ForMac-Swift.h";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "12306ForMac-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

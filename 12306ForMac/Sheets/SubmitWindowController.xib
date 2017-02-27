@@ -182,7 +182,7 @@ DQ
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="1300" y="-54"/>
+            <point key="canvasLocation" x="303" y="287"/>
         </customView>
         <customView id="wUj-Nk-WKF">
             <rect key="frame" x="0.0" y="0.0" width="344" height="343"/>
