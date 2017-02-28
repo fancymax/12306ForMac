@@ -56,11 +56,25 @@ class TicketQueryViewController: BaseViewController {
             lastDate = QueryDefaultManager.sharedInstance.lastQueryDate as Date
         }
         if QueryDefaultManager.sharedInstance.lastAllSelectedDates != nil {
-            self.allSelectedDates = QueryDefaultManager.sharedInstance.lastAllSelectedDates!
+            var shouldReset = false
+            for date in QueryDefaultManager.sharedInstance.lastAllSelectedDates! {
+                if date.compare(Date()) == .orderedAscending {
+                    shouldReset = true
+                    break;
+                }
+            }
+            if shouldReset {
+                self.allSelectedDates.append(lastDate)
+            }
+            else {
+                self.allSelectedDates = QueryDefaultManager.sharedInstance.lastAllSelectedDates!
+            }
         }
         else {
             self.allSelectedDates.append(lastDate)
         }
+        
+        
         self.setQueryDateValue(allSelectedDates,index:self.queryDateIndex)
     }
     
@@ -283,6 +297,9 @@ class TicketQueryViewController: BaseViewController {
                     
                     let informativeText = "\(self.date!) \(self.fromStationNameTxt.stringValue)->\(self.toStationNameTxt.stringValue) \(ticket.TrainCode!) \(seatTypeId)"
                     self.pushUserNotification("有票提醒",informativeText: informativeText)
+                    
+                    let reminderStr = informativeText + " 有票提醒"
+                    ReminderManager.sharedInstance.createReminder(reminderStr, startDate: Date())
                     
                     break;
                 }

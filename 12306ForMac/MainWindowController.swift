@@ -51,9 +51,8 @@ class MainWindowController: NSWindowController{
         
         NotificationCenter.default.addObserver(self, selector: #selector(MainWindowController.recvDamaSuccessNotification(_:)), name: NSNotification.Name.App.DidDamaGetBalance, object: nil)
         
-        //申请日历权限
         CalendarManager.sharedInstance.updateAuthorizationStatus()
-//        ReminderManager.sharedInstance.updateAuthorizationStatus()
+        ReminderManager.sharedInstance.updateAuthorizationStatus()
         
         self.setupDamaBtn()
     }

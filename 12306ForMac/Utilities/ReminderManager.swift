@@ -29,7 +29,7 @@ class ReminderManager: NSObject {
         case .authorized:
             self.isAccessToEventStoreGranted = true
         case .notDetermined:
-            self.eventStore.requestAccess(to: .event, completion: {[unowned self] granted,error in
+            self.eventStore.requestAccess(to: .reminder, completion: {[unowned self] granted,error in
                 DispatchQueue.main.async {
                     self.isAccessToEventStoreGranted = granted
                 }
@@ -39,7 +39,7 @@ class ReminderManager: NSObject {
         }
     }
     
-    func createReminder(_ sender: AnyObject) {
+    func createReminder(_ title:String, startDate:Date) {
         if !isAccessToEventStoreGranted {
             return
         }
@@ -47,19 +47,19 @@ class ReminderManager: NSObject {
         let reminder = EKReminder(eventStore: self.eventStore)
         
         reminder.calendar = eventStore.defaultCalendarForNewReminders()
-        reminder.title = "test"
+        reminder.title = title
         
-        let date = Date(timeInterval: 5, since: Date())
-        let alarm = EKAlarm(absoluteDate: date)
+        var date = Date(timeInterval: 5, since: Date())
+        var alarm = EKAlarm(absoluteDate: date)
         reminder.addAlarm(alarm)
         
-        let date1 = Date(timeInterval: 10, since: Date())
-        let alarm1 = EKAlarm(absoluteDate: date1)
-        reminder.addAlarm(alarm1)
+        date = Date(timeInterval: 10, since: Date())
+        alarm = EKAlarm(absoluteDate: date)
+        reminder.addAlarm(alarm)
         
-        let date2 = Date(timeInterval: 15, since: Date())
-        let alarm2 = EKAlarm(absoluteDate: date2)
-        reminder.addAlarm(alarm2)
+        date = Date(timeInterval: 15, since: Date())
+        alarm = EKAlarm(absoluteDate: date)
+        reminder.addAlarm(alarm)
         
         try! eventStore.save(reminder, commit: true)
     }
