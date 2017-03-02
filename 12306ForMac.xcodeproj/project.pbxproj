@@ -173,7 +173,7 @@
 		F11E29281D2AA2B6004BE59D /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = User.png; path = 12306ForMac/images/User.png; sourceTree = SOURCE_ROOT; };
 		F11EB45A1B6A368E000063E4 /* 订票助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "订票助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F11FE6861D5F4EB70049F261 /* DamaError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamaError.swift; sourceTree = "<group>"; };
-		F121FC991DD987E100CA05F3 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		F121FC991DD987E100CA05F3 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = ../../Notifications.swift; sourceTree = "<group>"; };
 		F123E8271DF00BBC003C06A8 /* BaseWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseWindowController.swift; path = 12306ForMac/BaseWindowController.swift; sourceTree = "<group>"; };
 		F127466F1D502E8100975DFA /* Filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Filter.png; path = 12306ForMac/images/Filter.png; sourceTree = SOURCE_ROOT; };
 		F12746711D50345D00975DFA /* ClickableDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClickableDatePicker.swift; sourceTree = "<group>"; };
@@ -262,7 +262,6 @@
 		F11154611C8D91B300FA6059 /* 12306ForMac */ = {
 			isa = PBXGroup;
 			children = (
-				F170C0CE1E07CAAD0047C547 /* DJProgressHUD */,
 				F15277071DAB78D3002BAF17 /* 12306ForMac.entitlements */,
 				F1F2F2B31D598B7800EA7786 /* Preferences */,
 				F11154B21C8D92D000FA6059 /* TicketQueryModule */,
@@ -275,13 +274,10 @@
 				F11154D11C8D936300FA6059 /* MainMenu.xib */,
 				F11154C71C8D92FC00FA6059 /* AppDelegate.swift */,
 				F123E8271DF00BBC003C06A8 /* BaseWindowController.swift */,
-				F121FC991DD987E100CA05F3 /* Notifications.swift */,
 				F11154CB1C8D931500FA6059 /* MainWindowController.swift */,
 				F11154CC1C8D931500FA6059 /* MainWindowController.xib */,
-				F10F47A81D409ED3004668BB /* station_name.js */,
-				F11154971C8D927C00FA6059 /* StationData.swift */,
 				F11154621C8D91F800FA6059 /* README.md */,
-				F11154631C8D91F800FA6059 /* srca.cer */,
+				F1D6D2C21E682140009DE8A1 /* Resources */,
 				F11EB45D1B6A368E000063E4 /* Supporting Files */,
 			);
 			name = 12306ForMac;
@@ -317,6 +313,7 @@
 		F111547A1C8D923C00FA6059 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F121FC991DD987E100CA05F3 /* Notifications.swift */,
 				F111547B1C8D923C00FA6059 /* SwiftyJSON.swift */,
 				F111547C1C8D923C00FA6059 /* SwiftyRegex.swift */,
 				F1FEE7A11D8D464900B02C84 /* NotifySpeaker.swift */,
@@ -330,6 +327,7 @@
 		F11154831C8D925200FA6059 /* UserControls */ = {
 			isa = PBXGroup;
 			children = (
+				F170C0CE1E07CAAD0047C547 /* DJProgressHUD */,
 				F147763D1D6B2B2E002FD6AF /* InfoButton.swift */,
 				F1CA120C1D1135E2003EFD0B /* Theme.swift */,
 				F11154841C8D925200FA6059 /* AutoCompleteTextField.swift */,
@@ -449,7 +447,8 @@
 				F170C0D31E07CAAD0047C547 /* DJTipHUD.h */,
 				F170C0D41E07CAAD0047C547 /* DJTipHUD.m */,
 			);
-			path = DJProgressHUD;
+			name = DJProgressHUD;
+			path = ../../DJProgressHUD;
 			sourceTree = "<group>";
 		};
 		F1A8CCB01BA8032500B4FB03 /* Asserts */ = {
@@ -493,6 +492,16 @@
 				F1F9268D1E0116C500FE4229 /* ConfirmSingleForQueueAsysParam.swift */,
 			);
 			name = Params;
+			sourceTree = "<group>";
+		};
+		F1D6D2C21E682140009DE8A1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F10F47A81D409ED3004668BB /* station_name.js */,
+				F11154971C8D927C00FA6059 /* StationData.swift */,
+				F11154631C8D91F800FA6059 /* srca.cer */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		F1F2F2B31D598B7800EA7786 /* Preferences */ = {
