@@ -20,6 +20,7 @@ class GeneralPreferenceManager {
     fileprivate let notifyStrKey = "notifyStr"
     fileprivate let notifyLoginStrKey = "notifyLoginStr"
     fileprivate let isAutoQueryAfterFilterKey = "isAutoQueryAfterFilter"
+    fileprivate let userDefindFilterTimeSpanKey = "userDefindFilterTimeSpan"
     
     fileprivate let userDefaults = UserDefaults.standard
     
@@ -30,7 +31,16 @@ class GeneralPreferenceManager {
     
     fileprivate func registerUserDefault()
     {
-        let firstDefault = [autoQuerySecondsKey: 5,isShowInvalidTicketKey: true, isShowNoTrainTicketKey:true, isNotifyTicketKey:true, notifyStrKey:"订到票啦",isNotifyLoginKey:true, notifyLoginStrKey:"要登录啦",isAutoQueryAfterFilterKey:true] as [String : Any]
+        let firstDefault = [autoQuerySecondsKey: 5,
+                            isShowInvalidTicketKey: true,
+                            isShowNoTrainTicketKey:true,
+                            isNotifyTicketKey:true,
+                            notifyStrKey:"订到票啦",
+                            isNotifyLoginKey:true,
+                            notifyLoginStrKey:"要登录啦",
+                            isAutoQueryAfterFilterKey:true,
+                            userDefindFilterTimeSpanKey:["00:00~06:00","06:00~12:00","12:00~18:00","18:00~24:00"]]
+            as [String : Any]
         userDefaults.register(defaults: firstDefault)
     }
     
@@ -104,6 +114,16 @@ class GeneralPreferenceManager {
         set{
             userDefaults.set(newValue, forKey: isAutoQueryAfterFilterKey)
         }
+    }
+    
+    var userDefindFilterTimeSpan:[String] {
+        get{
+            return userDefaults.array(forKey: userDefindFilterTimeSpanKey) as! [String]
+        }
+        set{
+            userDefaults.set(newValue, forKey: userDefindFilterTimeSpanKey)
+        }
+        
     }
     
 }

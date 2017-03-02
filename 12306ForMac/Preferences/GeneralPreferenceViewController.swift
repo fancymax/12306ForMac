@@ -9,11 +9,20 @@
 import Cocoa
 import MASPreferences
 
+class FilterTimeSpan:NSObject {
+    var start:String = ""
+    var end:String = ""
+    
+    override var debugDescription: String {
+        return "\(start)~\(end)"
+    }
+}
+
 class GeneralPreferenceViewController: NSViewController, MASPreferencesViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        self.initFilterTimeSpans()
     }
     
     override var nibName: String? {
@@ -36,6 +45,8 @@ class GeneralPreferenceViewController: NSViewController, MASPreferencesViewContr
     var toolbarItemLabel: String! {
         return NSLocalizedString("通用", comment: "General")
     }
+    
+    @IBOutlet weak var filterTimeSpanTable: NSTableView!
     
     var autoQuerySeconds: Int {
         get{
@@ -127,4 +138,28 @@ class GeneralPreferenceViewController: NSViewController, MASPreferencesViewContr
         }
     }
     
+    var filterTimeSpans:[FilterTimeSpan] = [FilterTimeSpan]()
+    private func initFilterTimeSpans() {
+        let timeSpanStrArr = GeneralPreferenceManager.sharedInstance.userDefindFilterTimeSpan
+        for timespan in timeSpanStrArr {
+            let filterTime = FilterTimeSpan()
+            filterTime.start = timespan.components(separatedBy: "~")[0]
+            filterTime.end = timespan.components(separatedBy: "~")[1]
+            filterTimeSpans.append(filterTime)
+        }
+    }
+    
+    override func viewDidDisappear() {
+        print(filterTimeSpans)
+    }
+}
+
+extension GeneralPreferenceViewController:NSTableViewDataSource {
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return filterTimeSpans.count
+    }
+    
+    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+        return filterTimeSpans[row]
+    }
 }
