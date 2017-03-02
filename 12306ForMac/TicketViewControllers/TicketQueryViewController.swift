@@ -323,24 +323,7 @@ class TicketQueryViewController: BaseViewController {
         let successHandler = { (tickets:[QueryLeftNewDTO])->()  in
             self.ticketQueryResult = tickets
             
-            self.filterQueryResult = self.ticketQueryResult.filter({item in
-                var isReturn = true
-                if self.trainFilterKey != "" {
-                    isReturn = self.trainFilterKey.contains("|\(item.TrainCode!)|")
-                }
-                if (item.isTicketInvalid()) && (!GeneralPreferenceManager.sharedInstance.isShowInvalidTicket) {
-                    isReturn = false
-                }
-                if (!item.hasTicket)&&(!GeneralPreferenceManager.sharedInstance.isShowNoTrainTicket){
-                    isReturn = false
-                }
-                
-                return isReturn
-            })
-            
-            if let ticketOrderX = self.ticketOrder, let ticketAscendingX = self.ticketAscending {
-                self.filterQueryResult = self.ticketOrderedBy(self.filterQueryResult, orderedBy: ticketOrderX, ascending: ticketAscendingX)
-            }
+            self.filterTrainByAllAspect()
         
             self.leftTicketTable.reloadData()
             self.stopLoadingTip()
@@ -377,6 +360,29 @@ class TicketQueryViewController: BaseViewController {
         params.purpose_codes = ticketType.rawValue
         
         Service.sharedInstance.queryTicketFlowWith(params, success: successHandler,failure: failureHandler)
+    }
+    
+    private func filterTrainByAllAspect() {
+        self.filterQueryResult = self.ticketQueryResult.filter({item in
+            var isReturn = true
+            if self.trainFilterKey != "" {
+                isReturn = self.trainFilterKey.contains("|\(item.TrainCode!)|")
+            }
+            if (item.isTicketInvalid()) && (!GeneralPreferenceManager.sharedInstance.isShowInvalidTicket) {
+                isReturn = false
+            }
+            if (!item.hasTicket)&&(!GeneralPreferenceManager.sharedInstance.isShowNoTrainTicket){
+                isReturn = false
+            }
+            
+            return isReturn
+        })
+        
+        if let ticketOrderX = self.ticketOrder, let ticketAscendingX = self.ticketAscending {
+            self.filterQueryResult = self.ticketOrderedBy(self.filterQueryResult, orderedBy: ticketOrderX, ascending: ticketAscendingX)
+        }
+        
+        self.leftTicketTable.reloadData()
     }
     
     func setSelectedPassenger(){
@@ -546,10 +552,16 @@ class TicketQueryViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvAddDefaultPassengerNotification(_:)), name: NSNotification.Name.App.DidAddDefaultPassenger, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvStartQueryTicketNotification(_:)), name: NSNotification.Name.App.DidStartQueryTicket, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvRefilterQueryTicketNotification(_:)), name: NSNotification.Name.App.DidRefilterQueryTicket, object: nil)
     }
     
     func recvStartQueryTicketNotification(_ notification:Notification) {
         self.clickQueryTicketBtn(nil)
+    }
+    
+    func recvRefilterQueryTicketNotification(_ notification:Notification) {
+        self.filterTrainByAllAspect()
     }
     
     func recvCheckPassengerNotification(_ notification: Notification) {

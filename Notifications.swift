@@ -16,6 +16,8 @@ extension Notification.Name {
         
         public static let DidStartQueryTicket = Notification.Name(rawValue: "com.12306ForMac.App.DidStartQueryTicket")
         
+        public static let DidRefilterQueryTicket = Notification.Name(rawValue: "com.12306ForMac.App.DidRefilterQueryTicket")
+        
         public static let DidSubmit = Notification.Name(rawValue: "com.12306ForMac.App.DidSubmit")
         
         public static let DidCheckPassenger = Notification.Name(rawValue: "com.12306ForMac.App.DidCheckPassenger")

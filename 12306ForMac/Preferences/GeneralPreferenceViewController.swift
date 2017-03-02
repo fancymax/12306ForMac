@@ -57,6 +57,9 @@ class GeneralPreferenceViewController: NSViewController, MASPreferencesViewContr
                 isShowInvalidTicket = false
                 didChangeValue(forKey: "isShowInvalidTicket")
             }
+            else {
+                NotificationCenter.default.post(name: Notification.Name.App.DidRefilterQueryTicket, object:nil)
+            }
         }
     }
     
@@ -70,6 +73,9 @@ class GeneralPreferenceViewController: NSViewController, MASPreferencesViewContr
                 willChangeValue(forKey: "isShowNoTrainTicket")
                 isShowNoTrainTicket = true
                 didChangeValue(forKey: "isShowNoTrainTicket")
+            }
+            else {
+                NotificationCenter.default.post(name: Notification.Name.App.DidRefilterQueryTicket, object:nil)
             }
         }
     }
