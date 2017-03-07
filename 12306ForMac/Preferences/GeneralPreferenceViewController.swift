@@ -47,6 +47,7 @@ class GeneralPreferenceViewController: NSViewController, MASPreferencesViewContr
     }
     
     @IBOutlet weak var filterTimeSpanTable: NSTableView!
+    @IBOutlet weak var timeSpanComboBox: NSComboBox!
     
     var autoQuerySeconds: Int {
         get{
@@ -141,16 +142,37 @@ class GeneralPreferenceViewController: NSViewController, MASPreferencesViewContr
     var filterTimeSpans:[FilterTimeSpan] = [FilterTimeSpan]()
     private func initFilterTimeSpans() {
         let timeSpanStrArr = GeneralPreferenceManager.sharedInstance.userDefindFilterTimeSpan
+        filterTimeSpans = [FilterTimeSpan]()
         for timespan in timeSpanStrArr {
             let filterTime = FilterTimeSpan()
             filterTime.start = timespan.components(separatedBy: "~")[0]
             filterTime.end = timespan.components(separatedBy: "~")[1]
             filterTimeSpans.append(filterTime)
         }
+        timeSpanComboBox.selectItem(at: filterTimeSpans.count - 3)
+        filterTimeSpanTable.reloadData()
+    }
+    
+    @IBAction func clickTimSpanComboBox(_ sender: NSComboBox) {
+        print(sender.indexOfSelectedItem)
+        if sender.indexOfSelectedItem == 0 {
+           GeneralPreferenceManager.sharedInstance.userDefindFilterTimeSpan = ["00:00~09:00","09:00~17:00","17:00~24:00"]
+        }
+        else if sender.indexOfSelectedItem == 1 {
+           GeneralPreferenceManager.sharedInstance.userDefindFilterTimeSpan = ["00:00~06:00","06:00~12:00","12:00~18:00","18:00~24:00"]
+        }
+        else {
+           GeneralPreferenceManager.sharedInstance.userDefindFilterTimeSpan = ["00:00~06:00","06:00~09:00","09:00~17:00","17:00~19:00","19:00~24:00"]
+        }
+        initFilterTimeSpans()
     }
     
     override func viewDidDisappear() {
-        print(filterTimeSpans)
+        var newTimeSpanStrList = [String]()
+        for time in filterTimeSpans {
+            newTimeSpanStrList.append("\(time.start)~\(time.end)")
+        }
+        GeneralPreferenceManager.sharedInstance.userDefindFilterTimeSpan = newTimeSpanStrList
     }
 }
 

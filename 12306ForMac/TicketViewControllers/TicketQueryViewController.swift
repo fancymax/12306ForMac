@@ -495,12 +495,12 @@ class TicketQueryViewController: BaseViewController {
         trainFilterWindowController.toStationName = self.toStationNameTxt.stringValue
         trainFilterWindowController.trainDate = self.date!
         
-        
         if let window = self.view.window {
             window.beginSheet(trainFilterWindowController.window!, completionHandler: {response in
                 if response == NSModalResponseOK{
                     self.trainFilterKey = self.trainFilterWindowController.trainFilterKey
                     self.seatFilterKey = self.trainFilterWindowController.seatFilterKey
+                    
                     logger.info("trainFilterKey:\(self.trainFilterKey)")
                     logger.info("seatFilterKey:\(self.seatFilterKey)")
                     
@@ -652,7 +652,6 @@ class TicketQueryViewController: BaseViewController {
             self.toStationNameTxt.stringValue != QueryDefaultManager.sharedInstance.lastToStation {
             trainFilterKey = ""
         }
-        
         
         QueryDefaultManager.sharedInstance.lastFromStation = self.fromStationNameTxt.stringValue
         QueryDefaultManager.sharedInstance.lastToStation = self.toStationNameTxt.stringValue

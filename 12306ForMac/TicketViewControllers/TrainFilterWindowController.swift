@@ -80,17 +80,28 @@ class FilterItem: NSObject {
     }
 }
 
-
 class TrainFilterWindowController: BaseWindowController {
     
-    var trains:[QueryLeftNewDTO]?
-    var filterItems = [FilterItem]()
+    var trains:[QueryLeftNewDTO]! {
+        didSet(oldValue) {
+            if oldValue == nil {
+                return
+            }
+            if oldValue.count != trains.count {
+                filterItems = [FilterItem]()
+                createFilterItemBy(trains!)
+                trainFilterTable.reloadData()
+            }
+        }
+    }
+    
     var fromStationName = ""
     var toStationName = ""
     var trainDate = ""
     
-    var trainFilterKey = ""
-    var seatFilterKey = ""
+    private(set) var trainFilterKey = ""
+    private(set) var seatFilterKey = ""
+    fileprivate var filterItems = [FilterItem]()
     
     @IBOutlet weak var trainFilterTable: NSTableView!
     
@@ -111,10 +122,9 @@ class TrainFilterWindowController: BaseWindowController {
         filterItems.append(FilterItem(type: .SeatType,key:"1|O",presentation: "无座",isChecked: false))
         
         filterItems.append(FilterItem(type: .Group,presentation: "出发时段"))
-        filterItems.append(FilterItem(type: .StartTime,key:"00:00~06:00",presentation: "00:00~06:00",isChecked: true))
-        filterItems.append(FilterItem(type: .StartTime,key:"06:00~12:00",presentation: "06:00~12:00",isChecked: true))
-        filterItems.append(FilterItem(type: .StartTime,key:"12:00~18:00",presentation: "12:00~18:00",isChecked: true))
-        filterItems.append(FilterItem(type: .StartTime,key:"18:00~24:00",presentation: "18:00~24:00",isChecked: true))
+        for filterTime in GeneralPreferenceManager.sharedInstance.userDefindFilterTimeSpan {
+            filterItems.append(FilterItem(type: .StartTime,key:filterTime,presentation: filterTime,isChecked: true))
+        }
         
         filterItems.append(FilterItem(type: .Group,presentation: "车次类型"))
         var hasTrainG = false

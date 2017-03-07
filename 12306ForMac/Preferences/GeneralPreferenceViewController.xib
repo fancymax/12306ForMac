@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="GeneralPreferenceViewController" customModule="订票助手" customModuleProvider="target">
             <connections>
                 <outlet property="filterTimeSpanTable" destination="fnQ-Hm-SEW" id="V0Q-bS-AfA"/>
+                <outlet property="timeSpanComboBox" destination="sZe-B2-HnG" id="hON-YK-Dbq"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -181,7 +182,7 @@
                 <comboBox verticalHuggingPriority="750" misplaced="YES" id="sZe-B2-HnG">
                     <rect key="frame" x="175" y="169" width="52" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="3" drawsBackground="YES" completes="NO" numberOfVisibleItems="3" id="TUC-fb-ieT">
+                    <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="3" drawsBackground="YES" completes="NO" numberOfVisibleItems="3" id="TUC-fb-ieT">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -191,6 +192,9 @@
                             <string>5</string>
                         </objectValues>
                     </comboBoxCell>
+                    <connections>
+                        <action selector="clickTimSpanComboBox:" target="-2" id="prH-bF-cgJ"/>
+                    </connections>
                 </comboBox>
                 <scrollView misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="GGp-9i-5qi">
                     <rect key="frame" x="146" y="30" width="216" height="135"/>
@@ -226,7 +230,7 @@
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="OVM-oi-gmk">
                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="AZQ-pE-wcw">
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="AZQ-pE-wcw">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -262,7 +266,7 @@
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="aXZ-3P-EOp">
                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="Gox-hn-zg5">
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Gox-hn-zg5">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -300,14 +304,28 @@
                     </tableHeaderView>
                 </scrollView>
                 <textField verticalHuggingPriority="750" misplaced="YES" id="9Un-M3-qcf">
-                    <rect key="frame" x="32" y="174" width="101" height="17"/>
+                    <rect key="frame" x="66" y="173" width="61" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="自定义出发时段:" id="clm-2z-njr">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="出发时段:" id="clm-2z-njr">
                         <font key="font" size="13" name=".PingFangSC-Regular"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <customView misplaced="YES" id="XHh-t6-k0E" customClass="InfoButton" customModule="订票助手" customModuleProvider="target">
+                    <rect key="frame" x="277" y="171" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="content">
+                            <string key="value">1.应用于筛选车票界面中的出发时段。
+2.目前无法编辑时间。</string>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="showOnHover" value="YES"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="primaryColor">
+                            <color key="value" red="0.88627451660000001" green="0.40392157439999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customView>
             </subviews>
             <point key="canvasLocation" x="-43" y="324.5"/>
         </customView>
