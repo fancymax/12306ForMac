@@ -49,10 +49,6 @@ class LoginWindowController: BaseWindowController{
         }
     }
     
-    func handlerAfterFailure(){
-        self.loadImage()
-    }
-   
     private func handlerAfterSuccess(){
         QueryDefaultManager.sharedInstance.lastUserName = userName.stringValue
         QueryDefaultManager.sharedInstance.lastUserPassword = passWord.stringValue
@@ -75,7 +71,7 @@ class LoginWindowController: BaseWindowController{
         self.dismissWithModalResponse(NSModalResponseOK)
     }
     
-    private func loadImage(){
+    func loadImage(){
         self.loginImage.clearRandCodes()
         self.startLoadingTip("正在加载...")
         self.nextImageBtn.isEnabled = false
@@ -150,7 +146,15 @@ class LoginWindowController: BaseWindowController{
             self.isLogin = false
             self.stopLoadingTip()
             self.showTip(translate(error))
-            Timer.scheduledTimer(timeInterval: 1, target: self, selector:#selector(LoginWindowController.handlerAfterFailure), userInfo: nil, repeats: false)
+            
+            if ServiceError.isCheckRandCodeError(error) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + Double(2)) {
+                    self.loadImage()
+                }
+            }
+            else {
+                //刷新太快，请稍后重试
+            }
         }
         
         let successHandler = {
