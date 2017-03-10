@@ -202,9 +202,9 @@ class SubmitWindowController: BaseWindowController{
             else {
                 //if isAuto and not CheckRandCodeError, then close window and retry
                 if isAuto {
-                    self.showTip(translate(error) + " 请等待1秒App会自动重新提交")
+                    self.showTip(translate(error) + " 请等待2秒App会自动重新提交")
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(1)) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(2)) {
                         self.dismissWithModalResponse(NSModalResponseCancel)
                         NotificationCenter.default.post(name: Notification.Name.App.DidStartQueryTicket, object:nil)
                     }

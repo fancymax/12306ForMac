@@ -71,6 +71,9 @@
 		F170C0D71E07CAAD0047C547 /* DJTipHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F170C0D41E07CAAD0047C547 /* DJTipHUD.m */; };
 		F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F17AB1CB1C95630E00FEB221 /* Credits.rtf */; };
 		F1AF72B81DAA24FB0047486B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF72B71DAA24FB0047486B /* DataManager.swift */; };
+		F1BCB97A1E72EC7E00D1C7FA /* Reminder.png in Resources */ = {isa = PBXBuildFile; fileRef = F1BCB9791E72EC7E00D1C7FA /* Reminder.png */; };
+		F1BCB97D1E72ECC600D1C7FA /* ReminderPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BCB97B1E72ECC600D1C7FA /* ReminderPreferenceViewController.swift */; };
+		F1BCB97E1E72ECC600D1C7FA /* ReminderPreferenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1BCB97C1E72ECC600D1C7FA /* ReminderPreferenceViewController.xib */; };
 		F1C075211D83F97A006EFABB /* TicketConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C075201D83F97A006EFABB /* TicketConstants.swift */; };
 		F1C075231D855EE5006EFABB /* Direction.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C075221D855EE5006EFABB /* Direction.png */; };
 		F1C8BC4D1DEEA548005A922B /* PaycheckNewParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C8BC4C1DEEA548005A922B /* PaycheckNewParam.swift */; };
@@ -193,6 +196,9 @@
 		F170C0D41E07CAAD0047C547 /* DJTipHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJTipHUD.m; sourceTree = "<group>"; };
 		F17AB1CB1C95630E00FEB221 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = 12306ForMac/Resources/Credits.rtf; sourceTree = SOURCE_ROOT; };
 		F1AF72B71DAA24FB0047486B /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		F1BCB9791E72EC7E00D1C7FA /* Reminder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Reminder.png; path = 12306ForMac/images/Reminder.png; sourceTree = SOURCE_ROOT; };
+		F1BCB97B1E72ECC600D1C7FA /* ReminderPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderPreferenceViewController.swift; sourceTree = "<group>"; };
+		F1BCB97C1E72ECC600D1C7FA /* ReminderPreferenceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReminderPreferenceViewController.xib; sourceTree = "<group>"; };
 		F1C075201D83F97A006EFABB /* TicketConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketConstants.swift; sourceTree = "<group>"; };
 		F1C075221D855EE5006EFABB /* Direction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Direction.png; path = 12306ForMac/images/Direction.png; sourceTree = SOURCE_ROOT; };
 		F1C8BC4C1DEEA548005A922B /* PaycheckNewParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaycheckNewParam.swift; sourceTree = "<group>"; };
@@ -454,6 +460,7 @@
 		F1A8CCB01BA8032500B4FB03 /* Asserts */ = {
 			isa = PBXGroup;
 			children = (
+				F1BCB9791E72EC7E00D1C7FA /* Reminder.png */,
 				F1D58E9C1D8A549200CD3DA7 /* Reverse.png */,
 				F1C075221D855EE5006EFABB /* Direction.png */,
 				F127466F1D502E8100975DFA /* Filter.png */,
@@ -513,6 +520,8 @@
 				F1F2F2C21D59BEE800EA7786 /* AdvancedPreferenceViewController.swift */,
 				F1F2F2C31D59BEE800EA7786 /* AdvancedPreferenceViewController.xib */,
 				F1F2F2D31D5B0C0C00EA7786 /* AdvancedPreferenceManager.swift */,
+				F1BCB97B1E72ECC600D1C7FA /* ReminderPreferenceViewController.swift */,
+				F1BCB97C1E72ECC600D1C7FA /* ReminderPreferenceViewController.xib */,
 			);
 			name = Preferences;
 			path = 12306ForMac/Preferences;
@@ -592,6 +601,7 @@
 				F11154C21C8D92D000FA6059 /* PassengerSelectViewController.xib in Resources */,
 				F11154B11C8D92C100FA6059 /* OrderViewController.xib in Resources */,
 				F10F47A91D409ED3004668BB /* station_name.js in Resources */,
+				F1BCB97A1E72EC7E00D1C7FA /* Reminder.png in Resources */,
 				F11154D31C8D936300FA6059 /* MainMenu.xib in Resources */,
 				F1C8BC591DEECACB005A922B /* PayWindowController.xib in Resources */,
 				F11154651C8D91F800FA6059 /* srca.cer in Resources */,
@@ -602,6 +612,7 @@
 				F1D575771C95541D00A214B0 /* TicketQueryViewController.xib in Resources */,
 				F11E29291D2AA2B6004BE59D /* User.png in Resources */,
 				F12746761D50784100975DFA /* TrainFilterWindowController.xib in Resources */,
+				F1BCB97E1E72ECC600D1C7FA /* ReminderPreferenceViewController.xib in Resources */,
 				F1F2F2C11D59AFB100EA7786 /* GeneralPreferenceViewController.xib in Resources */,
 				F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */,
 				F1D58E9D1D8A549200CD3DA7 /* Reverse.png in Resources */,
@@ -692,6 +703,7 @@
 				F1F926881E0110BA00FE4229 /* GetQueueCountParam.swift in Sources */,
 				F1F9268E1E0116C500FE4229 /* ConfirmSingleForQueueAsysParam.swift in Sources */,
 				F1C075211D83F97A006EFABB /* TicketConstants.swift in Sources */,
+				F1BCB97D1E72ECC600D1C7FA /* ReminderPreferenceViewController.swift in Sources */,
 				F11154981C8D927C00FA6059 /* StationData.swift in Sources */,
 				F14D6BE41D86E91C00CBD36C /* FilterTrainCodeTransformer.swift in Sources */,
 				F111547F1C8D923C00FA6059 /* SwiftyJSON.swift in Sources */,

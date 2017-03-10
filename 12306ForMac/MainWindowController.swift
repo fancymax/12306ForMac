@@ -24,7 +24,8 @@ class MainWindowController: NSWindowController{
     lazy var preferencesWindowController:MASPreferencesWindowController = {
         let generalViewController = GeneralPreferenceViewController()
         let advanceViewController = AdvancedPreferenceViewController()
-        let controllers = [generalViewController,advanceViewController]
+        let reminderViewController = ReminderPreferenceViewController()
+        let controllers = [generalViewController,reminderViewController,advanceViewController]
         
         return MASPreferencesWindowController(viewControllers:controllers,title: nil)
     }()
