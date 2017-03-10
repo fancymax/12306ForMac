@@ -282,7 +282,6 @@ class TicketQueryViewController: BaseViewController {
                     let seatTypeId = ticket.getSeatTypeNameByFilterKey(self.seatFilterKey)!
                     self.summitTicket(ticket, seatTypeId: seatTypeId,isAuto: true)
                     if !NSApp.isActive {
-                        NotifySpeaker.sharedInstance.notify()
                         
                         let informativeText = "\(self.date!) \(self.fromStationNameTxt.stringValue)->\(self.toStationNameTxt.stringValue) \(ticket.TrainCode!) \(seatTypeId)"
                         self.pushUserNotification("有票提醒",informativeText: informativeText)
