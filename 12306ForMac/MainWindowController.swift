@@ -95,24 +95,24 @@ class MainWindowController: NSWindowController{
     func recvDamaSuccessNotification(_ note: Notification){
         if let isSuccess = note.object as? Bool {
             if isSuccess {
-                damaBtn.title = "打码兔🔵"
+                damaBtn.title = "打码兔☑︎"
             }
             else {
-                damaBtn.title = "打码兔🔴"
+                damaBtn.title = "打码兔☒"
             }
         }
         else {
-            damaBtn.title = "打码兔🔵"
+            damaBtn.title = "打码兔︎☑"
             
         }
     }
     
     func setupDamaBtn() {
         if AdvancedPreferenceManager.sharedInstance.isUseDama {
-            damaBtn.title = "打码兔🔵"
+            damaBtn.title = "打码兔☑︎"
         }
         else {
-            damaBtn.title = "打码兔🔴"
+            damaBtn.title = "打码兔☒"
         }
     }
     

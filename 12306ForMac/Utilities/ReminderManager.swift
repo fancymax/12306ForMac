@@ -24,18 +24,22 @@ class ReminderManager: NSObject {
         eventStore = EKEventStore()
     }
     
-    func updateAuthorizationStatus()  {
+    @discardableResult
+    func updateAuthorizationStatus()->Bool  {
         switch EKEventStore.authorizationStatus(for: .reminder) {
         case .authorized:
             self.isAccessToEventStoreGranted = true
+            return true
         case .notDetermined:
             self.eventStore.requestAccess(to: .reminder, completion: {[unowned self] granted,error in
                 DispatchQueue.main.async {
                     self.isAccessToEventStoreGranted = granted
                 }
                 })
+            return false
         case .restricted, .denied:
             isAccessToEventStoreGranted = false
+            return false
         }
     }
     

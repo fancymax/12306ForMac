@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
@@ -93,7 +93,7 @@
                     </connections>
                 </button>
                 <customView misplaced="YES" id="wOC-A9-S2e" customClass="InfoButton" customModule="订票助手" customModuleProvider="target">
-                    <rect key="frame" x="128" y="145" width="20" height="20"/>
+                    <rect key="frame" x="126" y="143" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="content">
@@ -103,7 +103,7 @@
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="showOnHover" value="YES"/>
                         <userDefinedRuntimeAttribute type="color" keyPath="primaryColor">
-                            <color key="value" red="0.88627451660000001" green="0.40392157439999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="value" red="0.088474042710000006" green="0.449332118" blue="0.35552954669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </customView>

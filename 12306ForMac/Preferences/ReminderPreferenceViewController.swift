@@ -10,9 +10,29 @@ import Cocoa
 import MASPreferences
 
 class ReminderPreferenceViewController: NSViewController,MASPreferencesViewController {
+    @IBOutlet weak var remindAccessLabel: NSTextField!
+    @IBOutlet weak var remindAccessInfoButton: InfoButton!
+    
+    var hasAccessGrantedReminder = false {
+        didSet {
+            if hasAccessGrantedReminder {
+                remindAccessLabel.stringValue = "提醒权限☑"
+                remindAccessInfoButton.isHidden = true
+            }
+            else {
+                remindAccessLabel.stringValue = "提醒权限☒"
+                remindAccessInfoButton.isHidden = false
+            }
+        }
+    }
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+        if ReminderManager.sharedInstance.updateAuthorizationStatus() {
+            hasAccessGrantedReminder = true
+        }
+        else {
+            hasAccessGrantedReminder = false
+        }
     }
     
     override var nibName: String? {
