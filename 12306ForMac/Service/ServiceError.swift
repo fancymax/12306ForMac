@@ -43,6 +43,8 @@ struct ServiceError {
         case getPassengerFailed     = -7013
         case loginUserFailed   = -7014
         case autoSumbitOrderFailed   = -7015
+        case queryOrderWaitTimeFailed   = -7016
+        case getQueueCountFailed   = -7017
     }
     
     static let errorDic = [
@@ -55,6 +57,8 @@ struct ServiceError {
         Code.submitOrderFailed: "提交订单失败",
         Code.checkOrderInfoFailed: "订单信息错误",
         Code.confirmSingleForQueueFailed: "锁定订单失败",
+        Code.getQueueCountFailed: "获取排队信息失败",
+        Code.queryOrderWaitTimeFailed: "查询订单剩余时间失败",
         Code.cancelOrderFailed: "取消订单失败",
         Code.zeroOrderFailed:"您没有历史订单",
         Code.queryTicketNoFailed:"查询车次详细信息失败",

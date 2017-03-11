@@ -67,8 +67,8 @@ extension Service{
     }
     
     func orderFlowWithRandCode(_ randCodeStr:String,success:@escaping ()->Void,failure:@escaping (NSError)->Void,wait:@escaping (String)->Void){
-        self.checkRandCodeForOrder(randCodeStr).then{_ -> Promise<Bool> in
-            return self.checkOrderInfo(randCodeStr)
+        self.checkOrderInfo(randCodeStr).then{_ -> Promise<Void> in
+            return self.checkRandCodeForOrder(randCodeStr)
         }.then{_ -> Promise<Void> in
             return self.getQueueCount(wait)
         }.then{_ -> Promise<Void> in
@@ -487,7 +487,7 @@ extension Service{
                     }
                     let warningStr = ticketQueueCount.getWarningInfoBy(MainModel.selectPassengers[0].seatCodeName)
                     if ticketQueueCount.isTicketSoldOut() {
-                        reject(ServiceError.errorWithCode(.confirmSingleForQueueFailed, failureReason: warningStr))
+                        reject(ServiceError.errorWithCode(.getQueueCountFailed, failureReason: warningStr))
                     }
                     else {
                         if warningStr != "" {
@@ -585,17 +585,18 @@ extension Service{
                             }
                             else {
                                 if let msg = waitTimeResult.msg {
-                                    let error = ServiceError.errorWithCode(.confirmSingleForQueueFailed,failureReason: msg)
+                                    let error = ServiceError.errorWithCode(.queryOrderWaitTimeFailed,failureReason: msg)
                                     failMethod(error)
                                 }
                                 else {
-                                    let error = ServiceError.errorWithCode(.confirmSingleForQueueFailed)
+                                    let error = ServiceError.errorWithCode(.queryOrderWaitTimeFailed)
                                     failMethod(error)
                                 }
+                                logger.error(JSON(data))
                             }
                         }
                         else {
-                            let error = ServiceError.errorWithCode(.confirmSingleForQueueFailed)
+                            let error = ServiceError.errorWithCode(.queryOrderWaitTimeFailed)
                             failMethod(error)
                         }
                     }
