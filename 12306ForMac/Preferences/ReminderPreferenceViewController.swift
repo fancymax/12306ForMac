@@ -49,6 +49,7 @@ class ReminderPreferenceViewController: NSViewController,MASPreferencesViewContr
         //key,name,isLunar
         ["01-01","元旦节",false],
         ["02-14","情人节",false],
+        ["04-04","清明节",false],
         ["05-01","劳动节",false],
         ["05-05","端午节",true],
         ["07-07","七夕节",true],
@@ -170,7 +171,7 @@ class ReminderPreferenceViewController: NSViewController,MASPreferencesViewContr
                 else {
                     date = DateComponents(calendar: lunarCal,year:lunarYear + 1, month: m, day: d).date!
                 }
-                reminderDate = date.addingTimeInterval(-3600*24*30)
+                reminderDate = date.addingTimeInterval(-3600*24*33)
             }
             
             ret.append(Festival2Reminder(name:name,date:date,reminderDate:reminderDate,shouldReminder:true))
@@ -187,7 +188,7 @@ class ReminderPreferenceViewController: NSViewController,MASPreferencesViewContr
         
         var isSuccess:Bool?
         for item in festivalReminderInfos where item.shouldReminder {
-            let eventTitle = "\(item.name) 火车票 预售提醒(明天预售)"
+            let eventTitle = "\(item.name) 火车票 预售提醒"
             let startDate = item.reminderDate
             let endDate = startDate.addingTimeInterval(24*3600)
             isSuccess = CalendarManager.sharedInstance.createEvent(title:eventTitle,startDate:startDate,endDate:endDate)
