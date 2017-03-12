@@ -14,8 +14,7 @@ class LunarCalendarView:NSViewController{
      static func toUTCDateComponent(_ d:Date) -> DateComponents {
         var cal  = Calendar.current
         cal.timeZone = TimeZone(abbreviation: "UTC")!
-        let dateFlag = NSCalendar.Unit.day.rawValue | NSCalendar.Unit.month.rawValue | NSCalendar.Unit.year.rawValue | NSCalendar.Unit.weekday.rawValue
-        return (cal as NSCalendar).components(NSCalendar.Unit(rawValue: dateFlag), from: d)
+        return Calendar.current.dateComponents([.day,.month,.year,.weekday], from: d)
     }
     
     static func isSameDate(_ d1:Date,d2:Date)->Bool{
@@ -50,7 +49,7 @@ class LunarCalendarView:NSViewController{
         return false
     }
     
-    fileprivate static let AvailableDays = 60.0
+    fileprivate static let AvailableDays = 30.0
     
     static func getMostAvailableDay() -> Date {
         return Date(timeIntervalSinceNow: (AvailableDays - 1) * 24 * 3600)
@@ -249,8 +248,7 @@ class LunarCalendarView:NSViewController{
     
     private func toUTC(_ d:Date)->Date{
         var cal = Calendar.current
-        let unitFlag = NSCalendar.Unit.day.rawValue | NSCalendar.Unit.month.rawValue | NSCalendar.Unit.year.rawValue
-        let component = (cal as NSCalendar).components(NSCalendar.Unit(rawValue: unitFlag), from: d)
+        let component = cal.dateComponents([.year,.month,.day], from: d)
         cal.timeZone = TimeZone(abbreviation: "UTC")!
         return cal.date(from: component)!
     }
@@ -258,8 +256,7 @@ class LunarCalendarView:NSViewController{
     private func monthDay(_ day: Int)->Date?{
         var cal = Calendar.current
         cal.timeZone = TimeZone(abbreviation: "UTC")!
-        let unitFlag = NSCalendar.Unit.day.rawValue | NSCalendar.Unit.month.rawValue | NSCalendar.Unit.year.rawValue
-        let components = (cal as NSCalendar).components(NSCalendar.Unit(rawValue: unitFlag), from: currentMonth)
+        let components = cal.dateComponents([.year,.month,.day], from: currentMonth)
         var comps = DateComponents()
         comps.day = day
         comps.year = components.year
@@ -288,8 +285,7 @@ class LunarCalendarView:NSViewController{
     private func stepMonth(_ dm:Int){
         var cal = Calendar.current
         cal.timeZone = TimeZone(abbreviation: "UTC")!
-        let unitFlag = NSCalendar.Unit.day.rawValue | NSCalendar.Unit.month.rawValue | NSCalendar.Unit.year.rawValue
-        var components = (cal as NSCalendar).components(NSCalendar.Unit(rawValue: unitFlag), from: currentMonth)
+        var components = cal.dateComponents([.year,.month,.day], from: currentMonth)
         var month = components.month! + dm
         var year = components.year!
         if month > 12 {

@@ -56,11 +56,13 @@ class CalendarManager:NSObject {
         }
     }
     
-    func updateAuthorizationStatus()  {
+    @discardableResult
+    func updateAuthorizationStatus() -> Bool  {
         switch EKEventStore.authorizationStatus(for: .event) {
         case .authorized:
             self.isAccessToEventStoreGranted = true
             self.createCalendar()
+            return true
         case .notDetermined:
             self.eventStore.requestAccess(to: .event, completion: {[unowned self] granted,error in
                 DispatchQueue.main.async {
@@ -68,8 +70,10 @@ class CalendarManager:NSObject {
                     self.createCalendar()
                 }
                 })
+            return false
         case .restricted, .denied:
             isAccessToEventStoreGranted = false
+            return false
         }
     }
     

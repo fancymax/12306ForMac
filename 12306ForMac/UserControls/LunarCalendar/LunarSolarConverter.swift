@@ -42,18 +42,12 @@ class LunarSolarConverter {
     "d0100":"除夕" //除夕暂不支持显示
     ]
     
-    static private func formatDay(date:Date) -> String {
-        return ""
-    }
-    
     static private func formatDay(month:Int,day:Int) -> String {
         return String(format: "d%02d%02d", month,day)
     }
     
     static func Conventer2lunarStr(_ solar: Date) -> String{
-        let solarCal  = Calendar.current
-        let solarUnitFlag = NSCalendar.Unit.day.rawValue | NSCalendar.Unit.month.rawValue
-        let solarComponents = (solarCal as NSCalendar).components(NSCalendar.Unit(rawValue: solarUnitFlag), from: solar)
+        let solarComponents = Calendar.current.dateComponents([.day,.month], from: solar)
         let solarFestivalKey = formatDay(month: solarComponents.month!, day: solarComponents.day!)
         for key in solarFestival.keys {
             if key == solarFestivalKey {
@@ -62,8 +56,7 @@ class LunarSolarConverter {
         }
         
         let lunarCal = Calendar(identifier: Calendar.Identifier.chinese)
-        let lunarUnitFlag = NSCalendar.Unit.day.rawValue | NSCalendar.Unit.month.rawValue
-        let lunarComponents = (lunarCal as NSCalendar).components(NSCalendar.Unit(rawValue: lunarUnitFlag), from: solar)
+        let lunarComponents = lunarCal.dateComponents([.day,.month], from: solar)
         let lunarFestivalKey = formatDay(month: lunarComponents.month!, day: lunarComponents.day!)
         for key in lunarFestival.keys {
             if key == lunarFestivalKey {
