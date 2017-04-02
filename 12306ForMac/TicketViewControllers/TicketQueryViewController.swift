@@ -279,31 +279,36 @@ class TicketQueryViewController: BaseViewController {
             self.addAutoQueryNumStatus()
             
             for ticket in self.filterQueryResult {
-                if ticket.hasTicketForSeatTypeFilterKey(self.seatFilterKey) {
-                    self.stopAutoQuery()
-                    
-                    let seatTypeId = ticket.getSeatTypeNameByFilterKey(self.seatFilterKey)!
-                    self.summitTicket(ticket, seatTypeId: seatTypeId,isAuto: true)
-                    
-                    let trainCode = ticket.TrainCode!
-                    let submitTime = Date()
-                    
-                    if (!NSApp.isActive) &&
-                        (trainCode != self.lastAutoSubmitTrainCode) &&
-                        (submitTime.timeIntervalSince1970 - self.lastAutoSubmitTime.timeIntervalSince1970) > 2 * 60  {
-                        
-                        self.lastAutoSubmitTime = submitTime
-                        self.lastAutoSubmitTrainCode = trainCode
-                        
-                        let informativeText = "\(self.date!) \(self.fromStationNameTxt.stringValue)->\(self.toStationNameTxt.stringValue) \(ticket.TrainCode!) \(seatTypeId)"
-                        self.pushUserNotification("有票提醒",informativeText: informativeText)
-                        
-                        let reminderStr = informativeText + " 有票提醒"
-                        ReminderManager.sharedInstance.createReminder(reminderStr, startDate: Date())
-                    }
-                    
-                    break;
+                if !ticket.hasTicketForSeatTypeFilterKey(self.seatFilterKey) {
+                    continue
                 }
+                
+                self.stopAutoQuery()
+                
+                let seatTypeId = ticket.getSeatTypeNameByFilterKey(self.seatFilterKey)!
+                self.summitTicket(ticket, seatTypeId: seatTypeId,isAuto: true)
+                
+                var shouldReminder = true
+                if NSApp.isActive {
+                    shouldReminder = false
+                }
+                if (ticket.TrainCode! == self.lastAutoSubmitTrainCode) &&
+                    (Date().timeIntervalSince1970 - self.lastAutoSubmitTime.timeIntervalSince1970) < 2 * 60 {
+                    shouldReminder = false
+                }
+                
+                if shouldReminder  {
+                    self.lastAutoSubmitTime = Date()
+                    self.lastAutoSubmitTrainCode = ticket.TrainCode!
+                    
+                    let informativeText = "\(self.date!) \(self.fromStationNameTxt.stringValue)->\(self.toStationNameTxt.stringValue) \(ticket.TrainCode!) \(seatTypeId)"
+                    self.pushUserNotification("有票提醒",informativeText: informativeText)
+                    
+                    let reminderStr = informativeText + " 有票提醒"
+                    ReminderManager.sharedInstance.createReminder(reminderStr, startDate: Date())
+                }
+                
+                break;
             }
         }
         queryTicket(summitHandler)
