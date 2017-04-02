@@ -215,9 +215,9 @@ class SubmitWindowController: BaseWindowController{
             else {
                 //if isAuto and not CheckRandCodeError, then close window and retry
                 if isAuto {
-                    self.showTip(translate(error) + " 请等待2秒App会自动重新提交")
+                    self.showTip(translate(error) + " 请等待3秒App会自动重新提交")
                     
-                    self.timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(SubmitWindowController.closeAndReSubmit), userInfo: nil, repeats: false)
+                    self.timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(SubmitWindowController.closeAndReSubmit), userInfo: nil, repeats: false)
                 }
                 else {
                     self.showTip(translate(error) + " 可尝试重新查询车票并提交！")

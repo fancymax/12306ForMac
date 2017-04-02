@@ -271,6 +271,9 @@ class TicketQueryViewController: BaseViewController {
         return sortedTickets
     }
     
+    var lastAutoSubmitTrainCode = ""
+    var lastAutoSubmitTime = Date(timeIntervalSince1970: 0)
+    
     func queryTicketAndSubmit() {
         let summitHandler = {
             self.addAutoQueryNumStatus()
@@ -281,7 +284,16 @@ class TicketQueryViewController: BaseViewController {
                     
                     let seatTypeId = ticket.getSeatTypeNameByFilterKey(self.seatFilterKey)!
                     self.summitTicket(ticket, seatTypeId: seatTypeId,isAuto: true)
-                    if !NSApp.isActive {
+                    
+                    let trainCode = ticket.TrainCode!
+                    let submitTime = Date()
+                    
+                    if (!NSApp.isActive) &&
+                        (trainCode != self.lastAutoSubmitTrainCode) &&
+                        (submitTime.timeIntervalSince1970 - self.lastAutoSubmitTime.timeIntervalSince1970) > 2 * 60  {
+                        
+                        self.lastAutoSubmitTime = submitTime
+                        self.lastAutoSubmitTrainCode = trainCode
                         
                         let informativeText = "\(self.date!) \(self.fromStationNameTxt.stringValue)->\(self.toStationNameTxt.stringValue) \(ticket.TrainCode!) \(seatTypeId)"
                         self.pushUserNotification("有票提醒",informativeText: informativeText)
@@ -798,7 +810,7 @@ extension TicketQueryViewController: AutoCompleteTableViewDelegate{
     }
 }
 
-// MARK: - LunarCalendarView
+// MARK: - NSPopoverDelegate
 extension TicketQueryViewController:NSPopoverDelegate {
     
     @IBAction func showCalendar(_ sender: AnyObject){
