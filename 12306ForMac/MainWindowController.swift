@@ -25,7 +25,8 @@ class MainWindowController: NSWindowController{
         let generalViewController = GeneralPreferenceViewController()
         let advanceViewController = AdvancedPreferenceViewController()
         let reminderViewController = ReminderPreferenceViewController()
-        let controllers = [generalViewController,reminderViewController,advanceViewController]
+        let filterViewController = FilterPreferenceViewController()
+        let controllers = [generalViewController,filterViewController,reminderViewController,advanceViewController]
         
         return MASPreferencesWindowController(viewControllers:controllers,title: nil)
     }()

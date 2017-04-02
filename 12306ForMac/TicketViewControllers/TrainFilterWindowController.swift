@@ -9,7 +9,7 @@
 import Cocoa
 
 enum FilterItemType:Int {
-    case Group = 0, SeatType, StartTime, TrainType, Train, FromStation, ToStation
+    case Group = 0, SeatType, StartTime,EndTime, TrainType, Train, FromStation, ToStation
 }
 
 enum FilterKeyType:Int {
@@ -48,6 +48,7 @@ class FilterItem: NSObject {
         
         let trainCode = self.key.components(separatedBy: "|")[0]
         let startTime = self.key.components(separatedBy: "|")[1]
+        let arriveTime = self.key.components(separatedBy: "|")[4]
         
         if filterItem.keyType == .multi {
             let filterKeys = filterItem.key.components(separatedBy: "|")
@@ -71,9 +72,17 @@ class FilterItem: NSObject {
         }
         else if filterItem.keyType == .section {
             let filterKeys = filterItem.key.components(separatedBy: "~")
-                if ((startTime >= filterKeys[0]) && (startTime <= filterKeys[1])) {
+            if filterItem.type == .StartTime {
+                if (startTime >= filterKeys[0]) && (startTime <= filterKeys[1]) {
                     return true
                 }
+            }
+            else if filterItem.type == .EndTime {
+                if arriveTime >= filterKeys[0] && arriveTime <= filterKeys[1] {
+                    return true
+                }
+                
+            }
         }
         
         return false
@@ -122,8 +131,13 @@ class TrainFilterWindowController: BaseWindowController {
         filterItems.append(FilterItem(type: .SeatType,key:"1|O",presentation: "无座",isChecked: false))
         
         filterItems.append(FilterItem(type: .Group,presentation: "出发时段"))
-        for filterTime in GeneralPreferenceManager.sharedInstance.userDefindFilterTimeSpan {
+        for filterTime in GeneralPreferenceManager.sharedInstance.userDefindStartFilterTimeSpan {
             filterItems.append(FilterItem(type: .StartTime,key:filterTime,presentation: filterTime,isChecked: true))
+        }
+        
+        filterItems.append(FilterItem(type: .Group,presentation: "到达时段"))
+        for filterTime in GeneralPreferenceManager.sharedInstance.userDefindEndFilterTimeSpan {
+            filterItems.append(FilterItem(type: .EndTime,key:filterTime,presentation: filterTime,isChecked: true))
         }
         
         filterItems.append(FilterItem(type: .Group,presentation: "车次类型"))
@@ -205,7 +219,7 @@ class TrainFilterWindowController: BaseWindowController {
         
         filterItems.append(FilterItem(type: .Group,presentation: "指定车次"))
         for train in trains {
-            let key = "\(train.TrainCode!)|\(train.start_time!)|\(train.FromStationCode!)|\(train.ToStationCode!)"
+            let key = "\(train.TrainCode!)|\(train.start_time!)|\(train.FromStationCode!)|\(train.ToStationCode!)|\(train.arrive_time!)"
             let presentation = "\(train.TrainCode!) |1\(train.start_time!)~\(train.arrive_time!)  |2\(train.FromStationName!)->\(train.ToStationName!)"
             filterItems.append(FilterItem(type: .Train, key: key, presentation: presentation, isChecked: true))
         }

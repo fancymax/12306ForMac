@@ -20,7 +20,8 @@ class GeneralPreferenceManager {
     fileprivate let notifyStrKey = "notifyStr"
     fileprivate let notifyLoginStrKey = "notifyLoginStr"
     fileprivate let isAutoQueryAfterFilterKey = "isAutoQueryAfterFilter"
-    fileprivate let userDefindFilterTimeSpanKey = "userDefindFilterTimeSpan"
+    fileprivate let userDefindStartFilterTimeSpanKey = "userDefindStartFilterTimeSpan"
+    fileprivate let userDefindEndFilterTimeSpanKey = "userDefindEndFilterTimeSpan"
     
     fileprivate let userDefaults = UserDefaults.standard
     
@@ -39,7 +40,9 @@ class GeneralPreferenceManager {
                             isNotifyLoginKey:true,
                             notifyLoginStrKey:"要登录啦",
                             isAutoQueryAfterFilterKey:true,
-                            userDefindFilterTimeSpanKey:["00:00~06:00","06:00~12:00","12:00~18:00","18:00~24:00"]]
+                            userDefindStartFilterTimeSpanKey:["00:00~06:00","06:00~12:00","12:00~18:00","18:00~24:00"],
+                            userDefindEndFilterTimeSpanKey:["00:00~06:00","06:00~12:00","12:00~18:00","18:00~24:00"]
+                            ]
             as [String : Any]
         userDefaults.register(defaults: firstDefault)
     }
@@ -116,14 +119,22 @@ class GeneralPreferenceManager {
         }
     }
     
-    var userDefindFilterTimeSpan:[String] {
+    var userDefindStartFilterTimeSpan:[String] {
         get{
-            return userDefaults.array(forKey: userDefindFilterTimeSpanKey) as! [String]
+            return userDefaults.array(forKey: userDefindStartFilterTimeSpanKey) as! [String]
         }
         set{
-            userDefaults.set(newValue, forKey: userDefindFilterTimeSpanKey)
+            userDefaults.set(newValue, forKey: userDefindStartFilterTimeSpanKey)
         }
-        
+    }
+    
+    var userDefindEndFilterTimeSpan:[String] {
+        get{
+            return userDefaults.array(forKey: userDefindEndFilterTimeSpanKey) as! [String]
+        }
+        set{
+            userDefaults.set(newValue, forKey: userDefindEndFilterTimeSpanKey)
+        }
     }
     
 }

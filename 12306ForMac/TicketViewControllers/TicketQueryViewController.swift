@@ -747,6 +747,9 @@ class TicketQueryViewController: BaseViewController {
         }
         
         let selectedRow = leftTicketTable.selectedRow
+        if selectedRow < 0 || selectedRow > filterQueryResult.count - 1 {
+            return false
+        }
         let ticket = filterQueryResult[selectedRow]
         //calendar
         if (menuItem.title.contains("日历")) && !ticket.canTicketAdd2Calendar() {
@@ -862,6 +865,7 @@ extension TicketQueryViewController: NSTableViewDataSource{
             self.ticketOrder = ticketOrder
             self.ticketAscending = sortDescriptor.ascending
             self.leftTicketTable.reloadData()
+            self.leftTicketTable.selectRowIndexes(IndexSet(integer:0), byExtendingSelection: false)
         }
     }
 }

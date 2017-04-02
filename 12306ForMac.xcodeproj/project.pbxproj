@@ -70,6 +70,9 @@
 		F170C0D61E07CAAD0047C547 /* DJLayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F170C0D21E07CAAD0047C547 /* DJLayerView.m */; };
 		F170C0D71E07CAAD0047C547 /* DJTipHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F170C0D41E07CAAD0047C547 /* DJTipHUD.m */; };
 		F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F17AB1CB1C95630E00FEB221 /* Credits.rtf */; };
+		F18183101E9124FC004E41F6 /* FilterPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F181830E1E9124FC004E41F6 /* FilterPreferenceViewController.swift */; };
+		F18183111E9124FC004E41F6 /* FilterPreferenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F181830F1E9124FC004E41F6 /* FilterPreferenceViewController.xib */; };
+		F18183131E912B41004E41F6 /* DefineFilter.png in Resources */ = {isa = PBXBuildFile; fileRef = F18183121E912B41004E41F6 /* DefineFilter.png */; };
 		F1AF72B81DAA24FB0047486B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF72B71DAA24FB0047486B /* DataManager.swift */; };
 		F1BCB97A1E72EC7E00D1C7FA /* Reminder.png in Resources */ = {isa = PBXBuildFile; fileRef = F1BCB9791E72EC7E00D1C7FA /* Reminder.png */; };
 		F1BCB97D1E72ECC600D1C7FA /* ReminderPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BCB97B1E72ECC600D1C7FA /* ReminderPreferenceViewController.swift */; };
@@ -195,6 +198,9 @@
 		F170C0D31E07CAAD0047C547 /* DJTipHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJTipHUD.h; sourceTree = "<group>"; };
 		F170C0D41E07CAAD0047C547 /* DJTipHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJTipHUD.m; sourceTree = "<group>"; };
 		F17AB1CB1C95630E00FEB221 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = 12306ForMac/Resources/Credits.rtf; sourceTree = SOURCE_ROOT; };
+		F181830E1E9124FC004E41F6 /* FilterPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPreferenceViewController.swift; sourceTree = "<group>"; };
+		F181830F1E9124FC004E41F6 /* FilterPreferenceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterPreferenceViewController.xib; sourceTree = "<group>"; };
+		F18183121E912B41004E41F6 /* DefineFilter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefineFilter.png; sourceTree = SOURCE_ROOT; };
 		F1AF72B71DAA24FB0047486B /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		F1BCB9791E72EC7E00D1C7FA /* Reminder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Reminder.png; path = 12306ForMac/images/Reminder.png; sourceTree = SOURCE_ROOT; };
 		F1BCB97B1E72ECC600D1C7FA /* ReminderPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderPreferenceViewController.swift; sourceTree = "<group>"; };
@@ -460,6 +466,7 @@
 		F1A8CCB01BA8032500B4FB03 /* Asserts */ = {
 			isa = PBXGroup;
 			children = (
+				F18183121E912B41004E41F6 /* DefineFilter.png */,
 				F1BCB9791E72EC7E00D1C7FA /* Reminder.png */,
 				F1D58E9C1D8A549200CD3DA7 /* Reverse.png */,
 				F1C075221D855EE5006EFABB /* Direction.png */,
@@ -522,6 +529,8 @@
 				F1F2F2D31D5B0C0C00EA7786 /* AdvancedPreferenceManager.swift */,
 				F1BCB97B1E72ECC600D1C7FA /* ReminderPreferenceViewController.swift */,
 				F1BCB97C1E72ECC600D1C7FA /* ReminderPreferenceViewController.xib */,
+				F181830E1E9124FC004E41F6 /* FilterPreferenceViewController.swift */,
+				F181830F1E9124FC004E41F6 /* FilterPreferenceViewController.xib */,
 			);
 			name = Preferences;
 			path = 12306ForMac/Preferences;
@@ -619,7 +628,9 @@
 				F11154C41C8D92D000FA6059 /* PassengerViewController.xib in Resources */,
 				F1C075231D855EE5006EFABB /* Direction.png in Resources */,
 				F12746701D502E8100975DFA /* Filter.png in Resources */,
+				F18183111E9124FC004E41F6 /* FilterPreferenceViewController.xib in Resources */,
 				F1CCA2D91D0D3DFA00B6853E /* TrainCodeDetailViewController.xib in Resources */,
+				F18183131E912B41004E41F6 /* DefineFilter.png in Resources */,
 				F11154AC1C8D92A700FA6059 /* SubmitWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -738,6 +749,7 @@
 				F1C8BC4D1DEEA548005A922B /* PaycheckNewParam.swift in Sources */,
 				F11154721C8D921400FA6059 /* LeftTicketParam.swift in Sources */,
 				F1FEE7A21D8D464900B02C84 /* NotifySpeaker.swift in Sources */,
+				F18183101E9124FC004E41F6 /* FilterPreferenceViewController.swift in Sources */,
 				F1FCFF4B1D386F8F0070A32C /* URLButton.swift in Sources */,
 				F11154A11C8D929200FA6059 /* Service+QueryOrder.swift in Sources */,
 				F11154A21C8D929200FA6059 /* Service+QueryTicket.swift in Sources */,
