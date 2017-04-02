@@ -17,7 +17,7 @@ class SubmitWindowController: BaseWindowController{
     @IBOutlet weak var passengerTable: NSTableView!
     @IBOutlet weak var passengerImage: RandCodeImageView2!
     
-    @IBOutlet var orderInfoView: NSView!
+    @IBOutlet weak var orderInfoView: NSView!
     @IBOutlet weak var preOrderView: GlassView!
     @IBOutlet weak var orderIdView: GlassView!
     @IBOutlet weak var submitOrderBtn: NSButton!
@@ -30,6 +30,8 @@ class SubmitWindowController: BaseWindowController{
     var isAutoSubmit = false
     var isSubmitting = false
     var ifShowCode = true
+    
+    weak var timer:Timer?
     
     override var windowNibName: String{
         return "SubmitWindowController"
@@ -44,10 +46,12 @@ class SubmitWindowController: BaseWindowController{
         self.preOrderFlow()
         
         //增加对Space按键的支持
-        spaceKeyboardMonitor = NSEvent.addLocalMonitorForEvents(matching: NSKeyDownMask) { (theEvent) -> NSEvent? in
+        spaceKeyboardMonitor = NSEvent.addLocalMonitorForEvents(matching: NSKeyDownMask) { [weak self] (theEvent) -> NSEvent? in
             //Space Key
             if (theEvent.keyCode == 49){
-                self.clickNext(nil)
+                if let weakSelf = self {
+                    weakSelf.clickNext(nil)
+                }
                 return nil
             }
             return theEvent
@@ -63,6 +67,10 @@ class SubmitWindowController: BaseWindowController{
                 window!.sheetParent!.endSheet(window!,returnCode: response)
                 NSEvent.removeMonitor(spaceKeyboardMonitor!)
             }
+        }
+        
+        if timer != nil {
+            timer!.invalidate()
         }
     }
     
@@ -189,6 +197,11 @@ class SubmitWindowController: BaseWindowController{
         Service.sharedInstance.checkOrderFlow(success: successHandler, failure: failureHandler)
     }
     
+    func closeAndReSubmit() {
+        self.dismissWithModalResponse(NSModalResponseCancel)
+        NotificationCenter.default.post(name: Notification.Name.App.DidStartQueryTicket, object:nil)
+    }
+    
     func submitOrderFlow(isAuto:Bool = false,ifShowRandCode:Bool = false,randCode:String = ""){
         self.startLoadingTip("正在提交...")
         
@@ -204,10 +217,7 @@ class SubmitWindowController: BaseWindowController{
                 if isAuto {
                     self.showTip(translate(error) + " 请等待2秒App会自动重新提交")
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(2)) {
-                        self.dismissWithModalResponse(NSModalResponseCancel)
-                        NotificationCenter.default.post(name: Notification.Name.App.DidStartQueryTicket, object:nil)
-                    }
+                    self.timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(SubmitWindowController.closeAndReSubmit), userInfo: nil, repeats: false)
                 }
                 else {
                     self.showTip(translate(error) + " 可尝试重新查询车票并提交！")
@@ -304,6 +314,10 @@ class SubmitWindowController: BaseWindowController{
     @IBAction func clickRateInAppstore(_ button:AnyObject?){
         NSWorkspace.shared().open(URL(string: "macappstore://itunes.apple.com/us/app/ding-piao-zhu-shou/id1163682213?l=zh&ls=1&mt=12")!)
         dismissWithModalResponse(NSModalResponseCancel)
+    }
+    
+    deinit {
+        print("SubmitWindowController deinit")
     }
 }
 
