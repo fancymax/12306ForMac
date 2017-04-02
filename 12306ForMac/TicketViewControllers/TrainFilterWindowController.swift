@@ -283,6 +283,10 @@ class TrainFilterWindowController: BaseWindowController {
         getFilterKey()
         dismissWithModalResponse(NSModalResponseOK)
     }
+    
+    deinit {
+        print("TrainFilterWindowController deinit")
+    }
 }
 
 // MARK: - NSTableViewDelegate / NSTableViewDataSource

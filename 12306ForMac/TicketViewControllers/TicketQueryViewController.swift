@@ -245,7 +245,7 @@ class TicketQueryViewController: BaseViewController {
     var seatFilterKey = ""
     
     lazy var trainFilterWindowController:TrainFilterWindowController = TrainFilterWindowController()
-    lazy var submitWindowController:SubmitWindowController = SubmitWindowController()
+    var submitWindowController:SubmitWindowController?
     
     func ticketOrderedBy(_ tickets:[QueryLeftNewDTO], orderedBy:TicketOrder, ascending:Bool) -> [QueryLeftNewDTO] {
         let sortedTickets:[QueryLeftNewDTO] = tickets.sorted{
@@ -523,15 +523,15 @@ class TicketQueryViewController: BaseViewController {
     }
     
     func openSubmitTicketSheet(isAutoSubmit:Bool,ifShowCode:Bool = true) {
-        submitWindowController = SubmitWindowController()
-        submitWindowController.isAutoSubmit = isAutoSubmit
-        submitWindowController.ifShowCode = ifShowCode
         if let window = self.view.window {
-            window.beginSheet(submitWindowController.window!, completionHandler: {response in
-                if response == NSModalResponseOK{
-                    ///
-                }
+            let windowController = SubmitWindowController()
+            windowController.isAutoSubmit = isAutoSubmit
+            windowController.ifShowCode = ifShowCode
+            
+            window.beginSheet(windowController.window!, completionHandler: {response in
+                self.submitWindowController = nil
             })
+            self.submitWindowController = windowController
         }
     }
     

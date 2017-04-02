@@ -45,6 +45,7 @@ class LoginWindowController: BaseWindowController{
                 if let weakSelf = self {
                     weakSelf.clickOK(nil)
                 }
+                return nil
             }
             return theEvent
         }
