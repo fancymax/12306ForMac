@@ -19,7 +19,7 @@ class MainWindowController: NSWindowController{
     var orderQueryViewController = OrderViewController()
     var ticketQueryViewController = TicketQueryViewController()
     
-    var loginWindowController:LoginWindowController!
+    var loginWindowController:LoginWindowController?
     
     lazy var preferencesWindowController:MASPreferencesWindowController = {
         let generalViewController = GeneralPreferenceViewController()
@@ -165,19 +165,23 @@ class MainWindowController: NSWindowController{
     
     
     func login(isAutoLogin :Bool){
-        loginWindowController = LoginWindowController()
-        loginWindowController.isAutoLogin = isAutoLogin
-        logger.info("-> login isAuto=\(isAutoLogin)")
+
         
         if let window = self.window {
-            window.beginSheet(loginWindowController.window!) {
+            let windowController = LoginWindowController()
+            windowController.isAutoLogin = isAutoLogin
+            logger.info("-> login isAuto=\(isAutoLogin)")
+            
+            window.beginSheet(windowController.window!) {
                 if $0 == NSModalResponseOK{
                     self.loginButton.title = MainModel.realName
                     NotificationCenter.default.post(name: Notification.Name.App.DidAddDefaultPassenger, object:nil)
                     MainModel.isGetUserInfo = true
                     logger.info("<- login")
                 }
+                self.loginWindowController = nil
             }
+            self.loginWindowController = windowController
         }
     }
     

@@ -39,11 +39,12 @@ class LoginWindowController: BaseWindowController{
         loadImage()
         
         //增加对Space按键的支持
-        spaceKeyboardMonitor = NSEvent.addLocalMonitorForEvents(matching: NSKeyDownMask) { (theEvent) -> NSEvent? in
+        spaceKeyboardMonitor = NSEvent.addLocalMonitorForEvents(matching: NSKeyDownMask) { [weak self] (theEvent) -> NSEvent? in
             //Space Key
             if (theEvent.keyCode == 49){
-                self.clickOK(nil)
-                return nil
+                if let weakSelf = self {
+                    weakSelf.clickOK(nil)
+                }
             }
             return theEvent
         }
