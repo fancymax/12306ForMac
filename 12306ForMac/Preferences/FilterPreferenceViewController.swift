@@ -12,9 +12,10 @@ import MASPreferences
 class FilterTimeSpan:NSObject {
     var start:String = ""
     var end:String = ""
+    var isCheck = true
     
     override var debugDescription: String {
-        return "\(start)~\(end)"
+        return "\(start)~\(end) \(isCheck)"
     }
 }
 
@@ -55,80 +56,106 @@ class FilterPreferenceViewController: NSViewController {
     
     var startFilterTimeSpans:[FilterTimeSpan] = [FilterTimeSpan]()
     private func initStartFilterTimeSpans() {
-        var timeSpanStrArr = GeneralPreferenceManager.sharedInstance.userDefindStartFilterTimeSpan
-        if timeSpanStrArr.count == 0 {
-            timeSpanStrArr = ["00:00~06:00","06:00~12:00","12:00~18:00","18:00~24:00"]
-        }
+        var timeSpan = GeneralPreferenceManager.sharedInstance.userDefindStartFilterTimeSpan
+        var timeStatus = GeneralPreferenceManager.sharedInstance.userDefindStartFilterTimeStatus
+        
         startFilterTimeSpans = [FilterTimeSpan]()
-        for timespan in timeSpanStrArr {
+        
+        let count = min(timeSpan.count, timeStatus.count)
+        
+        for i in 0..<count {
             let filterTime = FilterTimeSpan()
-            filterTime.start = timespan.components(separatedBy: "~")[0]
-            filterTime.end = timespan.components(separatedBy: "~")[1]
+            filterTime.start = timeSpan[i].components(separatedBy: "~")[0]
+            filterTime.end = timeSpan[i].components(separatedBy: "~")[1]
+            filterTime.isCheck = timeStatus[i]
             startFilterTimeSpans.append(filterTime)
         }
+        
         startTimeSpanComboBox.selectItem(at: startFilterTimeSpans.count - 3)
         startFilterTimeSpanTable.reloadData()
     }
     
     var endFilterTimeSpans:[FilterTimeSpan] = [FilterTimeSpan]()
     private func initEndFilterTimeSpans() {
-        var timeSpanStrArr = GeneralPreferenceManager.sharedInstance.userDefindEndFilterTimeSpan
-        if timeSpanStrArr.count == 0 {
-            timeSpanStrArr = ["00:00~06:00","06:00~12:00","12:00~18:00","18:00~24:00"]
-        }
+        var timeSpan = GeneralPreferenceManager.sharedInstance.userDefindEndFilterTimeSpan
+        var timeStatus = GeneralPreferenceManager.sharedInstance.userDefindEndFilterTimeStatus
+        
         endFilterTimeSpans = [FilterTimeSpan]()
-        for timespan in timeSpanStrArr {
+        
+        let count = min(timeSpan.count, timeStatus.count)
+        
+        for i in 0..<count {
             let filterTime = FilterTimeSpan()
-            filterTime.start = timespan.components(separatedBy: "~")[0]
-            filterTime.end = timespan.components(separatedBy: "~")[1]
+            filterTime.start = timeSpan[i].components(separatedBy: "~")[0]
+            filterTime.end = timeSpan[i].components(separatedBy: "~")[1]
+            filterTime.isCheck = timeStatus[i]
             endFilterTimeSpans.append(filterTime)
         }
+        
         endTimeSpanComboBox.selectItem(at: endFilterTimeSpans.count - 3)
         endFilterTimeSpanTable.reloadData()
     }
     
     @IBAction func clickStartTimSpanComboBox(_ sender: NSComboBox) {
         var timeSpan = [String]()
+        var timeStatus = [true,true,true]
         if sender.indexOfSelectedItem == 0 {
             timeSpan = ["00:00~09:00","09:00~17:00","17:00~24:00"]
         }
         else if sender.indexOfSelectedItem == 1 {
             timeSpan = ["00:00~06:00","06:00~12:00","12:00~18:00","18:00~24:00"]
+            timeStatus.append(true)
         }
         else {
             timeSpan = ["00:00~06:00","06:00~09:00","09:00~17:00","17:00~19:00","19:00~24:00"]
+            timeStatus.append(true)
+            timeStatus.append(true)
         }
         GeneralPreferenceManager.sharedInstance.userDefindStartFilterTimeSpan = timeSpan
+        GeneralPreferenceManager.sharedInstance.userDefindStartFilterTimeStatus = timeStatus
         initStartFilterTimeSpans()
     }
     
     @IBAction func clickEndTimSpanComboBox(_ sender: NSComboBox) {
         var timeSpan = [String]()
+        var timeStatus = [true,true,true]
         if sender.indexOfSelectedItem == 0 {
             timeSpan = ["00:00~09:00","09:00~17:00","17:00~24:00"]
         }
         else if sender.indexOfSelectedItem == 1 {
             timeSpan = ["00:00~06:00","06:00~12:00","12:00~18:00","18:00~24:00"]
+            timeStatus.append(true)
         }
         else {
             timeSpan = ["00:00~06:00","06:00~09:00","09:00~17:00","17:00~19:00","19:00~24:00"]
+            timeStatus.append(true)
+            timeStatus.append(true)
         }
         GeneralPreferenceManager.sharedInstance.userDefindEndFilterTimeSpan = timeSpan
+        GeneralPreferenceManager.sharedInstance.userDefindEndFilterTimeStatus = timeStatus
         initEndFilterTimeSpans()
     }
     
     override func viewDidDisappear() {
         var newTimeSpanStrList = [String]()
+        var newTimeStatus = [Bool]()
         for time in startFilterTimeSpans {
             newTimeSpanStrList.append("\(time.start)~\(time.end)")
+            newTimeStatus.append(time.isCheck)
         }
         GeneralPreferenceManager.sharedInstance.userDefindStartFilterTimeSpan = newTimeSpanStrList
+        GeneralPreferenceManager.sharedInstance.userDefindStartFilterTimeStatus = newTimeStatus
         
         newTimeSpanStrList.removeAll()
+        newTimeStatus.removeAll()
         for time in endFilterTimeSpans {
             newTimeSpanStrList.append("\(time.start)~\(time.end)")
+            newTimeStatus.append(time.isCheck)
         }
         GeneralPreferenceManager.sharedInstance.userDefindEndFilterTimeSpan = newTimeSpanStrList
+        GeneralPreferenceManager.sharedInstance.userDefindEndFilterTimeStatus = newTimeStatus
+        
+        NotificationCenter.default.post(name: Notification.Name.App.DidTrainFilterKeyChange, object:nil)
     }
     
 }

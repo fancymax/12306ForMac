@@ -570,6 +570,12 @@ class TicketQueryViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvStartQueryTicketNotification(_:)), name: NSNotification.Name.App.DidStartQueryTicket, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvRefilterQueryTicketNotification(_:)), name: NSNotification.Name.App.DidRefilterQueryTicket, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvFilterKeyChangeNotification(_:)), name: NSNotification.Name.App.DidTrainFilterKeyChange, object: nil)
+    }
+    
+    func recvFilterKeyChangeNotification(_ notification:Notification) {
+        trainFilterWindowController = TrainFilterWindowController()
     }
     
     func recvStartQueryTicketNotification(_ notification:Notification) {

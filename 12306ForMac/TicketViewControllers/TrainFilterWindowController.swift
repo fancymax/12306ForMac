@@ -124,6 +124,8 @@ class TrainFilterWindowController: BaseWindowController {
     }
     
     func createFilterItemBy(_ trains:[QueryLeftNewDTO]){
+        var initFilterItems = [FilterItem]()
+        
         filterItems.append(FilterItem(type: .Group,presentation: "席别类型"))
         filterItems.append(FilterItem(type: .SeatType,key:"9|P|4|6",presentation: "商务座|特等座|软卧|高级软卧",isChecked: false))
         filterItems.append(FilterItem(type: .SeatType,key:"M|3",presentation: "一等座|硬卧",isChecked: false))
@@ -131,13 +133,27 @@ class TrainFilterWindowController: BaseWindowController {
         filterItems.append(FilterItem(type: .SeatType,key:"1|O",presentation: "无座",isChecked: false))
         
         filterItems.append(FilterItem(type: .Group,presentation: "出发时段"))
-        for filterTime in GeneralPreferenceManager.sharedInstance.userDefindStartFilterTimeSpan {
-            filterItems.append(FilterItem(type: .StartTime,key:filterTime,presentation: filterTime,isChecked: true))
+        var timeSpan = GeneralPreferenceManager.sharedInstance.userDefindStartFilterTimeSpan
+        var timeStatus = GeneralPreferenceManager.sharedInstance.userDefindStartFilterTimeStatus
+        var count = min(timeSpan.count, timeStatus.count)
+        for i in 0..<count {
+            let item = FilterItem(type: .StartTime,key:timeSpan[i],presentation: timeSpan[i],isChecked: timeStatus[i])
+            filterItems.append(item)
+            if !item.isChecked {
+                initFilterItems.append(item)
+            }
         }
-        
+    
         filterItems.append(FilterItem(type: .Group,presentation: "到达时段"))
-        for filterTime in GeneralPreferenceManager.sharedInstance.userDefindEndFilterTimeSpan {
-            filterItems.append(FilterItem(type: .EndTime,key:filterTime,presentation: filterTime,isChecked: true))
+        timeSpan = GeneralPreferenceManager.sharedInstance.userDefindEndFilterTimeSpan
+        timeStatus = GeneralPreferenceManager.sharedInstance.userDefindEndFilterTimeStatus
+        count = min(timeSpan.count, timeStatus.count)
+        for i in 0..<count {
+            let item = FilterItem(type: .EndTime,key:timeSpan[i],presentation: timeSpan[i],isChecked: timeStatus[i])
+            filterItems.append(item)
+            if !item.isChecked {
+                initFilterItems.append(item)
+            }
         }
         
         filterItems.append(FilterItem(type: .Group,presentation: "车次类型"))
@@ -223,6 +239,10 @@ class TrainFilterWindowController: BaseWindowController {
             let presentation = "\(train.TrainCode!) |1\(train.start_time!)~\(train.arrive_time!)  |2\(train.FromStationName!)->\(train.ToStationName!)"
             filterItems.append(FilterItem(type: .Train, key: key, presentation: presentation, isChecked: true))
         }
+        
+        for item in initFilterItems {
+            filterTrainBy(item, Off2On: false)
+        }
     }
     
     func getFilterKey(){
@@ -247,19 +267,25 @@ class TrainFilterWindowController: BaseWindowController {
             return
         }
         
-        var changeState:Bool
+        var Off2On:Bool
         if sender.state == NSOnState {
-            changeState = true
+            Off2On = true
         }
         else {
-            changeState = false
+            Off2On = false
         }
         
-        for item in filterItems where (item.type == .Train && item.isChecked != changeState) {
+        filterTrainBy(selectedItem, Off2On: Off2On)
+
+        trainFilterTable.reloadData()
+    }
+    
+    func filterTrainBy(_ selectedItem: FilterItem,Off2On:Bool) {
+        for item in filterItems where (item.type == .Train && item.isChecked != Off2On) {
             //1 -> 0
-            if changeState == false {
+            if Off2On == false {
                 if item.IsMatchKey(of: selectedItem) {
-                    item.isChecked = changeState
+                    item.isChecked = Off2On
                 }
             }//0 -> 1
             else {
@@ -279,14 +305,12 @@ class TrainFilterWindowController: BaseWindowController {
                 //若满足其他筛选条件 则进行本次筛选判断
                 if otherItemCanChange {
                     if item.IsMatchKey(of: selectedItem) {
-                        item.isChecked = changeState
+                        item.isChecked = Off2On
                     }
                 }
                 
             }
         }
-
-        trainFilterTable.reloadData()
     }
     
     @IBAction func clickCancel(_ sender: AnyObject) {

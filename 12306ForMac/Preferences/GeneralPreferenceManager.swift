@@ -22,6 +22,8 @@ class GeneralPreferenceManager {
     fileprivate let isAutoQueryAfterFilterKey = "isAutoQueryAfterFilter"
     fileprivate let userDefindStartFilterTimeSpanKey = "userDefindStartFilterTimeSpan"
     fileprivate let userDefindEndFilterTimeSpanKey = "userDefindEndFilterTimeSpan"
+    fileprivate let userDefindStartFilterTimeStatusKey = "userDefindStartFilterTimeStatus"
+    fileprivate let userDefindEndFilterTimeStatusKey = "userDefindEndFilterTimeStatus"
     
     fileprivate let userDefaults = UserDefaults.standard
     
@@ -41,7 +43,9 @@ class GeneralPreferenceManager {
                             notifyLoginStrKey:"要登录啦",
                             isAutoQueryAfterFilterKey:true,
                             userDefindStartFilterTimeSpanKey:["00:00~06:00","06:00~12:00","12:00~18:00","18:00~24:00"],
-                            userDefindEndFilterTimeSpanKey:["00:00~06:00","06:00~12:00","12:00~18:00","18:00~24:00"]
+                            userDefindEndFilterTimeSpanKey:["00:00~06:00","06:00~12:00","12:00~18:00","18:00~24:00"],
+                            userDefindStartFilterTimeStatusKey: [true,true,true,true],
+                            userDefindEndFilterTimeStatusKey: [true,true,true,true],
                             ]
             as [String : Any]
         userDefaults.register(defaults: firstDefault)
@@ -134,6 +138,24 @@ class GeneralPreferenceManager {
         }
         set{
             userDefaults.set(newValue, forKey: userDefindEndFilterTimeSpanKey)
+        }
+    }
+    
+    var userDefindStartFilterTimeStatus:[Bool] {
+        get{
+            return userDefaults.array(forKey: userDefindStartFilterTimeStatusKey) as! [Bool]
+        }
+        set{
+            userDefaults.set(newValue, forKey: userDefindStartFilterTimeStatusKey)
+        }
+    }
+    
+    var userDefindEndFilterTimeStatus:[Bool] {
+        get{
+            return userDefaults.array(forKey: userDefindEndFilterTimeStatusKey) as! [Bool]
+        }
+        set{
+            userDefaults.set(newValue, forKey: userDefindEndFilterTimeStatusKey)
         }
     }
     
