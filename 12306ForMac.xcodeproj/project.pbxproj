@@ -55,7 +55,6 @@
 		F118AC451DF6656400B7EECE /* NSTableView+ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F118AC441DF6656400B7EECE /* NSTableView+ContextMenu.swift */; };
 		F11E29291D2AA2B6004BE59D /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = F11E29281D2AA2B6004BE59D /* User.png */; };
 		F11FE6871D5F4EB70049F261 /* DamaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11FE6861D5F4EB70049F261 /* DamaError.swift */; };
-		F121FC9A1DD987E100CA05F3 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = F121FC991DD987E100CA05F3 /* Notifications.swift */; };
 		F123E8281DF00BBC003C06A8 /* BaseWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F123E8271DF00BBC003C06A8 /* BaseWindowController.swift */; };
 		F12746701D502E8100975DFA /* Filter.png in Resources */ = {isa = PBXBuildFile; fileRef = F127466F1D502E8100975DFA /* Filter.png */; };
 		F12746721D50345D00975DFA /* ClickableDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12746711D50345D00975DFA /* ClickableDatePicker.swift */; };
@@ -72,11 +71,12 @@
 		F17AB1CC1C95630E00FEB221 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F17AB1CB1C95630E00FEB221 /* Credits.rtf */; };
 		F18183101E9124FC004E41F6 /* FilterPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F181830E1E9124FC004E41F6 /* FilterPreferenceViewController.swift */; };
 		F18183111E9124FC004E41F6 /* FilterPreferenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F181830F1E9124FC004E41F6 /* FilterPreferenceViewController.xib */; };
-		F18183131E912B41004E41F6 /* DefineFilter.png in Resources */ = {isa = PBXBuildFile; fileRef = F18183121E912B41004E41F6 /* DefineFilter.png */; };
 		F1AF72B81DAA24FB0047486B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF72B71DAA24FB0047486B /* DataManager.swift */; };
 		F1BCB97A1E72EC7E00D1C7FA /* Reminder.png in Resources */ = {isa = PBXBuildFile; fileRef = F1BCB9791E72EC7E00D1C7FA /* Reminder.png */; };
 		F1BCB97D1E72ECC600D1C7FA /* ReminderPreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BCB97B1E72ECC600D1C7FA /* ReminderPreferenceViewController.swift */; };
 		F1BCB97E1E72ECC600D1C7FA /* ReminderPreferenceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1BCB97C1E72ECC600D1C7FA /* ReminderPreferenceViewController.xib */; };
+		F1BE08491E9289850054ECDD /* DefineFilter.png in Resources */ = {isa = PBXBuildFile; fileRef = F1BE08481E9289850054ECDD /* DefineFilter.png */; };
+		F1BE084C1E9289CF0054ECDD /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BE084B1E9289CF0054ECDD /* Notifications.swift */; };
 		F1C075211D83F97A006EFABB /* TicketConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C075201D83F97A006EFABB /* TicketConstants.swift */; };
 		F1C075231D855EE5006EFABB /* Direction.png in Resources */ = {isa = PBXBuildFile; fileRef = F1C075221D855EE5006EFABB /* Direction.png */; };
 		F1C8BC4D1DEEA548005A922B /* PaycheckNewParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C8BC4C1DEEA548005A922B /* PaycheckNewParam.swift */; };
@@ -179,7 +179,6 @@
 		F11E29281D2AA2B6004BE59D /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = User.png; path = 12306ForMac/images/User.png; sourceTree = SOURCE_ROOT; };
 		F11EB45A1B6A368E000063E4 /* 订票助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "订票助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F11FE6861D5F4EB70049F261 /* DamaError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamaError.swift; sourceTree = "<group>"; };
-		F121FC991DD987E100CA05F3 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = ../../Notifications.swift; sourceTree = "<group>"; };
 		F123E8271DF00BBC003C06A8 /* BaseWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseWindowController.swift; path = 12306ForMac/BaseWindowController.swift; sourceTree = "<group>"; };
 		F127466F1D502E8100975DFA /* Filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Filter.png; path = 12306ForMac/images/Filter.png; sourceTree = SOURCE_ROOT; };
 		F12746711D50345D00975DFA /* ClickableDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClickableDatePicker.swift; sourceTree = "<group>"; };
@@ -200,11 +199,13 @@
 		F17AB1CB1C95630E00FEB221 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = 12306ForMac/Resources/Credits.rtf; sourceTree = SOURCE_ROOT; };
 		F181830E1E9124FC004E41F6 /* FilterPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPreferenceViewController.swift; sourceTree = "<group>"; };
 		F181830F1E9124FC004E41F6 /* FilterPreferenceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterPreferenceViewController.xib; sourceTree = "<group>"; };
-		F18183121E912B41004E41F6 /* DefineFilter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefineFilter.png; sourceTree = SOURCE_ROOT; };
 		F1AF72B71DAA24FB0047486B /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		F1BCB9791E72EC7E00D1C7FA /* Reminder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Reminder.png; path = 12306ForMac/images/Reminder.png; sourceTree = SOURCE_ROOT; };
 		F1BCB97B1E72ECC600D1C7FA /* ReminderPreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderPreferenceViewController.swift; sourceTree = "<group>"; };
 		F1BCB97C1E72ECC600D1C7FA /* ReminderPreferenceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReminderPreferenceViewController.xib; sourceTree = "<group>"; };
+		F1BE08481E9289850054ECDD /* DefineFilter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DefineFilter.png; path = 12306ForMac/images/DefineFilter.png; sourceTree = SOURCE_ROOT; };
+		F1BE084A1E9289B90054ECDD /* 12306ForMac-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "12306ForMac-Bridging-Header.h"; path = "12306ForMac/12306ForMac-Bridging-Header.h"; sourceTree = "<group>"; };
+		F1BE084B1E9289CF0054ECDD /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		F1C075201D83F97A006EFABB /* TicketConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketConstants.swift; sourceTree = "<group>"; };
 		F1C075221D855EE5006EFABB /* Direction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Direction.png; path = 12306ForMac/images/Direction.png; sourceTree = SOURCE_ROOT; };
 		F1C8BC4C1DEEA548005A922B /* PaycheckNewParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaycheckNewParam.swift; sourceTree = "<group>"; };
@@ -213,7 +214,6 @@
 		F1CA12041D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainCodeDetailHeaderCell.swift; sourceTree = "<group>"; };
 		F1CA120A1D113293003EFD0B /* ContentBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentBackgroundView.swift; sourceTree = "<group>"; };
 		F1CA120C1D1135E2003EFD0B /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		F1CC36461B6B244C0074A014 /* 12306ForMac-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "12306ForMac-Bridging-Header.h"; sourceTree = "<group>"; };
 		F1CCA2D61D0D3DFA00B6853E /* TrainCodeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainCodeDetailViewController.swift; sourceTree = "<group>"; };
 		F1CCA2D71D0D3DFA00B6853E /* TrainCodeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrainCodeDetailViewController.xib; sourceTree = "<group>"; };
 		F1CCA2DA1D0D42D700B6853E /* QueryByTrainCodeParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryByTrainCodeParam.swift; sourceTree = "<group>"; };
@@ -325,7 +325,7 @@
 		F111547A1C8D923C00FA6059 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				F121FC991DD987E100CA05F3 /* Notifications.swift */,
+				F1BE084B1E9289CF0054ECDD /* Notifications.swift */,
 				F111547B1C8D923C00FA6059 /* SwiftyJSON.swift */,
 				F111547C1C8D923C00FA6059 /* SwiftyRegex.swift */,
 				F1FEE7A11D8D464900B02C84 /* NotifySpeaker.swift */,
@@ -421,7 +421,7 @@
 		F11EB4511B6A368E000063E4 = {
 			isa = PBXGroup;
 			children = (
-				F1CC36461B6B244C0074A014 /* 12306ForMac-Bridging-Header.h */,
+				F1BE084A1E9289B90054ECDD /* 12306ForMac-Bridging-Header.h */,
 				F11154611C8D91B300FA6059 /* 12306ForMac */,
 				F11EB45B1B6A368E000063E4 /* Products */,
 				7EE5AE4095B588D2CBD04072 /* Frameworks */,
@@ -466,7 +466,7 @@
 		F1A8CCB01BA8032500B4FB03 /* Asserts */ = {
 			isa = PBXGroup;
 			children = (
-				F18183121E912B41004E41F6 /* DefineFilter.png */,
+				F1BE08481E9289850054ECDD /* DefineFilter.png */,
 				F1BCB9791E72EC7E00D1C7FA /* Reminder.png */,
 				F1D58E9C1D8A549200CD3DA7 /* Reverse.png */,
 				F1C075221D855EE5006EFABB /* Direction.png */,
@@ -630,7 +630,7 @@
 				F12746701D502E8100975DFA /* Filter.png in Resources */,
 				F18183111E9124FC004E41F6 /* FilterPreferenceViewController.xib in Resources */,
 				F1CCA2D91D0D3DFA00B6853E /* TrainCodeDetailViewController.xib in Resources */,
-				F18183131E912B41004E41F6 /* DefineFilter.png in Resources */,
+				F1BE08491E9289850054ECDD /* DefineFilter.png in Resources */,
 				F11154AC1C8D92A700FA6059 /* SubmitWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -700,7 +700,6 @@
 				F170C0D51E07CAAD0047C547 /* DJActivityIndicator.m in Sources */,
 				F14EBEC41DD1AEED002B2B83 /* QueryTrainPriceParam.swift in Sources */,
 				F1DDD8A61DC72ECF00879D44 /* SubmitOrderParams.swift in Sources */,
-				F121FC9A1DD987E100CA05F3 /* Notifications.swift in Sources */,
 				F11154C81C8D92FC00FA6059 /* AppDelegate.swift in Sources */,
 				F111548E1C8D925200FA6059 /* AutoCompleteTextField.swift in Sources */,
 				F11154731C8D921400FA6059 /* MainModel.swift in Sources */,
@@ -711,6 +710,7 @@
 				F1CA120D1D1135E2003EFD0B /* Theme.swift in Sources */,
 				F1CA12051D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift in Sources */,
 				F1CCA2DE1D0D4A1400B6853E /* TrainCodeDetail.swift in Sources */,
+				F1BE084C1E9289CF0054ECDD /* Notifications.swift in Sources */,
 				F1F926881E0110BA00FE4229 /* GetQueueCountParam.swift in Sources */,
 				F1F9268E1E0116C500FE4229 /* ConfirmSingleForQueueAsysParam.swift in Sources */,
 				F1C075211D83F97A006EFABB /* TicketConstants.swift in Sources */,
@@ -892,8 +892,8 @@
 				PRODUCT_NAME = "订票助手";
 				PROVISIONING_PROFILE = "";
 				SWIFT_INCLUDE_PATHS = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "12306ForMac-Bridging-Header.h";
-				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "12306ForMac-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "12306ForMac/12306ForMac-Bridging-Header.h";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "12306ForMac/12306ForMac-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -919,8 +919,8 @@
 				PRODUCT_NAME = "订票助手";
 				PROVISIONING_PROFILE = "";
 				SWIFT_INCLUDE_PATHS = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "12306ForMac-Bridging-Header.h";
-				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "12306ForMac-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "12306ForMac/12306ForMac-Bridging-Header.h";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "12306ForMac/12306ForMac-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
