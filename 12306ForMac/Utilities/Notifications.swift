@@ -20,6 +20,8 @@ extension Notification.Name {
         
         public static let DidTrainFilterKeyChange = Notification.Name(rawValue: "com.12306ForMac.App.DidTrainFilterKeyChange")
         
+        public static let DidExcludeTrainSubmit = Notification.Name(rawValue: "com.12306ForMac.App.DidExcludeTrainSubmit")
+        
         public static let DidSubmit = Notification.Name(rawValue: "com.12306ForMac.App.DidSubmit")
         
         public static let DidCheckPassenger = Notification.Name(rawValue: "com.12306ForMac.App.DidCheckPassenger")

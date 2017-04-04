@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
-        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SubmitWindowController" customModule="订票助手" customModuleProvider="target">
             <connections>
-                <outlet property="isAutoSubmitLabel" destination="Bhg-Ay-dy5" id="cxe-4r-zF5"/>
                 <outlet property="orderId" destination="myB-rD-1e5" id="fjQ-3n-Bqq"/>
                 <outlet property="orderIdView" destination="vJY-p7-r54" id="83u-Nk-Z7u"/>
+                <outlet property="orderInfoCheckOrderButton" destination="Jg1-2P-KG0" id="pFY-n7-Q3I"/>
+                <outlet property="orderInfoCloseButton" destination="Erm-TM-IAx" id="yUb-IY-KNd"/>
+                <outlet property="orderInfoExcludeButton" destination="2V3-rn-47W" id="RWK-Be-Vwy"/>
                 <outlet property="orderInfoView" destination="wUj-Nk-WKF" id="sJL-qT-Bdp"/>
                 <outlet property="passengerImage" destination="DNm-pn-QOi" id="nAB-3v-OSM"/>
                 <outlet property="passengerTable" destination="IjT-wy-Jy5" id="XuS-Ma-rDA"/>
+                <outlet property="preOrderCloseButton" destination="EWQ-MH-lbW" id="AdX-IZ-DRa"/>
+                <outlet property="preOrderExcludeButton" destination="x1D-a4-bua" id="6cE-4l-od5"/>
+                <outlet property="preOrderOkButton" destination="hLk-wf-da0" id="2Zw-eF-Hkn"/>
                 <outlet property="preOrderView" destination="WkC-1X-oZ2" id="wlg-LP-U9S"/>
                 <outlet property="submitOrderBtn" destination="Jg1-2P-KG0" id="eL6-8E-WP0"/>
                 <outlet property="trainCodeLabel" destination="ecd-8X-J61" id="Wff-hy-bOF"/>
@@ -28,7 +32,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="390" height="370"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="390" height="370"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -132,7 +136,7 @@ CA
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DNm-pn-QOi" customClass="RandCodeImageView2" customModule="订票助手" customModuleProvider="target">
-                    <rect key="frame" x="29" y="54" width="351" height="228"/>
+                    <rect key="frame" x="27" y="54" width="351" height="228"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" imageFrameStyle="photo" id="cqS-ac-3uM"/>
                 </imageView>
@@ -181,6 +185,17 @@ DQ
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x1D-a4-bua">
+                    <rect key="frame" x="24" y="13" width="133" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="此车次不再提交" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="biD-eY-p7k">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="13" name=".PingFangSC-Regular"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="clickExcludeTrain:" target="-2" id="ycZ-WH-il1"/>
+                    </connections>
+                </button>
             </subviews>
             <point key="canvasLocation" x="303" y="287"/>
         </customView>
@@ -381,7 +396,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Erm-TM-IAx">
-                    <rect key="frame" x="153" y="14" width="82" height="32"/>
+                    <rect key="frame" x="153" y="13" width="82" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="关闭" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EbN-cW-VeL">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -392,7 +407,7 @@ DQ
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jg1-2P-KG0">
-                    <rect key="frame" x="238" y="14" width="82" height="32"/>
+                    <rect key="frame" x="238" y="13" width="82" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="提交订单" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="G3c-Jn-ATV">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -414,15 +429,17 @@ DQ
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bhg-Ay-dy5">
-                    <rect key="frame" x="28" y="23" width="103" height="17"/>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2V3-rn-47W">
+                    <rect key="frame" x="24" y="13" width="133" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="正在自动提交..." id="ecK-Fo-yYU">
-                        <font key="font" metaFont="systemThin" size="13"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
+                    <buttonCell key="cell" type="push" title="此车次不再提交" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vEn-ui-eHX">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="13" name=".PingFangSC-Regular"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="clickExcludeTrain:" target="-2" id="jh4-aM-2er"/>
+                    </connections>
+                </button>
             </subviews>
             <point key="canvasLocation" x="874" y="-155.5"/>
         </customView>

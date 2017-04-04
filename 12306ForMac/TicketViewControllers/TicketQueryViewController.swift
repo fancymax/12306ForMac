@@ -244,6 +244,8 @@ class TicketQueryViewController: BaseViewController {
     
     var seatFilterKey = ""
     
+    var excludeTrainCode = ""
+    
     lazy var trainFilterWindowController:TrainFilterWindowController = TrainFilterWindowController()
     var submitWindowController:SubmitWindowController?
     
@@ -278,10 +280,18 @@ class TicketQueryViewController: BaseViewController {
         let summitHandler = {
             self.addAutoQueryNumStatus()
             
+            var hasFindTicket = false
+            
             for ticket in self.filterQueryResult {
                 if !ticket.hasTicketForSeatTypeFilterKey(self.seatFilterKey) {
                     continue
                 }
+                
+                if ticket.TrainCode == self.excludeTrainCode {
+                    continue
+                }
+                
+                hasFindTicket = true
                 
                 self.stopAutoQuery()
                 
@@ -309,6 +319,10 @@ class TicketQueryViewController: BaseViewController {
                 }
                 
                 break;
+            }
+            
+            if !hasFindTicket {
+                self.excludeTrainCode = ""
             }
         }
         queryTicket(summitHandler)
@@ -572,6 +586,12 @@ class TicketQueryViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvRefilterQueryTicketNotification(_:)), name: NSNotification.Name.App.DidRefilterQueryTicket, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvFilterKeyChangeNotification(_:)), name: NSNotification.Name.App.DidTrainFilterKeyChange, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvExcludeTrainSubmitNotification(_:)), name: NSNotification.Name.App.DidExcludeTrainSubmit, object: nil)
+    }
+    
+    func recvExcludeTrainSubmitNotification(_ notification:Notification) {
+        excludeTrainCode = notification.object as! String
     }
     
     func recvFilterKeyChangeNotification(_ notification:Notification) {

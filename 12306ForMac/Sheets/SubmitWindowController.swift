@@ -21,9 +21,16 @@ class SubmitWindowController: BaseWindowController{
     @IBOutlet weak var preOrderView: GlassView!
     @IBOutlet weak var orderIdView: GlassView!
     @IBOutlet weak var submitOrderBtn: NSButton!
-    @IBOutlet weak var isAutoSubmitLabel: NSTextField!
     
     private var spaceKeyboardMonitor:Any!
+    
+    @IBOutlet weak var orderInfoCloseButton: NSButton!
+    @IBOutlet weak var orderInfoCheckOrderButton: NSButton!
+    @IBOutlet weak var orderInfoExcludeButton: NSButton!
+    
+    @IBOutlet weak var preOrderCloseButton: NSButton!
+    @IBOutlet weak var preOrderOkButton: NSButton!
+    @IBOutlet weak var preOrderExcludeButton: NSButton!
     
     @IBOutlet weak var orderId: NSTextField!
     
@@ -44,6 +51,19 @@ class SubmitWindowController: BaseWindowController{
         self.freshOrderInfoView()
         
         self.preOrderFlow()
+        
+        if isAutoSubmit {
+            if !ifShowCode {
+                let origin = orderInfoCheckOrderButton.frame.origin
+                orderInfoCheckOrderButton.isHidden = true
+                orderInfoCloseButton.title = "取消自动"
+                orderInfoCloseButton.setFrameOrigin(origin)
+            }
+        }
+        else {
+            orderInfoExcludeButton.isHidden = true
+            preOrderExcludeButton.isHidden = true
+        }
         
         //增加对Space按键的支持
         spaceKeyboardMonitor = NSEvent.addLocalMonitorForEvents(matching: NSKeyDownMask) { [weak self] (theEvent) -> NSEvent? in
@@ -68,10 +88,7 @@ class SubmitWindowController: BaseWindowController{
                 NSEvent.removeMonitor(spaceKeyboardMonitor!)
             }
         }
-        
-        if timer != nil {
-            timer!.invalidate()
-        }
+
     }
     
     func freshOrderInfoView(){
@@ -136,10 +153,6 @@ class SubmitWindowController: BaseWindowController{
         }
         isSubmitting = true
         
-        if isAutoSubmit {
-            self.isAutoSubmitLabel.isHidden = false
-        }
-        
         let autoSummitHandler = {(image:NSImage)->() in
             if self.ifShowCode {
                 self.switchViewFrom(self.orderInfoView, to: self.preOrderView)
@@ -161,14 +174,12 @@ class SubmitWindowController: BaseWindowController{
             else {
                 self.isSubmitting = false
             }
-            self.isAutoSubmitLabel.isHidden = true
             self.stopLoadingTip()
         }
         
         let failureHandler = { (error:NSError) -> () in
             self.showTip(translate(error))
             self.isSubmitting = false
-            self.isAutoSubmitLabel.isHidden = true
             self.stopLoadingTip()
         }
         
@@ -203,7 +214,12 @@ class SubmitWindowController: BaseWindowController{
     }
     
     func submitOrderFlow(isAuto:Bool = false,ifShowRandCode:Bool = false,randCode:String = ""){
-        self.startLoadingTip("正在提交...")
+        if isAuto {
+            self.startLoadingTip("正在自动提交...")
+        }
+        else {
+            self.startLoadingTip("正在提交...")
+        }
         
         let failureHandler = { (error:NSError) -> () in
             self.stopLoadingTip()
@@ -308,6 +324,16 @@ class SubmitWindowController: BaseWindowController{
     }
     
     @IBAction func clickCancel(_ button:NSButton){
+        if timer != nil {
+            timer!.invalidate()
+        }
+        
+        dismissWithModalResponse(NSModalResponseCancel)
+    }
+    
+    @IBAction func clickExcludeTrain(_ button:NSButton) {
+        NotificationCenter.default.post(name: Notification.Name.App.DidExcludeTrainSubmit, object:trainCodeLabel.stringValue)
+        
         dismissWithModalResponse(NSModalResponseCancel)
     }
     
