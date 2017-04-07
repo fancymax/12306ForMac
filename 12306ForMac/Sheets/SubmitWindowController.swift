@@ -37,6 +37,7 @@ class SubmitWindowController: BaseWindowController{
     var isAutoSubmit = false
     var isSubmitting = false
     var ifShowCode = true
+    var isCancel = false
     
     weak var timer:Timer?
     
@@ -233,7 +234,12 @@ class SubmitWindowController: BaseWindowController{
                 if isAuto {
                     self.showTip(translate(error) + " 请等待3秒App会自动重新提交")
                     
-                    self.timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(SubmitWindowController.closeAndReSubmit), userInfo: nil, repeats: false)
+                    if !self.isCancel {
+                        self.timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(SubmitWindowController.closeAndReSubmit), userInfo: nil, repeats: false)
+                    }
+                    else {
+                        logger.info("取消自动重新提交车次 \(self.trainCodeLabel.stringValue)")
+                    }
                 }
                 else {
                     self.showTip(translate(error) + " 可尝试重新查询车票并提交！")
@@ -327,12 +333,13 @@ class SubmitWindowController: BaseWindowController{
         if timer != nil {
             timer!.invalidate()
         }
+        isCancel = true
         
         dismissWithModalResponse(NSModalResponseCancel)
     }
     
     @IBAction func clickExcludeTrain(_ button:NSButton) {
-        NotificationCenter.default.post(name: Notification.Name.App.DidExcludeTrainSubmit, object:trainCodeLabel.stringValue)
+        NotificationCenter.default.post(name: Notification.Name.App.DidExcludeTrainSubmit, object:MainModel.selectedTicket!.TrainCode)
         
         dismissWithModalResponse(NSModalResponseCancel)
     }

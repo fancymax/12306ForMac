@@ -287,11 +287,11 @@ class TicketQueryViewController: BaseViewController {
                     continue
                 }
                 
+                hasFindTicket = true
                 if ticket.TrainCode == self.excludeTrainCode {
+                    logger.info("exclude train \(self.excludeTrainCode)")
                     continue
                 }
-                
-                hasFindTicket = true
                 
                 self.stopAutoQuery()
                 
