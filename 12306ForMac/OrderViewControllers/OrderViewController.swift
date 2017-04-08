@@ -147,9 +147,10 @@ class OrderViewController: BaseViewController{
 // MARK: - Menu Action
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-        if menuItem.title.contains("刷新") {
+        if menuItem.action == #selector(clickRefresh(_:)) {
             return true
         }
+        
         if orderList.count == 0 {
             return false
         }

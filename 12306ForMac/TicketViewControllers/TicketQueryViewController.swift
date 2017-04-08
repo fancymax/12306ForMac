@@ -569,25 +569,25 @@ class TicketQueryViewController: BaseViewController {
 // MARK: - notification
     func registerAllNotification() {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvCheckPassengerNotification(_:)), name: NSNotification.Name.App.DidCheckPassenger, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recvCheckPassengerNotification(_:)), name: NSNotification.Name.App.DidCheckPassenger, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvLogoutNotification(_:)), name: NSNotification.Name.App.DidLogout, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recvLogoutNotification(_:)), name: NSNotification.Name.App.DidLogout, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvDidSubmitNotification(_:)), name: NSNotification.Name.App.DidSubmit, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recvDidSubmitNotification(_:)), name: NSNotification.Name.App.DidSubmit, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvAutoSubmitNotification(_:)), name: NSNotification.Name.App.DidAutoSubmit, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recvAutoSubmitNotification(_:)), name: NSNotification.Name.App.DidAutoSubmit, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvAutoSubmitWithoutRandCodeNotification(_:)), name: NSNotification.Name.App.DidAutoSubmitWithoutRandCode, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recvAutoSubmitWithoutRandCodeNotification(_:)), name: NSNotification.Name.App.DidAutoSubmitWithoutRandCode, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvAddDefaultPassengerNotification(_:)), name: NSNotification.Name.App.DidAddDefaultPassenger, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recvAddDefaultPassengerNotification(_:)), name: NSNotification.Name.App.DidAddDefaultPassenger, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvStartQueryTicketNotification(_:)), name: NSNotification.Name.App.DidStartQueryTicket, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recvStartQueryTicketNotification(_:)), name: NSNotification.Name.App.DidStartQueryTicket, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvRefilterQueryTicketNotification(_:)), name: NSNotification.Name.App.DidRefilterQueryTicket, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recvRefilterQueryTicketNotification(_:)), name: NSNotification.Name.App.DidRefilterQueryTicket, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvFilterKeyChangeNotification(_:)), name: NSNotification.Name.App.DidTrainFilterKeyChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recvFilterKeyChangeNotification(_:)), name: NSNotification.Name.App.DidTrainFilterKeyChange, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(TicketQueryViewController.recvExcludeTrainSubmitNotification(_:)), name: NSNotification.Name.App.DidExcludeTrainSubmit, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recvExcludeTrainSubmitNotification(_:)), name: NSNotification.Name.App.DidExcludeTrainSubmit, object: nil)
     }
     
     func recvExcludeTrainSubmitNotification(_ notification:Notification) {
@@ -764,12 +764,17 @@ class TicketQueryViewController: BaseViewController {
     
 // MARK: - Menu Action
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-        if menuItem.title.contains("刷新") {
+        if menuItem.action == #selector(clickRefresh(_:)) {
             return true
         }
-    
-        if filterQueryResult.count <= 0 {
-            return false
+        
+        if menuItem.action == #selector(clickFilterTrain(_:)) {
+            if ticketQueryResult.count <= 0 {
+                return false
+            }
+            else {
+                return true
+            }
         }
         
         let selectedRow = leftTicketTable.selectedRow
@@ -777,9 +782,10 @@ class TicketQueryViewController: BaseViewController {
             return false
         }
         let ticket = filterQueryResult[selectedRow]
-        //calendar
-        if (menuItem.title.contains("日历")) && !ticket.canTicketAdd2Calendar() {
-            return false
+        if menuItem.action == #selector(clickAdd2Calendar(_:))  {
+            if !ticket.canTicketAdd2Calendar() {
+                return false
+            }
         }
         
         return true

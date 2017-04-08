@@ -48,10 +48,10 @@ class MainWindowController: NSWindowController{
         
         self.window?.recalculateKeyViewLoop()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(MainWindowController.recvLoginNotification(_:)), name: NSNotification.Name.App.DidLogin, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(MainWindowController.recvAutoLoginNotification(_:)), name: NSNotification.Name.App.DidAutoLogin, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recvLoginNotification(_:)), name: NSNotification.Name.App.DidLogin, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recvAutoLoginNotification(_:)), name: NSNotification.Name.App.DidAutoLogin, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(MainWindowController.recvDamaSuccessNotification(_:)), name: NSNotification.Name.App.DidDamaGetBalance, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recvDamaSuccessNotification(_:)), name: NSNotification.Name.App.DidDamaGetBalance, object: nil)
         
         CalendarManager.sharedInstance.updateAuthorizationStatus()
         ReminderManager.sharedInstance.updateAuthorizationStatus()
