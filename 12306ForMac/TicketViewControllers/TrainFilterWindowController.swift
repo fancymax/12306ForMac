@@ -291,7 +291,7 @@ class TrainFilterWindowController: BaseWindowController {
             else {
                 //检查其他筛选条件
                 var otherItemCanChange = true
-                for filterItem in filterItems where ((filterItem.type == .FromStation) || (filterItem.type == .ToStation) || (filterItem.type == .StartTime) || (filterItem.type == .TrainType)) && (filterItem != selectedItem) {
+                for filterItem in filterItems where ((filterItem.type == .FromStation) || (filterItem.type == .ToStation) || (filterItem.type == .StartTime) || (filterItem.type == .EndTime) || (filterItem.type == .TrainType)) && (filterItem != selectedItem) {
                     
                     if filterItem.isChecked == true {
                         continue
