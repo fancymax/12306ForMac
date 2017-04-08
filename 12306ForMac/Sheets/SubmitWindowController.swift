@@ -339,9 +339,9 @@ class SubmitWindowController: BaseWindowController{
     }
     
     @IBAction func clickExcludeTrain(_ button:NSButton) {
+        isCancel = true
         NotificationCenter.default.post(name: Notification.Name.App.DidExcludeTrainSubmit, object:MainModel.selectedTicket!.TrainCode)
-        
-        dismissWithModalResponse(NSModalResponseCancel)
+        closeAndReSubmit()
     }
     
     @IBAction func clickRateInAppstore(_ button:AnyObject?){

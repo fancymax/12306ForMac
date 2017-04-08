@@ -378,7 +378,12 @@ class TicketQueryViewController: BaseViewController {
             self.canFilter = false
         }
         
-        self.startLoadingTip("正在查询...")
+        var excludeTip = ""
+        if excludeTrainCode != "" {
+            excludeTip = "已排除车次\(excludeTrainCode)，重新查询可以撤销"
+        }
+        self.startLoadingTip("正在查询..." + excludeTip)
+        
         self.date = date
         
         let fromStationCode = StationNameJs.sharedInstance.allStationMap[fromStation]?.Code
@@ -687,6 +692,7 @@ class TicketQueryViewController: BaseViewController {
         
         if hasAutoQuery {
             self.stopAutoQuery()
+            excludeTrainCode = ""
             return
         }
         
