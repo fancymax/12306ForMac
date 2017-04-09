@@ -21,7 +21,7 @@ class OrderViewController: BaseViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(OrderViewController.recvLogoutNotification(_:)), name: NSNotification.Name.App.DidLogout, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recvLogoutNotification(_:)), name: NSNotification.Name.App.DidLogout, object: nil)
     }
     
     override var nibName: String?{

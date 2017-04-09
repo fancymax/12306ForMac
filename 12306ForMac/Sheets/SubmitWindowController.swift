@@ -235,7 +235,7 @@ class SubmitWindowController: BaseWindowController{
                     self.showTip(translate(error) + " 请等待3秒App会自动重新提交")
                     
                     if !self.isCancel {
-                        self.timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(SubmitWindowController.closeAndReSubmit), userInfo: nil, repeats: false)
+                        self.timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(closeAndReSubmit), userInfo: nil, repeats: false)
                     }
                     else {
                         logger.info("取消自动重新提交车次 \(self.trainCodeLabel.stringValue)")

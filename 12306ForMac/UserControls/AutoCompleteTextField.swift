@@ -61,7 +61,7 @@ class AutoCompleteTextField:NSTextField{
         tableView.headerView = nil
         tableView.refusesFirstResponder = true
         tableView.target = self
-        tableView.doubleAction = #selector(AutoCompleteTextField.insert(_:))
+        tableView.doubleAction = #selector(insert(_:))
         tableView.addTableColumn(column1)
         tableView.delegate = self
         tableView.dataSource = self

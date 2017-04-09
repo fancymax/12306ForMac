@@ -370,7 +370,7 @@ extension TrainFilterWindowController:NSTableViewDelegate,NSTableViewDataSource 
         if let view = mainCell?.viewWithTag(100) {
             let btn = view as! NSButton
             btn.target = self
-            btn.action = #selector(TrainFilterWindowController.clickTrainFilterBtn(_:))
+            btn.action = #selector(clickTrainFilterBtn(_:))
         }
         
         return mainCell

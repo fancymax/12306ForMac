@@ -42,7 +42,7 @@ class MainWindowController: NSWindowController{
         
         moduleSegment.selectedSegment = 0
         moduleSegment.target = self
-        moduleSegment.action = #selector(MainWindowController.segmentTab(_:))
+        moduleSegment.action = #selector(segmentTab(_:))
         
         selectModule(TrainBook)
         
