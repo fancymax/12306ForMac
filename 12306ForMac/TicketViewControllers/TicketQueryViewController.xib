@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
@@ -490,7 +490,7 @@
             <rect key="frame" x="0.0" y="0.0" width="910" height="40"/>
             <subviews>
                 <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-M1-vtw" customClass="ClickableDatePicker" customModule="订票助手" customModuleProvider="target">
-                    <rect key="frame" x="593" y="1.5" width="90" height="23"/>
+                    <rect key="frame" x="593" y="2" width="90" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="8Aa-Zv-hKL"/>
                         <constraint firstAttribute="width" constant="90" id="Vo0-fD-7UT"/>
@@ -508,7 +508,7 @@
                     </connections>
                 </datePicker>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4jY-s2-8Ni" customClass="AutoCompleteTextField" customModule="订票助手" customModuleProvider="target">
-                    <rect key="frame" x="80" y="1.5" width="100" height="23"/>
+                    <rect key="frame" x="80" y="2" width="100" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="5RR-3h-LZM"/>
                         <constraint firstAttribute="width" constant="100" id="t04-b6-cBp"/>
@@ -528,7 +528,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l4y-Hd-FVf" customClass="AutoCompleteTextField" customModule="订票助手" customModuleProvider="target">
-                    <rect key="frame" x="323" y="1.5" width="100" height="23"/>
+                    <rect key="frame" x="323" y="2" width="100" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="C6k-54-5Fp"/>
                         <constraint firstAttribute="width" constant="100" id="fmb-qp-YPt"/>
@@ -597,7 +597,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQQ-8z-kIM">
-                    <rect key="frame" x="193" y="5.5" width="50" height="16"/>
+                    <rect key="frame" x="193" y="6" width="50" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="IuX-gs-s4I"/>
                         <constraint firstAttribute="height" constant="16" id="z5f-YW-eTw"/>
@@ -621,6 +621,17 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MUa-ek-GSq">
+                    <rect key="frame" x="425" y="1" width="26" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" title="Button" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="oix-7Y-rB4">
+                        <behavior key="behavior" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="clickOpenTicketTaskSheet:" target="-2" id="opF-6S-VTi"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="Be8-M1-vtw" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" constant="-1" id="1Wa-9a-0N4"/>
@@ -736,6 +747,7 @@
     <resources>
         <image name="Add" width="94" height="94"/>
         <image name="Filter" width="48" height="47"/>
+        <image name="NSAddTemplate" width="11" height="11"/>
         <image name="Reverse" width="94" height="94"/>
     </resources>
 </document>

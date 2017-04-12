@@ -248,6 +248,7 @@ class TicketQueryViewController: BaseViewController {
     
     lazy var trainFilterWindowController:TrainFilterWindowController = TrainFilterWindowController()
     var submitWindowController:SubmitWindowController?
+    var ticketTaskWindowController:TicketTaskManagerWindowController?
     
     func ticketOrderedBy(_ tickets:[QueryLeftNewDTO], orderedBy:TicketOrder, ascending:Bool) -> [QueryLeftNewDTO] {
         let sortedTickets:[QueryLeftNewDTO] = tickets.sorted{
@@ -571,6 +572,18 @@ class TicketQueryViewController: BaseViewController {
         }
     }
     
+    func openTicketTaskSheet() {
+        if let window = self.view.window {
+            let windowController = TicketTaskManagerWindowController()
+            
+            window.beginSheet(windowController.window!, completionHandler: {response in
+                self.ticketTaskWindowController = nil
+            })
+            self.ticketTaskWindowController = windowController
+        }
+        
+    }
+    
 // MARK: - notification
     func registerAllNotification() {
         
@@ -673,6 +686,10 @@ class TicketQueryViewController: BaseViewController {
     }
     
 // MARK: - Click Action
+    
+    @IBAction func clickOpenTicketTaskSheet(_ sender: NSButton) {
+        openTicketTaskSheet()
+    }
     
     @IBAction func clickConvertCity(_ sender: NSButton) {
         let temp = self.fromStationNameTxt.stringValue

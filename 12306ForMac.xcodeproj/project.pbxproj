@@ -65,6 +65,8 @@
 		F147763E1D6B2B2E002FD6AF /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F147763D1D6B2B2E002FD6AF /* InfoButton.swift */; };
 		F14D6BE41D86E91C00CBD36C /* FilterTrainCodeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14D6BE31D86E91C00CBD36C /* FilterTrainCodeTransformer.swift */; };
 		F14EBEC41DD1AEED002B2B83 /* QueryTrainPriceParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14EBEC31DD1AEED002B2B83 /* QueryTrainPriceParam.swift */; };
+		F15F3EBB1E9E3F7200351ADC /* TicketTaskManagerWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15F3EB91E9E3F7200351ADC /* TicketTaskManagerWindowController.swift */; };
+		F15F3EBC1E9E3F7200351ADC /* TicketTaskManagerWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F15F3EBA1E9E3F7200351ADC /* TicketTaskManagerWindowController.xib */; };
 		F170C0D51E07CAAD0047C547 /* DJActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F170C0D01E07CAAD0047C547 /* DJActivityIndicator.m */; };
 		F170C0D61E07CAAD0047C547 /* DJLayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F170C0D21E07CAAD0047C547 /* DJLayerView.m */; };
 		F170C0D71E07CAAD0047C547 /* DJTipHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F170C0D41E07CAAD0047C547 /* DJTipHUD.m */; };
@@ -190,6 +192,8 @@
 		F14D6BE31D86E91C00CBD36C /* FilterTrainCodeTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTrainCodeTransformer.swift; sourceTree = "<group>"; };
 		F14EBEC31DD1AEED002B2B83 /* QueryTrainPriceParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryTrainPriceParam.swift; sourceTree = "<group>"; };
 		F15277071DAB78D3002BAF17 /* 12306ForMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = 12306ForMac.entitlements; path = 12306ForMac/12306ForMac.entitlements; sourceTree = "<group>"; };
+		F15F3EB91E9E3F7200351ADC /* TicketTaskManagerWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTaskManagerWindowController.swift; sourceTree = "<group>"; };
+		F15F3EBA1E9E3F7200351ADC /* TicketTaskManagerWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketTaskManagerWindowController.xib; sourceTree = "<group>"; };
 		F170C0CF1E07CAAD0047C547 /* DJActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJActivityIndicator.h; sourceTree = "<group>"; };
 		F170C0D01E07CAAD0047C547 /* DJActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJActivityIndicator.m; sourceTree = "<group>"; };
 		F170C0D11E07CAAD0047C547 /* DJLayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJLayerView.h; sourceTree = "<group>"; };
@@ -413,6 +417,8 @@
 				F11154A81C8D92A700FA6059 /* SubmitWindowController.xib */,
 				F12746731D50784100975DFA /* TrainFilterWindowController.swift */,
 				F12746741D50784100975DFA /* TrainFilterWindowController.xib */,
+				F15F3EB91E9E3F7200351ADC /* TicketTaskManagerWindowController.swift */,
+				F15F3EBA1E9E3F7200351ADC /* TicketTaskManagerWindowController.xib */,
 			);
 			name = TicketQueryModule;
 			path = 12306ForMac/TicketViewControllers;
@@ -613,6 +619,7 @@
 				F1BCB97A1E72EC7E00D1C7FA /* Reminder.png in Resources */,
 				F11154D31C8D936300FA6059 /* MainMenu.xib in Resources */,
 				F1C8BC591DEECACB005A922B /* PayWindowController.xib in Resources */,
+				F15F3EBC1E9E3F7200351ADC /* TicketTaskManagerWindowController.xib in Resources */,
 				F11154651C8D91F800FA6059 /* srca.cer in Resources */,
 				F11154941C8D925200FA6059 /* LunarCalendarView.xib in Resources */,
 				F11154D01C8D931500FA6059 /* MainWindowController.xib in Resources */,
@@ -714,6 +721,7 @@
 				F1F926881E0110BA00FE4229 /* GetQueueCountParam.swift in Sources */,
 				F1F9268E1E0116C500FE4229 /* ConfirmSingleForQueueAsysParam.swift in Sources */,
 				F1C075211D83F97A006EFABB /* TicketConstants.swift in Sources */,
+				F15F3EBB1E9E3F7200351ADC /* TicketTaskManagerWindowController.swift in Sources */,
 				F1BCB97D1E72ECC600D1C7FA /* ReminderPreferenceViewController.swift in Sources */,
 				F11154981C8D927C00FA6059 /* StationData.swift in Sources */,
 				F14D6BE41D86E91C00CBD36C /* FilterTrainCodeTransformer.swift in Sources */,
