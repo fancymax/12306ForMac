@@ -179,7 +179,7 @@
 		F113B4F71C8FBA2E0001AE09 /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		F118AC441DF6656400B7EECE /* NSTableView+ContextMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTableView+ContextMenu.swift"; sourceTree = "<group>"; };
 		F11E29281D2AA2B6004BE59D /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = User.png; path = 12306ForMac/images/User.png; sourceTree = SOURCE_ROOT; };
-		F11EB45A1B6A368E000063E4 /* 订票助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "订票助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F11EB45A1B6A368E000063E4 /* 12306订票助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "12306订票助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F11FE6861D5F4EB70049F261 /* DamaError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamaError.swift; sourceTree = "<group>"; };
 		F123E8271DF00BBC003C06A8 /* BaseWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseWindowController.swift; path = 12306ForMac/BaseWindowController.swift; sourceTree = "<group>"; };
 		F127466F1D502E8100975DFA /* Filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Filter.png; path = 12306ForMac/images/Filter.png; sourceTree = SOURCE_ROOT; };
@@ -438,7 +438,7 @@
 		F11EB45B1B6A368E000063E4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F11EB45A1B6A368E000063E4 /* 订票助手.app */,
+				F11EB45A1B6A368E000063E4 /* 12306订票助手.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -563,7 +563,7 @@
 			);
 			name = 12306ForMac;
 			productName = Train12306;
-			productReference = F11EB45A1B6A368E000063E4 /* 订票助手.app */;
+			productReference = F11EB45A1B6A368E000063E4 /* 12306订票助手.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -897,7 +897,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fancymax.12306ForMac;
-				PRODUCT_NAME = "订票助手";
+				PRODUCT_MODULE_NAME = iTrain;
+				PRODUCT_NAME = "12306订票助手";
 				PROVISIONING_PROFILE = "";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "12306ForMac/12306ForMac-Bridging-Header.h";
@@ -924,7 +925,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fancymax.12306ForMac;
-				PRODUCT_NAME = "订票助手";
+				PRODUCT_MODULE_NAME = iTrain;
+				PRODUCT_NAME = "12306订票助手";
 				PROVISIONING_PROFILE = "";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "12306ForMac/12306ForMac-Bridging-Header.h";
