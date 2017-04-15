@@ -38,6 +38,8 @@ class TicketTaskManagerWindowController: BaseWindowController {
             ticketTasks.append(ticketTask)
         }
         
+        self.window?.makeFirstResponder(ticketTaskTable)
+        ticketTaskTable.selectRowIndexes(IndexSet(integer:0), byExtendingSelection: false)
     }
     
     @IBAction func clickOK(_ button:NSButton){
