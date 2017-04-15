@@ -12,5 +12,6 @@ target '12306ForMac' do
   pod 'PromiseKit', '~> 4.1.0'
   pod 'XCGLogger', '~> 4.0.0'
   pod 'MASPreferences', '~> 1.1.4'
+  pod 'SwiftyJSON'
 
 end

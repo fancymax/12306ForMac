@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 enum TicketType:String,CustomStringConvertible {
     case Student = "0X00"

@@ -22,6 +22,7 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (4.1.0):
     - PromiseKit/CorePromise
+  - SwiftyJSON (3.1.3)
   - XCGLogger (4.0.0):
     - XCGLogger/Core (= 4.0.0)
   - XCGLogger/Core (4.0.0)
@@ -32,6 +33,7 @@ DEPENDENCIES:
   - MASPreferences (~> 1.1.4)
   - OMGHTTPURLRQ (~> 3.2.2)
   - PromiseKit (~> 4.1.0)
+  - SwiftyJSON
   - XCGLogger (~> 4.0.0)
 
 SPEC CHECKSUMS:
@@ -40,8 +42,9 @@ SPEC CHECKSUMS:
   MASPreferences: 7bdcfe891d7840453cf48f95fa866c3e152ace7a
   OMGHTTPURLRQ: edb14c7d28add69226b79d826f930805927a0ffa
   PromiseKit: c98453ff78544c0ad5bb0ea980782e6875f47978
+  SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
   XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
 
-PODFILE CHECKSUM: 85d723e71bfbd83d7d08321cbc9dcb9e3175ae56
+PODFILE CHECKSUM: 8a0ce388248a925ac6f95863c6216330ea1e9d1e
 
 COCOAPODS: 1.1.1

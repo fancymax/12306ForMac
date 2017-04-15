@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class OrderDTO:NSObject{
     var sequence_no: String?

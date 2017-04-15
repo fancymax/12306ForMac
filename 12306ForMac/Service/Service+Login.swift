@@ -10,6 +10,7 @@ import JavaScriptCore
 import Cocoa
 import Alamofire
 import PromiseKit
+import SwiftyJSON
 
 extension Service {
     

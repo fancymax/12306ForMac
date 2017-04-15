@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftyJSON
 
 struct SeatTypePair:CustomDebugStringConvertible {
     let seatName:String //无座

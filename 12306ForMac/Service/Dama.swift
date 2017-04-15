@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 fileprivate func md5(_ string: String) -> String {
     let context = UnsafeMutablePointer<CC_MD5_CTX>.allocate(capacity: 1)
