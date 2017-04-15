@@ -28,6 +28,8 @@ class TicketTaskManagerWindowController: BaseWindowController {
     var calendarRow = -1
     
     var ticketTasks = [TicketTask]()
+    
+    var isShowCalendarPopover = false
 
     override func windowDidLoad() {
         for i in 0...3 {
@@ -135,16 +137,24 @@ extension TicketTaskManagerWindowController: NSTableViewDelegate{
 extension TicketTaskManagerWindowController:NSPopoverDelegate {
     
     @IBAction func showCalendar(_ sender: NSButton){
+        if isShowCalendarPopover {
+            return
+        }
         
         let calendarPopover = NSPopover()
         let cp = LunarCalendarView(with:Date())
         calendarRow = self.ticketTaskTable.row(for: sender)
+        
         cp.allSelectedDates = getDatesByRow(calendarRow)
         calendarPopover.contentViewController = cp
         calendarPopover.appearance = NSAppearance(named: "NSAppearanceNameAqua")
         calendarPopover.animates = true
         calendarPopover.behavior = NSPopoverBehavior.transient
         calendarPopover.delegate = self
+        
+        self.ticketTaskTable.selectRowIndexes(IndexSet(integer:calendarRow), byExtendingSelection: false)
+        
+        isShowCalendarPopover = true
         
         self.calendarViewController = cp
         let cellRect = sender.bounds
@@ -154,7 +164,9 @@ extension TicketTaskManagerWindowController:NSPopoverDelegate {
     func popoverDidClose(_ notification: Notification) {
         let dates = calendarViewController!.allSelectedDates
         ticketTasks[calendarRow].date = convertDates2Str(dates)
+        isShowCalendarPopover = false
         
         ticketTaskTable.reloadData()
+        ticketTaskTable.selectRowIndexes(IndexSet(integer:calendarRow), byExtendingSelection: false)
     }
 }
