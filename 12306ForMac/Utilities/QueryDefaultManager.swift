@@ -18,6 +18,7 @@ class QueryDefaultManager {
     private let queryDateKey = "queryDate"
     private let selectedPassenger = "selectedPassenger"
     private let allSelectedDate = "allSelectedDate"
+    private let ticketTaskManager = "ticketTaskManager"
     private let userDefaults = UserDefaults.standard
     
     private init()
@@ -92,6 +93,15 @@ class QueryDefaultManager {
         }
         set(newValue) {
             userDefaults.set(newValue,forKey: allSelectedDate)
+        }
+    }
+    
+    var lastTicketTaskManager:String? {
+        get {
+            return userDefaults.object(forKey: ticketTaskManager) as? String
+        }
+        set(newValue) {
+            userDefaults.set(newValue,forKey: ticketTaskManager)
         }
     }
 }

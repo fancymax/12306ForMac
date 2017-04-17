@@ -7,11 +7,66 @@
 //
 
 import Cocoa
+import SwiftyJSON
 
 class TicketTask:NSObject {
     var startStation = "北京"
     var endStation = "上海"
     var date = "2017-04-22/2017-04-23/2017-04-24"
+    
+    override init() {
+        
+    }
+    
+    convenience init(json:JSON) {
+        self.init()
+        decodeJsonFrom(json)
+    }
+    
+    func encodeToJson() ->JSON {
+        let json:JSON = [#keyPath(startStation):startStation,#keyPath(endStation):endStation,#keyPath(date):date]
+        
+        return json
+    }
+    
+    func decodeJsonFrom(_ json:JSON) {
+        let startStationKeyPath = #keyPath(startStation)
+        startStation = json[startStationKeyPath].stringValue
+        
+        let endStationKeyPath = #keyPath(endStation)
+        endStation = json[endStationKeyPath].stringValue
+        
+        let dateKeyPath = #keyPath(date)
+        date = json[dateKeyPath].stringValue
+    }
+}
+
+class TicketTasksManager: NSObject {
+    var ticketTasks = [TicketTask]()
+    
+    func encodeToJsonString() -> String {
+        var json:[JSON] = [JSON]()
+        for i in 0..<ticketTasks.count {
+            json.append(ticketTasks[i].encodeToJson())
+        }
+        
+        return JSON(json).rawString()!
+    }
+    
+    func decodeJsonFrom(_ jsonString:String) {
+        ticketTasks = [TicketTask]()
+        if let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false) {
+            let json = JSON(data: dataFromString)
+            if json.array == nil {
+                return
+            }
+            for item in json.array! {
+                let ticketTask = TicketTask(json:item)
+                ticketTasks.append(ticketTask)
+            }
+        }
+ 
+    }
     
 }
 
@@ -43,6 +98,7 @@ class TicketTaskManagerWindowController: BaseWindowController {
     }
     
     @IBAction func clickOK(_ button:NSButton){
+        
         dismissWithModalResponse(NSModalResponseCancel)
     }
     
