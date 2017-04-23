@@ -185,8 +185,8 @@ extension LoginWindowController: AutoCompleteTableViewDelegate{
         return matches
     }
     
-    func didSelectItem(_ selectedItem: String) {
-        for  user in self.users where user.name == selectedItem {
+    func textField(_ textField:NSTextField,didSelectItem item: String){
+        for  user in self.users where user.name == item {
             self.passWord.stringValue = user.password
         }
     }

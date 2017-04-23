@@ -52,30 +52,31 @@ class TicketQueryViewController: BaseViewController {
         }
         
         if ticketTaskManager.ticketTasks.count > 0 {
-            setQueryParams(ticketTaskManager, taskIndex: queryTaskIndex, dateIndex: queryDateIndex)
+            setQueryParams()
+            self.queryDateIndex = 0
         }
         else {
-            if QueryDefaultManager.sharedInstance.lastAllSelectedDates != nil {
-                var shouldReset = false
-                for date in QueryDefaultManager.sharedInstance.lastAllSelectedDates! {
-                    if date.compare(Date().addingTimeInterval(-24*3600)) == .orderedAscending {
-                        shouldReset = true
-                        break;
-                    }
-                }
-                if shouldReset {
-                    self.allSelectedDates.append(Date())
-                }
-                else {
-                    self.allSelectedDates = QueryDefaultManager.sharedInstance.lastAllSelectedDates!
-                }
-            }
-            else {
-                self.allSelectedDates.append(Date())
-            }
-            
-            
-            self.setQueryDateValue(allSelectedDates,index:self.queryDateIndex)
+//            if QueryDefaultManager.sharedInstance.lastAllSelectedDates != nil {
+//                var shouldReset = false
+//                for date in QueryDefaultManager.sharedInstance.lastAllSelectedDates! {
+//                    if date.compare(Date().addingTimeInterval(-24*3600)) == .orderedAscending {
+//                        shouldReset = true
+//                        break;
+//                    }
+//                }
+//                if shouldReset {
+//                    self.allSelectedDates.append(Date())
+//                }
+//                else {
+//                    self.allSelectedDates = QueryDefaultManager.sharedInstance.lastAllSelectedDates!
+//                }
+//            }
+//            else {
+//                self.allSelectedDates.append(Date())
+//            }
+//            
+//            
+//            self.setQueryDateValue(allSelectedDates,index:self.queryDateIndex)
         }
     }
     
@@ -103,7 +104,6 @@ class TicketQueryViewController: BaseViewController {
     var calendarViewController:LunarCalendarView?
     var repeatTimer:Timer?
     var ticketType:TicketType = .Normal
-    var allSelectedDates:[Date] = [Date]()
     var queryTaskIndex = 0
     var queryDateIndex = 0
     
@@ -116,32 +116,42 @@ class TicketQueryViewController: BaseViewController {
         return dateFormatter.string(from: date)
     }
     
-    private func setQueryParams(_ ticketManager:TicketTasksManager,taskIndex:Int,dateIndex:Int) {
+    private func setQueryParams() {
+        var dateStr = ticketTaskManager.ticketTasks[queryTaskIndex].date
+        var queryDates = ticketTaskManager.convertStr2Dates(dateStr)
+        var taskIndexHasChange = false
+        if self.queryDateIndex >= queryDates.count {
+            self.queryTaskIndex += 1
+            self.queryDateIndex = 0
+            taskIndexHasChange = true
+        }
         
-        if ticketManager.ticketTasks.count > 1 {
-            fromStationLabel.stringValue = "出发城市 \(taskIndex + 1)/\(ticketManager.ticketTasks.count)"
-            toStationLabel.stringValue = "到达城市 \(taskIndex + 1)/\(ticketManager.ticketTasks.count)"
+        if self.queryTaskIndex >= ticketTaskManager.ticketTasks.count {
+            self.queryTaskIndex = 0
+            taskIndexHasChange = true
+        }
+        
+        if taskIndexHasChange {
+            dateStr = ticketTaskManager.ticketTasks[queryTaskIndex].date
+            queryDates = ticketTaskManager.convertStr2Dates(dateStr)
+            
+        }
+        
+        if ticketTaskManager.ticketTasks.count > 1 {
+            fromStationLabel.stringValue = "出发城市 \(queryTaskIndex + 1)/\(ticketTaskManager.ticketTasks.count)"
+            toStationLabel.stringValue = "到达城市 \(queryTaskIndex + 1)/\(ticketTaskManager.ticketTasks.count)"
         }
         else {
             fromStationLabel.stringValue = "出发城市"
             toStationLabel.stringValue = "到达城市"
         }
         
-        self.fromStationNameTxt.stringValue = ticketManager.ticketTasks[taskIndex].startStation
-        self.toStationNameTxt.stringValue = ticketManager.ticketTasks[taskIndex].endStation
+        self.fromStationNameTxt.stringValue = ticketTaskManager.ticketTasks[queryTaskIndex].startStation
+        self.toStationNameTxt.stringValue = ticketTaskManager.ticketTasks[queryTaskIndex].endStation
         
-        let queryDates = ticketManager.convertStr2Dates(ticketManager.ticketTasks[taskIndex].date)
-        setQueryDateValue(queryDates, index: dateIndex)
+        setQueryDateValue(queryDates, index: queryDateIndex)
         
-        self.queryDateIndex = dateIndex + 1
-        if self.queryDateIndex >= queryDates.count {
-            self.queryTaskIndex = taskIndex + 1
-            self.queryDateIndex = 0
-        }
-        
-        if self.queryTaskIndex >= ticketManager.ticketTasks.count {
-            self.queryTaskIndex = 0
-        }
+        self.queryDateIndex += 1
     }
     
     private func setQueryDateValue(_ dates:[Date], index:Int) {
@@ -372,7 +382,7 @@ class TicketQueryViewController: BaseViewController {
     }
     
     func queryTicket(_ summitHandler:@escaping ()->() = {}) {
-        setQueryParams(ticketTaskManager, taskIndex: queryTaskIndex, dateIndex: queryDateIndex)
+        setQueryParams()
         
         let fromStation = self.fromStationNameTxt.stringValue
         let toStation = self.toStationNameTxt.stringValue
@@ -604,6 +614,7 @@ class TicketQueryViewController: BaseViewController {
     func openTicketTaskSheet() {
         if let window = self.view.window {
             let windowController = TicketTaskManagerWindowController()
+            windowController.ticketTasksManager = self.ticketTaskManager
             
             window.beginSheet(windowController.window!, completionHandler: {response in
                 self.ticketTaskManager = self.ticketTaskWindowController!.ticketTasksManager
@@ -893,6 +904,17 @@ extension TicketQueryViewController: AutoCompleteTableViewDelegate{
         
         return matches
     }
+    
+    func textField(_ textField: NSTextField, didSelectItem item: String) {
+        let ticketTask = ticketTaskManager.ticketTasks[queryTaskIndex]
+        if textField == fromStationNameTxt {
+            ticketTask.startStation = item
+        }
+        else if textField == toStationNameTxt {
+            ticketTask.endStation = item
+        }
+        self.queryDateIndex = 0
+    }
 }
 
 // MARK: - NSPopoverDelegate
@@ -901,7 +923,10 @@ extension TicketQueryViewController:NSPopoverDelegate {
     @IBAction func showCalendar(_ sender: AnyObject){
         let calendarPopover = NSPopover()
         let cp = LunarCalendarView(with:self.queryDate.dateValue)
-        cp.allSelectedDates = self.allSelectedDates
+        
+        let ticketTask = ticketTaskManager.ticketTasks[queryTaskIndex]
+        let dates = ticketTaskManager.convertStr2Dates(ticketTask.date)
+        cp.allSelectedDates = dates
         calendarPopover.contentViewController = cp
         calendarPopover.appearance = NSAppearance(named: "NSAppearanceNameAqua")
         calendarPopover.animates = true
@@ -914,8 +939,9 @@ extension TicketQueryViewController:NSPopoverDelegate {
     }
     
     func popoverDidClose(_ notification: Notification) {
-        self.allSelectedDates = calendarViewController!.allSelectedDates
         self.queryDateIndex = 0
+        let ticketTask = ticketTaskManager.ticketTasks[queryTaskIndex]
+        ticketTask.date = ticketTaskManager.convertDates2Str(calendarViewController!.allSelectedDates)
         
         autoQuery = false
         self.clickQueryTicketBtn(nil)

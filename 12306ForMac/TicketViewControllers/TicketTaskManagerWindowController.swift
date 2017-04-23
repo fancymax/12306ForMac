@@ -151,11 +151,6 @@ class TicketTaskManagerWindowController: BaseWindowController {
     }
     
     override func windowDidLoad() {
-        let lastTicketJsonString = QueryDefaultManager.sharedInstance.lastTicketTaskManager
-        if lastTicketJsonString != nil {
-            ticketTasksManager.decodeJsonFrom(lastTicketJsonString!)
-        }
-        
         self.window?.makeFirstResponder(ticketTaskTable)
         ticketTaskTable.selectRowIndexes(IndexSet(integer:0), byExtendingSelection: false)
     }
