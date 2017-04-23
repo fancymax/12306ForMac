@@ -90,6 +90,7 @@ class TicketTasksManager: NSObject {
     func convertStr2Dates(_ str:String) ->[Date] {
         var resDates = [Date]()
         let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")!
         dateFormatter.dateFormat = "yyyy-MM-dd"
         for dateStr in str.components(separatedBy: "/") {
             if let date = dateFormatter.date(from: dateStr) {
@@ -102,6 +103,7 @@ class TicketTasksManager: NSObject {
     
     func convertDates2Str(_ dates:[Date]) -> String {
         let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")!
         dateFormatter.dateFormat = "yyyy-MM-dd"
         var resStr = ""
         for i in 0...dates.count - 1 {
