@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
@@ -7,7 +7,7 @@
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="TicketQueryViewController" customModule="订票助手" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="TicketQueryViewController" customModule="iTrain" customModuleProvider="target">
             <connections>
                 <outlet property="addPassengerBtn" destination="mmx-jz-xkG" id="Gnp-WC-xFh"/>
                 <outlet property="autoQueryNumTxt" destination="8dY-Wq-KeS" id="plY-vW-yvP"/>
@@ -45,7 +45,7 @@
                 <constraint firstAttribute="trailing" secondItem="Q3P-1n-q0W" secondAttribute="trailing" id="XVI-y2-Iv4"/>
             </constraints>
         </view>
-        <customView id="Pvh-ix-iH6" customClass="GlassView" customModule="订票助手" customModuleProvider="target">
+        <customView id="Pvh-ix-iH6" customClass="GlassView" customModule="iTrain" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="910" height="530"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -76,11 +76,11 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="E9k-hF-Stf" customClass="TrainCodeTableCellView" customModule="订票助手" customModuleProvider="target">
+                                            <tableCellView id="E9k-hF-Stf" customClass="TrainCodeTableCellView" customModule="iTrain" customModuleProvider="target">
                                                 <rect key="frame" x="1" y="1" width="80" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V9m-uH-It6" customClass="URLButton" customModule="订票助手" customModuleProvider="target">
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V9m-uH-It6" customClass="URLButton" customModule="iTrain" customModuleProvider="target">
                                                         <rect key="frame" x="2" y="10" width="43" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="lLM-e5-nYN"/>
@@ -117,7 +117,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="w0H-sJ-aSH" customClass="StartStationTableCellView" customModule="订票助手" customModuleProvider="target">
+                                            <tableCellView id="w0H-sJ-aSH" customClass="StartStationTableCellView" customModule="iTrain" customModuleProvider="target">
                                                 <rect key="frame" x="84" y="1" width="125" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -161,7 +161,7 @@
                                                     <outlet property="timeField" destination="gXp-21-TOC" id="bhR-r5-wyy"/>
                                                 </connections>
                                             </tableCellView>
-                                            <customView identifier="row" id="zqP-EN-VQl" customClass="TrainTableRowView" customModule="订票助手" customModuleProvider="target">
+                                            <customView identifier="row" id="zqP-EN-VQl" customClass="TrainTableRowView" customModule="iTrain" customModuleProvider="target">
                                                 <rect key="frame" x="84" y="43" width="125" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             </customView>
@@ -180,7 +180,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="zA7-QT-CBc" customClass="EndStationTableCellView" customModule="订票助手" customModuleProvider="target">
+                                            <tableCellView id="zA7-QT-CBc" customClass="EndStationTableCellView" customModule="iTrain" customModuleProvider="target">
                                                 <rect key="frame" x="212" y="1" width="125" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -278,28 +278,28 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView misplaced="YES" id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="订票助手" customModuleProvider="target">
+                                            <tableCellView misplaced="YES" id="O67-gD-stZ" customClass="TrainInfoTableCellView" customModule="iTrain" customModuleProvider="target">
                                                 <rect key="frame" x="453" y="1" width="431" height="63"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oxk-Lo-fip">
                                                         <rect key="frame" x="0.0" y="0.0" width="1000" height="63"/>
                                                         <subviews>
-                                                            <button identifier="商务座" verticalHuggingPriority="750" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="UpH-C9-uDp" userLabel="商务座" customClass="LoginButton" customModule="订票助手" customModuleProvider="target">
+                                                            <button identifier="商务座" verticalHuggingPriority="750" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="UpH-C9-uDp" userLabel="商务座" customClass="LoginButton" customModule="iTrain" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="19" width="80" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="商务" alternateTitle="商务" bezelStyle="inline" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Stq-IG-mgm">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
-                                                            <button identifier="特等座" verticalHuggingPriority="750" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="mgN-VM-SF4" userLabel="特等座" customClass="LoginButton" customModule="订票助手" customModuleProvider="target">
+                                                            <button identifier="特等座" verticalHuggingPriority="750" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="mgN-VM-SF4" userLabel="特等座" customClass="LoginButton" customModule="iTrain" customModuleProvider="target">
                                                                 <rect key="frame" x="88" y="19" width="80" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="特等" alternateTitle="特等" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OND-2D-g1o">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
-                                                            <button identifier="一等座" horizontalHuggingPriority="249" verticalHuggingPriority="750" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="HnK-45-D99" userLabel="一等座" customClass="LoginButton" customModule="订票助手" customModuleProvider="target">
+                                                            <button identifier="一等座" horizontalHuggingPriority="249" verticalHuggingPriority="750" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="HnK-45-D99" userLabel="一等座" customClass="LoginButton" customModule="iTrain" customModuleProvider="target">
                                                                 <rect key="frame" x="176" y="19" width="80" height="24"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="23" id="4BC-Qu-bNd"/>
@@ -310,49 +310,49 @@
                                                                     <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
-                                                            <button identifier="二等座" verticalHuggingPriority="750" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="JB7-6q-6Ic" userLabel="二等座" customClass="LoginButton" customModule="订票助手" customModuleProvider="target">
+                                                            <button identifier="二等座" verticalHuggingPriority="750" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="JB7-6q-6Ic" userLabel="二等座" customClass="LoginButton" customModule="iTrain" customModuleProvider="target">
                                                                 <rect key="frame" x="264" y="19" width="80" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="二等" alternateTitle="二等" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KJK-zQ-QWE">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
-                                                            <button identifier="高级软卧" verticalHuggingPriority="750" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="ZvK-uu-LeH" userLabel="高级软卧" customClass="LoginButton" customModule="订票助手" customModuleProvider="target">
+                                                            <button identifier="高级软卧" verticalHuggingPriority="750" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="ZvK-uu-LeH" userLabel="高级软卧" customClass="LoginButton" customModule="iTrain" customModuleProvider="target">
                                                                 <rect key="frame" x="352" y="19" width="80" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="高软" alternateTitle="高软" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2ao-Gp-HPa">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
-                                                            <button identifier="软卧" verticalHuggingPriority="750" tag="6" translatesAutoresizingMaskIntoConstraints="NO" id="R5Z-HP-k7K" userLabel="软卧" customClass="LoginButton" customModule="订票助手" customModuleProvider="target">
+                                                            <button identifier="软卧" verticalHuggingPriority="750" tag="6" translatesAutoresizingMaskIntoConstraints="NO" id="R5Z-HP-k7K" userLabel="软卧" customClass="LoginButton" customModule="iTrain" customModuleProvider="target">
                                                                 <rect key="frame" x="440" y="19" width="80" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="软卧" alternateTitle="软卧" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="e8g-PC-guM">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
-                                                            <button identifier="硬卧" verticalHuggingPriority="750" tag="7" translatesAutoresizingMaskIntoConstraints="NO" id="3iC-Ai-Rw6" userLabel="硬卧" customClass="LoginButton" customModule="订票助手" customModuleProvider="target">
+                                                            <button identifier="硬卧" verticalHuggingPriority="750" tag="7" translatesAutoresizingMaskIntoConstraints="NO" id="3iC-Ai-Rw6" userLabel="硬卧" customClass="LoginButton" customModule="iTrain" customModuleProvider="target">
                                                                 <rect key="frame" x="528" y="19" width="80" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="硬卧" alternateTitle="硬卧" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zn5-hg-eUW">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
-                                                            <button identifier="软座" verticalHuggingPriority="750" tag="8" translatesAutoresizingMaskIntoConstraints="NO" id="NjA-vl-39H" userLabel="软座" customClass="LoginButton" customModule="订票助手" customModuleProvider="target">
+                                                            <button identifier="软座" verticalHuggingPriority="750" tag="8" translatesAutoresizingMaskIntoConstraints="NO" id="NjA-vl-39H" userLabel="软座" customClass="LoginButton" customModule="iTrain" customModuleProvider="target">
                                                                 <rect key="frame" x="616" y="19" width="80" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="软座" alternateTitle="软座" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hFC-Hv-LR1">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
-                                                            <button identifier="硬座" verticalHuggingPriority="750" tag="9" translatesAutoresizingMaskIntoConstraints="NO" id="kHl-PR-7Ki" userLabel="硬座" customClass="LoginButton" customModule="订票助手" customModuleProvider="target">
+                                                            <button identifier="硬座" verticalHuggingPriority="750" tag="9" translatesAutoresizingMaskIntoConstraints="NO" id="kHl-PR-7Ki" userLabel="硬座" customClass="LoginButton" customModule="iTrain" customModuleProvider="target">
                                                                 <rect key="frame" x="704" y="19" width="80" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="硬座" alternateTitle="硬座" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="M6L-GK-dqA">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                     <font key="font" metaFont="systemLight" size="13"/>
                                                                 </buttonCell>
                                                             </button>
-                                                            <button identifier="无座" verticalHuggingPriority="750" tag="10" translatesAutoresizingMaskIntoConstraints="NO" id="9oM-tl-jPV" userLabel="无座" customClass="LoginButton" customModule="订票助手" customModuleProvider="target">
+                                                            <button identifier="无座" verticalHuggingPriority="750" tag="10" translatesAutoresizingMaskIntoConstraints="NO" id="9oM-tl-jPV" userLabel="无座" customClass="LoginButton" customModule="iTrain" customModuleProvider="target">
                                                                 <rect key="frame" x="792" y="19" width="80" height="24"/>
                                                                 <buttonCell key="cell" type="inline" title="无座" alternateTitle="无座" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AKM-RM-npx">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -486,11 +486,11 @@
             </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="364.5" y="1306"/>
         </customView>
-        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Pal-9i-ZzT" customClass="GlassView" customModule="订票助手" customModuleProvider="target">
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Pal-9i-ZzT" customClass="GlassView" customModule="iTrain" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="910" height="40"/>
             <subviews>
-                <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-M1-vtw" customClass="ClickableDatePicker" customModule="订票助手" customModuleProvider="target">
-                    <rect key="frame" x="593" y="2" width="90" height="23"/>
+                <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-M1-vtw" customClass="ClickableDatePicker" customModule="iTrain" customModuleProvider="target">
+                    <rect key="frame" x="593" y="1.5" width="90" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="8Aa-Zv-hKL"/>
                         <constraint firstAttribute="width" constant="90" id="Vo0-fD-7UT"/>
@@ -507,8 +507,8 @@
                         <action selector="showCalendar:" target="-2" id="lKN-QV-raq"/>
                     </connections>
                 </datePicker>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4jY-s2-8Ni" customClass="AutoCompleteTextField" customModule="订票助手" customModuleProvider="target">
-                    <rect key="frame" x="80" y="2" width="100" height="23"/>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4jY-s2-8Ni" customClass="AutoCompleteTextField" customModule="iTrain" customModuleProvider="target">
+                    <rect key="frame" x="80" y="1.5" width="100" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="5RR-3h-LZM"/>
                         <constraint firstAttribute="width" constant="100" id="t04-b6-cBp"/>
@@ -527,8 +527,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l4y-Hd-FVf" customClass="AutoCompleteTextField" customModule="订票助手" customModuleProvider="target">
-                    <rect key="frame" x="323" y="2" width="100" height="23"/>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l4y-Hd-FVf" customClass="AutoCompleteTextField" customModule="iTrain" customModuleProvider="target">
+                    <rect key="frame" x="323" y="1.5" width="100" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="C6k-54-5Fp"/>
                         <constraint firstAttribute="width" constant="100" id="fmb-qp-YPt"/>
@@ -597,7 +597,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQQ-8z-kIM">
-                    <rect key="frame" x="193" y="6" width="50" height="16"/>
+                    <rect key="frame" x="193" y="5.5" width="50" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="IuX-gs-s4I"/>
                         <constraint firstAttribute="height" constant="16" id="z5f-YW-eTw"/>
@@ -661,10 +661,10 @@
             </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="170" y="855"/>
         </customView>
-        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Dhy-j5-W4F" customClass="GlassView" customModule="订票助手" customModuleProvider="target">
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Dhy-j5-W4F" customClass="GlassView" customModule="iTrain" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="910" height="40"/>
             <subviews>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mmx-jz-xkG" customClass="LoginButton" customModule="订票助手" customModuleProvider="target">
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mmx-jz-xkG" customClass="LoginButton" customModule="iTrain" customModuleProvider="target">
                     <rect key="frame" x="12" y="7" width="60" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="Igj-BO-kWj"/>
@@ -691,7 +691,7 @@
                         <action selector="clickAutoQueryCbx:" target="-2" id="0cK-hZ-iP4"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yXT-88-gO1" customClass="LoginButton" customModule="订票助手" customModuleProvider="target">
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yXT-88-gO1" customClass="LoginButton" customModule="iTrain" customModuleProvider="target">
                     <rect key="frame" x="818" y="7" width="60" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="LZa-AR-v9w"/>

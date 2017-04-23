@@ -12,15 +12,23 @@ import SwiftyJSON
 class TicketTask:NSObject {
     var startStation = "北京"
     var endStation = "上海"
-    var date = "2017-04-22/2017-04-23/2017-04-24"
+    var date = "2017-04-22"
     
     override init() {
-        
+        super.init()
+        date = getDateStr(Date())
     }
     
     convenience init(json:JSON) {
         self.init()
         decodeJsonFrom(json)
+    }
+    
+    func getDateStr(_ date:Date) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        return dateFormatter.string(from: date)
     }
     
     func encodeToJson() ->JSON {
@@ -65,46 +73,56 @@ class TicketTasksManager: NSObject {
                 ticketTasks.append(ticketTask)
             }
         }
- 
+    }
+    
+    func addTicketTask() {
+        let newTask = TicketTask()
+        let taskCount = ticketTasks.count
+        if taskCount != 0 {
+            let json = ticketTasks[taskCount - 1].encodeToJson()
+            newTask.decodeJsonFrom(json)
+        }
+        ticketTasks.append(newTask)
+    }
+    
+    func deleteTicketTask(_ index:Int) {
+        let taskCount = ticketTasks.count
+        if index < taskCount && taskCount > 0 {
+            ticketTasks.remove(at: index)
+        }
     }
     
 }
 
 class TicketTaskManagerWindowController: BaseWindowController {
     
+    @IBOutlet weak var ticketTaskTable: NSTableView!
+    
+    var calendarViewController:LunarCalendarView?
+    
+    var calendarRow = -1
+    
+    var ticketTasksManager = TicketTasksManager()
+    
+    var isShowCalendarPopover = false
+
     override var windowNibName: String{
         return "TicketTaskManagerWindowController"
     }
     
-    var calendarViewController:LunarCalendarView?
-    
-    @IBOutlet weak var ticketTaskTable: NSTableView!
-    
-    var calendarRow = -1
-    
-    var ticketTasks = [TicketTask]()
-    
-    var isShowCalendarPopover = false
-
     override func windowDidLoad() {
-        for i in 0...3 {
-            let ticketTask = TicketTask()
-            
-            ticketTasks.append(ticketTask)
+        let lastTicketJsonString = QueryDefaultManager.sharedInstance.lastTicketTaskManager
+        if lastTicketJsonString != nil {
+            ticketTasksManager.decodeJsonFrom(lastTicketJsonString!)
         }
         
         self.window?.makeFirstResponder(ticketTaskTable)
         ticketTaskTable.selectRowIndexes(IndexSet(integer:0), byExtendingSelection: false)
     }
     
-    @IBAction func clickOK(_ button:NSButton){
-        
-        dismissWithModalResponse(NSModalResponseCancel)
-    }
-    
     func getDatesByRow(_ row:Int) ->[Date] {
         var resDates = [Date]()
-        let datesString = ticketTasks[row].date
+        let datesString = ticketTasksManager.ticketTasks[row].date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         for dateStr in datesString.components(separatedBy: "/") {
@@ -129,6 +147,31 @@ class TicketTaskManagerWindowController: BaseWindowController {
         }
         
         return resStr
+    }
+    
+    // MARK: - click Action
+    @IBAction func clickOK(_ button:NSButton){
+        QueryDefaultManager.sharedInstance.lastTicketTaskManager = ticketTasksManager.encodeToJsonString()
+        
+        dismissWithModalResponse(NSModalResponseCancel)
+    }
+    
+    @IBAction func clickAddTask(_ sender: NSButton) {
+        ticketTasksManager.addTicketTask()
+        
+        let index = ticketTaskTable.selectedRow
+        ticketTaskTable.reloadData()
+        ticketTaskTable.selectRowIndexes(IndexSet(arrayLiteral:index), byExtendingSelection: false)
+    }
+
+    @IBAction func clickDeleteTask(_ sender: NSButton) {
+        let index = ticketTaskTable.selectedRow
+        ticketTasksManager.deleteTicketTask(index)
+        
+        ticketTaskTable.reloadData()
+        if index - 1 >= 0 {
+            ticketTaskTable.selectRowIndexes(IndexSet(arrayLiteral:index - 1), byExtendingSelection: false)
+        }
     }
 }
 
@@ -160,13 +203,14 @@ extension TicketTaskManagerWindowController: AutoCompleteTableViewDelegate{
     }
 }
 
+// MARK: - NSTableViewDataSource
 extension TicketTaskManagerWindowController:NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return ticketTasks.count
+        return ticketTasksManager.ticketTasks.count
     }
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        return ticketTasks[row]
+        return ticketTasksManager.ticketTasks[row]
     }
 }
 
@@ -221,7 +265,7 @@ extension TicketTaskManagerWindowController:NSPopoverDelegate {
     
     func popoverDidClose(_ notification: Notification) {
         let dates = calendarViewController!.allSelectedDates
-        ticketTasks[calendarRow].date = convertDates2Str(dates)
+        ticketTasksManager.ticketTasks[calendarRow].date = convertDates2Str(dates)
         isShowCalendarPopover = false
         
         ticketTaskTable.reloadData()

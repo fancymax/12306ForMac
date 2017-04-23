@@ -104,9 +104,10 @@ class TicketQueryViewController: BaseViewController {
     var queryDateIndex = 0
    
     fileprivate func getDateStr(_ date:Date) -> String{
-        let dateDescription = date.description
-        let dateRange = dateDescription.range(of: " ")
-        return dateDescription[dateDescription.startIndex..<dateRange!.lowerBound]
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        return dateFormatter.string(from: date)
     }
     
     fileprivate func setQueryDateValue(_ dates:[Date], index:Int) {
