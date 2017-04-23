@@ -36,46 +36,47 @@ class TicketQueryViewController: BaseViewController {
         addPassengerBtn.isHidden = true
         autoQueryNumTxt.isHidden = true
         
+        self.fromStationNameTxt.tableViewDelegate = self
+        self.toStationNameTxt.tableViewDelegate = self
+        
         self.registerAllNotification()
         self.initQueryParams()
         self.initSortParams()
     }
     
     private func initQueryParams() {
-        self.fromStationNameTxt.tableViewDelegate = self
-        self.toStationNameTxt.tableViewDelegate = self
         
-        self.fromStationNameTxt.stringValue = QueryDefaultManager.sharedInstance.lastFromStation
-        self.toStationNameTxt.stringValue = QueryDefaultManager.sharedInstance.lastToStation
+        let lastTicketJsonString = QueryDefaultManager.sharedInstance.lastTicketTaskManager
+        if lastTicketJsonString != nil {
+            ticketTaskManager.decodeJsonFrom(lastTicketJsonString!)
+        }
         
-        var lastDate:Date!
-        if QueryDefaultManager.sharedInstance.lastQueryDate.compare(Date()) == .orderedAscending {
-            lastDate = Date()
+        if ticketTaskManager.ticketTasks.count > 0 {
+            setQueryParams(ticketTaskManager, taskIndex: queryTaskIndex, dateIndex: queryDateIndex)
         }
         else {
-            lastDate = QueryDefaultManager.sharedInstance.lastQueryDate as Date
-        }
-        if QueryDefaultManager.sharedInstance.lastAllSelectedDates != nil {
-            var shouldReset = false
-            for date in QueryDefaultManager.sharedInstance.lastAllSelectedDates! {
-                if date.compare(Date().addingTimeInterval(-24*3600)) == .orderedAscending {
-                    shouldReset = true
-                    break;
+            if QueryDefaultManager.sharedInstance.lastAllSelectedDates != nil {
+                var shouldReset = false
+                for date in QueryDefaultManager.sharedInstance.lastAllSelectedDates! {
+                    if date.compare(Date().addingTimeInterval(-24*3600)) == .orderedAscending {
+                        shouldReset = true
+                        break;
+                    }
+                }
+                if shouldReset {
+                    self.allSelectedDates.append(Date())
+                }
+                else {
+                    self.allSelectedDates = QueryDefaultManager.sharedInstance.lastAllSelectedDates!
                 }
             }
-            if shouldReset {
-                self.allSelectedDates.append(lastDate)
-            }
             else {
-                self.allSelectedDates = QueryDefaultManager.sharedInstance.lastAllSelectedDates!
+                self.allSelectedDates.append(Date())
             }
+            
+            
+            self.setQueryDateValue(allSelectedDates,index:self.queryDateIndex)
         }
-        else {
-            self.allSelectedDates.append(lastDate)
-        }
-        
-        
-        self.setQueryDateValue(allSelectedDates,index:self.queryDateIndex)
     }
     
     private func initSortParams(){
@@ -95,27 +96,60 @@ class TicketQueryViewController: BaseViewController {
     @IBOutlet weak var converCityBtn: NSButton!
     @IBOutlet weak var autoQueryNumTxt: NSTextField!
     @IBOutlet weak var queryDataLabel: NSTextField!
+    @IBOutlet weak var fromStationLabel: NSTextField!
+    @IBOutlet weak var toStationLabel: NSTextField!
     
     var autoQueryNum = 0
     var calendarViewController:LunarCalendarView?
     var repeatTimer:Timer?
     var ticketType:TicketType = .Normal
     var allSelectedDates:[Date] = [Date]()
+    var queryTaskIndex = 0
     var queryDateIndex = 0
+    
+    var ticketTaskManager = TicketTasksManager()
    
-    fileprivate func getDateStr(_ date:Date) -> String{
+    private func getDateStr(_ date:Date) -> String{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         return dateFormatter.string(from: date)
     }
     
-    fileprivate func setQueryDateValue(_ dates:[Date], index:Int) {
+    private func setQueryParams(_ ticketManager:TicketTasksManager,taskIndex:Int,dateIndex:Int) {
+        
+        if ticketManager.ticketTasks.count > 1 {
+            fromStationLabel.stringValue = "出发城市 \(taskIndex + 1)/\(ticketManager.ticketTasks.count)"
+            toStationLabel.stringValue = "到达城市 \(taskIndex + 1)/\(ticketManager.ticketTasks.count)"
+        }
+        else {
+            fromStationLabel.stringValue = "出发城市"
+            toStationLabel.stringValue = "到达城市"
+        }
+        
+        self.fromStationNameTxt.stringValue = ticketManager.ticketTasks[taskIndex].startStation
+        self.toStationNameTxt.stringValue = ticketManager.ticketTasks[taskIndex].endStation
+        
+        let queryDates = ticketManager.convertStr2Dates(ticketManager.ticketTasks[taskIndex].date)
+        setQueryDateValue(queryDates, index: dateIndex)
+        
+        self.queryDateIndex = dateIndex + 1
+        if self.queryDateIndex >= queryDates.count {
+            self.queryTaskIndex = taskIndex + 1
+            self.queryDateIndex = 0
+        }
+        
+        if self.queryTaskIndex >= ticketManager.ticketTasks.count {
+            self.queryTaskIndex = 0
+        }
+    }
+    
+    private func setQueryDateValue(_ dates:[Date], index:Int) {
         var calender = Calendar.current
         calender.timeZone = TimeZone(abbreviation: "UTC")!
         
         if dates.count > 1 {
-            self.queryDataLabel.stringValue = "出发日期 \(dates.count)-\(index + 1)"
+            self.queryDataLabel.stringValue = "出发日期 \(index + 1)/\(dates.count)"
         }
         else {
             self.queryDataLabel.stringValue = "出发日期"
@@ -127,14 +161,10 @@ class TicketQueryViewController: BaseViewController {
         }
         else {
             self.queryDate.dateValue = calender.startOfDay(for: dates[index])
-            self.queryDateIndex = index + 1
-            if self.queryDateIndex >= self.allSelectedDates.count {
-                self.queryDateIndex = 0
-            }
         }
     }
     
-    fileprivate func stopAutoQuery(){
+    private func stopAutoQuery(){
         repeatTimer?.invalidate()
         repeatTimer = nil
         hasAutoQuery = false
@@ -342,12 +372,10 @@ class TicketQueryViewController: BaseViewController {
     }
     
     func queryTicket(_ summitHandler:@escaping ()->() = {}) {
+        setQueryParams(ticketTaskManager, taskIndex: queryTaskIndex, dateIndex: queryDateIndex)
+        
         let fromStation = self.fromStationNameTxt.stringValue
         let toStation = self.toStationNameTxt.stringValue
-        
-        
-        self.setQueryDateValue(allSelectedDates,index:self.queryDateIndex)
-        
         let date = getDateStr(queryDate.dateValue)
         
         logger.info("\(fromStation) -> \(toStation) \(date)  \(self.autoQueryNum)")
@@ -578,6 +606,7 @@ class TicketQueryViewController: BaseViewController {
             let windowController = TicketTaskManagerWindowController()
             
             window.beginSheet(windowController.window!, completionHandler: {response in
+                self.ticketTaskManager = self.ticketTaskWindowController!.ticketTasksManager
                 self.ticketTaskWindowController = nil
             })
             self.ticketTaskWindowController = windowController
@@ -714,15 +743,7 @@ class TicketQueryViewController: BaseViewController {
             return
         }
         
-        if self.fromStationNameTxt.stringValue != QueryDefaultManager.sharedInstance.lastFromStation ||
-            self.toStationNameTxt.stringValue != QueryDefaultManager.sharedInstance.lastToStation {
-            trainFilterKey = ""
-        }
-        
-        QueryDefaultManager.sharedInstance.lastFromStation = self.fromStationNameTxt.stringValue
-        QueryDefaultManager.sharedInstance.lastToStation = self.toStationNameTxt.stringValue
-        QueryDefaultManager.sharedInstance.lastQueryDate = queryDate.dateValue
-        QueryDefaultManager.sharedInstance.lastAllSelectedDates = self.allSelectedDates
+        QueryDefaultManager.sharedInstance.lastTicketTaskManager = ticketTaskManager.encodeToJsonString()
         
         self.saveLastSelectdPassengerIdToDefault()
         

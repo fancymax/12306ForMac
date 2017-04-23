@@ -15,6 +15,7 @@
                 <outlet property="filterBtn" destination="yXT-88-gO1" id="VxI-UI-ABf"/>
                 <outlet property="filterCbx" destination="xbM-JT-Qbf" id="J2k-ah-dCP"/>
                 <outlet property="firstSearchView" destination="Pal-9i-ZzT" id="2KX-XS-lYT"/>
+                <outlet property="fromStationLabel" destination="amu-Qj-Yha" id="BqA-am-Ljf"/>
                 <outlet property="fromStationNameTxt" destination="4jY-s2-8Ni" id="eqE-rB-b1W"/>
                 <outlet property="leftTicketTable" destination="vdR-Hc-SYr" id="JQG-gl-oM1"/>
                 <outlet property="passengersView" destination="gWk-xJ-t7i" id="pX7-IP-o2z"/>
@@ -24,6 +25,7 @@
                 <outlet property="secondSearchView" destination="Dhy-j5-W4F" id="OyI-vg-5xp"/>
                 <outlet property="stackContentView" destination="Q3P-1n-q0W" id="6aq-aD-dmW"/>
                 <outlet property="ticketTableView" destination="Pvh-ix-iH6" id="uEg-pc-6BX"/>
+                <outlet property="toStationLabel" destination="4N3-fA-XcK" id="efx-F4-n2S"/>
                 <outlet property="toStationNameTxt" destination="l4y-Hd-FVf" id="FLJ-dr-euc"/>
                 <outlet property="view" destination="lnD-vo-KnU" id="OQJ-lR-XIC"/>
             </connections>
@@ -490,7 +492,7 @@
             <rect key="frame" x="0.0" y="0.0" width="910" height="40"/>
             <subviews>
                 <datePicker verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-M1-vtw" customClass="ClickableDatePicker" customModule="iTrain" customModuleProvider="target">
-                    <rect key="frame" x="593" y="1.5" width="90" height="23"/>
+                    <rect key="frame" x="563" y="1.5" width="90" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="8Aa-Zv-hKL"/>
                         <constraint firstAttribute="width" constant="90" id="Vo0-fD-7UT"/>
@@ -508,10 +510,10 @@
                     </connections>
                 </datePicker>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4jY-s2-8Ni" customClass="AutoCompleteTextField" customModule="iTrain" customModuleProvider="target">
-                    <rect key="frame" x="80" y="1.5" width="100" height="23"/>
+                    <rect key="frame" x="95" y="1.5" width="80" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="5RR-3h-LZM"/>
-                        <constraint firstAttribute="width" constant="100" id="t04-b6-cBp"/>
+                        <constraint firstAttribute="width" constant="80" id="t04-b6-cBp"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="SVV-gq-zxE">
                         <font key="font" metaFont="systemThin" size="13"/>
@@ -528,10 +530,10 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l4y-Hd-FVf" customClass="AutoCompleteTextField" customModule="iTrain" customModuleProvider="target">
-                    <rect key="frame" x="323" y="1.5" width="100" height="23"/>
+                    <rect key="frame" x="318" y="1.5" width="80" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="C6k-54-5Fp"/>
-                        <constraint firstAttribute="width" constant="100" id="fmb-qp-YPt"/>
+                        <constraint firstAttribute="width" constant="80" id="fmb-qp-YPt"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="5fr-rF-LNE">
                         <font key="font" metaFont="systemThin" size="13"/>
@@ -548,36 +550,33 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4N3-fA-XcK">
-                    <rect key="frame" x="253" y="2" width="64" height="20"/>
+                    <rect key="frame" x="233" y="2" width="79" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="4ZH-ha-3mr"/>
-                        <constraint firstAttribute="width" constant="60" id="nZW-18-sCk"/>
                     </constraints>
-                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="到达城市" id="axq-LA-Ebv">
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="到达城市 1/4" id="axq-LA-Ebv">
                         <font key="font" metaFont="systemThin" size="13"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="amu-Qj-Yha">
-                    <rect key="frame" x="10" y="2" width="64" height="20"/>
+                    <rect key="frame" x="10" y="2" width="79" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="CT2-g0-54H"/>
-                        <constraint firstAttribute="width" constant="60" id="bap-lG-NHu"/>
                     </constraints>
-                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="出发城市" id="FYg-yd-3kf">
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="出发城市 1/4" id="FYg-yd-3kf">
                         <font key="font" metaFont="systemThin" size="13"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9qi-Pb-rDH">
-                    <rect key="frame" x="506" y="2" width="84" height="20"/>
+                    <rect key="frame" x="481" y="2" width="79" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="BZV-gj-Tnd"/>
-                        <constraint firstAttribute="width" constant="80" id="ps4-lC-VpX"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="出发日期" id="yeJ-db-y74">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="出发日期 1/3" id="yeJ-db-y74">
                         <font key="font" metaFont="systemThin" size="13"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -597,7 +596,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQQ-8z-kIM">
-                    <rect key="frame" x="193" y="5.5" width="50" height="16"/>
+                    <rect key="frame" x="180" y="5.5" width="50" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="IuX-gs-s4I"/>
                         <constraint firstAttribute="height" constant="16" id="z5f-YW-eTw"/>
@@ -621,9 +620,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MUa-ek-GSq">
-                    <rect key="frame" x="425" y="1" width="26" height="24"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MUa-ek-GSq">
+                    <rect key="frame" x="406" y="7.5" width="11" height="11"/>
                     <buttonCell key="cell" type="square" title="Button" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="oix-7Y-rB4">
                         <behavior key="behavior" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -638,9 +636,10 @@
                 <constraint firstItem="FSF-1Q-g2J" firstAttribute="leading" secondItem="8dY-Wq-KeS" secondAttribute="trailing" constant="8" id="26i-g8-uui"/>
                 <constraint firstItem="amu-Qj-Yha" firstAttribute="leading" secondItem="Pal-9i-ZzT" secondAttribute="leading" constant="12" id="40s-Lm-XYb"/>
                 <constraint firstItem="9qi-Pb-rDH" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" id="4ba-wR-dfD"/>
-                <constraint firstItem="4N3-fA-XcK" firstAttribute="leading" secondItem="4jY-s2-8Ni" secondAttribute="trailing" constant="75" id="KY1-vl-Xct"/>
+                <constraint firstItem="MUa-ek-GSq" firstAttribute="centerY" secondItem="4jY-s2-8Ni" secondAttribute="centerY" id="Fgk-ig-g2a"/>
+                <constraint firstItem="4N3-fA-XcK" firstAttribute="leading" secondItem="aQQ-8z-kIM" secondAttribute="trailing" constant="5" id="Lgd-d1-IEH"/>
                 <constraint firstItem="Be8-M1-vtw" firstAttribute="leading" secondItem="9qi-Pb-rDH" secondAttribute="trailing" constant="5" id="W29-IO-jZp"/>
-                <constraint firstItem="aQQ-8z-kIM" firstAttribute="leading" secondItem="4jY-s2-8Ni" secondAttribute="trailing" constant="13" id="YRK-jK-KDy"/>
+                <constraint firstItem="aQQ-8z-kIM" firstAttribute="leading" secondItem="4jY-s2-8Ni" secondAttribute="trailing" constant="5" id="YRK-jK-KDy"/>
                 <constraint firstItem="8dY-Wq-KeS" firstAttribute="centerY" secondItem="FSF-1Q-g2J" secondAttribute="centerY" id="bTI-cs-KDE"/>
                 <constraint firstItem="l4y-Hd-FVf" firstAttribute="leading" secondItem="4N3-fA-XcK" secondAttribute="trailing" constant="8" symbolic="YES" id="g5Y-dJ-fb2"/>
                 <constraint firstItem="9qi-Pb-rDH" firstAttribute="leading" secondItem="l4y-Hd-FVf" secondAttribute="trailing" constant="85" id="gn5-kx-tix"/>
@@ -648,6 +647,7 @@
                 <constraint firstItem="aQQ-8z-kIM" firstAttribute="centerY" secondItem="4jY-s2-8Ni" secondAttribute="centerY" id="jsi-Gf-Fmt"/>
                 <constraint firstItem="4N3-fA-XcK" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" id="nOH-lk-YH1"/>
                 <constraint firstAttribute="trailing" secondItem="FSF-1Q-g2J" secondAttribute="trailing" constant="12" id="nWj-B1-tRX"/>
+                <constraint firstItem="MUa-ek-GSq" firstAttribute="leading" secondItem="l4y-Hd-FVf" secondAttribute="trailing" constant="8" id="pej-9D-BEp"/>
                 <constraint firstAttribute="height" constant="40" id="szc-6h-AUy"/>
                 <constraint firstItem="amu-Qj-Yha" firstAttribute="top" secondItem="Pal-9i-ZzT" secondAttribute="top" constant="18" id="v5n-Eh-4O9"/>
                 <constraint firstItem="4jY-s2-8Ni" firstAttribute="centerY" secondItem="amu-Qj-Yha" secondAttribute="centerY" constant="-1" id="vRC-O5-Jl7"/>

@@ -10,9 +10,11 @@ import Cocoa
 import SwiftyJSON
 
 class TicketTask:NSObject {
-    var startStation = "北京"
-    var endStation = "上海"
+    var startStation = "深圳"
+    var endStation = "衡阳"
     var date = "2017-04-22"
+    var trainFilterKey = ""
+    var seatFilterKey = ""
     
     override init() {
         super.init()
@@ -32,20 +34,30 @@ class TicketTask:NSObject {
     }
     
     func encodeToJson() ->JSON {
-        let json:JSON = [#keyPath(startStation):startStation,#keyPath(endStation):endStation,#keyPath(date):date]
+        let json:JSON = [#keyPath(startStation):startStation,
+                         #keyPath(endStation):endStation,
+                         #keyPath(date):date,
+                         #keyPath(trainFilterKey):trainFilterKey,
+                         #keyPath(seatFilterKey):seatFilterKey]
         
         return json
     }
     
     func decodeJsonFrom(_ json:JSON) {
-        let startStationKeyPath = #keyPath(startStation)
-        startStation = json[startStationKeyPath].stringValue
+        var keyPath = #keyPath(startStation)
+        startStation = json[keyPath].stringValue
         
-        let endStationKeyPath = #keyPath(endStation)
-        endStation = json[endStationKeyPath].stringValue
+        keyPath = #keyPath(endStation)
+        endStation = json[keyPath].stringValue
         
-        let dateKeyPath = #keyPath(date)
-        date = json[dateKeyPath].stringValue
+        keyPath = #keyPath(date)
+        date = json[keyPath].stringValue
+        
+        keyPath = #keyPath(trainFilterKey)
+        trainFilterKey = json[keyPath].stringValue
+        
+        keyPath = #keyPath(seatFilterKey)
+        seatFilterKey = json[keyPath].stringValue
     }
 }
 
@@ -73,6 +85,34 @@ class TicketTasksManager: NSObject {
                 ticketTasks.append(ticketTask)
             }
         }
+    }
+    
+    func convertStr2Dates(_ str:String) ->[Date] {
+        var resDates = [Date]()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        for dateStr in str.components(separatedBy: "/") {
+            if let date = dateFormatter.date(from: dateStr) {
+                resDates.append(date)
+            }
+        }
+        
+        return resDates
+    }
+    
+    func convertDates2Str(_ dates:[Date]) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        var resStr = ""
+        for i in 0...dates.count - 1 {
+            let str = dateFormatter.string(from: dates[i])
+            resStr.append(str)
+            if i != dates.count - 1 {
+                resStr.append("/")
+            }
+        }
+        
+        return resStr
     }
     
     func addTicketTask() {
@@ -118,35 +158,6 @@ class TicketTaskManagerWindowController: BaseWindowController {
         
         self.window?.makeFirstResponder(ticketTaskTable)
         ticketTaskTable.selectRowIndexes(IndexSet(integer:0), byExtendingSelection: false)
-    }
-    
-    func getDatesByRow(_ row:Int) ->[Date] {
-        var resDates = [Date]()
-        let datesString = ticketTasksManager.ticketTasks[row].date
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        for dateStr in datesString.components(separatedBy: "/") {
-            if let date = dateFormatter.date(from: dateStr) {
-                resDates.append(date)
-            }
-        }
-    
-        return resDates
-    }
-    
-    func convertDates2Str(_ dates:[Date]) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        var resStr = ""
-        for i in 0...dates.count - 1 {
-            let str = dateFormatter.string(from: dates[i])
-            resStr.append(str)
-            if i != dates.count - 1 {
-                resStr.append("/")
-            }
-        }
-        
-        return resStr
     }
     
     // MARK: - click Action
@@ -247,7 +258,8 @@ extension TicketTaskManagerWindowController:NSPopoverDelegate {
         let cp = LunarCalendarView(with:Date())
         calendarRow = self.ticketTaskTable.row(for: sender)
         
-        cp.allSelectedDates = getDatesByRow(calendarRow)
+        let dateStr = ticketTasksManager.ticketTasks[calendarRow].date
+        cp.allSelectedDates = ticketTasksManager.convertStr2Dates(dateStr)
         calendarPopover.contentViewController = cp
         calendarPopover.appearance = NSAppearance(named: "NSAppearanceNameAqua")
         calendarPopover.animates = true
@@ -265,7 +277,7 @@ extension TicketTaskManagerWindowController:NSPopoverDelegate {
     
     func popoverDidClose(_ notification: Notification) {
         let dates = calendarViewController!.allSelectedDates
-        ticketTasksManager.ticketTasks[calendarRow].date = convertDates2Str(dates)
+        ticketTasksManager.ticketTasks[calendarRow].date = ticketTasksManager.convertDates2Str(dates)
         isShowCalendarPopover = false
         
         ticketTaskTable.reloadData()
