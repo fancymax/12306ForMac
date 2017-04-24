@@ -133,7 +133,6 @@ class TicketTasksManager: NSObject {
             ticketTasks.remove(at: index)
         }
     }
-    
 }
 
 class TicketTaskManagerWindowController: BaseWindowController {
@@ -172,6 +171,17 @@ class TicketTaskManagerWindowController: BaseWindowController {
         ticketTaskTable.selectRowIndexes(IndexSet(arrayLiteral:index), byExtendingSelection: false)
     }
 
+    @IBAction func clickConvertCity(_ sender: NSMenuItem) {
+        let index = ticketTaskTable.selectedRow
+        let ticketTask = ticketTasksManager.ticketTasks[index]
+        let temp = ticketTask.startStation
+        ticketTask.startStation = ticketTask.endStation
+        ticketTask.endStation = temp
+        
+        ticketTaskTable.reloadData()
+        ticketTaskTable.selectRowIndexes(IndexSet(arrayLiteral:index), byExtendingSelection: false)
+    }
+    
     @IBAction func clickDeleteTask(_ sender: NSButton) {
         let index = ticketTaskTable.selectedRow
         ticketTasksManager.deleteTicketTask(index)

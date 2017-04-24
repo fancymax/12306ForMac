@@ -51,33 +51,11 @@ class TicketQueryViewController: BaseViewController {
             ticketTaskManager.decodeJsonFrom(lastTicketJsonString!)
         }
         
-        if ticketTaskManager.ticketTasks.count > 0 {
-            setQueryParams()
-            self.queryDateIndex = 0
+        if ticketTaskManager.ticketTasks.count == 0 {
+            ticketTaskManager.ticketTasks.append(TicketTask())
         }
-        else {
-//            if QueryDefaultManager.sharedInstance.lastAllSelectedDates != nil {
-//                var shouldReset = false
-//                for date in QueryDefaultManager.sharedInstance.lastAllSelectedDates! {
-//                    if date.compare(Date().addingTimeInterval(-24*3600)) == .orderedAscending {
-//                        shouldReset = true
-//                        break;
-//                    }
-//                }
-//                if shouldReset {
-//                    self.allSelectedDates.append(Date())
-//                }
-//                else {
-//                    self.allSelectedDates = QueryDefaultManager.sharedInstance.lastAllSelectedDates!
-//                }
-//            }
-//            else {
-//                self.allSelectedDates.append(Date())
-//            }
-//            
-//            
-//            self.setQueryDateValue(allSelectedDates,index:self.queryDateIndex)
-        }
+        setQueryParams()
+        self.queryDateIndex = 0
     }
     
     private func initSortParams(){
@@ -619,6 +597,12 @@ class TicketQueryViewController: BaseViewController {
             window.beginSheet(windowController.window!, completionHandler: {response in
                 self.ticketTaskManager = self.ticketTaskWindowController!.ticketTasksManager
                 self.ticketTaskWindowController = nil
+                
+                if self.queryTaskIndex >= self.ticketTaskManager.ticketTasks.count {
+                    self.queryTaskIndex = self.ticketTaskManager.ticketTasks.count - 1
+                }
+                self.setQueryParams()
+                self.queryDateIndex = 0
             })
             self.ticketTaskWindowController = windowController
         }
