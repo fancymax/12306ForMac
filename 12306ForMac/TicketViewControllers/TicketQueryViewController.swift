@@ -54,6 +54,25 @@ class TicketQueryViewController: BaseViewController {
         if ticketTaskManager.ticketTasks.count == 0 {
             ticketTaskManager.ticketTasks.append(TicketTask())
         }
+        else {
+            let todayStr = getStrFromDate(Date())
+            let today = getDateFromStr(todayStr)
+            
+            for task in ticketTaskManager.ticketTasks {
+                var dates = ticketTaskManager.convertStr2Dates(task.date)
+                var hasChangeDates = false
+                for i in 0..<dates.count  {
+                    if dates[i] < today {
+                        dates[i] = today
+                        hasChangeDates = true
+                    }
+                }
+                if hasChangeDates {
+                    task.date = ticketTaskManager.convertDates2Str(dates)
+                }
+            }
+        }
+        
         setQueryParams()
         self.queryDateIndex = 0
     }
@@ -87,11 +106,18 @@ class TicketQueryViewController: BaseViewController {
     
     var ticketTaskManager = TicketTasksManager()
    
-    private func getDateStr(_ date:Date) -> String{
+    private func getStrFromDate(_ date:Date) -> String{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         return dateFormatter.string(from: date)
+    }
+    
+    private func getDateFromStr(_ str:String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")!
+        return dateFormatter.date(from: str)!
     }
     
     private func setQueryParams() {
@@ -364,7 +390,7 @@ class TicketQueryViewController: BaseViewController {
         
         let fromStation = self.fromStationNameTxt.stringValue
         let toStation = self.toStationNameTxt.stringValue
-        let date = getDateStr(queryDate.dateValue)
+        let date = getStrFromDate(queryDate.dateValue)
         
         logger.info("\(fromStation) -> \(toStation) \(date)  \(self.autoQueryNum)")
         
