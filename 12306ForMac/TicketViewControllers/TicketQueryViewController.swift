@@ -847,14 +847,8 @@ class TicketQueryViewController: BaseViewController {
         if selectedRow < 0 || selectedRow > filterQueryResult.count - 1 {
             return false
         }
-        let ticket = filterQueryResult[selectedRow]
-        if menuItem.action == #selector(clickAdd2Calendar(_:))  {
-            if !ticket.canTicketAdd2Calendar() {
-                return false
-            }
-        }
         
-        return true
+        return false
     }
     
     @IBAction func clickRefresh(_ sender:AnyObject?) {
@@ -869,22 +863,6 @@ class TicketQueryViewController: BaseViewController {
         generalPasteboard.setString(shareInfo, forType:NSStringPboardType)
         
         showTip("车票信息已生成,可复制到其他App")
-    }
-    
-    @IBAction func clickAdd2Calendar(_ sender:AnyObject?){
-        let ticket = filterQueryResult[leftTicketTable.selectedRow]
-        
-        let eventTitle = "预售提醒: \(ticket.TrainCode!) \(ticket.FromStationName!)->\(ticket.ToStationName!)"
-        let endDate = ticket.getSaleTime()
-        let startDate = endDate.addingTimeInterval(-3600)
-        let isSuccess = CalendarManager.sharedInstance.createEvent(title:eventTitle,startDate:startDate,endDate:endDate)
-
-        if !isSuccess {
-            self.showTip("添加日历失败,请到 系统偏好设置->安全性与隐私->隐私->日历 允许本程序的访问权限。")
-        }
-        else {
-            self.showTip("添加日历成功。")
-        }
     }
 }
 

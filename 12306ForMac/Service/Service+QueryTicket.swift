@@ -126,11 +126,13 @@ extension Service {
                         reject(error)
                     case .success(let data):
                         let json = JSON(data)["data"]
-                        if json.count > 0 {
+                        let flag = json["flag"].intValue
+                        if flag == 1 {
                             var tickets = [QueryLeftNewDTO]()
-                            for i in 0..<json.count
-                            {
-                                let leftTicket = QueryLeftNewDTO(json: json[i],dateStr: params.train_date)
+                            let res = json["result"]
+                            let map = json["map"]
+                            for json in res.arrayValue {
+                                let leftTicket = QueryLeftNewDTO(json: json,map: map,dateStr: params.train_date)
                                 tickets.append(leftTicket)
                             }
                             fulfill(tickets)

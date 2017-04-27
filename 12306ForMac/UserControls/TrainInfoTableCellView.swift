@@ -145,7 +145,7 @@ class TrainInfoTableCellView: TrainTableCellView {
     override func updateUI() {
         
         func setTicketButton(_ ticket:String,sender:NSButton){
-            if ((ticket == "--")||(ticket == "无")||(ticket == "*")){
+            if ((ticket == "--")||(ticket == "无")||(ticket == "*")||(ticket == "")){
                 sender.isHidden = true
                 return
             }
