@@ -138,7 +138,6 @@ class TicketQueryViewController: BaseViewController {
         if taskIndexHasChange {
             dateStr = ticketTaskManager.ticketTasks[queryTaskIndex].date
             queryDates = ticketTaskManager.convertStr2Dates(dateStr)
-            
         }
         
         if ticketTaskManager.ticketTasks.count > 1 {
@@ -152,6 +151,8 @@ class TicketQueryViewController: BaseViewController {
         
         self.fromStationNameTxt.stringValue = ticketTaskManager.ticketTasks[queryTaskIndex].startStation
         self.toStationNameTxt.stringValue = ticketTaskManager.ticketTasks[queryTaskIndex].endStation
+        self.trainFilterKey = ticketTaskManager.ticketTasks[queryTaskIndex].trainFilterKey
+        self.seatFilterKey = ticketTaskManager.ticketTasks[queryTaskIndex].seatFilterKey
         
         setQueryDateValue(queryDates, index: queryDateIndex)
         
@@ -279,19 +280,27 @@ class TicketQueryViewController: BaseViewController {
     var ticketOrder:TicketOrder?
     var ticketAscending:Bool?
     
-    var trainFilterKey = "" {
-        didSet {
-            if trainFilterKey == "" {
-                trainFilterWindowController = TrainFilterWindowController()
-            }
+    var trainFilterKey:String {
+        get {
+            return ticketTaskManager.ticketTasks[queryTaskIndex].trainFilterKey
+        }
+        set {
+            ticketTaskManager.ticketTasks[queryTaskIndex].trainFilterKey = newValue
         }
     }
     
-    var seatFilterKey = ""
+    var seatFilterKey:String {
+        get {
+            return ticketTaskManager.ticketTasks[queryTaskIndex].seatFilterKey
+        }
+        set {
+            ticketTaskManager.ticketTasks[queryTaskIndex].seatFilterKey = newValue
+        }
+    }
     
     var excludeTrainCode = ""
     
-    lazy var trainFilterWindowController:TrainFilterWindowController = TrainFilterWindowController()
+    var trainFilterWindowController:TrainFilterWindowController?
     var submitWindowController:SubmitWindowController?
     var ticketTaskWindowController:TicketTaskManagerWindowController?
     
@@ -567,18 +576,19 @@ class TicketQueryViewController: BaseViewController {
 
 // MARK: - open sheet
     func openfilterTrainSheet(){
-        trainFilterWindowController.trains = ticketQueryResult.filter({item in
+        let windowController = TrainFilterWindowController()
+        windowController.trains = ticketQueryResult.filter({item in
             return !item.isTicketInvalid()
         })
-        trainFilterWindowController.fromStationName = self.fromStationNameTxt.stringValue
-        trainFilterWindowController.toStationName = self.toStationNameTxt.stringValue
-        trainFilterWindowController.trainDate = self.date!
+        windowController.fromStationName = self.fromStationNameTxt.stringValue
+        windowController.toStationName = self.toStationNameTxt.stringValue
+        windowController.trainDate = self.date!
         
         if let window = self.view.window {
-            window.beginSheet(trainFilterWindowController.window!, completionHandler: {response in
+            window.beginSheet(windowController.window!, completionHandler: {response in
                 if response == NSModalResponseOK{
-                    self.trainFilterKey = self.trainFilterWindowController.trainFilterKey
-                    self.seatFilterKey = self.trainFilterWindowController.seatFilterKey
+                    self.trainFilterKey = self.trainFilterWindowController!.trainFilterKey
+                    self.seatFilterKey = self.trainFilterWindowController!.seatFilterKey
                     
                     logger.info("trainFilterKey:\(self.trainFilterKey)")
                     logger.info("seatFilterKey:\(self.seatFilterKey)")
@@ -598,7 +608,12 @@ class TicketQueryViewController: BaseViewController {
                 else {
                     self.autoQuery = false;
                 }
+                
+                self.trainFilterWindowController = nil
+                
             })
+            
+            self.trainFilterWindowController = windowController
         }
     }
     

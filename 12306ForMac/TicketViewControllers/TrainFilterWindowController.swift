@@ -108,8 +108,8 @@ class TrainFilterWindowController: BaseWindowController {
     var toStationName = ""
     var trainDate = ""
     
-    private(set) var trainFilterKey = ""
-    private(set) var seatFilterKey = ""
+    var trainFilterKey = ""
+    var seatFilterKey = ""
     fileprivate var filterItems = [FilterItem]()
     
     @IBOutlet weak var trainFilterTable: NSTableView!
