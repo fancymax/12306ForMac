@@ -11,7 +11,7 @@ Mac版12306 订票/捡票 助手。
 [Mac App Store](https://itunes.apple.com/cn/app/ding-piao-zhu-shou/id1163682213?l=zh&ls=1&mt=12)
 
 
-![demo](screenshot/12306ForMac.jpg)
+![demo](screenshot/12306ForMac.png)
 
 # 开发
 
