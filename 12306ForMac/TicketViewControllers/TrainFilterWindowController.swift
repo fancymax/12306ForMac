@@ -117,14 +117,103 @@ class TrainFilterWindowController: BaseWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         createFilterItemBy(trains!)
+        if trainFilterKey == "" && trainFilterKey != "|" {
+            initItemByPreferenceTimeFilterItem()
+        }
+        else {
+            initItemByTrainFilterKey(trainFilterKey)
+            initFilterItemByTrainItem()
+        }
+        
+        if seatFilterKey != "" && seatFilterKey != "|" {
+            initItemBySeatFilterKey(seatFilterKey)
+        }
     }
     
     override var windowNibName: String{
         return "TrainFilterWindowController"
     }
     
-    func createFilterItemBy(_ trains:[QueryLeftNewDTO]){
+    func initFilterItemByTrainItem() {
+        let items = filterItems.filter { (item) -> Bool in
+            if [.FromStation, .ToStation, .StartTime, .EndTime, .TrainType].contains(item.type) {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+        
+        for item in items {
+            var shouldUnCheck = true
+            for trainItem in filterItems where trainItem.type == .Train && trainItem.isChecked {
+                if trainItem.IsMatchKey(of: item) {
+                    shouldUnCheck = false
+                    break
+                }
+            }
+            
+            if shouldUnCheck {
+                item.isChecked = false
+            }
+        }
+    }
+    
+    func initItemByTrainFilterKey(_ trainFilterKey:String) {
+        for item in filterItems where item.type == .Train {
+            if trainFilterKey.contains(item.key) {
+                item.isChecked = true
+            }
+            else {
+                item.isChecked = false
+            }
+        }
+    }
+    
+    func initItemBySeatFilterKey(_ seatFilterKey:String) {
+        for item in filterItems where item.type == .SeatType {
+            if seatFilterKey.contains(item.presentation) {
+                item.isChecked = true
+            }
+            else {
+                item.isChecked = false
+            }
+        }
+    }
+    
+    func initItemByPreferenceTimeFilterItem() {
         var initFilterItems = [FilterItem]()
+        
+        var timeSpan = GeneralPreferenceManager.sharedInstance.userDefindStartFilterTimeSpan
+        var timeStatus = GeneralPreferenceManager.sharedInstance.userDefindStartFilterTimeStatus
+        var count = min(timeSpan.count, timeStatus.count)
+        for i in 0..<count {
+            let item = FilterItem(type: .StartTime,key:timeSpan[i],presentation: timeSpan[i],isChecked: timeStatus[i])
+            if !item.isChecked {
+                initFilterItems.append(item)
+            }
+        }
+        
+        timeSpan = GeneralPreferenceManager.sharedInstance.userDefindEndFilterTimeSpan
+        timeStatus = GeneralPreferenceManager.sharedInstance.userDefindEndFilterTimeStatus
+        count = min(timeSpan.count, timeStatus.count)
+        for i in 0..<count {
+            let item = FilterItem(type: .EndTime,key:timeSpan[i],presentation: timeSpan[i],isChecked: timeStatus[i])
+            if !item.isChecked {
+                initFilterItems.append(item)
+            }
+        }
+        
+        for item in initFilterItems {
+            for filterItem in filterItems where filterItem.key == item.key && filterItem.type == item.type {
+                filterItem.isChecked = item.isChecked
+                break
+            }
+            filterTrainBy(item, Off2On: false)
+        }
+    }
+    
+    func createFilterItemBy(_ trains:[QueryLeftNewDTO]){
         
         filterItems.append(FilterItem(type: .Group,presentation: "席别类型"))
         filterItems.append(FilterItem(type: .SeatType,key:"9|P|4|6",presentation: "商务座|特等座|软卧|高级软卧",isChecked: false))
@@ -134,26 +223,16 @@ class TrainFilterWindowController: BaseWindowController {
         
         filterItems.append(FilterItem(type: .Group,presentation: "出发时段"))
         var timeSpan = GeneralPreferenceManager.sharedInstance.userDefindStartFilterTimeSpan
-        var timeStatus = GeneralPreferenceManager.sharedInstance.userDefindStartFilterTimeStatus
-        var count = min(timeSpan.count, timeStatus.count)
-        for i in 0..<count {
-            let item = FilterItem(type: .StartTime,key:timeSpan[i],presentation: timeSpan[i],isChecked: timeStatus[i])
+        for i in 0..<timeSpan.count {
+            let item = FilterItem(type: .StartTime,key:timeSpan[i],presentation: timeSpan[i],isChecked: true)
             filterItems.append(item)
-            if !item.isChecked {
-                initFilterItems.append(item)
-            }
         }
     
         filterItems.append(FilterItem(type: .Group,presentation: "到达时段"))
         timeSpan = GeneralPreferenceManager.sharedInstance.userDefindEndFilterTimeSpan
-        timeStatus = GeneralPreferenceManager.sharedInstance.userDefindEndFilterTimeStatus
-        count = min(timeSpan.count, timeStatus.count)
-        for i in 0..<count {
-            let item = FilterItem(type: .EndTime,key:timeSpan[i],presentation: timeSpan[i],isChecked: timeStatus[i])
+        for i in 0..<timeSpan.count {
+            let item = FilterItem(type: .EndTime,key:timeSpan[i],presentation: timeSpan[i],isChecked: true)
             filterItems.append(item)
-            if !item.isChecked {
-                initFilterItems.append(item)
-            }
         }
         
         filterItems.append(FilterItem(type: .Group,presentation: "车次类型"))
@@ -239,10 +318,6 @@ class TrainFilterWindowController: BaseWindowController {
             let presentation = "\(train.TrainCode!) |1\(train.start_time!)~\(train.arrive_time!)  |2\(train.FromStationName!)->\(train.ToStationName!)"
             filterItems.append(FilterItem(type: .Train, key: key, presentation: presentation, isChecked: true))
         }
-        
-        for item in initFilterItems {
-            filterTrainBy(item, Off2On: false)
-        }
     }
     
     func getFilterKey(){
@@ -257,6 +332,15 @@ class TrainFilterWindowController: BaseWindowController {
                 seatFilterKey += "\(item.presentation)|"
             }
         }
+    }
+    
+    @IBAction func clickResetFilterItem(_ sender: NSButton) {
+        filterItems = [FilterItem]()
+        
+        createFilterItemBy(trains!)
+        initItemByPreferenceTimeFilterItem()
+        
+        trainFilterTable.reloadData()
     }
     
     @IBAction func clickTrainFilterBtn(_ sender: NSButton) {

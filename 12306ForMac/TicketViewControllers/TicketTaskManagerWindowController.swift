@@ -123,6 +123,7 @@ class TicketTasksManager: NSObject {
         if taskCount != 0 {
             let json = ticketTasks[taskCount - 1].encodeToJson()
             newTask.decodeJsonFrom(json)
+            newTask.trainFilterKey = ""
         }
         ticketTasks.append(newTask)
     }
@@ -166,7 +167,7 @@ class TicketTaskManagerWindowController: BaseWindowController {
     @IBAction func clickAddTask(_ sender: NSButton) {
         ticketTasksManager.addTicketTask()
         
-        let index = ticketTaskTable.selectedRow
+        let index = ticketTaskTable.selectedRow + 1
         ticketTaskTable.reloadData()
         ticketTaskTable.selectRowIndexes(IndexSet(arrayLiteral:index), byExtendingSelection: false)
     }
@@ -177,6 +178,7 @@ class TicketTaskManagerWindowController: BaseWindowController {
         let temp = ticketTask.startStation
         ticketTask.startStation = ticketTask.endStation
         ticketTask.endStation = temp
+        ticketTask.trainFilterKey = ""
         
         ticketTaskTable.reloadData()
         ticketTaskTable.selectRowIndexes(IndexSet(arrayLiteral:index), byExtendingSelection: false)
@@ -218,6 +220,11 @@ extension TicketTaskManagerWindowController: AutoCompleteTableViewDelegate{
         }
         
         return matches
+    }
+    
+    func textField(_ textField: NSTextField, didSelectItem item: String) {
+        let row = ticketTaskTable.row(for: textField)
+        ticketTasksManager.ticketTasks[row].trainFilterKey = ""
     }
 }
 

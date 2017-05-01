@@ -465,7 +465,7 @@ class TicketQueryViewController: BaseViewController {
             
             return isReturn
         })
-        
+       
         if let ticketOrderX = self.ticketOrder, let ticketAscendingX = self.ticketAscending {
             self.filterQueryResult = self.ticketOrderedBy(self.filterQueryResult, orderedBy: ticketOrderX, ascending: ticketAscendingX)
         }
@@ -583,6 +583,8 @@ class TicketQueryViewController: BaseViewController {
         windowController.fromStationName = self.fromStationNameTxt.stringValue
         windowController.toStationName = self.toStationNameTxt.stringValue
         windowController.trainDate = self.date!
+        windowController.seatFilterKey = self.seatFilterKey
+        windowController.trainFilterKey = self.trainFilterKey
         
         if let window = self.view.window {
             window.beginSheet(windowController.window!, completionHandler: {response in
@@ -916,6 +918,7 @@ extension TicketQueryViewController: AutoCompleteTableViewDelegate{
         else if textField == toStationNameTxt {
             ticketTask.endStation = item
         }
+        trainFilterKey = ""
         self.queryDateIndex = 0
     }
 }
