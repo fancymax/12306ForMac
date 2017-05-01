@@ -117,7 +117,7 @@ class TrainFilterWindowController: BaseWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         createFilterItemBy(trains!)
-        if trainFilterKey == "" && trainFilterKey != "|" {
+        if trainFilterKey == ""  {
             initItemByPreferenceTimeFilterItem()
         }
         else {
@@ -125,7 +125,7 @@ class TrainFilterWindowController: BaseWindowController {
             initFilterItemByTrainItem()
         }
         
-        if seatFilterKey != "" && seatFilterKey != "|" {
+        if seatFilterKey != "" {
             initItemBySeatFilterKey(seatFilterKey)
         }
     }

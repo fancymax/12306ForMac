@@ -117,15 +117,15 @@ class TicketTasksManager: NSObject {
         return resStr
     }
     
-    func addTicketTask() {
+    func insertTicketTask(at index:Int) {
         let newTask = TicketTask()
         let taskCount = ticketTasks.count
-        if taskCount != 0 {
-            let json = ticketTasks[taskCount - 1].encodeToJson()
+        if taskCount - 1 >= index && taskCount > 0 {
+            let json = ticketTasks[index].encodeToJson()
             newTask.decodeJsonFrom(json)
             newTask.trainFilterKey = ""
         }
-        ticketTasks.append(newTask)
+        ticketTasks.insert(newTask, at: index + 1)
     }
     
     func deleteTicketTask(_ index:Int) {
@@ -165,11 +165,11 @@ class TicketTaskManagerWindowController: BaseWindowController {
     }
     
     @IBAction func clickAddTask(_ sender: NSButton) {
-        ticketTasksManager.addTicketTask()
+        let index = ticketTaskTable.selectedRow
+        ticketTasksManager.insertTicketTask(at: index)
         
-        let index = ticketTaskTable.selectedRow + 1
         ticketTaskTable.reloadData()
-        ticketTaskTable.selectRowIndexes(IndexSet(arrayLiteral:index), byExtendingSelection: false)
+        ticketTaskTable.selectRowIndexes(IndexSet(arrayLiteral:index + 1), byExtendingSelection: false)
     }
 
     @IBAction func clickConvertCity(_ sender: NSMenuItem) {
