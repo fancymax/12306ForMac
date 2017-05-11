@@ -185,6 +185,26 @@ class TicketQueryViewController: BaseViewController {
         hasAutoQuery = false
     }
     
+    func updateTicketTask(startStation:String? = nil, endStation:String? = nil) {
+        let ticketTask = ticketTaskManager.ticketTasks[queryTaskIndex]
+        var hasChangeStation = false
+        
+        if let startStationValue = startStation {
+            ticketTask.startStation = startStationValue
+            hasChangeStation = true
+        }
+        
+        if let endStationValue = endStation {
+            ticketTask.endStation = endStationValue
+            hasChangeStation = true
+        }
+        
+        if hasChangeStation {
+            trainFilterKey = ""
+            self.queryDateIndex = 0
+        }
+    }
+    
     
 // MARK: - secondSearchView
     @IBOutlet weak var passengersView: NSStackView!
@@ -763,6 +783,8 @@ class TicketQueryViewController: BaseViewController {
         let temp = self.fromStationNameTxt.stringValue
         self.fromStationNameTxt.stringValue = self.toStationNameTxt.stringValue
         self.toStationNameTxt.stringValue = temp
+        
+        updateTicketTask(startStation: self.fromStationNameTxt.stringValue, endStation: self.toStationNameTxt.stringValue)
     }
     
     @IBAction func clickQueryTicketBtn(_ sender: AnyObject?) {
@@ -911,15 +933,12 @@ extension TicketQueryViewController: AutoCompleteTableViewDelegate{
     }
     
     func textField(_ textField: NSTextField, didSelectItem item: String) {
-        let ticketTask = ticketTaskManager.ticketTasks[queryTaskIndex]
         if textField == fromStationNameTxt {
-            ticketTask.startStation = item
+            updateTicketTask(startStation: item)
         }
         else if textField == toStationNameTxt {
-            ticketTask.endStation = item
+            updateTicketTask(endStation: item)
         }
-        trainFilterKey = ""
-        self.queryDateIndex = 0
     }
 }
 

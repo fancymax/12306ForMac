@@ -10,7 +10,9 @@ import Cocoa
 
 class TrainTableRowView: NSTableRowView {
     
-    fileprivate var shouldDrawAsKey = true
+    override var isOpaque: Bool {
+        return false
+    }
     
     override var isSelected: Bool {
         didSet {
