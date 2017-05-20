@@ -1,3 +1,5 @@
+12306ForMac.xcworkspace.xcuserdata/
+
 ## Build generated
 build/
 DerivedData/
@@ -13,6 +15,7 @@ Build/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
+
 
 ## Other
 *.moved-aside
