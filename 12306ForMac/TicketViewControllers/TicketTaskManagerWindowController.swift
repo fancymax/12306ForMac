@@ -185,6 +185,10 @@ class TicketTaskManagerWindowController: BaseWindowController {
     }
     
     @IBAction func clickDeleteTask(_ sender: NSButton) {
+        if ticketTasksManager.ticketTasks.count <= 1 {
+            return
+        }
+        
         let index = ticketTaskTable.selectedRow
         ticketTasksManager.deleteTicketTask(index)
         
