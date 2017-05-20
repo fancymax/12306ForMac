@@ -1,4 +1,4 @@
-source 'https://git.coding.net/CocoaPods/Specs.git'
+#source 'https://git.coding.net/CocoaPods/Specs.git'
 platform :osx, '10.11'
 
 target '12306ForMac' do
@@ -10,7 +10,7 @@ target '12306ForMac' do
   pod 'FMDB', '~> 2.6.2'
   pod 'OMGHTTPURLRQ', '~> 3.2.2'
   pod 'PromiseKit', '~> 4.1.0'
-  pod 'XCGLogger', '~> 4.0.0'
+  pod 'XCGLogger', '~> 5.0.1'
   pod 'MASPreferences', '~> 1.1.4'
   pod 'SwiftyJSON'
 
