@@ -1,5 +1,5 @@
-*.xcworkspace/xcuserdata/
-*.xcworkspace/xcuserdata/*
+12306ForMac.xcworkspace/xcuserdata/
+12306ForMac.xcworkspace/xcuserdata/*
 
 ## Build generated
 build/
