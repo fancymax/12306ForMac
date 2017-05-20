@@ -1,4 +1,4 @@
-*.xcworkspace/xcuserdata/
+*.xcworkspace/xcuserdata/*
 
 ## Build generated
 build/
