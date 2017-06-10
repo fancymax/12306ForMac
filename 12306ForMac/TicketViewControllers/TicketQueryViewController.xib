@@ -25,6 +25,7 @@
                 <outlet property="secondSearchView" destination="Dhy-j5-W4F" id="OyI-vg-5xp"/>
                 <outlet property="stackContentView" destination="Q3P-1n-q0W" id="6aq-aD-dmW"/>
                 <outlet property="ticketTableView" destination="Pvh-ix-iH6" id="uEg-pc-6BX"/>
+                <outlet property="ticketTipLabel" destination="SOi-nE-nL2" id="zDr-6X-v52"/>
                 <outlet property="toStationLabel" destination="4N3-fA-XcK" id="efx-F4-n2S"/>
                 <outlet property="toStationNameTxt" destination="l4y-Hd-FVf" id="FLJ-dr-euc"/>
                 <outlet property="view" destination="lnD-vo-KnU" id="OQJ-lR-XIC"/>
@@ -268,7 +269,7 @@
                                         </prototypeCellViews>
                                     </tableColumn>
                                     <tableColumn identifier="余票信息" width="431" minWidth="10" maxWidth="3.4028234663852886e+38" id="SY7-Sh-5eh">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="余票信息">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="余票">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -705,6 +706,15 @@
                         <action selector="clickFilterTrain:" target="-2" id="C1e-O6-nfh"/>
                     </connections>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SOi-nE-nL2">
+                    <rect key="frame" x="12" y="10" width="240" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="提示:点击车次查看票价" id="PJy-cd-OP6">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
                 <constraint firstAttribute="height" constant="40" id="2EQ-He-0Ae"/>

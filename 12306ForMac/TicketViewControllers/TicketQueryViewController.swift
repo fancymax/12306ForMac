@@ -215,6 +215,7 @@ class TicketQueryViewController: BaseViewController {
     @IBOutlet weak var filterBtn: LoginButton!
     @IBOutlet weak var filterCbx: NSButton!
     @IBOutlet weak var addPassengerBtn: LoginButton!
+    @IBOutlet weak var ticketTipLabel: NSTextField!
     
     var autoQuery = false {
         didSet {
@@ -732,6 +733,7 @@ class TicketQueryViewController: BaseViewController {
     
     func recvAddDefaultPassengerNotification(_ notification: Notification) {
         self.addPassengerBtn.isHidden = false
+        self.ticketTipLabel.isHidden = true
         if MainModel.passengers.count == 0 {
             return
         }
