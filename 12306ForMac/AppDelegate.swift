@@ -13,14 +13,10 @@ var APP_LOG_DIRECTORY = ""
 
 let logger: XCGLogger = {
     // Setup XCGLogger
-    let log = XCGLogger.default
-    
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyyMMddhhmm"
-    let dateStr = dateFormatter.string(from: Date())
+    let log = XCGLogger(identifier: "advancedLogger", includeDefaultDestinations: false)
     
     let bundleId = Bundle.main.bundleIdentifier!
-    let fileName = "\(bundleId).\(dateStr).txt"
+    let fileName = "\(bundleId).txt"
 
     APP_LOG_DIRECTORY = "\(NSHomeDirectory())/Library/Logs/\(bundleId)/"
     APP_LOG_PATH = "\(APP_LOG_DIRECTORY)/\(fileName)"
@@ -35,7 +31,34 @@ let logger: XCGLogger = {
         }
     }
     
-    log.setup(level: .debug, showThreadName: false, showLevel: true, showFileNames: false, showLineNumbers: false, writeToFile: APP_LOG_PATH as AnyObject?)
+    // Create a destination for the system console log (via NSLog)
+    let systemDestination = AppleSystemLogDestination(identifier: "advancedLogger.systemDestination")
+    
+    // Optionally set some configuration options
+    systemDestination.outputLevel = .info
+    systemDestination.showLogIdentifier = false
+    systemDestination.showFunctionName = false
+    systemDestination.showLevel = false
+    systemDestination.showFileName = false
+    systemDestination.showLineNumber = false
+    systemDestination.showDate = false
+    log.add(destination: systemDestination)
+    
+    let autoRotatingFileDestination = AutoRotatingFileDestination(writeToFile:APP_LOG_PATH)
+    autoRotatingFileDestination.targetMaxLogFiles = 10
+    
+    autoRotatingFileDestination.outputLevel = .info
+    autoRotatingFileDestination.showLogIdentifier = false
+    autoRotatingFileDestination.showFunctionName = false
+    autoRotatingFileDestination.showLevel = false
+    autoRotatingFileDestination.showFileName = false
+    autoRotatingFileDestination.showLineNumber = false
+    autoRotatingFileDestination.showDate = true
+    log.add(destination:autoRotatingFileDestination)
+    
+    // Add basic app info, version info etc, to the start of the logs
+    log.logAppDetails()
+    
     
     return log
 }()
