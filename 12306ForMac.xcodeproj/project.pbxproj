@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11A7B8191F7CDAC200A66AF5 /* CaptchaImageParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A7B8181F7CDAC200A66AF5 /* CaptchaImageParam.swift */; };
 		F10F003B1DF581420023DE68 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10F003A1DF581420023DE68 /* CalendarManager.swift */; };
 		F10F47A91D409ED3004668BB /* station_name.js in Resources */ = {isa = PBXBuildFile; fileRef = F10F47A81D409ED3004668BB /* station_name.js */; };
 		F11154651C8D91F800FA6059 /* srca.cer in Resources */ = {isa = PBXBuildFile; fileRef = F11154631C8D91F800FA6059 /* srca.cer */; };
@@ -127,6 +128,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		11A7B8181F7CDAC200A66AF5 /* CaptchaImageParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptchaImageParam.swift; sourceTree = "<group>"; };
 		A8D3F0F3BEAE3A2A4587E202 /* Pods-12306ForMac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-12306ForMac.release.xcconfig"; path = "Pods/Target Support Files/Pods-12306ForMac/Pods-12306ForMac.release.xcconfig"; sourceTree = "<group>"; };
 		AE70F375EE0543FBC436A6A4 /* Pods-12306ForMac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-12306ForMac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-12306ForMac/Pods-12306ForMac.debug.xcconfig"; sourceTree = "<group>"; };
 		BE13485B5745361514B3A60D /* Pods_12306ForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_12306ForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -507,6 +509,7 @@
 				F1F926891E0114A900FE4229 /* GetQueueCountAsysParam.swift */,
 				F1F9268B1E0116AC00FE4229 /* ConfirmSingleForQueueParam.swift */,
 				F1F9268D1E0116C500FE4229 /* ConfirmSingleForQueueAsysParam.swift */,
+				11A7B8181F7CDAC200A66AF5 /* CaptchaImageParam.swift */,
 			);
 			name = Params;
 			sourceTree = "<group>";
@@ -654,7 +657,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		75DC5FDD691B5ED5734CF978 /* [CP] Embed Pods Frameworks */ = {
@@ -713,6 +716,7 @@
 				F111549F1C8D929200FA6059 /* Service+Login.swift in Sources */,
 				F1CA120D1D1135E2003EFD0B /* Theme.swift in Sources */,
 				F1CA12051D10F546003EFD0B /* TrainCodeDetailHeaderCell.swift in Sources */,
+				11A7B8191F7CDAC200A66AF5 /* CaptchaImageParam.swift in Sources */,
 				F1CCA2DE1D0D4A1400B6853E /* TrainCodeDetail.swift in Sources */,
 				F1BE084C1E9289CF0054ECDD /* Notifications.swift in Sources */,
 				F1F926881E0110BA00FE4229 /* GetQueueCountParam.swift in Sources */,

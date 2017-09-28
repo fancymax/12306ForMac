@@ -18,11 +18,15 @@ extension Service {
     {
         var queryLog = false
         var queryUrl = ""
+        var queryjsName = ""
         
         self.queryTicketInit().then{(isQueryLog,leftUrl,jsName) -> Promise<Void> in
             queryLog = isQueryLog
             queryUrl = leftUrl
-            return self.requestDynamicJs(jsName, referHeader: ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"])
+            queryjsName = jsName
+            return self.queryHttpZF()
+        }.then{()-> Promise<Void> in
+            return self.requestDynamicJs(queryjsName, referHeader: ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"])
         }.then{()->Promise<Void> in
             return self.queryTicketLogWith(params,isQueryLog: queryLog)
         }.then{_ -> Promise<[QueryLeftNewDTO]> in
@@ -114,6 +118,17 @@ extension Service {
         }
     }
     
+    func queryHttpZF()->Promise<Void> {
+        return Promise{ fulfill, reject in
+            let headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
+            let url = "https://kyfw.12306.cn/otn/HttpZF/GetJS"
+            Service.Manager.request(url, headers:headers).responseString(completionHandler:{response in
+            })
+            
+            fulfill()
+        }
+    }
+    
     func queryTicketWith(_ params:LeftTicketParam,queryUrl:String)->Promise<[QueryLeftNewDTO]>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/" + queryUrl + "?" + params.ToGetParams()
@@ -122,6 +137,7 @@ extension Service {
                            "Cache-Control":"no-cache"]
             Service.Manager.request(url, headers: headers).responseJSON(completionHandler:{ response in
                     switch (response.result){
+                        
                     case .failure(let error):
                         reject(error)
                     case .success(let data):

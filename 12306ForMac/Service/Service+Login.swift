@@ -60,6 +60,9 @@ extension Service {
                     else{
                         logger.error("fail to get dynamicJs:\(content)")
                     }
+                    
+                    self.getConfigFromInitContent(content)
+                    
                     fulfill(dynamicJs)
                 }})
         }
@@ -74,8 +77,8 @@ extension Service {
     
     func getPassCodeNewForLogin()->Promise<NSImage>{
         return Promise{ fulfill, reject in
-            let random = CGFloat(Float(arc4random()) / Float(UINT32_MAX))//0~1
-            let url = "https://kyfw.12306.cn/otn/passcodeNew/getPassCodeNew?module=login&rand=sjrand&" + random.description
+            let param = CaptchaImageParam().ToGetParams()
+            let url = "\(passport_captcha)?\(param)"
             let headers = ["refer": "https://kyfw.12306.cn/otn/login/init"]
             Service.Manager.request(url, headers:headers).responseData{ response in
                 switch (response.result){
