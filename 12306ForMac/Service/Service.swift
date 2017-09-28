@@ -68,6 +68,13 @@ class Service {
         getMatchByKey(#keyPath(passport_captcha_check),matchVar: &passport_captcha_check)
         getMatchByKey(#keyPath(passport_authclient),matchVar: &passport_authclient)
     }
+    
+    func jc_getcookie(key:String) -> String? {
+       return nil
+    }
+    
+    let referKey = "refer"
+    let referValueForLoginInit = "https://kyfw.12306.cn/otn/login/init"
 
     func requestDynamicJs(_ jsName:String,referHeader:[String:String])->Promise<Void>{
         return Promise{ fulfill, reject in

@@ -96,6 +96,43 @@ extension Service {
         }
     }
     
+    func checkUAM() ->Promise<Bool> {
+        return Promise{ fulfill, reject in
+            let url = passport_authuam
+            
+            let params = ["appid":passport_appId]
+            
+            var headers:[String:String] = [:]
+            headers[referKey] = referValueForLoginInit
+            
+            Service.Manager.request(url, method:.post, parameters: params, headers:headers).responseJSON(completionHandler:{response in
+                switch (response.result){
+                case .failure(let error):
+                    reject(error)
+                case .success(let data):
+                    if let result_code = JSON(data)["result_code"].int  {
+                        var hasLogin = false
+                        if result_code == 0 {
+                            hasLogin = true
+                        }
+                        else {
+                            hasLogin = false
+                        }
+                        fulfill(hasLogin)
+                    }
+                    else{
+                        let error = ServiceError.errorWithCode(.loginFailed, failureReason: "checkUAM")
+                        reject(error)
+                    }
+                }})
+        }
+        
+    }
+    
+    func uampassport() {
+        
+    }
+    
     func checkRandCodeForLogin(_ randCodeStr:String)->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = "https://kyfw.12306.cn/otn/passcodeNew/checkRandCodeAnsyn"
