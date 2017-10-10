@@ -96,9 +96,11 @@ extension Service {
         }
     }
     
-    func checkUAM() ->Promise<Bool> {
+    func checkUAM() ->Promise<(Bool,String)> {
         return Promise{ fulfill, reject in
             let url = passport_authuam
+            //TODO
+            //$.jc_getcookie("tk");
             
             let params = ["appid":passport_appId]
             
@@ -112,13 +114,21 @@ extension Service {
                 case .success(let data):
                     if let result_code = JSON(data)["result_code"].int  {
                         var hasLogin = false
+                        var tk = ""
                         if result_code == 0 {
+                            if let apptk = JSON(data)["apptk"].string {
+                                tk = apptk
+                            }
+                            if let newapptk = JSON(data)["newapptk"].string {
+                                tk = newapptk
+                            }
+                            
                             hasLogin = true
                         }
                         else {
                             hasLogin = false
                         }
-                        fulfill(hasLogin)
+                        fulfill((hasLogin,tk))
                     }
                     else{
                         let error = ServiceError.errorWithCode(.loginFailed, failureReason: "checkUAM")
@@ -129,21 +139,54 @@ extension Service {
         
     }
     
-    func uampassport() {
-        
+    func uampassport(tk:String) ->Promise<Bool>  {
+        return Promise{ fulfill, reject in
+            let url = "https://kyfw.12306.cn/otn/" + passport_authclient
+            //TODO
+            //$.jc_getcookie("tk");
+            
+            let params = ["tk":tk]
+            
+            var headers:[String:String] = [:]
+            headers[referKey] = referValueForLoginInit
+            
+            Service.Manager.request(url, method:.post, parameters: params, headers:headers).responseJSON(completionHandler:{response in
+                switch (response.result){
+                case .failure(let error):
+                    reject(error)
+                case .success(let data):
+                    if let result_code = JSON(data)["result_code"].int  {
+                        var hasLogin = false
+                        if result_code == 0 {
+                            hasLogin = true
+                            if let userName = JSON(data)["username"].string {
+                                MainModel.userName = userName
+                            }
+                        }
+                        else {
+                            hasLogin = false
+                        }
+                        fulfill(hasLogin)
+                    }
+                    else{
+                        let error = ServiceError.errorWithCode(.loginFailed, failureReason: "uampassport")
+                        reject(error)
+                    }
+                }})
+        }
     }
     
     func checkRandCodeForLogin(_ randCodeStr:String)->Promise<Void>{
         return Promise{ fulfill, reject in
-            let url = "https://kyfw.12306.cn/otn/passcodeNew/checkRandCodeAnsyn"
-            let params = ["randCode":randCodeStr,"rand":"sjrand"]
+            let url = passport_captcha_check
+            let params = ["answer":randCodeStr,"login_site":"E","rand":"sjrand"]
             let headers = ["refer": "https://kyfw.12306.cn/otn/login/init"]
             Service.Manager.request(url, method:.post, parameters: params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
                 case .failure(let error):
                     reject(error)
                 case .success(let data):
-                    if let msg = JSON(data)["data"]["msg"].string , msg == "TRUE"{
+                    if let msg = JSON(data)["result_code"].string , msg == "4"{
                         fulfill()
                     }
                     else{
@@ -156,21 +199,20 @@ extension Service {
     
     func loginUserWith(_ user:String, passWord:String, randCodeStr:String)->Promise<Void>{
         return Promise{ fulfill, reject in
-            let url = "https://kyfw.12306.cn/otn/login/loginAysnSuggest"
-            let params = ["loginUserDTO.user_name":user,"userDTO.password":passWord,"randCode":randCodeStr]
+            let url = passport_login
+            let params = ["user_name":user,"password":passWord,"appid":passport_appId]
             let headers = ["refer": "https://kyfw.12306.cn/otn/login/init"]
             Service.Manager.request(url, method:.post, parameters: params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
                 case .failure(let error):
                     reject(error)
                 case .success(let data):
-                    if let loginCheck = JSON(data)["data"]["loginCheck"].string , loginCheck == "Y"{
-                        MainModel.userName = user
+                    if let result_code = JSON(data)["result_code"].int ,result_code == 0{
                         fulfill()
                     }
                     else{
                         let error:NSError
-                        if let errorStr = JSON(data)["messages"][0].string{
+                        if let errorStr = JSON(data)["result_message"].string{
                             error = ServiceError.errorWithCode(.loginUserFailed, failureReason: errorStr)
                         }
                         else{
