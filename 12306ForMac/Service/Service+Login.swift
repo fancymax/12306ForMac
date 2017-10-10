@@ -32,7 +32,11 @@ extension Service {
             self.checkRandCodeForLogin(randCodeStr)
         }.then{() -> Promise<Void> in
             return self.loginUserWith(user, passWord: passWord, randCodeStr: randCodeStr)
-        }.then{ () -> Promise<Void> in
+        }.then{ () -> Promise<(Bool,String)> in
+            return self.checkUAM()
+        }.then{ (hasLogin,tk) -> Promise<Bool> in
+            return self.uampassport(tk: tk)
+        }.then{ (_) -> Promise<Void> in
             return self.initMy12306()
         }.then{ () -> Promise<Void> in
             return self.getPassengerDTOs(isSubmit: false)
@@ -200,7 +204,7 @@ extension Service {
     func loginUserWith(_ user:String, passWord:String, randCodeStr:String)->Promise<Void>{
         return Promise{ fulfill, reject in
             let url = passport_login
-            let params = ["user_name":user,"password":passWord,"appid":passport_appId]
+            let params = ["username":user,"password":passWord,"appid":passport_appId]
             let headers = ["refer": "https://kyfw.12306.cn/otn/login/init"]
             Service.Manager.request(url, method:.post, parameters: params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
