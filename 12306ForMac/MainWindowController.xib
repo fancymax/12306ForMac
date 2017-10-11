@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="17A365" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
@@ -7,7 +7,7 @@
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController" customModule="订票助手" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController" customModule="iTrain" customModuleProvider="target">
             <connections>
                 <outlet property="LoginMenu" destination="xmP-jf-NW1" id="ab5-GD-wDK"/>
                 <outlet property="damaBtn" destination="Am1-RS-8yl" id="Ziu-3V-kE9"/>
@@ -23,7 +23,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="215" y="139" width="910" height="680"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2048" height="1129"/>
             <value key="minSize" type="size" width="910" height="600"/>
             <view key="contentView" id="agO-Wm-PyO">
                 <rect key="frame" x="0.0" y="0.0" width="910" height="680"/>
@@ -50,16 +50,16 @@
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Ohx-oh-1KW"/>
                     <toolbarItem implicitItemIdentifier="01F497D4-9C00-4CD2-B9F2-930F9A3B47B8" label="Module" paletteLabel="Module" id="Scw-2a-OOb">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="123" height="25"/>
-                        <size key="maxSize" width="125" height="25"/>
+                        <size key="minSize" width="123" height="23"/>
+                        <size key="maxSize" width="140" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="vCj-83-Jcy">
-                            <rect key="frame" x="0.0" y="14" width="123" height="25"/>
+                            <rect key="frame" x="0.0" y="14" width="140" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="Tog-3k-Hxk">
                                 <font key="font" metaFont="systemThin" size="13"/>
                                 <segments>
-                                    <segment label="车票预订" width="60"/>
-                                    <segment label="订单查询" width="60" selected="YES" tag="1"/>
+                                    <segment label="车票预订" width="67"/>
+                                    <segment label="订单查询" width="67" selected="YES" tag="1"/>
                                 </segments>
                             </segmentedCell>
                         </segmentedControl>
@@ -68,7 +68,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="83" height="27"/>
                         <size key="maxSize" width="83" height="27"/>
-                        <button key="view" id="YwA-eV-Pe9" customClass="LoginButton" customModule="订票助手" customModuleProvider="target">
+                        <button key="view" id="YwA-eV-Pe9" customClass="LoginButton" customModule="iTrain" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="14" width="83" height="27"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="bevel" title="登录 ▾" bezelStyle="regularSquare" image="User" imagePosition="left" alignment="left" imageScaling="proportionallyDown" inset="2" id="8bO-w1-7Z7">
@@ -84,7 +84,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="83" height="26"/>
                         <size key="maxSize" width="83" height="32"/>
-                        <button key="view" verticalHuggingPriority="750" id="Am1-RS-8yl" customClass="URLButton" customModule="订票助手" customModuleProvider="target">
+                        <button key="view" verticalHuggingPriority="750" id="Am1-RS-8yl" customClass="URLButton" customModule="iTrain" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="14" width="83" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="squareTextured" title="打码兔🔴" bezelStyle="texturedSquare" alignment="center" imageScaling="proportionallyDown" inset="2" id="Pq2-l1-qVA">
