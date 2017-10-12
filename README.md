@@ -20,6 +20,12 @@ Mac版12306 订票/捡票 助手。
 3. $ pod install
 4. open 12306ForMac.xcworkspace
 
+# 捐赠
+如果你愿意支持这个项目，可以考虑进行捐赠
+
+![demo](screenshot/donate.png)
+
+
 # 感谢
 
 本项目基于 Alamofire、PromiseKit、FMDB、MASPreferences等进行开发，在此表示感谢。
