@@ -21,8 +21,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="订票助手" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="yxO-x7-Uu9">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="215" y="139" width="910" height="680"/>
+            <rect key="contentRect" x="643" y="267" width="910" height="680"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2048" height="1129"/>
             <value key="minSize" type="size" width="910" height="600"/>
             <view key="contentView" id="agO-Wm-PyO">

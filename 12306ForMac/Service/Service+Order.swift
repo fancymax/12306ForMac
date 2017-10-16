@@ -6,7 +6,7 @@
 //  Copyright © 2015年 fancy. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 import Alamofire
 import PromiseKit
 import SwiftyJSON

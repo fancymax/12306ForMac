@@ -7,7 +7,7 @@
 //
 
 import JavaScriptCore
-import Cocoa
+import Foundation
 import Alamofire
 import PromiseKit
 import SwiftyJSON
