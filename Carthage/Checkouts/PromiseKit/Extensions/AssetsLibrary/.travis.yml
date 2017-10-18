@@ -1,0 +1,14 @@
+language: objective-c
+osx_image: xcode8
+
+before_install:
+  - export UUID=$(instruments -s | ruby -e "ARGF.each_line{ |ln| ln =~ /iPhone SE .* \[(.*)\]/; if \$1; puts(\$1); exit; end }");
+
+install:
+  - carthage bootstrap --platform iOS
+
+script:
+  - set -o pipefail;
+    xcrun instruments -w "$UUID";
+    sleep 15;
+    xcodebuild -scheme PMKAssetsLibrary -destination "id=$UUID" test | xcpretty

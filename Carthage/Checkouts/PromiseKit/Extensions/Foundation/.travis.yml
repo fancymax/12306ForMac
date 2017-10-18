@@ -1,0 +1,30 @@
+language: objective-c
+osx_image: xcode8
+
+env:
+  - PLATFORM=Mac
+  - PLATFORM=iOS NAME='iPhone SE'
+  - PLATFORM=tvOS NAME='Apple TV 1080p'
+  - PLATFORM=watchOS
+
+before_install:
+  - carthage bootstrap --platform $PLATFORM
+  - if [ -n "$NAME" ]; then
+      export UUID=$(instruments -s | ruby -e "ARGF.each_line{ |ln| ln =~ /$NAME .* \[(.*)\]/; if \$1; puts(\$1); exit; end }");
+    fi
+
+script:
+  - set -o pipefail;
+    case $PLATFORM in
+    Mac)
+      xcodebuild -scheme PMKFoundation -enableCodeCoverage YES test | xcpretty;;
+    iOS|tvOS)
+      xcrun instruments -w "$UUID" || true;
+      sleep 15;
+      xcodebuild -scheme PMKFoundation -destination "id=$UUID" -enableCodeCoverage YES test | xcpretty;;
+    watchOS)
+      xcodebuild -scheme PMKFoundation -destination "name=Apple Watch - 38mm" | xcpretty;;
+    esac
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

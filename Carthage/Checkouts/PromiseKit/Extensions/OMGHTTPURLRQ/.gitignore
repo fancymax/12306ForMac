@@ -1,0 +1,5 @@
+*.xcodeproj/**/xcuserdata/
+*.xcscmblueprint
+/Carthage
+/Cartfile.resolved
+/.build
