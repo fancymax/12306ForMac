@@ -131,7 +131,7 @@ class ReminderPreferenceViewController: NSViewController,MASPreferencesViewContr
     }
     
     var toolbarItemImage: NSImage! {
-        return NSImage(named: "Reminder.png")
+        return NSImage(named: "Reminder")
     }
     
     var toolbarItemLabel: String! {
