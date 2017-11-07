@@ -140,6 +140,7 @@ class MainWindowController: NSWindowController{
     }
     
     @IBAction func openPreferences(_ sender:AnyObject){
+        self.preferencesWindowController.window?.level = NSPopUpMenuWindowLevel
         self.preferencesWindowController.showWindow(nil)
     }
     
