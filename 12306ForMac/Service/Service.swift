@@ -18,11 +18,8 @@ class Service {
     
     static var Manager : Alamofire.SessionManager = {
         // Create the server trust policies
-        let serverTrustPolicies: [String: ServerTrustPolicy] = ["kyfw.12306.cn": ServerTrustPolicy.pinCertificates(
-                certificates:ServerTrustPolicy.certificates(),
-                validateCertificateChain: true,
-                validateHost: true)]
-        
+        let serverTrustPolicies: [String: ServerTrustPolicy] = ["kyfw.12306.cn": ServerTrustPolicy.performDefaultEvaluation(validateHost: true)]
+
         // Create custom manager
         let headers = [
             "refer": "https://kyfw.12306.cn/otn/leftTicket/init",

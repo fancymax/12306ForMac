@@ -18,7 +18,6 @@
 		11A7B8191F7CDAC200A66AF5 /* CaptchaImageParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A7B8181F7CDAC200A66AF5 /* CaptchaImageParam.swift */; };
 		F10F003B1DF581420023DE68 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10F003A1DF581420023DE68 /* CalendarManager.swift */; };
 		F10F47A91D409ED3004668BB /* station_name.js in Resources */ = {isa = PBXBuildFile; fileRef = F10F47A81D409ED3004668BB /* station_name.js */; };
-		F11154651C8D91F800FA6059 /* srca.cer in Resources */ = {isa = PBXBuildFile; fileRef = F11154631C8D91F800FA6059 /* srca.cer */; };
 		F11154681C8D920600FA6059 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154671C8D920600FA6059 /* User.swift */; };
 		F11154721C8D921400FA6059 /* LeftTicketParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111546A1C8D921400FA6059 /* LeftTicketParam.swift */; };
 		F11154731C8D921400FA6059 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111546B1C8D921400FA6059 /* MainModel.swift */; };
@@ -140,7 +139,6 @@
 		F10F003A1DF581420023DE68 /* CalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		F10F47A81D409ED3004668BB /* station_name.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = station_name.js; path = 12306ForMac/station_name.js; sourceTree = "<group>"; };
 		F11154621C8D91F800FA6059 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		F11154631C8D91F800FA6059 /* srca.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = srca.cer; sourceTree = "<group>"; };
 		F11154671C8D920600FA6059 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F111546A1C8D921400FA6059 /* LeftTicketParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftTicketParam.swift; sourceTree = "<group>"; };
 		F111546B1C8D921400FA6059 /* MainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
@@ -494,7 +492,6 @@
 			children = (
 				F10F47A81D409ED3004668BB /* station_name.js */,
 				F11154971C8D927C00FA6059 /* StationData.swift */,
-				F11154631C8D91F800FA6059 /* srca.cer */,
 				F17AB1CB1C95630E00FEB221 /* Credits.rtf */,
 				F11154E91C8D945C00FA6059 /* Info.plist */,
 				F11154D41C8D937E00FA6059 /* Images.xcassets */,
@@ -595,7 +592,6 @@
 				F11154D31C8D936300FA6059 /* MainMenu.xib in Resources */,
 				F1C8BC591DEECACB005A922B /* PayWindowController.xib in Resources */,
 				F15F3EBC1E9E3F7200351ADC /* TicketTaskManagerWindowController.xib in Resources */,
-				F11154651C8D91F800FA6059 /* srca.cer in Resources */,
 				F11154941C8D925200FA6059 /* LunarCalendarView.xib in Resources */,
 				F11154D01C8D931500FA6059 /* MainWindowController.xib in Resources */,
 				F11154D61C8D937E00FA6059 /* Images.xcassets in Resources */,
