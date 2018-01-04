@@ -154,23 +154,11 @@ class SubmitWindowController: BaseWindowController{
         }
         isSubmitting = true
         
-        let autoSummitHandler = {(image:NSImage)->() in
-            if self.ifShowCode {
-                self.switchViewFrom(self.orderInfoView, to: self.preOrderView)
-                if AdvancedPreferenceManager.sharedInstance.isUseDama {
-                    self.dama(image: image)
-                }
-                self.isSubmitting = false
-            }
-            else {
-                self.submitOrderFlow(isAuto: true,ifShowRandCode: false)
-            }
-        }
         let successHandler = {(image:NSImage) -> () in
             self.passengerImage.clearRandCodes()
             self.passengerImage.image = image
             if self.isAutoSubmit {
-                autoSummitHandler(image)
+                self.checkOrderFlow()
             }
             else {
                 self.isSubmitting = false
@@ -197,13 +185,29 @@ class SubmitWindowController: BaseWindowController{
         }
         
         let successHandler = {(ifShowRandCode:Bool)->() in
-            if ifShowRandCode {
-                self.stopLoadingTip()
-                self.isSubmitting = false
-                self.switchViewFrom(self.orderInfoView, to: self.preOrderView)
+            if self.isAutoSubmit {
+                if ifShowRandCode {
+                    self.switchViewFrom(self.orderInfoView, to: self.preOrderView)
+                    if AdvancedPreferenceManager.sharedInstance.isUseDama {
+                        if let image =  self.passengerImage.image {
+                            self.dama(image: image)
+                        }
+                    }
+                    self.isSubmitting = false
+                }
+                else {
+                    self.submitOrderFlow(isAuto: true,ifShowRandCode: false)
+                }
             }
             else {
-                self.submitOrderFlow(isAuto: false,ifShowRandCode: false)
+                if ifShowRandCode {
+                    self.stopLoadingTip()
+                    self.isSubmitting = false
+                    self.switchViewFrom(self.orderInfoView, to: self.preOrderView)
+                }
+                else {
+                    self.submitOrderFlow(isAuto: false,ifShowRandCode: false)
+                }
             }
         }
         Service.sharedInstance.checkOrderFlow(success: successHandler, failure: failureHandler)
@@ -224,6 +228,7 @@ class SubmitWindowController: BaseWindowController{
         
         let failureHandler = { (error:NSError) -> () in
             self.stopLoadingTip()
+            self.isSubmitting = false
             if ServiceError.isCheckRandCodeError(error) {
                 self.showTip(translate(error))
                 self.freshImage()
@@ -232,9 +237,10 @@ class SubmitWindowController: BaseWindowController{
             else {
                 //if isAuto and not CheckRandCodeError, then close window and retry
                 if isAuto {
-                    self.showTip(translate(error) + " 请等待3秒App会自动重新提交")
+                    self.showTip(translate(error) + " 请等3秒App重新提交")
                     
                     if !self.isCancel {
+                        self.isSubmitting = true
                         self.timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(SubmitWindowController.closeAndReSubmit), userInfo: nil, repeats: false)
                     }
                     else {
@@ -246,7 +252,6 @@ class SubmitWindowController: BaseWindowController{
                 }
             }
             
-            self.isSubmitting = false
         }
         
         let successHandler = {
@@ -265,21 +270,11 @@ class SubmitWindowController: BaseWindowController{
             self.startLoadingTip(info)
         }
         
-        if isAuto {
-            if ifShowRandCode {
-                Service.sharedInstance.autoOrderFlowWithRandCode(randCode, success: successHandler, failure: failureHandler,wait: waitHandler)
-            }
-            else {
-                Service.sharedInstance.autoOrderFlowNoRandCode(success: successHandler, failure: failureHandler,wait: waitHandler)
-            }
+        if ifShowRandCode {
+            Service.sharedInstance.orderFlowWithRandCode(randCode, success: successHandler, failure: failureHandler,wait: waitHandler)
         }
         else {
-            if ifShowRandCode {
-                Service.sharedInstance.orderFlowWithRandCode(randCode, success: successHandler, failure: failureHandler,wait: waitHandler)
-            }
-            else {
-                Service.sharedInstance.orderFlowNoRandCode(success: successHandler, failure: failureHandler,wait: waitHandler)
-            }
+            Service.sharedInstance.orderFlowNoRandCode(success: successHandler, failure: failureHandler,wait: waitHandler)
         }
     }
     
@@ -305,13 +300,7 @@ class SubmitWindowController: BaseWindowController{
             return
         }
         isSubmitting = true
-        
-        if isAutoSubmit {
-            self.submitOrderFlow(isAuto: true,ifShowRandCode: false)
-        }
-        else {
-            self.checkOrderFlow()
-        }
+        self.checkOrderFlow()
     }
     
     @IBAction func clickOK(_ sender:AnyObject?){

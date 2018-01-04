@@ -559,15 +559,9 @@ class TicketQueryViewController: BaseViewController {
             notificationCenter.post(name: Notification.Name.App.DidSubmit, object: nil)
         }
         
-        let postSubmitWindowMessageAuto = { (ifShowRandCode:Bool)->Void in
+        let postSubmitWindowMessageAuto = {
             self.stopLoadingTip()
-            
-            if ifShowRandCode {
-                notificationCenter.post(name: Notification.Name.App.DidAutoSubmit, object: nil)
-            }
-            else {
-                notificationCenter.post(name: Notification.Name.App.DidAutoSubmitWithoutRandCode, object: nil)
-            }
+            notificationCenter.post(name: Notification.Name.App.DidAutoSubmit, object: nil)
         }
         
         let failHandler = {(error:NSError)->() in
@@ -582,7 +576,8 @@ class TicketQueryViewController: BaseViewController {
         logger.info("\(ticket.TrainCode!) \(ticket.trainDateStr) \(ticket.FromStationName!) -> \(ticket.ToStationName!)  \(seatTypeId) isAuto=\(isAuto)")
         
         if isAuto {
-            Service.sharedInstance.autoSubmitFlow(ticket: ticket,purposeCode: self.ticketType.rawValue, success: postSubmitWindowMessageAuto, failure: failHandler)
+            let submitParams = SubmitOrderParams(with: ticket,purposeCode: self.ticketType.rawValue)
+            Service.sharedInstance.submitFlow(submitParams, success: postSubmitWindowMessageAuto, failure: failHandler)
         }
         else {
             let submitParams = SubmitOrderParams(with: ticket,purposeCode: self.ticketType.rawValue)

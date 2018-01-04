@@ -314,14 +314,8 @@ extension Service{
                 headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
             }
             else {
-                if !isAuto {
-                    params = ["_json_att":"","REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken]
-                    headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
-                }
-                else {
-                    params = ["_json_att":""]
-                    headers = ["refer": "https://kyfw.12306.cn/otn/leftTicket/init"]
-                }
+                params = ["_json_att":"","REPEAT_SUBMIT_TOKEN":MainModel.globalRepeatSubmitToken]
+                headers = ["refer": "https://kyfw.12306.cn/otn/confirmPassenger/initDc"]
             }
             Service.Manager.request(url, method:.post, parameters: params, headers:headers).responseJSON(completionHandler:{response in
                 switch (response.result){
