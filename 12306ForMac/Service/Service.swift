@@ -24,7 +24,7 @@ class Service {
         let headers = [
             "refer": "https://kyfw.12306.cn/otn/leftTicket/init",
             "Host": "kyfw.12306.cn",
-            "User-Agent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:36.0) Gecko/20100101 Firefox/36.0",
+            "User-Agent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Safari/604.1.38",
             "Connection" : "keep-alive"]
         let configuration = URLSessionConfiguration.default
         
