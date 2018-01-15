@@ -16,11 +16,8 @@ extension Service {
     
 // MARK: - Request Flow
     func preLoginFlow(success:@escaping (NSImage)->Void,failure:@escaping (NSError)->Void){
-        ///RAIL_DEVICEID=Rbi2_kj_dkMqD3ySkogkRhJ1rIh7X9L6tTT1xuDjBHlCaCdG9nydyoZDWlpGkBhgnA1u8pvUXZTgGchGfGQxBbKnj6QDUWM1g8gJaWnMbKME25UD3WLfJNymGAPFyUExwCBaBkFDNzqpiUiD1lk3Y12oHBaed4Rt;
-        //RAIL_EXPIRATION=1516128139770;
-        
-        let cookie1 = HTTPCookie(properties: [.name:"RAIL_DEVICEID",.domain:"kyfw.12306.cn",.value:"Rbi2_kj_dkMqD3ySkogkRhJ1rIh7X9L6tTT1xuDjBHlCaCdG9nydyoZDWlpGkBhgnA1u8pvUXZTgGchGfGQxBbKnj6QDUWM1g8gJaWnMbKME25UD3WLfJNymGAPFyUExwCBaBkFDNzqpiUiD1lk3Y12oHBaed4Rt",.path:"/"])
-        let cookie2 = HTTPCookie(properties: [.name:"RAIL_EXPIRATION",.domain:"kyfw.12306.cn",.value:"1516128139770",.path:"/"])
+        let cookie1 = HTTPCookie(properties: [.name:"RAIL_DEVICEID",.domain:"kyfw.12306.cn",.value:"Q00EqtBk6d2i02XaZwwoXcmtlGCq2v9Z_3MHOf7LDP1xGK7byeW7G_Mlsc0wz3frLSS2AsXlncKS17R4YYMvuOXdrMhY6BnG8iAX8NkE1NKJvi4DfkvhR3pA6I9H_7sl--jJEfskcIHUKZRkRB-7irIehbWlokpt",.path:"/"])
+        let cookie2 = HTTPCookie(properties: [.name:"RAIL_EXPIRATION",.domain:"kyfw.12306.cn",.value:"1516238840716",.path:"/"])
         Service.Manager.session.configuration.httpCookieStorage?.setCookie(cookie1!)
         Service.Manager.session.configuration.httpCookieStorage?.setCookie(cookie2!)
     
