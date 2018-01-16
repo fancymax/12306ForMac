@@ -10,3 +10,5 @@
 #import "DJLayerView.h"
 #import <CommonCrypto/CommonCrypto.h>
 
+#import "FSPreventSystemSleep.h"
+

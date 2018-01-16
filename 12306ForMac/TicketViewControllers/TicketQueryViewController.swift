@@ -87,6 +87,7 @@ class TicketQueryViewController: BaseViewController {
     }
     
 // MARK: - firstSearchView
+    
     @IBOutlet weak var fromStationNameTxt: AutoCompleteTextField!
     @IBOutlet weak var toStationNameTxt: AutoCompleteTextField!
     @IBOutlet weak var queryDate: ClickableDatePicker!
@@ -103,6 +104,10 @@ class TicketQueryViewController: BaseViewController {
     var ticketType:TicketType = .Normal
     var queryTaskIndex = 0
     var queryDateIndex = 0
+    
+    lazy var preventSystemSleepHandler:FSPreventSystemSleep = {
+       return FSPreventSystemSleep()
+    }()
     
     var ticketTaskManager = TicketTasksManager()
    
@@ -240,6 +245,8 @@ class TicketQueryViewController: BaseViewController {
                 self.converCityBtn.isEnabled = false
                 self.queryDate.clickable = false
                 filterCbx.isEnabled = false
+                
+                preventSystemSleepHandler.preventSystemSleep(true)
             }
             else {
                 queryBtn.title = "开始抢票"
@@ -251,6 +258,8 @@ class TicketQueryViewController: BaseViewController {
                 if self.filterQueryResult.count > 0 {
                     canFilter = true
                 }
+                
+                preventSystemSleepHandler.preventSystemSleep(false)
             }
         }
     }

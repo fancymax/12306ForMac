@@ -16,6 +16,7 @@
 		118EED271F9780F800CE6C67 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 118EED1F1F9780F800CE6C67 /* FMDB.framework */; };
 		118EED281F9780F800CE6C67 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 118EED201F9780F800CE6C67 /* MASPreferences.framework */; };
 		11A7B8191F7CDAC200A66AF5 /* CaptchaImageParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A7B8181F7CDAC200A66AF5 /* CaptchaImageParam.swift */; };
+		11E6AF8C200D92D4003F8C5C /* FSPreventSystemSleep.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E6AF8B200D92D4003F8C5C /* FSPreventSystemSleep.m */; };
 		F10F003B1DF581420023DE68 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10F003A1DF581420023DE68 /* CalendarManager.swift */; };
 		F10F47A91D409ED3004668BB /* station_name.js in Resources */ = {isa = PBXBuildFile; fileRef = F10F47A81D409ED3004668BB /* station_name.js */; };
 		F11154681C8D920600FA6059 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11154671C8D920600FA6059 /* User.swift */; };
@@ -136,6 +137,8 @@
 		118EED1F1F9780F800CE6C67 /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = Carthage/Build/Mac/FMDB.framework; sourceTree = "<group>"; };
 		118EED201F9780F800CE6C67 /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MASPreferences.framework; path = Carthage/Build/Mac/MASPreferences.framework; sourceTree = "<group>"; };
 		11A7B8181F7CDAC200A66AF5 /* CaptchaImageParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptchaImageParam.swift; sourceTree = "<group>"; };
+		11E6AF8A200D92D4003F8C5C /* FSPreventSystemSleep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPreventSystemSleep.h; sourceTree = "<group>"; };
+		11E6AF8B200D92D4003F8C5C /* FSPreventSystemSleep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPreventSystemSleep.m; sourceTree = "<group>"; };
 		F10F003A1DF581420023DE68 /* CalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		F10F47A81D409ED3004668BB /* station_name.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = station_name.js; path = 12306ForMac/station_name.js; sourceTree = "<group>"; };
 		F11154621C8D91F800FA6059 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -329,6 +332,8 @@
 		F111547A1C8D923C00FA6059 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				11E6AF8A200D92D4003F8C5C /* FSPreventSystemSleep.h */,
+				11E6AF8B200D92D4003F8C5C /* FSPreventSystemSleep.m */,
 				F1BE084B1E9289CF0054ECDD /* Notifications.swift */,
 				F111547C1C8D923C00FA6059 /* SwiftyRegex.swift */,
 				F1FEE7A11D8D464900B02C84 /* NotifySpeaker.swift */,
@@ -704,6 +709,7 @@
 				F11154A21C8D929200FA6059 /* Service+QueryTicket.swift in Sources */,
 				F11154A91C8D92A700FA6059 /* LoginWindowController.swift in Sources */,
 				F1F2F2D21D5AFE7100EA7786 /* UrlLabel.swift in Sources */,
+				11E6AF8C200D92D4003F8C5C /* FSPreventSystemSleep.m in Sources */,
 				F12746751D50784100975DFA /* TrainFilterWindowController.swift in Sources */,
 				F11154751C8D921400FA6059 /* TicketQueueCountResult.swift in Sources */,
 				F13E9C981D0AA9760011F7E2 /* TrainInfoTableCellView.swift in Sources */,
