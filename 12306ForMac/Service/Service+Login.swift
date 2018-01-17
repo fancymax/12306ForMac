@@ -16,8 +16,8 @@ extension Service {
     
 // MARK: - Request Flow
     func preLoginFlow(success:@escaping (NSImage)->Void,failure:@escaping (NSError)->Void){
-        let cookie1 = HTTPCookie(properties: [.name:"RAIL_DEVICEID",.domain:"kyfw.12306.cn",.value:"Q00EqtBk6d2i02XaZwwoXcmtlGCq2v9Z_3MHOf7LDP1xGK7byeW7G_Mlsc0wz3frLSS2AsXlncKS17R4YYMvuOXdrMhY6BnG8iAX8NkE1NKJvi4DfkvhR3pA6I9H_7sl--jJEfskcIHUKZRkRB-7irIehbWlokpt",.path:"/"])
-        let cookie2 = HTTPCookie(properties: [.name:"RAIL_EXPIRATION",.domain:"kyfw.12306.cn",.value:"1516238840716",.path:"/"])
+        let cookie1 = HTTPCookie(properties: [.name:"RAIL_DEVICEID",.domain:"kyfw.12306.cn",.value:"CyeQGv5X_Y9BsIIkxXGf8s_wPmVs2yH4idlQo3d4KxgeY10nAnXWcm72qwxLLd_xqQm-v8UaFAVL7elDx_KFZw1FN3MkwJcbQAGtPIFEWfWPsdsOr5_jgjV-HSn7t-2u2fZgGrTOSCpfoYMOF41I1qWmNkGkObIX",.path:"/"])
+        let cookie2 = HTTPCookie(properties: [.name:"RAIL_EXPIRATION",.domain:"kyfw.12306.cn",.value:"1516426090658",.path:"/"])
         Service.Manager.session.configuration.httpCookieStorage?.setCookie(cookie1!)
         Service.Manager.session.configuration.httpCookieStorage?.setCookie(cookie2!)
     
