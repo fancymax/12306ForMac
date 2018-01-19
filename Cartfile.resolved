@@ -1,6 +1,6 @@
 github "Alamofire/Alamofire" "4.0.0"
 github "DaveWoodCom/XCGLogger" "5.0.5"
-github "SwiftyJSON/SwiftyJSON" "3.1.4"
+github "SwiftyJSON/SwiftyJSON" "4.0.0"
 github "ccgus/fmdb" "2.6.2"
 github "mxcl/OMGHTTPURLRQ" "3.2.2"
 github "mxcl/PromiseKit" "4.1.0"
